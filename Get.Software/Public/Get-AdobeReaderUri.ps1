@@ -2,15 +2,12 @@ Function Get-AdobeReaderUri {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $False)]
-        [string] $Uri = "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
-
-        [Parameter(Mandatory = $False)]
         [ValidateSet('win', 'mac')]
         [string] $Platform = "win"
     )
 
     # Get current version
-    $version = ((Invoke-WebRequest -uri $Uri).Content).Replace('.', '')
+    $version = Get-AdobeReaderVersion
 
     # Variables, URLs and languages for download
     $ftpUrl = "ftp://ftp.adobe.com/pub/adobe/reader/$Platform/AcrobatDC/"
