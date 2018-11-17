@@ -69,7 +69,7 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-MozillaFirefoxUri', 'Get-AdobeReaderUri', 'Get-GoogleChromeVersion', 'Get-MozillaFirefoxVersion')
+FunctionsToExport = @('Get-MozillaFirefoxVersion', 'Get-MozillaFirefoxUri', 'Get-AdobeReaderUri', 'Get-GoogleChromeVersion')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -93,12 +93,12 @@ AliasesToExport = @()
 PrivateData = @{
 
     #RepositorySourceLocation of this module
-    RepositorySourceLocation = 'https://github.com/aaronparker/Install-VisualCRedistributables/'
+    RepositorySourceLocation = 'https://github.com/aaronparker/Get.Software/'
 
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Firefox'
+        Tags = 'Firefox', 'Reader', 'Chrome'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/aaronparker/Get.Software/blob/master/LICENSE'
