@@ -10,3 +10,15 @@ All functions consist of the following
 * Get verb - the module provides functions to retrieve data only
 * Product name - product names consist of Developer, Product Name (e.g. Adobe Reader, Google Chrome)
 * Uri or Version - the function will return either the production version number or numbers, or a URI to download the latest version from
+
+## Why
+
+There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. Instead the focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. Data will only be pulled from the vendor web site and never a third party.
+
+## Who
+
+This module is maintained by the following community members
+
+* Aaron Parker, [https://twitter.com/stealthpuppy](@stealthpuppy)
+* Bronson Magnan, [https://twitter.com/CIT_Bronson](@CIT_Bronson)
+* Trond Eric Haarvarstein, [https://twitter.com/xenappblog](@xenappblog)

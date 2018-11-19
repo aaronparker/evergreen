@@ -21,16 +21,16 @@ ModuleVersion = '1.0.0.0'
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
 
 # Author of this module
-Author = 'Aaron Parker'
+Author = 'Aaron Parker, Bronson Magnan, Trond Eric Haarvarstein'
 
 # Company or vendor of this module
-CompanyName = 'stealthpuppy'
+CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
 
 # Copyright statement for this module
-Copyright = '(c) 2018 stealthpuppy. All rights reserved.'
+Copyright = '(c) 2018 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'A PowerShell module to get latest version software download URLs for various products.'
+Description = 'Get.Software is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '3.0'
