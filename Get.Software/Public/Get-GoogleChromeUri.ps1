@@ -1,4 +1,9 @@
 Function Get-GoogleChromeUri {
+    <#
+        .NOTES
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+    #>
 
     # https://cloud.google.com/js/chrome_download.min.js
 

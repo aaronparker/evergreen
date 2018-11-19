@@ -1,4 +1,9 @@
 Function Get-MozillaFirefoxVersion {
+    <#
+        .NOTES
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $False)]
@@ -18,5 +23,5 @@ Function Get-MozillaFirefoxVersion {
         'release' { $output = $firefoxVersions.LATEST_FIREFOX_VERSION }
         Default { $output = $firefoxVersions.LATEST_FIREFOX_VERSION }
     }
-    Write-Output $output
+    Write-Output ([Version]::new($output))
 }

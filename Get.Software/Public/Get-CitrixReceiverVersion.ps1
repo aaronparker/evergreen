@@ -8,7 +8,6 @@ Function Get-CitrixReceiverVersion {
             Does not provide the version number for Receiver where a login is required (e.g. HTML5, Chrome)
 
         .NOTES
-            Name: Get-CitrixReceiverVersion.ps1
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy

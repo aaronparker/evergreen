@@ -1,4 +1,9 @@
 Function Get-MozillaFirefoxUri {
+    <#
+        .NOTES
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+    #>
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $False)]
