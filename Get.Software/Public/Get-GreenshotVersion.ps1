@@ -5,7 +5,7 @@ Function Get-GreenShotVersion {
             Twitter: @cit_bronson
     #>
     [CmdletBinding()]
-    [OutputType([string])]
+    [OutputType([Version])]
     Param()
 
     $GreenshotURL = Get-GreenshotUri
