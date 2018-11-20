@@ -21,9 +21,9 @@ There are several community and commercial products that manage application depl
 
 This module is maintained by the following community members
 
-* Aaron Parker, [https://twitter.com/stealthpuppy](@stealthpuppy)
-* Bronson Magnan, [https://twitter.com/CIT_Bronson](@CIT_Bronson)
-* Trond Eric Haarvarstein, [https://twitter.com/xenappblog](@xenappblog)
+* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
+* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
+* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
 # Installing the Module
 
