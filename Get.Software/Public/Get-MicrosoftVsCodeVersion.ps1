@@ -1,58 +1,83 @@
-<#
-# macOS
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/darwin/insider/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/darwin/stable/VERSION" | ConvertFrom-Json
+Function Get-MicrosoftVsCodeVersion {
+    <#
+        .SYNOPSIS
+            Returns Microsoft Visual Studio Code versions and dowmload URLs.
 
-# Windows
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32/insider/VERSION" | ConvertFrom-Json
+        .DESCRIPTION
+            Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
 
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32/stable/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32-user/stable/VERSION" | ConvertFrom-Json
+        .NOTES
+            Site: https://stealthpuppy.com
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software/
 
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32-x64-user/stable/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32-x64/stable/VERSION" | ConvertFrom-Json
+        .EXAMPLE
+            Get-MicrosoftVsCodeVersion
 
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/win32-archive/stable/VERSION" | ConvertFrom-Json
+            Description:
+            Returns the Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
+    #>
+    <#
+        "https://aka.ms/win32-x64-user-stable"
+        "https://update.code.visualstudio.com/latest/win32-x64-user/stable"
+        "https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable"
+    #>
+    [CmdletBinding()]
+    Param(
+        [Parameter()]
+        [ValidateSet('insider', 'stable')]
+        [string[]]
+        $Channels = @('insider', 'stable'),
 
-# Linux
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-deb-x64/insider/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-deb-ia32/stable/VERSION" | ConvertFrom-Json
+        [Parameter()]
+        [ValidateSet('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
+                'win32-x64-user', 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
+                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')]
+        [string[]]
+        $Platforms = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
+                'win32-x64-user', 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
+                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64'),
 
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-rpm-x64/insider/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-rpm-ia32/stable/VERSION" | ConvertFrom-Json
+        [Parameter()]
+        [ValidateSet('https://update.code.visualstudio.com/api/update')]
+        [string[]]
+        $Url = 'https://update.code.visualstudio.com/api/update'
+    )
 
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-x64/insider/VERSION" | ConvertFrom-Json
-Invoke-WebRequest -Uri "https://update.code.visualstudio.com/api/update/linux-ia32/stable/VERSION" | ConvertFrom-Json
+    # Output array
+    $output = @()
 
-"https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable"
-"https://aka.ms/win32-x64-user-stable"
-"https://update.code.visualstudio.com/latest/win32-x64-user/stable"
+    # Walk through each platform
+    ForEach ($platform in $platforms) {
+        Write-Verbose "Getting release info for $platform."
 
-https://az764295.vo.msecnd.net/stable/bc24f98b5f70467bc689abf41cc5550ca637088e/VSCode-win32-x64-1.29.1.zip
-#>
-[CmdletBinding()]
-Param()
-
-$channels = @("insider", "stable")
-$platforms = @("darwin", "win32", "win32-user", "win32-x64-user", "win32-x64", `
-        "win32-x64-user", "win32-archive", "win32-x64-archive", "linux-deb-ia32", `
-        "linux-deb-x64", "linux-rpm-ia32", "linux-ia32", "linux-x64")
-$url = "https://update.code.visualstudio.com/api/update"
-
-$output = @()
-ForEach ($platform in $platforms) {
-    Write-Verbose "Getting release info for $platform."
-    ForEach ($channel in $channels) {
-        Write-Verbose "Getting release info for $channel."
-        $release = Invoke-WebRequest -Uri "$url/$platform/$channel/VERSION" -UseBasicParsing | ConvertFrom-Json
-        $item = New-Object PSCustomObject
-        $item | Add-Member -Type NoteProperty -Name 'Channel' -Value $channel
-        $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $platform
-        $item | Add-Member -Type NoteProperty -Name 'Version' -Value $release.productVersion
-        $item | Add-Member -Type NoteProperty -Name 'Uri' -Value $release.url
-        $output += $item
+        # Walk through each channel in the platform
+        ForEach ($channel in $channels) {
+            try {
+                Write-Verbose "Getting release info for $channel."
+                $release = Invoke-WebRequest -Uri "$url/$platform/$channel/VERSION" -UseBasicParsing `
+                    -ErrorAction SilentlyContinue
+            }
+            catch {
+                Write-Error "Error connecting to $url/$platform/$channel/VERSION, with error $_"
+                Break
+            }
+            finally {
+                $releaseJson = $release | ConvertFrom-Json
+                Write-Verbose "Adding $platform $channel $($releaseJson.productVersion) to array."
+                $item = New-Object PSCustomObject
+                $item | Add-Member -Type NoteProperty -Name 'Channel' -Value $channel
+                $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $platform
+                $item | Add-Member -Type NoteProperty -Name 'Version' -Value $releaseJson.productVersion
+                $item | Add-Member -Type NoteProperty -Name 'Uri' -Value $releaseJson.url
+                $output += $item
+            }
+        }
     }
-}
 
-Write-Output ($output | Sort-Object Channel, Platform | Format-Table)
+    # Sort and return output to the pipeline
+    Write-Output ($output | Sort-Object Channel, Platform | Format-Table)
+}
