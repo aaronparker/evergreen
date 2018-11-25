@@ -1,4 +1,4 @@
-Function Get-MicrosoftVsCodeVersion {
+Function Get-MicrosoftVsCode {
     <#
         .SYNOPSIS
             Returns Microsoft Visual Studio Code versions and dowmload URLs.
