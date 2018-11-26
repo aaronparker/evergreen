@@ -12,9 +12,11 @@ Function Get-GreenShotVersion {
     $versionPattern = "\d+\.\d+\.\d+\.\d+"
 
     # get the URL and split it on the forward slash, then look for the version pattern
-    $productTitle = ($GreenshotURL.Split("/") | Select-String -Pattern $versionPattern | Select-Object -First 1).ToString().Trim()
+    $productTitle = ($GreenshotURL.Split("/") | Select-String -Pattern $versionPattern `
+            | Select-Object -First 1).ToString().Trim()
     
     # there will be two because they put the version in the EXE and also in the path as a subfolder.
-    $GreenshotVersion = [Version]::new(($productTitle.Split('-') | Select-String -Pattern $versionPattern | Select-Object -First 1).ToString().Trim())
-    write-output $GreenshotVersion
+    $GreenshotVersion = [Version]::new(($productTitle.Split('-') | Select-String -Pattern $versionPattern `
+                | Select-Object -First 1).ToString().Trim())
+    Write-Output $GreenshotVersion
 }

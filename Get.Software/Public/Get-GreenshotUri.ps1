@@ -15,7 +15,7 @@ Function Get-GreenshotUri {
     $pattern = "https:\/\/github\.com.+\.exe"
 
     # split into lines, then split into tags, #$%^ is arbitrary
-    $multiLine = $raw.Split("`n").Trim().Seplace("<","#$%^<").Split("#$%^")
+    $multiLine = $raw.Split("`n").Trim().Replace("<","#$%^<").Split("#$%^")
 
     # find the html tag containing the github url
     $urlLine = ($multiLine | Select-String -Pattern $pattern).ToString().Trim()
