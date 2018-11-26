@@ -50,6 +50,10 @@ Once installation is complete, you can validate that the module exists by runnin
 Import-Module Get.Software
 ```
 
+## PowerShell Gallery
+
+As soon as we get the module into a consistent state, we'll post it to the PowerShell Gallery, making it easy to install with `Install-Module "Get.Software"`.
+
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Get.Software/master.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/get.software
 [psgallery-badge]: https://img.shields.io/powershellgallery/dt/get.software.svg?style=flat-square
