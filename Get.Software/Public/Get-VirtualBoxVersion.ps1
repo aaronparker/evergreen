@@ -10,7 +10,6 @@ Function Get-VirtualBoxVersion {
     $url = "https://download.virtualbox.org/virtualbox/LATEST.TXT"
 
     try {
-        $results = @()
         $temp = New-TemporaryFile
         Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $temp -ErrorAction SilentlyContinue
         $Version = get-content $temp
