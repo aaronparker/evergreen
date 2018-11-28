@@ -1,8 +1,33 @@
 Function Get-MozillaFirefoxVersion {
     <#
+        .SYNOPSIS
+            Returns version numbers for various Mozilla Firefox release channels.
+
+        .DESCRIPTION
+            Returns version numbers for various Mozilla Firefox release channels using the official versions JSON.
+
         .NOTES
+            Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
+
+        .LINK
+            https://github.com/aaronparker/Get.Software/
+
+        .PARAMETER Channel
+            Specify the release channel to return the Firefox version for.
+
+        .EXAMPLE
+            Get-MozillaFirefoxVersion
+
+            Description:
+            Returns version number for the release version of Mozilla Firefox.
+
+        .EXAMPLE
+            Get-MozillaFirefoxVersion -Channel dev
+
+            Description:
+            Returns version number for the development version of Mozilla Firefox.
     #>
     [CmdletBinding()]
     Param (

@@ -1,8 +1,35 @@
 Function Get-GoogleChromeVersion {
     <#
+        .SYNOPSIS
+            Returns the available Google Chrome versions.
+
+        .DESCRIPTION
+            Returns the available Google Chrome versions across all platforms and channels by querying the offical Google version JSON.
+
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
+
+        .PARAMETER Platform
+            Specify the platform/s to return versions for. Supports all available platforms - Windows, Linux, macOS, iOS, Android etc.
+
+        .PARAMETER Channel
+            Specify the release channel to return Chrome version for - stable, beta, dev, canary etc.
+
+        .EXAMPLE
+            Get-GoogleChromeVersion
+
+            Description:
+            Returns the available Google Chrome versions across all platforms and channels.
+
+        .EXAMPLE
+            Get-GoogleChromeVersion -Platform win64 -Channel stable
+
+            Description:
+            Returns the Google Chrome version for the current stable release on 64-bit Windows.
     #>
     [CmdletBinding()]
     Param (

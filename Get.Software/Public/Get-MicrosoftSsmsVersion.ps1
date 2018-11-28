@@ -1,8 +1,32 @@
 Function Get-MicrosoftSsmsVersion {
     <#
+        .SYNOPSIS
+            Returns the latest SQL Server Management Studio release version number.
+
+        .DESCRIPTION
+            Returns the latest SQL Server Management Studio release version number.
+
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
+
+        .PARAMETER Release
+            Specify whether to return the GAFull, GAUpdate, or Preview release.
+
+        .EXAMPLE
+            Get-MicrosoftSsmsVersion
+
+            Description:
+            Returns the latest SQL Server Management Studio for Windows version number.
+
+        .EXAMPLE
+            Get-MicrosoftSsmsVersion -Release Preview
+
+            Description:
+            Returns the preview release version number SQL Server Management Studio for Windows.
     #>
     [CmdletBinding()]
     [OutputType([Version])]
@@ -11,6 +35,7 @@ Function Get-MicrosoftSsmsVersion {
         [string] $Release = "GAFull"
     )
 
+    # SQL Management Studio downloads/versions documentation
     $url = "https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017"
     
     try {
@@ -33,6 +58,7 @@ Function Get-MicrosoftSsmsVersion {
                 $thislink = $interestingLinks | Where-Object {$_.outerHTML -like "*preview*"}
             };
         }
+        
         $thislink.outerHTML -match "(\d+\.)+\d+" | Out-Null
         Write-Output ([version]::new($matches[0]))
     }

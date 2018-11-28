@@ -1,8 +1,36 @@
 Function Get-MozillaFirefoxUri {
     <#
+        .SYNOPSIS
+            Returns download URIs for the latest Mozilla Firefox releases.
+
+        .DESCRIPTION
+            Returns download URIs for the latest Mozilla Firefox releases.
+
         .NOTES
+            Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
+
+        .LINK
+            https://github.com/aaronparker/Get.Software/
+
+        .PARAMETER Language
+            Specify the Firefox language version to return.
+
+        .PARAMETER Platform
+            Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
+
+        .EXAMPLE
+            Get-MozillaFirefoxUri
+
+            Description:
+            Returns the 64-bit English (US) download URI for Firefox for Windows.
+
+        .EXAMPLE
+            Get-MozillaFirefoxUri -Language en-GB -Platform mac
+
+            Description:
+            Returns the UK English download URI for Firefox for macOS.
     #>
     [CmdletBinding()]
     Param(

@@ -1,8 +1,23 @@
 Function Get-GreenshotUri {
     <#
+        .SYNOPSIS
+            Gets the latest Greenshot release URI.
+
+        .DESCRIPTION
+            Gets the latest Greenshot release URI.
+
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
+
+        .EXAMPLE
+            Get-GreenshotUri
+
+            Description:
+            Returns the latest Greenshot download URI.
     #>
     [CmdletBinding()]
     [OutputType([string])]

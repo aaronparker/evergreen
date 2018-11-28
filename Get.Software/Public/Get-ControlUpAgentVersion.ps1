@@ -1,9 +1,24 @@
 Function Get-ControlUpAgentVersion {
     <#
+        .SYNOPSIS
+            Gets the ControlUp latest agent version.
+
+        .DESCRIPTION
+            Gets the ControlUp latest available agent version from the ControlUp site.
+
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
-    #>
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
+
+        .EXAMPLE
+            Get-ControlUpAgentVersion
+
+            Description:
+            Returns the latest ControlUp agent version number.
+#>
     [CmdletBinding()]
     [OutputType([Version])]
     Param()

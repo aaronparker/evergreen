@@ -13,6 +13,9 @@ Function Get-AdobeReaderUri {
         .LINK
             https://github.com/aaronparker/Get.Software
 
+        .PARAMETER Platform
+            Return downloads for Windows or macOS platforms. Use 'win' or 'mac' or specify both to return downloads for both platforms.
+
         .EXAMPLE
             Get-AdobeReaderUri -Platform
 

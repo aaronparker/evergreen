@@ -1,8 +1,32 @@
 Function Get-LibreOfficeUri {
     <#
+        .SYNOPSIS
+            Gets the latest Libre Office release URI.
+
+        .DESCRIPTION
+            Gets the latest Libre Office latest or Business release URI.
+
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
+
+        .PARAMETER Release
+            Specify whether to return the Latest or Business release.
+
+        .EXAMPLE
+            Get-LibreOfficeUri
+
+            Description:
+            Returns the latest Libre Office for Windows download URI.
+
+        .EXAMPLE
+            Get-LibreOfficeUri -Release Business
+
+            Description:
+            Returns the latest business release Libre Office for Windows download URI.
     #>
     [CmdletBinding()]
     [OutputType([string])]
