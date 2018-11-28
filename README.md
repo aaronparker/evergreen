@@ -1,6 +1,7 @@
 # About
 
 [![License][license-badge]][license]
+[![Gitter][gitter-badge]][gitter]
 
 Get.Software is a simple PowerShell module to get latest version and download URLs for various products. The module consists of a number of simple commands to use in scripts when performing several tasks including:
 
@@ -64,3 +65,5 @@ As soon as we get the module into a consistent state, we'll post it to the Power
 [github-release]: https://github.com/aaronparker/Install-VisualCRedistributables/releases/latest
 [license-badge]: https://img.shields.io/github/license/aaronparker/Get.Software.svg?style=flat-square
 [license]: https://github.com/aaronparker/get.software/blob/master/LICENSE
+[gitter-badge]: https://img.shields.io/gitter/room/:user/:repo.svg?logo=gitter&longCache=true&style=flat-square
+[gitter]: https://gitter.im/Get-Software/Lobby

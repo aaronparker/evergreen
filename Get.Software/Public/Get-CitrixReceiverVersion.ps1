@@ -8,7 +8,6 @@ Function Get-CitrixReceiverVersion {
             Does not provide the version number for Receiver where a login is required (e.g. HTML5, Chrome)
 
         .NOTES
-            Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
         
@@ -23,13 +22,13 @@ Function Get-CitrixReceiverVersion {
             Can be one of: 'Windows', 'LTSR', 'Universal Windows Platform', 'Mac', 'iOS', 'Linux', 'Android', 'Desktop Lock'.
 
         .EXAMPLE
-            Get-CitrixReceiverVersions
+            Get-CitrixReceiverVersion
 
             Description:
             Returns the available Citrix Receiver versions for all platforms.
 
         .EXAMPLE
-            Get-CitrixReceiverVersions -Platform Windows | Select-Object -First 1
+            Get-CitrixReceiverVersion -Platform Windows | Select-Object -First 1
 
             Description:
             Returns the latest available Citrix Receiver version available for Windows.
