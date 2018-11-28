@@ -18,6 +18,7 @@ Function Get-MicrosoftSsmsVersion {
     }
     catch {
         Throw "Failed to connect to SMSS: $url with error $_."
+        Break
     }
     finally {
         $interestingLinks = $response.links  | Where-Object {$_.outerHTML -like "*Download SQL Server Management Studio*"}
