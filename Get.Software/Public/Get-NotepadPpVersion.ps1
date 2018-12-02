@@ -1,11 +1,23 @@
 Function Get-NotepadPpVersion {
     <#
+        .SYNOPSIS
+            Returns the latest Notepad++ version number.
+
+        .DESCRIPTION
+            Returns the latest Notepad++ version number.
+
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+        
+        .LINK
+            https://github.com/aaronparker/Get.Software
 
-            Update: Aaron Parker
-            Updated to use -UseBasicParsing and support PowerShell Core
+        .EXAMPLE
+            Get-NotepadPpVersion
+
+            Description:
+            Returns the latest Notepad++ version number.
     #>
     [CmdletBinding()]
     [OutputType([version])]
