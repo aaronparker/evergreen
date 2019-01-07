@@ -1,7 +1,7 @@
 Function Get-MicrosoftVsCode {
     <#
         .SYNOPSIS
-            Returns Microsoft Visual Studio Code versions and dowmload URLs.
+            Returns Microsoft Visual Studio Code versions and download URLs.
 
         .DESCRIPTION
             Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
@@ -63,26 +63,26 @@ Function Get-MicrosoftVsCode {
     $output = @()
 
     # Walk through each platform
-    ForEach ($platform in $platforms) {
-        Write-Verbose "Getting release info for $platform."
+    ForEach ($plat in $Platform) {
+        Write-Verbose "Getting release info for $plat."
 
         # Walk through each channel in the platform
-        ForEach ($channel in $channels) {
+        ForEach ($ch in $Channel) {
             try {
-                Write-Verbose "Getting release info for $channel."
-                $release = Invoke-WebRequest -Uri "$url/$platform/$channel/VERSION" -UseBasicParsing `
+                Write-Verbose "Getting release info for $ch."
+                $release = Invoke-WebRequest -Uri "$url/$plat/$ch/VERSION" -UseBasicParsing `
                     -ErrorAction SilentlyContinue
             }
             catch {
-                Write-Error "Error connecting to $url/$platform/$channel/VERSION, with error $_"
+                Write-Error "Error connecting to $url/$plat/$ch/VERSION, with error $_"
                 Break
             }
             finally {
                 $releaseJson = $release | ConvertFrom-Json
-                Write-Verbose "Adding $platform $channel $($releaseJson.productVersion) to array."
+                Write-Verbose "Adding $plat $ch $($releaseJson.productVersion) to array."
                 $item = New-Object PSCustomObject
-                $item | Add-Member -Type NoteProperty -Name 'Channel' -Value $channel
-                $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $platform
+                $item | Add-Member -Type NoteProperty -Name 'Channel' -Value $ch
+                $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $plat
                 $item | Add-Member -Type NoteProperty -Name 'Version' -Value $releaseJson.productVersion
                 $item | Add-Member -Type NoteProperty -Name 'Uri' -Value $releaseJson.url
                 $output += $item

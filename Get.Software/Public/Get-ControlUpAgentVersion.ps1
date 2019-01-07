@@ -18,7 +18,7 @@ Function Get-ControlUpAgentVersion {
 
             Description:
             Returns the latest ControlUp agent version number.
-#>
+    #>
     [CmdletBinding()]
     [OutputType([Version])]
     Param()
