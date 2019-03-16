@@ -52,7 +52,11 @@ Import-Module Get.Software
 
 ## PowerShell Gallery
 
-As soon as we get the module into a consistent state, we'll post it to the PowerShell Gallery, making it easy to install with `Install-Module "Get.Software"`.
+As soon as we get the module into a consistent state, we'll post it to the PowerShell Gallery, making it easy to install with 
+
+```powershell
+Install-Module Get.Software
+```
 
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Get.Software/master.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/get.software
