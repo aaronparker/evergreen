@@ -41,22 +41,19 @@ Function Get-MicrosoftVsCode {
     Param(
         [Parameter()]
         [ValidateSet('insider', 'stable')]
-        [string[]]
-        $Channel = @('insider', 'stable'),
+        [string[]] $Channel = @('insider', 'stable'),
 
         [Parameter()]
         [ValidateSet('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
-                'win32-x64-user', 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
+                'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
                 'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')]
-        [string[]]
-        $Platform = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
-                'win32-x64-user', 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
+        [string[]] $Platform = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
+                'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
                 'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64'),
 
         [Parameter()]
         [ValidateSet('https://update.code.visualstudio.com/api/update')]
-        [string[]]
-        $Url = 'https://update.code.visualstudio.com/api/update'
+        [string[]] $Url = 'https://update.code.visualstudio.com/api/update'
     )
 
     # Output array
