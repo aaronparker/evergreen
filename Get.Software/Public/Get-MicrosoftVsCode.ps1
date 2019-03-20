@@ -60,7 +60,7 @@ Function Get-MicrosoftVsCode {
     $output = @()
 
     # Walk through each platform
-    ForEach ($plat in $Platform) {
+    ForEach ($plat in ($Platform | Sort-Object)) {
         Write-Verbose "Getting release info for $plat."
 
         # Walk through each channel in the platform
@@ -88,5 +88,5 @@ Function Get-MicrosoftVsCode {
     }
 
     # Sort and return output to the pipeline
-    Write-Output ($output | Sort-Object Channel, Platform | Format-Table)
+    Write-Output ($output | Sort-Object Channel, Platform)
 }
