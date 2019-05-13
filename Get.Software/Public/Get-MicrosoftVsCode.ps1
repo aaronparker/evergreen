@@ -26,13 +26,13 @@ Function Get-MicrosoftVsCode {
             Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
 
         .EXAMPLE
-            Get-MicrosoftVsCodeVersion
+            Get-MicrosoftVsCode
 
             Description:
             Returns the Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
 
         .EXAMPLE
-            Get-MicrosoftVsCodeVersion -Channel stable -Platform win32-x64-user
+            Get-MicrosoftVsCode -Channel stable -Platform win32-x64-user
 
             Description:
             Returns the Stable build version numbers and download URL for the user-install of VSCode for Windows.
