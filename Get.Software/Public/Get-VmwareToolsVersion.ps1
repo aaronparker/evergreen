@@ -12,7 +12,7 @@ Function Get-VMWareToolsVersion {
     $pattern = "[0-9]+\.[0-9]+\.[0-9]+\-[0-9]+\-x86_64"
 
     #get the raw page content
-    $pageContent=(wget -Uri $vmwareTools).content
+    $pageContent=(Invoke-WebRequest -Uri $vmwareTools).content
 
     #change one big string into many strings, then find only the line with the version number
     $interestingLine = ($pageContent.split("`n") | Select-string -Pattern $pattern).tostring().trim()
