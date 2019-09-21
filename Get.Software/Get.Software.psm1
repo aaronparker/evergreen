@@ -1,6 +1,15 @@
-# Get public and private function definition files
-$Public = @( Get-ChildItem -Path $PSScriptRoot\Public\*.ps1 -ErrorAction SilentlyContinue )
-$Private = @( Get-ChildItem -Path $PSScriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue )
+<#
+    .SYNOPSIS
+        LatestUpdate script to initiate the module
+#>
+[CmdletBinding()]
+Param ()
+
+#region Get public and private function definition files
+$publicRoot = Join-Path -Path $PSScriptRoot -ChildPath "Public"
+$privateRoot = Join-Path -Path $PSScriptRoot -ChildPath "Private"
+$public = @( Get-ChildItem -Path (Join-Path $publicRoot "*.ps1") -ErrorAction SilentlyContinue )
+$private = @( Get-ChildItem -Path (Join-Path $privateRoot "*.ps1") -ErrorAction SilentlyContinue )
 
 # Dot source the files
 ForEach ($import in @($Public + $Private)) {
@@ -12,5 +21,9 @@ ForEach ($import in @($Public + $Private)) {
     }
 }
 
-# Export the Public modules
-Export-ModuleMember -Function $Public.Basename
+# Export the public modules and aliases
+Export-ModuleMember -Function $public.Basename -Alias *
+#endregion
+
+# Get module strings
+$script:resourceStrings = Get-ModuleResource

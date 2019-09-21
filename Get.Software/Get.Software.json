@@ -1,0 +1,14 @@
+{
+  "Applications" : {
+    "AdobeAcrobatReaderDC" : {
+      "Uri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
+      "ContentType" : "text/plain; charset=utf-8",
+      "Languages" : [
+        "en_US", "de_DE", "es_ES", "fr_FR", "ja_JP"
+      ]
+    }
+  },
+  "Preferences" : {
+    "ErrorAction" : "SilentlyContinue"
+  }
+}
