@@ -1,0 +1,6 @@
+{
+  "Source" : {
+    "Uri" : "https://pvupdates.vmd.citrix.com/updates.latest.tsv",
+    "Type" : "CSV"
+  }
+}
