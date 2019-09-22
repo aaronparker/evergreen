@@ -6,6 +6,15 @@
       "Languages" : [
         "en_US", "de_DE", "es_ES", "fr_FR", "ja_JP"
       ]
+    },
+    "VideoLanVlcPlayer" : {
+      "UriWin64" : "https://update.videolan.org/vlc/status-win-x64",
+      "UriWin32" : "https://update.videolan.org/vlc/status-win-x86",
+      "UriMac" : "http://update.videolan.org/vlc/sparkle/vlc-intel64.xml",
+      "ContentType" : "application/octet-stream"
+    },
+    "XenServerTools" : {
+      "Uri" : "https://pvupdates.vmd.citrix.com/updates.latest.tsv"
     }
   },
   "Preferences" : {

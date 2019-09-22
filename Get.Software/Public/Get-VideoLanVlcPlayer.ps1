@@ -20,11 +20,30 @@ Function Get-VideoLanVlcPlayer {
     [CmdletBinding()]
     Param()
 
-    # Get VLC Player versions and URLs from private functions
-    $Win32 = Get-VlcPlayerUpdateWin -Platform Win32
-    $Win64 = Get-VlcPlayerUpdateWin -Platform Win64
-    $macOS = Get-VlcPlayerUpdateMac
-    
-    # Return output object to the pipeline
-    Write-Output $Win32, $Win64, $macOS
+    #region Get current version for macOS
+    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.UriMac
+    $xml = [System.XML.XMLDocument] $Content
+    $latest = $xml.rss.channel.item[$xml.rss.channel.item.Length - 1]
+    $version = $latest.title.Trim("Version ")
+    $PSObject = [PSCustomObject] @{
+        Version  = $version
+        Platform = "macOS"
+        URI      = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
+    }
+    Write-Output -InputObject $PSObject
+    #endregion
+
+    #region Get current version for Windows
+    ForEach ($platform in @("UriWin64", "UriWin32")) {
+        $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.$platform -Raw
+
+        # Construct the output; Return the custom object to the pipeline
+        $PSObject = [PSCustomObject]@{
+            Version  = $Content[0]
+            Platform = $platform.Replace("Uri", "")
+            URI      = $Content[1]
+        }
+        Write-Output $PSObject
+    }
+    #endregion
 }

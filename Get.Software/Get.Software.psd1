@@ -80,7 +80,7 @@ FunctionsToExport = @('Get-AdobeAcrobatReaderDC',
                'Get-NotepadPpVersion', 'Get-PaintDotNetUri', 
                'Get-PaintDotNetVersion', 'Get-VideoLanVlcPlayer', 
                'Get-VirtualBoxVersion', 'Get-VmwareToolsUri', 
-               'Get-VmwareToolsVersion', 'Get-ZoomVersion')
+               'Get-VmwareToolsVersion', 'Get-XenServerTools', 'Get-ZoomVersion')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

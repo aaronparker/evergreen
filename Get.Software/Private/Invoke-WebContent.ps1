@@ -10,21 +10,40 @@ Function Invoke-WebContent {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $ContentType
+        [System.String] $ContentType = "text/plain; charset=utf-8",
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter] $Raw
     )
 
     If ($Null -ne $script:resourceStrings) {
         try {
-            $params = @{
-                Uri             = $Uri
-                ContentType     = $ContentType
-                UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            If ($Raw.IsPresent) {
+                $tempFile = New-TemporaryFile
+                $params = @{
+                    Uri             = $Uri
+                    OutFile         = $tempFile
+                    ContentType     = $ContentType
+                    UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    UseBasicParsing = $True
+                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                }
+                $Response = Invoke-WebRequest @params
+                $Content = Get-Content -Path $TempFile
             }
-            $Request = Invoke-WebRequest @params
+            Else {
+                $params = @{
+                    Uri             = $Uri
+                    ContentType     = $ContentType
+                    UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    UseBasicParsing = $True
+                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                }
+                $Response = Invoke-WebRequest @params
+                $Content = $Response.Content
+            }
         }
         catch [System.Net.WebException] {
             Write-Warning -Message ($($MyInvocation.MyCommand))
@@ -34,12 +53,8 @@ Function Invoke-WebContent {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
             Throw $_.Exception.Message
         }
-
-        If ($Request.StatusCode -eq "200") {
-            Write-Output -InputObject $Request.Content
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): no valid response."
+        finally {
+            Write-Output -InputObject $Content
         }
     }
     Else {

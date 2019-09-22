@@ -17,16 +17,16 @@ Function Get-AdobeAcrobatReaderDC {
             Return downloads for Windows or macOS platforms. Use "win" or "mac" or specify both to return downloads for both platforms.
 
         .EXAMPLE
-            Get-AdobeReaderUri -Platform
+            Get-AdobeAcrobatReaderDC -Platform
 
             Description:
-            Returns an array with installer type, language and download URL for Windows.
+            Returns an array with version, installer type, language and download URL for Windows.
 
         .EXAMPLE
-            Get-AdobeReaderUri -Platform win, mac
+            Get-AdobeAcrobatReaderDC -Platform win, mac
 
             Description:
-            Returns an array with installer type, language and download URL for both Windows and macOS.
+            Returns an array with version, installer type, language and download URL for both Windows and macOS.
     #>
     [CmdletBinding()]
     Param (
@@ -38,59 +38,65 @@ Function Get-AdobeAcrobatReaderDC {
     # Get current version
     $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Uri `
         -ContentType $script:resourceStrings.Applications.AdobeAcrobatReaderDC.ContentType
-    $version = $Content.Replace(".", "")
 
     # Construct download list
-    If ($Null -ne $version) {
+    If ($Null -ne $Content) {
+        $versionString = $Content.Replace(".", "")
         ForEach ($plat in $Platform) {
             Switch ($plat) {
                 "win" {
                     $ftpUrl = "ftp://ftp.adobe.com/pub/adobe/reader/$plat/AcrobatDC/"
                     ForEach ($lang in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Languages) {
                         $PSObject = [PSCustomObject] @{
+                            Version  = $Content
                             Platform = "Windows"
                             Type     = "Installer"
                             Language = $lang
-                            URL      = "$($ftpUrl)$($version)/AcroRdrDC$($version)_$($lang).exe"
+                            URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString)_$($lang).exe"
                         }
                         Write-Output -InputObject $PSObject
                     }
                     $PSObject = [PSCustomObject] @{
+                        Version  = $Content
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Neutral"
-                        URL      = "$($ftpUrl)$($version)/AcroRdrDC$($version).msp"
+                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString).msp"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
+                        Version  = $Content
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($version)/AcroRdrDC$($version)_MUI.msp"
+                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString)_MUI.msp"
                     }
                     Write-Output -InputObject $PSObject
                 }
                 "mac" {
                     $ftpUrl = "ftp://ftp.adobe.com/pub/adobe/reader/$plat/AcrobatDC/"
                     $PSObject = [PSCustomObject] @{
+                        Version  = $Content
                         Platform = "macOS"
                         Type     = "Installer"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($version)/AcroRdrDC_$($version)_MUI.dmg"
+                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC_$($versionString)_MUI.dmg"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
+                        Version  = $Content
                         Platform = "macOS"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($version)/AcroRdrDCUpd$($version)_MUI.dmg"
+                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.dmg"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
+                        Version  = $Content
                         Platform = "macOS"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($version)/AcroRdrDCUpd$($version)_MUI.pkg"
+                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.pkg"
                     }
                     Write-Output -InputObject $PSObject
                 }
