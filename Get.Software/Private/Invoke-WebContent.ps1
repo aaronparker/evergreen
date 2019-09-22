@@ -19,6 +19,10 @@ Function Invoke-WebContent {
     )
 
     If ($Null -ne $script:resourceStrings) {
+
+        # Use TLS 1.2
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
         try {
             If ($Raw.IsPresent) {
                 $tempFile = New-TemporaryFile

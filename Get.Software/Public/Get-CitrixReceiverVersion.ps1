@@ -33,56 +33,56 @@ Function Get-CitrixReceiverVersion {
             Description:
             Returns the latest available Citrix Receiver version available for Windows.
     #>
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $false)]
-        [string]$Url = 'https://www.citrix.com/downloads/citrix-receiver/',
+        [Parameter()]
+        [System.String] $Url = 'https://www.citrix.com/downloads/citrix-receiver/',
 
-        [Parameter(Mandatory = $false)]
+        [Parameter()]
         [ValidateSet('Windows', 'Windows LTSR*', 'Universal Windows Platform', 'Mac', 'iOS', 'Linux', 'Android', 'Desktop Lock', 'Windows Desktop Lock')]
-        [string[]]$Platforms = @('Windows', 'Windows LTSR*', 'Universal Windows Platform', 'Mac', 'iOS', 'Linux', 'Android', 'Desktop Lock', 'Windows Desktop Lock')
+        [System.String[]] $Platforms = @('Windows', 'Windows LTSR*', 'Universal Windows Platform', 'Mac', 'iOS', 'Linux', 'Android', 'Desktop Lock', 'Windows Desktop Lock')
     )
-    Begin {
-        # RegEx to filter out all characters except the version number
-        $RegExNumbers = "[^.0-9]"
-        $RegExVersion = "\d+(\.\d+)+\s"
-        $RegExAtag = "(<[a|A][^>]*>|</[a|A]>)"
+    # RegEx to filter out all characters except the version number
+    $RegExNumbers = "[^.0-9]"
+    $RegExVersion = "\d+(\.\d+)+\s"
+    $RegExAtag = "(<[a|A][^>]*>|</[a|A]>)"
 
-        # Create an emtpy array from which we'll return receiver version links and ultimately all Receiver versions
-        $innerHTML = @()
-        $Receivers = @()
-        $Versions = @()
+    # Create an emtpy array from which we'll return receiver version links and ultimately all Receiver versions
+    $innerHTML = @()
+    $Receivers = @()
+    $Versions = @()
 
-        # Get the contents from $Url and return version descriptions for all Receiver platforms by filtering the text for each link where link includes 'Receiver'
-        Write-Verbose "Reading from: $Url"
-        Try { $ReceiverLinks = (Invoke-WebRequest -Uri $Url -ErrorAction SilentlyContinue).Links | Where-Object { $_.outerHTML -like "*>Receiver*" } }
-        Catch { Write-Error $($_.Exception.Message) -ErrorAction Stop }
-        If (!($ReceiverLinks)) { Write-Error "Unable to return HTML from URL $Url." -ErrorAction Stop }
-
-        # Replace <a href> tags to leave innerHTML. Doing this to enable the function to work on PowerShell Core
-        ForEach ($Link in $ReceiverLinks.outerHTML) {
-            $innerHTML += $Link -replace $RegExAtag, ""
-        }
-
-        # Build the Receiver versions table by filtering text for Platform and version numbers for Version
-        # Cast the version number string as a version so that we can sort correctly at output
-        $Receivers += $innerHTML | Select-Object @{Name = "Platform"; Expression = {$_ -replace $RegExVersion}}, `
-            @{Name = "Version"; Expression = {[Version]$($_ -replace $RegExNumbers)}}
+    # Get the contents from $Url and return version descriptions for all Receiver platforms by filtering the text for each link where link includes 'Receiver'
+    Write-Verbose "Reading from: $Url"
+    Try {
+        $ReceiverLinks = (Invoke-WebRequest -Uri $Url -ErrorAction SilentlyContinue).Links | Where-Object { $_.outerHTML -like "*>Receiver*" }
     }
-    Process {
-        # Filter the $Receivers array to return a specific set of platforms (or by default, all platforms)
-        If ($PSBoundParameters.ContainsKey('Platforms')) {
-            ForEach ( $Platform in $Platforms ) {
-                $Versions += $Receivers | Where-Object { $_.Platform -like "Receiver for $Platform" }
-            }
-        }
-        Else {
-            $Versions = $Receivers
+    Catch {
+        Write-Error $($_.Exception.Message) -ErrorAction Stop
+    }
+    If (!($ReceiverLinks)) { Write-Error "Unable to return HTML from URL $Url." -ErrorAction Stop }
+
+    # Replace <a href> tags to leave innerHTML. Doing this to enable the function to work on PowerShell Core
+    ForEach ($Link in $ReceiverLinks.outerHTML) {
+        $innerHTML += $Link -replace $RegExAtag, ""
+    }
+
+    # Build the Receiver versions table by filtering text for Platform and version numbers for Version
+    # Cast the version number string as a version so that we can sort correctly at output
+    $Receivers += $innerHTML | Select-Object @{Name = "Platform"; Expression = { $_ -replace $RegExVersion } }, `
+    @{Name = "Version"; Expression = { [Version]$($_ -replace $RegExNumbers) } }
+
+    # Filter the $Receivers array to return a specific set of platforms (or by default, all platforms)
+    If ($PSBoundParameters.ContainsKey('Platforms')) {
+        ForEach ( $Platform in $Platforms ) {
+            $Versions += $Receivers | Where-Object { $_.Platform -like "Receiver for $Platform" }
         }
     }
-    End {
-        # Return the array, sorting by Platform and then platform version
-        $output = $Versions | Sort-Object -Property Platform, @{Expression = 'Version'; Descending = $True}
-        Write-Output $output
+    Else {
+        $Versions = $Receivers
     }
+
+    # Return the array, sorting by Platform and then platform version
+    $output = $Versions | Sort-Object -Property Platform, @{Expression = 'Version'; Descending = $True }
+    Write-Output $output
 }
