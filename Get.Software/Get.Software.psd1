@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Get-AdobeAcrobatReaderDC', 
                'Get-CitrixReceiverVersion', 'Get-ControlUpAgentUri', 
                'Get-ControlUpAgentVersion', 
-               'Get-GoogleChrome', 'Get-GreenshotUri', 'Get-GreenshotVersion', 
+               'Get-GoogleChrome', 'Get-Greenshot', 
                'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 
                'Get-MicrosoftSsmsUri', 'Get-MicrosoftSsmsVersion', 
                'Get-MicrosoftVsCode', 'Get-MozillaFirefoxUri', 

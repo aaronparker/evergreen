@@ -14,10 +14,7 @@ Function Get-GoogleChrome {
             https://github.com/aaronparker/Get.Software
 
         .PARAMETER Platform
-            Specify the platform/s to return versions for. Supports all available platforms - Windows, Linux, macOS, iOS, Android etc.
-
-        .PARAMETER Channel
-            Specify the release channel to return Chrome version for - stable, beta, dev, canary etc.
+            Specify the platform/s to return versions for. Supports all available platforms - Windows, macOS.
 
         .EXAMPLE
             Get-GoogleChromeVersion

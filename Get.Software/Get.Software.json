@@ -29,6 +29,9 @@
         "winbeta" : "/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi",
         "mac" : "/chrome/mac/stable/GGRO/googlechrome.dmg"
       }
+    },
+    "Greenshot" : {
+      "Uri" : "https://api.github.com/repos/greenshot/greenshot/releases"
     }
   },
   "Preferences" : {
