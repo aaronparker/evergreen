@@ -35,11 +35,7 @@ Function Get-GoogleChrome {
     Param (
         [Parameter()]
         [ValidateSet('win', 'win64', 'mac')]
-        [System.String[]] $Platform = @('win', 'win64', 'mac'),
-
-        [Parameter()]
-        [ValidateSet('stable', 'beta')]
-        [System.String[]] $Channel = @('stable', 'beta')
+        [System.String[]] $Platform = @('win', 'win64', 'mac')
     )
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
@@ -50,20 +46,19 @@ Function Get-GoogleChrome {
         $Json = $Content | ConvertFrom-Json
         $releases = New-Object -TypeName System.Collections.ArrayList
         ForEach ($os in $Json) {
-            ForEach ($version in $os.versions) {
+            $stable = $os.versions | Where-Object { $script:resourceStrings.Applications.GoogleChrome.Channels -contains $_.channel }
+            ForEach ($version in $stable) {
                 $PSObject = [PSCustomObject] @{
                     Version  = $version.current_version
-                    Platform = $os.os
-                    Channel  = $version.channel
-                    URI      = "$($script:resourceStrings.Applications.GoogleChrome.DownloadUri)$($script:resourceStrings.Applications.GoogleChrome.Downloads.$($os.os))"
+                    Platform = $version.os
+                    URI      = "$($script:resourceStrings.Applications.GoogleChrome.DownloadUri)$($script:resourceStrings.Applications.GoogleChrome.Downloads.$($version.os))"
                 }
                 $releases.Add($PSObject) | Out-Null
             }
         }
 
         # Filter the output; Return output to the pipeline
-        $filteredReleases = $releases | Where-Object { $Platform -contains $_.Platform } | `
-            Where-Object { $Channel -contains $_.Channel }
+        $filteredReleases = $releases | Where-Object { $Platform -contains $_.Platform }
         Write-Output $filteredReleases
     }
     Else {

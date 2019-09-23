@@ -43,7 +43,7 @@ Function Get-VideoLanVlcPlayer {
             Platform = $platform.Replace("Uri", "")
             URI      = $Content[1]
         }
-        Write-Output $PSObject
+        Write-Output -InputObject $PSObject
     }
     #endregion
 }
