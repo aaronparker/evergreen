@@ -1,10 +1,10 @@
-Function Get-MozillaFirefoxUri {
+Function Get-MozillaFirefox {
     <#
         .SYNOPSIS
-            Returns download URIs for the latest Mozilla Firefox releases.
+            Returns downloads for the latest Mozilla Firefox releases.
 
         .DESCRIPTION
-            Returns download URIs for the latest Mozilla Firefox releases.
+            Returns downloads for the latest Mozilla Firefox releases.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -34,7 +34,11 @@ Function Get-MozillaFirefoxUri {
     #>
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $False)]
+        [Parameter(Position = 0)]
+        [ValidateSet('win64', 'win32', 'mac', 'linux-x86_64', 'linux-i686')]
+        [System.String[]] $Platform = @('win64', 'win32', 'mac', 'linux-x86_64', 'linux-i686'),
+
+        [Parameter(Position = 1)]
         [ValidateSet('en-US', 'en-GB', 'en-CA', 'en-ZA', 'es-ES', 'es-AR', 'es-CL', 'es-MX', 'sv-SE', 'pt-BR', 'pt-PT', `
                 'de', 'fr', 'it', 'ja', 'nl', 'zh-CN', 'zh-TW', 'ach', 'af', 'sq', 'ar', 'an', 'hy-AM', 'as', `
                 'ast', 'az', 'eu', 'be', 'bn-BD', 'bn-IN', 'bs', 'br', 'bg', 'my', 'ca', 'hr', 'cs', `
@@ -43,19 +47,14 @@ Function Get-MozillaFirefoxUri {
                 'dsb', 'mk', 'mai', 'ms', 'ml', 'mr', 'ne-NP', 'nb-NO', 'nn-NO', 'oc', 'or', 'fa', 'pl', 'pa-IN', `
                 'ro', 'rm', 'ru', 'sr', 'si', 'sk', 'sl', 'son', 'ta', 'te', 'th', 'tr', 'uk', 'hsb', 'ur', `
                 'uz', 'vi', 'cy', 'xh')]
-        [String[]] $Language = 'en-US',
-
-        [Parameter(Mandatory = $False)]
-        [ValidateSet('win64', 'win32', 'mac', 'linux-x86_64', 'linux-i686')]
-        [String[]] $Platform = 'win64'
+        [System.String[]] $Language = 'en-US'
     )
 
     # Get latest Firefox version
-    $version = Get-MozillaFirefoxVersion
-    $url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
+    $firefoxVersions = Invoke-WebContent -Uri $script:resourceStrings.Applications.MozillaFirefox.Uri | ConvertFrom-Json
+    $version = ([Version]::new($firefoxVersions.LATEST_FIREFOX_VERSION))
 
     # Construct custom object with output details
-    $object = @()
     ForEach ($lang in $Language) {
         ForEach ($plat in $Platform) {
 
@@ -68,16 +67,15 @@ Function Get-MozillaFirefoxUri {
                 "linux-i686" { $file = "firefox-$($version).tar.bz2" }
             }
 
-            # Build the output object with properties
-            $item = New-Object PSCustomObject
-            $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $plat
-            $item | Add-Member -Type NoteProperty -Name 'Language' -Value $lang
-            $item | Add-Member -Type NoteProperty -Name 'Filename' -Value $file.Replace('%20', ' ')
-            $item | Add-Member -Type NoteProperty -Name 'URL' -Value "$url$($version)/$($plat)/$($lang)/$($file)"
-            $object += $item
+            # Build object and output to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version  = $version
+                Platform = $plat
+                Language = $lang
+                Filename = $file.Replace('%20', ' ')
+                URI      = "$($script:resourceStrings.Applications.MozillaFirefox.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
+            }
+            Write-Output -InputObject $PSObject
         }
     }
-
-    # Return output
-    Write-Output $object
 }

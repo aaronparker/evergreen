@@ -27,10 +27,10 @@ Function Get-Greenshot {
     $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False })[0]
 
     # Latest version number 'Greenshot-RELEASE-1.2.10.6'
-    $latestRelease.tag_name -match "(\d+(\.\d+){1,4}).*"
+    $latestRelease.tag_name -match "(\d+(\.\d+){1,4}).*" | Out-Null
     $latestVersion = $Matches[0]
 
-    # Array of releases and downloaded
+    # Build and array of the latest release and download URLs
     $releases = $latestRelease.assets | Where-Object { $_.name -like "Greenshot*" }
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{

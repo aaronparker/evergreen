@@ -1,4 +1,4 @@
-Function Get-MicrosoftVsCode {
+Function Get-MicrosoftVisualStudioCode {
     <#
         .SYNOPSIS
             Returns Microsoft Visual Studio Code versions and download URLs.
@@ -41,23 +41,16 @@ Function Get-MicrosoftVsCode {
     Param(
         [Parameter()]
         [ValidateSet('insider', 'stable')]
-        [string[]] $Channel = @('insider', 'stable'),
+        [System.String[]] $Channel = @('insider', 'stable'),
 
         [Parameter()]
         [ValidateSet('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
                 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
                 'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')]
-        [string[]] $Platform = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
+        [System.String[]] $Platform = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
                 'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
-                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64'),
-
-        [Parameter()]
-        [ValidateSet('https://update.code.visualstudio.com/api/update')]
-        [string[]] $Url = 'https://update.code.visualstudio.com/api/update'
+                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')
     )
-
-    # Output array
-    $output = @()
 
     # Walk through each platform
     ForEach ($plat in ($Platform | Sort-Object)) {
@@ -65,28 +58,17 @@ Function Get-MicrosoftVsCode {
 
         # Walk through each channel in the platform
         ForEach ($ch in $Channel) {
-            try {
-                Write-Verbose "Getting release info for $ch."
-                $release = Invoke-WebRequest -Uri "$url/$plat/$ch/VERSION" -UseBasicParsing `
-                    -ErrorAction SilentlyContinue
+
+            # Read the version details from the API, format and return to the pipeline
+            $releaseJson = Invoke-WebContent -Uri "$($script:resourceStrings.Applications.MicrosoftVisualStudioCode.Uri)/$plat/$ch/VERSION" | `
+                ConvertFrom-Json
+            $PSObject = [PSCustomObject] @{
+                Version  = $releaseJson.productVersion
+                Platform = $plat
+                Channel  = $ch
+                URI      = $releaseJson.url
             }
-            catch {
-                Write-Error "Error connecting to $url/$plat/$ch/VERSION, with error $_"
-                Break
-            }
-            finally {
-                $releaseJson = $release | ConvertFrom-Json
-                Write-Verbose "Adding $plat $ch $($releaseJson.productVersion) to array."
-                $item = New-Object PSCustomObject
-                $item | Add-Member -Type NoteProperty -Name 'Channel' -Value $ch
-                $item | Add-Member -Type NoteProperty -Name 'Platform' -Value $plat
-                $item | Add-Member -Type NoteProperty -Name 'Version' -Value $releaseJson.productVersion
-                $item | Add-Member -Type NoteProperty -Name 'Uri' -Value $releaseJson.url
-                $output += $item
-            }
+            Write-Output -InputObject $PSObject
         }
     }
-
-    # Sort and return output to the pipeline
-    Write-Output ($output | Sort-Object Channel, Platform)
 }

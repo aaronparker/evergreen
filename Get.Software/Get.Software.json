@@ -18,10 +18,10 @@
     },
     "GoogleChrome" : {
       "Uri" : "https://omahaproxy.appspot.com/all.json",
+      "DownloadUri" : "https://dl.google.com",
       "Channels" : [
         "stable"
       ],
-      "DownloadUri" : "https://dl.google.com",
       "Downloads" : {
         "win64" : "/dl/chrome/install/googlechromestandaloneenterprise64.msi",
         "win64beta" : "/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
@@ -32,6 +32,13 @@
     },
     "Greenshot" : {
       "Uri" : "https://api.github.com/repos/greenshot/greenshot/releases"
+    },
+    "MozillaFirefox" : {
+      "Uri" : "https://product-details.mozilla.org/1.0/firefox_versions.json",
+      "DownloadUri" : "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
+    },
+    "MicrosoftVisualStudioCode" : {
+      "Uri" : "https://update.code.visualstudio.com/api/update"
     }
   },
   "Preferences" : {
