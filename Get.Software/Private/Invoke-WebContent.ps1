@@ -26,7 +26,7 @@ Function Invoke-WebContent {
         try {
             If ($Raw.IsPresent) {
                 $tempFile = New-TemporaryFile
-                $params = @{
+                $iwrParams = @{
                     Uri             = $Uri
                     OutFile         = $tempFile
                     ContentType     = $ContentType
@@ -34,18 +34,18 @@ Function Invoke-WebContent {
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }
-                $Response = Invoke-WebRequest @params
+                $Response = Invoke-WebRequest @iwrParams
                 $Content = Get-Content -Path $TempFile
             }
             Else {
-                $params = @{
+                $iwrParams = @{
                     Uri             = $Uri
                     ContentType     = $ContentType
                     UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }
-                $Response = Invoke-WebRequest @params
+                $Response = Invoke-WebRequest @iwrParams
                 $Content = $Response.Content
             }
         }

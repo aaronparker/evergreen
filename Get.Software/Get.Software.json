@@ -13,7 +13,7 @@
       "UriMac" : "http://update.videolan.org/vlc/sparkle/vlc-intel64.xml",
       "ContentType" : "application/octet-stream"
     },
-    "XenServerTools" : {
+    "CitrixXenServerTools" : {
       "Uri" : "https://pvupdates.vmd.citrix.com/updates.latest.tsv"
     },
     "GoogleChrome" : {
@@ -31,7 +31,8 @@
       }
     },
     "Greenshot" : {
-      "Uri" : "https://api.github.com/repos/greenshot/greenshot/releases"
+      "Uri" : "https://api.github.com/repos/greenshot/greenshot/releases",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
     },
     "MozillaFirefox" : {
       "Uri" : "https://product-details.mozilla.org/1.0/firefox_versions.json",
@@ -39,6 +40,13 @@
     },
     "MicrosoftVisualStudioCode" : {
       "Uri" : "https://update.code.visualstudio.com/api/update"
+    },
+    "OracleVirtualBox" : {
+      "Uri" : "https://download.virtualbox.org/virtualbox/LATEST.TXT",
+      "DownloadUri" : "http://download.virtualbox.org/virtualbox/",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*",
+      "MatchFileTypes" : ".*Version.*(exe|dmg|rpm|deb)",
+      "MatchDownloadFile" : "<a[^>]*>([^<]+)<\/a>"
     }
   },
   "Preferences" : {

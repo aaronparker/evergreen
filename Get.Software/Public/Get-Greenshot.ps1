@@ -27,7 +27,7 @@ Function Get-Greenshot {
     $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False })[0]
 
     # Latest version number 'Greenshot-RELEASE-1.2.10.6'
-    $latestRelease.tag_name -match "(\d+(\.\d+){1,4}).*" | Out-Null
+    $latestRelease.tag_name -match $script:resourceStrings.Applications.Greenshot.MatchVersion | Out-Null
     $latestVersion = $Matches[0]
 
     # Build and array of the latest release and download URLs

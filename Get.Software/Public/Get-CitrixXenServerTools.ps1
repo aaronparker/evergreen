@@ -1,4 +1,4 @@
-Function Get-XenServerTools {
+Function Get-CitrixXenServerTools {
     <#
         .SYNOPSIS
             Get the current version and download URL for the XenServer tools.
@@ -12,7 +12,7 @@ Function Get-XenServerTools {
             https://github.com/aaronparker/Get.Software
 
         .EXAMPLE
-            Get-XenServerTools
+            Get-CitrixXenServerTools
 
             Description:
             Returns the current version and download URLs for XenServer tools.
@@ -21,7 +21,7 @@ Function Get-XenServerTools {
     Param()
 
     #region Get XenServer tool details
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.XenServerTools.Uri -Raw
+    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.CitrixXenServerTools.Uri -Raw
     $Table = $Content | ConvertFrom-Csv -Delimiter "`t" -Header "Uri", "Version", "Size", "Architecture", "Index"
     ForEach ($row in $Table) {
         $PSObject = [PSCustomObject]@{
