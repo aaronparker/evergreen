@@ -47,6 +47,17 @@
       "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*",
       "MatchFileTypes" : ".*Version.*(exe|dmg|rpm|deb)",
       "MatchDownloadFile" : "<a[^>]*>([^<]+)<\/a>"
+    },
+    "VMwareTools" : {
+      "Uri" : "https://packages.vmware.com/tools/versions",
+      "DownloadUri" : "https://packages.vmware.com/tools/esx/",
+      "Platforms" : [
+        "Windows"
+      ],
+      "Architecture" : [
+        "x64"
+      ],
+      "MatchFileName" : "[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-x86_64"
     }
   },
   "Preferences" : {

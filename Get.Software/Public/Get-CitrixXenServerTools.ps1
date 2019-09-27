@@ -24,13 +24,13 @@ Function Get-CitrixXenServerTools {
     $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.CitrixXenServerTools.Uri -Raw
     $Table = $Content | ConvertFrom-Csv -Delimiter "`t" -Header "Uri", "Version", "Size", "Architecture", "Index"
     ForEach ($row in $Table) {
-        $PSObject = [PSCustomObject]@{
+        $PSObject = [PSCustomObject] @{
             Version      = $row.Version
             Architecture = $row.Architecture
             URI          = $row.Uri
             Size         = $row.Size
         }
-        Write-Output $PSObject
+        Write-Output -InputObject $PSObject
     }
     #endregion
 }

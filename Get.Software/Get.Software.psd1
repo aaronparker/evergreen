@@ -76,11 +76,11 @@
         'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 
         'Get-MicrosoftSsmsUri', 'Get-MicrosoftSsmsVersion', 
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
-        'Get-NotepadPpUri', 
+        'Get-NotepadPpUri', "Get-VMwareTools",
         'Get-NotepadPpVersion', 'Get-PaintDotNetUri', 
         'Get-PaintDotNetVersion', 'Get-VideoLanVlcPlayer', 
-        'Get-OracleVirtualBox', 'Get-VmwareToolsUri', 
-        'Get-VmwareToolsVersion', 'Get-CitrixXenServerTools', 'Get-ZoomVersion')
+        'Get-OracleVirtualBox',
+        'Get-CitrixXenServerTools', 'Get-ZoomVersion')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()

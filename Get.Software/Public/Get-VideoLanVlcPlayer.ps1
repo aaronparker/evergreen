@@ -38,7 +38,7 @@ Function Get-VideoLanVlcPlayer {
         $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.$platform -Raw
 
         # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject]@{
+        $PSObject = [PSCustomObject] @{
             Version  = $Content[0]
             Platform = $platform.Replace("Uri", "")
             URI      = $Content[1]
