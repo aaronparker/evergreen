@@ -79,7 +79,7 @@
         'Get-NotepadPpUri', "Get-VMwareTools",
         'Get-NotepadPpVersion', 'Get-PaintDotNetUri', 
         'Get-PaintDotNetVersion', 'Get-VideoLanVlcPlayer', 
-        'Get-OracleVirtualBox',
+        'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
         'Get-CitrixXenServerTools', 'Get-ZoomVersion')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

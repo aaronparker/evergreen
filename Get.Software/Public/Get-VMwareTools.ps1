@@ -31,7 +31,7 @@ Function Get-VMwareTools {
         ForEach ($architecture in $script:resourceStrings.Applications.VMwareTools.Architecture) {
 
             # Query the download page for the download file name
-            $Uri = ("https://packages.vmware.com/tools/esx/latest/$platform/$architecture/index.html").ToLower()
+            $Uri = ("$($script:resourceStrings.Applications.VMwareTools.DownloadUri)$platform/$architecture/index.html").ToLower()
             $Content = Invoke-WebContent -Uri $Uri
             $Line = ($Content.split("`n") | `
                         Select-String -Pattern $script:resourceStrings.Applications.VMwareTools.MatchFileName).ToString().Trim()
@@ -42,7 +42,7 @@ Function Get-VMwareTools {
             $PSObject = [PSCustomObject] @{
                 Version      = ($VersionTable | Select-Object -First 1).Version
                 Platform     = $platform
-                Architecture = $architecture                
+                Architecture = $architecture
                 URI          = "https://packages.vmware.com/tools/esx/latest/$($platform.ToLower())/$architecture/$filename"
                 ESXi         = (($VersionTable | Select-Object -First 1).Server -replace "esx/", "")
             }
