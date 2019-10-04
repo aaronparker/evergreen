@@ -19,4 +19,4 @@ Else {
     # Local Testing 
     $ProjectRoot = ((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName
 }
-Import-Module (Join-Path $projectRoot "Get.Software") -Verbose -Force
+Import-Module (Join-Path $projectRoot "Evergreen") -Verbose -Force

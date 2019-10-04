@@ -11,7 +11,7 @@ Function Get-AdobeAcrobatReaderDC {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER Platform
             Return downloads for Windows or macOS platforms. Use "win" or "mac" or specify both to return downloads for both platforms.

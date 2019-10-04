@@ -12,7 +12,7 @@ Function Get-MozillaFirefox {
             Twitter: @stealthpuppy
 
         .LINK
-            https://github.com/aaronparker/Get.Software/
+            https://github.com/aaronparker/Evergreen/
 
         .PARAMETER Language
             Specify the Firefox language version to return.

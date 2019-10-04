@@ -1,4 +1,4 @@
-$ModuleName = "Get.Software"
+$ModuleName = "Evergreen"
 
 # AppVeyor Testing
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {

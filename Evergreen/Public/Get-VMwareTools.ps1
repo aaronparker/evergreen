@@ -8,7 +8,7 @@ Function Get-VMwareTools {
             Twitter: @cit_bronson
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
             Get-VMwareTools

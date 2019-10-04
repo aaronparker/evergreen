@@ -17,7 +17,7 @@ Function Get-MicrosoftVisualStudioCode {
             "https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable"
 
         .LINK
-            https://github.com/aaronparker/Get.Software/
+            https://github.com/aaronparker/Evergreen/
 
         .PARAMETER Channel
             Specify the release channel to return Visual Studio Code details for. Specify Stable or Insider builds, or both.

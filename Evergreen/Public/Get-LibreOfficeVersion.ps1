@@ -11,7 +11,7 @@ Function Get-LibreOfficeVersion {
             Twitter: @cit_bronson
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER Release
             Specify whether to return the Latest or Business release version.

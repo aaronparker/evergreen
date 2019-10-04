@@ -1,4 +1,4 @@
-$ModuleName = "Get.Software"
+$ModuleName = "Evergreen"
 
 # Pester tests
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {

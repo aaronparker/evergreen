@@ -11,7 +11,7 @@ Function Get-ControlUpAgentUri {
             Twitter: @cit_bronson
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER NetVersion
             Specify the target .NET Framework version of the agent to return (.NET Framework 3.5 or .NET Framework 4.5)

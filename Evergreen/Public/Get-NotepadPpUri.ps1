@@ -11,7 +11,7 @@ Function Get-NotepadPpUri {
             Twitter: @cit_bronson
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER Architecture
             Return 32-bit or 64-bit version of Notepad++

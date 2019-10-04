@@ -11,7 +11,7 @@ Function Get-MicrosoftSsmsVersion {
             Twitter: @cit_bronson
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER Release
             Specify whether to return the GAFull, GAUpdate, or Preview release.

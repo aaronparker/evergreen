@@ -11,7 +11,7 @@ Function Get-GoogleChrome {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .PARAMETER Platform
             Specify the platform/s to return versions for. Supports all available platforms - Windows, macOS.

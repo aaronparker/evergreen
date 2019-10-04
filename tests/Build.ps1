@@ -1,6 +1,6 @@
 [CmdletBinding()]
 Param()
-$ModuleName = "Get.Software"
+$ModuleName = "Evergreen"
 
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
     $ProjectRoot = $env:APPVEYOR_BUILD_FOLDER

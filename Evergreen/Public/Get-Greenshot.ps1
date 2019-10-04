@@ -11,7 +11,7 @@ Function Get-Greenshot {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
             Get-Greenshot

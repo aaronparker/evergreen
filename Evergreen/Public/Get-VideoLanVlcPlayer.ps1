@@ -9,7 +9,7 @@ Function Get-VideoLanVlcPlayer {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Get.Software
+            https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
             Get-VideoLanVlcPlayer
