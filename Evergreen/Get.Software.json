@@ -5,7 +5,17 @@
       "ContentType" : "text/plain; charset=utf-8",
       "Languages" : [
         "en_US", "de_DE", "es_ES", "fr_FR", "ja_JP"
-      ]
+      ],
+      "Headers" : {
+          "Sec-Fetch-Site": "same-origin",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Accept-Language": "en-AU,en-US;q=0.9,en;q=0.8",
+          "DNT": "1",
+          "Sec-Fetch-Mode": "cors",
+          "X-Requested-With": "XMLHttpRequest",
+          "Referer": "https://get.adobe.com/reader/enterprise/",
+          "Accept": "*/*"
+      }
     },
     "VideoLanVlcPlayer" : {
       "UriWin64" : "https://update.videolan.org/vlc/status-win-x64",

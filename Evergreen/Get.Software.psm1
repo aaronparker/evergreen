@@ -1,6 +1,6 @@
 <#
     .SYNOPSIS
-        LatestUpdate script to initiate the module
+        Evergreen script to initiate the module
 #>
 [CmdletBinding()]
 Param ()
