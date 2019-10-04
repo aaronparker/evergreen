@@ -10,8 +10,8 @@ Evergreen is a simple PowerShell module to get latest version and download URLs 
 All functions consist of the following
 
 * Get verb - the module provides functions to retrieve data only
-* Product name - product names consist of Developer, Product Name (e.g. Adobe Reader, Google Chrome)
-* Uri or Version - the function will return either the production version number or numbers, or a URI to download the latest version from
+* Vendor - the vendor / developer of the application (e.g. Adobe, Google, Microsoft)
+* Product name - product names and optionally version (e.g. Reader DC, Chrome, VisualStudioCode)
 
 ## Why
 
@@ -25,9 +25,9 @@ This module is maintained by the following community members
 * Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
 * Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
-# Installing the Module
+## Installing the Module
 
-## Manual Installation from the Repository
+### Manual Installation from the Repository
 
 The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/Evergreen) and includes the module in the `Evergreen` folder. The folder needs to be installed into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
 
@@ -50,7 +50,7 @@ Once installation is complete, you can validate that the module exists by runnin
 Import-Module Evergreen
 ```
 
-## PowerShell Gallery
+### PowerShell Gallery
 
 As soon as we get the module into a consistent state, we'll post it to the PowerShell Gallery, making it easy to install with 
 
