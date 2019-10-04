@@ -62,6 +62,9 @@
     "MicrosoftPowerShellCore" : {
       "Uri" : "https://api.github.com/repos/PowerShell/PowerShell/releases",
       "ContentType" : "application/json; charset=utf-8"
+    },
+    "MicrosoftEdge" : {
+      "Uri" : "https://api.cdp.dsp.mp.microsoft.com.nsatc.net"
     }
   },
   "Preferences" : {
