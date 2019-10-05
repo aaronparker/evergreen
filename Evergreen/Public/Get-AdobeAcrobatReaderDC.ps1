@@ -13,55 +13,73 @@ Function Get-AdobeAcrobatReaderDC {
         .LINK
             https://github.com/aaronparker/Evergreen
 
-        .PARAMETER Platform
-            Return downloads for Windows or macOS platforms. Use "win" or "mac" or specify both to return downloads for both platforms.
-
         .EXAMPLE
-            Get-AdobeAcrobatReaderDC -Platform
+            Get-AdobeAcrobatReaderDC
 
             Description:
             Returns an array with version, installer type, language and download URL for Windows.
-
-        .EXAMPLE
-            Get-AdobeAcrobatReaderDC -Platform win, mac
-
-            Description:
-            Returns an array with version, installer type, language and download URL for both Windows and macOS.
     #>
     [CmdletBinding()]
-    Param (
-        [Parameter()]
-        [ValidateSet("win", "mac")]
-        [System.String[]] $Platform = "win"
-    )
+    Param()
 
-    # Get current version
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Uri `
-        -ContentType $script:resourceStrings.Applications.AdobeAcrobatReaderDC.ContentType
+    #region Installer downloads
+    ForEach ($platform in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Platforms) {
+        ForEach ($language in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Languages) {
+            Write-Verbose -Message "Searching: [$($platform.platform_type)] [$language]"
+            $Uri = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Uri -replace "#Platform", $platform.platform_type
+            $Uri = $Uri -replace "#Dist", $platform.platform_dist
+            $Uri = $Uri -replace "#Language", $language
+            $Uri = $Uri -replace "#Arch", $platform.platform_arch
+            $Uri = $Uri -replace " ", "%20"
+            $iwcParams = @{
+                Uri             = $Uri
+                Headers         = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Headers
+                UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
+            #$Content = Invoke-WebContent @iwcParams
+            $Content = Invoke-WebRequest @iwcParams
 
-    # Construct download list
+            If ($Null -ne $Content) {
+                $ContentFromJson = $Content.Content | ConvertFrom-Json
+                
+                # Check properties if multiple values returned
+                If ($ContentFromJson.version.Count -eq 1) { $Version = $ContentFromJson.version } Else { $Version = $ContentFromJson.version | Select-Object -First 1 }
+                If ($ContentFromJson.download_url.Count -eq 1) { $URI = $ContentFromJson.download_url } Else { $URI = $ContentFromJson.download_url | Select-Object -First 1 }
+                $PSObject = [PSCustomObject] @{
+                    Version  = $Version
+                    Platform = $platform.platform_type
+                    Type     = "Installer"
+                    Language = $language
+                    URI      = $URI
+                }
+                Write-Output -InputObject $PSObject
+            }
+        }
+    }
+    #endregion
+
+    #region Update downloads
+    $iwcParams = @{
+        Uri         = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateUri
+        ContentType = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateContentType
+    }
+    $Content = Invoke-WebContent @iwcParams
+
+    # Construct update download list
     If ($Null -ne $Content) {
         $versionString = $Content.Replace(".", "")
-        ForEach ($plat in $Platform) {
-            Switch ($plat) {
+        ForEach ($platform in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdatePlatforms) {
+            Switch ($platform) {
                 "win" {
-                    $ftpUrl = "ftp://ftp.adobe.com/pub/adobe/reader/$plat/AcrobatDC/"
-                    ForEach ($lang in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Languages) {
-                        $PSObject = [PSCustomObject] @{
-                            Version  = $Content
-                            Platform = "Windows"
-                            Type     = "Installer"
-                            Language = $lang
-                            URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString)_$($lang).exe"
-                        }
-                        Write-Output -InputObject $PSObject
-                    }
+                    $updateUrl = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateDownloadUri -replace "#Platform", $platform
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Neutral"
-                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString).msp"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC$($versionString).msp"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
@@ -69,34 +87,34 @@ Function Get-AdobeAcrobatReaderDC {
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC$($versionString)_MUI.msp"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC$($versionString)_MUI.msp"
                     }
                     Write-Output -InputObject $PSObject
                 }
                 "mac" {
-                    $ftpUrl = "ftp://ftp.adobe.com/pub/adobe/reader/$plat/AcrobatDC/"
+                    $updateUrl = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateDownloadUri -replace "#Platform", $platform
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
-                        Platform = "macOS"
+                        Platform = "Macintosh"
                         Type     = "Installer"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDC_$($versionString)_MUI.dmg"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC_$($versionString)_MUI.dmg"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
-                        Platform = "macOS"
+                        Platform = "Macintosh"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.dmg"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.dmg"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
-                        Platform = "macOS"
+                        Platform = "Macintosh"
                         Type     = "Updater"
                         Language = "Multi"
-                        URL      = "$($ftpUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.pkg"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.pkg"
                     }
                     Write-Output -InputObject $PSObject
                 }
@@ -106,4 +124,5 @@ Function Get-AdobeAcrobatReaderDC {
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): unable to find Adobe Acrobat Reader DC version."
     }
+    #endregion
 }

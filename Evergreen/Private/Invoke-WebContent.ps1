@@ -12,7 +12,11 @@ Function Invoke-WebContent {
 
         [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $ContentType = "text/plain; charset=utf-8",
+        [System.String] $ContentType,
+
+        [Parameter(Position = 2)]
+        [ValidateNotNullOrEmpty()]
+        [System.Collections.Hashtable] $Headers,
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $Raw
@@ -29,10 +33,15 @@ Function Invoke-WebContent {
                 $iwrParams = @{
                     Uri             = $Uri
                     OutFile         = $tempFile
-                    ContentType     = $ContentType
                     UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                }
+                If ($ContentType.IsPresent) {
+                    $iwrParams.ContentType = $ContentType
+                }
+                If ($Headers.IsPresent) {
+                    $iwrParams.Headers = $Headers
                 }
                 $Response = Invoke-WebRequest @iwrParams
                 $Content = Get-Content -Path $TempFile
@@ -40,10 +49,15 @@ Function Invoke-WebContent {
             Else {
                 $iwrParams = @{
                     Uri             = $Uri
-                    ContentType     = $ContentType
                     UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                }
+                If ($ContentType.IsPresent) {
+                    $iwrParams.ContentType = $ContentType
+                }
+                If ($Headers.IsPresent) {
+                    $iwrParams.Headers = $Headers
                 }
                 $Response = Invoke-WebRequest @iwrParams
                 $Content = $Response.Content
