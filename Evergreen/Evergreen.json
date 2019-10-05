@@ -106,6 +106,10 @@
     },
     "MicrosoftEdge" : {
       "Uri" : "https://api.cdp.dsp.mp.microsoft.com.nsatc.net"
+    },
+    "NotepadPlusPlus" : {
+      "Uri" : "https://notepad-plus-plus.org/update/getDownloadUrl.php",
+      "ContentType" : "application/json; charset=utf-8"
     }
   },
   "Preferences" : {
