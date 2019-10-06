@@ -110,6 +110,12 @@
     "NotepadPlusPlus" : {
       "Uri" : "https://notepad-plus-plus.org/update/getDownloadUrl.php",
       "ContentType" : "application/json; charset=utf-8"
+    },
+    "CitrixReceiver" : {
+      "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-receiver.rss",
+      "RegExNumbers" : "[^.0-9]",
+      "RegExVersion" : "\\d+(\\.\\d+)+\\s",
+      "TitleReplace" : "New - "
     }
   },
   "Preferences" : {
