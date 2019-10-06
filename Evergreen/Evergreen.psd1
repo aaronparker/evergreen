@@ -12,7 +12,7 @@
     RootModule        = 'Evergreen.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '18.11.0.0'
+    ModuleVersion     = '19.10.0.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@
     CompanyName       = 'stealthpuppy, Bronson Magnan, xenappblog'
 
     # Copyright statement for this module
-    Copyright         = '(c) 2018 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
+    Copyright         = '(c) 2019 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description       = 'Evergreen is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'

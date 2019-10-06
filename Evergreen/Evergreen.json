@@ -118,8 +118,10 @@
       "TitleReplace" : "New - "
     },
     "CitrixWorkspaceApp" : {
-      "UriWindows" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml",
-      "UriMacOS" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_macos.xml",
+      "UpdateFeeds" : {
+        "Windows" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml",
+        "MacOS" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_macos.xml"
+      },
       "UserAgent" : "CitrixReceiver/19.7.0.15 WinOS/10.0.18362",
       "DownloadUri" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
     }
