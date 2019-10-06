@@ -70,7 +70,7 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('Get-AdobeAcrobatReaderDC', 
-        'Get-ControlUpAgentUri', 
+        'Get-ControlUpAgentUri', 'Get-CitrixWorkspaceApp',
         'Get-ControlUpAgentVersion', 'Export-EvergreenResourceStrings',
         'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiver',
         'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 

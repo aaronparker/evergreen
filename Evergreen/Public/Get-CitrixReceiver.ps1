@@ -28,9 +28,6 @@ Function Get-CitrixReceiver {
     #>
     [CmdletBinding()]
     Param()
-    # RegEx to filter out all characters except the version number
-    $RegExNumbers = "[^.0-9]"
-    $RegExVersion = "\d+(\.\d+)+\s"
 
     # Read the Citrix Receiver RSS feed
     $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.CitrixReceiver.Uri
@@ -48,6 +45,7 @@ Function Get-CitrixReceiver {
             Throw $_
         }
 
+        # Build an output object by selecting Citrix Receiver entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($item in (Select-Xml -Xml $xmlDocument -XPath "//item")) {
                 If ((($item.Node.Title -replace $script:resourceStrings.Applications.CitrixReceiver.TitleReplace, "") `
