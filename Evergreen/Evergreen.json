@@ -124,6 +124,11 @@
       },
       "UserAgent" : "CitrixReceiver/19.7.0.15 WinOS/10.0.18362",
       "DownloadUri" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
+    },
+    "PaintDotNET" : {
+      "Uri" : "https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt",
+      "MatchVersion" : "StableVersions=(\\d+(\\.\\d+)+\\s)",
+      "MatchDownload" : "#Version_FullZipUrlList=(.*)"
     }
   },
   "Preferences" : {

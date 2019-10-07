@@ -76,8 +76,8 @@
         'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 
         'Get-MicrosoftSsmsUri', 'Get-MicrosoftSsmsVersion', 
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
-        'Get-NotepadPlusPlus', 'Get-PaintDotNetUri', 
-        'Get-PaintDotNetVersion', 'Get-VideoLanVlcPlayer', 
+        'Get-NotepadPlusPlus',
+        'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 
         'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
         'Get-CitrixXenServerTools', 'Get-ZoomVersion')
 
