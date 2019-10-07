@@ -74,7 +74,7 @@
         'Get-ControlUpAgentVersion', 'Export-EvergreenResourceStrings',
         'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiver',
         'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 
-        'Get-MicrosoftSsmsUri', 'Get-MicrosoftSsmsVersion', 
+        'Get-MicrosoftSsms', 
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
         'Get-NotepadPlusPlus',
         'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 
