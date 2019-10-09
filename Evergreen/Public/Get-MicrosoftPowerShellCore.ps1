@@ -1,10 +1,10 @@
 Function Get-MicrosoftPowerShellCore {
     <#
         .SYNOPSIS
-            Returns the latest PowerShell Core version number.
+            Returns the latest PowerShell Core version number and download.
 
         .DESCRIPTION
-            Returns the latest PowerShell Core version number.
+            Returns the latest PowerShell Core version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,10 +14,10 @@ Function Get-MicrosoftPowerShellCore {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-PowerShellCoreVersion
+            Get-MicrosoftPowerShellCore
 
             Description:
-            Returns the latest PowerShell Core version number.
+            Returns the latest PowerShell Core version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -32,10 +32,32 @@ Function Get-MicrosoftPowerShellCore {
 
     # Build the output object with release details
     ForEach ($release in $latestRelease.assets) {
+
+        Switch -Regex ($release.browser_download_url) {
+            "amd64" { $arch = "AMD64" }
+            "arm64" { $arch = "ARM64" }
+            "arm32" { $arch = "ARM32" }
+            "x86_64" { $arch = "x86_64" }
+            "x64" { $arch = "x64" }
+            "-x86" { $arch = "x86" }
+            "fxdependent" { $arch = "fxdependent" }
+            Default { $arch = "Unknown" }
+        }
+
+        Switch -Regex ($release.browser_download_url) {
+            "rhel" { $platform = "RHEL" }
+            "linux" { $platform = "Linux" }
+            "win" { $platform = "Windows" }
+            "osx" { $platform = "macOS" }
+            "debian" { $platform = "Debian" }
+            "ubuntu" { $platform = "Ubuntu" }
+            Default { $platform = "Unknown" }
+        }
+
         $PSObject = [PSCustomObject] @{
             Version      = $LatestRelease.tag_name
-            Platform     = "Platform"
-            Architecture = "x64"
+            Platform     = $platform
+            Architecture = $arch
             URI          = $release.browser_download_url
             Size         = $release.size
         }
