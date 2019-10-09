@@ -17,6 +17,7 @@ Function Get-CitrixXenServerTools {
             Description:
             Returns the current version and download URLs for XenServer tools.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

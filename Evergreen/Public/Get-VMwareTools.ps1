@@ -16,6 +16,7 @@ Function Get-VMwareTools {
             Description:
             Returns the current version and download URLs for VMware Tools.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()    
 

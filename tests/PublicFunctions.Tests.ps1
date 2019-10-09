@@ -32,7 +32,7 @@ Import-Module $manifestPath -Force
 $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
 
 InModuleScope Evergreen {
-    Describe -Tag "Tag" -Name "Test" {
+    Describe -Tag "AppVeyor" -Name "Test" {
 
             Context "Validate" {
                 It "Returns an array" {

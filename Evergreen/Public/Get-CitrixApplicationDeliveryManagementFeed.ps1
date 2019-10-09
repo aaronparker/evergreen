@@ -17,6 +17,7 @@ Function Get-CitrixApplicationDeliveryManagementFeed {
             Description:
             Returns the available Citrix Application Delivery Management downloads.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

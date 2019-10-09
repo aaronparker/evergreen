@@ -17,6 +17,7 @@ Function Get-CitrixWorkspaceAppFeed {
             Description:
             Returns the available Citrix Workspace app versions for all platforms.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

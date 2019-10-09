@@ -19,6 +19,7 @@ Function Get-Greenshot {
             Description:
             Returns the released Greenshot version and download URI.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param ()
 

@@ -1,9 +1,10 @@
-Function Get-ZoomVersion {    
+Function Get-Zoom {    
     <#
         .NOTES
             Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     [Outputtype([string])]
     param()

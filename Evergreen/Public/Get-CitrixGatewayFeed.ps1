@@ -17,6 +17,7 @@ Function Get-CitrixGatewayFeed {
             Description:
             Returns the available Citrix Gateway downloads.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

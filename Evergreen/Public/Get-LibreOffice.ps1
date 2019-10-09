@@ -28,8 +28,8 @@ Function Get-LibreOffice {
             Description:
             Returns the latest business release Libre Office for Windows download URI.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    [OutputType([string])]
     Param (
         [ValidateSet("Latest", "Business")]
         [string] $Release = "Latest"

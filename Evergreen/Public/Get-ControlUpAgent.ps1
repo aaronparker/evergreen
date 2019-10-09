@@ -30,14 +30,14 @@ Function Get-ControlUpAgent {
 
             Description:
             Returns the latest ControlUp agent with .NET Framework 3.5 support for 32-bit Windows.
-#>
+    #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    [OutputType([String])]
     Param(
-        [ValidateSet("net45","net35")]
+        [ValidateSet("net45", "net35")]
         [string] $NetVersion = "net45",
 
-        [ValidateSet("x86","x64")]
+        [ValidateSet("x86", "x64")]
         [string] $Architecture = "x64"
     )
     
@@ -50,11 +50,11 @@ Function Get-ControlUpAgent {
     $content = $webRequest.Content
     
     #clean up the code into paragraph blocks
-    $paragraphSections = $content.Replace("`n","").Replace("  ","").Replace("`t","").Replace("<p>","#$%^<p>").Split("#$%^").Trim()
+    $paragraphSections = $content.Replace("`n", "").Replace("  ", "").Replace("`t", "").Replace("<p>", "#$%^<p>").Split("#$%^").Trim()
     
     #now we are looking for the pattern <p><strong>Current agent version:</strong> 7.2.1.6</p>
     $versionLine = $paragraphSections | Where-Object { $_ -like "*Current*agent*" }
-    $splitLines = ($versionLine.Replace('<','#$%^<').Replace('>','>#$%^').Split('#$%^')).Trim()
+    $splitLines = ($versionLine.Replace('<', '#$%^<').Replace('>', '>#$%^').Split('#$%^')).Trim()
     $version = [Version]::new(($splitLines | Select-String -Pattern $pattern).ToString())
     
     # Write version and download the pipeline

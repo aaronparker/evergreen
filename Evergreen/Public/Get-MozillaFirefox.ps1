@@ -32,6 +32,7 @@ Function Get-MozillaFirefox {
             Description:
             Returns the UK English download URI for Firefox for macOS.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param(
         [Parameter(Position = 0)]

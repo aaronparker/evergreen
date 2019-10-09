@@ -19,6 +19,7 @@ Function Get-AdobeAcrobatReaderDC {
             Description:
             Returns an array with version, installer type, language and download URL for Windows.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

@@ -37,6 +37,7 @@ Function Get-MicrosoftVisualStudioCode {
             Description:
             Returns the Stable build version numbers and download URL for the user-install of VSCode for Windows.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param(
         [Parameter()]

@@ -17,6 +17,7 @@ Function Get-CitrixSdwanFeed {
             Description:
             Returns the available Citrix SD-WAN versions for all platforms.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

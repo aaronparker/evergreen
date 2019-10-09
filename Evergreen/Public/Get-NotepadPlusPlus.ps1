@@ -19,8 +19,8 @@ Function Get-NotepadPlusPlus {
             Description:
             Returns the latest x86 and x64 Notepad++ version and download URI.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    [OutputType([string])]
     Param ()
 
     # Read the Notepad++ version and download XML

@@ -17,6 +17,7 @@ Function Get-CitrixReceiverFeed {
             Description:
             Returns the available Citrix Receiver versions for all platforms.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

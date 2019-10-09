@@ -28,6 +28,7 @@ Function Get-GoogleChrome {
             Description:
             Returns the Google Chrome version for the current stable release on 64-bit Windows.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param (
         [Parameter()]

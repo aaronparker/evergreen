@@ -4,6 +4,7 @@ Function Get-PaintDotNet {
             Author: Bronson Magnan
             Twitter: @cit_bronson
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

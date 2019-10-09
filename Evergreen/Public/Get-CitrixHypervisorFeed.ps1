@@ -17,6 +17,7 @@ Function Get-CitrixHypervisorFeed {
             Description:
             Returns the available Citrix Hypervisor versions for all platforms.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

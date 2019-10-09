@@ -17,6 +17,7 @@ Function Get-VideoLanVlcPlayer {
             Description:
             Returns the current version and download URLs for VLC Media Player on Windows (x86, x64) and macOS.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

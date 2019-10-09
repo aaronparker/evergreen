@@ -19,6 +19,7 @@ Function Get-MicrosoftPowerShellCore {
             Description:
             Returns the latest PowerShell Core version number.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

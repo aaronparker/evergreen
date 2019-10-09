@@ -19,6 +19,7 @@ Function Get-CitrixWorkspaceApp {
             Description:
             Returns the available Citrix Workspace app, Receiver and HDX RTME releases for all platforms.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 

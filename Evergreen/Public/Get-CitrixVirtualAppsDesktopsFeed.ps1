@@ -17,6 +17,7 @@ Function Get-CitrixVirtualAppsDesktopsFeed {
             Description:
             Returns the available Citrix Virtual Apps and Desktops downloads.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 
