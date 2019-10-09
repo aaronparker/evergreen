@@ -77,8 +77,8 @@
         'Get-MicrosoftSsms', 'Get-CitrixWorkspaceAppFeed', 'Get-CitrixApplicationDeliveryManagementFeed',
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
         'Get-NotepadPlusPlus', 'Get-CitrixVirtualAppsDesktopsFeed',
-        'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-CitrixHypervisorFeed'
-        'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
+        'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-CitrixHypervisorFeed',
+        'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore', 'Get-CitrixEndpointManagementFeed'
         'Get-CitrixXenServerTools', 'Get-Zoom', 'Get-CitrixAppLayeringFeed')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
