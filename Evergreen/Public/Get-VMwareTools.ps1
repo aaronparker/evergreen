@@ -1,4 +1,4 @@
-Function Get-VMwareTools {
+﻿Function Get-VMwareTools {
     <#
         .SYNOPSIS
             Get the current version and download URL for the VMware Tools.

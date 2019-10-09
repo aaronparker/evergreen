@@ -73,13 +73,13 @@
         'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed',
         'Get-ControlUpAgent', 'Export-EvergreenResourceStrings',
         'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiverFeed',
-        'Get-LibreOffice', 'Get-CitrixGatewayFeed',
+        'Get-LibreOffice', 'Get-CitrixGatewayFeed', 'Get-FileZilla',
         'Get-MicrosoftSsms', 'Get-CitrixWorkspaceAppFeed', 'Get-CitrixApplicationDeliveryManagementFeed',
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
         'Get-NotepadPlusPlus', 'Get-CitrixVirtualAppsDesktopsFeed',
         'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-CitrixHypervisorFeed'
         'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
-        'Get-CitrixXenServerTools', 'Get-ZoomVersion')
+        'Get-CitrixXenServerTools', 'Get-Zoom')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
