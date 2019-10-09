@@ -157,6 +157,21 @@
         "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-sd-wan.rss",
         "Include" : "",
         "Exclude" : "SDK"
+      },
+      "Licensing" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/licensing.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "AppLayering" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-app-layering.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "EndpointManagement" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-endpoint-management.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
       }
     },
     "PaintDotNET" : {

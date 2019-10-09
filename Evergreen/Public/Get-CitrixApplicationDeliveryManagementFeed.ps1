@@ -4,8 +4,7 @@ Function Get-CitrixApplicationDeliveryManagementFeed {
             Gets the current available Citrix Application Delivery Management downloads.
 
         .DESCRIPTION
-            Reads the public Citrix Receiver web page to return an array of Receiver platforms and the available versions.
-            Does not provide the version number for Receiver where a login is required (e.g. HTML5, Chrome)
+            Reads the public Citrix Application Delivery Management web page to return an array of platforms and the available versions.
 
         .NOTES
             Author: Aaron Parker

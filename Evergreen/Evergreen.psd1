@@ -70,7 +70,7 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('Get-AdobeAcrobatReaderDC', 
-        'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed',
+        'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed', 'Get-CitrixLicensingFeed',
         'Get-ControlUpAgent', 'Export-EvergreenResourceStrings',
         'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiverFeed',
         'Get-LibreOffice', 'Get-CitrixGatewayFeed', 'Get-FileZilla',
@@ -79,7 +79,7 @@
         'Get-NotepadPlusPlus', 'Get-CitrixVirtualAppsDesktopsFeed',
         'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-CitrixHypervisorFeed'
         'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
-        'Get-CitrixXenServerTools', 'Get-Zoom')
+        'Get-CitrixXenServerTools', 'Get-Zoom', 'Get-CitrixAppLayeringFeed')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
