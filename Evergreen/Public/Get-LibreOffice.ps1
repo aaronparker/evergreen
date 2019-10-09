@@ -1,10 +1,10 @@
-Function Get-LibreOfficeVersion {
+Function Get-LibreOffice {
     <#
         .SYNOPSIS
-            Gets the latest Libre Office release version.
+            Gets the latest Libre Office version and release URI.
 
         .DESCRIPTION
-            Gets the latest Libre Office latest or Business release version number.
+            Gets the latest Libre Office latest or Business release version and URI.
 
         .NOTES
             Author: Bronson Magnan
@@ -14,10 +14,10 @@ Function Get-LibreOfficeVersion {
             https://github.com/aaronparker/Evergreen
 
         .PARAMETER Release
-            Specify whether to return the Latest or Business release version.
+            Specify whether to return the Latest or Business release.
 
         .EXAMPLE
-            Get-LibreOfficeVersion
+            Get-LibreOfficeUri
 
             Description:
             Returns the latest Libre Office for Windows download URI.
@@ -29,7 +29,7 @@ Function Get-LibreOfficeVersion {
             Returns the latest business release Libre Office for Windows download URI.
     #>
     [CmdletBinding()]
-    [OutputType([version])]
+    [OutputType([string])]
     Param (
         [ValidateSet("Latest", "Business")]
         [string] $Release = "Latest"
@@ -49,7 +49,7 @@ Function Get-LibreOfficeVersion {
         # Search for their big green logo version number '<span class="dl_version_number">*</span>'
         $content = $response.Content
         $spans = $content.Replace('<span', '#$%^<span').Replace('</span>', '</span>#$%^').Split('#$%^') | `
-            Where-Object { $_ -like '<span class="dl_version_number">*</span>' }
+                Where-Object { $_ -like '<span class="dl_version_number">*</span>' }
         $verBlock = ($spans).Replace('<span class="dl_version_number">', '').Replace('</span>', '')
 
         If ($Release -eq "Latest") {
@@ -58,7 +58,14 @@ Function Get-LibreOfficeVersion {
         Else {
             $version = [version]::new($($verblock | Select-Object -Last 1))
         }
-
-        Write-Output $version
     }
+
+    # Write version and download the pipeline
+    $rootUrl = "https://download.documentfoundation.org/libreoffice/stable/"
+    $downloadURL = "$rootUrl$($version.ToString())/win/x86_64/LibreOffice_$($version.ToString())_Win_x64.msi"
+    $PSObject = [PSCustomObject] @{
+        Version = $version.ToString()
+        URI     = $downloadURL
+    }
+    Write-Output -InputObject $PSObject
 }

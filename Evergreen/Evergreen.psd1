@@ -70,10 +70,10 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('Get-AdobeAcrobatReaderDC', 
-        'Get-ControlUpAgentUri', 'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed',
-        'Get-ControlUpAgentVersion', 'Export-EvergreenResourceStrings',
+        'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed',
+        'Get-ControlUpAgent', 'Export-EvergreenResourceStrings',
         'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiverFeed',
-        'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 'Get-CitrixGatewayFeed',
+        'Get-LibreOffice', 'Get-CitrixGatewayFeed',
         'Get-MicrosoftSsms', 'Get-CitrixWorkspaceAppFeed', 'Get-CitrixApplicationDeliveryManagementFeed',
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
         'Get-NotepadPlusPlus', 'Get-CitrixVirtualAppsDesktopsFeed',
