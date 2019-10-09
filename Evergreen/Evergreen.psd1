@@ -70,14 +70,14 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('Get-AdobeAcrobatReaderDC', 
-        'Get-ControlUpAgentUri', 'Get-CitrixWorkspaceApp',
+        'Get-ControlUpAgentUri', 'Get-CitrixWorkspaceApp', 'Get-CitrixSdwanFeed',
         'Get-ControlUpAgentVersion', 'Export-EvergreenResourceStrings',
-        'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiver',
-        'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 
-        'Get-MicrosoftSsms', 
+        'Get-GoogleChrome', 'Get-Greenshot', 'Get-CitrixReceiverFeed',
+        'Get-LibreOfficeUri', 'Get-LibreOfficeVersion', 'Get-CitrixGatewayFeed',
+        'Get-MicrosoftSsms', 'Get-CitrixWorkspaceAppFeed', 'Get-CitrixApplicationDeliveryManagementFeed',
         'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', "Get-VMwareTools",
-        'Get-NotepadPlusPlus',
-        'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 
+        'Get-NotepadPlusPlus', 'Get-CitrixVirtualAppsDesktopsFeed',
+        'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-CitrixHypervisorFeed'
         'Get-OracleVirtualBox', 'Get-MicrosoftPowerShellCore'
         'Get-CitrixXenServerTools', 'Get-ZoomVersion')
 

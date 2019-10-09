@@ -111,12 +111,6 @@
       "Uri" : "https://notepad-plus-plus.org/update/getDownloadUrl.php",
       "ContentType" : "application/json; charset=utf-8"
     },
-    "CitrixReceiver" : {
-      "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-receiver.rss",
-      "RegExNumbers" : "[^.0-9]",
-      "RegExVersion" : "\\d+(\\.\\d+)+\\s",
-      "TitleReplace" : "New - "
-    },
     "CitrixWorkspaceApp" : {
       "UpdateFeeds" : {
         "Windows" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml",
@@ -124,6 +118,46 @@
       },
       "UserAgent" : "CitrixReceiver/19.7.0.15 WinOS/10.0.18362",
       "DownloadUri" : "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
+    },
+    "CitrixFeeds" : {
+      "RegExNumbers" : "[^.0-9]",
+      "RegExVersion" : "\\d+(\\.\\d+)+\\s",
+      "TitleReplace" : "New - ",
+      "Receiver" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-receiver.rss",
+        "Include" : "^Receiver*",
+        "Exclude" : "SDK"
+      },
+      "WorkspaceApp" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/workspace-app.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "VirtualAppsDesktops" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-virtual-apps-and-desktops.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "Hypervisor" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-hypervisor.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "Gateway" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-gateway.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "ApplicationDeliveryManagement" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-application-management.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      },
+      "Sdwan" : {
+        "Uri" : "https://www.citrix.com/content/citrix/en_us/downloads/citrix-sd-wan.rss",
+        "Include" : "",
+        "Exclude" : "SDK"
+      }
     },
     "PaintDotNET" : {
       "Uri" : "https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt",
