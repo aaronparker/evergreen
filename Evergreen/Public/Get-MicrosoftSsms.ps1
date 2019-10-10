@@ -54,7 +54,7 @@ Function Get-MicrosoftSsms {
                 $PSObject = [PSCustomObject] @{
                     Version = $entry.Component.version
                     Title   = $entry.Title
-                    Updated = ([DateTime]::Parse($entry.updated))
+                    Date = ([DateTime]::Parse($entry.updated))
                     URI     = $entry.link.href
                 }
                 Write-Output -InputObject $PSObject

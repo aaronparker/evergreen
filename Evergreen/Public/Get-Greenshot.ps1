@@ -36,7 +36,7 @@ Function Get-Greenshot {
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{
             Version = $latestVersion
-            Name    = $release.name
+            Date    = ([DateTime]::Parse($release.created_at))
             Size    = $release.size
             URI     = $release.browser_download_url
         }

@@ -46,14 +46,14 @@ Function Get-AdobeAcrobatReaderDC {
                 $ContentFromJson = $Content.Content | ConvertFrom-Json
                 
                 # Check properties if multiple values returned
-                If ($ContentFromJson.version.Count -eq 1) { $Version = $ContentFromJson.version } Else { $Version = $ContentFromJson.version | Select-Object -First 1 }
-                If ($ContentFromJson.download_url.Count -eq 1) { $URI = $ContentFromJson.download_url } Else { $URI = $ContentFromJson.download_url | Select-Object -First 1 }
+                If ($ContentFromJson.version.Count -eq 1) { $Version = $ContentFromJson.Version } Else { $Version = $ContentFromJson.Version | Select-Object -First 1 }
+                If ($ContentFromJson.download_url.Count -eq 1) { $downloadURI = $ContentFromJson.download_url } Else { $downloadURI = $ContentFromJson.download_url | Select-Object -First 1 }
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
                     Platform = $platform.platform_type
                     Type     = "Installer"
-                    Language = $language
-                    URI      = $URI
+                    Language = $ContentFromJson.language_type
+                    URI      = $downloadURI
                 }
                 Write-Output -InputObject $PSObject
             }

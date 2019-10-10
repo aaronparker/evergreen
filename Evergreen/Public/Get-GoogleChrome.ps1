@@ -49,6 +49,7 @@ Function Get-GoogleChrome {
                 $PSObject = [PSCustomObject] @{
                     Version  = $version.current_version
                     Platform = $version.os
+                    Date     = ([DateTime]::ParseExact($version.current_reldate.Trim(), 'MM/dd/yy', [CultureInfo]::InvariantCulture))
                     URI      = "$($script:resourceStrings.Applications.GoogleChrome.DownloadUri)$($script:resourceStrings.Applications.GoogleChrome.Downloads.$($version.os))"
                 }
                 $releases.Add($PSObject) | Out-Null
@@ -57,7 +58,7 @@ Function Get-GoogleChrome {
 
         # Filter the output; Return output to the pipeline
         $filteredReleases = $releases | Where-Object { $Platform -contains $_.Platform }
-        Write-Output $filteredReleases
+        Write-Output -InputObject $filteredReleases
     }
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($script:resourceStrings.Applications.GoogleChrome.Uri)."

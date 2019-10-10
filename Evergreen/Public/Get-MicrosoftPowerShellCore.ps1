@@ -58,8 +58,9 @@ Function Get-MicrosoftPowerShellCore {
             Version      = $LatestRelease.tag_name
             Platform     = $platform
             Architecture = $arch
-            URI          = $release.browser_download_url
+            Date         = ([DateTime]::Parse($release.created_at))
             Size         = $release.size
+            URI          = $release.browser_download_url
         }
         Write-Output -InputObject $PSObject
     }
