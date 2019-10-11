@@ -1,0 +1,24 @@
+version: 19.10.{build}
+image: WMF 5
+environment:
+  GitHubKey:
+    secure: 085aq77wGuI+EI1wXVyiB8ERrsksUfSVrPjoxCzusqT8SFnY/Sb8P0PsKqvhybgF
+  NuGetApiKey:
+    secure: /YPozcX4yV1XCrZuS8DAhOmH/OOjkg6+zrCTT3lHR3a7/SY7S83JNNgYBsROlLq3
+  Module: Evergreen
+install:
+- ps: . .\ci\Install.ps1
+build_script:
+- ps: . .\ci\Build.ps1
+test_script:
+- ps: . .\ci\Tests.ps1
+deploy_script:
+- ps: . .\ci\Deploy.ps1
+
+skip_commits:
+  message: /AppVeyor validate.*|Merge branch 'master' of.*//
+
+only_commits:
+  files:
+    - Evergreen/**/*
+    - tests/**/*

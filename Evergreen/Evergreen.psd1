@@ -12,7 +12,7 @@
     RootModule        = 'Evergreen.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '19.10.0.0'
+    ModuleVersion     = '19.10.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -108,7 +108,8 @@
         PSData                   = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = 'Firefox', 'Reader', 'Chrome', 'Receiver', 'Paint.NET'
+            Tags         = 'Firefox', 'AdobeReader', 'Chrome', 'Receiver', 'Paint.NET', 'CitrixReceiver', 'CitrixWorkspace', 'Zoom', 'VMwareTools', 'VLCPlayer',
+            'VirtualBox', 'PowerShell', 'LibreOffice', 'FileZilla', 'ControlUp', 'XenServer'
 
             # A URL to the license for this module.
             LicenseUri   = 'https://github.com/aaronparker/Evergreen/blob/master/LICENSE'
