@@ -26,24 +26,23 @@ Write-Host "Importing module." -ForegroundColor Cyan
 Import-Module $manifestPath -Force
 
 # Read module resource strings for testing
-. "$moduleParent\Private\Test-PSCore.ps1"
-. "$moduleParent\Private\Get-ModuleResource.ps1"
-. "$moduleParent\Private\ConvertTo-Hashtable.ps1"
+#. "$moduleParent\Private\Test-PSCore.ps1"
+#. "$moduleParent\Private\Get-ModuleResource.ps1"
+#. "$moduleParent\Private\ConvertTo-Hashtable.ps1"
 # $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
 
-InModuleScope Evergreen {
-    Describe -Tag "AppVeyor" -Name "Test" {
-        Context "Validate" {
-            $commands = Get-Command -Module Evergreen
-            ForEach ($command in $commands) {
-                New-Variable -Name "output" -Value (Invoke-Command -ScriptBlock { $command.Name } )
-                $Output = (Get-Variable -Name "output").Value
-                It "Returns an array" {
-                    ($Output | Measure-Object).Count | Should -BeGreaterThan 0
-                }
-                It "Returns the expected output" {
-                    $Output | Should -BeOfType ((Get-Command Command).OutputType.Type.Name)
-                }
+Describe -Tag "AppVeyor" -Name "Test" {
+    Context "Validate" {
+        $commands = Get-Command -Module Evergreen
+        ForEach ($command in $commands) {
+            New-Variable -Name "tempOutput" -Value (Invoke-Command -ScriptBlock { $command.Name } )
+            $Output = (Get-Variable -Name "tempOutput").Value
+            Remove-Variable -Name tempOutput
+            It "$($command.Name): Returns something" {
+                ($Output | Measure-Object).Count | Should -BeGreaterThan 0
+            }
+            It "$($command.Name): Returns the expected output" {
+                $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
             }
         }
     }

@@ -7,6 +7,7 @@ Function Get-CitrixRssFeed {
             Author: Aaron Parker
             Twitter: @stealthpuppy        
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $True, Position = 0)]

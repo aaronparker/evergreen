@@ -6,10 +6,9 @@ Function Get-Zoom {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    [Outputtype([string])]
-    param()
-    $url = "https://zoom.us/download"
+    Param()
 
+    $url = "https://zoom.us/download"
     try {
         $web = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
     }
@@ -21,6 +20,10 @@ Function Get-Zoom {
         $str1 = $web.ToString() -split "[`r`n]" | Select-String "Version" | Select-Object -First 1
         $str2 = $str1 -replace "						</div>"
         $Version = $str2 -replace "Version "
-        Write-Output $Version
+
+        $PSObject = [PSCustomObject] @{
+            Version     = $Version
+        }
+        Write-Output -InputObject $PSObject
     }
 }
