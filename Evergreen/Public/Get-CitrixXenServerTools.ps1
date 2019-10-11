@@ -18,6 +18,7 @@ Function Get-CitrixXenServerTools {
             Returns the current version and download URLs for XenServer tools.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 

@@ -29,6 +29,7 @@ Function Get-MicrosoftSsms {
             Returns the preview release version number SQL Server Management Studio for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 

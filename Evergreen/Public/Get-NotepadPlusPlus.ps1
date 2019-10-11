@@ -20,6 +20,7 @@ Function Get-NotepadPlusPlus {
             Returns the latest x86 and x64 Notepad++ version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param ()
 

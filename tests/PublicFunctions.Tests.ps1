@@ -29,12 +29,15 @@ Import-Module $manifestPath -Force
 . "$moduleParent\Private\Test-PSCore.ps1"
 . "$moduleParent\Private\Get-ModuleResource.ps1"
 . "$moduleParent\Private\ConvertTo-Hashtable.ps1"
-$ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
+# $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
 
 InModuleScope Evergreen {
     Describe -Tag "AppVeyor" -Name "Test" {
-
-            Context "Validate" {
+        Context "Validate" {
+            $commands = Get-Command -Module Evergreen
+            ForEach ($command in $commands) {
+                New-Variable -Name "output" -Value (Invoke-Command -ScriptBlock { $command.Name } )
+                $Output = (Get-Variable -Name "output").Value
                 It "Returns an array" {
                     ($Output | Measure-Object).Count | Should -BeGreaterThan 0
                 }
@@ -42,5 +45,6 @@ InModuleScope Evergreen {
                     $Output | Should -BeOfType ((Get-Command Command).OutputType.Type.Name)
                 }
             }
+        }
     }
 }
