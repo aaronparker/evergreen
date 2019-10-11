@@ -24,8 +24,12 @@ Function Get-Greenshot {
     Param ()
 
     # Query the Greenshot repository for releases, keeping the latest release
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.Greenshot.Uri
-    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False })[0]
+    $iwcParams = @{
+        Uri         = $script:resourceStrings.Applications.Greenshot.Uri
+        ContentType = $script:resourceStrings.Applications.Greenshot.ContentType
+    }
+    $Content = Invoke-WebContent @iwcParams
+    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1 
 
     # Latest version number 'Greenshot-RELEASE-1.2.10.6'
     $latestRelease.tag_name -match $script:resourceStrings.Applications.Greenshot.MatchVersion | Out-Null
@@ -36,10 +40,11 @@ Function Get-Greenshot {
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{
             Version = $latestVersion
-            Date    = ([DateTime]::Parse($release.created_at))
+            Date         = ([DateTime]::ParseExact($release.created_at, 'MM/dd/yyyy HH:mm:ss', [CultureInfo]::InvariantCulture))
             Size    = $release.size
             URI     = $release.browser_download_url
         }
         Write-Output -InputObject $PSObject
     }
 }
+
