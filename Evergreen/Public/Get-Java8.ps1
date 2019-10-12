@@ -1,4 +1,4 @@
-Function Get-Java8 {
+﻿Function Get-Java8 {
     <#
         .SYNOPSIS
             Gets the current available Oracle Java release versions.
@@ -36,7 +36,8 @@ Function Get-Java8 {
         # Build an output object by selecting entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             $nodes = Select-Xml -Xml $xmlDocument -XPath "//mapping" | Select-Object –ExpandProperty "node"
-            $latestUpdate = $nodes | Select-Object -Last 1
+            $updateNodes = $nodes | Where-Object { $_.url -notlike "*-cb.xml" }
+            $latestUpdate = $updateNodes | Select-Object -Last 1
 
             # Read the XML listed in the most revent update
             $Content = Invoke-WebContent -Uri $latestUpdate.url
@@ -60,7 +61,7 @@ Function Get-Java8 {
                     $PSObject = [PSCustomObject] @{
                         Version      = (($Update.version | Sort-Object -Descending) | Select-Object -First 1)
                         Architecture = $arch
-                        URI          = $Update.url -replace "-au", $script:resourceStrings.Applications.Java8.FileStrings[$arch]
+                        URI          = $Update.url -replace "-au.exe", $script:resourceStrings.Applications.Java8.FileStrings[$arch]
                     }
                     Write-Output -InputObject $PSObject
                 }
