@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '19.10.13'
+ModuleVersion = '19.10.19'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -70,15 +70,15 @@ PowerShellVersion = '3.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
-               'Get-BISF', 'Get-CitrixAppLayeringFeed', 'Get-Good',
-               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-GitforWindows',
-               'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed',
+               'Get-BISF', 'Get-CitrixAppLayeringFeed', 
+               'Get-CitrixApplicationDeliveryManagementFeed', 
+               'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
-               'Get-ControlUpAgent', 'Get-FileZilla', 'Get-GoogleChrome', 
-               'Get-Greenshot', 'Get-Java8', 'Get-LibreOffice', 
+               'Get-ControlUpAgent', 'Get-FileZilla', 'Get-GitforWindows', 'Get-Good', 
+               'Get-GoogleChrome', 'Get-Greenshot', 'Get-Java8', 'Get-LibreOffice', 
                'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
                'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
                'Get-NotepadPlusPlus', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
