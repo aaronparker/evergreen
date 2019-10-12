@@ -62,7 +62,7 @@ Function Get-MicrosoftPowerShellCore {
             Version      = $latestRelease.tag_name
             Platform     = $platform
             Architecture = $arch
-            Date         = ([DateTime]::ParseExact($release.created_at, 'MM/dd/yyyy HH:mm:ss', [CultureInfo]::InvariantCulture))
+            Date         = (ConvertTo-DateTime -DateTime $release.created_at)
             Size         = $release.size
             URI          = $release.browser_download_url
         }

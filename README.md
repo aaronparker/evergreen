@@ -27,6 +27,23 @@ This module is maintained by the following community members
 
 ## Installing the Module
 
+## Install from the PowerShell Gallery
+
+The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). The module can be installed from the gallery with:
+
+```powershell
+Install-Module -Name Evergreen
+Import-Module -Name Evergreen
+```
+
+### Updating the Module
+
+If you have installed a previous version of the module from the gallery, you can install the latest update with the `-Force` parameter:
+
+```powershell
+Install-Module -Name Evergreen -Force
+```
+
 ### Manual Installation from the Repository
 
 The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/Evergreen) and includes the module in the `Evergreen` folder. The folder needs to be installed into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
@@ -49,14 +66,6 @@ Once installation is complete, you can validate that the module exists by runnin
 
 ```powershell
 Import-Module Evergreen
-```
-
-### PowerShell Gallery
-
-As soon as we get the module into a consistent state, we'll post it to the PowerShell Gallery, making it easy to install with:
-
-```powershell
-Install-Module Evergreen
 ```
 
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/master.svg?style=flat-square&logo=appveyor

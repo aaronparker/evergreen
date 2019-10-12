@@ -21,7 +21,7 @@ ModuleVersion = '19.10.3'
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
 
 # Author of this module
-Author = 'Aaron Parker, Bronson Magnan, Trond Eric Haarvarstein'
+Author = 'Aaron Parker; Bronson Magnan; Trond Eric Haarvarstein'
 
 # Company or vendor of this module
 CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
