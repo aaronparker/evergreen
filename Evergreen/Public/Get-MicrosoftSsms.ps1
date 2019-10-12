@@ -54,8 +54,8 @@ Function Get-MicrosoftSsms {
             ForEach ($entry in $xmlDocument.feed.entry) {
                 $PSObject = [PSCustomObject] @{
                     Version = $entry.Component.version
-                    Title   = $entry.Title
                     Date = ([DateTime]::Parse($entry.updated))
+                    Title   = $entry.Title
                     URI     = $entry.link.href
                 }
                 Write-Output -InputObject $PSObject

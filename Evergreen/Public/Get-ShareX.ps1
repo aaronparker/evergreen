@@ -35,6 +35,7 @@ Function Get-ShareX {
     $releases = $latestRelease.assets
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{
+            # TODO: use RegEx to extract version number rather than -replace
             Version = ($latestRelease.tag_name -replace "v", "")
             Date    = (ConvertTo-DateTime -DateTime $release.created_at)
             Size    = $release.size

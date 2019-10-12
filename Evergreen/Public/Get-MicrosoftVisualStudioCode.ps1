@@ -62,7 +62,7 @@ Function Get-MicrosoftVisualStudioCode {
 
             # Read the version details from the API, format and return to the pipeline
             $releaseJson = Invoke-WebContent -Uri "$($script:resourceStrings.Applications.MicrosoftVisualStudioCode.Uri)/$plat/$ch/VERSION" | `
-                ConvertFrom-Json
+                    ConvertFrom-Json
             $PSObject = [PSCustomObject] @{
                 Version  = $releaseJson.productVersion
                 Platform = $plat

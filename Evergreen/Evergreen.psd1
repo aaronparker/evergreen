@@ -77,7 +77,7 @@ FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReader
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
-               'Get-ControlUpAgent', 'Get-FileZilla', 'Get-GitforWindows', 'Get-Good', 
+               'Get-ControlUpAgent', 'Get-FileZilla', 'Get-GitForWindows', 'Get-Good', 
                'Get-GoogleChrome', 'Get-Greenshot', 'Get-Java8', 'Get-LibreOffice', 
                'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
                'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 

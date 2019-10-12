@@ -1,4 +1,4 @@
-Function Get-GitforWindows {
+Function Get-GitForWindows {
     <#
         .SYNOPSIS
             Returns the available Git for Windows versions.
@@ -37,7 +37,8 @@ Function Get-GitforWindows {
     $releases = $latestRelease.assets
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{
-            Version = $latestRelease.tag_name
+            # TODO: use RegEx to extract version number rather than -replace
+            Version = (($latestRelease.tag_name -replace "v", "") -replace ".windows.1", "")
             Date    = (ConvertTo-DateTime -DateTime $release.created_at)
             Size    = $release.size
             URI     = $release.browser_download_url
