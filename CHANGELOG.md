@@ -1,5 +1,9 @@
 # Change Log
 
+## 19.10.11
+
+* Adds `Get-Java8`
+
 ## 19.10.9
 
 * Adds `Get-BISF`
