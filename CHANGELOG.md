@@ -1,5 +1,9 @@
 # Change Log
 
+## 19.10.20
+
+* Fixes output in `Get-GitForWindows`, `Get-MicrosoftSmss`
+
 ## 19.10.19
 
 * Adds `Get-GitForWindows`, `Get-ShareX`
