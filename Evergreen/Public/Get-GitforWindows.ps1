@@ -1,10 +1,10 @@
-Function Get-Git {
+Function Get-GitforWindows {
     <#
         .SYNOPSIS
-            Returns the available Git versions.
+            Returns the available Git for Windows versions.
 
         .DESCRIPTION
-            Returns the available Git versions.
+            Returns the available Git for Windows versions.
 
         .NOTES
             Author: Trond Eirik Haavarstein 
@@ -25,11 +25,12 @@ Function Get-Git {
 
     # Query the Git repository for releases, keeping the latest release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.Git.Uri
-        ContentType = $script:resourceStrings.Applications.Git.ContentType
+        Uri         = $script:resourceStrings.Applications.GitforWindows.Uri
+        ContentType = $script:resourceStrings.Applications.GitforWindows.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
+    $Json = $Content | ConvertFrom-Json
+    $latestRelease = ($Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
     # Build and array of the latest release and download URLs
     $releases = $latestRelease.assets

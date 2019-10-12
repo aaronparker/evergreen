@@ -193,6 +193,14 @@
         "x64" : "-x64.exe",
         "x86" : "-i586.exe"
       }
+    },
+    "ShareX" : {
+      "Uri" : "https://api.github.com/repos/ShareX/ShareX/releases",
+      "ContentType" : "application/json; charset=utf-8"
+    },
+    "GitforWindows" : {
+      "Uri" : "https://api.github.com/repos/git-for-windows/git/releases",
+      "ContentType" : "application/json; charset=utf-8"
     }
   },
   "Preferences" : {

@@ -35,7 +35,7 @@ Function Get-ShareX {
     $releases = $latestRelease.assets
     ForEach ($release in $releases) {
         $PSObject = [PSCustomObject] @{
-            Version = $latestRelease.tag_name
+            Version = ($latestRelease.tag_name -replace "v", "")
             Date    = (ConvertTo-DateTime -DateTime $release.created_at)
             Size    = $release.size
             URI     = $release.browser_download_url
