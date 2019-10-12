@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '19.10.9'
+ModuleVersion = '19.10.11'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -70,7 +70,7 @@ PowerShellVersion = '3.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
-               'Get-BISF', 'Get-CitrixAppLayeringFeed', 'Get-Java8',
+               'Get-BISF', 'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
@@ -78,11 +78,11 @@ FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReader
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
                'Get-ControlUpAgent', 'Get-FileZilla', 'Get-GoogleChrome', 
-               'Get-Greenshot', 'Get-LibreOffice', 'Get-MicrosoftPowerShellCore', 
-               'Get-MicrosoftSsms', 'Get-MicrosoftVisualStudioCode', 
-               'Get-MozillaFirefox', 'Get-NotepadPlusPlus', 'Get-OracleVirtualBox', 
-               'Get-PaintDotNet', 'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 
-               'Get-Zoom')
+               'Get-Greenshot', 'Get-Java8', 'Get-LibreOffice', 
+               'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
+               'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
+               'Get-NotepadPlusPlus', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
+               'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 'Get-Zoom')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
