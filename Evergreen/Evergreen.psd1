@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '19.10.11'
+ModuleVersion = '19.10.13'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -82,7 +82,7 @@ FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReader
                'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
                'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
                'Get-NotepadPlusPlus', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
-               'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 'Get-Zoom')
+               'Get-ShareX', 'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 'Get-Zoom')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
