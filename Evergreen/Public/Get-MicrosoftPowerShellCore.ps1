@@ -25,10 +25,14 @@ Function Get-MicrosoftPowerShellCore {
 
     # Get latest version and download latest PowerShell Core release via GitHub API
     # Query the PowerShell Core repository for releases, keeping the latest stable release
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.MicrosoftPowerShellCore.Uri `
-        -ContentType $script:resourceStrings.Applications.MicrosoftPowerShellCore.ContentType -Raw
-    $JsonReleases = $Content | ConvertFrom-Json
-    $LatestRelease = $JsonReleases | Where-Object { $_.prerelease -eq $False } | Select-Object -First 1
+    $iwcParams = @{
+        Uri         = $script:resourceStrings.Applications.MicrosoftPowerShellCore.Uri
+        ContentType = $script:resourceStrings.Applications.MicrosoftPowerShellCore.ContentType
+        Raw         = $True
+    }
+    $Content = Invoke-WebContent @iwcParams
+    $Json = $Content | ConvertFrom-Json
+    $latestRelease = ($Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
     # Build the output object with release details
     ForEach ($release in $latestRelease.assets) {
@@ -55,10 +59,10 @@ Function Get-MicrosoftPowerShellCore {
         }
 
         $PSObject = [PSCustomObject] @{
-            Version      = $LatestRelease.tag_name
+            Version      = $latestRelease.tag_name
             Platform     = $platform
             Architecture = $arch
-            Date         = ([DateTime]::Parse($release.created_at))
+            Date         = (ConvertTo-DateTime -DateTime $release.created_at)
             Size         = $release.size
             URI          = $release.browser_download_url
         }

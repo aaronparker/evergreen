@@ -73,6 +73,7 @@
     },
     "Greenshot" : {
       "Uri" : "https://api.github.com/repos/greenshot/greenshot/releases",
+      "ContentType" : "application/json; charset=utf-8",
       "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
     },
     "MozillaFirefox" : {
@@ -181,6 +182,10 @@
     },
     "MicrosoftSQLServerManagementStudio" : {
       "Uri" : "https://download.microsoft.com/download/1/9/8/1986c4a9-480b-4a46-8088-2778e0abcc8a/SSMS_PRODUCTRELEASESFEED.xml"
+    },
+    "BISF" : {
+      "Uri" : "https://api.github.com/repos/EUCweb/BIS-F/releases",
+      "ContentType" : "application/json; charset=utf-8"
     }
   },
   "Preferences" : {

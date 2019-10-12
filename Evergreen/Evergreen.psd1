@@ -21,7 +21,7 @@ ModuleVersion = '19.10.3'
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
 
 # Author of this module
-Author = 'Aaron Parker, Bronson Magnan, Trond Eric Haarvarstein'
+Author = 'Aaron Parker; Bronson Magnan; Trond Eric Haarvarstein'
 
 # Company or vendor of this module
 CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
@@ -70,7 +70,7 @@ PowerShellVersion = '3.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
-               'Get-CitrixAppLayeringFeed', 
+               'Get-CitrixAppLayeringFeed', 'Get-BISF',
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 

@@ -35,7 +35,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
     Context "Validate" {
         $commands = Get-Command -Module Evergreen
         ForEach ($command in $commands) {
-            New-Variable -Name "tempOutput" -Value (Invoke-Command -ScriptBlock { $command.Name } )
+            New-Variable -Name "tempOutput" -Value (. $command.Name)
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name tempOutput
             It "$($command.Name): Returns something" {

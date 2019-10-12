@@ -1,3 +1,5 @@
 # Change Log
 
-* Working toward release to PowerShell Gallery
+## 19.10.2
+
+* First verison pushed to the PowerShell Gallery
