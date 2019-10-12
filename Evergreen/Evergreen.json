@@ -186,6 +186,13 @@
     "BISF" : {
       "Uri" : "https://api.github.com/repos/EUCweb/BIS-F/releases",
       "ContentType" : "application/json; charset=utf-8"
+    },
+    "Java8" : {
+      "Uri" : "https://javadl-esd-secure.oracle.com/update/1.8.0/map-m-1.8.0.xml",
+      "FileStrings" : {
+        "x64" : "-x64",
+        "x86" : "-i586"
+      }
     }
   },
   "Preferences" : {

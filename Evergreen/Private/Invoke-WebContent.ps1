@@ -26,6 +26,7 @@ Function Invoke-WebContent {
 
         # Use TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Write-Verbose -Message "$($MyInvocation.MyCommand): reading: $Uri."
 
         try {
             If ($Raw.IsPresent) {
