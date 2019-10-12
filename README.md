@@ -1,6 +1,10 @@
 # About
 
 [![License][license-badge]][license]
+[![PowerShell Gallery Version][psgallery-version-badge]][psgallery]
+[![PowerShell Gallery][psgallery-badge]][psgallery]
+
+[![Master build status][appveyor-badge]][appveyor-build]
 
 Evergreen is a simple PowerShell module to get latest version and download URLs for various products. The module consists of a number of simple commands to use in scripts when performing several tasks including:
 
