@@ -1,5 +1,9 @@
 # Change Log
 
+## 19.10.19
+
+* Adds `Get-GitForWindows`, `Get-ShareX`
+
 ## 19.10.11
 
 * Adds `Get-Java8`
