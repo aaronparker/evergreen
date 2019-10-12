@@ -20,6 +20,7 @@ Function Get-GitforWindows {
             Returns the released Git version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param ()
 
