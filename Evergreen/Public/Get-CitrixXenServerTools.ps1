@@ -29,8 +29,8 @@ Function Get-CitrixXenServerTools {
         $PSObject = [PSCustomObject] @{
             Version      = $row.Version
             Architecture = $row.Architecture
-            URI          = $row.Uri
             Size         = $row.Size
+            URI          = $row.Uri
         }
         Write-Output -InputObject $PSObject
     }

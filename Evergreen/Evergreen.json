@@ -201,6 +201,13 @@
     "GitforWindows" : {
       "Uri" : "https://api.github.com/repos/git-for-windows/git/releases",
       "ContentType" : "application/json; charset=utf-8"
+    },
+    "FoxitReader" : {
+      "Uri" : "https://www.foxitsoftware.com/downloads/downloadForm.php?retJson=1&product=Foxit-Reader&platform=#Platform",
+      "Platforms" : [
+        "Windows"
+      ],
+      "DownloadUri" : "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language"
     }
   },
   "Preferences" : {

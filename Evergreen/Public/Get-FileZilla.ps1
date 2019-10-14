@@ -1,5 +1,4 @@
 Function Get-FileZilla {
-    
     <#
         .NOTES
             Author: Trond Eirik Haavarstein
