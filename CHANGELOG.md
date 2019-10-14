@@ -1,5 +1,9 @@
 # Change Log
 
+## 19.10.21
+
+* Adds `Get-FoxitReader`
+
 ## 19.10.20
 
 * Fixes output in `Get-GitForWindows`, `Get-MicrosoftSmss`
