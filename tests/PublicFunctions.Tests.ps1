@@ -51,7 +51,8 @@ Describe -Tag "AppVeyor" -Name "Test" {
             Push-Location -Path $Path
             It "$($command.Name): Function returns correct URI" {
                 ForEach ($object in $Output) {
-                    Invoke-WebRequest -URI $object.URI | Should -Not Throw
+                    $r = Invoke-WebRequest -Uri $object.URI -Method Head -UseBasicParsing
+                    $r.StatusCode | Should -Be 200
                 }
             }
             Pop-Location
