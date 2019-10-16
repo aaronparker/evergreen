@@ -1,5 +1,9 @@
 # Change Log
 
+## 19.10.25
+
+* Adds `Get-MicrosoftOffice`
+
 ## 19.10.24
 
 * Fixes URIs for updates in `Get-AdobeAcrobatReaderDC`
