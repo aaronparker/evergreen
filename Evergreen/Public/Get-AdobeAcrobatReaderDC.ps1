@@ -52,7 +52,7 @@ Function Get-AdobeAcrobatReaderDC {
                     Version  = $Version
                     Platform = $platform.platform_type
                     Type     = "Installer"
-                    Language = $ContentFromJson.language_type
+                    Language = $language
                     URI      = $downloadURI
                 }
                 Write-Output -InputObject $PSObject
@@ -80,7 +80,7 @@ Function Get-AdobeAcrobatReaderDC {
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Neutral"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC$($versionString).msp"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString).msp"
                     }
                     Write-Output -InputObject $PSObject
                     $PSObject = [PSCustomObject] @{
@@ -88,7 +88,7 @@ Function Get-AdobeAcrobatReaderDC {
                         Platform = "Windows"
                         Type     = "Updater"
                         Language = "Multi"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC$($versionString)_MUI.msp"
+                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.msp"
                     }
                     Write-Output -InputObject $PSObject
                 }

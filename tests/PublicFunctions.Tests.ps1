@@ -31,6 +31,10 @@ Import-Module $manifestPath -Force
 #. "$moduleParent\Private\ConvertTo-Hashtable.ps1"
 # $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
 
+# Create a downloads target folder
+$Path = Join-Path -Path "$env:Temp" -ChildPath "Downloads"
+New-Item -Path $Path -ItemType Directory -Force -ErrorAction SilentlyContinue
+
 Describe -Tag "AppVeyor" -Name "Test" {
     Context "Validate" {
         $commands = Get-Command -Module Evergreen
@@ -38,12 +42,19 @@ Describe -Tag "AppVeyor" -Name "Test" {
             New-Variable -Name "tempOutput" -Value (. $command.Name)
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name tempOutput
-            It "$($command.Name): Returns something" {
+            It "$($command.Name): Fuction returns something" {
                 ($Output | Measure-Object).Count | Should -BeGreaterThan 0
             }
-            It "$($command.Name): Returns the expected output" {
+            It "$($command.Name): Function returns the expected output type" {
                 $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
             }
+            Push-Location -Path $Path
+            It "$($command.Name): Function returns correct URI" {
+                ForEach ($object in $Output) {
+                    Invoke-WebRequest -URI $object.URI | Should -Not Throw
+                }
+            }
+            Pop-Location
         }
     }
 }
