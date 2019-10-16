@@ -1,5 +1,10 @@
 # Change Log
 
+## 19.10.24
+
+* Fixes URIs for updates in `Get-AdobeAcrobatReaderDC`
+* Adds additional Pester tests for Public functions to ensure generated URI values are valid
+
 ## 19.10.21
 
 * Adds `Get-FoxitReader`

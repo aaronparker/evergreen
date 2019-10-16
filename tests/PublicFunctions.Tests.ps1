@@ -73,7 +73,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                             }
                             catch {
                                 # If all else fails, let's pretend the URI is OK. Some URIs may require a login etc.
-                                Write-Host -ForegroundColor Yellow "`t$Requires manual testing: [($command.Name)]."
+                                Write-Host -ForegroundColor Yellow "`tFunction requires manual testing: [$($command.Name)]."
                                 $r = [PSCustomObject] @{
                                     StatusCode = 200
                                 }
@@ -86,7 +86,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                 }
             }
             Else {
-                Write-Host -ForegroundColor Cyan  "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor Yellow  "`t$($command.Name) does not have a URI property."
             }
         }
     }
