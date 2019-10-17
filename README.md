@@ -28,6 +28,10 @@ This module is maintained by the following community members
 * Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
 * Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
+## About Versioning
+
+The module uses a version notation that follows: YearMonth.Day.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it easy to understand when the last update was made.
+
 ## Installing the Module
 
 ## Install from the PowerShell Gallery

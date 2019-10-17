@@ -1,5 +1,10 @@
 # Change Log
 
+## 1910.18.26
+
+* Adds `Get-OpenJDK`
+* Changes version notation to: YearMonth.Day.Build
+
 ## 19.10.25
 
 * Adds `Get-MicrosoftOffice`
