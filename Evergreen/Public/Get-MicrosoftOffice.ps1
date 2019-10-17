@@ -35,7 +35,8 @@ Function Get-MicrosoftOffice {
 
         $PSObject = [PSCustomObject] @{
             Version = $Json.AvailableBuild
-            Date    = (ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $script:resourceStrings.Applications.MicrosoftOffice.DateTime)
+            #Date    = (ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $script:resourceStrings.Applications.MicrosoftOffice.DateTime)
+            Date    = $Json.TimestampUtc
             Channel = $channel.Name
             URI     = $script:resourceStrings.Applications.MicrosoftOffice.DownloadUri
         }
