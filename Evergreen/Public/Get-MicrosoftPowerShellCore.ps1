@@ -58,8 +58,12 @@ Function Get-MicrosoftPowerShellCore {
             Default { $platform = "Unknown" }
         }
 
+        # Match version number
+        $latestRelease.tag_name -match $script:resourceStrings.Applications.MicrosoftPowerShellCore.MatchVersion | Out-Null
+        $Version = $Matches[0]
+
         $PSObject = [PSCustomObject] @{
-            Version      = $latestRelease.tag_name
+            Version      = $Version
             Platform     = $platform
             Architecture = $arch
             Date         = (ConvertTo-DateTime -DateTime $release.created_at)
