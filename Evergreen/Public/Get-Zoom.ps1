@@ -21,7 +21,7 @@ Function Get-Zoom {
     Param()
 
     If (Test-PSCore) {
-        Write-Warning "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
+        Write-Warning -Message "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
     }
     Else {
         # Request the download URL to grab the header that includes the URL to the download
@@ -29,6 +29,7 @@ Function Get-Zoom {
         try {
             $iwrParams = @{
                 Uri                = $script:resourceStrings.Applications.Zoom.Uri
+                UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                 MaximumRedirection = 0
                 UseBasicParsing    = $True
                 ErrorAction        = "SilentlyContinue"
@@ -43,12 +44,12 @@ Function Get-Zoom {
             Throw $_.Exception.Message
         }
         finally {
-            $r.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion | Out-Null
+            $request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion | Out-Null
             $Version = $Matches[0]
             If ($request.StatusCode -ge 300 -and $request.StatusCode -lt 400) {
                 $PSObject = [PSCustomObject] @{
-                    Version  = $Version
-                    URI      = $r.Headers.Location
+                    Version = $Version
+                    URI     = $request.Headers.Location
                 }
                 Write-Output -InputObject $PSObject
             }
