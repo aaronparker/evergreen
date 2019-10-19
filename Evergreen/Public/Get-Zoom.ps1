@@ -1,29 +1,57 @@
 Function Get-Zoom {    
     <#
+        .SYNOPSIS
+            Get the current version and download URL for Zoom.
+
         .NOTES
             Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
+        
+        .LINK
+            https://github.com/aaronparker/Evergreen
+
+        .EXAMPLE
+            Get-Zoom
+
+            Description:
+            Returns the current version and download URL for Zoom.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 
-    $url = "https://zoom.us/download"
-    try {
-        $web = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
+    If (Test-PSCore) {
+        Write-Warning "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
     }
-    catch {
-        Throw "Failed to connect to URL: $url with error $_."
-        Break
-    }
-    finally {
-        $str1 = $web.ToString() -split "[`r`n]" | Select-String "Version" | Select-Object -First 1
-        $str2 = $str1 -replace "						</div>"
-        $Version = $str2 -replace "Version "
-
-        $PSObject = [PSCustomObject] @{
-            Version     = $Version
+    Else {
+        # Request the download URL to grab the header that includes the URL to the download
+        # Handling HTTP 302 on PowerShell Core fails
+        try {
+            $iwrParams = @{
+                Uri                = $script:resourceStrings.Applications.Zoom.Uri
+                MaximumRedirection = 0
+                UseBasicParsing    = $True
+                ErrorAction        = "SilentlyContinue"
+            }
+            $request = Invoke-WebRequest @iwrParams
         }
-        Write-Output -InputObject $PSObject
+        catch [System.Net.WebException] {
+            Write-Warning -Message ([string]::Format("Error : {0}", $_.Exception.Message))
+        }
+        catch [System.Exception] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
+            Throw $_.Exception.Message
+        }
+        finally {
+            $r.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion | Out-Null
+            $Version = $Matches[0]
+            If ($request.StatusCode -ge 300 -and $request.StatusCode -lt 400) {
+                $PSObject = [PSCustomObject] @{
+                    Version  = $Version
+                    URI      = $r.Headers.Location
+                }
+                Write-Output -InputObject $PSObject
+            }
+        }
     }
 }
