@@ -55,7 +55,3 @@ If ([Version]((Find-Module -Name posh-git).Version) -gt (Get-Module -Name posh-g
 Write-Host ""
 Write-Host "Importing module." -ForegroundColor Cyan
 Import-Module $manifestPath -Force
-
-# Output variables
-. (Join-Path -Path $tests -ChildPath "Variables.ps1") `
-    -Path (Join-Path -Path $tests -ChildPath "Variables.md")
