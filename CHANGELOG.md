@@ -1,5 +1,13 @@
 # Change Log
 
+## 1910.29
+
+* Adds `Get-mRemoteNG`
+* Update version format to `YearMonth.Build` (hopefully we won't change this again)
+* Automate versioning in the module to the new format
+* Automate update of `appveyor.yml` as `YearMonth` changes
+* Output variables in AppVeyor to `\tests\appveyor.md`
+
 ## 1910.18.26
 
 * Adds `Get-OpenJDK`
