@@ -65,7 +65,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                         }
                         catch {
                             # If Method Head fails, try downloading the URI
-                            Write-Host -ForegroundColor Cyan "`tException grabbing URI via header. Retrying full request."
+                            # Write-Host -ForegroundColor Cyan "`tException grabbing URI via header. Retrying full request."
                             $OutFile = Join-Path -Path $Path (Split-Path -Path $object.URI -Leaf)
                             try {
                                 $r = Invoke-WebRequest -Uri $object.URI -OutFile $OutFile -UseBasicParsing -PassThru `

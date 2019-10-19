@@ -1,6 +1,6 @@
 # Change Log
 
-## 1910.29
+## 1910.28
 
 * Adds `Get-mRemoteNG`
 * Update version format to `YearMonth.Build` (hopefully we won't change this again)
