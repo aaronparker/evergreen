@@ -24,34 +24,45 @@ Function Get-Zoom {
         Write-Warning -Message "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
     }
     Else {
-        # Request the download URL to grab the header that includes the URL to the download
-        # Handling HTTP 302 on PowerShell Core fails
-        try {
-            $iwrParams = @{
-                Uri                = $script:resourceStrings.Applications.Zoom.Uri
-                UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                MaximumRedirection = 0
-                UseBasicParsing    = $True
-                ErrorAction        = "SilentlyContinue"
-            }
-            $request = Invoke-WebRequest @iwrParams
-        }
-        catch [System.Net.WebException] {
-            Write-Warning -Message ([string]::Format("Error : {0}", $_.Exception.Message))
-        }
-        catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
-            Throw $_.Exception.Message
-        }
-        finally {
-            $request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion | Out-Null
-            $Version = $Matches[0]
-            If ($request.StatusCode -ge 300 -and $request.StatusCode -lt 400) {
-                $PSObject = [PSCustomObject] @{
-                    Version = $Version
-                    URI     = $request.Headers.Location
+        ForEach ($installer in $script:resourceStrings.Applications.Zoom.WindowsUris.GetEnumerator()) {
+
+            # Request the download URL to grab the header that includes the URL to the download
+            # Handling HTTP 302 on PowerShell Core fails
+            try {
+                $iwrParams = @{
+                    Uri                = $script:resourceStrings.Applications.Zoom.WindowsUris[$installer.Key]
+                    UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    MaximumRedirection = 0
+                    UseBasicParsing    = $True
+                    ErrorAction        = "SilentlyContinue"
                 }
-                Write-Output -InputObject $PSObject
+                $request = Invoke-WebRequest @iwrParams
+            }
+            catch [System.Net.WebException] {
+                Write-Warning -Message ([string]::Format("Error : {0}", $_.Exception.Message))
+            }
+            catch [System.Exception] {
+                Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
+                Throw $_.Exception.Message
+            }
+            finally {
+                # Match version number from the download URL
+                If ($request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion) {
+                    $Version = $Matches[0]
+                }
+                Else {
+                    $Version = "Unknown"
+                }
+
+                If ($request.StatusCode -ge 300 -and $request.StatusCode -lt 400) {
+                    $PSObject = [PSCustomObject] @{
+                        Version  = $Version
+                        Platform = "Windows"
+                        Type     = $installer.Name
+                        URI      = $request.Headers.Location
+                    }
+                    Write-Output -InputObject $PSObject
+                }
             }
         }
     }

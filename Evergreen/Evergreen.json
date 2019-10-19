@@ -234,7 +234,14 @@
       "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
     },
     "Zoom" : {
-      "Uri" : "https://zoom.us/client/latest/ZoomInstaller.exe",
+      "WindowsUris" : {
+        "EXE" : "https://zoom.us/client/latest/ZoomInstaller.exe",
+        "MSI" : "http://zoom.us/client/latest/ZoomInstallerFull.msi",
+        "Outlook" : "http://zoom.us/client/latest/ZoomOutlookPluginSetup.msi",
+        "Notes" : "https://zoom.us/client/latest/ZoomNotesPluginSetup.msi",
+        "Lync" : "http://zoom.us/client/latest/ZoomLyncPluginSetup.msi",
+        "Rooms" : "http://zoom.us/client/latest/ZoomRooms.exe"
+      },
       "MatchVersion" : "(\\d+(\\.\\d+){1,4})"
     }
   },
