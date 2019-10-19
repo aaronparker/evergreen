@@ -42,7 +42,8 @@ Else {
             $manifest = Test-ModuleManifest -Path $manifestPath
             [System.Version]$version = $manifest.Version
             Write-Output "Old Version: $version"
-            [String]$newVersion = New-Object -TypeName System.Version -ArgumentList ($version.Major, $version.Minor, $env:APPVEYOR_BUILD_NUMBER)
+            # [String]$newVersion = New-Object -TypeName System.Version -ArgumentList ($version.Major, $version.Minor, $env:APPVEYOR_BUILD_NUMBER)
+            [String]$newVersion = New-Object -TypeName System.Version -ArgumentList ((Get-Date -Format "yyMM"), $env:APPVEYOR_BUILD_NUMBER)
             Write-Output "New Version: $newVersion"
 
             # Update the manifest with the new version value and fix the weird string replace bug
@@ -52,6 +53,12 @@ Else {
             (Get-Content -Path $manifestPath) -replace 'NewManifest', $module | Set-Content -Path $manifestPath
             (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
             (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
+
+            # Update major version format appveyor.yml as month changes
+            $yml = Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath "appveyor.yml"
+            $replaceString = "version: .*\.\{build\}"
+            $versionString = "version: $(Get-Date -Format "yyMM").{build}"
+            (Get-Content -Path $yml) -replace $replaceString, $versionString | Set-Content -Path $yml
         }
         Catch {
             Throw $_
