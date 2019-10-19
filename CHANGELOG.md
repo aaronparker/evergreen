@@ -1,5 +1,10 @@
 # Change Log
 
+## 1910.39
+
+* Update `Get-Zoom` to the same HTTP post as `https://zoom.us/support/download` to return the download URI. Returns download for Windows and VDI environments
+* Build script changes
+
 ## 1910.28
 
 * Adds `Get-mRemoteNG`
