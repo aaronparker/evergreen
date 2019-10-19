@@ -103,7 +103,8 @@
     },
     "MicrosoftPowerShellCore" : {
       "Uri" : "https://api.github.com/repos/PowerShell/PowerShell/releases",
-      "ContentType" : "application/json; charset=utf-8"
+      "ContentType" : "application/json; charset=utf-8",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
     },
     "MicrosoftEdge" : {
       "Uri" : "https://api.cdp.dsp.mp.microsoft.com.nsatc.net"
@@ -224,6 +225,11 @@
     },
     "OpenJDK" : {
       "Uri" : "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
+      "ContentType" : "application/json; charset=utf-8",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
+    },
+    "mRemoteNG" : {
+      "Uri" : "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases",
       "ContentType" : "application/json; charset=utf-8",
       "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*"
     }
