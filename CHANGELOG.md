@@ -1,5 +1,9 @@
 # Change Log
 
+## 1910.47
+
+* Adds `Get-Atom` and `Get-TeamViewer`
+
 ## 1910.39
 
 * Update `Get-Zoom` to the same HTTP post as `https://zoom.us/support/download` to return the download URI. Returns download for Windows and VDI environments
