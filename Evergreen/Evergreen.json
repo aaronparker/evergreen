@@ -257,7 +257,7 @@
       "MatchVersion" : "(\\d+(\\.\\d+){1,4})"
     },
     "TeamViewer" : {
-      "Uri" : "https://download.teamviewer.com/download/update/TVversion14.txt",
+      "Uri" : "https://download.teamviewer.com/download/update/TVversion.txt",
       "DownloadUri" : "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
       "MatchVersion" : "(\\d+(\\.\\d+){1,4})"
     }

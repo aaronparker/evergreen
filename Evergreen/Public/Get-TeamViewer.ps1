@@ -25,8 +25,9 @@ Function Get-TeamViewer {
     $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.TeamViewer.Uri -Raw
 
     # Match version number from the download URL
-    # TODO: better handling of the version string returned, this will fail if the major version is updated
-    If ($Content -match $script:resourceStrings.Applications.TeamViewer.MatchVersion) {
+    # Content returned is a string - trim blank lines, split at line ends, sort and select first object to get version number
+    $Sort = $Content.Trim().Split("\n") | Sort-Object | Select-Object -First 1
+    If ($Sort -match $script:resourceStrings.Applications.TeamViewer.MatchVersion) {
         $Version = $Matches[0]
     }
     Else {
