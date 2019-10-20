@@ -256,6 +256,12 @@
       },
       "MatchVersion" : "(\\d+(\\.\\d+){1,4})"
     },
+    "Atom" : {
+      "Uri" : "https://api.github.com/repos/atom/atom/releases",
+      "ContentType" : "application/json; charset=utf-8",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*",
+      "MatchExtentions" : "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+    },
     "TeamViewer" : {
       "Uri" : "https://download.teamviewer.com/download/update/TVversion.txt",
       "DownloadUri" : "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
