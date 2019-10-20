@@ -255,7 +255,13 @@
         "Client" : "https://zoom.us/download/vdi/ZoomVmwareMediaPlugin.msi"
       },
       "MatchVersion" : "(\\d+(\\.\\d+){1,4})"
-    }
+    },
+    "Atom" : {
+      "Uri" : "https://api.github.com/repos/atom/atom/releases",
+      "ContentType" : "application/json; charset=utf-8",
+      "MatchVersion" : "(\\d+(\\.\\d+){1,4}).*",
+      "MatchExtentions" : "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+    }  
   },
   "Preferences" : {
     "ErrorAction" : "Stop"
