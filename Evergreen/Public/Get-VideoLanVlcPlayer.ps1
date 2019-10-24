@@ -26,10 +26,29 @@ Function Get-VideoLanVlcPlayer {
     $xml = [System.XML.XMLDocument] $Content
     $latest = $xml.rss.channel.item[$xml.rss.channel.item.Length - 1]
     $version = $latest.title.Trim("Version ")
+
+    # Follow the URL returned to get the actual download URI
+    If (Test-PSCore) {
+        $URI = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
+        Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
+    }
+    Else {
+        $iwrParams = @{
+            Uri                = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
+            UserAgent          = $script:resourceStrings.Applications.VideoLanVlcPlayer.UserAgent
+            MaximumRedirection = 0
+            UseBasicParsing    = $True
+            ErrorAction        = "SilentlyContinue"
+        }
+        $Response = Invoke-WebRequest @iwrParams
+        $URI = $Response.Links[0].href
+    }
+
+    # Construct the output; Return the custom object to the pipeline
     $PSObject = [PSCustomObject] @{
         Version  = $version
         Platform = "macOS"
-        URI      = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
+        URI      = $URI
     }
     Write-Output -InputObject $PSObject
     #endregion
@@ -38,11 +57,28 @@ Function Get-VideoLanVlcPlayer {
     ForEach ($platform in @("UriWin64", "UriWin32")) {
         $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.$platform -Raw
 
+        # Follow the URL returned to get the actual download URI
+        If (Test-PSCore) {
+            $URI = $Content[1]
+            Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
+        }
+        Else {
+            $iwrParams = @{
+                Uri                = $Content[1]
+                UserAgent          = $script:resourceStrings.Applications.VideoLanVlcPlayer.UserAgent
+                MaximumRedirection = 0
+                UseBasicParsing    = $True
+                ErrorAction        = "SilentlyContinue"
+            }
+            $Response = Invoke-WebRequest @iwrParams
+            $URI = $Response.Links[0].href
+        }
+
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version  = $Content[0]
             Platform = $platform.Replace("Uri", "")
-            URI      = $Content[1]
+            URI      = $URI
         }
         Write-Output -InputObject $PSObject
     }

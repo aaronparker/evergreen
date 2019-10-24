@@ -52,7 +52,9 @@
       "UriWin64" : "https://update.videolan.org/vlc/status-win-x64",
       "UriWin32" : "https://update.videolan.org/vlc/status-win-x86",
       "UriMac" : "http://update.videolan.org/vlc/sparkle/vlc-intel64.xml",
-      "ContentType" : "application/octet-stream"
+      "ContentType" : "application/octet-stream",
+      "UserAgent" : "VLC/3.0.7 LibVLC/3.0.7",
+      "DownloadUri" : "http://download.videolan.org/pub/videolan/vlc/last/"
     },
     "CitrixXenServerTools" : {
       "Uri" : "https://pvupdates.vmd.citrix.com/updates.latest.tsv"
