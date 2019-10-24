@@ -1,5 +1,9 @@
 # Change Log
 
+## 1910.49
+
+* Updates `Get-MicrosoftSsms` to URL (e.g. `https://go.microsoft.com/fwlink/?LinkId=761491`) to return actual URI
+
 ## 1910.48
 
 * Updates `Get-VideoLanVlcPlayer` to return download mirrors for URI values
