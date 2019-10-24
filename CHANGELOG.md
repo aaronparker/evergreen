@@ -1,5 +1,9 @@
 # Change Log
 
+## 1910.48
+
+* Updates `Get-VideoLanVlcPlayer` to return download mirrors for URI values
+
 ## 1910.47
 
 * Adds `Get-Atom` and `Get-TeamViewer`
