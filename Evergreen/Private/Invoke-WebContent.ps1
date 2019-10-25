@@ -18,6 +18,10 @@ Function Invoke-WebContent {
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Headers,
 
+        [Parameter(Position = 3)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = ([Microsoft.PowerShell.Commands.PSUserAgent]::Chrome),
+
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $Raw
     )
@@ -34,7 +38,7 @@ Function Invoke-WebContent {
                 $iwrParams = @{
                     Uri             = $Uri
                     OutFile         = $tempFile
-                    UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    UserAgent       = $UserAgent
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }
@@ -50,7 +54,7 @@ Function Invoke-WebContent {
             Else {
                 $iwrParams = @{
                     Uri             = $Uri
-                    UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    UserAgent       = $UserAgent
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }

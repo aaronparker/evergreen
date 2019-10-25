@@ -16,10 +16,18 @@ Function ConvertTo-DateTime {
 
     # Return formatted DateTime if we're running on PowerShell Core vs. Windows PowerShell
     # There's likely a better way to do this, but this is a start
-    If (Test-PSCore) {
-        Write-Output -InputObject ([DateTime]::ParseExact($DateTime, $Pattern, [CultureInfo]::InvariantCulture))
+    try {
+        If (Test-PSCore) {
+            $Output = [DateTime]::ParseExact($DateTime, $Pattern, [CultureInfo]::InvariantCulture)
+        }
+        Else {
+            $Output = [DateTime]::Parse($DateTime)
+        }
     }
-    Else {
-        Write-Output -InputObject ([DateTime]::Parse($DateTime))
+    catch {
+        $Output = $DateTime
     }
+    
+    # Write the output to the pipeline
+    Write-Output -InputObject $Output
 }
