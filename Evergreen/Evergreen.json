@@ -281,6 +281,12 @@
             "Uri": "https://download.teamviewer.com/download/update/TVversion.txt",
             "DownloadUri": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+        },
+        "WinMerge" : {
+            "Uri" : "https://sourceforge.net/projects/winmerge/best_release.json",
+            "MatchVersion": "(\\d+(\\.\\d+){1,3})",
+            "DatePattern" : "yyyy-MM-dd HH:mm:ss",
+            "DownloadUri" : "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
         }
     },
     "Preferences": {
