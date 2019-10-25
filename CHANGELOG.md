@@ -1,5 +1,9 @@
 # Change Log
 
+## 1910.50
+
+* Updates `Get-VideoLanVlcPlayer` output to include ZIP and MSI links for VLC Player for Windows
+
 ## 1910.49
 
 * Updates `Get-MicrosoftSsms` to URL (e.g. `https://go.microsoft.com/fwlink/?LinkId=761491`) to return actual URI
