@@ -51,8 +51,10 @@ Describe -Tag "AppVeyor" -Name "Test" {
             # Test that output with Verison property includes numbers and "." only
             If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$($object.Version)] is a valid version number" {
-                        $object.Version | Should -Match "^\d[_\-.0-9b]*$"
+                    If ($object.Version.Length -gt 0) {
+                        It "$($command.Name): [$($object.Version)] is a valid version number" {
+                            $object.Version | Should -Match "^\d[_\-.0-9b]*$"
+                        }
                     }
                 }
             }

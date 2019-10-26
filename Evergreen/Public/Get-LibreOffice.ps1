@@ -41,8 +41,8 @@ Function Get-LibreOffice {
         $Architectures = ($r.Links | `
                     Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchArchitectures }).href -replace "/", ""
     
-        ForEach ($architecture in $Architectures) {
-            $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/$architecture/"
+        ForEach ($arch in $Architectures) {
+            $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/$arch/"
             $Files = ($r.Links | `
                         Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchFiletypes }).href -replace "/", ""
     
@@ -63,9 +63,9 @@ Function Get-LibreOffice {
                 $PSObject = [PSCustomObject] @{
                     Version      = $Version
                     Platform     = $script:resourceStrings.Applications.LibreOffice.Platforms[$platform.Key]
-                    Architecture = $architecture
+                    Architecture = $arch
                     Language     = $Language
-                    URI          = $("$DownloadUri/$Version/$($platform.Name)/$architecture/$file")
+                    URI          = $("$DownloadUri/$Version/$($platform.Name)/$arch/$file")
                 }
                 Write-Output -InputObject $PSObject
             }
