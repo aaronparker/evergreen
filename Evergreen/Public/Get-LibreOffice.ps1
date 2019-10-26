@@ -1,10 +1,10 @@
 Function Get-LibreOffice {
     <#
         .SYNOPSIS
-            Gets the latest Libre Office version and release URI.
+            Gets the latest LibreOffice version and download URIs.
 
         .DESCRIPTION
-            Gets the latest Libre Office latest or Business release version and URI.
+            Gets the latest LibreOffice version and download URIs, including help packs / language packs for Windows and macOS.
 
         .NOTES
             Author: Bronson Magnan
@@ -13,59 +13,62 @@ Function Get-LibreOffice {
         .LINK
             https://github.com/aaronparker/Evergreen
 
-        .PARAMETER Release
-            Specify whether to return the Latest or Business release.
-
         .EXAMPLE
-            Get-LibreOfficeUri
+            Get-LibreOffice
 
             Description:
-            Returns the latest Libre Office for Windows download URI.
+            Returns the latest LibreOffice version and download URIs for the installers and language packs for Windows and macOS.
 
         .EXAMPLE
-            Get-LibreOfficeUri -Release Business
+            Get-LibreOffice | Where-Object { ($_.Language -eq "Neutral") -and ($_.Platform -eq "Windows") }
 
             Description:
-            Returns the latest business release Libre Office for Windows download URI.
+            Returns the latest LibreOffice for Windows version and installer download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param (
-        [ValidateSet("Latest", "Business")]
-        [string] $Release = "Latest"
-    )
+    Param ()
 
-    # Libre Office download URL
-    $url = "https://www.libreoffice.org/download/download/"
-
-    try {
-        $response = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
-    }
-    catch {
-        Throw "Failed to connect to Libre Office URL: $url with error $_."
-        Break
-    }
-    finally {
-        # Search for their big green logo version number '<span class="dl_version_number">*</span>'
-        $content = $response.Content
-        $spans = $content.Replace('<span', '#$%^<span').Replace('</span>', '</span>#$%^').Split('#$%^') | `
-                Where-Object { $_ -like '<span class="dl_version_number">*</span>' }
-        $verBlock = ($spans).Replace('<span class="dl_version_number">', '').Replace('</span>', '')
-
-        If ($Release -eq "Latest") {
-            $version = [version]::new($($verblock | Select-Object -First 1))
+    $DownloadUri = $script:resourceStrings.Applications.LibreOffice.Uri
+    $r = Invoke-WebRequest -Uri "$DownloadUri/"
+    $versions = ($r.Links | `
+                Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchVersion }).href -replace "/", ""
+    $Version = $versions | Sort-Object -Descending | Select-Object -First 1
+    
+    #$Platforms = @("win", "mac")
+    ForEach ($platform in $script:resourceStrings.Applications.LibreOffice.Platforms.GetEnumerator()) {
+        $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/"
+        $Architectures = ($r.Links | `
+                    Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchArchitectures }).href -replace "/", ""
+    
+        ForEach ($architecture in $Architectures) {
+            $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/$architecture/"
+            $Files = ($r.Links | `
+                        Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchFiletypes }).href -replace "/", ""
+    
+            ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
+    
+                # Match language string
+                Remove-Variable Language -ErrorAction SilentlyContinue
+                Remove-Variable match -ErrorAction SilentlyContinue
+                $match = $file | Select-String -Pattern $script:resourceStrings.Applications.LibreOffice.MatchLanguage
+                If ($Null -ne $match) {
+                    $Language = $match.Matches.Groups[1].Value
+                }
+                Else {
+                    $Language = $script:resourceStrings.Applications.LibreOffice.NoLanguage
+                }
+    
+                # Construct the output; Return the custom object to the pipeline
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Version
+                    Platform     = $script:resourceStrings.Applications.LibreOffice.Platforms[$platform.Key]
+                    Architecture = $architecture
+                    Language     = $Language
+                    URI          = $("$DownloadUri/$Version/$($platform.Name)/$architecture/$file")
+                }
+                Write-Output -InputObject $PSObject
+            }
         }
-        Else {
-            $version = [version]::new($($verblock | Select-Object -Last 1))
-        }
     }
-
-    # Write version and download the pipeline
-    $rootUrl = "https://download.documentfoundation.org/libreoffice/stable/"
-    $downloadURL = "$rootUrl$($version.ToString())/win/x86_64/LibreOffice_$($version.ToString())_Win_x64.msi"
-    $PSObject = [PSCustomObject] @{
-        Version = $version.ToString()
-        URI     = $downloadURL
-    }
-    Write-Output -InputObject $PSObject
 }

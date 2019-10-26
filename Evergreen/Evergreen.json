@@ -64,7 +64,7 @@
                     "MSI",
                     "ZIP"
                 ],
-                "macOS" : [
+                "macOS": [
                     "DMG"
                 ]
             }
@@ -282,11 +282,23 @@
             "DownloadUri": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})"
         },
-        "WinMerge" : {
-            "Uri" : "https://sourceforge.net/projects/winmerge/best_release.json",
+        "WinMerge": {
+            "Uri": "https://sourceforge.net/projects/winmerge/best_release.json",
             "MatchVersion": "(\\d+(\\.\\d+){1,3})",
-            "DatePattern" : "yyyy-MM-dd HH:mm:ss",
-            "DownloadUri" : "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
+            "DatePattern": "yyyy-MM-dd HH:mm:ss",
+            "DownloadUri": "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
+        },
+        "LibreOffice": {
+            "Uri": "https://download.documentfoundation.org/libreoffice/stable",
+            "MatchVersion": "(\\d+(\\.\\d+){1,3})",
+            "Platforms": {
+                "win": "Windows",
+                "mac": "macOS"
+            },
+            "MatchArchitectures": "x86|64",
+            "MatchFiletypes": "\\.msi$|\\.dmg$",
+            "MatchLanguage": "_([^_?!86|64]*)(\\.msi|\\.dmg)$",
+            "NoLanguage": "Neutral"
         }
     },
     "Preferences": {
