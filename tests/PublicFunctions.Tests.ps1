@@ -52,7 +52,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
             If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     It "$($command.Name): [$($object.Version)] is a valid version number" {
-                        $object.Version | Should -Match "^[.0-9]*$"
+                        $object.Version | Should -Match "^\d[_\-.0-9b]*$"
                     }
                 }
             }
