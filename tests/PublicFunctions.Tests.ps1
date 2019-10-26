@@ -18,25 +18,18 @@ Else {
 }
 $moduleParent = Join-Path -Path $projectRoot -ChildPath $module
 $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-# $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 
 # Import module
 Write-Host ""
 Write-Host "Importing module." -ForegroundColor Cyan
 Import-Module $manifestPath -Force
 
-# Read module resource strings for testing
-#. "$moduleParent\Private\Test-PSCore.ps1"
-#. "$moduleParent\Private\Get-ModuleResource.ps1"
-#. "$moduleParent\Private\ConvertTo-Hashtable.ps1"
-# $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
-
 # Create download path
 $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
 New-Item -Path $Path -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 Describe -Tag "AppVeyor" -Name "Test" {
-    Context "Validate" {
+    Context "Validate functions" {
         $commands = Get-Command -Module Evergreen
         ForEach ($command in $commands) {
             
@@ -53,6 +46,17 @@ Describe -Tag "AppVeyor" -Name "Test" {
             # Test that the function output matches OutputType in the function
             It "$($command.Name): Function returns the expected output type" {
                 $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
+            }
+
+            If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
+                ForEach ($object in $Output) {
+                    It "$($command.Name): [$($object.Version)] is a valid version number" {
+                        $object.Version | Should -Match "(\d+(\.\d+){1,4}).*"
+                    }
+                }
+            }
+            Else {
+                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
             }
 
             # Test that the functions that have a URI property return something we can download
@@ -86,7 +90,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow  "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a URI property."
             }
         }
     }
