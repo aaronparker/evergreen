@@ -37,8 +37,8 @@ Function Get-OracleVirtualBox {
 
     # Filter downloads with the version string and the file types we want
     $RegExVersion = $Version -replace ("\.", "\.")
-    $MatchFileTypes = $script:resourceStrings.Applications.OracleVirtualBox.MatchFileTypes -replace "Version", $RegExVersion
-    $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchFileTypes
+    $MatchExtensions = $script:resourceStrings.Applications.OracleVirtualBox.MatchExtensions -replace "Version", $RegExVersion
+    $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
 
     # Construct an array with the version number and each download
     ForEach ($link in $Links) {

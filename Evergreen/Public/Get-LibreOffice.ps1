@@ -44,7 +44,7 @@ Function Get-LibreOffice {
         ForEach ($arch in $Architectures) {
             $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/$arch/"
             $Files = ($r.Links | `
-                        Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchFiletypes }).href -replace "/", ""
+                        Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchExtensions }).href -replace "/", ""
     
             ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
     

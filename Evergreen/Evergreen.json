@@ -102,7 +102,7 @@
             "Uri": "https://download.virtualbox.org/virtualbox/LATEST.TXT",
             "DownloadUri": "http://download.virtualbox.org/virtualbox/",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "MatchFileTypes": ".*Version.*(exe|dmg|rpm|deb)",
+            "MatchExtensions": ".*Version.*(exe|dmg|rpm|deb)",
             "MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
         },
         "VMwareTools": {
@@ -241,7 +241,7 @@
         "OpenJDK": {
             "Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
             "ContentType": "application/json; charset=utf-8",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+            "MatchVersion": "[-](\\d+(\\.\\d+){1,4}.*$)"
         },
         "mRemoteNG": {
             "Uri": "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases",
@@ -275,7 +275,7 @@
             "Uri": "https://api.github.com/repos/atom/atom/releases",
             "ContentType": "application/json; charset=utf-8",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "MatchExtentions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+            "MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
         },
         "TeamViewer": {
             "Uri": "https://download.teamviewer.com/download/update/TVversion.txt",
@@ -296,7 +296,7 @@
                 "mac": "macOS"
             },
             "MatchArchitectures": "x86|64",
-            "MatchFiletypes": "\\.msi$|\\.dmg$",
+            "MatchExtensions": "\\.msi$|\\.dmg$",
             "MatchLanguage": "_([^_?!86|64]*)(\\.msi|\\.dmg)$",
             "NoLanguage": "Neutral"
         }
