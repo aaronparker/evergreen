@@ -51,34 +51,47 @@ Function Get-MicrosoftSsms {
 
         # Build an output object by selecting installer entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
-
             ForEach ($entry in $xmlDocument.feed.entry) {
 
-                # Follow the URL returned to get the actual download URI
-                If (Test-PSCore) {
-                    $URI = $entry.link.href
-                    Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
-                }
-                Else {
-                    $iwrParams = @{
-                        Uri                = $entry.link.href
-                        UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                        MaximumRedirection = 0
-                        UseBasicParsing    = $True
-                        ErrorAction        = "SilentlyContinue"
-                    }
-                    $Response = Invoke-WebRequest @iwrParams
-                    $URI = $Response.Headers.Location
-                }
+                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.MatchName })) {
 
-                # Construct the output; Return the custom object to the pipeline
-                $PSObject = [PSCustomObject] @{
-                    Version = $entry.Component.version
-                    Date    = ([DateTime]::Parse($entry.updated))
-                    Title   = $entry.Title
-                    URI     = $URI
+                    # Follow the URL returned to get the actual download URI
+                    If (Test-PSCore) {
+                        $URI = $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.DownloadUri
+                        Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
+                    }
+                    Else {
+                        # Follow the DownloadUri (aka.ms URL)
+                        $iwrParams = @{
+                            Uri                = $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.DownloadUri
+                            UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                            MaximumRedirection = 0
+                            UseBasicParsing    = $True
+                            ErrorAction        = "SilentlyContinue"
+                        }
+                        $Response = Invoke-WebRequest @iwrParams
+
+                        # Follow the response (fwlink URL)
+                        $iwrParams = @{
+                            Uri                = $Response.Headers.Location
+                            UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                            MaximumRedirection = 0
+                            UseBasicParsing    = $True
+                            ErrorAction        = "SilentlyContinue"
+                        }
+                        $Response = Invoke-WebRequest @iwrParams
+                        $URI = $Response.Headers.Location
+                    }
+
+                    # Construct the output; Return the custom object to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version = $entry.Component.version
+                        Date    = ([DateTime]::Parse($entry.updated))
+                        Title   = $entry.Title
+                        URI     = $URI
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
             }
         }
     }
