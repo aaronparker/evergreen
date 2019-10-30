@@ -1,5 +1,9 @@
 # Change Log
 
+## 1910.62
+
+* Updates `Get-MicrosoftSsms` to ensure that the URI property returns the correct SSMS download for the latest version
+
 ## 1910.53
 
 * Adds `Get-WinMerge`
