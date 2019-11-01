@@ -56,6 +56,7 @@ Function Get-NotepadPlusPlus {
         }
         Else {
             Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+            Write-Output -InputObject "Query Error"
         }
     }
 }
