@@ -1,4 +1,4 @@
-version: 1910.{build}
+version: 1911.{build}
 image: WMF 5
 environment:
   GitHubKey:
