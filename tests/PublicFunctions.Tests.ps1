@@ -53,7 +53,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
                         It "$($command.Name): [$($object.Version)] is a valid version number" {
-                            $object.Version | Should -Match "^\d[_\-.0-9b]*$"
+                            $object.Version | Should -Match "^\d[_\-.0-9binsiderUnknown]*$"
                         }
                     }
                 }

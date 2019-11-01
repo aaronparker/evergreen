@@ -241,7 +241,7 @@
         "OpenJDK": {
             "Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
             "ContentType": "application/json; charset=utf-8",
-            "MatchVersion": "[-](\\d+(\\.\\d+){1,4}.*$)"
+            "MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)"
         },
         "mRemoteNG": {
             "Uri": "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases",
