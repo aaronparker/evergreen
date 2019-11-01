@@ -1,5 +1,16 @@
 # Change Log
 
+## 1911.75
+
+* Updates `Get-LibreOffice` update query approach to provide a more consistent output
+* Updates `Get-LibreOffice` to work on PowerShell Core
+* Changes ``Get-LibreOffice` output and parameters to align with other functions
+* Updates `Get-NotepadPlusPlus` to gracefully handle update server issues (CloudFlare DDOS challenges)
+* Fixes version output in `Get-OpenJDK`
+* Updates `Get-mRemoteNG` with handling issues when getting Updates
+* Updates to Public function Pester tests
+* Updates `Evergreen.json` with consistent property naming and corresponding functions
+
 ## 1910.62
 
 * Updates `Get-MicrosoftSsms` to ensure that the URI property returns the correct SSMS download for the latest version
