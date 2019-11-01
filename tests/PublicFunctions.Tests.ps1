@@ -66,7 +66,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
             # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$($object.URI)] is valid" {
+                    It "$($command.Name): [$($object.URI)] is a valid URL" {
                         try {
                             # Test URI exists without downloading the file
                             $r = Invoke-WebRequest -Uri $object.URI -Method Head -UseBasicParsing -ErrorAction SilentlyContinue
@@ -81,7 +81,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                             }
                             catch {
                                 # If all else fails, let's pretend the URI is OK. Some URIs may require a login etc.
-                                Write-Host -ForegroundColor Yellow "`tFunction requires manual testing: [$($command.Name)]."
+                                Write-Host -ForegroundColor Yellow "`t$($command.Name) requires manual testing."
                                 $r = [PSCustomObject] @{
                                     StatusCode = 200
                                 }

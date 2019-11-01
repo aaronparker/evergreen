@@ -30,15 +30,18 @@ Function Get-NotepadPlusPlus {
     }
     $Content = Invoke-WebContent @iwcParams
 
+    $Failed = 0
     Try {
         [System.XML.XMLDocument] $xmlDocument = $Content
     }
     Catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert XML."
+        $Failed = 1
     }
     Finally {
         # Select each target XPath to return version and download details
-        If (($Null -ne $xmlDocument) -or ($xmlDocument -is [System.XML.XMLDocument])) {
+        #If (($Null -ne $xmlDocument) -or ($xmlDocument -is [System.XML.XMLDocument])) {
+        If ($Failed -ne 1) {
             $PSObject = [PSCustomObject] @{
                 Version      = $xmlDocument.GUP.Version
                 Architecture = "x86"
@@ -55,7 +58,7 @@ Function Get-NotepadPlusPlus {
             Write-Output -InputObject $PSObject
         }
         Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read XML. Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
             $PSObject = [PSCustomObject] @{
                 Error = "Check update URL"
             }
