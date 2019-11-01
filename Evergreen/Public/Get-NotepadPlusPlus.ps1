@@ -63,7 +63,6 @@ Function Get-NotepadPlusPlus {
         Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
         $PSObject = [PSCustomObject] @{
             Version      = "Unknown"
-            Architecture = "Unknown"
             URI          = "Unknown"
         }
         Write-Output -InputObject $PSObject

@@ -302,6 +302,6 @@
         }
     },
     "Preferences": {
-        "ErrorAction": "Stop"
+        "ErrorAction": "SilentlyContinue"
     }
 }

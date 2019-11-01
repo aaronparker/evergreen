@@ -69,11 +69,13 @@ Function Invoke-WebContent {
             }
         }
         catch [System.Net.WebException] {
-            Write-Warning -Message "Error in: $($MyInvocation.MyCommand)"
+            Write-Warning -Message "Error in: $($MyInvocation.MyCommand): $Uri."
             Write-Warning -Message ([string]::Format("Error : {0}", $_.Exception.Message))
+            #Break
         }
         catch [System.Exception] {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
+            #Break
         }
         finally {
             Write-Output -InputObject $Content
