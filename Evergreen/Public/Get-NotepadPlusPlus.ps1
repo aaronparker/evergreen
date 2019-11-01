@@ -34,16 +34,11 @@ Function Get-NotepadPlusPlus {
         [System.XML.XMLDocument] $xmlDocument = $Content
     }
     Catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read XML. Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
-        $PSObject = [PSCustomObject] @{
-            Error = "Check update URL"
-        }
-        Write-Output -InputObject $PSObject
-        Break
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert XML."
     }
     Finally {
         # Select each target XPath to return version and download details
-        If ($xmlDocument -is [System.XML.XMLDocument]) {
+        If (($Null -ne $xmlDocument) -or ($xmlDocument -is [System.XML.XMLDocument])) {
             $PSObject = [PSCustomObject] @{
                 Version      = $xmlDocument.GUP.Version
                 Architecture = "x86"
@@ -56,6 +51,13 @@ Function Get-NotepadPlusPlus {
                 Version      = $xmlDocument.GUP.Version
                 Architecture = "x64"
                 URI          = $($xmlDocument.GUP.Location -replace "Installer.exe", "Installer.x64.exe")
+            }
+            Write-Output -InputObject $PSObject
+        }
+        Else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read XML. Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+            $PSObject = [PSCustomObject] @{
+                Error = "Check update URL"
             }
             Write-Output -InputObject $PSObject
         }
