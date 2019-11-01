@@ -64,7 +64,7 @@
                     "MSI",
                     "ZIP"
                 ],
-                "macOS" : [
+                "macOS": [
                     "DMG"
                 ]
             }
@@ -102,7 +102,7 @@
             "Uri": "https://download.virtualbox.org/virtualbox/LATEST.TXT",
             "DownloadUri": "http://download.virtualbox.org/virtualbox/",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "MatchFileTypes": ".*Version.*(exe|dmg|rpm|deb)",
+            "MatchExtensions": ".*Version.*(exe|dmg|rpm|deb)",
             "MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
         },
         "VMwareTools": {
@@ -243,7 +243,7 @@
         "OpenJDK": {
             "Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
             "ContentType": "application/json; charset=utf-8",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+            "MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)"
         },
         "mRemoteNG": {
             "Uri": "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases",
@@ -277,21 +277,33 @@
             "Uri": "https://api.github.com/repos/atom/atom/releases",
             "ContentType": "application/json; charset=utf-8",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "MatchExtentions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+            "MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
         },
         "TeamViewer": {
             "Uri": "https://download.teamviewer.com/download/update/TVversion.txt",
             "DownloadUri": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})"
         },
-        "WinMerge" : {
-            "Uri" : "https://sourceforge.net/projects/winmerge/best_release.json",
+        "WinMerge": {
+            "Uri": "https://sourceforge.net/projects/winmerge/best_release.json",
             "MatchVersion": "(\\d+(\\.\\d+){1,3})",
-            "DatePattern" : "yyyy-MM-dd HH:mm:ss",
-            "DownloadUri" : "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
+            "DatePattern": "yyyy-MM-dd HH:mm:ss",
+            "DownloadUri": "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
+        },
+        "LibreOffice": {
+            "Uri": "https://download.documentfoundation.org/libreoffice/stable",
+            "MatchVersion": "(\\d+(\\.\\d+){1,3})",
+            "Platforms": {
+                "win": "Windows",
+                "mac": "macOS"
+            },
+            "MatchArchitectures": "x86|64",
+            "MatchExtensions": "\\.msi$|\\.dmg$",
+            "MatchLanguage": "_([^_?!86|64]*)(\\.msi|\\.dmg)$",
+            "NoLanguage": "Neutral"
         }
     },
     "Preferences": {
-        "ErrorAction": "Stop"
+        "ErrorAction": "SilentlyContinue"
     }
 }

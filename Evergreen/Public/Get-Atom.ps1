@@ -37,7 +37,7 @@ Function Get-Atom {
     # Build the output object with release details
     ForEach ($release in $latestRelease.assets) {
 
-        If ($release.browser_download_url -match $script:resourceStrings.Applications.Atom.MatchExtentions) {
+        If ($release.browser_download_url -match $script:resourceStrings.Applications.Atom.MatchExtensions) {
             Switch -Regex ($release.browser_download_url) {
                 "amd64" { $arch = "AMD64" }
                 "arm64" { $arch = "ARM64" }

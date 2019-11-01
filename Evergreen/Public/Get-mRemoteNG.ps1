@@ -29,20 +29,31 @@ Function Get-mRemoteNG {
         ContentType = $script:resourceStrings.Applications.mRemoteNG.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
-    # Match version number
-    $latestRelease.tag_name -match $script:resourceStrings.Applications.mRemoteNG.MatchVersion | Out-Null
-    $Version = $Matches[0]
+    # If something is returned
+    If ($Null -ne $Content) {
+        $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
-    # Build and array of the latest release and download URLs
-    $releases = $latestRelease.assets
-    ForEach ($release in $releases) {
+        # Match version number
+        $latestRelease.tag_name -match $script:resourceStrings.Applications.mRemoteNG.MatchVersion | Out-Null
+        $Version = $Matches[0]
+
+        # Build an array of the latest release and download URLs
+        $releases = $latestRelease.assets
+        ForEach ($release in $releases) {
+            $PSObject = [PSCustomObject] @{
+                Version = $Version
+                Date    = (ConvertTo-DateTime -DateTime $release.created_at)
+                Size    = $release.size
+                URI     = $release.browser_download_url
+            }
+            Write-Output -InputObject $PSObject
+        }
+    }
+    Else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.mRemoteNG.Uri)."
         $PSObject = [PSCustomObject] @{
-            Version = $Version
-            Date    = (ConvertTo-DateTime -DateTime $release.created_at)
-            Size    = $release.size
-            URI     = $release.browser_download_url
+            Error = "Check update URL"
         }
         Write-Output -InputObject $PSObject
     }

@@ -37,6 +37,7 @@ Function Get-OpenJDK {
     # Build the output object with release details
     ForEach ($release in $latestRelease.assets) {
 
+        # Match architecture and platform from the URL string
         If ($release.browser_download_url -match "\.zip$|\.msi$") {
             Switch -Regex ($release.browser_download_url) {
                 "amd64" { $arch = "AMD64" }
@@ -48,7 +49,6 @@ Function Get-OpenJDK {
                 "fxdependent" { $arch = "fxdependent" }
                 Default { $arch = "Unknown" }
             }
-
             Switch -Regex ($release.browser_download_url) {
                 "rhel" { $platform = "RHEL" }
                 "linux" { $platform = "Linux" }
@@ -61,8 +61,9 @@ Function Get-OpenJDK {
 
             # Match version number
             $latestRelease.tag_name -match $script:resourceStrings.Applications.OpenJDK.MatchVersion | Out-Null
-            $Version = $Matches[0]
+            $Version = $Matches[1]
 
+            # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Platform     = $platform

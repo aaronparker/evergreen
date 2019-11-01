@@ -18,30 +18,23 @@ Else {
 }
 $moduleParent = Join-Path -Path $projectRoot -ChildPath $module
 $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-# $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 
 # Import module
 Write-Host ""
 Write-Host "Importing module." -ForegroundColor Cyan
 Import-Module $manifestPath -Force
 
-# Read module resource strings for testing
-#. "$moduleParent\Private\Test-PSCore.ps1"
-#. "$moduleParent\Private\Get-ModuleResource.ps1"
-#. "$moduleParent\Private\ConvertTo-Hashtable.ps1"
-# $ResourceStrings = Get-ModuleResource -Path "$moduleParent\Evergreen.json"
-
 # Create download path
 $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
 New-Item -Path $Path -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 Describe -Tag "AppVeyor" -Name "Test" {
-    Context "Validate" {
+    Context "Validate functions" {
         $commands = Get-Command -Module Evergreen
         ForEach ($command in $commands) {
             
             # Run each command and capture output in a variable
-            New-Variable -Name "tempOutput" -Value (. $command.Name)
+            New-Variable -Name "tempOutput" -Value (. $command.Name )
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name tempOutput
             
@@ -55,10 +48,25 @@ Describe -Tag "AppVeyor" -Name "Test" {
                 $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
             }
 
+            # Test that output with Verison property includes numbers and "." only
+            If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
+                ForEach ($object in $Output) {
+                    If ($object.Version.Length -gt 0) {
+                        It "$($command.Name): [$($object.Version)] is a valid version number" {
+                            $object.Version | Should -Match "^\d[_\-.0-9b|insider]*$|Unknown"
+                        }
+                    }
+                }
+            }
+            Else {
+                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
+            }
+
             # Test that the functions that have a URI property return something we can download
+            # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$($object.URI)] is valid" {
+                    It "$($command.Name): [$($object.URI)] is a valid URL" {
                         try {
                             # Test URI exists without downloading the file
                             $r = Invoke-WebRequest -Uri $object.URI -Method Head -UseBasicParsing -ErrorAction SilentlyContinue
@@ -73,7 +81,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                             }
                             catch {
                                 # If all else fails, let's pretend the URI is OK. Some URIs may require a login etc.
-                                Write-Host -ForegroundColor Yellow "`tFunction requires manual testing: [$($command.Name)]."
+                                Write-Host -ForegroundColor Yellow "`t$($command.Name) requires manual testing."
                                 $r = [PSCustomObject] @{
                                     StatusCode = 200
                                 }
@@ -86,7 +94,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow  "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a URI property."
             }
         }
     }

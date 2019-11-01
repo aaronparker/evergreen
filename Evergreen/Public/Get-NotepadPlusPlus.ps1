@@ -27,36 +27,42 @@ Function Get-NotepadPlusPlus {
     # Read the Notepad++ version and download XML
     $iwcParams = @{
         Uri = $script:resourceStrings.Applications.NotepadPlusPlus.Uri
-        #ContentType = $script:resourceStrings.Applications.NotepadPlusPlus.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
 
+    $Failed = 0
     Try {
         [System.XML.XMLDocument] $xmlDocument = $Content
     }
-    Catch [System.IO.IOException] {
-        Write-Warning -Message "Failed to read XML."
-        Throw $_.Exception.Message
-    }
     Catch [System.Exception] {
-        Throw $_
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert XML."
+        $Failed = 1
     }
-    
-    # Select each target XPath to return version and download details
-    If ($xmlDocument -is [System.XML.XMLDocument]) {
-        $PSObject = [PSCustomObject] @{
-            Version      = $xmlDocument.GUP.Version
-            Architecture = "x86"
-            URI          = $xmlDocument.GUP.Location
-        }
-        Write-Output -InputObject $PSObject
+    Finally {
+        # Select each target XPath to return version and download details
+        #If (($Null -ne $xmlDocument) -or ($xmlDocument -is [System.XML.XMLDocument])) {
+        If ($Failed -ne 1) {
+            $PSObject = [PSCustomObject] @{
+                Version      = $xmlDocument.GUP.Version
+                Architecture = "x86"
+                URI          = $xmlDocument.GUP.Location
+            }
+            Write-Output -InputObject $PSObject
 
-        # Fix the -replace with RegEx later
-        $PSObject = [PSCustomObject] @{
-            Version      = $xmlDocument.GUP.Version
-            Architecture = "x64"
-            URI          = $($xmlDocument.GUP.Location -replace "Installer.exe", "Installer.x64.exe")
+            # Fix the -replace with RegEx later
+            $PSObject = [PSCustomObject] @{
+                Version      = $xmlDocument.GUP.Version
+                Architecture = "x64"
+                URI          = $($xmlDocument.GUP.Location -replace "Installer.exe", "Installer.x64.exe")
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
+        Else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+            $PSObject = [PSCustomObject] @{
+                Error = "Check update URL"
+            }
+            Write-Output -InputObject $PSObject
+        }
     }
 }
