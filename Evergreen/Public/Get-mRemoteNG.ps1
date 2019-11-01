@@ -51,6 +51,10 @@ Function Get-mRemoteNG {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.mRemoteNG.Uri)."
+        $PSObject = [PSCustomObject] @{
+            Error = "Check update URL"
+        }
+        Write-Output -InputObject $PSObject
     }
 }
