@@ -1,5 +1,13 @@
 # Change Log
 
+## 1911.84
+
+* Changes approach used in `Get-ControlUpAgent` to retrieve agent details and enables PowerShell Core support
+* Implemented per-application manifests (URLs, RegEx, strings etc.) for simpler function management
+* Adds `Export-EvergreenFunctionStrings` to export per-application manifests
+* Renames function `Get-Java8` to `Get-OracleJava8`
+* Adds Pester tests for Public functions to ensure URI properties are valid
+
 ## 1911.75
 
 * Updates `Get-LibreOffice` update query approach to provide a more consistent output
