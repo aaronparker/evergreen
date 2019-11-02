@@ -66,7 +66,10 @@ Describe -Tag "AppVeyor" -Name "Test" {
             # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$($object.URI)] is a valid URL" {
+                    It "$($command.Name): URI property is a valid URL" {
+                        $object.URI | Should -Match "(http(s)?:\/\/)?([\w-]+\.)+[\w-]+[.com]+(\/[\/?%&=]*)?"
+                    }
+                    It "$($command.Name): [$(Split-Path -Path $object.URI -Leaf)] is a valid download target" {
                         try {
                             # Test URI exists without downloading the file
                             $r = Invoke-WebRequest -Uri $object.URI -Method Head -UseBasicParsing -ErrorAction SilentlyContinue

@@ -5,29 +5,6 @@
 [OutputType()]
 Param()
 
-# Set variables
-If (Test-Path "env:APPVEYOR_BUILD_FOLDER") {
-    # AppVeyor Testing
-    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
-    $module = $env:Module
-}
-Else {
-    # Local Testing 
-    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-    $module = Split-Path -Path $projectRoot -Leaf
-}
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-
-# Import module
-Write-Host ""
-Write-Host "Importing module." -ForegroundColor Cyan
-Import-Module $manifestPath -Force
-
-# Create download path
-$Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
-New-Item -Path $Path -ItemType Directory -Force -ErrorAction SilentlyContinue
-
 Describe -Tag "AppVeyor" -Name "Test" {
     Context "Validate functions" {
         $commands = Get-Command -Module Evergreen
@@ -67,7 +44,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
                     It "$($command.Name): [$($object.URI)] is a valid URL" {
-                        [bool]($Output[0].PSobject.Properties.name -match "URI") | Should -Be $True
+                        $object.URI | Should -Match "(http(s)?:\/\/)?([\w-]+\.)+[\w-]+[.com]+(\/[\/?%&=]*)?"
                     }
                 }
             }
