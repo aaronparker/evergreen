@@ -1,0 +1,66 @@
+{
+	"Name": "Adobe Acrobat Reader DC",
+	"Get": {
+		"Uri": "https://get.adobe.com/reader/webservices/json/standalone/?platform_type=#Platform&platform_dist=#Dist&platform_arch=#Arch&language=#Language&eventname=readerotherversions",
+		"Languages": [
+			"English",
+			"English (UK)",
+			"Dutch",
+			"French",
+			"German",
+			"Japanese",
+			"Spanish"
+		],
+		"Platforms": [
+			{
+				"platform_type": "Windows",
+				"platform_dist": "Windows 10",
+				"platform_arch": ""
+			},
+			{
+				"platform_type": "Macintosh",
+				"platform_dist": "OSX",
+				"platform_arch": "x86-32"
+			}
+		],
+		"Headers": {
+			"Sec-Fetch-Site": "same-origin",
+			"Accept-Encoding": "gzip, deflate, br",
+			"Accept-Language": "en-US;q=0.9,en;q=0.8",
+			"DNT": "1",
+			"Sec-Fetch-Mode": "cors",
+			"X-Requested-With": "XMLHttpRequest",
+			"Referer": "https://get.adobe.com/reader/enterprise/",
+			"Accept": "*/*"
+		},
+		"UpdateUri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
+		"UpdateDownloadUri": "http://ardownload.adobe.com/pub/adobe/reader/#Platform/AcrobatDC/",
+		"UpdateContentType": "text/plain; charset=utf-8",
+		"UpdatePlatforms": [
+			"win",
+			"mac"
+		],
+		"UpdateLanguages": [
+			"en_US",
+			"de_DE",
+			"es_ES",
+			"fr_FR",
+			"ja_JP"
+		]
+	},
+	"Install": {
+		"Setup": "AcroRdrDC.*.exe",
+		"Physical": {
+			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled",
+				"Get-ScheduledTask \"Adobe Acrobat Update Task*\" | Unregister-ScheduledTask -Confirm:$False"
+			]
+		}
+	}
+}

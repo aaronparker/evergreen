@@ -85,7 +85,7 @@ FunctionsToExport = @('Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReader
                'Get-mRemoteNG', 'Get-NotepadPlusPlus', 'Get-OpenJDK', 
                'Get-OracleVirtualBox', 'Get-PaintDotNet', 'Get-ShareX', 
                'Get-TeamViewer', 'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 
-               'Get-WinMerge', 'Get-Zoom')
+               'Get-WinMerge', 'Get-Zoom', 'Export-EvergreenFunctionStrings')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
