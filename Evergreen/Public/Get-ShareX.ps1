@@ -21,12 +21,15 @@ Function Get-ShareX {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param ()
+    Param()
+
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
     # Query the ShareX repository for releases, keeping the latest release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.ShareX.Uri
-        ContentType = $script:resourceStrings.Applications.ShareX.ContentType
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
     $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1

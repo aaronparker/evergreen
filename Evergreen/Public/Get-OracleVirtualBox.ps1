@@ -18,53 +18,62 @@ Function Get-OracleVirtualBox {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param()    
+    Param()
+
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
     
     # Get latest VirtualBox version
-    $Version = Invoke-WebContent -Uri $script:resourceStrings.Applications.OracleVirtualBox.Uri
-    $Version -match $script:resourceStrings.Applications.OracleVirtualBox.MatchVersion | Out-Null
-    $Version = $Matches[0]
-    Write-Verbose "$($script:resourceStrings.Applications.OracleVirtualBox.DownloadUri)$Version/"
+    $Version = Invoke-WebContent -Uri $res.Get.Uri
+
+    If ($Null -ne $Version) {
+        $Version -match $res.Get.MatchVersion | Out-Null
+        $Version = $Matches[0]
+        Write-Verbose "$($res.Get.DownloadUri)$Version/"
     
-    # Get the content from the latest downloads folder
-    $iwrParams = @{
-        Uri             = "$($script:resourceStrings.Applications.OracleVirtualBox.DownloadUri)$Version/"
-        UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-        UseBasicParsing = $True
-        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
-    }
-    $Downloads = Invoke-WebRequest @iwrParams
-
-    # Filter downloads with the version string and the file types we want
-    $RegExVersion = $Version -replace ("\.", "\.")
-    $MatchExtensions = $script:resourceStrings.Applications.OracleVirtualBox.MatchExtensions -replace "Version", $RegExVersion
-    $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
-
-    # Construct an array with the version number and each download
-    ForEach ($link in $Links) {
-        $link -match $script:resourceStrings.Applications.OracleVirtualBox.MatchDownloadFile | Out-Null
-        $PSObject = [PSCustomObject] @{
-            Version  = $Version
-            Platform = "Platform"
-            URI      = "$($script:resourceStrings.Applications.OracleVirtualBox.DownloadUri)$Version/$($Matches[1])"
+        # Get the content from the latest downloads folder
+        $iwrParams = @{
+            Uri             = "$($res.Get.DownloadUri)$Version/"
+            UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+            UseBasicParsing = $True
+            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
         }
-        Switch ($PSObject.URI.Substring($PSObject.URI.Length - 3)) {
-            "exe" {
-                $PSObject.Platform = "Windows"
-            }
-            "dmg" {
-                $PSObject.Platform = "macOS"
-            }
-            "deb" {
-                $PSObject.Platform = "Debian"
-            }
-            "rpm" {
-                $PSObject.Platform = "RedHat"
-            }
-            Default {
-                $PSObject.Platform = "Unknown"
+        $Downloads = Invoke-WebRequest @iwrParams
+
+        If ($Null -ne $Downloads) {
+            # Filter downloads with the version string and the file types we want
+            $RegExVersion = $Version -replace ("\.", "\.")
+            $MatchExtensions = $res.Get.MatchExtensions -replace "Version", $RegExVersion
+            $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
+
+            # Construct an array with the version number and each download
+            ForEach ($link in $Links) {
+                $link -match $res.Get.MatchDownloadFile | Out-Null
+                $PSObject = [PSCustomObject] @{
+                    Version  = $Version
+                    Platform = "Platform"
+                    URI      = "$($res.Get.DownloadUri)$Version/$($Matches[1])"
+                }
+                Switch ($PSObject.URI.Substring($PSObject.URI.Length - 3)) {
+                    "exe" {
+                        $PSObject.Platform = "Windows"
+                    }
+                    "dmg" {
+                        $PSObject.Platform = "macOS"
+                    }
+                    "deb" {
+                        $PSObject.Platform = "Debian"
+                    }
+                    "rpm" {
+                        $PSObject.Platform = "RedHat"
+                    }
+                    Default {
+                        $PSObject.Platform = "Unknown"
+                    }
+                }
+                Write-Output -InputObject $PSObject
             }
         }
-        Write-Output -InputObject $PSObject
     }
 }

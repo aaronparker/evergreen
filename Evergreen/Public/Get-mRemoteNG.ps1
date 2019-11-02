@@ -21,12 +21,12 @@ Function Get-mRemoteNG {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param ()
+    Param()
 
     # Query the mRemoteNG repository for releases, keeping the latest release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.mRemoteNG.Uri
-        ContentType = $script:resourceStrings.Applications.mRemoteNG.ContentType
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
 
@@ -35,7 +35,7 @@ Function Get-mRemoteNG {
         $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
         # Match version number
-        $latestRelease.tag_name -match $script:resourceStrings.Applications.mRemoteNG.MatchVersion | Out-Null
+        $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null
         $Version = $Matches[0]
 
         # Build an array of the latest release and download URLs
@@ -51,7 +51,7 @@ Function Get-mRemoteNG {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($script:resourceStrings.Applications.mRemoteNG.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Check update URL: $($res.Get.Uri)."
         $PSObject = [PSCustomObject] @{
             Error = "Check update URL"
         }

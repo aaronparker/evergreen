@@ -22,7 +22,7 @@ Function Get-NotepadPlusPlus {
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
-    Param ()
+    Param()
 
     # Read the Notepad++ version and download XML
     $iwcParams = @{

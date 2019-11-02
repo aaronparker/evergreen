@@ -21,8 +21,12 @@ Function Get-VideoLanVlcPlayer {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     #region Get current version for macOS
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.Uri.macOS
+    $Content = Invoke-WebContent -Uri $res.Get.Uri.macOS
     If ($Null -ne $Content) {
         try {
             $xml = [System.XML.XMLDocument] $Content
@@ -41,7 +45,7 @@ Function Get-VideoLanVlcPlayer {
         Else {
             $iwrParams = @{
                 Uri                = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
-                UserAgent          = $script:resourceStrings.Applications.VideoLanVlcPlayer.UserAgent
+                UserAgent          = $res.Get.UserAgent
                 MaximumRedirection = 0
                 UseBasicParsing    = $True
                 ErrorAction        = "SilentlyContinue"
@@ -51,7 +55,7 @@ Function Get-VideoLanVlcPlayer {
         }
 
         # Construct the output; Return the custom object to the pipeline
-        ForEach ($extension in $script:resourceStrings.Applications.VideoLanVlcPlayer.Extensions.macOS) {
+        ForEach ($extension in $res.Get.Extensions.macOS) {
             $PSObject = [PSCustomObject] @{
                 Version      = $version
                 Platform     = "macOS"
@@ -65,8 +69,8 @@ Function Get-VideoLanVlcPlayer {
     #endregion
 
     #region Get current version for Windows
-    ForEach ($platform in $script:resourceStrings.Applications.VideoLanVlcPlayer.Uri.Windows.GetEnumerator()) {
-        $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.VideoLanVlcPlayer.Uri.Windows[$platform.Key] -Raw
+    ForEach ($platform in $res.Get.Uri.Windows.GetEnumerator()) {
+        $Content = Invoke-WebContent -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
 
         # Follow the URL returned to get the actual download URI
         If ($Null -ne $Content) {
@@ -77,7 +81,7 @@ Function Get-VideoLanVlcPlayer {
             Else {
                 $iwrParams = @{
                     Uri                = $Content[1]
-                    UserAgent          = $script:resourceStrings.Applications.VideoLanVlcPlayer.UserAgent
+                    UserAgent          = $res.Get.UserAgent
                     MaximumRedirection = 0
                     UseBasicParsing    = $True
                     ErrorAction        = "SilentlyContinue"
@@ -87,7 +91,7 @@ Function Get-VideoLanVlcPlayer {
             }
 
             # Construct the output; Return the custom object to the pipeline
-            ForEach ($extension in $script:resourceStrings.Applications.VideoLanVlcPlayer.Extensions.Windows) {
+            ForEach ($extension in $res.Get.Extensions.Windows) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $Content[0]
                     Platform     = "Windows"

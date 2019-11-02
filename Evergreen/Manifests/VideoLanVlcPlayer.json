@@ -1,0 +1,39 @@
+{
+	"Name": "VideoLan VLC Player ",
+	"Source": "https://www.videolan.org/vlc/",
+	"Get": {
+		"Uri": {
+			"Windows": {
+				"x64": "https://update.videolan.org/vlc/status-win-x64",
+				"x86": "https://update.videolan.org/vlc/status-win-x86"
+			},
+			"macOS": "http://update.videolan.org/vlc/sparkle/vlc-intel64.xml"
+		},
+		"ContentType": "application/octet-stream",
+		"UserAgent": "VLC/3.0.7 LibVLC/3.0.7",
+		"Extensions": {
+			"Windows": [
+				"EXE",
+				"MSI",
+				"ZIP"
+			],
+			"macOS": [
+				"DMG"
+			]
+		}
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

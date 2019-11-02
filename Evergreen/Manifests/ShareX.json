@@ -1,0 +1,22 @@
+{
+	"Name": "ShareX",
+	"Source": "https://getsharex.com/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/ShareX/ShareX/releases",
+		"ContentType": "application/json; charset=utf-8"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

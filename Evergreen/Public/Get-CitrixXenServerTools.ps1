@@ -22,8 +22,12 @@ Function Get-CitrixXenServerTools {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     #region Get XenServer tool details
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.CitrixXenServerTools.Uri -Raw
+    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
     $Table = $Content | ConvertFrom-Csv -Delimiter "`t" -Header "Uri", "Version", "Size", "Architecture", "Index"
     ForEach ($row in $Table) {
         $PSObject = [PSCustomObject] @{

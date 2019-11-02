@@ -1,0 +1,25 @@
+{
+	"Name": "Oracle Java 8",
+	"Source": "http://www.java.com",
+	"Get": {
+		"Uri": "https://javadl-esd-secure.oracle.com/update/1.8.0/map-m-1.8.0.xml",
+		"FileStrings": {
+			"x64": "-x64.exe",
+			"x86": "-i586.exe"
+		}
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

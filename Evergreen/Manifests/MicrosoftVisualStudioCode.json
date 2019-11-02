@@ -1,0 +1,21 @@
+{
+	"Name": "Microsoft Visual Studio Code",
+	"Source": "https://code.visualstudio.com",
+	"Get": {
+		"Uri": "https://update.code.visualstudio.com/api/update"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

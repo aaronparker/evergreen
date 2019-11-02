@@ -40,12 +40,12 @@ Function Get-CitrixRssFeed {
         # Build an output object by selecting Citrix XML entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($item in (Select-Xml -Xml $xmlDocument -XPath "//item")) {
-                If ((($item.Node.Title -replace $script:resourceStrings.Applications.CitrixFeeds.TitleReplace, "") `
+                If ((($item.Node.Title -replace $res.Get.TitleReplace, "") `
                             -match $Include) -and $item.Node.Title -notmatch $Exclude) {
                     $PSObject = [PSCustomObject] @{
-                        Version     = $item.Node.title -replace $script:resourceStrings.Applications.CitrixFeeds.RegExNumbers
-                        Title       = $(($item.Node.title -replace $script:resourceStrings.Applications.CitrixFeeds.TitleReplace, "") `
-                                -replace $script:resourceStrings.Applications.CitrixFeeds.RegExVersion)
+                        Version     = $item.Node.title -replace $res.Get.RegExNumbers
+                        Title       = $(($item.Node.title -replace $res.Get.TitleReplace, "") `
+                                -replace $res.Get.RegExVersion)
                         Description = $item.Node.description
                         Date        = [DateTime]::Parse($item.Node.pubDate)
                         URI         = $item.Node.link

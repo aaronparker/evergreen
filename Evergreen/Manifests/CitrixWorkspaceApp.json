@@ -1,0 +1,27 @@
+{
+	"Name": "Citrix Workspace app",
+	"Source": "https://www.citrix.com/downloads/workspace-app/",
+	"Get": {
+		"Uri": {
+			"Windows": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml",
+			"MacOS": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_macos.xml"
+		},
+		"UserAgent": "CitrixReceiver/19.7.0.15 WinOS/10.0.18362",
+		"DownloadUri": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled",
+				"Get-ScheduledTask \"Adobe Acrobat Update Task*\" | Unregister-ScheduledTask -Confirm:$False"
+			]
+		}
+	}
+}

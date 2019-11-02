@@ -1,0 +1,23 @@
+{
+	"Name": "Paint.NET",
+	"Source": "https://getpaint.net",
+	"Get": {
+		"Uri": "https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt",
+		"MatchVersion": "StableVersions=(\\d+(\\.\\d+)+\\s)",
+		"MatchDownload": "#Version_FullZipUrlList=(.*)"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

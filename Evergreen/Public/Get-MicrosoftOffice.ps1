@@ -23,22 +23,29 @@ Function Get-MicrosoftOffice {
     [CmdletBinding()]
     Param()
 
-    # Get latest version Microsoft Office versions from the Office API
-    ForEach ($channel in $script:resourceStrings.Applications.MicrosoftOffice.Channels.GetEnumerator()) {
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
+    # For each Office channel
+    ForEach ($channel in $res.Get.Channels.GetEnumerator()) {
+
+        # Get latest version Microsoft Office versions from the Office API
         $iwcParams = @{
-            Uri         = "$($script:resourceStrings.Applications.MicrosoftOffice.Uri)$($script:resourceStrings.Applications.MicrosoftOffice.Channels[$channel.Key])"
-            ContentType = $script:resourceStrings.Applications.MicrosoftOffice.ContentType
+            Uri         = "$($res.Get.Uri)$($res.Get.Channels[$channel.Key])"
+            ContentType = $res.Get.ContentType
         }
         $Content = Invoke-WebContent @iwcParams
         $Json = $Content | ConvertFrom-Json
 
+        # Build and array of the latest release and download URLs
+        # TODO: fix DateTime conversion
         $PSObject = [PSCustomObject] @{
             Version = $Json.AvailableBuild
-            #Date    = (ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $script:resourceStrings.Applications.MicrosoftOffice.DateTime)
+            #Date    = (ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $res.Get.DateTime)
             Date    = $Json.TimestampUtc
             Channel = $channel.Name
-            URI     = $script:resourceStrings.Applications.MicrosoftOffice.DownloadUri
+            URI     = $res.Get.DownloadUri
         }
         Write-Output -InputObject $PSObject
     }

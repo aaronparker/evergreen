@@ -21,24 +21,30 @@ Function Get-TeamViewer {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     #region Get current version for Windows
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.TeamViewer.Uri -Raw
+    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
 
-    # Match version number from the download URL
-    # Content returned is a string - trim blank lines, split at line ends, sort and select first object to get version number
-    $Sort = $Content.Trim().Split("\n") | Sort-Object | Select-Object -First 1
-    If ($Sort -match $script:resourceStrings.Applications.TeamViewer.MatchVersion) {
-        $Version = $Matches[0]
-    }
-    Else {
-        $Version = "Unknown"
-    }
+    If ($Null -ne $Content) {
+        # Match version number from the download URL
+        # Content returned is a string - trim blank lines, split at line ends, sort and select first object to get version number
+        $Sort = $Content.Trim().Split("\n") | Sort-Object | Select-Object -First 1
+        If ($Sort -match $res.Get.MatchVersion) {
+            $Version = $Matches[0]
+        }
+        Else {
+            $Version = "Unknown"
+        }
 
-    # Construct the output; Return the custom object to the pipeline
-    $PSObject = [PSCustomObject] @{
-        Version = $Version
-        URI     = $script:resourceStrings.Applications.TeamViewer.DownloadUri
+        # Construct the output; Return the custom object to the pipeline
+        $PSObject = [PSCustomObject] @{
+            Version = $Version
+            URI     = $res.Get.DownloadUri
+        }
+        Write-Output -InputObject $PSObject
+        #endregion
     }
-    Write-Output -InputObject $PSObject
-    #endregion
 }

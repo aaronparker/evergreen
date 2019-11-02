@@ -20,11 +20,15 @@ Function Get-CitrixEndpointManagementFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.EndpointManagement.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.EndpointManagement.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.EndpointManagement.Exclude
+        Uri     = $res.Get.EndpointManagement.Uri
+        Include = $res.Get.EndpointManagement.Include
+        Exclude = $res.Get.EndpointManagement.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

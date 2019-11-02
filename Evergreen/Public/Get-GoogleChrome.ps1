@@ -36,21 +36,25 @@ Function Get-GoogleChrome {
         [System.String[]] $Platform = @('win', 'win64', 'mac')
     )
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.GoogleChrome.Uri
+    $Content = Invoke-WebContent -Uri $res.Get.Uri
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Content) {
         $Json = $Content | ConvertFrom-Json
         $releases = New-Object -TypeName System.Collections.ArrayList
         ForEach ($os in $Json) {
-            $stable = $os.versions | Where-Object { $script:resourceStrings.Applications.GoogleChrome.Channels -contains $_.channel }
+            $stable = $os.versions | Where-Object { $res.Get.Channels -contains $_.channel }
             ForEach ($version in $stable) {
                 $PSObject = [PSCustomObject] @{
                     Version  = $version.current_version
                     Platform = $version.os
                     Date     = ([DateTime]::ParseExact($version.current_reldate.Trim(), 'MM/dd/yy', [CultureInfo]::InvariantCulture))
-                    URI      = "$($script:resourceStrings.Applications.GoogleChrome.DownloadUri)$($script:resourceStrings.Applications.GoogleChrome.Downloads.$($version.os))"
+                    URI      = "$($res.Get.DownloadUri)$($res.Get.Downloads.$($version.os))"
                 }
                 $releases.Add($PSObject) | Out-Null
             }
@@ -61,6 +65,6 @@ Function Get-GoogleChrome {
         Write-Output -InputObject $filteredReleases
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($script:resourceStrings.Applications.GoogleChrome.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Uri)."
     }
 }

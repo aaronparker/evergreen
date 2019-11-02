@@ -21,11 +21,15 @@ Function Get-CitrixReceiverFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.Receiver.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.Receiver.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.Receiver.Exclude
+        Uri     = $res.Get.Receiver.Uri
+        Include = $res.Get.Receiver.Include
+        Exclude = $res.Get.Receiver.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

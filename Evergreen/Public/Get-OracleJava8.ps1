@@ -1,4 +1,4 @@
-﻿Function Get-Java8 {
+﻿Function Get-OracleJava8 {
     <#
         .SYNOPSIS
             Gets the current available Oracle Java release versions.
@@ -8,17 +8,22 @@
             Twitter: @stealthpuppy
         
         .EXAMPLE
-            Get-Java8
+            Get-OracleJava8
 
             Description:
             Returns the available Java8 versions for Windows.
     #>
+    [Alias("Get-Java8")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Read the update RSS feed
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.Java8.Uri
+    $Content = Invoke-WebContent -Uri $res.Get.Uri
 
     # Convert to XML document
     If ($Null -ne $Content) {
@@ -61,7 +66,7 @@
                     $PSObject = [PSCustomObject] @{
                         Version      = (($Update.version | Sort-Object -Descending) | Select-Object -First 1)
                         Architecture = $arch
-                        URI          = $Update.url -replace "-au.exe", $script:resourceStrings.Applications.Java8.FileStrings[$arch]
+                        URI          = $Update.url -replace "-au.exe", $res.Get.FileStrings[$arch]
                     }
                     Write-Output -InputObject $PSObject
                 }

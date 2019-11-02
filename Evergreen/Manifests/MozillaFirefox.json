@@ -1,0 +1,22 @@
+{
+	"Name": "Mozilla Firefox",
+	"Source": "https://www.mozilla.org/",
+	"Get": {
+		"Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+		"DownloadUri": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

@@ -24,7 +24,8 @@ Function Get-AdobeAcrobatReaderDC {
     Param()
 
     # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName "AdobeAcrobatReader"
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
     #region Installer downloads
     ForEach ($platform in $res.Get.Platforms) {

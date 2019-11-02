@@ -1,0 +1,25 @@
+{
+	"Name": "Oracle VirtualBox",
+	"Source": "https://www.virtualbox.org/",
+	"Get": {
+		"Uri": "https://download.virtualbox.org/virtualbox/LATEST.TXT",
+		"DownloadUri": "http://download.virtualbox.org/virtualbox/",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchExtensions": ".*Version.*(exe|dmg|rpm|deb)",
+		"MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

@@ -22,12 +22,16 @@ Function Get-GitForWindows {
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
-    Param ()
+    Param()
+
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
     # Query the Git repository for releases, keeping the latest release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.GitforWindows.Uri
-        ContentType = $script:resourceStrings.Applications.GitforWindows.ContentType
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
     $Json = $Content | ConvertFrom-Json

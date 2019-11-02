@@ -6,9 +6,9 @@ Function Get-FunctionResource {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
-        [System.String] $AppName
+        [System.String] $AppName = "Template"
     )
     
     # Setup path to the manifests folder and the app manifest

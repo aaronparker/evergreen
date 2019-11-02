@@ -20,11 +20,15 @@ Function Get-CitrixAppLayeringFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.AppLayering.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.AppLayering.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.AppLayering.Exclude
+        Uri     = $res.Get.AppLayering.Uri
+        Include = $res.Get.AppLayering.Include
+        Exclude = $res.Get.AppLayering.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

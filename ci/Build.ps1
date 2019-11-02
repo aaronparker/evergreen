@@ -3,7 +3,7 @@
         AppVeyor build script.
 #>
 [OutputType()]
-Param ()
+Param()
 
 If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
     # Do something

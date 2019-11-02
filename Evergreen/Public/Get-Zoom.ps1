@@ -20,18 +20,22 @@ Function Get-Zoom {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     If (Test-PSCore) {
         Write-Warning -Message "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
     }
     Else {
         #region Zoom for Windows clients and plug-ins
-        ForEach ($installer in $script:resourceStrings.Applications.Zoom.WindowsUris.GetEnumerator()) {
+        ForEach ($installer in $res.Get.WindowsUris.GetEnumerator()) {
 
             # Request the download URL to grab the header that includes the URL to the download
             # Handling HTTP 302 on PowerShell Core fails
             try {
                 $iwrParams = @{
-                    Uri                = $script:resourceStrings.Applications.Zoom.WindowsUris[$installer.Key]
+                    Uri                = $res.Get.WindowsUris[$installer.Key]
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     MaximumRedirection = 0
                     UseBasicParsing    = $True
@@ -48,7 +52,7 @@ Function Get-Zoom {
             }
             finally {
                 # Match version number from the download URL
-                If ($request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion) {
+                If ($request.Headers.Location -match $res.Get.MatchVersion) {
                     $Version = $Matches[0]
                 }
                 Else {
@@ -69,13 +73,13 @@ Function Get-Zoom {
         #endregion
 
         #region Zoom for Virtual Desktops (Citrix)
-        ForEach ($installer in $script:resourceStrings.Applications.Zoom.CitrixVDIUris.GetEnumerator()) {
+        ForEach ($installer in $res.Get.CitrixVDIUris.GetEnumerator()) {
 
             # Request the download URL to grab the header that includes the URL to the download
             # Handling HTTP 302 on PowerShell Core fails
             try {
                 $iwrParams = @{
-                    Uri                = $script:resourceStrings.Applications.Zoom.CitrixVDIUris[$installer.Key]
+                    Uri                = $res.Get.CitrixVDIUris[$installer.Key]
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     MaximumRedirection = 0
                     UseBasicParsing    = $True
@@ -92,7 +96,7 @@ Function Get-Zoom {
             }
             finally {
                 # Match version number from the download URL
-                If ($request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion) {
+                If ($request.Headers.Location -match $res.Get.MatchVersion) {
                     $Version = $Matches[0]
                 }
                 Else {
@@ -113,13 +117,13 @@ Function Get-Zoom {
         #endregion
 
         #region Zoom for Virtual Desktops (VMware)
-        ForEach ($installer in $script:resourceStrings.Applications.Zoom.VMwareVDIUris.GetEnumerator()) {
+        ForEach ($installer in $res.Get.VMwareVDIUris.GetEnumerator()) {
 
             # Request the download URL to grab the header that includes the URL to the download
             # Handling HTTP 302 on PowerShell Core fails
             try {
                 $iwrParams = @{
-                    Uri                = $script:resourceStrings.Applications.Zoom.VMwareVDIUris[$installer.Key]
+                    Uri                = $res.Get.VMwareVDIUris[$installer.Key]
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                     MaximumRedirection = 0
                     UseBasicParsing    = $True
@@ -136,7 +140,7 @@ Function Get-Zoom {
             }
             finally {
                 # Match version number from the download URL
-                If ($request.Headers.Location -match $script:resourceStrings.Applications.Zoom.MatchVersion) {
+                If ($request.Headers.Location -match $res.Get.MatchVersion) {
                     $Version = $Matches[0]
                 }
                 Else {

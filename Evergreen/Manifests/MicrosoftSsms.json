@@ -1,0 +1,23 @@
+{
+	"Name": "Microsoft SQL Server Management Studio",
+	"Source": "https://www.app.com",
+	"Get": {
+		"Uri": "https://download.microsoft.com/download/1/9/8/1986c4a9-480b-4a46-8088-2778e0abcc8a/SSMS_PRODUCTRELEASESFEED.xml",
+		"DownloadUri": "https://aka.ms/ssmsfullsetup",
+		"MatchName": "SQL Server Management Studio"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

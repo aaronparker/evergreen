@@ -1,0 +1,41 @@
+{
+	"Name": "Zoom",
+	"Source": "https://zoom.us/",
+	"Get": {
+		"WindowsUris": {
+			"EXE": "https://zoom.us/client/latest/ZoomInstaller.exe",
+			"MSI": "http://zoom.us/client/latest/ZoomInstallerFull.msi",
+			"Outlook": "http://zoom.us/client/latest/ZoomOutlookPluginSetup.msi",
+			"Notes": "https://zoom.us/client/latest/ZoomNotesPluginSetup.msi",
+			"Lync": "http://zoom.us/client/latest/ZoomLyncPluginSetup.msi",
+			"Rooms": "http://zoom.us/client/latest/ZoomRooms.exe"
+		},
+		"CitrixVDIUris": {
+			"WindowsHost": "https://zoom.us/download/vdi/ZoomInstallerVDI.msi",
+			"WindowsClient": "https://zoom.us/download/vdi/ZoomCitrixHDXMediaPlugin.msi",
+			"IGEL-x64": "https://zoom.us/download/vdi/zoomcitrixplugin-igel_64.zip",
+			"eLuxRP5-x86": "https://zoom.us/download/vdi/zoomcitrixplugin_library_RP5.zip",
+			"eLuxRP5-x64": "https://zoom.us/download/vdi/zoomcitrixplugin_library_RP6.zip",
+			"HPThinProOS-x86": "https://zoom.us/download/vdi/zoomcitrixplugin-hp_i386.deb",
+			"HPThinProOS-x64": "https://zoom.us/download/vdi/zoomcitrixplugin-hp_amd64.deb"
+		},
+		"VMwareVDIUris": {
+			"Client": "https://zoom.us/download/vdi/ZoomVmwareMediaPlugin.msi"
+		},
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}
