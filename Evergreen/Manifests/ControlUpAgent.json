@@ -1,0 +1,23 @@
+{
+	"Name": "ControlUp Agent",
+	"Source": "https://www.controlup.com/products/controlup/agent/",
+	"Get": {
+		"Uri": "https://www.controlup.com/products/controlup/agent/",
+		"MatchVersion": "(\\d+\\.){3}\\d+",
+		"MatchDotNet": ""
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}
