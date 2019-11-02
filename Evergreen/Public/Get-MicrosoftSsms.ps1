@@ -1,10 +1,10 @@
 Function Get-MicrosoftSsms {
     <#
         .SYNOPSIS
-            Returns the latest SQL Server Management Studio release version number.
+            Returns the latest SQL Server Management Studio release version number and download.
 
         .DESCRIPTION
-            Returns the latest SQL Server Management Studio release version number.
+            Returns the latest SQL Server Management Studio release version number and download.
 
         .NOTES
             Author: Bronson Magnan
@@ -13,28 +13,24 @@ Function Get-MicrosoftSsms {
         .LINK
             https://github.com/aaronparker/Evergreen
 
-        .PARAMETER Release
-            Specify whether to return the GAFull, GAUpdate, or Preview release.
-
         .EXAMPLE
-            Get-MicrosoftSsmsVersion
+            Get-MicrosoftSsms
 
             Description:
-            Returns the latest SQL Server Management Studio for Windows version number.
-
-        .EXAMPLE
-            Get-MicrosoftSsmsVersion -Release Preview
-
-            Description:
-            Returns the preview release version number SQL Server Management Studio for Windows.
+            Returns the latest SQL Server Management Studio for Windows version number and download URL
     #>
+    [Alias("Get-MicrosoftSQLServerManagementStudio")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # SQL Management Studio downloads/versions documentation
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.Uri -Raw
+    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
 
     # Convert content to XML document
     If ($Null -ne $Content) {
@@ -53,17 +49,17 @@ Function Get-MicrosoftSsms {
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($entry in $xmlDocument.feed.entry) {
 
-                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.MatchName })) {
+                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.MatchName })) {
 
                     # Follow the URL returned to get the actual download URI
                     If (Test-PSCore) {
-                        $URI = $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.DownloadUri
+                        $URI = $res.Get.DownloadUri
                         Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
                     }
                     Else {
                         # Follow the DownloadUri (aka.ms URL)
                         $iwrParams = @{
-                            Uri                = $script:resourceStrings.Applications.MicrosoftSQLServerManagementStudio.DownloadUri
+                            Uri                = $res.Get.DownloadUri
                             UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                             MaximumRedirection = 0
                             UseBasicParsing    = $True

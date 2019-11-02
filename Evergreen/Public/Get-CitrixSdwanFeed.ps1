@@ -21,11 +21,15 @@ Function Get-CitrixSdwanFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.Sdwan.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.Sdwan.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.Sdwan.Exclude
+        Uri     = $res.Get.Sdwan.Uri
+        Include = $res.Get.Sdwan.Include
+        Exclude = $res.Get.Sdwan.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

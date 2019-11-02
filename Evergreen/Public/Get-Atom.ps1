@@ -23,11 +23,15 @@ Function Get-Atom {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Get latest version and download latest Atom release via GitHub API
     # Query the Atom repository for releases, keeping the latest stable release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.Atom.Uri
-        ContentType = $script:resourceStrings.Applications.Atom.ContentType
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
         Raw         = $True
     }
     $Content = Invoke-WebContent @iwcParams
@@ -37,7 +41,7 @@ Function Get-Atom {
     # Build the output object with release details
     ForEach ($release in $latestRelease.assets) {
 
-        If ($release.browser_download_url -match $script:resourceStrings.Applications.Atom.MatchExtensions) {
+        If ($release.browser_download_url -match $res.Get.MatchExtensions) {
             Switch -Regex ($release.browser_download_url) {
                 "amd64" { $arch = "AMD64" }
                 "arm64" { $arch = "ARM64" }
@@ -58,7 +62,7 @@ Function Get-Atom {
             }
 
             # Match version number
-            $latestRelease.tag_name -match $script:resourceStrings.Applications.Atom.MatchVersion | Out-Null
+            $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null
             $Version = $Matches[0]
 
             $PSObject = [PSCustomObject] @{

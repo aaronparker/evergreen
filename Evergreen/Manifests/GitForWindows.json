@@ -1,0 +1,22 @@
+{
+	"Name": "Git for Windows",
+	"Source": "https://gitforwindows.org/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/git-for-windows/git/releases",
+		"ContentType": "application/json; charset=utf-8"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

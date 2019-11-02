@@ -21,22 +21,26 @@ Function Get-WinMerge {
     [CmdletBinding()]
     Param()
 
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.WinMerge.Uri
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
+    $Content = Invoke-WebContent -Uri $res.Get.Uri
     If ($Null -ne $Content) {
         $Json = $Content | ConvertFrom-Json
 
         # Match version number
-        (Split-Path -Path $Json.release.filename -Leaf) -match $script:resourceStrings.Applications.WinMerge.MatchVersion | Out-Null
+        (Split-Path -Path $Json.release.filename -Leaf) -match $res.Get.MatchVersion | Out-Null
         $Version = $Matches[0]
 
         # Construct the download URL. 
-        $URI = $script:resourceStrings.Applications.WinMerge.DownloadUri -replace "#Version", $Version
+        $URI = $res.Get.DownloadUri -replace "#Version", $Version
         $URI = $URI -replace "#Filename", (Split-Path -Path $Json.release.filename -Leaf)
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version = $Version
-            Date    = (ConvertTo-DateTime -DateTime $Json.release.date -Pattern $script:resourceStrings.Applications.WinMerge.DatePattern)
+            Date    = (ConvertTo-DateTime -DateTime $Json.release.date -Pattern $res.Get.DatePattern)
             Size    = $Json.release.bytes
             Md5Hash = $Json.release.md5sum
             URI     = $URI

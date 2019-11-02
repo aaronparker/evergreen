@@ -1,0 +1,23 @@
+{
+	"Name": "Atom",
+	"Source": "https://atom.io/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/atom/atom/releases",
+		"ContentType": "application/json; charset=utf-8",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		}
+	}
+}

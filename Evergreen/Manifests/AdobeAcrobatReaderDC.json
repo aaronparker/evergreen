@@ -1,5 +1,6 @@
 {
 	"Name": "Adobe Acrobat Reader DC",
+	"Source": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html",
 	"Get": {
 		"Uri": "https://get.adobe.com/reader/webservices/json/standalone/?platform_type=#Platform&platform_dist=#Dist&platform_arch=#Arch&language=#Language&eventname=readerotherversions",
 		"Languages": [

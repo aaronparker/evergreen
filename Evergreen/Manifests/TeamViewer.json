@@ -1,0 +1,23 @@
+{
+	"Name": "TeamViewer",
+	"Source": "https://www.teamviewer.com/",
+	"Get": {
+		"Uri": "https://download.teamviewer.com/download/update/TVversion.txt",
+		"DownloadUri": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

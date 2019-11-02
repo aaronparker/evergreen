@@ -21,25 +21,32 @@ Function Get-BISF {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param ()
+    Param()
+
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
     # Query the BIS-F repository for releases, keeping the latest release
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.BISF.Uri
-        ContentType = $script:resourceStrings.Applications.BISF.ContentType
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
-    # Build and array of the latest release and download URLs
-    $releases = $latestRelease.assets
-    ForEach ($release in $releases) {
-        $PSObject = [PSCustomObject] @{
-            Version = $latestRelease.tag_name
-            Date    = (ConvertTo-DateTime -DateTime $release.created_at)
-            Size    = $release.size
-            URI     = $release.browser_download_url
+    If ($Null -ne $Content) {
+        $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1        
+        $releases = $latestRelease.assets
+
+        # Build and array of the latest release and download URLs
+        ForEach ($release in $releases) {
+            $PSObject = [PSCustomObject] @{
+                Version = $latestRelease.tag_name
+                Date    = (ConvertTo-DateTime -DateTime $release.created_at)
+                Size    = $release.size
+                URI     = $release.browser_download_url
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

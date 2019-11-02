@@ -21,11 +21,15 @@ Function Get-CitrixHypervisorFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.Hypervisor.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.Hypervisor.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.Hypervisor.Exclude
+        Uri     = $res.Get.Hypervisor.Uri
+        Include = $res.Get.Hypervisor.Include
+        Exclude = $res.Get.Hypervisor.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

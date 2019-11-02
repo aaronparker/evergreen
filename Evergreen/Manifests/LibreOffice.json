@@ -1,0 +1,30 @@
+{
+	"Name": "LibreOffice",
+	"Source": "https://www.libreoffice.org/",
+	"Get": {
+		"Uri": "https://download.documentfoundation.org/libreoffice/stable",
+		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
+		"Platforms": {
+			"win": "Windows",
+			"mac": "macOS"
+		},
+		"MatchArchitectures": "x86|64",
+		"MatchExtensions": "\\.msi$|\\.dmg$",
+		"MatchLanguage": "_([^_?!86|64]*)(\\.msi|\\.dmg)$",
+		"NoLanguage": "Neutral"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

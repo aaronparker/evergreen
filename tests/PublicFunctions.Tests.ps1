@@ -3,7 +3,7 @@
         Public Pester function tests.
 #>
 [OutputType()]
-Param ()
+Param()
 
 # Set variables
 If (Test-Path "env:APPVEYOR_BUILD_FOLDER") {
@@ -28,11 +28,15 @@ Import-Module $manifestPath -Force
 $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
 New-Item -Path $Path -ItemType Directory -Force -ErrorAction SilentlyContinue
 
+# RegEx
+$matchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+
 Describe -Tag "AppVeyor" -Name "Test" {
-    Context "Validate functions" {
-        $commands = Get-Command -Module Evergreen
-        ForEach ($command in $commands) {
-            
+
+    $commands = Get-Command -Module Evergreen
+    ForEach ($command in $commands) {
+
+        Context "Validate $($command.Name)" {
             # Run each command and capture output in a variable
             New-Variable -Name "tempOutput" -Value (. $command.Name )
             $Output = (Get-Variable -Name "tempOutput").Value
@@ -66,7 +70,10 @@ Describe -Tag "AppVeyor" -Name "Test" {
             # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$($object.URI)] is a valid URL" {
+                    It "$($command.Name): URI is a valid URL" {
+                        $object.URI | Should -Match $matchUrl
+                    }
+                    It "$($command.Name): [$(Split-Path -Path $object.URI -Leaf)] is a valid download target" {
                         try {
                             # Test URI exists without downloading the file
                             $r = Invoke-WebRequest -Uri $object.URI -Method Head -UseBasicParsing -ErrorAction SilentlyContinue

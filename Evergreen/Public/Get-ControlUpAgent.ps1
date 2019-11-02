@@ -13,54 +13,58 @@ Function Get-ControlUpAgent {
         .LINK
             https://github.com/aaronparker/Evergreen
 
-        .PARAMETER NetVersion
-            Specify the target .NET Framework version of the agent to return (.NET Framework 3.5 or .NET Framework 4.5)
-
-        .PARAMETER Architecture
-            Specify the processor archiecture of Windows for the ControlUp agent
-
         .EXAMPLE
             Get-ControlUpAgentUri
 
             Description:
-            Returns the latest ControlUp agent with .NET Framework 4.5 support for 64-bit Windows.
-
-        .EXAMPLE
-            Get-ControlUpAgentUri -NetVersion net35 -Architecture x86
-
-            Description:
-            Returns the latest ControlUp agent with .NET Framework 3.5 support for 32-bit Windows.
+            Returns the latest ControlUp Agent with .NET Framework 4.5 support for 64-bit Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param(
-        [ValidateSet("net45", "net35")]
-        [string] $NetVersion = "net45",
+    Param()
 
-        [ValidateSet("x86", "x64")]
-        [string] $Architecture = "x64"
-    )
-    
-    $agentURL = "http://www.controlup.com/products/controlup/agent/"
-    $pattern = "(\d+\.){3}\d+"
-    
-    # ControlUP forces TLS 1.2 and rejects TLS 1.1
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $webRequest = Invoke-WebRequest -Uri $agentURL -UseBasicParsing
-    $content = $webRequest.Content
-    
-    #clean up the code into paragraph blocks
-    $paragraphSections = $content.Replace("`n", "").Replace("  ", "").Replace("`t", "").Replace("<p>", "#$%^<p>").Split("#$%^").Trim()
-    
-    #now we are looking for the pattern <p><strong>Current agent version:</strong> 7.2.1.6</p>
-    $versionLine = $paragraphSections | Where-Object { $_ -like "*Current*agent*" }
-    $splitLines = ($versionLine.Replace('<', '#$%^<').Replace('>', '>#$%^').Split('#$%^')).Trim()
-    $version = [Version]::new(($splitLines | Select-String -Pattern $pattern).ToString())
-    
-    # Write version and download the pipeline
-    $PSObject = [PSCustomObject] @{
-        Version = $version
-        URI     = "https://downloads.controlup.com/agent/$($version.ToString())/ControlUpAgent-$($netversion)-$($architecture).msi"
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
+    # Query the ControlUp Agent download site
+    $iwrParams = @{
+        Uri             = $res.Get.Uri
+        UseBasicParsing = $True
+        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
     }
-    Write-Output -InputObject $PSObject
+    $response = Invoke-WebRequest @iwrParams    
+    
+    If ($Null -ne $response) {
+        $versionLinks = $response.Links -match $res.Get.MatchVersion
+    
+        ForEach ($link in $versionLinks) {
+
+            # Extract the version number
+            # TODO update version regex to return a single group
+            $link.href -match $RegExVersion | Out-Null
+            $version = $matches[0]
+
+            # Add .NET Framework version and Architecture properties
+            Switch -Regex ($link.href) {
+                "x64" { $arch = "x64" }
+                "x86" { $arch = "x86" }
+                Default { $arch = "Unknown" }
+            }
+            Switch -Regex ($link.href) {
+                "net45" { $dotnet = "net45" }
+                "net35" { $dotnet = "net35" }
+                Default { $dotnet = "Unknown" }
+            }
+
+            # Build and array of the latest release and download URLs
+            $PSObject = [PSCustomObject] @{
+                Version      = $version
+                Framework    = $dotnet
+                Architecture = $arch
+                URI          = $link.href
+            }
+            Write-Output -InputObject $PSObject
+        }
+    }
 }

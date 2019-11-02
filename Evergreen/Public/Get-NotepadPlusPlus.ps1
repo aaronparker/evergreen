@@ -22,11 +22,15 @@ Function Get-NotepadPlusPlus {
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
-    Param ()
+    Param()
+
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
     # Read the Notepad++ version and download XML
     $iwcParams = @{
-        Uri = $script:resourceStrings.Applications.NotepadPlusPlus.Uri
+        Uri = $res.Get.Uri
     }
     $Content = Invoke-WebContent @iwcParams
 
@@ -58,7 +62,7 @@ Function Get-NotepadPlusPlus {
             Write-Output -InputObject $PSObject
         }
         Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($script:resourceStrings.Applications.NotepadPlusPlus.Uri)."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($res.Get.Uri)."
             $PSObject = [PSCustomObject] @{
                 Error = "Check update URL"
             }

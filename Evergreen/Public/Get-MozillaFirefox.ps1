@@ -51,8 +51,12 @@ Function Get-MozillaFirefox {
         [System.String[]] $Language = 'en-US'
     )
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Get latest Firefox version
-    $firefoxVersions = Invoke-WebContent -Uri $script:resourceStrings.Applications.MozillaFirefox.Uri | ConvertFrom-Json
+    $firefoxVersions = Invoke-WebContent -Uri $res.Get.Uri | ConvertFrom-Json
     $version = ([Version]::new($firefoxVersions.LATEST_FIREFOX_VERSION))
 
     # Construct custom object with output details
@@ -74,7 +78,7 @@ Function Get-MozillaFirefox {
                 Platform = $plat
                 Language = $lang
                 Filename = $file.Replace('%20', ' ')
-                URI      = "$($script:resourceStrings.Applications.MozillaFirefox.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
+                URI      = "$($res.Get.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
             }
             Write-Output -InputObject $PSObject
         }

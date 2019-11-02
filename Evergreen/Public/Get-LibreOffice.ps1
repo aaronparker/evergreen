@@ -27,47 +27,71 @@ Function Get-LibreOffice {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param ()
+    Param()
 
-    $DownloadUri = $script:resourceStrings.Applications.LibreOffice.Uri
-    $r = Invoke-WebRequest -Uri "$DownloadUri/"
-    $versions = ($r.Links | `
-                Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchVersion }).href -replace "/", ""
-    $Version = $versions | Sort-Object -Descending | Select-Object -First 1
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
+    # Query the LibreOffice download site
+    $DownloadUri = $res.Get.Uri
+    $iwrParams = @{
+        Uri             = "$DownloadUri/"
+        UseBasicParsing = $True
+        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+    }
+    $response = Invoke-WebRequest @iwrParams
+
+    If ($Null -ne $response) {
+        $versions = ($response.Links | Where-Object { $_.href -match $res.Get.MatchVersion }).href -replace "/", ""
+        $Version = $versions | Sort-Object -Descending | Select-Object -First 1
     
-    #$Platforms = @("win", "mac")
-    ForEach ($platform in $script:resourceStrings.Applications.LibreOffice.Platforms.GetEnumerator()) {
-        $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/"
-        $Architectures = ($r.Links | `
-                    Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchArchitectures }).href -replace "/", ""
+        #$Platforms = @("win", "mac")
+        ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
+
+            # Get downloads for each platform for the latest version
+            $iwrParams = @{
+                Uri             = "$DownloadUri/$Version/$($platform.Name)/"
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
+            $response = Invoke-WebRequest @iwrParams
+            $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.MatchArchitectures }).href -replace "/", ""
     
-        ForEach ($arch in $Architectures) {
-            $r = Invoke-WebRequest -Uri "$DownloadUri/$Version/$($platform.Name)/$arch/"
-            $Files = ($r.Links | `
-                        Where-Object { $_.href -match $script:resourceStrings.Applications.LibreOffice.MatchExtensions }).href -replace "/", ""
-    
-            ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
-    
-                # Match language string
-                Remove-Variable Language -ErrorAction SilentlyContinue
-                Remove-Variable match -ErrorAction SilentlyContinue
-                $match = $file | Select-String -Pattern $script:resourceStrings.Applications.LibreOffice.MatchLanguage
-                If ($Null -ne $match) {
-                    $Language = $match.Matches.Groups[1].Value
+            ForEach ($arch in $Architectures) {
+
+                # Get downloads for each architecture for the latest version/platform
+                $iwrParams = @{
+                    Uri             = "$DownloadUri/$Version/$($platform.Name)/$arch/"
+                    UseBasicParsing = $True
+                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }
-                Else {
-                    $Language = $script:resourceStrings.Applications.LibreOffice.NoLanguage
-                }
+                $response = Invoke-WebRequest @iwrParams
+                $Files = ($response.Links | Where-Object { $_.href -match $res.Get.MatchExtensions }).href -replace "/", ""
     
-                # Construct the output; Return the custom object to the pipeline
-                $PSObject = [PSCustomObject] @{
-                    Version      = $Version
-                    Platform     = $script:resourceStrings.Applications.LibreOffice.Platforms[$platform.Key]
-                    Architecture = $arch
-                    Language     = $Language
-                    URI          = $("$DownloadUri/$Version/$($platform.Name)/$arch/$file")
+                ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
+    
+                    # Match language string
+                    Remove-Variable Language -ErrorAction SilentlyContinue
+                    Remove-Variable match -ErrorAction SilentlyContinue
+                    $match = $file | Select-String -Pattern $res.Get.MatchLanguage
+                    If ($Null -ne $match) {
+                        $Language = $match.Matches.Groups[1].Value
+                    }
+                    Else {
+                        $Language = $res.Get.NoLanguage
+                    }
+    
+                    # Construct the output; Return the custom object to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $Version
+                        Platform     = $res.Get.Platforms[$platform.Key]
+                        Architecture = $arch
+                        Language     = $Language
+                        URI          = $("$DownloadUri/$Version/$($platform.Name)/$arch/$file")
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
             }
         }
     }

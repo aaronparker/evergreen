@@ -22,16 +22,20 @@ Function Get-FoxitReader {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     If (Test-PSCore) {
         Write-Warning "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
     }
     Else {
         #region Get Foxit Reader details
-        ForEach ($platform in $script:resourceStrings.Applications.FoxitReader.Platforms) {
+        ForEach ($platform in $res.Get.Platforms) {
         
             # Query the Foxit Reader package download form to get the JSON
-            $Uri = $script:resourceStrings.Applications.FoxitReader.Uri -replace "#Platform", $platform
-            $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.FoxitReader.Uri
+            $Uri = $res.Get.Uri -replace "#Platform", $platform
+            $Content = Invoke-WebContent -Uri $res.Get.Uri
 
             # Grab values
             $PackageJson = $Content | ConvertFrom-Json
@@ -41,7 +45,7 @@ Function Get-FoxitReader {
             ForEach ($language in $Languages) {
             
                 # Build the download URL
-                $Uri = $script:resourceStrings.Applications.FoxitReader.DownloadUri -replace "#Version", $Version
+                $Uri = $res.Get.DownloadUri -replace "#Version", $Version
                 $Uri = $Uri -replace "#Platform", $platform
                 $Uri = $Uri -replace "#Language", $language
                 $Uri = $Uri -replace "#Package", $PackageJson.package_info.type[0]

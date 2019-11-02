@@ -21,11 +21,15 @@ Function Get-CitrixVirtualAppsDesktopsFeed {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    Write-Verbose -Message $res.Name
+
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
-        Uri     = $script:resourceStrings.Applications.CitrixFeeds.VirtualAppsDesktops.Uri
-        Include = $script:resourceStrings.Applications.CitrixFeeds.VirtualAppsDesktops.Include
-        Exclude = $script:resourceStrings.Applications.CitrixFeeds.VirtualAppsDesktops.Exclude
+        Uri     = $res.Get.VirtualAppsDesktops.Uri
+        Include = $res.Get.VirtualAppsDesktops.Include
+        Exclude = $res.Get.VirtualAppsDesktops.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
     If ($Null -ne $Content) {

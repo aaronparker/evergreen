@@ -8,24 +8,30 @@ Function Get-PaintDotNet {
     [CmdletBinding()]
     Param()
 
-    # Read the Paint.NET updates feed
-    $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.PaintDotNET.Uri
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
 
-    # Match version and download strings from the content
-    $Content -match $script:resourceStrings.Applications.PaintDotNET.MatchVersion | Out-Null
-    $Version = $Matches[1].Trim()
+    # Read the Paint.NET updates feed
+    $Content = Invoke-WebContent -Uri $res.Get.Uri
+
+    If ($Null -ne $Content) {
+        # Match version and download strings from the content
+        $Content -match $res.Get.MatchVersion | Out-Null
+        $Version = $Matches[1].Trim()
     
-    # Build the output object
-    If ($Version) {
-        $Content -match ($script:resourceStrings.Applications.PaintDotNET.MatchDownload -replace "#Version", ($Version -replace "\.", "\.")) | Out-Null
-        $Download = $Matches[1].Split(",")[0]
-        $PSObject = [PSCustomObject] @{
-            Version = $Version
-            URI     = $Download
+        # Build the output object
+        If ($Version) {
+            $Content -match ($res.Get.MatchDownload -replace "#Version", ($Version -replace "\.", "\.")) | Out-Null
+            $Download = $Matches[1].Split(",")[0]
+            $PSObject = [PSCustomObject] @{
+                Version = $Version
+                URI     = $Download
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
-    }
-    Else {
-        Write-Warning -Message "Failed to find version number from feed."
+        Else {
+            Write-Warning -Message "Failed to find version number from feed."
+        }
     }
 }

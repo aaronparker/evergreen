@@ -3,7 +3,7 @@
         Main Pester function tests.
 #>
 [OutputType()]
-Param ()
+Param()
 
 # Set variables
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {

@@ -3,7 +3,7 @@
         Evergreen script to initiate the module
 #>
 [CmdletBinding()]
-Param ()
+Param()
 
 #region Get public and private function definition files
 $publicRoot = Join-Path -Path $PSScriptRoot -ChildPath "Public"

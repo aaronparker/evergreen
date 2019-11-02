@@ -53,6 +53,10 @@ Function Get-MicrosoftVisualStudioCode {
                 'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')
     )
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Walk through each platform
     ForEach ($plat in ($Platform | Sort-Object)) {
         Write-Verbose "Getting release info for $plat."
@@ -61,8 +65,7 @@ Function Get-MicrosoftVisualStudioCode {
         ForEach ($ch in $Channel) {
 
             # Read the version details from the API, format and return to the pipeline
-            $releaseJson = Invoke-WebContent -Uri "$($script:resourceStrings.Applications.MicrosoftVisualStudioCode.Uri)/$plat/$ch/VERSION" | `
-                    ConvertFrom-Json
+            $releaseJson = Invoke-WebContent -Uri "$($res.Get.Uri)/$plat/$ch/VERSION" | ConvertFrom-Json
             $PSObject = [PSCustomObject] @{
                 Version  = $releaseJson.productVersion
                 Platform = $plat

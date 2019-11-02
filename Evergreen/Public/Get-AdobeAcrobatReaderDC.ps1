@@ -23,18 +23,22 @@ Function Get-AdobeAcrobatReaderDC {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     #region Installer downloads
-    ForEach ($platform in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Platforms) {
-        ForEach ($language in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Languages) {
+    ForEach ($platform in $res.Get.Platforms) {
+        ForEach ($language in $res.Get.Languages) {
             Write-Verbose -Message "Searching: [$($platform.platform_type)] [$language]"
-            $Uri = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Uri -replace "#Platform", $platform.platform_type
+            $Uri = $res.Get.Uri -replace "#Platform", $platform.platform_type
             $Uri = $Uri -replace "#Dist", $platform.platform_dist
             $Uri = $Uri -replace "#Language", $language
             $Uri = $Uri -replace "#Arch", $platform.platform_arch
             $Uri = $Uri -replace " ", "%20"
             $iwcParams = @{
                 Uri             = $Uri
-                Headers         = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.Headers
+                Headers         = $res.Get.Headers
                 UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                 UseBasicParsing = $True
                 ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
@@ -43,6 +47,7 @@ Function Get-AdobeAcrobatReaderDC {
             $Content = Invoke-WebRequest @iwcParams
 
             If ($Null -ne $Content) {
+                #$ContentFromJson = $Content | ConvertFrom-Json
                 $ContentFromJson = $Content.Content | ConvertFrom-Json
                 
                 # Check properties if multiple values returned
@@ -63,18 +68,18 @@ Function Get-AdobeAcrobatReaderDC {
 
     #region Update downloads
     $iwcParams = @{
-        Uri         = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateUri
-        ContentType = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateContentType
+        Uri         = $res.Get.UpdateUri
+        ContentType = $res.Get.UpdateContentType
     }
     $Content = Invoke-WebContent @iwcParams
 
     # Construct update download list
     If ($Null -ne $Content) {
         $versionString = $Content.Replace(".", "")
-        ForEach ($platform in $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdatePlatforms) {
+        ForEach ($platform in $res.Get.UpdatePlatforms) {
             Switch ($platform) {
                 "win" {
-                    $updateUrl = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateDownloadUri -replace "#Platform", $platform
+                    $updateUrl = $res.Get.UpdateDownloadUri -replace "#Platform", $platform
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
                         Platform = "Windows"
@@ -93,7 +98,7 @@ Function Get-AdobeAcrobatReaderDC {
                     Write-Output -InputObject $PSObject
                 }
                 "mac" {
-                    $updateUrl = $script:resourceStrings.Applications.AdobeAcrobatReaderDC.UpdateDownloadUri -replace "#Platform", $platform
+                    $updateUrl = $res.Get.UpdateDownloadUri -replace "#Platform", $platform
                     $PSObject = [PSCustomObject] @{
                         Version  = $Content
                         Platform = "Macintosh"

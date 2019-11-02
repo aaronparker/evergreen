@@ -23,9 +23,13 @@ Function Get-CitrixWorkspaceApp {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name
+
     # Read the Citrix Workspace app for updater feed for each OS in the list
-    ForEach ($item in $script:resourceStrings.Applications.CitrixWorkspaceApp.UpdateFeeds.Keys) {
-        $Content = Invoke-WebContent -Uri $script:resourceStrings.Applications.CitrixWorkspaceApp.UpdateFeeds[$item]
+    ForEach ($item in $res.Get.Uri.Keys) {
+        $Content = Invoke-WebContent -Uri $res.Get.Uri[$item]
 
         # Convert content to XML document
         If ($Null -ne $Content) {
@@ -50,7 +54,7 @@ Function Get-CitrixWorkspaceApp {
                         Hash     = $installer.Node.Hash
                         Date     = $installer.Node.StartDate
                         Platform = $item
-                        URI      = "$($script:resourceStrings.Applications.CitrixWorkspaceApp.DownloadUri)$($installer.Node.DownloadURL)"
+                        URI      = "$($res.Get.DownloadUri)$($installer.Node.DownloadURL)"
                     }
                     Write-Output -InputObject $PSObject
                 }

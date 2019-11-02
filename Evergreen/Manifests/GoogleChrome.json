@@ -1,0 +1,32 @@
+{
+	"Name": "Google Chrome",
+	"Source": "http://www.google.com/chrome",
+	"Get": {
+		"Uri": "https://omahaproxy.appspot.com/all.json",
+		"DownloadUri": "https://dl.google.com",
+		"Channels": [
+			"stable"
+		],
+		"Downloads": {
+			"win64": "/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+			"win64beta": "/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
+			"win": "/dl/chrome/install/googlechromestandaloneenterprise.msi",
+			"winbeta": "/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi",
+			"mac": "/chrome/mac/stable/GGRO/googlechrome.dmg"
+		}
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

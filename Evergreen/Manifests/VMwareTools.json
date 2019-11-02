@@ -1,0 +1,29 @@
+{
+	"Name": "VMware Tools",
+	"Source": "https://www.vmware.com",
+	"Get": {
+		"Uri": "https://packages.vmware.com/tools/versions",
+		"DownloadUri": "https://packages.vmware.com/tools/esx/latest/",
+		"Platforms": [
+			"Windows"
+		],
+		"Architecture": [
+			"x64"
+		],
+		"MatchFileName": "[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-x86_64"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}

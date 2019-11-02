@@ -20,7 +20,7 @@ Function Invoke-WebContent {
 
         [Parameter(Position = 3)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = ([Microsoft.PowerShell.Commands.PSUserAgent]::Chrome),
+        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $Raw
