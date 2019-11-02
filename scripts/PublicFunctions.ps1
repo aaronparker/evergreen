@@ -5,11 +5,14 @@
 [OutputType()]
 Param()
 
+# RegEx
+$matchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+
 Describe -Tag "AppVeyor" -Name "Test" {
-    Context "Validate functions" {
-        $commands = Get-Command -Module Evergreen
-        ForEach ($command in $commands) {
+    $commands = Get-Command -Module Evergreen
+    ForEach ($command in $commands) {
             
+        Context "Validate $($command.Name)" {
             # Run each command and capture output in a variable
             New-Variable -Name "tempOutput" -Value (. $command.Name )
             $Output = (Get-Variable -Name "tempOutput").Value
@@ -44,7 +47,7 @@ Describe -Tag "AppVeyor" -Name "Test" {
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
                     It "$($command.Name): [$($object.URI)] is a valid URL" {
-                        $object.URI | Should -Match "(http(s)?:\/\/)?([\w-]+\.)+[\w-]+[.com]+(\/[\/?%&=]*)?"
+                        $object.URI | Should -Match $matchUrl
                     }
                 }
             }
