@@ -23,6 +23,10 @@ Function Get-mRemoteNG {
     [CmdletBinding()]
     Param()
 
+    # Get application resource strings from its manifest
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
+    Write-Verbose -Message $res.Name    
+
     # Query the mRemoteNG repository for releases, keeping the latest release
     $iwcParams = @{
         Uri         = $res.Get.Uri
