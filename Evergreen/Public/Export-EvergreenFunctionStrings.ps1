@@ -7,9 +7,9 @@ Function Export-EvergreenFunctionStrings {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
-        [System.String] $AppName
+        [System.String] $AppName = "Template"
     )
     
     Write-Output -InputObject (Get-FunctionResource -AppName $AppName)
