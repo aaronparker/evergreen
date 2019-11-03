@@ -1,5 +1,10 @@
 # Change Log
 
+## 1911.xx
+
+* Adds `Get-JamTreeSizeFree` and `Get-JamTreeSizeProfessional`
+* Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md) in module manifest
+
 ## 1911.84
 
 * Changes approach used in `Get-ControlUpAgent` to retrieve agent details and enables PowerShell Core support
@@ -12,7 +17,7 @@
 
 * Updates `Get-LibreOffice` update query approach to provide a more consistent output
 * Updates `Get-LibreOffice` to work on PowerShell Core
-* Changes ``Get-LibreOffice` output and parameters to align with other functions
+* Changes `Get-LibreOffice` output and parameters to align with other functions
 * Updates `Get-NotepadPlusPlus` to gracefully handle update server issues (CloudFlare DDOS challenges)
 * Fixes version output in `Get-OpenJDK`
 * Updates `Get-mRemoteNG` with handling issues when getting Updates

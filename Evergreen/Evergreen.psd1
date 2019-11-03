@@ -80,8 +80,8 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
                'Get-ControlUpAgent', 'Get-FileZilla', 'Get-FoxitReader', 
                'Get-GitforWindows', 'Get-Good', 'Get-GoogleChrome', 'Get-Greenshot', 
-               'Get-LibreOffice', 'Get-MicrosoftOffice', 
-               'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
+               'Get-LibreOffice', 'Get-MicrosoftOffice', 'Get-JamTreeSizeFree',
+               'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 'Get-JamTreeSizeProfessional',
                'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
                'Get-mRemoteNG', 'Get-NotepadPlusPlus', 'Get-OpenJDK', 
                'Get-OracleJava8', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
@@ -127,7 +127,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/aaronparker/Evergreen/CHANGELOG.md'
+        ReleaseNotes = 'https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md'
 
         # Prerelease string of this module
         # Prerelease = ''
