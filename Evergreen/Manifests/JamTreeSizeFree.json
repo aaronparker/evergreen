@@ -1,0 +1,23 @@
+{
+	"Name": "JAM Software TreeSize Free",
+	"Source": "https://www.jam-software.com/treesize_free/",
+	"Get": {
+		"Uri": "https://update.jam-software.de/functions/getCurrentVersion.php?article=80",
+		"UserAgent": "TreeSize Free/4.3.1.494",
+		"DownloadUri": "https://downloads.jam-software.de/treesize_free/TreeSizeFreeSetup.exe"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+			]
+		}
+	}
+}
