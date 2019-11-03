@@ -1,6 +1,6 @@
 # Change Log
 
-## 1911.xx
+## 1911.87
 
 * Adds `Get-JamTreeSizeFree` and `Get-JamTreeSizeProfessional`
 * Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md) in module manifest
