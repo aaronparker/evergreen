@@ -1,4 +1,7 @@
 version: 1911.{build}
+pull_requests:
+  do_not_increment_build_number: true
+skip_tags: true
 image: WMF 5
 environment:
   GitHubKey:
@@ -16,7 +19,7 @@ deploy_script:
 - ps: . .\ci\Deploy.ps1
 
 skip_commits:
-  message: /AppVeyor validate.*|Merge branch 'master' of.*//
+  message: /AppVeyor validate.*|Merge branch 'master' of.*/
 
 only_commits:
   files:
