@@ -1,5 +1,9 @@
 # Change Log
 
+## 1911.xx
+
+* Adds `Get-Cyberduck`
+
 ## 1911.87
 
 * Adds `Get-JamTreeSizeFree` and `Get-JamTreeSizeProfessional`
