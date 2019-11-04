@@ -1,4 +1,4 @@
-Function Get-Cyberduck {
+﻿Function Get-Cyberduck {
     <#
         .SYNOPSIS
             Get the current version and download URIs for Cyberduck for Windows.
