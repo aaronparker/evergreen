@@ -65,7 +65,7 @@ Else {
             $replaceString = "^## VERSION$"
             $content = Get-Content -Path $changeLog
             If ($content -match $replaceString) {
-                $content -replace $replaceString, $newVersion | Set-Content -Path $changeLog
+                $content -replace $replaceString, "## $newVersion" | Set-Content -Path $changeLog
             }
             Else {
                 Write-Host "No match in $changeLog for '## VERSION'. Manual update of CHANGELOG required." -ForegroundColor Cyan
