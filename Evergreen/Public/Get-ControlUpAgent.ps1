@@ -40,11 +40,6 @@ Function Get-ControlUpAgent {
     
         ForEach ($link in $versionLinks) {
 
-            # Extract the version number
-            # TODO update version regex to return a single group
-            $link.href -match $RegExVersion | Out-Null
-            $version = $matches[0]
-
             # Add .NET Framework version and Architecture properties
             Switch -Regex ($link.href) {
                 "x64" { $arch = "x64" }
@@ -56,6 +51,11 @@ Function Get-ControlUpAgent {
                 "net35" { $dotnet = "net35" }
                 Default { $dotnet = "Unknown" }
             }
+
+            # Extract the version number
+            # TODO update version regex to return a single group
+            $link.href -match $res.Get.MatchVersion | Out-Null
+            $version = $matches[0]
 
             # Build and array of the latest release and download URLs
             $PSObject = [PSCustomObject] @{

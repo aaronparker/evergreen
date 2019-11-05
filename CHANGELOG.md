@@ -2,6 +2,8 @@
 
 ## VERSION
 
+* Fixes version match in `Get-ControlUpAgent`
+
 ## 1911.91
 
 * Adds `Get-Cyberduck`

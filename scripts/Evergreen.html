@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html><!-- HEADER --><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta name="author"/><meta content="2019-11-05 20:43:01" name="revised"/><title>Evergreen</title><!-- CSS Default fonts START --><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald"/><!-- CSS Default fonts END --><!-- CSS Default fonts icons START --><link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/><!-- CSS Default fonts icons END --><!-- CSS Always Required Default Visual Settings START --><style type="text/css">body {
+    font-family: Roboto Condensed, Helvetica Neue, sans-serif;
+    font-size: 8pt;
+}
+
+hr {
+    height: 4px;
+    background-color: #6Cf;
+    border: 0px;
+    width: 100%;
+}
+
+.defaultSection {
+    border: 1px solid #bbbbbb;
+    padding-bottom: 0px;
+    margin: 5px;
+    width: calc(100% - 10px);
+}
+
+.overflowHidden {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.flexParent {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.flexParentInvisible {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexElement {
+    flex-basis: 100%;
+}
+
+.flexPanel {
+    flex-basis: 100%;
+}
+
+.roundedCorners {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.defaultHeader {
+    padding: 5px;
+    margin: 0px 0px 0px 0px;
+    font-weight: bold;
+}
+
+.defaultFooter {
+    padding-right: 5em;
+    text-align: right;
+}
+
+.logos {
+    display: flex;
+}
+
+.leftLogo {
+    flex-basis: 100%;
+    border: 0px;
+    padding-left: 0px;
+    vertical-align: middle;
+}
+
+.rightLogo {
+    flex-basis: 100%;
+    border: 0px;
+    padding-right: 5em;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.header {
+    background-color: #616a6b;
+    color: #f7f9f9;
+}
+
+a.alink:link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+a.alink:visited {
+    color: #ff8400;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+a.alink:hover {
+    text-decoration: underline;
+    font-size: 130%;
+}
+
+a.paginate_button {
+    color: #000000 !important;
+    font-size: 10px;
+}
+
+a.current {
+    color: #000000 !important;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.col {
+    padding: 20px;
+    margin: 1%;
+    flex: 1;
+}
+</style><!-- CSS Always Required Default Visual Settings END --><!-- CSS Always Required Default Headings START --><style type="text/css">/*
+h2:after,
+h3:after,
+h4:after,
+h5:after,
+h6:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+
+h2:after {
+    background: #0AF;
+}
+
+h3:after {
+    background: #3BF;
+}
+
+
+h4:after,
+h5:after,
+h6:after {
+    background: #6Cf;
+}
+
+h1.white,
+h2.white,
+h3.white,
+h4.white,
+h5.white,
+h6.white {
+    color: white;
+}
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Hammersmith One', sans-serif;
+    /*
+    font-family: 'Questrial', sans-serif;
+    */
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 20px;
+    margin: 1em 0 .6em 0;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    color: #6Cf;
+    margin: 10px 10px 10px 10px;
+}
+
+h2 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-size: 25px;
+    line-height: 20px;
+    margin: 10px 10px 10px 10px;
+}
+
+h3 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-size: 24px;
+    line-height: 20px;
+    margin: 10px 10px 10px 10px;
+}
+
+h4 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-size: 18px;
+    line-height: 16px;
+    margin: 10px 10px 10px 10px;
+}
+
+h5 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 10px 10px 10px 10px;
+}
+
+h6 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-size: 10px;
+    line-height: 12px;
+    margin: 10px 10px 10px 10px;
+}
+</style><!-- CSS Always Required Default Headings END --><!-- CSS DataTables START --><style type="text/css">/* Added to make sure plus logo fits in */
+td {
+    height: 27px;
+}
+
+/* Button in Table - giving it some colors */
+
+td.sorting_1::before {
+    background: #007bff !important;
+}
+
+td::before {
+    background: #007bff !important;
+}
+
+/* giving some spaces between tables being to close */
+
+div.dataTables_wrapper {
+    padding: 10px 10px 10px 10px;
+}
+
+button.dt-button {
+    color: blue !important;
+    border-radius: 5px;
+    line-height: 1 !important;
+}
+
+/* Filtering at the bottom */
+tfoot input {
+    width: 100%;
+    padding: -3px;
+    box-sizing: border-box;
+    font-size: 8pt;
+}
+
+/* Filtering at the top */
+thead input {
+    width: 100%;
+    padding: -3px;
+    box-sizing: border-box;
+    font-size: 8pt;
+}
+
+table {
+    font-size: 8pt;
+}
+</style><!-- CSS DataTables END --><noscript><!-- CSS DataTables START --><style type="text/css">table {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-collapse: collapse;
+    /* font-family: Roboto Condensed, Helvetica Neue, sans-serif; */
+    /* font-size: 8pt;
+      width: 99%;
+    */
+
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    margin: 8px;
+}
+
+table th {
+    border-width: 1px;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    background-color: #616a6b;
+    color: white;
+    /* font-family: Roboto Condensed, Helvetica Neue, sans-serif; */
+    /* font-size: 8pt; */
+    font-weight: bold;
+    padding: 10px;
+}
+
+table td {
+    border-width: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-style: solid;
+    border-color: black;
+    /* background-color: white; */
+    /* font-family: Roboto Condensed, Helvetica Neue, sans-serif; */
+    /* font-size: 8pt; */
+    border-top: 1px solid #ddd;
+}
+
+/* Zebra striping */
+table tr:nth-of-type(odd) {
+    background: #eee;
+}
+
+table th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+
+table td,
+table th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+</style><!-- CSS DataTables END --></noscript><!-- JS Hide Section Code START --><script type="text/javascript">function show(obj) {
+    document.getElementById(obj).style.display = 'block';
+    document.getElementById("hide_" + obj).style.display = '';
+    document.getElementById("show_" + obj).style.display = 'none';
+    try {
+        $('.dataTable').DataTable().columns.adjust().responsive.recalc();
+    } catch {
+        console.log('No datatables available.');
+    }
+}
+function hide(obj) {
+    document.getElementById(obj).style.display = 'none';
+    document.getElementById("hide_" + obj).style.display = 'none';
+    document.getElementById("show_" + obj).style.display = '';
+}
+</script><!-- JS Hide Section Code END --><!-- JS Jquery START --><script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script><!-- JS Jquery END --><!-- CSS DataTables START --><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.4/css/autoFill.dataTables.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.2/css/colReorder.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.3.0/css/fixedColumns.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/keytable/2.5.1/css/keyTable.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/rowgroup/1.1.1/css/rowGroup.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.6/css/rowReorder.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.1/css/scroller.dataTables.min.css"/><link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css"/><!-- CSS DataTables END --><!-- JS DataTables START --><script type="text/javascript" src="https://nightly.datatables.net/js/jquery.dataTables.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/autofill/2.3.4/js/dataTables.autoFill.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.2/js/dataTables.colReorder.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/keytable/2.5.1/js/dataTables.keyTable.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.1/js/dataTables.rowGroup.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/rowreorder/1.2.6/js/dataTables.rowReorder.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/scroller/2.0.1/js/dataTables.scroller.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/datetime-moment.js"></script><!-- JS DataTables END --><!-- JS DataTables PDF Features START --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><!-- JS DataTables PDF Features END --><!-- JS DataTables Excel Features START --><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script><!-- JS DataTables Excel Features END --></head><!-- CSS AUTOGENERATED on DEMAND START --><!-- CSS AUTOGENERATED on DEMAND END --><!-- END HEADER --><!-- BODY --><body><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Adobe Acrobat Reader DC" style="color: #ffffff;">Adobe Acrobat Reader DC </a><a id="show_422886883" href="javascript:void(0)" onclick="show('422886883');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_422886883" href="javascript:void(0)" onclick="hide('422886883');" style="color: #ffffff;">(Hide)</a></div><div id="422886883" class="flexParent overflowHidden"><div id="422886883" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-OctXxgeB').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": true,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-OctXxgeB" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Type</th><th>Language</th><th>URI</th></tr></thead><tbody><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>English</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_en_US.exe</td></tr><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>English (UK)</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_en_US.exe</td></tr><tr><td>19.008.20071</td><td>Windows</td><td>Installer</td><td>Dutch</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_nl_NL.exe</td></tr><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>French</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_fr_FR.exe</td></tr><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>German</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_de_DE.exe</td></tr><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>Japanese</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_ja_JP.exe</td></tr><tr><td>19.021.20047</td><td>Windows</td><td>Installer</td><td>Spanish</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120047/AcroRdrDC1902120047_es_ES.exe</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>English</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>English (UK)</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>Dutch</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>French</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>German</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>Japanese</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20047</td><td>Macintosh</td><td>Installer</td><td>Spanish</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120047/AcroRdrDC_1902120047_MUI.dmg</td></tr><tr><td>19.021.20049</td><td>Windows</td><td>Updater</td><td>Neutral</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120049/AcroRdrDCUpd1902120049.msp</td></tr><tr><td>19.021.20049</td><td>Windows</td><td>Updater</td><td>Multi</td><td>http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1902120049/AcroRdrDCUpd1902120049_MUI.msp</td></tr><tr><td>19.021.20049</td><td>Macintosh</td><td>Installer</td><td>Multi</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120049/AcroRdrDC_1902120049_MUI.dmg</td></tr><tr><td>19.021.20049</td><td>Macintosh</td><td>Updater</td><td>Multi</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120049/AcroRdrDCUpd1902120049_MUI.dmg</td></tr><tr><td>19.021.20049</td><td>Macintosh</td><td>Updater</td><td>Multi</td><td>http://ardownload.adobe.com/pub/adobe/reader/mac/AcrobatDC/1902120049/AcroRdrDCUpd1902120049_MUI.pkg</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Atom" style="color: #ffffff;">Atom </a><a id="show_1200875713" href="javascript:void(0)" onclick="show('1200875713');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1200875713" href="javascript:void(0)" onclick="hide('1200875713');" style="color: #ffffff;">(Hide)</a></div><div id="1200875713" class="flexParent overflowHidden"><div id="1200875713" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-qvPXhfiu').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-qvPXhfiu" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>1.41.0</td><td>Debian</td><td>AMD64</td><td>22/10/19 2:22:07 pm</td><td>111760768</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom-amd64.deb</td></tr><tr><td>1.41.0</td><td>macOS</td><td>x86</td><td>22/10/19 2:22:07 pm</td><td>222122</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom-mac-symbols.zip</td></tr><tr><td>1.41.0</td><td>macOS</td><td>x86</td><td>22/10/19 2:22:07 pm</td><td>174160220</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom-mac.zip</td></tr><tr><td>1.41.0</td><td>Windows</td><td>x86</td><td>22/10/19 2:22:07 pm</td><td>183790513</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom-windows.zip</td></tr><tr><td>1.41.0</td><td>Windows</td><td>x64</td><td>22/10/19 2:22:07 pm</td><td>193625971</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom-x64-windows.zip</td></tr><tr><td>1.41.0</td><td>RHEL</td><td>x86</td><td>22/10/19 2:22:07 pm</td><td>170211699</td><td>https://github.com/atom/atom/releases/download/v1.41.0/atom.x86_64.rpm</td></tr><tr><td>1.41.0</td><td>Windows</td><td>x64</td><td>22/10/19 2:22:07 pm</td><td>189866528</td><td>https://github.com/atom/atom/releases/download/v1.41.0/AtomSetup-x64.exe</td></tr><tr><td>1.41.0</td><td>Windows</td><td>x86</td><td>22/10/19 2:22:07 pm</td><td>180335136</td><td>https://github.com/atom/atom/releases/download/v1.41.0/AtomSetup.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Base Image Script Framework" style="color: #ffffff;">Base Image Script Framework </a><a id="show_1711091014" href="javascript:void(0)" onclick="show('1711091014');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1711091014" href="javascript:void(0)" onclick="hide('1711091014');" style="color: #ffffff;">(Hide)</a></div><div id="1711091014" class="flexParent overflowHidden"><div id="1711091014" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-sLrsPOBD').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-sLrsPOBD" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>6.1.3</td><td>22/8/19 6:35:07 pm</td><td>1943319</td><td>https://github.com/EUCweb/BIS-F/releases/download/6.1.3/setup-BIS-F-6.1.3_build01.111.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Citrix Workspace app" style="color: #ffffff;">Citrix Workspace app </a><a id="show_411233394" href="javascript:void(0)" onclick="show('411233394');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_411233394" href="javascript:void(0)" onclick="hide('411233394');" style="color: #ffffff;">(Hide)</a></div><div id="411233394" class="flexParent overflowHidden"><div id="411233394" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-vbKoiOEX').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-vbKoiOEX" width="100%" class="display compact"><thead><tr><th>Version</th><th>Title</th><th>Size</th><th>Hash</th><th>Date</th><th>Platform</th><th>URI</th></tr></thead><tbody><tr><td>19.9.0.21</td><td>Citrix Workspace - Current Release</td><td>130511968</td><td>84056da6674d09dd4861ec1ea7f435282cc469cb90075bd1ac569a4f60f5bf2b</td><td>2019-09-20</td><td>Windows</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Win/CitrixWorkspaceApp19.9.0.21.exe</td></tr><tr><td>14.9.8000.28</td><td>Citrix Receiver - LTSR CU8</td><td>41938944</td><td>30a51e5575def552de0a441d3e7b2b1b20cd06715a345723d5e0b96288f60e9d</td><td>2019-09-16</td><td>Windows</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Win/CitrixReceiver14.9.8000.28.exe</td></tr><tr><td>2.7.0.2113</td><td>HDX RTME for Windows - Current Release</td><td>45862912</td><td>3589e4faf1495e6ee3f3f538cf4c3f77576dd35af8b0238ac3b6f916aa483027</td><td>2019-03-12</td><td>Windows</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/CitrixRTME/Win/CitrixRTME_2.7.0.2113.msi</td></tr><tr><td>2.4.3000.3</td><td>HDX RTME for Windows - LTSR CU3</td><td>45314048</td><td>690c39203845c2aa7b22045fb4a3a4dcc309045fb064a0f4d1c0902c3902246f</td><td>2019-04-23</td><td>Windows</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/CitrixRTME/Win/CitrixRTME_2.4.3000.3.msi</td></tr><tr><td>19.10.2.41</td><td>Citrix Workspace app</td><td>Unknown</td><td>cf7815e93c6bb32d253de0d1703e90701d5b41daa005262b77f35c17edf6267b</td><td>2019-10-17</td><td>MacOS</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Mac/CitrixWorkspaceApp19.10.2.pkg</td></tr><tr><td>2.8.0.2235</td><td>HDX RealTime Media Engine</td><td>Unknown</td><td>2bab19d7b052c8e9a50eb45dd59dde457a074854ae05a244d959fd237eb2150b</td><td>2019-05-10</td><td>MacOS</td><td>https://downloadplugins.citrix.com/ReceiverUpdates/Prod/CitrixRTME/Mac/CitrixRTME_2.8.0.2235.pkg</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Citrix VM Tools" style="color: #ffffff;">Citrix VM Tools </a><a id="show_248382233" href="javascript:void(0)" onclick="show('248382233');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_248382233" href="javascript:void(0)" onclick="hide('248382233');" style="color: #ffffff;">(Hide)</a></div><div id="248382233" class="flexParent overflowHidden"><div id="248382233" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-GMNFtsYu').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-GMNFtsYu" width="100%" class="display compact"><thead><tr><th>Version</th><th>Architecture</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>7.1.0.1396</td><td>x86</td><td>5939200</td><td>http://downloadns.citrix.com.edgesuite.net/14626/managementagentx86.msi</td></tr><tr><td>7.1.0.1396</td><td>x64</td><td>5971968</td><td>http://downloadns.citrix.com.edgesuite.net/14625/managementagentx64.msi</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="ControlUp Agent" style="color: #ffffff;">ControlUp Agent </a><a id="show_433289212" href="javascript:void(0)" onclick="show('433289212');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_433289212" href="javascript:void(0)" onclick="hide('433289212');" style="color: #ffffff;">(Hide)</a></div><div id="433289212" class="flexParent overflowHidden"><div id="433289212" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-tYUPCJfY').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-tYUPCJfY" width="100%" class="display compact"><thead><tr><th>Version</th><th>Framework</th><th>Architecture</th><th>URI</th></tr></thead><tbody><tr><td>7.4.1.6</td><td>net35</td><td>x86</td><td>https://downloads.controlup.com/agent/7.4.1.6/ControlUpAgent-net35-x86-7.4.1.6.msi</td></tr><tr><td>7.4.1.6</td><td>net35</td><td>x64</td><td>https://downloads.controlup.com/agent/7.4.1.6/ControlUpAgent-net35-x64-7.4.1.6.msi</td></tr><tr><td>7.4.1.6</td><td>net45</td><td>x86</td><td>https://downloads.controlup.com/agent/7.4.1.6/ControlUpAgent-net45-x86-7.4.1.6.msi</td></tr><tr><td>7.4.1.6</td><td>net45</td><td>x64</td><td>https://downloads.controlup.com/agent/7.4.1.6/ControlUpAgent-net45-x64-7.4.1.6.msi</td></tr><tr><td>7.4.0.226</td><td>net35</td><td>x86</td><td>https://downloads.controlup.com/agent/7.4.0.226/ControlUpAgent-net35-x86-7.4.0.226.msi</td></tr><tr><td>7.4.0.226</td><td>net35</td><td>x64</td><td>https://downloads.controlup.com/agent/7.4.0.226/ControlUpAgent-net35-x64-7.4.0.226.msi</td></tr><tr><td>7.4.0.226</td><td>net45</td><td>x86</td><td>https://downloads.controlup.com/agent/7.4.0.226/ControlUpAgent-net45-x86-7.4.0.226.msi</td></tr><tr><td>7.4.0.226</td><td>net45</td><td>x64</td><td>https://downloads.controlup.com/agent/7.4.0.226/ControlUpAgent-net45-x64-7.4.0.226.msi</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Cyberduck" style="color: #ffffff;">Cyberduck </a><a id="show_768938950" href="javascript:void(0)" onclick="show('768938950');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_768938950" href="javascript:void(0)" onclick="hide('768938950');" style="color: #ffffff;">(Hide)</a></div><div id="768938950" class="flexParent overflowHidden"><div id="768938950" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-jfNmCLDS').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-jfNmCLDS" width="100%" class="display compact"><thead><tr><th>Version</th><th>Channel</th><th>URI</th></tr></thead><tbody><tr><td>7.1.3.31722</td><td>Snapshot</td><td>https:/update.cyberduck.io/windows/nightly/Cyberduck-Installer-7.1.3.31722.exe</td></tr><tr><td>7.1.2.31655</td><td>Beta</td><td>https:/update.cyberduck.io/windows/beta/Cyberduck-Installer-7.1.2.31655.exe</td></tr><tr><td>7.1.2.31675</td><td>Release</td><td>https:/update.cyberduck.io/windows/Cyberduck-Installer-7.1.2.31675.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Foxit Reader" style="color: #ffffff;">Foxit Reader </a><a id="show_1888402410" href="javascript:void(0)" onclick="show('1888402410');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1888402410" href="javascript:void(0)" onclick="hide('1888402410');" style="color: #ffffff;">(Hide)</a></div><div id="1888402410" class="flexParent overflowHidden"><div id="1888402410" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-gRZbFJbJ').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-gRZbFJbJ" width="100%" class="display compact"><thead><tr><th>Name</th></tr></thead><tbody><tr><td>No data available.</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Git for Windows" style="color: #ffffff;">Git for Windows </a><a id="show_468452700" href="javascript:void(0)" onclick="show('468452700');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_468452700" href="javascript:void(0)" onclick="hide('468452700');" style="color: #ffffff;">(Hide)</a></div><div id="468452700" class="flexParent overflowHidden"><div id="468452700" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-qMqfqocA').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-qMqfqocA" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>2.24.0</td><td>4/11/19 6:06:58 pm</td><td>47990624</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/Git-2.24.0-64-bit.exe</td></tr><tr><td>2.24.0</td><td>4/11/19 6:07:17 pm</td><td>47657280</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/Git-2.24.0-32-bit.exe</td></tr><tr><td>2.24.0</td><td>4/11/19 6:07:38 pm</td><td>43785432</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/PortableGit-2.24.0-64-bit.7z.exe</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:03 pm</td><td>43631224</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/PortableGit-2.24.0-32-bit.7z.exe</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:25 pm</td><td>23169985</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/MinGit-2.24.0-64-bit.zip</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:38 pm</td><td>23347443</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/MinGit-2.24.0-32-bit.zip</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:47 pm</td><td>19021095</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/MinGit-2.24.0-busybox-64-bit.zip</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:55 pm</td><td>19147960</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/MinGit-2.24.0-busybox-32-bit.zip</td></tr><tr><td>2.24.0</td><td>4/11/19 6:08:59 pm</td><td>113661812</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/Git-2.24.0-64-bit.tar.bz2</td></tr><tr><td>2.24.0</td><td>4/11/19 6:09:51 pm</td><td>111500278</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/Git-2.24.0-32-bit.tar.bz2</td></tr><tr><td>2.24.0</td><td>4/11/19 6:10:14 pm</td><td>16343335</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/pdbs-for-git-64-bit-2.24.0.1.6a3fa2a183-1.zip</td></tr><tr><td>2.24.0</td><td>4/11/19 6:10:17 pm</td><td>17856323</td><td>https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.1/pdbs-for-git-32-bit-2.24.0.1.6a3fa2a183-1.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Google Chrome" style="color: #ffffff;">Google Chrome </a><a id="show_1996064033" href="javascript:void(0)" onclick="show('1996064033');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1996064033" href="javascript:void(0)" onclick="hide('1996064033');" style="color: #ffffff;">(Hide)</a></div><div id="1996064033" class="flexParent overflowHidden"><div id="1996064033" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-ZCKJPtTa').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-ZCKJPtTa" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Date</th><th>URI</th></tr></thead><tbody><tr><td>78.0.3904.87</td><td>win</td><td>31/10/19 12:00:00 am</td><td>https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise.msi</td></tr><tr><td>78.0.3904.87</td><td>win64</td><td>31/10/19 12:00:00 am</td><td>https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi</td></tr><tr><td>78.0.3904.87</td><td>mac</td><td>31/10/19 12:00:00 am</td><td>https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Greenshot" style="color: #ffffff;">Greenshot </a><a id="show_156764199" href="javascript:void(0)" onclick="show('156764199');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_156764199" href="javascript:void(0)" onclick="hide('156764199');" style="color: #ffffff;">(Hide)</a></div><div id="156764199" class="flexParent overflowHidden"><div id="156764199" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-iHhDkfAJ').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-iHhDkfAJ" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>1.2.10.6</td><td>9/8/17 3:35:29 pm</td><td>467319</td><td>https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-DEBUGSYMBOLS-1.2.10.6-RELEASE.zip</td></tr><tr><td>1.2.10.6</td><td>9/8/17 3:35:30 pm</td><td>1783200</td><td>https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe</td></tr><tr><td>1.2.10.6</td><td>9/8/17 3:35:30 pm</td><td>1502832</td><td>https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-NO-INSTALLER-1.2.10.6-RELEASE.zip</td></tr><tr><td>1.2.10.6</td><td>9/8/17 3:35:31 pm</td><td>1392480</td><td>https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot_for_PortableApps_1.2.10.6-RELEASE.paf.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="JAM Software TreeSize Free" style="color: #ffffff;">JAM Software TreeSize Free </a><a id="show_1615276224" href="javascript:void(0)" onclick="show('1615276224');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1615276224" href="javascript:void(0)" onclick="hide('1615276224');" style="color: #ffffff;">(Hide)</a></div><div id="1615276224" class="flexParent overflowHidden"><div id="1615276224" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-vqVjFBce').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-vqVjFBce" width="100%" class="display compact"><thead><tr><th>Version</th><th>URI</th></tr></thead><tbody><tr><td>4.40</td><td>https://downloads.jam-software.de/treesize_free/TreeSizeFreeSetup.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="JAM Software TreeSize Professional" style="color: #ffffff;">JAM Software TreeSize Professional </a><a id="show_1407098908" href="javascript:void(0)" onclick="show('1407098908');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1407098908" href="javascript:void(0)" onclick="hide('1407098908');" style="color: #ffffff;">(Hide)</a></div><div id="1407098908" class="flexParent overflowHidden"><div id="1407098908" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-vhSqsfGJ').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-vhSqsfGJ" width="100%" class="display compact"><thead><tr><th>Version</th><th>URI</th></tr></thead><tbody><tr><td>7.13</td><td>https://downloads.jam-software.de/treesize/TreeSize-x64-Demo.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="LibreOffice" style="color: #ffffff;">LibreOffice </a><a id="show_2084193675" href="javascript:void(0)" onclick="show('2084193675');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_2084193675" href="javascript:void(0)" onclick="hide('2084193675');" style="color: #ffffff;">(Hide)</a></div><div id="2084193675" class="flexParent overflowHidden"><div id="2084193675" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-uuLooxUG').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": true,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-uuLooxUG" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>Language</th><th>URI</th></tr></thead><tbody><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>Neutral</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>am</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_am.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ar</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ar.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ast</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ast.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>bg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_bg.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>bn-IN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_bn-IN.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>bn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_bn.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>bo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_bo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>bs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_bs.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ca-valencia</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ca-valencia.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ca</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ca.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>cs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_cs.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>da</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_da.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>de</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_de.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>dz</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_dz.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>el</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_el.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>en-GB</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_en-GB.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>en-US</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_en-US.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>en-ZA</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_en-ZA.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>eo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_eo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>es</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_es.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>et</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_et.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>eu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_eu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>fi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_fi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>fr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_fr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>gl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_gl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>gu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_gu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>he</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_he.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>hi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_hi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>hr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_hr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>hu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_hu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>id</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_id.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>is</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_is.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>it</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_it.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ja</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ja.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ka</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ka.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>km</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_km.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ko</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ko.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>lo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_lo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>lt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_lt.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>lv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_lv.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>mk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_mk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>nb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_nb.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ne</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ne.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>nl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_nl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>nn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_nn.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>om</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_om.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>pl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_pl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>pt-BR</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_pt-BR.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>pt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_pt.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ro</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ro.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ru</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ru.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>si</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_si.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>sid</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_sid.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>sk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_sk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>sl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_sl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>sq</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_sq.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>sv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_sv.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ta</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ta.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>tg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_tg.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>tr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_tr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>ug</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_ug.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>uk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_uk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>vi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_vi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>zh-CN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_zh-CN.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86</td><td>zh-TW</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86/LibreOffice_6.3.3_Win_x86_helppack_zh-TW.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>Neutral</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>am</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_am.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ar</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ar.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ast</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ast.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>bg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_bg.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>bn-IN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_bn-IN.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>bn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_bn.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>bo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_bo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>bs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_bs.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ca-valencia</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ca-valencia.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ca</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ca.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>cs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_cs.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>da</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_da.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>de</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_de.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>dz</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_dz.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>el</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_el.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>en-GB</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_en-GB.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>en-US</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_en-US.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>en-ZA</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_en-ZA.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>eo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_eo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>es</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_es.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>et</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_et.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>eu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_eu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>fi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_fi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>fr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_fr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>gl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_gl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>gu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_gu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>he</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_he.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>hi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_hi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>hr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_hr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>hu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_hu.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>id</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_id.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>is</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_is.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>it</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_it.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ja</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ja.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ka</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ka.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>km</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_km.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ko</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ko.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>lo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_lo.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>lt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_lt.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>lv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_lv.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>mk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_mk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>nb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_nb.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ne</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ne.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>nl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_nl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>nn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_nn.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>om</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_om.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>pl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_pl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>pt-BR</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_pt-BR.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>pt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_pt.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ro</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ro.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ru</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ru.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>si</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_si.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>sid</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_sid.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>sk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_sk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>sl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_sl.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>sq</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_sq.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>sv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_sv.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ta</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ta.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>tg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_tg.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>tr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_tr.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>ug</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_ug.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>uk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_uk.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>vi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_vi.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>zh-CN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_zh-CN.msi</td></tr><tr><td>6.3.3</td><td>Windows</td><td>x86_64</td><td>zh-TW</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/win/x86_64/LibreOffice_6.3.3_Win_x64_helppack_zh-TW.msi</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>Neutral</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>af</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_af.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>am</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_am.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ar</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ar.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>as</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_as.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ast</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ast.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>be</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_be.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>bg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_bg.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>bn-IN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_bn-IN.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>bn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_bn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>bo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_bo.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>br</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_br.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>brx</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_brx.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>bs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_bs.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ca-valencia</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ca-valencia.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ca</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ca.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>cs</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_cs.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>cy</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_cy.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>da</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_da.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>de</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_de.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>dgo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_dgo.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>dsb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_dsb.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>dz</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_dz.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>el</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_el.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>en-GB</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_en-GB.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>en-ZA</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_en-ZA.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>eo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_eo.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>es</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_es.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>et</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_et.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>eu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_eu.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>fa</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_fa.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>fi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_fi.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>fr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_fr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>fy</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_fy.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ga</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ga.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>gd</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_gd.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>gl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_gl.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>gu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_gu.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>gug</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_gug.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>he</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_he.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>hi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_hi.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>hr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_hr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>hsb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_hsb.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>hu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_hu.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>id</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_id.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>is</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_is.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>it</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_it.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ja</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ja.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ka</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ka.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>kab</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_kab.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>kk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_kk.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>km</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_km.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>kmr-Latn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_kmr-Latn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>kn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_kn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ko</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ko.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>kok</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_kok.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ks</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ks.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>lb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_lb.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>lo</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_lo.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>lt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_lt.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>lv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_lv.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>mai</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_mai.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>mk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_mk.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ml</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ml.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>mn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_mn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>mni</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_mni.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>mr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_mr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>my</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_my.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>nb</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_nb.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ne</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ne.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>nl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_nl.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>nn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_nn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>nr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_nr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>nso</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_nso.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>oc</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_oc.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>om</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_om.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>or</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_or.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>pa-IN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_pa-IN.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>pl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_pl.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>pt-BR</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_pt-BR.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>pt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_pt.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ro</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ro.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ru</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ru.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>rw</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_rw.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sa-IN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sa-IN.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sat</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sat.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sd</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sd.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>si</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_si.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sid</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sid.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sk.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sl.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sq</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sq.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sr-Latn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sr-Latn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ss</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ss.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>st</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_st.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sv</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sv.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>sw-TZ</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_sw-TZ.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>szl</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_szl.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ta</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ta.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>te</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_te.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>tg</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_tg.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>th</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_th.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>tn</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_tn.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>tr</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_tr.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ts</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ts.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>tt</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_tt.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ug</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ug.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>uk</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_uk.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>uz</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_uz.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>ve</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_ve.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>vec</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_vec.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>vi</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_vi.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>xh</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_xh.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>zh-CN</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_zh-CN.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>zh-TW</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_zh-TW.dmg</td></tr><tr><td>6.3.3</td><td>macOS</td><td>x86_64</td><td>zu</td><td>https://download.documentfoundation.org/libreoffice/stable/6.3.3/mac/x86_64/LibreOffice_6.3.3_MacOS_x86-64_langpack_zu.dmg</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Microsoft Office" style="color: #ffffff;">Microsoft Office </a><a id="show_686956957" href="javascript:void(0)" onclick="show('686956957');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_686956957" href="javascript:void(0)" onclick="hide('686956957');" style="color: #ffffff;">(Hide)</a></div><div id="686956957" class="flexParent overflowHidden"><div id="686956957" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-bhEyohMF').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-bhEyohMF" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Channel</th><th>URI</th></tr></thead><tbody><tr><td>16.0.12130.20272</td><td>10/28/2019 18:12</td><td>Monthly (Targeted)</td><td>https://officecdn.microsoft.com/pr/wsus/setup.exe</td></tr><tr><td>16.0.11328.20438</td><td>10/18/2019 15:00</td><td>Semi-Annual Channel</td><td>https://officecdn.microsoft.com/pr/wsus/setup.exe</td></tr><tr><td>16.0.11929.20396</td><td>10/18/2019 14:53</td><td>Semi-Annual Channel (Targeted)</td><td>https://officecdn.microsoft.com/pr/wsus/setup.exe</td></tr><tr><td>16.0.12130.20272</td><td>11/03/2019 15:23</td><td>Monthly</td><td>https://officecdn.microsoft.com/pr/wsus/setup.exe</td></tr><tr><td>16.0.10351.20054</td><td>10/15/2019 17:13</td><td>Office 2019 Enterprise</td><td>https://officecdn.microsoft.com/pr/wsus/setup.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="PowerShell Core" style="color: #ffffff;">PowerShell Core </a><a id="show_441472907" href="javascript:void(0)" onclick="show('441472907');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_441472907" href="javascript:void(0)" onclick="hide('441472907');" style="color: #ffffff;">(Hide)</a></div><div id="441472907" class="flexParent overflowHidden"><div id="441472907" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-bsICEQcq').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": true,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-bsICEQcq" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>6.2.3</td><td>RHEL</td><td>x86_64</td><td>12/9/19 9:14:19 pm</td><td>57013496</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-1.rhel.7.x86_64.rpm</td></tr><tr><td>6.2.3</td><td>Linux</td><td>x64</td><td>12/9/19 9:14:20 pm</td><td>43967395</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-linux-alpine-x64.tar.gz</td></tr><tr><td>6.2.3</td><td>Linux</td><td>ARM32</td><td>12/9/19 9:14:24 pm</td><td>43662809</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-linux-arm32.tar.gz</td></tr><tr><td>6.2.3</td><td>Linux</td><td>ARM64</td><td>12/9/19 9:14:29 pm</td><td>42450003</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-linux-arm64.tar.gz</td></tr><tr><td>6.2.3</td><td>Linux</td><td>fxdependent</td><td>12/9/19 9:14:38 pm</td><td>25832877</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-linux-x64-fxdependent.tar.gz</td></tr><tr><td>6.2.3</td><td>Linux</td><td>x64</td><td>12/9/19 9:14:33 pm</td><td>57418788</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-linux-x64.tar.gz</td></tr><tr><td>6.2.3</td><td>macOS</td><td>x64</td><td>12/9/19 9:14:43 pm</td><td>56270579</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-osx-x64.pkg</td></tr><tr><td>6.2.3</td><td>macOS</td><td>x64</td><td>12/9/19 9:14:46 pm</td><td>55947738</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell-6.2.3-osx-x64.tar.gz</td></tr><tr><td>6.2.3</td><td>Windows</td><td>ARM32</td><td>12/9/19 9:14:51 pm</td><td>40128660</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-arm32.msix</td></tr><tr><td>6.2.3</td><td>Windows</td><td>ARM32</td><td>12/9/19 9:14:57 pm</td><td>39389643</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-arm32.zip</td></tr><tr><td>6.2.3</td><td>Windows</td><td>ARM64</td><td>12/9/19 9:14:58 pm</td><td>40169237</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-arm64.msix</td></tr><tr><td>6.2.3</td><td>Windows</td><td>ARM64</td><td>12/9/19 9:15:01 pm</td><td>39331207</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-arm64.zip</td></tr><tr><td>6.2.3</td><td>Windows</td><td>fxdependent</td><td>12/9/19 9:15:02 pm</td><td>27248658</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-fxdependent.zip</td></tr><tr><td>6.2.3</td><td>Windows</td><td>x64</td><td>12/9/19 9:15:05 pm</td><td>56000512</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi</td></tr><tr><td>6.2.3</td><td>Windows</td><td>x64</td><td>12/9/19 9:15:07 pm</td><td>59055979</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msix</td></tr><tr><td>6.2.3</td><td>Windows</td><td>x64</td><td>12/9/19 9:15:08 pm</td><td>58001501</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.zip</td></tr><tr><td>6.2.3</td><td>Windows</td><td>x86</td><td>12/9/19 9:15:10 pm</td><td>51322880</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x86.msi</td></tr><tr><td>6.2.3</td><td>Windows</td><td>x86</td><td>12/9/19 9:15:12 pm</td><td>52946645</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x86.zip</td></tr><tr><td>6.2.3</td><td>Debian</td><td>AMD64</td><td>12/9/19 9:14:03 pm</td><td>57452234</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell_6.2.3-1.debian.9_amd64.deb</td></tr><tr><td>6.2.3</td><td>Ubuntu</td><td>AMD64</td><td>12/9/19 9:14:11 pm</td><td>57453966</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell_6.2.3-1.ubuntu.16.04_amd64.deb</td></tr><tr><td>6.2.3</td><td>Ubuntu</td><td>AMD64</td><td>12/9/19 9:14:13 pm</td><td>57452572</td><td>https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/powershell_6.2.3-1.ubuntu.18.04_amd64.deb</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Microsoft SQL Server Management Studio" style="color: #ffffff;">Microsoft SQL Server Management Studio </a><a id="show_2073275964" href="javascript:void(0)" onclick="show('2073275964');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_2073275964" href="javascript:void(0)" onclick="hide('2073275964');" style="color: #ffffff;">(Hide)</a></div><div id="2073275964" class="flexParent overflowHidden"><div id="2073275964" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-UXobNyWo').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-UXobNyWo" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Title</th><th>URI</th></tr></thead><tbody><tr><td>15.0.18183.0</td><td>30/9/19 8:14:48 pm</td><td>Microsoft SQL Server Management Studio</td><td>https://aka.ms/ssmsfullsetup</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Microsoft Visual Studio Code" style="color: #ffffff;">Microsoft Visual Studio Code </a><a id="show_691016611" href="javascript:void(0)" onclick="show('691016611');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_691016611" href="javascript:void(0)" onclick="hide('691016611');" style="color: #ffffff;">(Hide)</a></div><div id="691016611" class="flexParent overflowHidden"><div id="691016611" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-coVwtnOr').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": true,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-coVwtnOr" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Channel</th><th>URI</th></tr></thead><tbody><tr><td>1.40.0-insider</td><td>darwin</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCode-darwin-insider.zip</td></tr><tr><td>1.39.2</td><td>darwin</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCode-darwin-stable.zip</td></tr><tr><td>1.35.0-insider</td><td>linux-deb-ia32</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/553cfb2c2205db5f15f3ee8395bbd5cf066d357d/code-insiders_1.35.0-1559607154_i386.deb</td></tr><tr><td>1.35.1</td><td>linux-deb-ia32</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/c7d83e57cd18f18026a8162d042843bda1bcf21f/code_1.35.1-1560349847_i386.deb</td></tr><tr><td>1.40.0-insider</td><td>linux-deb-x64</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/code-insiders_1.40.0-1572919193_amd64.deb</td></tr><tr><td>1.39.2</td><td>linux-deb-x64</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/code_1.39.2-1571154070_amd64.deb</td></tr><tr><td>1.35.0-insider</td><td>linux-ia32</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/553cfb2c2205db5f15f3ee8395bbd5cf066d357d/code-insider-1559607131.tar.gz</td></tr><tr><td>1.35.1</td><td>linux-ia32</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/c7d83e57cd18f18026a8162d042843bda1bcf21f/code-stable-1560349812.tar.gz</td></tr><tr><td>1.35.0-insider</td><td>linux-rpm-ia32</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/553cfb2c2205db5f15f3ee8395bbd5cf066d357d/code-insiders-1.35.0-1559607268.el7.i386.rpm</td></tr><tr><td>1.35.1</td><td>linux-rpm-ia32</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/c7d83e57cd18f18026a8162d042843bda1bcf21f/code-1.35.1-1560349971.el7.i386.rpm</td></tr><tr><td>1.40.0-insider</td><td>linux-x64</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/code-insider-1572919147.tar.gz</td></tr><tr><td>1.39.2</td><td>linux-x64</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/code-stable-1571154019.tar.gz</td></tr><tr><td>1.40.0-insider</td><td>win32</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCodeSetup-ia32-1.40.0-insider.exe</td></tr><tr><td>1.39.2</td><td>win32</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCodeSetup-ia32-1.39.2.exe</td></tr><tr><td>1.40.0-insider</td><td>win32-archive</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCode-win32-ia32-1.40.0-insider.zip</td></tr><tr><td>1.39.2</td><td>win32-archive</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCode-win32-ia32-1.39.2.zip</td></tr><tr><td>1.40.0-insider</td><td>win32-user</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCodeUserSetup-ia32-1.40.0-insider.exe</td></tr><tr><td>1.39.2</td><td>win32-user</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCodeUserSetup-ia32-1.39.2.exe</td></tr><tr><td>1.40.0-insider</td><td>win32-x64</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCodeSetup-x64-1.40.0-insider.exe</td></tr><tr><td>1.39.2</td><td>win32-x64</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCodeSetup-x64-1.39.2.exe</td></tr><tr><td>1.40.0-insider</td><td>win32-x64-archive</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCode-win32-x64-1.40.0-insider.zip</td></tr><tr><td>1.39.2</td><td>win32-x64-archive</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCode-win32-x64-1.39.2.zip</td></tr><tr><td>1.40.0-insider</td><td>win32-x64-user</td><td>insider</td><td>https://az764295.vo.msecnd.net/insider/d39e6b396c3ea364584126316a0fcf30f9cb378e/VSCodeUserSetup-x64-1.40.0-insider.exe</td></tr><tr><td>1.39.2</td><td>win32-x64-user</td><td>stable</td><td>https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCodeUserSetup-x64-1.39.2.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Mozilla Firefox" style="color: #ffffff;">Mozilla Firefox </a><a id="show_909036224" href="javascript:void(0)" onclick="show('909036224');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_909036224" href="javascript:void(0)" onclick="hide('909036224');" style="color: #ffffff;">(Hide)</a></div><div id="909036224" class="flexParent overflowHidden"><div id="909036224" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-GWheSeqK').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-GWheSeqK" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Language</th><th>Filename</th><th>URI</th></tr></thead><tbody><tr><td>70.0.1</td><td>win64</td><td>en-US</td><td>Firefox Setup 70.0.1.exe</td><td>https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/win64/en-US/Firefox%20Setup%2070.0.1.exe</td></tr><tr><td>70.0.1</td><td>win32</td><td>en-US</td><td>Firefox Setup 70.0.1.exe</td><td>https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/win32/en-US/Firefox%20Setup%2070.0.1.exe</td></tr><tr><td>70.0.1</td><td>mac</td><td>en-US</td><td>Firefox 70.0.1.dmg</td><td>https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/mac/en-US/Firefox%2070.0.1.dmg</td></tr><tr><td>70.0.1</td><td>linux-x86_64</td><td>en-US</td><td>firefox-70.0.1.tar.bz2</td><td>https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/linux-x86_64/en-US/firefox-70.0.1.tar.bz2</td></tr><tr><td>70.0.1</td><td>linux-i686</td><td>en-US</td><td>firefox-70.0.1.tar.bz2</td><td>https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/linux-i686/en-US/firefox-70.0.1.tar.bz2</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="mRemoteNG" style="color: #ffffff;">mRemoteNG </a><a id="show_217134704" href="javascript:void(0)" onclick="show('217134704');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_217134704" href="javascript:void(0)" onclick="hide('217134704');" style="color: #ffffff;">(Hide)</a></div><div id="217134704" class="flexParent overflowHidden"><div id="217134704" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-WBjohqCN').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-WBjohqCN" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>1.77.1</td><td>2/9/19 3:27:46 pm</td><td>43884544</td><td>https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.77.1/mRemoteNG-Installer-1.77.1.27654.msi</td></tr><tr><td>1.77.1</td><td>2/9/19 3:27:25 pm</td><td>39653361</td><td>https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.77.1/mRemoteNG-Portable-1.77.1.27713.zip</td></tr><tr><td>1.77.1</td><td>2/9/19 3:27:54 pm</td><td>1503046</td><td>https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.77.1/mRemoteNG-Portable-symbols-1.77.1.27713.zip</td></tr><tr><td>1.77.1</td><td>2/9/19 3:27:55 pm</td><td>1505180</td><td>https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.77.1/mRemoteNG-symbols-1.77.1.27654.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Notepad++" style="color: #ffffff;">Notepad++ </a><a id="show_2024164216" href="javascript:void(0)" onclick="show('2024164216');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_2024164216" href="javascript:void(0)" onclick="hide('2024164216');" style="color: #ffffff;">(Hide)</a></div><div id="2024164216" class="flexParent overflowHidden"><div id="2024164216" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-fqrbpiez').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-fqrbpiez" width="100%" class="display compact"><thead><tr><th>Version</th><th>Architecture</th><th>URI</th></tr></thead><tbody><tr><td>7.7.1</td><td>x86</td><td>http://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.exe</td></tr><tr><td>7.7.1</td><td>x64</td><td>http://notepad-plus-plus.org/repository/7.x/7.7.1/npp.7.7.1.Installer.x64.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="OpenJDK" style="color: #ffffff;">OpenJDK </a><a id="show_1542468452" href="javascript:void(0)" onclick="show('1542468452');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1542468452" href="javascript:void(0)" onclick="hide('1542468452');" style="color: #ffffff;">(Hide)</a></div><div id="1542468452" class="flexParent overflowHidden"><div id="1542468452" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-FWefYxJM').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-FWefYxJM" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>1.8.0.232-1.b09</td><td>Windows</td><td>x86_64</td><td>21/10/19 1:20:57 am</td><td>16808577</td><td>https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.232-1.b09/java-1.8.0-openjdk-1.8.0.232-1.b09.ojdkbuild.windows.x86_64.debuginfo.zip</td></tr><tr><td>1.8.0.232-1.b09</td><td>Windows</td><td>x86_64</td><td>21/10/19 1:20:59 am</td><td>149779883</td><td>https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.232-1.b09/java-1.8.0-openjdk-1.8.0.232-1.b09.ojdkbuild.windows.x86_64.msi</td></tr><tr><td>1.8.0.232-1.b09</td><td>Windows</td><td>x86_64</td><td>21/10/19 1:21:04 am</td><td>108652033</td><td>https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.232-1.b09/java-1.8.0-openjdk-1.8.0.232-1.b09.ojdkbuild.windows.x86_64.zip</td></tr><tr><td>1.8.0.232-1.b09</td><td>Windows</td><td>x86_64</td><td>21/10/19 1:21:04 am</td><td>45158187</td><td>https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.232-1.b09/java-1.8.0-openjdk-jre-1.8.0.232-1.b09.ojdkbuild.windows.x86_64.zip</td></tr><tr><td>1.8.0.232-1.b09</td><td>Windows</td><td>x86_64</td><td>21/10/19 1:21:06 am</td><td>39330171</td><td>https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.232-1.b09/openjfx-8.0.202-1.b10.ojdkbuild.windows.x86_64.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Oracle Java 8" style="color: #ffffff;">Oracle Java 8 </a><a id="show_203130589" href="javascript:void(0)" onclick="show('203130589');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_203130589" href="javascript:void(0)" onclick="hide('203130589');" style="color: #ffffff;">(Hide)</a></div><div id="203130589" class="flexParent overflowHidden"><div id="203130589" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-pLwGZwNc').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-pLwGZwNc" width="100%" class="display compact"><thead><tr><th>Version</th><th>Architecture</th><th>URI</th></tr></thead><tbody><tr><td>1.8.0_231-b11</td><td>x64</td><td>https://javadl.oracle.com/webapps/download/GetFile/1.8.0_231-b11/5b13a193868b4bf28bcb45c792fce896/windows-i586/jre-8u231-windows-x64.exe</td></tr><tr><td>1.8.0_231-b11</td><td>x86</td><td>https://javadl.oracle.com/webapps/download/GetFile/1.8.0_231-b11/5b13a193868b4bf28bcb45c792fce896/windows-i586/jre-8u231-windows-i586.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Oracle VirtualBox" style="color: #ffffff;">Oracle VirtualBox </a><a id="show_198082048" href="javascript:void(0)" onclick="show('198082048');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_198082048" href="javascript:void(0)" onclick="hide('198082048');" style="color: #ffffff;">(Hide)</a></div><div id="198082048" class="flexParent overflowHidden"><div id="198082048" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-vPYjjloS').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-vPYjjloS" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>URI</th></tr></thead><tbody><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_el6-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_el7-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_el8-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_fedora26-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_fedora29-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_openSUSE132-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>RedHat</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0-6.0.14_133895_openSUSE150-1.x86_64.rpm</td></tr><tr><td>6.0.14</td><td>macOS</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-OSX.dmg</td></tr><tr><td>6.0.14</td><td>Windows</td><td>http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-Win.exe</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Debian~buster_amd64.deb</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Debian~jessie_amd64.deb</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Debian~stretch_amd64.deb</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~bionic_amd64.deb</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~trusty_amd64.deb</td></tr><tr><td>6.0.14</td><td>Debian</td><td>http://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Paint.NET" style="color: #ffffff;">Paint.NET </a><a id="show_1652250745" href="javascript:void(0)" onclick="show('1652250745');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1652250745" href="javascript:void(0)" onclick="hide('1652250745');" style="color: #ffffff;">(Hide)</a></div><div id="1652250745" class="flexParent overflowHidden"><div id="1652250745" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-hMbZclli').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-hMbZclli" width="100%" class="display compact"><thead><tr><th>Version</th><th>URI</th></tr></thead><tbody><tr><td>4.205.7213.32560</td><td>https://www.getpaint.net/updates/zip/paint.net.4.2.5.install.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="ShareX" style="color: #ffffff;">ShareX </a><a id="show_746833519" href="javascript:void(0)" onclick="show('746833519');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_746833519" href="javascript:void(0)" onclick="hide('746833519');" style="color: #ffffff;">(Hide)</a></div><div id="746833519" class="flexParent overflowHidden"><div id="746833519" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-ovpzLUjE').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-ovpzLUjE" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>URI</th></tr></thead><tbody><tr><td>13.0.1</td><td>27/8/19 10:38:45 pm</td><td>5615870</td><td>https://github.com/ShareX/ShareX/releases/download/v13.0.1/ShareX-13.0.1-setup.exe</td></tr><tr><td>13.0.1</td><td>27/8/19 10:38:46 pm</td><td>5766093</td><td>https://github.com/ShareX/ShareX/releases/download/v13.0.1/ShareX-portable.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="TeamViewer" style="color: #ffffff;">TeamViewer </a><a id="show_1225374064" href="javascript:void(0)" onclick="show('1225374064');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1225374064" href="javascript:void(0)" onclick="hide('1225374064');" style="color: #ffffff;">(Hide)</a></div><div id="1225374064" class="flexParent overflowHidden"><div id="1225374064" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-BxRULqGh').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-BxRULqGh" width="100%" class="display compact"><thead><tr><th>Version</th><th>URI</th></tr></thead><tbody><tr><td>14.2.8352</td><td>https://dl.teamviewer.com/download/TeamViewer_Setup.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="VideoLan VLC Player " style="color: #ffffff;">VideoLan VLC Player  </a><a id="show_124212887" href="javascript:void(0)" onclick="show('124212887');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_124212887" href="javascript:void(0)" onclick="hide('124212887');" style="color: #ffffff;">(Hide)</a></div><div id="124212887" class="flexParent overflowHidden"><div id="124212887" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-PbxRvZUa').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-PbxRvZUa" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>Type</th><th>URI</th></tr></thead><tbody><tr><td>3.0.8</td><td>macOS</td><td>x64</td><td>DMG</td><td>https://get.videolan.org/vlc/3.0.8/macosx/vlc-3.0.8.dmg</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x86</td><td>EXE</td><td>http://get.videolan.org/vlc/3.0.8/win32/vlc-3.0.8-win32.exe</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x86</td><td>MSI</td><td>http://get.videolan.org/vlc/3.0.8/win32/vlc-3.0.8-win32.msi</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x86</td><td>ZIP</td><td>http://get.videolan.org/vlc/3.0.8/win32/vlc-3.0.8-win32.zip</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x64</td><td>EXE</td><td>http://get.videolan.org/vlc/3.0.8/win64/vlc-3.0.8-win64.exe</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x64</td><td>MSI</td><td>http://get.videolan.org/vlc/3.0.8/win64/vlc-3.0.8-win64.msi</td></tr><tr><td>3.0.8</td><td>Windows</td><td>x64</td><td>ZIP</td><td>http://get.videolan.org/vlc/3.0.8/win64/vlc-3.0.8-win64.zip</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="VMware Tools" style="color: #ffffff;">VMware Tools </a><a id="show_1294670292" href="javascript:void(0)" onclick="show('1294670292');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1294670292" href="javascript:void(0)" onclick="hide('1294670292');" style="color: #ffffff;">(Hide)</a></div><div id="1294670292" class="flexParent overflowHidden"><div id="1294670292" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-ZWqSHlKD').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-ZWqSHlKD" width="100%" class="display compact"><thead><tr><th>Version</th><th>Platform</th><th>Architecture</th><th>URI</th><th>ESXi</th></tr></thead><tbody><tr><td>10.3.10</td><td>Windows</td><td>x64</td><td>https://packages.vmware.com/tools/esx/latest/windows/x64/VMware-tools-10.3.10-12406962-x86_64.exe</td><td>6.7u3</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="WinMerge" style="color: #ffffff;">WinMerge </a><a id="show_1414702852" href="javascript:void(0)" onclick="show('1414702852');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1414702852" href="javascript:void(0)" onclick="hide('1414702852');" style="color: #ffffff;">(Hide)</a></div><div id="1414702852" class="flexParent overflowHidden"><div id="1414702852" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-XHjHYVyD').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-XHjHYVyD" width="100%" class="display compact"><thead><tr><th>Version</th><th>Date</th><th>Size</th><th>Md5Hash</th><th>URI</th></tr></thead><tbody><tr><td>2.16.4</td><td>28/7/19 1:07:29 pm</td><td>7195644</td><td>747b361586d666d04becd10d21080c88</td><td>https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.4/WinMerge-2.16.4-x64-Setup.exe</td></tr></tbody></table></div></div></div></div></div><div class="defaultSection roundedCorners overflowHidden" style="background-color:#87ceeb"><div class="defaultHeader" style="background-color:#00bfff;text-align:center"><a name="Zoom" style="color: #ffffff;">Zoom </a><a id="show_1142966887" href="javascript:void(0)" onclick="show('1142966887');" style="color: #ffffff; display:none;">(Show)</a><a id="hide_1142966887" href="javascript:void(0)" onclick="hide('1142966887');" style="color: #ffffff;">(Hide)</a></div><div id="1142966887" class="flexParent overflowHidden"><div id="1142966887" class="flexParent flexElement collapsable overflowHidden"><div class="flexPanel overflowHidden roundedCorners overflowHidden"><script>                $(document).ready(function() {
+                    $.fn.dataTable.moment( 'L' );
+                    
+                    
+                    
+                    //  Table code
+                    var table = $('#DT-BzVzpvYN').DataTable(
+                        {
+  "dom": "Bfrtip",
+  "buttons": [
+    {
+      "extend": "copyHtml5"
+    },
+    {
+      "extend": "excelHtml5"
+    },
+    {
+      "extend": "csvHtml5"
+    },
+    {
+      "extend": "pdfHtml5",
+      "pageSize": "A3",
+      "orientation": "landscape"
+    },
+    {
+      "extend": "pageLength"
+    }
+  ],
+  "searchFade": false,
+  "colReorder": true,
+  "paging": false,
+  "scrollCollapse": false,
+  "pagingType": [
+    "full_numbers"
+  ],
+  "lengthMenu": [
+    [
+      15,
+      25,
+      50,
+      100,
+      -1
+    ],
+    [
+      15,
+      25,
+      50,
+      100,
+      "All"
+    ]
+  ],
+  "ordering": true,
+  "order": [],
+  "rowGroup": "",
+  "info": true,
+  "procesing": true,
+  "select": true,
+  "searching": true,
+  "stateSave": true,
+  "responsive": {
+    "details": {
+      "type": "inline"
+    }
+  }
+}
+                    );
+                    
+                    
+                });</script><div class="flexElement overflowHidden"><table id="DT-BzVzpvYN" width="100%" class="display compact"><thead><tr><th>Name</th></tr></thead><tbody><tr><td>No data available.</td></tr></tbody></table></div></div></div></div></div><!-- END BODY --><!-- FOOTER --></body><!-- END FOOTER --></html>
