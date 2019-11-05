@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+1911.93
 
 * Fixes version match in `Get-ControlUpAgent`
 
