@@ -1,0 +1,21 @@
+{
+	"Name": "Microsoft FSLogix Apps",
+	"Source": "https://docs.microsoft.com/fslogix/",
+	"Get": {
+		"Uri": "https://aka.ms/fslogix_download",
+		"MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
+		"MatchFile": ".*msi$|.*exe$|.*zip$",
+		"MatchVersion": "(\\d+\\.){3}\\d+"
+	},
+	"Install": {
+		"Setup": "FSLogixAppsSetup.exe",
+		"Physical": {
+			"Arguments": "/install /quiet /norestart",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/install /quiet /norestart",
+			"PostInstall": []
+		}
+	}
+}

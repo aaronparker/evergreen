@@ -35,9 +35,7 @@ New-HTML -TitleText $Module -UseCssLinks:$true -UseJavaScriptLinks:$true -FilePa
         # Write the HTML section
         If ($Null -ne $res) {
             New-HTMLContent -HeaderText $res.Name -BackgroundColor SkyBlue -CanCollapse {
-                New-HTMLPanel {
-                    New-HTMLTable -ArrayOfObjects $Output -HideFooter
-                }
+                New-HTMLTable -ArrayOfObjects $Output -HideFooter
             }
         }
     }

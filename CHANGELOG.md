@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftFSLogixApps`
+
 ## 1911.93
 
 * Fixes version match in `Get-ControlUpAgent`
