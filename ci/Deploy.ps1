@@ -30,7 +30,7 @@ Else {
     }
     $moduleParent = Join-Path -Path $projectRoot -ChildPath $module
     $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-    $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
+    #$modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 
     # Tests success, push to GitHub
     If ($res.FailedCount -eq 0) {
