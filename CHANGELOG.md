@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 1911.95
 
 * Adds `Get-MicrosoftFSLogixApps`
 
