@@ -23,17 +23,14 @@
 		}
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "vlc*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/L=1033 /S /NCRC",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/L=1033 /S /NCRC",
+			"PostInstall": []
 		}
 	}
 }

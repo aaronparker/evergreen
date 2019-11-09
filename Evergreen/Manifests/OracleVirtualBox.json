@@ -9,17 +9,14 @@
 		"MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "VirtualBox*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "--silent",
+			"PostInstall": []
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"PostInstall": []
 		}
 	}
 }

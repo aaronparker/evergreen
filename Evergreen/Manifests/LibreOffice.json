@@ -14,17 +14,14 @@
 		"NoLanguage": "Neutral"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "LibreOffice*.msi",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
 		}
 	}
 }

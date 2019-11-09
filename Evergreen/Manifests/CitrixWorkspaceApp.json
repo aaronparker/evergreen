@@ -10,18 +10,14 @@
 		"DownloadUri": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "CitrixWorkspaceApp*.exe",
 		"Physical": {
-			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1",
-			"PostInstall": [
-			]
+			"Arguments": "/silent /noreboot /AutoUpdateCheck=auto /AutoUpdateStream=Current",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled",
-				"Get-ScheduledTask \"Adobe Acrobat Update Task*\" | Unregister-ScheduledTask -Confirm:$False"
-			]
+			"Arguments": "/silent /noreboot /AutoUpdateCheck=auto /AutoUpdateStream=Current",
+			"PostInstall": []
 		}
 	}
 }

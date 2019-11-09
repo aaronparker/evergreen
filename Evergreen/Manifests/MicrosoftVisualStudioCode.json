@@ -5,17 +5,14 @@
 		"Uri": "https://update.code.visualstudio.com/api/update"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "VSCode*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/silent /mergetasks='!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'",
+			"PostInstall": []
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"PostInstall": []
 		}
 	}
 }

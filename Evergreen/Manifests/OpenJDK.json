@@ -7,17 +7,14 @@
 		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "java*.msi",
 		"Physical": {
 			"Arguments": "",
-			"PostInstall": [
-			]
+			"PostInstall": []
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"PostInstall": []
 		}
 	}
 }

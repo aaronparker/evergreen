@@ -6,17 +6,15 @@
 		"DownloadUri": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "Firefox*.exe",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=true /PreventRebootRequired=true",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=false /PreventRebootRequired=true",
+			"PostInstall": []
 		}
 	}
 }

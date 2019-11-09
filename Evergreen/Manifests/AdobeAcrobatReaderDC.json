@@ -50,17 +50,20 @@
 		]
 	},
 	"Install": {
+		"Preinstall": "",
 		"Setup": "AcroRdrDC.*.exe",
 		"Physical": {
 			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1",
 			"PostInstall": [
+				"Start-Process -FilePath \"$env:SystemRoot\\System32\\msiexec.exe\" -ArgumentList \"/update #FileName /quiet\" -Wait"
 			]
 		},
 		"Virtual": {
 			"Arguments": "-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1",
 			"PostInstall": [
 				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled",
-				"Get-ScheduledTask \"Adobe Acrobat Update Task*\" | Unregister-ScheduledTask -Confirm:$False"
+				"Get-ScheduledTask \"Adobe Acrobat Update Task*\" | Unregister-ScheduledTask -Confirm:$False",
+				"Start-Process -FilePath \"$env:SystemRoot\\System32\\msiexec.exe\" -ArgumentList \"/update #FileName /quiet\" -Wait"
 			]
 		}
 	}

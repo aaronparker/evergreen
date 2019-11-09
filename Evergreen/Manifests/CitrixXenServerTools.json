@@ -5,14 +5,14 @@
 		"Uri": "https://pvupdates.vmd.citrix.com/updates.latest.tsv"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "managementagent*.msi",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": [
 			]
 		}

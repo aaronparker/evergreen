@@ -8,17 +8,14 @@
 		"DownloadUri": "https://nchc.dl.sourceforge.net/project/winmerge/stable/#Version/#Filename"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "WinMerge*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/Silent",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/Silent",
+			"PostInstall": []
 		}
 	}
 }

@@ -55,20 +55,5 @@
 			"Include": "",
 			"Exclude": "SDK"
 		}
-	},
-	"Install": {
-		"Setup": "",
-		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-
-			]
-		},
-		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-
-			]
-		}
 	}
 }

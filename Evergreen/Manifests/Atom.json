@@ -8,7 +8,8 @@
 		"MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "AtomSetup*.exe",
+		"Preinstall": "",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [

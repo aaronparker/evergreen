@@ -9,17 +9,14 @@
 		}
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "jre*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/s INSTALL_SILENT=Enable AUTO_UPDATE=Enable REBOOT=Disable SPONSORS=Disable REMOVEOUTOFDATEJRES=1 WEB_ANALYTICS=Disable",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/s INSTALL_SILENT=Enable AUTO_UPDATE=Disable REBOOT=Disable SPONSORS=Disable REMOVEOUTOFDATEJRES=1 WEB_ANALYTICS=Disable",
+			"PostInstall": []
 		}
 	}
 }

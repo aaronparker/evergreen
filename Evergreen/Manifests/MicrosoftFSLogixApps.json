@@ -9,6 +9,7 @@
 	},
 	"Install": {
 		"Setup": "FSLogixAppsSetup.exe",
+		"Preinstall": "Expand-Archive -Path #FileName -DestinationPath #TempPath",
 		"Physical": {
 			"Arguments": "/install /quiet /norestart",
 			"PostInstall": []

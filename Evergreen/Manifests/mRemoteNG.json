@@ -7,17 +7,14 @@
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "mRemoteNG*.msi",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
 		}
 	}
 }

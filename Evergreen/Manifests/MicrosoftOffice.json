@@ -15,17 +15,14 @@
 		"DownloadUri": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "setup.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/configure #FilePath",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/configure #FilePath",
+			"PostInstall": []
 		}
 	}
 }

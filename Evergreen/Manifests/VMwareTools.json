@@ -13,17 +13,14 @@
 		"MatchFileName": "[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-x86_64"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "VMware-tools*.exe",
 		"Physical": {
 			"Arguments": "",
-			"PostInstall": [
-			]
+			"PostInstall": []
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"PostInstall": []
 		}
 	}
 }

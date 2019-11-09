@@ -9,17 +9,14 @@
 		"DownloadUri": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "FoxitReader*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"1\" /passive /norestart /qn",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"0\" /passive /norestart /qn",
+			"PostInstall": []
 		}
 	}
 }

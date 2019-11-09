@@ -7,17 +7,15 @@
 		"MatchDownload": "#Version_FullZipUrlList=(.*)"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "paint*.zip",
+		"Preinstall": "Expand-Archive -Path #FileName -DestinationPath #TempPath",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "CHECKFORUPDATES=1 DESKTOPSHORTCUT=0",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "CHECKFORUPDATES=0 DESKTOPSHORTCUT=0",
+			"PostInstall": []
 		}
 	}
 }

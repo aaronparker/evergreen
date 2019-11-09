@@ -6,17 +6,14 @@
 		"ContentType": "application/json; charset=utf-8"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "npp*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/S",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/S",
+			"PostInstall": []
 		}
 	}
 }

@@ -7,17 +7,14 @@
 		"DownloadUri": "https://downloads.jam-software.de/treesize/TreeSize-x64-Demo.exe"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "Treesize*.exe",
 		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-			]
+			"Arguments": "/VERYSILENT /PASSWORD=",
+			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
-			]
+			"Arguments": "/VERYSILENT /PASSWORD=",
+			"PostInstall": []
 		}
 	}
 }
