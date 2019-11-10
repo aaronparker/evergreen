@@ -26,11 +26,24 @@ Function Get-MicrosoftFSLogixApps {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
+    #region Follow the download link which will return a 301
     If (Test-PSCore) {
-        Write-Warning "This function is currently unsupported on PowerShell Core. Please use Windows PowerShell."
+        Try {
+            #Get Microsoft FSLogix Apps agent details from the aka.ms link
+            $iwrParams = @{
+                Uri                = $res.Get.Uri
+                UseBasicParsing    = $True
+                MaximumRedirection = 0
+                ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
+            }
+            $response = Invoke-WebRequest @iwrParams
+        }
+        Catch {
+            $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
+        }
     }
     Else {
-        #region Get Microsoft FSLogix Apps agent details from the aka.ms link
+        #Get Microsoft FSLogix Apps agent details from the aka.ms link
         $iwrParams = @{
             Uri                = $res.Get.Uri
             UseBasicParsing    = $True
@@ -38,33 +51,61 @@ Function Get-MicrosoftFSLogixApps {
             ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
         }
         $response = Invoke-WebRequest @iwrParams
+        $redirectUrl = $response.Headers.Location
+    }
+    #endregion
         
-        # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-        If ($response.Headers.Location -match $res.Get.MatchFwlink) {
+    #region Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+    If ($redirectUrl -match $res.Get.MatchFwlink) {
 
-            # Follow the link
+        If (Test-PSCore) {
+            Try {
+                #Get Microsoft FSLogix Apps agent details from the aka.ms link
+                $iwrParams = @{
+                    Uri                = $redirectUrl
+                    UseBasicParsing    = $True
+                    MaximumRedirection = 0
+                    ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
+                }
+                $response = Invoke-WebRequest @iwrParams
+            }
+            Catch {
+                $nextRedirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
+                $dateTime = $_.Exception.Response.Headers.Date.DateTime
+            }
+        }
+        Else {
+            #Get Microsoft FSLogix Apps agent details from the aka.ms link
             $iwrParams = @{
-                Uri                = $response.Headers.Location
+                Uri                = $redirectUrl
                 UseBasicParsing    = $True
                 MaximumRedirection = 0
                 ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
             }
             $response = Invoke-WebRequest @iwrParams
+            $nextRedirectUrl = $response.Headers.Location
+            $dateTime = $response.Headers.Date
+        }
 
-            # Construct the output; Return the custom object to the pipeline
-            If ($response.Headers.Location -match $res.Get.MatchFile) {
+        # Construct the output; Return the custom object to the pipeline
+        If ($nextRedirectUrl -match $res.Get.MatchFile) {
 
-                # Grab the version number from the link
-                $response.Headers.Location -match $res.Get.MatchVersion | Out-Null
+            # Grab the version number from the link
+            $nextRedirectUrl -match $res.Get.MatchVersion | Out-Null
 
-                $PSObject = [PSCustomObject] @{
-                    Version = $matches[0]
-                    Date    = (ConvertTo-DateTime -DateTime $response.Headers.Date)
-                    URI     = $response.Headers.Location
-                }
-                Write-Output -InputObject $PSObject
+            $PSObject = [PSCustomObject] @{
+                Version = $matches[0]
+                Date    = (ConvertTo-DateTime -DateTime $dateTime)
+                URI     = $nextRedirectUrl
             }
-            #endregion
+            Write-Output -InputObject $PSObject
+        }
+        Else {
+            Write-Warning -Message "Failed to return a useable URL from $redirectUrl." 
         }
     }
+    Else {
+        Write-Warning -Message "Failed to return a useable URL from $($res.Get.Uri)."
+    }
+    #endregion
 }
