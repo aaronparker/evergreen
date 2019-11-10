@@ -35,7 +35,9 @@ Function Get-Greenshot {
     $Content = Invoke-WebContent @iwcParams
 
     If ($Null -ne $Content) {
-        $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1 
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
         # Latest version number 'Greenshot-RELEASE-1.2.10.6'
         $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null

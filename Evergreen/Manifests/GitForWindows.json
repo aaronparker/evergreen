@@ -3,7 +3,8 @@
 	"Source": "https://gitforwindows.org/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/git-for-windows/git/releases",
-		"ContentType": "application/json; charset=utf-8"
+		"ContentType": "application/json; charset=utf-8",
+		"ReplaceText": ".windows*.?"
 	},
 	"Install": {
 		"Setup": "Git*.exe",

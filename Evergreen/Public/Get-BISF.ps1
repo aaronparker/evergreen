@@ -35,11 +35,12 @@ Function Get-BISF {
     $Content = Invoke-WebContent @iwcParams
 
     If ($Null -ne $Content) {
-        $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1        
-        $releases = $latestRelease.assets
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
         # Build and array of the latest release and download URLs
-        ForEach ($release in $releases) {
+        ForEach ($release in $latestRelease.assets) {
             $PSObject = [PSCustomObject] @{
                 Version = $latestRelease.tag_name
                 Date    = (ConvertTo-DateTime -DateTime $release.created_at)

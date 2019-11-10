@@ -34,19 +34,22 @@ Function Get-GitForWindows {
         ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    $Json = $Content | ConvertFrom-Json
-    $latestRelease = ($Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
 
-    # Build and array of the latest release and download URLs
-    $releases = $latestRelease.assets
-    ForEach ($release in $releases) {
-        $PSObject = [PSCustomObject] @{
-            # TODO: use RegEx to extract version number rather than -replace
-            Version = (($latestRelease.tag_name -replace "v", "") -replace ".windows.1", "")
-            Date    = (ConvertTo-DateTime -DateTime $release.created_at)
-            Size    = $release.size
-            URI     = $release.browser_download_url
+    If ($Null -ne $Content) {
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
+
+        # Build and array of the latest release and download URLs
+        ForEach ($release in $latestRelease.assets) {
+            $PSObject = [PSCustomObject] @{
+                # TODO: use RegEx to extract version number rather than -replace
+                Version = (($latestRelease.tag_name -replace "v", "") -replace $res.Get.ReplaceText, "")
+                Date    = (ConvertTo-DateTime -DateTime $release.created_at)
+                Size    = $release.size
+                URI     = $release.browser_download_url
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

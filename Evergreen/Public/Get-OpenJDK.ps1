@@ -37,8 +37,9 @@ Function Get-OpenJDK {
     $Content = Invoke-WebContent @iwcParams
 
     If ($Null -ne $Content) {
-        $Json = $Content | ConvertFrom-Json
-        $latestRelease = ($Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
         # Build the output object with release details
         ForEach ($release in $latestRelease.assets) {

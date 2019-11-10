@@ -32,18 +32,22 @@ Function Get-ShareX {
         ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
+    
+    If ($Null -ne $Content) {
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
-    # Build and array of the latest release and download URLs
-    $releases = $latestRelease.assets
-    ForEach ($release in $releases) {
-        $PSObject = [PSCustomObject] @{
-            # TODO: use RegEx to extract version number rather than -replace
-            Version = ($latestRelease.tag_name -replace "v", "")
-            Date    = (ConvertTo-DateTime -DateTime $release.created_at)
-            Size    = $release.size
-            URI     = $release.browser_download_url
+        # Build and array of the latest release and download URLs
+        ForEach ($release in $latestRelease.assets) {
+            $PSObject = [PSCustomObject] @{
+                # TODO: use RegEx to extract version number rather than -replace
+                Version = ($latestRelease.tag_name -replace "v", "")
+                Date    = (ConvertTo-DateTime -DateTime $release.created_at)
+                Size    = $release.size
+                URI     = $release.browser_download_url
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

@@ -36,15 +36,16 @@ Function Get-mRemoteNG {
 
     # If something is returned
     If ($Null -ne $Content) {
-        $latestRelease = ($Content | ConvertFrom-Json | Where-Object { $_.prerelease -eq $False }) | Select-Object -First 1
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
         # Match version number
         $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null
         $Version = $Matches[0]
 
         # Build an array of the latest release and download URLs
-        $releases = $latestRelease.assets
-        ForEach ($release in $releases) {
+        ForEach ($release in $latestRelease.assets) {
             $PSObject = [PSCustomObject] @{
                 Version = $Version
                 Date    = (ConvertTo-DateTime -DateTime $release.created_at)
