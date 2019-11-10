@@ -37,22 +37,12 @@ Function Get-VideoLanVlcPlayer {
             Write-Verbose -Message "Error reading the update URL and converting to XML."
         }
 
-        # Follow the URL returned to get the actual download URI
-        If (Test-PSCore) {
-            $URI = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
-            Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
+        # Follow the download link which will return a 301
+        $rruParams = @{
+            Uri       = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
+            UserAgent = $res.Get.UserAgent
         }
-        Else {
-            $iwrParams = @{
-                Uri                = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
-                UserAgent          = $res.Get.UserAgent
-                MaximumRedirection = 0
-                UseBasicParsing    = $True
-                ErrorAction        = "SilentlyContinue"
-            }
-            $Response = Invoke-WebRequest @iwrParams
-            $URI = $Response.Links[0].href
-        }
+        $redirectUrl = Resolve-RedirectedUri @rruParams
 
         # Construct the output; Return the custom object to the pipeline
         ForEach ($extension in $res.Get.Extensions.macOS) {
@@ -61,7 +51,7 @@ Function Get-VideoLanVlcPlayer {
                 Platform     = "macOS"
                 Architecture = "x64"
                 Type         = $extension
-                URI          = $URI
+                URI          = $redirectUrl
             }
             Write-Output -InputObject $PSObject
         }
@@ -72,35 +62,24 @@ Function Get-VideoLanVlcPlayer {
     ForEach ($platform in $res.Get.Uri.Windows.GetEnumerator()) {
         $Content = Invoke-WebContent -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
 
-        # Follow the URL returned to get the actual download URI
-        If ($Null -ne $Content) {
-            If (Test-PSCore) {
-                $URI = $Content[1]
-                Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
-            }
-            Else {
-                $iwrParams = @{
-                    Uri                = $Content[1]
-                    UserAgent          = $res.Get.UserAgent
-                    MaximumRedirection = 0
-                    UseBasicParsing    = $True
-                    ErrorAction        = "SilentlyContinue"
-                }
-                $Response = Invoke-WebRequest @iwrParams
-                $URI = $Response.Links[0].href
-            }
+        # Follow the download link which will return a 301
+        $rruParams = @{
+            Uri       = $Content[1]
+            UserAgent = $res.Get.UserAgent
+        }
+        $redirectUrl = Resolve-RedirectedUri @rruParams
 
-            # Construct the output; Return the custom object to the pipeline
-            ForEach ($extension in $res.Get.Extensions.Windows) {
-                $PSObject = [PSCustomObject] @{
-                    Version      = $Content[0]
-                    Platform     = "Windows"
-                    Architecture = $platform.Name
-                    Type         = $extension
-                    URI          = $URI -replace ".exe$", (".$extension").ToLower()
-                }
-                Write-Output -InputObject $PSObject
+        # Construct the output; Return the custom object to the pipeline
+        ForEach ($extension in $res.Get.Extensions.Windows) {
+            $PSObject = [PSCustomObject] @{
+                Version      = $Content[0]
+                Platform     = "Windows"
+                Architecture = $platform.Name
+                Type         = $extension
+                #URI          = $URI -replace ".exe$", (".$extension").ToLower()
+                URI          = $redirectUrl -replace ".exe$", (".$extension").ToLower()
             }
+            Write-Output -InputObject $PSObject
         }
     }
     #endregion

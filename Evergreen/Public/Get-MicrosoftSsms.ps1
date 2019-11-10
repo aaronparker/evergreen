@@ -48,45 +48,31 @@ Function Get-MicrosoftSsms {
         # Build an output object by selecting installer entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($entry in $xmlDocument.feed.entry) {
-
                 ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.MatchName })) {
 
-                    # Follow the URL returned to get the actual download URI
-                    If (Test-PSCore) {
-                        $URI = $res.Get.DownloadUri
-                        Write-Warning -Message "PowerShell Core: skipping follow URL: $URI."
-                    }
-                    Else {
-                        # Follow the DownloadUri (aka.ms URL)
-                        $iwrParams = @{
-                            Uri                = $res.Get.DownloadUri
-                            UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                            MaximumRedirection = 0
-                            UseBasicParsing    = $True
-                            ErrorAction        = "SilentlyContinue"
-                        }
-                        $Response = Invoke-WebRequest @iwrParams
+                    # Follow the download link which will return a 301
+                    $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.DownloadUri
+            
+                    # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+                    If ($redirectUrl -match $res.Get.MatchFwlink) {
+                        $nextRedirectUrl = Resolve-RedirectedUri -Uri $redirectUrl
 
-                        # Follow the response (fwlink URL)
-                        $iwrParams = @{
-                            Uri                = $Response.Headers.Location
-                            UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                            MaximumRedirection = 0
-                            UseBasicParsing    = $True
-                            ErrorAction        = "SilentlyContinue"
-                        }
-                        $Response = Invoke-WebRequest @iwrParams
-                        $URI = $Response.Headers.Location
-                    }
+                        # If this returned URL target is a file
+                        If ($nextRedirectUrl -match $res.Get.MatchFile) {
 
-                    # Construct the output; Return the custom object to the pipeline
-                    $PSObject = [PSCustomObject] @{
-                        Version = $entry.Component.version
-                        Date    = ([DateTime]::Parse($entry.updated))
-                        Title   = $entry.Title
-                        URI     = $URI
+                            # Construct the output; Return the custom object to the pipeline
+                            $PSObject = [PSCustomObject] @{
+                                Version = $entry.Component.version
+                                Date    = ([DateTime]::Parse($entry.updated))
+                                Title   = $entry.Title
+                                URI     = $nextRedirectUrl
+                            }
+                            Write-Output -InputObject $PSObject
+                        }
+                        Else {
+                            Write-Warning -Message "Failed to return a useable URL from $redirectUrl."
+                        }
                     }
-                    Write-Output -InputObject $PSObject
                 }
             }
         }

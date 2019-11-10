@@ -4,7 +4,9 @@
 	"Get": {
 		"Uri": "https://download.microsoft.com/download/1/9/8/1986c4a9-480b-4a46-8088-2778e0abcc8a/SSMS_PRODUCTRELEASESFEED.xml",
 		"DownloadUri": "https://aka.ms/ssmsfullsetup",
-		"MatchName": "SQL Server Management Studio"
+		"MatchName": "SQL Server Management Studio",
+		"MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
+		"MatchFile": ".*msi$|.*exe$|.*zip$"
 	},
 	"Install": {
 		"Setup": "SSMS-Setup*.exe",

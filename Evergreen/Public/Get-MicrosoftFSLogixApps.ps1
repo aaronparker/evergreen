@@ -26,86 +26,31 @@ Function Get-MicrosoftFSLogixApps {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    #region Follow the download link which will return a 301
-    If (Test-PSCore) {
-        Try {
-            #Get Microsoft FSLogix Apps agent details from the aka.ms link
-            $iwrParams = @{
-                Uri                = $res.Get.Uri
-                UseBasicParsing    = $True
-                MaximumRedirection = 0
-                ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
-            }
-            $response = Invoke-WebRequest @iwrParams
-        }
-        Catch {
-            $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
-        }
-    }
-    Else {
-        #Get Microsoft FSLogix Apps agent details from the aka.ms link
-        $iwrParams = @{
-            Uri                = $res.Get.Uri
-            UseBasicParsing    = $True
-            MaximumRedirection = 0
-            ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
-        }
-        $response = Invoke-WebRequest @iwrParams
-        $redirectUrl = $response.Headers.Location
-    }
-    #endregion
-        
-    #region Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+    # Follow the download link which will return a 301
+    $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.Uri
+            
+    # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
     If ($redirectUrl -match $res.Get.MatchFwlink) {
+        $nextRedirectUrl = Resolve-RedirectedUri -Uri $redirectUrl
 
-        If (Test-PSCore) {
-            Try {
-                #Get Microsoft FSLogix Apps agent details from the aka.ms link
-                $iwrParams = @{
-                    Uri                = $redirectUrl
-                    UseBasicParsing    = $True
-                    MaximumRedirection = 0
-                    ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
-                }
-                $response = Invoke-WebRequest @iwrParams
-            }
-            Catch {
-                $nextRedirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
-                $dateTime = $_.Exception.Response.Headers.Date.DateTime
-            }
-        }
-        Else {
-            #Get Microsoft FSLogix Apps agent details from the aka.ms link
-            $iwrParams = @{
-                Uri                = $redirectUrl
-                UseBasicParsing    = $True
-                MaximumRedirection = 0
-                ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
-            }
-            $response = Invoke-WebRequest @iwrParams
-            $nextRedirectUrl = $response.Headers.Location
-            $dateTime = $response.Headers.Date
-        }
-
-        # Construct the output; Return the custom object to the pipeline
+        # If this returned URL target is a file
         If ($nextRedirectUrl -match $res.Get.MatchFile) {
 
             # Grab the version number from the link
             $nextRedirectUrl -match $res.Get.MatchVersion | Out-Null
 
+            # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version = $matches[0]
-                Date    = (ConvertTo-DateTime -DateTime $dateTime)
                 URI     = $nextRedirectUrl
             }
             Write-Output -InputObject $PSObject
         }
         Else {
-            Write-Warning -Message "Failed to return a useable URL from $redirectUrl." 
+            Write-Warning -Message "Failed to return a useable URL from $redirectUrl."
         }
     }
     Else {
         Write-Warning -Message "Failed to return a useable URL from $($res.Get.Uri)."
     }
-    #endregion
 }
