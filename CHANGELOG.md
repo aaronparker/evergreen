@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds private function `Resolve-RedirectedUri` to handle resolving 301/302 redirects on PowerShell Core and Windows PowerShell
+* Updates `Get-VideoLanVlcPlayer`, `Get-MicrosoftSsms`, `Get-FoxitReader`, `Get-MicrosoftFSLogixApps`, `Get-Zoom` with full support for PowerShell Core
+* Prevents `Get-MicrosoftSsms`, `Get-CitrixRssFeed`, `Get-Cyberduck`, `Get-OracleJava8` from throwing on error
+* Updates to application manifests with some work on silent install commands
+
 ## 1911.95
 
 * Adds `Get-MicrosoftFSLogixApps`

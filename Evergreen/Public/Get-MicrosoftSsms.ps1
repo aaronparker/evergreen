@@ -37,12 +37,8 @@ Function Get-MicrosoftSsms {
         Try {
             [System.XML.XMLDocument] $xmlDocument = $Content
         }
-        Catch [System.IO.IOException] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-            Throw $_.Exception.Message
-        }
         Catch [System.Exception] {
-            Throw $_
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
         }
 
         # Build an output object by selecting installer entries from the feed

@@ -76,7 +76,6 @@ Function Get-VideoLanVlcPlayer {
                 Platform     = "Windows"
                 Architecture = $platform.Name
                 Type         = $extension
-                #URI          = $URI -replace ".exe$", (".$extension").ToLower()
                 URI          = $redirectUrl -replace ".exe$", (".$extension").ToLower()
             }
             Write-Output -InputObject $PSObject
