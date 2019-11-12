@@ -1,4 +1,4 @@
-Function Get-CitrixRssFeed {
+﻿Function Get-CitrixRssFeed {
     <#
         .SYNOPSIS
             Get content from a citrix.com XML feed of notifications of new downloads.

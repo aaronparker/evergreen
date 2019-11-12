@@ -1,4 +1,4 @@
-Function Get-CitrixWorkspaceApp {
+﻿Function Get-CitrixWorkspaceApp {
     <#
         .SYNOPSIS
             Returns the current Citrix Workspace app, Receiver and HDX RTME releases.

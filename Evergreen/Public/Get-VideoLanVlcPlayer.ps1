@@ -1,4 +1,4 @@
-Function Get-VideoLanVlcPlayer {
+﻿Function Get-VideoLanVlcPlayer {
     <#
         .SYNOPSIS
             Get the current version and download URL for VideoLAN VLC Media Player.

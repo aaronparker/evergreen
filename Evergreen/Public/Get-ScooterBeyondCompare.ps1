@@ -1,4 +1,4 @@
-Function Get-ScooterBeyondCompare {
+﻿Function Get-ScooterBeyondCompare {
     <#
         .SYNOPSIS
             Returns the latest Beyond Compare and download URL.

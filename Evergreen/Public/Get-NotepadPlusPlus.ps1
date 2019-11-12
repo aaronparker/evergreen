@@ -1,4 +1,4 @@
-Function Get-NotepadPlusPlus {
+﻿Function Get-NotepadPlusPlus {
     <#
         .SYNOPSIS
             Returns the latest Notepad++ version and download URI.
