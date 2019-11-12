@@ -43,23 +43,30 @@ Function Get-NotepadPlusPlus {
         $Failed = 1
     }
     Finally {
-        # Select each target XPath to return version and download details
-        #If (($Null -ne $xmlDocument) -or ($xmlDocument -is [System.XML.XMLDocument])) {
-        If ($Failed -ne 1) {
-            $PSObject = [PSCustomObject] @{
-                Version      = $xmlDocument.GUP.Version
-                Architecture = "x86"
-                URI          = $xmlDocument.GUP.Location
-            }
-            Write-Output -InputObject $PSObject
 
-            # Fix the -replace with RegEx later
-            $PSObject = [PSCustomObject] @{
-                Version      = $xmlDocument.GUP.Version
-                Architecture = "x64"
-                URI          = $($xmlDocument.GUP.Location -replace "Installer.exe", "Installer.x64.exe")
+        # Select each target XPath to return version and download details
+        If ($Failed -ne 1) {
+
+            # Select the required node/s from the XML feed
+            $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+
+            # Construct the output; Return the custom object to the pipeline
+            ForEach ($node in $nodes) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $node.Version
+                    Architecture = "x86"
+                    URI          = $node.Location
+                }
+                Write-Output -InputObject $PSObject
+
+                # Fix the -replace with RegEx later
+                $PSObject = [PSCustomObject] @{
+                    Version      = $node.Version
+                    Architecture = "x64"
+                    URI          = $($node.Location -replace "Installer.exe", "Installer.x64.exe")
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
         Else {
             Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($res.Get.Uri)."

@@ -5,6 +5,7 @@
 		"RegExNumbers": "[^.0-9]",
 		"RegExVersion": "\\d+(\\.\\d+)+\\s",
 		"TitleReplace": "New - ",
+		"XmlNode": "//item",
 		"Receiver": {
 			"Uri": "https://www.citrix.com/content/citrix/en_us/downloads/citrix-receiver.rss",
 			"Include": "^Receiver*",

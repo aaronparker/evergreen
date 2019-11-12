@@ -27,33 +27,44 @@ Function Get-VideoLanVlcPlayer {
 
     #region Get current version for macOS
     $Content = Invoke-WebContent -Uri $res.Get.Uri.macOS
+
     If ($Null -ne $Content) {
-        try {
-            $xml = [System.XML.XMLDocument] $Content
-            $latest = $xml.rss.channel.item | Select-Object -Last 1
-            $version = $latest.title.Trim("Version ")
+
+        Try {
+            [System.XML.XMLDocument] $xmlDocument = $Content
         }
-        catch {
-            Write-Verbose -Message "Error reading the update URL and converting to XML."
+        Catch [System.Exception] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
         }
 
-        # Follow the download link which will return a 301
-        $rruParams = @{
-            Uri       = "https://get.videolan.org/vlc/$version/macosx/vlc-$version.dmg"
-            UserAgent = $res.Get.UserAgent
-        }
-        $redirectUrl = Resolve-RedirectedUri @rruParams
+        # Build an output object by selecting installer entries from the feed
+        If ($xmlDocument -is [System.XML.XMLDocument]) {
 
-        # Construct the output; Return the custom object to the pipeline
-        ForEach ($extension in $res.Get.Extensions.macOS) {
-            $PSObject = [PSCustomObject] @{
-                Version      = $version
-                Platform     = "macOS"
-                Architecture = "x64"
-                Type         = $extension
-                URI          = $redirectUrl
+            # Select the required node/s from the XML feed
+            $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+
+            # Find the latest version
+            $latest = $nodes | Sort-Object -Property "title" -Descending | Select-Object -First 1
+            $version = $latest.title.Trim($res.Get.TrimVersion)
+
+            # Follow the download link which will return a 301
+            $rruParams = @{
+                Uri       = $($res.Get.DownloadUriMacOS -replace "#version", $version)
+                UserAgent = $res.Get.UserAgent
             }
-            Write-Output -InputObject $PSObject
+            $redirectUrl = Resolve-RedirectedUri @rruParams
+
+            # Construct the output; Return the custom object to the pipeline
+            ForEach ($extension in $res.Get.Extensions.macOS) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $version
+                    Platform     = "macOS"
+                    Architecture = "x64"
+                    Type         = $extension
+                    URI          = $redirectUrl
+                }
+                Write-Output -InputObject $PSObject
+            }
         }
     }
     #endregion
