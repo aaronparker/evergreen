@@ -15,7 +15,7 @@ RootModule = 'Evergreen.psm1'
 ModuleVersion = '1911.97'
 
 # Supported PSEditions
-CompatiblePSEditions = @('Desktop', 'Core')
+# CompatiblePSEditions = @('Desktop', 'Core')
 
 # ID used to uniquely identify this module
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
