@@ -1,4 +1,4 @@
-Function Get-CitrixWorkspaceApp {
+﻿Function Get-CitrixWorkspaceApp {
     <#
         .SYNOPSIS
             Returns the current Citrix Workspace app, Receiver and HDX RTME releases.
@@ -42,15 +42,20 @@ Function Get-CitrixWorkspaceApp {
 
             # Build an output object by selecting installer entries from the feed
             If ($xmlDocument -is [System.XML.XMLDocument]) {
-                ForEach ($installer in (Select-Xml -Xml $xmlDocument -XPath "//Installer")) {
+
+                # Select the required node/s from the XML feed
+                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+
+                # Walk through each node to output details
+                ForEach ($node in $nodes) {
                     $PSObject = [PSCustomObject] @{
-                        Version  = $installer.Node.Version
-                        Title    = $($installer.Node.ShortDescription -replace ":", "")
-                        Size     = $(If ($installer.Node.Size) { $installer.Node.Size } Else { "Unknown" })
-                        Hash     = $installer.Node.Hash
-                        Date     = $installer.Node.StartDate
+                        Version  = $node.Version
+                        Title    = $($node.ShortDescription -replace ":", "")
+                        Size     = $(If ($node.Size) { $node.Size } Else { "Unknown" })
+                        Hash     = $node.Hash
+                        Date     = $node.StartDate
                         Platform = $item
-                        URI      = "$($res.Get.DownloadUri)$($installer.Node.DownloadURL)"
+                        URI      = "$($res.Get.DownloadUri)$($node.DownloadURL)"
                     }
                     Write-Output -InputObject $PSObject
                 }

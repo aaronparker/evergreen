@@ -54,6 +54,7 @@
                 $nodes = Select-Xml -Xml $xmlDocument -XPath "//information" | Select-Object –ExpandProperty "node"
                 $Update = $nodes | Where-Object { $_.lang -eq "en" }
 
+                # Construct the output; Return the custom object to the pipeline
                 ForEach ($arch in "x64", "x86") {
                     $PSObject = [PSCustomObject] @{
                         Version      = (($Update.version | Sort-Object -Descending) | Select-Object -First 1)

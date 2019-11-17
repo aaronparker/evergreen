@@ -11,6 +11,9 @@
 		},
 		"ContentType": "application/octet-stream",
 		"UserAgent": "VLC/3.0.7 LibVLC/3.0.7",
+		"XmlNode": "//item",
+		"TrimVersion": "Version ",
+		"DownloadUriMacOS": "https://get.videolan.org/vlc/#version/macosx/vlc-#version.dmg",
 		"Extensions": {
 			"Windows": [
 				"EXE",

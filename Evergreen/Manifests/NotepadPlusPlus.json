@@ -3,7 +3,8 @@
 	"Source": "https://notepad-plus-plus.org/",
 	"Get": {
 		"Uri": "https://notepad-plus-plus.org/update/getDownloadUrl.php",
-		"ContentType": "application/json; charset=utf-8"
+		"ContentType": "application/json; charset=utf-8",
+		"XmlNode": "//GUP"
 	},
 	"Install": {
 		"Setup": "npp*.exe",

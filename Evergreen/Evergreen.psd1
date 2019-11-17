@@ -15,7 +15,7 @@ RootModule = 'Evergreen.psm1'
 ModuleVersion = '1911.97'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+# CompatiblePSEditions = @('Desktop', 'Core')
 
 # ID used to uniquely identify this module
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
@@ -69,7 +69,7 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Export-EvergreenFunctionStrings', 
+FunctionsToExport = @('Export-EvergreenFunctionStrings', 'Get-ScooterBeyondCompare',
                'Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
                'Get-Atom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 

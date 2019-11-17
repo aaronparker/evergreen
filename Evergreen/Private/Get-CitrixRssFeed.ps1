@@ -1,4 +1,4 @@
-Function Get-CitrixRssFeed {
+﻿Function Get-CitrixRssFeed {
     <#
         .SYNOPSIS
             Get content from a citrix.com XML feed of notifications of new downloads.
@@ -35,16 +35,19 @@ Function Get-CitrixRssFeed {
 
         # Build an output object by selecting Citrix XML entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
-            ForEach ($item in (Select-Xml -Xml $xmlDocument -XPath "//item")) {
-                If ((($item.Node.Title -replace $res.Get.TitleReplace, "") `
-                            -match $Include) -and $item.Node.Title -notmatch $Exclude) {
+
+            # Select the required node/s from the XML feed
+            $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+
+            # Walk through each node to output details
+            ForEach ($node in $nodes) {
+                If ((($node.Title -replace $res.Get.TitleReplace, "") -match $Include) -and $node.Title -notmatch $Exclude) {
                     $PSObject = [PSCustomObject] @{
-                        Version     = $item.Node.title -replace $res.Get.RegExNumbers
-                        Title       = $(($item.Node.title -replace $res.Get.TitleReplace, "") `
-                                -replace $res.Get.RegExVersion)
-                        Description = $item.Node.description
-                        Date        = [DateTime]::Parse($item.Node.pubDate)
-                        URI         = $item.Node.link
+                        Version     = $node.title -replace $res.Get.RegExNumbers
+                        Title       = $(($node.title -replace $res.Get.TitleReplace, "") -replace $res.Get.RegExVersion)
+                        Description = $node.description
+                        Date        = [DateTime]::Parse($node.pubDate)
+                        URI         = $node.link
                     }
                     Write-Output -InputObject $PSObject
                 }
