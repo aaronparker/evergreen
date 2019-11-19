@@ -1,5 +1,10 @@
 # Change Log
 
+## 1911.101
+
+* Adds `Get-ScooterBeyondCompare`
+* Updates XML parsing approach in `Get-CitrixRssFeed`, `Get-CitrixWorkspaceApp`, `Get-NotepadPlusPlus`, `Get-VideoLanVlcPlayer`
+
 ## 1911.97
 
 * Adds private function `Resolve-RedirectedUri` to handle resolving 301/302 redirects on PowerShell Core and Windows PowerShell
