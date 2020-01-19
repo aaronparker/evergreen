@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2001.110
 
 * Adds `Get-MicrosoftTeams`
 * Update error handling in `Get-VideoLanVlcPlayer`

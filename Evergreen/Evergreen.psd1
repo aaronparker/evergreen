@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '2001.104'
+ModuleVersion = '2001.110'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -82,13 +82,13 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-Good', 'Get-GoogleChrome', 
                'Get-Greenshot', 'Get-JamTreeSizeFree', 'Get-JamTreeSizeProfessional', 
                'Get-LibreOffice', 'Get-MicrosoftEdge', 'Get-MicrosoftFSLogixApps', 
-               'Get-MicrosoftOffice', 'Get-MicrosoftPowerShellCore', 'Get-MicrosoftTeams',
-               'Get-MicrosoftSsms', 'Get-MicrosoftVisualStudioCode', 
-               'Get-MozillaFirefox', 'Get-mRemoteNG', 'Get-NotepadPlusPlus', 
-               'Get-OpenJDK', 'Get-OracleJava8', 'Get-OracleVirtualBox', 
-               'Get-PaintDotNet', 'Get-ScooterBeyondCompare', 'Get-ShareX', 
-               'Get-TeamViewer', 'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 
-               'Get-WinMerge', 'Get-Zoom')
+               'Get-MicrosoftOffice', 'Get-MicrosoftPowerShellCore', 
+               'Get-MicrosoftSsms', 'Get-MicrosoftTeams', 
+               'Get-MicrosoftVisualStudioCode', 'Get-MozillaFirefox', 
+               'Get-mRemoteNG', 'Get-NotepadPlusPlus', 'Get-OpenJDK', 
+               'Get-OracleJava8', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
+               'Get-ScooterBeyondCompare', 'Get-ShareX', 'Get-TeamViewer', 
+               'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 'Get-WinMerge', 'Get-Zoom')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
