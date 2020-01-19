@@ -55,14 +55,16 @@ Function Get-MicrosoftEdge {
             # Build the output object
             ForEach ($item in $Json) {
                 ForEach ($release in $item.Releases) {
-                    $PSObject = [PSCustomObject] @{
-                        Version      = $release.ProductVersion
-                        Platform     = $release.Platform
-                        Product      = $item.Product
-                        Architecture = $release.Architecture
-                        Date         = $release.PublishedTime
-                        Hash         = $release.Artifacts.Hash
-                        URI          = $release.Artifacts.Location
+                    If ($release.Artifacts.Location.Length -gt 0) {
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $release.ProductVersion
+                            Platform     = $release.Platform
+                            Product      = $item.Product
+                            Architecture = $release.Architecture
+                            Date         = $release.PublishedTime
+                            Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
+                            URI          = ($release.Artifacts.Location | Where-Object { $_ -match "msi$|exe$|pkg$|cab$" } )
+                        }
                     }
 
                     # Output object to the pipeline
