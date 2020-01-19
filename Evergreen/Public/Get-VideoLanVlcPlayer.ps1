@@ -35,6 +35,7 @@
         }
         Catch [System.Exception] {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+            Break
         }
 
         # Build an output object by selecting installer entries from the feed

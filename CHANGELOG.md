@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `Get-MicrosoftTeams`
+* Update error handling in `Get-VideoLanVlcPlayer`
 
 ## 2001.104
 
