@@ -1,5 +1,10 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftEdge` for the new Chromium based Microsoft Edge
+* Additional verbose output in `Invoke-WebContent`
+
 ## 1911.101
 
 * Adds `Get-ScooterBeyondCompare`

@@ -1,0 +1,28 @@
+{
+	"Name": "Microsoft Edge",
+	"Source": "https://www.microsoft.com/edge",
+	"Get": {
+		"Uri": "https://edgeupdates.microsoft.com/api/products",
+		"Views": {
+			"Enterprise": "?view=enterprise",
+			"Consumer": ""
+		},
+		"ContentType": "application/json; charset=utf-8",
+		"DateTime": "MM/dd/yyyy HH:mm"
+	},
+	"Install": {
+		"Setup": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
+			]
+		}
+	}
+}

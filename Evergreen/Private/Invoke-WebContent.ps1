@@ -35,6 +35,7 @@ Function Invoke-WebContent {
         try {
             If ($Raw.IsPresent) {
                 $tempFile = New-TemporaryFile
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile]."
                 $iwrParams = @{
                     Uri             = $Uri
                     OutFile         = $tempFile
@@ -77,6 +78,7 @@ Function Invoke-WebContent {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
         }
         finally {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning object of length [$($Content.Length)]."
             Write-Output -InputObject $Content
         }
     }
