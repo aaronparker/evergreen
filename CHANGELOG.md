@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2001.104
 
 * Adds `Get-MicrosoftEdge` for the new Chromium based Microsoft Edge
 * Additional verbose output in `Invoke-WebContent`
