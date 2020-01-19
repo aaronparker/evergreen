@@ -20,6 +20,7 @@ Function Get-MicrosoftTeams {
             Returns the available Microsoft Teams versions and download URIs for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param ()
 
