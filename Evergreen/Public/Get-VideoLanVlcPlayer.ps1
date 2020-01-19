@@ -74,23 +74,25 @@
     ForEach ($platform in $res.Get.Uri.Windows.GetEnumerator()) {
         $Content = Invoke-WebContent -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
 
-        # Follow the download link which will return a 301
-        $rruParams = @{
-            Uri       = $Content[1]
-            UserAgent = $res.Get.UserAgent
-        }
-        $redirectUrl = Resolve-RedirectedUri @rruParams
-
-        # Construct the output; Return the custom object to the pipeline
-        ForEach ($extension in $res.Get.Extensions.Windows) {
-            $PSObject = [PSCustomObject] @{
-                Version      = $Content[0]
-                Platform     = "Windows"
-                Architecture = $platform.Name
-                Type         = $extension
-                URI          = $redirectUrl -replace ".exe$", (".$extension").ToLower()
+        If ($Null -ne $Content) {
+            # Follow the download link which will return a 301
+            $rruParams = @{
+                Uri       = $Content[1]
+                UserAgent = $res.Get.UserAgent
             }
-            Write-Output -InputObject $PSObject
+            $redirectUrl = Resolve-RedirectedUri @rruParams
+
+            # Construct the output; Return the custom object to the pipeline
+            ForEach ($extension in $res.Get.Extensions.Windows) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Content[0]
+                    Platform     = "Windows"
+                    Architecture = $platform.Name
+                    Type         = $extension
+                    URI          = $redirectUrl -replace ".exe$", (".$extension").ToLower()
+                }
+                Write-Output -InputObject $PSObject
+            }
         }
     }
     #endregion
