@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftTeams`
+
 ## 2001.104
 
 * Adds `Get-MicrosoftEdge` for the new Chromium based Microsoft Edge

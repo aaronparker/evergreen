@@ -1,0 +1,28 @@
+{
+	"Name": "Microsoft Teams",
+	"Source": "https://www.microsoft.com/teams",
+	"Get": {
+		"Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=general",
+		"ContentType": "application/json; charset=utf-8",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"DownloadUri": { 
+			"x64": "https://statics.teams.cdn.office.net/production-windows-x64/#Version/Teams_windows_x64.msi",
+			"x86": "https://statics.teams.cdn.office.net/production-windows/#Version/Teams_windows.msi"
+		}
+	},
+	"Install": {
+		"Setup": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
+			]
+		}
+	}
+}
