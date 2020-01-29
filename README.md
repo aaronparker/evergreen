@@ -39,10 +39,9 @@ This module is maintained by the following community members
 
 The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it easy to understand when the last update was made.
 
-
 ## Installing the Module
 
-## Install from the PowerShell Gallery
+### Install from the PowerShell Gallery
 
 The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). The module can be installed from the gallery with:
 
