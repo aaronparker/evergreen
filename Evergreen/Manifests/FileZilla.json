@@ -1,0 +1,19 @@
+{
+	"Name": "FileZilla",
+	"Source": "https://filezilla-project.org/",
+	"Get": {
+		"Uri": "https://filezilla-project.org/download.php?show_all=1"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}

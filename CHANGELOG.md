@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Updates `Get-FileZilla` to return 32-bit and 64-bit download URIs
+
 ## 2001.110
 
 * Adds `Get-MicrosoftTeams`
