@@ -1,5 +1,9 @@
 # Change Log
 
+## Unreleased
+
+* Updates `Get-GitForWindows` to return correct version number
+
 ## 2001.117
 
 * Updates `Get-FileZilla` to return 32-bit and 64-bit download URIs

@@ -37,14 +37,14 @@ Function Get-GitForWindows {
 
     If ($Null -ne $Content) {
         $json = $Content | ConvertFrom-Json
-        $releases = $json | Where-Object { $_.prerelease -ne $True }
-        $latestRelease = $releases | Select-Object -First 1
+        $latestRelease = $json | Where-Object { $_.prerelease -ne $True } | Select-Object -First 1
+        $regexMatch = [Regex]::Match($latestRelease.tag_name, $res.Get.MatchVersion)
+        $version = if ($regexMatch.Success) { $regexMatch.Value } else { 'Unknown' }
 
         # Build and array of the latest release and download URLs
         ForEach ($release in $latestRelease.assets) {
             $PSObject = [PSCustomObject] @{
-                # TODO: use RegEx to extract version number rather than -replace
-                Version = (($latestRelease.tag_name -replace "v", "") -replace $res.Get.ReplaceText, "")
+                Version = $version
                 Date    = (ConvertTo-DateTime -DateTime $release.created_at)
                 Size    = $release.size
                 URI     = $release.browser_download_url
