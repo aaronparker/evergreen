@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## VERSION
 
 * Updates `Get-GitForWindows` to return correct version number
 

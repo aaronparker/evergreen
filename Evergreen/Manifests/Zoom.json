@@ -22,7 +22,7 @@
 		"VMwareVDIUris": {
 			"Client": "https://zoom.us/download/vdi/ZoomVmwareMediaPlugin.msi"
 		},
-		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+		"MatchVersion": "(?<=/)\\d+(\\.\\d+){2,}(?=\\.\\d+/)"
 	},
 	"Install": {
 		"Setup": "Zoom*.exe",

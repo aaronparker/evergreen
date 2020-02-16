@@ -28,13 +28,11 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.WindowsUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.WindowsUris[$installer.Key]
-
-        If ($redirectUrl -match $res.Get.MatchVersion) {
-            $Version = $Matches[0]
-        }
-        Else {
-            $Version = "Unknown"
+        $redirectUrl = Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]
+        $regexMatch = [Regex]::Match($redirectUrl, $res.Get.MatchVersion)
+        $Version = "Unknown"
+        If ($regexMatch.Success -eq $true) {
+            $Version = $regexMatch.Value
         }
 
         # Construct the output; Return the custom object to the pipeline
@@ -52,7 +50,7 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.CitrixVDIUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.CitrixVDIUris[$installer.Key]
+        $redirectUrl = Resolve-Uri -Uri $res.Get.CitrixVDIUris[$installer.Key]
 
         # Match version number from the download URL
         If ($redirectUrl -match $res.Get.MatchVersion) {
