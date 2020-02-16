@@ -3,6 +3,8 @@
 ## 2002.120
 
 * Updates `Get-GitForWindows` to return correct version number
+* Updates `Get-Zoom` to return version number correctly
+* Adds `Resolve-Uri` with a new method of returning redirects from 301/302 via @iainbrighton 
 
 ## 2001.117
 
