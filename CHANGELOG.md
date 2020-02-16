@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2002.120
 
 * Updates `Get-GitForWindows` to return correct version number
 
