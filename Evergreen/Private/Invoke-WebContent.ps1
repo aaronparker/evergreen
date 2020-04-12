@@ -30,9 +30,19 @@ Function Invoke-WebContent {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Write-Verbose -Message "$($MyInvocation.MyCommand): reading: $Uri."
 
+    # Disable the Invoke-WebRequest progress bar for faster downloads
+    If ($PSBoundParameters.ContainsKey('Verbose')) {
+        $ProgressPreference = "Continue"
+    }
+    Else {
+        $ProgressPreference = "SilentlyContinue"
+    }
+
+    # Set ErrorAction
     If ($script:resourceStrings.Preferences.ErrorAction) {
         $errorAction = $script:resourceStrings.Preferences.ErrorAction
-    } Else {
+    }
+    Else {
         $errorAction = "SilentlyContinue"
     }
 

@@ -15,7 +15,7 @@ Function Get-FileZilla {
     try {
         $web = Invoke-WebRequest -Uri $res.Get.Uri -UseBasicParsing -ErrorAction Stop
         $regexMatch = [Regex]::Match($web.Content, '(?<=<p>The latest stable version of FileZilla Client is )\d{1,}\.\d{1,}\.\d{1,}(?=</p>)')
-        if ($regexMatch.Success -eq $true) {
+        #if ($regexMatch.Success -eq $true) {
             $version = $regexMatch.Value
             foreach ($platform in 'win32', 'win64') {
                 ## The link we want is signed - hence the \? match
@@ -29,7 +29,7 @@ Function Get-FileZilla {
                     }
                 }
             }
-        }
+        #}
     }
     catch {
         Throw "Failed to connect to URL: $url with error $_."
