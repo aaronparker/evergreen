@@ -2,7 +2,7 @@
 	"Name": "Greenshot",
 	"Source": "https://getgreenshot.org/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/greenshot/greenshot/releases",
+		"Uri": "https://api.github.com/repos/greenshot/greenshot/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 	},

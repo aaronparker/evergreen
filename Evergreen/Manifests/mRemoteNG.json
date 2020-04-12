@@ -2,7 +2,7 @@
 	"Name": "mRemoteNG",
 	"Source": "https://mremoteng.org/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases",
+		"Uri": "https://api.github.com/repos/mRemoteNG/mRemoteNG/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 	},

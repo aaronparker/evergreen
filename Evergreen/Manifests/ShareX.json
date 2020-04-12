@@ -2,7 +2,7 @@
 	"Name": "ShareX",
 	"Source": "https://getsharex.com/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/ShareX/ShareX/releases",
+		"Uri": "https://api.github.com/repos/ShareX/ShareX/releases/latest",
 		"ContentType": "application/json; charset=utf-8"
 	},
 	"Install": {

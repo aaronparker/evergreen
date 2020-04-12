@@ -2,7 +2,7 @@
 	"Name": "Base Image Script Framework",
 	"Source": "https://eucweb.com/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/EUCweb/BIS-F/releases",
+		"Uri": "https://api.github.com/repos/EUCweb/BIS-F/releases/latest",
 		"ContentType": "application/json; charset=utf-8"
 	},
 	"Install": {
