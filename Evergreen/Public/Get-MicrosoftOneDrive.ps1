@@ -1,4 +1,4 @@
-Function Get-MicrosoftOneDrive {
+﻿Function Get-MicrosoftOneDrive {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Microsoft OneDrive sync client.
