@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftOneDrive`. We recommend validating versions returned by this function with [OneDrive release notes](https://support.office.com/en-us/article/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0)
+* Removes `Get-FileZilla` until a more robust process to return versions and download can be created
+* Removes progress bar for `Invoke-WebRequest` for faster query of APIs
+* Updates `Get-NotepadPlusPlus` to use the GitHub releases API to find new versions as the application update API can be out of date
+
 ## 2002.120
 
 * Updates `Get-GitForWindows` to return correct version number

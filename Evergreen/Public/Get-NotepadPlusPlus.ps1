@@ -28,52 +28,56 @@
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Read the Notepad++ version and download XML
+    # Get latest version and download latest Notepad++ release via GitHub API
+    # Query the Notepad++ repository for releases, keeping the latest stable release
     $iwcParams = @{
-        Uri = $res.Get.Uri
+        Uri         = $res.Get.Uri
+        ContentType = $res.Get.ContentType
+        Raw         = $True
     }
     $Content = Invoke-WebContent @iwcParams
 
-    $Failed = 0
-    Try {
-        [System.XML.XMLDocument] $xmlDocument = $Content
-    }
-    Catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert XML."
-        $Failed = 1
-    }
-    Finally {
+    If ($Null -ne $Content) {
+        $json = $Content | ConvertFrom-Json
+        $releases = $json | Where-Object { $_.prerelease -ne $True }
+        $latestRelease = $releases | Select-Object -First 1
 
-        # Select each target XPath to return version and download details
-        If ($Failed -ne 1) {
+        # Build the output object with release details
+        ForEach ($release in $latestRelease.assets) {
 
-            # Select the required node/s from the XML feed
-            $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+            # Filter for .exe
+            If (($release.content_type -eq "application/x-msdownload")) {
 
-            # Construct the output; Return the custom object to the pipeline
-            ForEach ($node in $nodes) {
-                $PSObject = [PSCustomObject] @{
-                    Version      = $node.Version
-                    Architecture = "x86"
-                    URI          = $node.Location
+                Switch -Regex ($release.browser_download_url) {
+                    "amd64" { $arch = "AMD64" }
+                    "arm64" { $arch = "ARM64" }
+                    "arm32" { $arch = "ARM32" }
+                    "x86_64" { $arch = "x86_64" }
+                    "x64" { $arch = "x64" }
+                    "-x86" { $arch = "x86" }
+                    Default { $arch = "x86" }
                 }
-                Write-Output -InputObject $PSObject
 
-                # Fix the -replace with RegEx later
+                Switch -Regex ($release.browser_download_url) {
+                    "win" { $platform = "Windows" }
+                    Default { $platform = "Windows" }
+                }
+
+                # Match version number
+                $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null
+                $Version = $Matches[0]
+
+                # Build and array of the latest release and download URLs
                 $PSObject = [PSCustomObject] @{
-                    Version      = $node.Version
-                    Architecture = "x64"
-                    URI          = $($node.Location -replace "Installer.exe", "Installer.x64.exe")
+                    Version      = $Version
+                    Platform     = $platform
+                    Architecture = $arch
+                    Date         = (ConvertTo-DateTime -DateTime $release.created_at)
+                    Size         = $release.size
+                    URI          = $release.browser_download_url
                 }
                 Write-Output -InputObject $PSObject
             }
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to read update URL: $($res.Get.Uri)."
-            $PSObject = [PSCustomObject] @{
-                Error = "Check update URL"
-            }
-            Write-Output -InputObject $PSObject
         }
     }
 }

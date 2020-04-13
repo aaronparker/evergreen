@@ -2,7 +2,7 @@
 	"Name": "OpenJDK",
 	"Source": "https://openjdk.java.net/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
+		"Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)"
 	},
