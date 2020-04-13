@@ -53,10 +53,10 @@ Import-Module -Name Evergreen
 
 ### Updating the Module
 
-If you have installed a previous version of the module from the gallery, you can install the latest update with the `-Force` parameter:
+If you have installed a previous version of the module from the gallery, you can install the latest update with `Update-Module` and the `-Force` parameter:
 
 ```powershell
-Install-Module -Name Evergreen -Force
+Update-Module -Name Evergreen -Force
 ```
 
 ### Manual Installation from the Repository
