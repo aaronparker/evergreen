@@ -25,7 +25,8 @@ There are several community and commercial products that manage application depl
 Evergreen uses a couple of approaches to returning the latest version of software. Instead of scraping web pages, the primary methods used are:
 
 1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI
-2. Web APIs - often a vendor download pages will include a query when listing versions and download links. Evergreen can use the same approach
+2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return version and download links
+3. Web page queries - often a vendor download pages will include a query when listing versions and download links. Evergreen can use the same approach. This approach can avoid scraping web page.
 
 ## Who
 
