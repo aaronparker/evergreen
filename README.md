@@ -20,7 +20,7 @@ All functions consist of the following:
 
 There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, find the latest version of a particular software package for creating a Chocolatey submission.
 
-Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. **Data will only be pulled from official sources and never a third party**.
+Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. **Data will only be pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
 
 ## How
 
