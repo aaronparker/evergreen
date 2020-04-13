@@ -1,4 +1,4 @@
-version: 2002.{build}
+version: 2004.{build}
 pull_requests:
   do_not_increment_build_number: true
 skip_tags: true
