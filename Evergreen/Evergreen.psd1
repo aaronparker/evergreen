@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
                'Get-Atom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
-               'Get-CitrixApplicationDeliveryManagementFeed', 
+               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-FileZilla',
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
