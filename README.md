@@ -18,15 +18,17 @@ All functions consist of the following:
 
 ## Why
 
-There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. Instead the focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. Data will only be pulled from the vendor web site and never a third party.
+There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, find the latest version of a particular software package for creating a Chocolatey submission.
+
+Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. **Data will only be pulled from official sources and never a third party**.
 
 ## How
 
-Evergreen uses a couple of approaches to returning the latest version of software. Instead of scraping web pages, the primary methods used are:
+Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API where possible. Evergreen uses several strategies to return the latest version of software:
 
-1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI
-2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return version and download links
-3. Web page queries - often a vendor download pages will include a query when listing versions and download links. Evergreen can use the same approach. This approach can avoid scraping web page.
+1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. Microsoft Edge, Mozilla Firefox or Microsoft OneDrive
+2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return version and download links - e.g. Atom, Notepad++ or WinMerge
+3. Web page queries - often a vendor download pages will include a query when listing versions and download links. Evergreen can use the same approach - e.g. Microsoft FSLogix Apps or Zoom
 
 ## Who
 
