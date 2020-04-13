@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '2004.125'
+ModuleVersion = '2004.126'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-AdobeAcrobatReaderDC', 
                'Get-Atom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
-               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-FileZilla',
+               'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 

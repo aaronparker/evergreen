@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2004.126
 
 * Adds back `Get-FileZilla` using the application update API. Currently returns only the 64-bit version of FileZilla for Windows.
 
