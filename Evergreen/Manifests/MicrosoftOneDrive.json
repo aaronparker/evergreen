@@ -1,0 +1,27 @@
+{
+	"Name": "Microsoft OneDrive",
+	"Source": "https://onedrive.live.com/",
+	"Get": {
+		"Uri": {
+            "Enterprise": "https://g.live.com/1rewlive5skydrive/OneDriveEnterprise",
+			"Production": "https://g.live.com/1rewlive5skydrive/OneDriveProduction",
+            "Insider": "https://g.live.com/1rewlive5skydrive/OneDriveInsider"
+        },
+		"ContentType": "application/xml; charset=utf-8",
+		"XmlNode": "//update"
+	},
+	"Install": {
+		"Setup": "OneDriveSetup*.exe",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/silent",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/silent /ALLUSERS=1 /ALLUSER=1",
+			"PostInstall": [
+			]
+		}
+	}
+}
