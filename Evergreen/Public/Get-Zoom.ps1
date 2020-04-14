@@ -40,7 +40,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "Windows"
             Type     = $installer.Name
-            URI      = $redirectUrl
+            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
         }
         Write-Output -InputObject $PSObject
     }
@@ -65,7 +65,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "Citrix"
             Type     = $installer.Name
-            URI      = $redirectUrl
+            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
         }
         Write-Output -InputObject $PSObject
     }
@@ -75,7 +75,7 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.VMwareVDIUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.VMwareVDIUris[$installer.Key]
+        $redirectUrl = Resolve-Uri -Uri $res.Get.VMwareVDIUris[$installer.Key]
 
         # Match version number from the download URL
         If ($redirectUrl -match $res.Get.MatchVersion) {
@@ -90,7 +90,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "VMware"
             Type     = $installer.Name
-            URI      = $redirectUrl
+            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
         }
         Write-Output -InputObject $PSObject
     }
