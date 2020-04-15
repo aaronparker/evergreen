@@ -25,23 +25,13 @@ Function Get-TeamViewer {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    #region Get current version for Windows
-    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
+    # Get the latest TeamViewer version
+    $Content = Invoke-SystemNetRequest -Uri $res.Get.Uri
 
+    # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {
-        # Match version number from the download URL
-        # Content returned is a string - trim blank lines, split at line ends, sort and select first object to get version number
-        $Sort = $Content.Trim().Split("\n") | Sort-Object | Select-Object -First 1
-        If ($Sort -match $res.Get.MatchVersion) {
-            $Version = $Matches[0]
-        }
-        Else {
-            $Version = "Unknown"
-        }
-
-        # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version = $Version
+            Version = [RegEx]::Match($Content, $res.Get.MatchVersion).Captures.Groups[1].Value
             URI     = $res.Get.DownloadUri
         }
         Write-Output -InputObject $PSObject

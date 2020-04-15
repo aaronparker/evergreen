@@ -2,7 +2,7 @@
 	"Name": "TeamViewer",
 	"Source": "https://www.teamviewer.com/",
 	"Get": {
-		"Uri": "https://download.teamviewer.com/download/update/TVversion.txt",
+		"Uri": "https://download.teamviewer.com/download/update/TVversion15.txt",
 		"DownloadUri": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
 	},

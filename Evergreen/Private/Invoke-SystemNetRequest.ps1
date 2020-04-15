@@ -1,7 +1,7 @@
-Function Resolve-Uri {
+Function Invoke-SystemNetRequest {
     <#
         .SYNOPSIS
-        Resolved a URL that returns a 301/302 response and returns the redirected URL.
+            Uses System.Net.WebRequest to make a HTTP request and returns the response.
     #>
     [OutputType([System.String])]
     [CmdletBinding()]
@@ -10,19 +10,22 @@ Function Resolve-Uri {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri
     )
-
-    try {
+    
+    Try {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = 3
         $httpWebRequest.AllowAutoRedirect = $true
         $webResponse = $httpWebRequest.GetResponse()
-        Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
+        $responseStream = $webResponse.GetResponseStream()
+        $streamReader = New-Object -TypeName "System.IO.StreamReader" $responseStream
+        $result = $streamReader.ReadToEnd()
+        Write-Output -InputObject $result
     }
-    catch {
+    Catch [System.Exception] {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw $_
     }
-    finally {
+    Finally {
         $webResponse.Dispose()
     }
 }
