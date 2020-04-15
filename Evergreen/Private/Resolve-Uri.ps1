@@ -19,7 +19,8 @@ Function Resolve-Uri {
         Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
     }
     catch {
-        throw $_
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
+        Throw $_
     }
     finally {
         $webResponse.Dispose()

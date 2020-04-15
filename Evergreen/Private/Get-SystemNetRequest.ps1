@@ -19,13 +19,13 @@ Function Get-SystemNetRequest {
         $responseStream = $webResponse.GetResponseStream()
         $streamReader = New-Object -TypeName "System.IO.StreamReader" $responseStream
         $result = $streamReader.ReadToEnd()
+        Write-Output -InputObject $result
     }
     Catch [System.Exception] {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw $_
     }
     Finally {
-        Write-Output -InputObject $result
         $webResponse.Dispose()
     }
 }
