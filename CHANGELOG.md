@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Updates URL to current version for `TeamViewer`. New URL requires different approach to query
+* Adds `Invoke-SystemNetRequest` that uses `System.Net.WebRequest` to make a HTTP request and return response
+* Updates `Get-TeamViewer` to use `Invoke-SystemNetRequest` to retrieve version from updated URL. Updates code to return version and download URL as a result
+* Updates `Get-Zoom` to use `Resolve-Uri` to follow download URLs and find version number. `Get-Zoom` now returns more versions numbers for Zoom downloads than previously. Updates RegEx approach to return version numbers from URLs
+
 ## 2004.126
 
 * Adds back `Get-FileZilla` using the application update API. Currently returns only the 64-bit version of FileZilla for Windows.

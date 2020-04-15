@@ -1,7 +1,7 @@
-Function Get-SystemNetRequest {
+Function Invoke-SystemNetRequest {
     <#
         .SYNOPSIS
-            Resolved a URL that returns a 301/302 response and returns the redirected URL.
+            Uses System.Net.WebRequest to make a HTTP request and returns the response.
     #>
     [OutputType([System.String])]
     [CmdletBinding()]

@@ -26,7 +26,7 @@ Function Get-TeamViewer {
     Write-Verbose -Message $res.Name
 
     # Get the latest TeamViewer version
-    $Content = Get-SystemNetRequest -Uri $res.Get.Uri
+    $Content = Invoke-SystemNetRequest -Uri $res.Get.Uri
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {
