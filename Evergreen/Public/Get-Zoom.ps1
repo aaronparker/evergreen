@@ -29,7 +29,10 @@ Function Get-Zoom {
 
         # Follow the download link which will return a 301/302
         $redirectUrl = Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]
-        $regexMatch = [Regex]::Match($redirectUrl, $res.Get.MatchVersion)
+
+        # Match version number from the download URL
+        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
         $Version = "Unknown"
         If ($regexMatch.Success -eq $true) {
             $Version = $regexMatch.Value
@@ -40,7 +43,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "Windows"
             Type     = $installer.Name
-            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+            URI      = $Url
         }
         Write-Output -InputObject $PSObject
     }
@@ -53,11 +56,11 @@ Function Get-Zoom {
         $redirectUrl = Resolve-Uri -Uri $res.Get.CitrixVDIUris[$installer.Key]
 
         # Match version number from the download URL
-        If ($redirectUrl -match $res.Get.MatchVersion) {
-            $Version = $Matches[0]
-        }
-        Else {
-            $Version = "Unknown"
+        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
+        $Version = "Unknown"
+        If ($regexMatch.Success -eq $true) {
+            $Version = $regexMatch.Value
         }
 
         # Construct the output; Return the custom object to the pipeline
@@ -65,7 +68,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "Citrix"
             Type     = $installer.Name
-            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+            URI      = $Url
         }
         Write-Output -InputObject $PSObject
     }
@@ -78,11 +81,11 @@ Function Get-Zoom {
         $redirectUrl = Resolve-Uri -Uri $res.Get.VMwareVDIUris[$installer.Key]
 
         # Match version number from the download URL
-        If ($redirectUrl -match $res.Get.MatchVersion) {
-            $Version = $Matches[0]
-        }
-        Else {
-            $Version = "Unknown"
+        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
+        $Version = "Unknown"
+        If ($regexMatch.Success -eq $true) {
+            $Version = $regexMatch.Value
         }
 
         # Construct the output; Return the custom object to the pipeline
@@ -90,7 +93,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "VMware"
             Type     = $installer.Name
-            URI      = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+            URI      = $Url
         }
         Write-Output -InputObject $PSObject
     }

@@ -1,11 +1,15 @@
 # Change Log
 
+## VERSION
+
+* Fixes an issue where `Get-Zoom` was still returning a URI to downloads with query strings attached.
+
 ## 2004.133
 
 * Updates URL to current version for `TeamViewer`. New URL requires different approach to query
 * Adds `Invoke-SystemNetRequest` that uses `System.Net.WebRequest` to make a HTTP request and return response
 * Updates `Get-TeamViewer` to use `Invoke-SystemNetRequest` to retrieve version from updated URL. Updates code to return version and download URL as a result
-* Updates `Get-Zoom` to use `Resolve-Uri` to follow download URLs and find version number. `Get-Zoom` now returns more versions numbers for Zoom downloads than previously. Updates RegEx approach to return version numbers from URLs
+* Updates `Get-Zoom` to use `Resolve-Uri` to follow download URLs and find version number. `Get-Zoom` now returns more versions numbers for Zoom downloads than previously. Updates RegEx approach that returns version numbers from download URLs
 
 ## 2004.126
 
