@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2004.134
 
 * Fixes an issue where `Get-Zoom` was still returning a URI to downloads with query strings attached.
 
