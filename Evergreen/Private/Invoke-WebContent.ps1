@@ -49,6 +49,8 @@ Function Invoke-WebContent {
         $errorAction = "SilentlyContinue"
     }
 
+    # Trust certificate used by the remote server (typically self-sign certs)
+    # TODO: Get this to work on PowerShell Core
     If ($TrustCertificate.IsPresent) {
         If (Test-PSCore) {
             Write-Warning -Message "$($MyInvocation.MyCommand): Running PowerShell Core. Skipping System.Security.Cryptography.X509Certificates."
