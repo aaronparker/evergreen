@@ -26,28 +26,14 @@ Function Get-ShareX {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Query the ShareX repository for releases, keeping the latest release
+    # Get latest version and download latest release via GitHub API
     $iwcParams = @{
         Uri         = $res.Get.Uri
         ContentType = $res.Get.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
-    
-    If ($Null -ne $Content) {
-        $json = $Content | ConvertFrom-Json
-        $releases = $json | Where-Object { $_.prerelease -ne $True }
-        $latestRelease = $releases | Select-Object -First 1
 
-        # Build and array of the latest release and download URLs
-        ForEach ($release in $latestRelease.assets) {
-            $PSObject = [PSCustomObject] @{
-                # TODO: use RegEx to extract version number rather than -replace
-                Version = ($latestRelease.tag_name -replace "v", "")
-                Date    = (ConvertTo-DateTime -DateTime $release.created_at)
-                Size    = $release.size
-                URI     = $release.browser_download_url
-            }
-            Write-Output -InputObject $PSObject
-        }
-    }
+    # Convert the returned release data into a useable object with Version, URI etc.
+    $object = ConvertFrom-GitHubReleasesJson -Content $Content -MatchVersion $res.Get.MatchVersion
+    Write-Output -InputObject $object
 }

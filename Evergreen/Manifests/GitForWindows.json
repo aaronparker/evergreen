@@ -4,7 +4,7 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/git-for-windows/git/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(?<=v)\\d+\\.\\d+\\.\\d+(?=\\.windows)"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 	},
 	"Install": {
 		"Setup": "Git*.exe",

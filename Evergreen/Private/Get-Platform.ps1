@@ -9,13 +9,15 @@ Function Get-Platform {
 
     Switch -Regex ($String) {
         "rhel" { $platform = "RHEL" }
-        "linux" { $platform = "Linux" }
-        "win" { $platform = "Windows" }
-        "osx" { $platform = "macOS" }
-        "debian" { $platform = "Debian" }
+        "\.rpm" { $platform = "RedHat" }
+        "\.tar.gz|linux" { $platform = "Linux" }
+        "\.nupkg" { $platform = "NuGet" }
+        "mac|osx" { $platform = "macOS" }
+        "\.deb|debian" { $platform = "Debian" }
         "ubuntu" { $platform = "Ubuntu" }
         "centos" { $platform = "CentOS" }
-        Default { $platform = "Unknown" }
+        "\.exe|\.msi|windows|win" { $platform = "Windows" }
+        Default { $platform = "Windows" }
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Found $platform."
     Write-Output -InputObject $platform

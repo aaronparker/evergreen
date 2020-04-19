@@ -27,8 +27,7 @@ Function Get-MicrosoftPowerShellCore {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Get latest version and download latest PowerShell Core release via GitHub API
-    # Query the PowerShell Core repository for releases, keeping the latest stable release
+    # Get latest version and download latest release via GitHub API
     $iwcParams = @{
         Uri         = $res.Get.Uri
         ContentType = $res.Get.ContentType
