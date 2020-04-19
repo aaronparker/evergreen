@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2004.139
 
 * Adds `ConvertFrom-GitHubReleasesJson` to standardise queries to GitHub repositories
 * Updates `Get-Atom`, `Get-BISF`, `Get-GitForWindows`, `Get-Greenshot`, `Get-MicrosoftPowerShellCore`, `Get-OpenJDK`, `Get-ShareX`, `Get-mRemoteNG` to use `ConvertFrom-GitHubReleasesJson`
