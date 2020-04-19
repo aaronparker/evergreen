@@ -21,19 +21,22 @@ Function Get-GitHubRelease {
             Get-GitHubRelease -Uri "https://api.github.com/repos/Open-Shell/Open-Shell-Menu/releases/latest"
 
             Description:
-            Returns version and download URIs from the supplied GitHub repository.
+            Returns version and download URIs from the supplied GitHub repository URL.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $True, Position = 0)]
-        [ValidateNotNullOrEmpty()]
-        [System.String] $Uri
+        [Parameter(Mandatory = $False, Position = 0)]
+        [System.String] $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
     )
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+
+    # If -Uri isn't used, we'll use the default value to show at least something
+    If (-not($PSBoundParameters.ContainsKey('Uri'))) {
+        Write-Warning -Message "$($MyInvocation.MyCommand): -Uri parameter not specified. Using the default repository."
+    }
 
     # Get latest version and download latest release via GitHub API
     $iwcParams = @{
