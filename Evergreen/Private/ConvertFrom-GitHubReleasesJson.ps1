@@ -19,11 +19,11 @@ Function ConvertFrom-GitHubReleasesJson {
     # Convert JSON string to a hashtable
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Converting from JSON string."
-        $release = $Content | ConvertFrom-Json
+        $release = ConvertFrom-Json -InputObject $Content
     }
-    catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert JSON string."
-        Throw $_.Exception.Message
+    catch {
+        Throw [System.Management.Automation.RuntimeException] "$($MyInvocation.MyCommand): Failed to convert JSON string."
+        Break
     }
     finally {
         # Ensure that we only have the latest release
@@ -44,9 +44,9 @@ Function ConvertFrom-GitHubReleasesJson {
                 "tarball_url", "target_commitish", "upload_url", "url", "zipball_url")
         $params = @{
             ReferenceObject  = $requiredProperties
-            DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty) #$release.Keys
+            DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty)
             PassThru         = $True
-            ErrorAction      = "SilentlyContinue"
+            ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
         }
         $missingProperties = Compare-Object @params
         If ($Null -ne $missingProperties) {
