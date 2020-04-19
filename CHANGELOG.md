@@ -1,5 +1,13 @@
 # Change Log
 
+## VERSION
+
+* Adds `ConvertFrom-GitHubReleasesJson` to standardise queries to GitHub repositories
+* Updates `Get-Atom`, `Get-BISF`, `Get-GitForWindows`, `Get-Greenshot`, `Get-MicrosoftPowerShellCore`, `Get-OpenJDK`, `Get-ShareX`, `Get-mRemoteNG` to use `ConvertFrom-GitHubReleasesJson`
+* Updates RegEx for version matching strings for `BISF`, `GitForWindows`, `ShareX`
+* Adds `Get-Architecture` and `Get-Platform` private functions
+* Adds `Get-GitHubRelease` to enable returning version and downloads from any GitHub repository. Use to get versions of applications on GitHub that aren't yet included in `Evergreen`
+
 ## 2004.134
 
 * Fixes an issue where `Get-Zoom` was still returning a URI to downloads with query strings attached.
