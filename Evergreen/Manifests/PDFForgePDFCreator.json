@@ -1,12 +1,12 @@
 {
-	"Name": "WinMerge",
-	"Source": "https://winmerge.org/",
+	"Name": "pdfforge PDFCreator",
+	"Source": "https://www.pdfforge.org/pdfcreator",
 	"Get": {
-		"Uri": "https://sourceforge.net/projects/winmerge/best_release.json",
+		"Uri": "https://sourceforge.net/projects/pdfcreator/best_release.json",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
 		"DatePattern": "yyyy-MM-dd HH:mm:ss",
-		"DownloadUri": "https://nchc.dl.SourceForge.net/project/winmerge"
+		"DownloadUri": "https://nchc.dl.SourceForge.net/project/pdfcreator"
 	},
 	"Install": {
 		"Setup": "WinMerge*.exe",

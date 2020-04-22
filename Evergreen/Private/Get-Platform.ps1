@@ -17,8 +17,10 @@ Function Get-Platform {
         "ubuntu" { $platform = "Ubuntu" }
         "centos" { $platform = "CentOS" }
         "\.exe|\.msi|windows|win" { $platform = "Windows" }
-        Default { $platform = "Windows" }
+        Default {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Platform not found, defaulting to Windows."
+            $platform = "Windows"
+        }
     }
-    Write-Verbose -Message "$($MyInvocation.MyCommand): Found $platform."
     Write-Output -InputObject $platform
 }
