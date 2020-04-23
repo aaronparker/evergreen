@@ -1,10 +1,5 @@
 {
-  "Applications" : {
-    "MicrosoftEdge" : {
-      "Uri" : "https://api.cdp.dsp.mp.microsoft.com.nsatc.net"
-    }
-  },
   "Preferences" : {
-    "ErrorAction" : "SilentlyContinue"
+    "ErrorAction" : "Stop"
   }
 }

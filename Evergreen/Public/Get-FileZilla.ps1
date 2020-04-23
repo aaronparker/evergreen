@@ -29,7 +29,7 @@ Function Get-FileZilla {
     $iwcParams = @{
         Uri              = $res.Get.Uri
         UserAgent        = $res.Get.UserAgent
-        TrustCertificate = $True
+        SkipCertificateCheck = $True
     }
     $Content = Invoke-WebContent @iwcParams
 

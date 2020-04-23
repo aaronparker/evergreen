@@ -1,7 +1,7 @@
-Function Get-WinMerge {
+Function Get-PDFForgePDFCreator {
     <#
         .SYNOPSIS
-            Get the current version and download URL for WinMerge.
+            Get the current version and download URL for PDFForge PDFCreator.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -12,10 +12,10 @@ Function Get-WinMerge {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-WinMerge
+            Get-PDFForgePDFCreator
 
             Description:
-            Returns the current version and download URLs for WinMerge.
+            Returns the current version and download URLs for PDFForge PDFCreator.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]

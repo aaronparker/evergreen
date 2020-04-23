@@ -26,7 +26,7 @@ Function Invoke-WebContent {
         [System.Management.Automation.SwitchParameter] $Raw,
 
         [Parameter()]
-        [System.Management.Automation.SwitchParameter] $TrustCertificate
+        [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
     # Use TLS 1.2
@@ -49,14 +49,10 @@ Function Invoke-WebContent {
         $errorAction = "SilentlyContinue"
     }
 
-    # Trust certificate used by the remote server (typically self-sign certs)
-    # TODO: Get this to work on PowerShell Core
-    If ($TrustCertificate.IsPresent) {
-        If (Test-PSCore) {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Running PowerShell Core. Skipping System.Security.Cryptography.X509Certificates."
-        }
-        Else {
-            Add-Type @"
+    # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
+    # PowerShell Core will use -SkipCertificateCheck
+    If (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
+        Add-Type @"
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 public class TrustAllCertsPolicy : ICertificatePolicy {
@@ -67,56 +63,53 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
-            [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-        }
+        [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
     }
 
     try {
+        # Set core parameters
+        $iwrParams = @{
+            Uri             = $Uri
+            UserAgent       = $UserAgent
+            UseBasicParsing = $True
+            ErrorAction     = $errorAction
+        }
+
+        # Set additional parameters
+        If ($ContentType.IsPresent) {
+            $iwrParams.ContentType = $ContentType
+        }
+        If ($Headers.IsPresent) {
+            $iwrParams.Headers = $Headers
+        }
+        If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
+            $iwrParams.SkipCertificateCheck = $True
+        }
         If ($Raw.IsPresent) {
             $tempFile = New-TemporaryFile
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile]."
-            $iwrParams = @{
-                Uri             = $Uri
-                OutFile         = $tempFile
-                UserAgent       = $UserAgent
-                UseBasicParsing = $True
-                ErrorAction     = $errorAction
-            }
-            If ($ContentType.IsPresent) {
-                $iwrParams.ContentType = $ContentType
-            }
-            If ($Headers.IsPresent) {
-                $iwrParams.Headers = $Headers
-            }
-            $Response = Invoke-WebRequest @iwrParams
-            $Content = Get-Content -Path $TempFile
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
+            $iwrParams.OutFile = $tempFile
         }
-        Else {
-            $iwrParams = @{
-                Uri             = $Uri
-                UserAgent       = $UserAgent
-                UseBasicParsing = $True
-                ErrorAction     = $errorAction
-            }
-            If ($ContentType.IsPresent) {
-                $iwrParams.ContentType = $ContentType
-            }
-            If ($Headers.IsPresent) {
-                $iwrParams.Headers = $Headers
-            }
-            $Response = Invoke-WebRequest @iwrParams
-            $Content = $Response.Content
-        }
+
+        # Call Invoke-WebRequest
+        $Response = Invoke-WebRequest @iwrParams
     }
     catch [System.Net.WebException] {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Write-Warning -Message ([string]::Format("Error : {0}", $_.Exception.Message))
+        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
     }
-    catch [System.Exception] {
+    catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to invoke request to: $Uri."
+        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
     }
     finally {
+        # Output content from the response
+        If ($Raw.IsPresent) {
+            $Content = Get-Content -Path $TempFile
+        }
+        Else {
+            $Content = $Response.Content 
+        }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Returning object of length [$($Content.Length)]."
         Write-Output -InputObject $Content
     }
