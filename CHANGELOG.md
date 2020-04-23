@@ -2,6 +2,15 @@
 
 ## 2004.141
 
+* Adds private function `ConvertFrom-SourceForgeReleasesJson` to convert JSON release info from SourceForge projects and simplify adding additional functions that pull release info from SourceForge projects. Release information is limited by what's provided from SourceForge
+* Updates `Get-WinMerge` to use `ConvertFrom-SourceForgeReleasesJson`
+* Adds `Get-7Zip`, `Get-PDFForgePDFCreator`
+* Renames `-TrustCertificate` parameter in private function `Invoke-WebContent` to `-SkipCertificateCheck` to align with `-SkipCertificateCheck` available in '`Invoke-WebRequest` in PowerShell Core
+* Enables `-SkipCertificateCheck` for both PowerShell Core and Windows PowerShell in `Invoke-WebContent`. Previously supported Windows PowerShell only
+* Improves code in `Invoke-WebContent`
+* Adds `-Uri` parameter validation in `Get-GitHubRelease` to ensure valid GitHub URLs are passed to the function
+* Sets function global `ErrorPreference` to `Stop` to ensure better exception output from functions in the event of failures
+
 ## 2004.139
 
 * Adds `ConvertFrom-GitHubReleasesJson` to standardise queries to GitHub repositories
