@@ -97,33 +97,6 @@ Function Get-AdobeAcrobatReaderDC {
                     }
                     Write-Output -InputObject $PSObject
                 }
-                "mac" {
-                    $updateUrl = $res.Get.UpdateDownloadUri -replace "#Platform", $platform
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Platform = "Macintosh"
-                        Type     = "Installer"
-                        Language = "Multi"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDC_$($versionString)_MUI.dmg"
-                    }
-                    Write-Output -InputObject $PSObject
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Platform = "Macintosh"
-                        Type     = "Updater"
-                        Language = "Multi"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.dmg"
-                    }
-                    Write-Output -InputObject $PSObject
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Platform = "Macintosh"
-                        Type     = "Updater"
-                        Language = "Multi"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.pkg"
-                    }
-                    Write-Output -InputObject $PSObject
-                }
             }
         }
     }

@@ -1,5 +1,8 @@
 {
-  "Preferences" : {
-    "ErrorAction" : "Stop"
-  }
+	"Preferences": {
+		"ErrorAction": "Stop"
+	},
+	"Filters": {
+    "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$"
+	}
 }
