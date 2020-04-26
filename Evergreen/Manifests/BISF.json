@@ -8,6 +8,7 @@
 	},
 	"Install": {
 		"Setup": "AppName.*.exe",
+		"Preinstall": "",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [

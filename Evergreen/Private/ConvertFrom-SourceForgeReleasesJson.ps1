@@ -77,7 +77,7 @@ Function ConvertFrom-SourceForgeReleasesJson {
                 Date         = (ConvertTo-DateTime -DateTime $release.release.date -Pattern $DatePattern)
                 Size         = $release.release.bytes
                 Md5Hash      = $release.release.md5sum
-                URI          = "$DownloadUri$($release.release.filename)"
+                URI          = ("$DownloadUri$($release.release.filename)" -replace " ", "%20")
             }
             Write-Output -InputObject $PSObject
         }
