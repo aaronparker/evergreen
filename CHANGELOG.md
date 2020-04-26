@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2004.147
 
 * Adds `Get-Handbrake`, `Get-KeePass`, `Get-OpenShellMenu`, `Get-VastLimitsUberAgent`, `Get-WinSCP`
 * Removes macOS and Linux output from `Get-AdobeAcrobatReader`, `Get-LibreOffice`
