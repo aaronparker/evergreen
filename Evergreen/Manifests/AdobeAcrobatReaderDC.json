@@ -17,11 +17,6 @@
 				"platform_type": "Windows",
 				"platform_dist": "Windows 10",
 				"platform_arch": ""
-			},
-			{
-				"platform_type": "Macintosh",
-				"platform_dist": "OSX",
-				"platform_arch": "x86-32"
 			}
 		],
 		"Headers": {
@@ -38,8 +33,7 @@
 		"UpdateDownloadUri": "http://ardownload.adobe.com/pub/adobe/reader/#Platform/AcrobatDC/",
 		"UpdateContentType": "text/plain; charset=utf-8",
 		"UpdatePlatforms": [
-			"win",
-			"mac"
+			"win"
 		],
 		"UpdateLanguages": [
 			"en_US",

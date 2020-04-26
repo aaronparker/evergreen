@@ -5,12 +5,11 @@
 		"Uri": "https://download.documentfoundation.org/libreoffice/stable",
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
 		"Platforms": {
-			"win": "Windows",
-			"mac": "macOS"
+			"win": "Windows"
 		},
 		"MatchArchitectures": "x86|64",
-		"MatchExtensions": "\\.msi$|\\.dmg$",
-		"MatchLanguage": "_([^_?!86|64]*)(\\.msi|\\.dmg)$",
+		"MatchExtensions": "\\.msi$",
+		"MatchLanguage": "_([^_?!86|64]*)(\\.msi)$",
 		"NoLanguage": "Neutral"
 	},
 	"Install": {
