@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-Handbrake`, `Get-KeePass`, `Get-OpenShellMenu`, `Get-VastLimitsUberAgent`, `Get-WinSCP`
+* Removes macOS and Linux output from `Get-AdobeAcrobatReader`, `Get-LibreOffice`
+* Filters macOS and Linux output from private function `ConvertFrom-GitHubReleasesJson.ps1`
+* Fixes spaces in private function `ConvertFrom-SourceForgeReleasesJson`
+
 ## 2004.141
 
 * Adds private function `ConvertFrom-SourceForgeReleasesJson` to convert JSON release info from SourceForge projects and simplify adding additional functions that pull release info from SourceForge projects. Release information is limited by what's provided from SourceForge
