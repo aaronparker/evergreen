@@ -35,10 +35,10 @@ Function Invoke-WebContent {
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
     If ($PSBoundParameters.ContainsKey('Verbose')) {
-        $ProgressPreference = "Continue"
+        $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
     }
     Else {
-        $ProgressPreference = "SilentlyContinue"
+        $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
     }
 
     # Set ErrorAction

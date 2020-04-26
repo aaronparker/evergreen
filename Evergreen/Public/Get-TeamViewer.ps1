@@ -35,6 +35,5 @@ Function Get-TeamViewer {
             URI     = $res.Get.DownloadUri
         }
         Write-Output -InputObject $PSObject
-        #endregion
     }
 }
