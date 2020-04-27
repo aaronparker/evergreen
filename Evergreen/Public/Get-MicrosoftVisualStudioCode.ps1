@@ -42,15 +42,11 @@ Function Get-MicrosoftVisualStudioCode {
     Param(
         [Parameter()]
         [ValidateSet('insider', 'stable')]
-        [System.String[]] $Channel = @('insider', 'stable'),
+        [System.String[]] $Channel = @('stable'),
 
         [Parameter()]
-        [ValidateSet('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
-                'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
-                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')]
-        [System.String[]] $Platform = @('darwin', 'win32', 'win32-user', 'win32-x64-user', 'win32-x64', `
-                'win32-archive', 'win32-x64-archive', 'linux-deb-ia32', `
-                'linux-deb-x64', 'linux-rpm-ia32', 'linux-ia32', 'linux-x64')
+        [ValidateSet('win32', 'win32-user', 'win32-x64-user', 'win32-x64')]
+        [System.String[]] $Platform = @('win32', 'win32-user', 'win32-x64-user', 'win32-x64')
     )
 
     # Get application resource strings from its manifest
@@ -67,10 +63,11 @@ Function Get-MicrosoftVisualStudioCode {
             # Read the version details from the API, format and return to the pipeline
             $releaseJson = Invoke-WebContent -Uri "$($res.Get.Uri)/$plat/$ch/VERSION" | ConvertFrom-Json
             $PSObject = [PSCustomObject] @{
-                Version  = $releaseJson.productVersion
-                Platform = $plat
-                Channel  = $ch
-                URI      = $releaseJson.url
+                Version      = $releaseJson.productVersion
+                Platform     = $plat
+                Architecture = (Get-Architecture -String $releaseJson.url)
+                Channel      = $ch
+                URI          = $releaseJson.url
             }
             Write-Output -InputObject $PSObject
         }
