@@ -4,7 +4,7 @@ Function Get-MicrosoftVisualStudioCode {
             Returns Microsoft Visual Studio Code versions and download URLs.
 
         .DESCRIPTION
-            Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
+            Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -26,13 +26,13 @@ Function Get-MicrosoftVisualStudioCode {
             Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
 
         .EXAMPLE
-            Get-MicrosoftVsCode
+            Get-MicrosoftVisualStudioCode
 
             Description:
             Returns the Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
 
         .EXAMPLE
-            Get-MicrosoftVsCode -Channel stable -Platform win32-x64-user
+            Get-MicrosoftVisualStudioCode -Channel stable -Platform win32-x64-user
 
             Description:
             Returns the Stable build version numbers and download URL for the user-install of VSCode for Windows.
