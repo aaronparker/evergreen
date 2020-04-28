@@ -18,6 +18,7 @@ Else {
 }
 $moduleParent = Join-Path -Path $projectRoot -ChildPath $module
 $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
+$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
 # Import module
 Write-Host ""

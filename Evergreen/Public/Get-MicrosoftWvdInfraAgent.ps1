@@ -25,46 +25,86 @@ Function Get-MicrosoftWvdInfraAgent {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Grab the download link headers to find the file name
-    try {
-        $tempFile = New-TemporaryFile
-        $params = @{
-            Uri             = $res.Get.Uri
-            Method          = "Head"
-            UseBasicParsing = $True
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+    If (Test-PSCore) {
+        # Grab the download link headers to find the file name
+        try {
+            $tempFile = New-TemporaryFile
+            $params = @{
+                Uri             = $res.Get.Uri
+                Method          = "Head"
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
+            (Invoke-WebRequest @params).RawContent | Out-File -FilePath $tempFile
         }
-        (Invoke-WebRequest @params).RawContent | Out-File -Path $tempFile
-    }
-    catch [System.Net.WebException] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
-    }
-    catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
-    }
-
-    # Convert to an object, without the first line
-    $RawContent = Get-Content -Path $tempFile
-    $Content = $RawContent | Select-Object -Skip 1 | ConvertFrom-StringData -Delimiter ":"
-
-    If ($Content) {
-        # Match filename
-        $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchFilename).Captures.Groups[1].Value
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchVersion).Captures.Value
-            Architecture = Get-Architecture -String $Filename
-            Date         = $Content.'Last-Modified'
-            Size         = $Content.'Content-Length'
-            Filename     = $Filename
-            URI          = $res.Get.Uri
+        catch [System.Net.WebException] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
+            Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
         }
-        Write-Output -InputObject $PSObject
+        catch {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
+            Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
+        }
+
+        # Convert to an object, without the first line
+        $RawContent = Get-Content -Path $tempFile
+        $Content = $RawContent | Select-Object -Skip 1 | ConvertFrom-StringData -Delimiter ":"
+
+        If ($Content) {
+            # Match filename
+            $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchFilename).Captures.Groups[1].Value
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchVersion).Captures.Value
+                Architecture = Get-Architecture -String $Filename
+                Date         = $Content.'Last-Modified'
+                Size         = $Content.'Content-Length'
+                Filename     = $Filename
+                URI          = $res.Get.Uri
+            }
+            Write-Output -InputObject $PSObject
+        }
+        Else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
+        }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
+        # Windows PowerShell
+        # Grab the download link headers to find the file name
+        try {
+            $params = @{
+                Uri             = $res.Get.Uri
+                Method          = "Head"
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
+            $Content = (Invoke-WebRequest @params).RawContent
+        }
+        catch [System.Net.WebException] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
+            Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
+        }
+        catch {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
+            Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
+        }
+
+        If ($Content) {
+            # Match filename
+            $Filename = [RegEx]::Match($Content, $res.Get.MatchFilename).Captures.Groups[1].Value
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version      = [RegEx]::Match($Content, $res.Get.MatchVersion).Captures.Value
+                Architecture = Get-Architecture -String $Filename
+                Filename     = $Filename
+                URI          = $res.Get.Uri
+            }
+            Write-Output -InputObject $PSObject
+        }
+        Else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
+        }
     }
 }
