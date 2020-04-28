@@ -2,6 +2,13 @@
 
 ## 2004.157
 
+* Adds `Get-MicrosoftWvdInfraAgent`
+* Adds `Get-dnGrep`
+* Recode of `Get-PaintDotNet` (or how did I not know about `ConvertFrom-StringData` before?)
+* To simplify output, removes Linux, macOS output from `Get-CitrixWorkspaceApp`, `Get-GoogleChrome`, `Get-OracleVirtuaBox`, `Get-LibreOffice`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-OracleVirtualBox`, `Get-TeamViewer`
+* Updates RegEx method to extract version across various functions to simplify code
+* Splits Pester tests for Public functions to allow for faster local testing
+
 ## 2004.147
 
 * Adds `Get-Handbrake`, `Get-KeePass`, `Get-OpenShellMenu`, `Get-VastLimitsUberAgent`, `Get-WinSCP`
