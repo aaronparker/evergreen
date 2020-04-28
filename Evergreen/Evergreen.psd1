@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '2004.153'
+ModuleVersion = '2004.157'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,14 +72,14 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-7zip', 
                'Get-AdobeAcrobatReaderDC', 'Get-Atom', 'Get-BISF', 
-               'Get-CitrixAppLayeringFeed', 'Get-MicrosoftWvdInfraAgent',
+               'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
-               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 'Get-dnGrep',
+               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
-               'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-FileZilla', 
+               'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-GitHubRelease', 'Get-Good', 
                'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 
                'Get-JamTreeSizeFree', 'Get-JamTreeSizeProfessional', 'Get-KeePass', 
@@ -87,12 +87,12 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-MicrosoftOffice', 'Get-MicrosoftOneDrive', 
                'Get-MicrosoftPowerShellCore', 'Get-MicrosoftSsms', 
                'Get-MicrosoftTeams', 'Get-MicrosoftVisualStudioCode', 
-               'Get-MozillaFirefox', 'Get-mRemoteNG', 'Get-NotepadPlusPlus', 
-               'Get-OpenJDK', 'Get-OpenShellMenu', 'Get-OracleJava8', 
-               'Get-OracleVirtualBox', 'Get-PaintDotNet', 'Get-PDFForgePDFCreator', 
-               'Get-ScooterBeyondCompare', 'Get-ShareX', 'Get-TeamViewer', 
-               'Get-VastLimitsUberAgent', 'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 
-               'Get-WinMerge', 'Get-WinSCP', 'Get-Zoom')
+               'Get-MicrosoftWvdInfraAgent', 'Get-MozillaFirefox', 'Get-mRemoteNG', 
+               'Get-NotepadPlusPlus', 'Get-OpenJDK', 'Get-OpenShellMenu', 
+               'Get-OracleJava8', 'Get-OracleVirtualBox', 'Get-PaintDotNet', 
+               'Get-PDFForgePDFCreator', 'Get-ScooterBeyondCompare', 'Get-ShareX', 
+               'Get-TeamViewer', 'Get-VastLimitsUberAgent', 'Get-VideoLanVlcPlayer', 
+               'Get-VMwareTools', 'Get-WinMerge', 'Get-WinSCP', 'Get-Zoom')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -121,7 +121,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Evergreen', 'Packer', 'Automation', 'MDT', 'ConfigMgr'
+        Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/master/LICENSE'
