@@ -1,0 +1,22 @@
+{
+	"Name": "Microsoft Windows Virtual Desktop Infrastructure agent",
+	"Source": "https://docs.microsoft.com/azure/virtual-desktop/",
+	"Get": {
+		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv",
+		"MatchFilename": "(Microsoft.*msi)",
+		"MatchVersion": "(\\d+\\.){3}\\d+"
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		}
+	}
+}

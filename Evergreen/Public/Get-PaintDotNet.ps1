@@ -14,24 +14,18 @@ Function Get-PaintDotNet {
 
     # Read the Paint.NET updates feed
     $Content = Invoke-WebContent -Uri $res.Get.Uri
-
     If ($Null -ne $Content) {
-        # Match version and download strings from the content
-        $Content -match $res.Get.MatchVersion | Out-Null
-        $Version = $Matches[1].Trim()
-    
+
+        # Convert the content from string data
+        $Data = $Content | ConvertFrom-StringData
+
         # Build the output object
-        If ($Version) {
-            $Content -match ($res.Get.MatchDownload -replace "#Version", ($Version -replace "\.", "\.")) | Out-Null
-            $Download = $Matches[1].Split(",")[0]
+        ForEach ($url in ($Data.("$($Data.StableVersions)$($res.Get.UrlProperty)") -split $res.Get.UrlDelimiter)) {
             $PSObject = [PSCustomObject] @{
-                Version = $Version
-                URI     = $Download
+                Version = $Data.($res.Get.VersionProperty)
+                URI     = $url
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "Failed to find version number from feed."
         }
     }
 }

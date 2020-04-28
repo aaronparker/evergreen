@@ -14,7 +14,7 @@ Function Get-ModuleResource {
     
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$Path]"
-        $content = Get-Content -Path $Path -Raw -ErrorAction SilentlyContinue
+        $content = Get-Content -Path $Path -Raw -ErrorAction "SilentlyContinue"
     }
     catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $Path."
@@ -23,10 +23,10 @@ Function Get-ModuleResource {
 
     try {
         If (Test-PSCore) {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction SilentlyContinue
+            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "SilentlyContinue"
         }
         Else {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction SilentlyContinue | ConvertTo-Hashtable
+            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction "SilentlyContinue" | ConvertTo-Hashtable
         }
     }
     catch [System.Exception] {

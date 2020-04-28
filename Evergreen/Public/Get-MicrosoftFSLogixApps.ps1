@@ -36,12 +36,9 @@ Function Get-MicrosoftFSLogixApps {
         # If this returned URL target is a file
         If ($nextRedirectUrl -match $res.Get.MatchFile) {
 
-            # Grab the version number from the link
-            $nextRedirectUrl -match $res.Get.MatchVersion | Out-Null
-
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version = $matches[0]
+                Version = [RegEx]::Match($nextRedirectUrl, $res.Get.MatchVersion).Captures.Value
                 URI     = $nextRedirectUrl
             }
             Write-Output -InputObject $PSObject

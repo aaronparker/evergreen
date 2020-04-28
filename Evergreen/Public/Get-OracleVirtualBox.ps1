@@ -28,8 +28,7 @@ Function Get-OracleVirtualBox {
     $Version = Invoke-WebContent -Uri $res.Get.Uri
 
     If ($Null -ne $Version) {
-        $Version -match $res.Get.MatchVersion | Out-Null
-        $Version = $Matches[0]
+        $Version = [RegEx]::Match($Version, $res.Get.MatchVersion).Captures.Groups[1].Value
         Write-Verbose "$($res.Get.DownloadUri)$Version/"
     
         # Get the content from the latest downloads folder
@@ -51,26 +50,8 @@ Function Get-OracleVirtualBox {
             ForEach ($link in $Links) {
                 $link -match $res.Get.MatchDownloadFile | Out-Null
                 $PSObject = [PSCustomObject] @{
-                    Version  = $Version
-                    Platform = "Platform"
-                    URI      = "$($res.Get.DownloadUri)$Version/$($Matches[1])"
-                }
-                Switch ($PSObject.URI.Substring($PSObject.URI.Length - 3)) {
-                    "exe" {
-                        $PSObject.Platform = "Windows"
-                    }
-                    "dmg" {
-                        $PSObject.Platform = "macOS"
-                    }
-                    "deb" {
-                        $PSObject.Platform = "Debian"
-                    }
-                    "rpm" {
-                        $PSObject.Platform = "RedHat"
-                    }
-                    Default {
-                        $PSObject.Platform = "Unknown"
-                    }
+                    Version = $Version
+                    URI     = "$($res.Get.DownloadUri)$Version/$($Matches[1])"
                 }
                 Write-Output -InputObject $PSObject
             }

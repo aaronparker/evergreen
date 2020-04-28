@@ -53,12 +53,9 @@
                 $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
                 ForEach ($node in $nodes) {
 
-                    # Extract version number
-                    $node.latestversion -match $res.Get.MatchVersion | Out-Null
-
                     # Build an array of the latest release and download URLs
                     $PSObject = [PSCustomObject] @{
-                        Version  = $matches[0]
+                        Version  = [RegEx]::Match($node.latestversion, $res.Get.MatchVersion).Captures.Value
                         Language = $res.Get.Languages[$language.key]
                         URI      = $node.download
                     }
