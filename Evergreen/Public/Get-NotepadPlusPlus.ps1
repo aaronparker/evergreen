@@ -63,13 +63,9 @@
                     Default { $platform = "Windows" }
                 }
 
-                # Match version number
-                $latestRelease.tag_name -match $res.Get.MatchVersion | Out-Null
-                $Version = $Matches[0]
-
                 # Build and array of the latest release and download URLs
                 $PSObject = [PSCustomObject] @{
-                    Version      = $Version
+                    Version      = [RegEx]::Match($latestRelease.tag_name, $res.Get.MatchVersion).Captures.Groups[1].Value
                     Platform     = $platform
                     Architecture = $arch
                     Date         = (ConvertTo-DateTime -DateTime $release.created_at)

@@ -38,8 +38,7 @@ Function Get-MicrosoftTeams {
         $Json = $Content | ConvertFrom-Json
 
         # Match version number
-        $Json.releasesPath -match $res.Get.MatchVersion | Out-Null
-        $Version = $Matches[1]
+        $Version = [RegEx]::Match($Json.releasesPath, $res.Get.MatchVersion).Captures.Groups[1].Value
 
         # Step through each architecture
         ForEach ($item in $res.Get.DownloadUri.GetEnumerator()) {

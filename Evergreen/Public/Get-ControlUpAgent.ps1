@@ -52,14 +52,9 @@ Function Get-ControlUpAgent {
                 Default { $dotnet = "Unknown" }
             }
 
-            # Extract the version number
-            # TODO update version regex to return a single group
-            $link.href -match $res.Get.MatchVersion | Out-Null
-            $version = $matches[0]
-
             # Build and array of the latest release and download URLs
             $PSObject = [PSCustomObject] @{
-                Version      = $version
+                Version      = [RegEx]::Match($link.href, $res.Get.MatchVersion).Captures.Value
                 Framework    = $dotnet
                 Architecture = $arch
                 URI          = $link.href
