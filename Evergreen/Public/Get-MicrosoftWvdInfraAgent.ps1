@@ -27,13 +27,14 @@ Function Get-MicrosoftWvdInfraAgent {
 
     # Grab the download link headers to find the file name
     try {
+        $tempFile = New-TemporaryFile
         $params = @{
             Uri             = $res.Get.Uri
             Method          = "Head"
             UseBasicParsing = $True
             ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
         }
-        $Content = (Invoke-WebRequest @params).RawContent
+        (Invoke-WebRequest @params).RawContent | Out-File -Path $tempFile
     }
     catch [System.Net.WebException] {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
@@ -44,16 +45,20 @@ Function Get-MicrosoftWvdInfraAgent {
         Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
     }
 
-    # Check content was returned
-    If ($Content) {
+    # Convert to an object, without the first line
+    $RawContent = Get-Content -Path $tempFile
+    $Content = $RawContent | Select-Object -Skip 1 | ConvertFrom-StringData -Delimiter ":"
 
+    If ($Content) {
         # Match filename
-        $Filename = [RegEx]::Match($Content, $res.Get.MatchFilename).Captures.Groups[1].Value
+        $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchFilename).Captures.Groups[1].Value
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version      = [RegEx]::Match($Content, $res.Get.MatchVersion).Captures.Value
+            Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.MatchVersion).Captures.Value
             Architecture = Get-Architecture -String $Filename
+            Date         = $Content.'Last-Modified'
+            Size         = $Content.'Content-Length'
             Filename     = $Filename
             URI          = $res.Get.Uri
         }

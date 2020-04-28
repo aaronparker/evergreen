@@ -27,10 +27,10 @@ Author = 'Aaron Parker; Bronson Magnan; Trond Eric Haarvarstein'
 CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
 
 # Copyright statement for this module
-Copyright = '(c) 2019 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
+Copyright = '(c) 2020 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Evergreen is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'
+Description = 'Create evergeen Windows image build scripts with the latest versions of applications. Evergreen is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
@@ -76,7 +76,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
-               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
+               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 'Get-dnGrep',
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
                'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-FileZilla', 
@@ -121,7 +121,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Firefox','AdobeReader','Chrome','Receiver','Paint.NET','CitrixReceiver','CitrixWorkspace','Zoom','VMwareTools','VLCPlayer','VirtualBox','PowerShell','LibreOffice','FileZilla','ControlUp','XenServer'
+        Tags = 'Evergreen', 'Packer', 'Automation', 'MDT', 'ConfigMgr'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/master/LICENSE'
