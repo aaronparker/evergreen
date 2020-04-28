@@ -52,25 +52,7 @@ Function Get-OracleVirtualBox {
                 $link -match $res.Get.MatchDownloadFile | Out-Null
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
-                    Platform = "Platform"
                     URI      = "$($res.Get.DownloadUri)$Version/$($Matches[1])"
-                }
-                Switch ($PSObject.URI.Substring($PSObject.URI.Length - 3)) {
-                    "exe" {
-                        $PSObject.Platform = "Windows"
-                    }
-                    "dmg" {
-                        $PSObject.Platform = "macOS"
-                    }
-                    "deb" {
-                        $PSObject.Platform = "Debian"
-                    }
-                    "rpm" {
-                        $PSObject.Platform = "RedHat"
-                    }
-                    Default {
-                        $PSObject.Platform = "Unknown"
-                    }
                 }
                 Write-Output -InputObject $PSObject
             }

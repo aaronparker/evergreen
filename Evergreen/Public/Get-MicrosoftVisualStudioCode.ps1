@@ -29,7 +29,7 @@ Function Get-MicrosoftVisualStudioCode {
             Get-MicrosoftVisualStudioCode
 
             Description:
-            Returns the Stable and Insider builds version numbers and download URLs for Windows, macOS and Linux.
+            Returns the Stable and Insider builds version numbers and download URLs for Windows.
 
         .EXAMPLE
             Get-MicrosoftVisualStudioCode -Channel stable -Platform win32-x64-user

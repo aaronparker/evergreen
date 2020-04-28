@@ -5,7 +5,7 @@
 		"Uri": "https://download.virtualbox.org/virtualbox/LATEST.TXT",
 		"DownloadUri": "http://download.virtualbox.org/virtualbox/",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchExtensions": ".*Version.*(exe|dmg|rpm|deb)",
+		"MatchExtensions": ".*Version.*(exe)",
 		"MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
 	},
 	"Install": {

@@ -4,7 +4,7 @@ Function Get-AdobeAcrobatReaderDC {
             Gets the download URLs for Adobe Reader DC Continuous track installers.
 
         .DESCRIPTION
-            Gets the download URLs for Adobe Reader DC Continuous track installers for the latest version for Windows and macOS.
+            Gets the download URLs for Adobe Reader DC Continuous track installers for the latest version for Windows.
 
         .NOTES
             Author: Aaron Parker

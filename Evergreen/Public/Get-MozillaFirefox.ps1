@@ -27,17 +27,17 @@ Function Get-MozillaFirefox {
             Returns the 64-bit English (US) download URI for Firefox for Windows.
 
         .EXAMPLE
-            Get-MozillaFirefoxUri -Language en-GB -Platform mac
+            Get-MozillaFirefoxUri -Language en-GB
 
             Description:
-            Returns the UK English download URI for Firefox for macOS.
+            Returns the UK English download URI for Firefox.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param(
         [Parameter(Position = 0)]
-        [ValidateSet('win64', 'win32', 'mac', 'linux-x86_64', 'linux-i686')]
-        [System.String[]] $Platform = @('win64', 'win32', 'mac', 'linux-x86_64', 'linux-i686'),
+        [ValidateSet('win64', 'win32')]
+        [System.String[]] $Platform = @('win64', 'win32'),
 
         [Parameter(Position = 1)]
         [ValidateSet('en-US', 'en-GB', 'en-CA', 'en-ZA', 'es-ES', 'es-AR', 'es-CL', 'es-MX', 'sv-SE', 'pt-BR', 'pt-PT', `
@@ -67,18 +67,15 @@ Function Get-MozillaFirefox {
             Switch ($plat) {
                 "win64" { $file = "Firefox%20Setup%20$($version).exe" }
                 "win32" { $file = "Firefox%20Setup%20$($version).exe" }
-                "mac" { $file = "Firefox%20$($version).dmg" }
-                "linux-x86_64" { $file = "firefox-$($version).tar.bz2" }
-                "linux-i686" { $file = "firefox-$($version).tar.bz2" }
             }
 
             # Build object and output to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version  = $version
-                Platform = $plat
-                Language = $lang
-                Filename = $file.Replace('%20', ' ')
-                URI      = "$($res.Get.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
+                Version      = $version
+                Architecture = Get-Architecture -String $plat
+                Language     = $lang
+                Filename     = $file.Replace('%20', ' ')
+                URI          = "$($res.Get.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
             }
             Write-Output -InputObject $PSObject
         }

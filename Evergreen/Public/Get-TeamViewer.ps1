@@ -15,7 +15,7 @@ Function Get-TeamViewer {
             Get-TeamViewer
 
             Description:
-            Returns the current version and download URI for TeamViewer on Windows (x86, x64) and macOS.
+            Returns the current version and download URI for TeamViewer on Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]

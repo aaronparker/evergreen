@@ -4,7 +4,7 @@ Function Get-LibreOffice {
             Gets the latest LibreOffice version and download URIs.
 
         .DESCRIPTION
-            Gets the latest LibreOffice version and download URIs, including help packs / language packs for Windows and macOS.
+            Gets the latest LibreOffice version and download URIs, including help packs / language packs for Windows.
 
         .NOTES
             Author: Bronson Magnan
@@ -17,7 +17,7 @@ Function Get-LibreOffice {
             Get-LibreOffice
 
             Description:
-            Returns the latest LibreOffice version and download URIs for the installers and language packs for Windows and macOS.
+            Returns the latest LibreOffice version and download URIs for the installers and language packs for Windows.
 
         .EXAMPLE
             Get-LibreOffice | Where-Object { ($_.Language -eq "Neutral") -and ($_.Platform -eq "Windows") }
@@ -46,7 +46,6 @@ Function Get-LibreOffice {
         $versions = ($response.Links | Where-Object { $_.href -match $res.Get.MatchVersion }).href -replace "/", ""
         $Version = $versions | Sort-Object -Descending | Select-Object -First 1
     
-        #$Platforms = @("win", "mac")
         ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
 
             # Get downloads for each platform for the latest version
