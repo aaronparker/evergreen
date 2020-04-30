@@ -7,19 +7,29 @@
 			"Enterprise": "?view=enterprise",
 			"Consumer": ""
 		},
+		"Platform": "Windows",
+		"Channels": [
+			"Stable",
+			"Beta",
+			"EdgeUpdate",
+			"Policy"
+		],
+		"ReleaseProperty": "Releases",
+		"SortProperty": "ProductVersion",
 		"ContentType": "application/json; charset=utf-8",
-		"DateTime": "MM/dd/yyyy HH:mm"
+		"DateTime": "MM/dd/yyyy HH:mm",
+		"FileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$|\\.cab$"
 	},
 	"Install": {
 		"Setup": "",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "DONOTCREATEDESKTOPSHORTCUT=TRUE",
 			"PostInstall": [
 				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "DONOTCREATEDESKTOPSHORTCUT=TRUE",
 			"PostInstall": [
 				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
 			]
