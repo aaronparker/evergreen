@@ -6,6 +6,7 @@
     * Returns Edge for Windows only
 	* Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
 	* Filters and returns only the latest version of each of the above channels and downloads
+	* Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
 
 ## 2004.157
 
