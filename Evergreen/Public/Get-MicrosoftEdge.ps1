@@ -30,45 +30,50 @@ Function Get-MicrosoftEdge {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param (
-        [Parameter()]
-        [ValidateSet('Enterprise', 'Consumer')]
-        [System.String[]] $View = "Enterprise"
-    )
+    Param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
     # Query for each view
-    ForEach ($item in $View) {
+    ForEach ($view in $res.Get.Views.GetEnumerator()) {
 
         # Read the JSON and convert to a PowerShell object. Return the current release version of Edge
-        $Content = Invoke-WebContent -Uri "$($res.Get.Uri)$($res.Get.Views[$View])"
+        $Content = Invoke-WebContent -Uri "$($res.Get.Uri)$($res.Get.Views[$view.Key])"
 
         # Read the JSON and build an array of platform, channel, version
         If ($Null -ne $Content) {
 
-            # Conver object from JSON
-            $Json = $Content | ConvertFrom-Json
+            # Convert object from JSON
+            $EdgeReleases = $Content | ConvertFrom-Json
 
-            # Build the output object
-            ForEach ($item in $Json) {
-                ForEach ($release in $item.Releases) {
+            # For each product (Stable, Beta etc.)
+            ForEach ($product in $res.Get.Channels) {
+
+                # Expand the Releases property for that product
+                $releases = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
+                    Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
+                    Where-Object { $_.Platform -eq $res.Get.Platform } | `
+                    Sort-Object -Property $res.Get.SortProperty | `
+                    Select-Object -First 1
+
+                ForEach ($release in $releases) {
                     If ($release.Artifacts.Location.Length -gt 0) {
                         $PSObject = [PSCustomObject] @{
                             Version      = $release.ProductVersion
                             Platform     = $release.Platform
-                            Product      = $item.Product
+                            Channel      = $product
+                            Release      = $view.Name
                             Architecture = $release.Architecture
                             Date         = $release.PublishedTime
                             Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
-                            URI          = ($release.Artifacts.Location | Where-Object { $_ -match "msi$|exe$|pkg$|cab$" } )
+                            URI          = ($release.Artifacts.Location | Where-Object { $_ -match $res.Get.FileTypes } )
                         }
-                    }
 
-                    # Output object to the pipeline
-                    Write-Output -InputObject $PSObject
+                        # Output object to the pipeline
+                        Write-Output -InputObject $PSObject
+                    }
                 }
             }
         }
