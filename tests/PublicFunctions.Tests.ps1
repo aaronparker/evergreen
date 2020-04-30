@@ -30,7 +30,8 @@ $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
 New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 
 # RegEx
-$matchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+$MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+$MatchVersions = "^\d[_\-.0-9b|insider]*$|Unknown|Preview|Any"
 
 # Get the module commands
 $commands = Get-Command -Module Evergreen
@@ -60,7 +61,7 @@ Describe -Tag "General" -Name "Properties" {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
                         It "$($command.Name): [$($object.Version)] is a valid version number" {
-                            $object.Version | Should -Match "^\d[_\-.0-9b|insider]*$|Unknown"
+                            $object.Version | Should -Match $MatchVersions
                         }
                     }
                 }
@@ -74,7 +75,7 @@ Describe -Tag "General" -Name "Properties" {
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
                     It "$($command.Name): URI is a valid URL" {
-                        $object.URI | Should -Match $matchUrl
+                        $object.URI | Should -Match $MatchUrl
                     }
                 }
             }
