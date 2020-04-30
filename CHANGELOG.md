@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
     * Returns Edge for Windows only
