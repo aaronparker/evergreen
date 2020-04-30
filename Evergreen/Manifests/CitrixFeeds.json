@@ -2,8 +2,7 @@
 	"Name": "Citrix Product Release Feeds",
 	"Source": "https://www.citrix.com/downloads",
 	"Get": {
-		"RegExNumbers": "[^.0-9]",
-		"RegExVersion": "\\d+(\\.\\d+)+\\s",
+		"MatchVersion": "\\s([1-9]\\d{3,}|\\d+(\\.\\d+)+|Preview)",
 		"TitleReplace": "New - ",
 		"XmlNode": "//item",
 		"Receiver": {

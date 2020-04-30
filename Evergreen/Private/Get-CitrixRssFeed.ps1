@@ -41,10 +41,21 @@
 
             # Walk through each node to output details
             ForEach ($node in $nodes) {
-                If ((($node.Title -replace $res.Get.TitleReplace, "") -match $Include) -and $node.Title -notmatch $Exclude) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): matching [$($node.title)]"
+                If (($node.title -match $Include) -and ($node.title -notmatch $Exclude)) {
+
+                    # Match version number from the title, account for title strings without version numbers
+                    try {
+                        $Version = [RegEx]::Match($node.title, $res.Get.MatchVersion).Captures.Groups[1].Value 4>$Null
+                    }
+                    catch {
+                        $Version = "Unknown"
+                    }
+
+                    # Output the version object
                     $PSObject = [PSCustomObject] @{
-                        Version     = $node.title -replace $res.Get.RegExNumbers
-                        Title       = $(($node.title -replace $res.Get.TitleReplace, "") -replace $res.Get.RegExVersion)
+                        Version     = $Version
+                        Title       = $node.title -replace $res.Get.TitleReplace, ""
                         Description = $node.description
                         Date        = [DateTime]::Parse($node.pubDate)
                         URI         = $node.link
