@@ -103,6 +103,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
     }
     finally {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
+
         # Output content from the response
         If ($Raw.IsPresent) {
             $Content = Get-Content -Path $TempFile
@@ -110,7 +113,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Else {
             $Content = $Response.Content 
         }
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Returning object of length [$($Content.Length)]."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Returning object of length: [$($Content.Length)]."
         Write-Output -InputObject $Content
     }
 }

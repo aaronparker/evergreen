@@ -68,7 +68,7 @@
                     Version      = [RegEx]::Match($latestRelease.tag_name, $res.Get.MatchVersion).Captures.Groups[1].Value
                     Platform     = $platform
                     Architecture = $arch
-                    Date         = (ConvertTo-DateTime -DateTime $release.created_at)
+                    Date         = ConvertTo-DateTime -DateTime $release.created_at
                     Size         = $release.size
                     URI          = $release.browser_download_url
                 }

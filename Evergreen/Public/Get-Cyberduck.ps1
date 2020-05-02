@@ -47,14 +47,13 @@
     
             # Build an output object by selecting entries from the feed
             If ($xmlDocument -is [System.XML.XMLDocument]) {
-                $nodes = Select-Xml -Xml $xmlDocument -XPath "//enclosure" | Select-Object –ExpandProperty "node"
+                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
 
                 # Output the update object
                 ForEach ($node in $nodes) {
                     $PSObject = [PSCustomObject] @{
-                        Version = $node.version
+                        Version = $node.shortVersionString
                         Channel = $release.Name
-                        #Hash    = $node.dsaSignature
                         URI     = ($node.url -replace "//", "/")
                     }
                     Write-Output -InputObject $PSObject

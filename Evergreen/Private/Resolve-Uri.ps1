@@ -15,14 +15,17 @@ Function Resolve-Uri {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = 3
         $httpWebRequest.AllowAutoRedirect = $true
+        $httpWebRequest.UseDefaultCredentials = $true
         $webResponse = $httpWebRequest.GetResponse()
-        Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
     }
     catch {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw $_
     }
     finally {
-        $webResponse.Dispose()
+        If ($webResponse) {
+            Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
+            $webResponse.Dispose()
+        }
     }
 }

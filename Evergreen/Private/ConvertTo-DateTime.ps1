@@ -1,7 +1,7 @@
 Function ConvertTo-DateTime {
     <#
         .SYNOPSIS
-            Return string converted to date/time with formatting accounting for Windows PowerShell or PowerShell Core
+            Return a date/time string converted to a localised short date string.
     #>
     [OutputType([System.DateTime])]
     [CmdletBinding()]
@@ -14,15 +14,10 @@ Function ConvertTo-DateTime {
         [System.String] $Pattern = 'MM/dd/yyyy HH:mm:ss'
     )
 
-    # Return formatted DateTime if we're running on PowerShell Core vs. Windows PowerShell
-    # There's likely a better way to do this, but this is a start
+    # Convert the date/time passed to the function. If conversion fails, pass the same string back
     try {
-        If (Test-PSCore) {
-            $Output = [DateTime]::ParseExact($DateTime, $Pattern, [CultureInfo]::InvariantCulture)
-        }
-        Else {
-            $Output = [DateTime]::Parse($DateTime)
-        }
+        $ConvertedDateTime = [DateTime]::ParseExact($DateTime, $Pattern, [System.Globalization.CultureInfo]::CurrentUICulture.DateTimeFormat)
+        $Output = $ConvertedDateTime.ToShortDateString()
     }
     catch {
         $Output = $DateTime

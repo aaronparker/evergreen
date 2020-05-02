@@ -74,7 +74,7 @@ Function ConvertFrom-SourceForgeReleasesJson {
                 Version      = $Version
                 Platform     = (Get-Platform -String $release.release.filename)
                 Architecture = (Get-Architecture -String $release.release.filename)
-                Date         = (ConvertTo-DateTime -DateTime $release.release.date -Pattern $DatePattern)
+                Date         = ConvertTo-DateTime -DateTime $release.release.date -Pattern $DatePattern
                 Size         = $release.release.bytes
                 Md5Hash      = $release.release.md5sum
                 URI          = ("$DownloadUri$($release.release.filename)" -replace " ", "%20")

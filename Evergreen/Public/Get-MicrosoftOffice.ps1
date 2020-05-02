@@ -42,8 +42,7 @@ Function Get-MicrosoftOffice {
         # TODO: fix DateTime conversion
         $PSObject = [PSCustomObject] @{
             Version = $Json.AvailableBuild
-            #Date    = (ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $res.Get.DateTime)
-            Date    = $Json.TimestampUtc
+            Date    = ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $res.Get.DateTime
             Channel = $channel.Name
             URI     = $res.Get.DownloadUri
         }
