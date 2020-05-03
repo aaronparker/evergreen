@@ -3,6 +3,32 @@
 		"ErrorAction": "Stop"
 	},
 	"Filters": {
-    "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$"
+		"WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+	},
+	"Properties": {
+		"SourceForge": [
+			"release",
+			"platform_releases"
+		],
+		"GitHub": [
+			"assets",
+			"assets_url",
+			"author",
+			"body",
+			"created_at",
+			"draft",
+			"html_url",
+			"id",
+			"name",
+			"node_id",
+			"prerelease",
+			"published_at",
+			"tag_name",
+			"tarball_url",
+			"target_commitish",
+			"upload_url",
+			"url",
+			"zipball_url"
+		]
 	}
 }

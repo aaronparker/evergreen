@@ -36,9 +36,8 @@ Function ConvertFrom-SourceForgeReleasesJson {
     finally {
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating SourceForge release object."
-        $requiredProperties = @("release", "platform_releases")
         $params = @{
-            ReferenceObject  = $requiredProperties
+            ReferenceObject  = $script:resourceStrings.Properties.SourceForge
             DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty)
             PassThru         = $True
             ErrorAction      = $script:resourceStrings.Preferences.ErrorAction

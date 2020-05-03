@@ -6,6 +6,9 @@
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+
+            This functions scrapes the vendor web page to find versions and downloads.
+            TODO: find a better method to find version and URLs
         
         .LINK
             https://github.com/aaronparker/Evergreen
@@ -32,26 +35,32 @@
         # Format the results returns and convert into an array that we can sort and use
         $Lines = $Content | Where-Object { $_ –notmatch "^#" }
         $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }
-        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header 'Client', 'Server', 'Version', 'Build' | Sort-Object -Property Server -Descending
+        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.CsvHeaders | Sort-Object -Property {[Version] $_.Version} -Descending
 
+        # Match the latest version number
+        If ($VersionTable[0].Server -match $reg.Get.MatchNoServer) {
+            $Version = ($VersionTable | Select-Object -First 2 | Select-Object -Last 1).Version
+        }
+        Else {
+            $Version = ($VersionTable | Select-Object -First 1).Version
+        }
+
+        # Build the output object for each platform and architecture
         ForEach ($platform in $res.Get.Platforms) {
             ForEach ($architecture in $res.Get.Architecture) {
 
                 # Query the download page for the download file name
                 $Uri = ("$($res.Get.DownloadUri)$platform/$architecture/index.html").ToLower()
                 $Content = Invoke-WebContent -Uri $Uri
-                $Line = ($Content.split("`n") | `
-                            Select-String -Pattern $res.Get.MatchFileName).ToString().Trim()
-                $filename = (($Line.Replace(" ", "").Split("=") | `
-                                Select-String -Pattern $res.Get.MatchFileName).ToString().Trim().Split("`""))[1]                        
+                $filename = [RegEx]::Match($Content, $res.Get.MatchFileName).Captures.Value
             
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
-                    Version      = ($VersionTable | Select-Object -First 1).Version
+                    Version      = $Version
                     Platform     = $platform
                     Architecture = $architecture
                     URI          = "https://packages.vmware.com/tools/esx/latest/$($platform.ToLower())/$architecture/$filename"
-                    ESXi         = (($VersionTable | Select-Object -First 1).Server -replace "esx/", "")
+                    #ESXi         = (($VersionTable | Select-Object -First 1).Server -replace "esx/", "")
                 }
                 Write-Output -InputObject $PSObject
             }

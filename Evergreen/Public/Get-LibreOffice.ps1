@@ -9,6 +9,9 @@ Function Get-LibreOffice {
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+
+            This functions scrapes the vendor web page to find versions and downloads.
+            TODO: find a better method to find version and URLs
         
         .LINK
             https://github.com/aaronparker/Evergreen

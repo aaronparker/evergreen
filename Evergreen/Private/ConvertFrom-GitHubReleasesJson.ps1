@@ -39,11 +39,8 @@ Function ConvertFrom-GitHubReleasesJson {
 
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
-        $requiredProperties = @("assets", "assets_url", "author", "body", "created_at", "draft", `
-                "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", `
-                "tarball_url", "target_commitish", "upload_url", "url", "zipball_url")
         $params = @{
-            ReferenceObject  = $requiredProperties
+            ReferenceObject  = $script:resourceStrings.Properties.GitHub
             DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty)
             PassThru         = $True
             ErrorAction      = $script:resourceStrings.Preferences.ErrorAction

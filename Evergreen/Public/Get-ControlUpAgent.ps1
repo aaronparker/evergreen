@@ -9,6 +9,9 @@ Function Get-ControlUpAgent {
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
+
+            This functions scrapes the vendor web page to find versions and downloads.
+            TODO: find a better method to find version and URLs
         
         .LINK
             https://github.com/aaronparker/Evergreen
@@ -40,12 +43,7 @@ Function Get-ControlUpAgent {
     
         ForEach ($link in $versionLinks) {
 
-            # Add .NET Framework version and Architecture properties
-            Switch -Regex ($link.href) {
-                "x64" { $arch = "x64" }
-                "x86" { $arch = "x86" }
-                Default { $arch = "Unknown" }
-            }
+            # Add .NET Framework version properties
             Switch -Regex ($link.href) {
                 "net45" { $dotnet = "net45" }
                 "net35" { $dotnet = "net35" }
@@ -56,7 +54,7 @@ Function Get-ControlUpAgent {
             $PSObject = [PSCustomObject] @{
                 Version      = [RegEx]::Match($link.href, $res.Get.MatchVersion).Captures.Value
                 Framework    = $dotnet
-                Architecture = $arch
+                Architecture = Get-Architecture -String $link.href
                 URI          = $link.href
             }
             Write-Output -InputObject $PSObject

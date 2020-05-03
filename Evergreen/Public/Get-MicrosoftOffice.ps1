@@ -39,7 +39,6 @@ Function Get-MicrosoftOffice {
         $Json = $Content | ConvertFrom-Json
 
         # Build and array of the latest release and download URLs
-        # TODO: fix DateTime conversion
         $PSObject = [PSCustomObject] @{
             Version = $Json.AvailableBuild
             Date    = ConvertTo-DateTime -DateTime $Json.TimestampUtc -Pattern $res.Get.DateTime

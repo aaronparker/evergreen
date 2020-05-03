@@ -8,19 +8,31 @@
 			"Windows"
 		],
 		"Architecture": [
-			"x64"
+			"x64",
+			"x86"
 		],
-		"MatchFileName": "[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-x86_64"
+		"CsvHeaders": [
+			"Client",
+			"Server",
+			"Version",
+			"Build"
+		],
+		"MatchNoServer": "esx/0.0",
+		"MatchFileName": "(VMware-tools-)([0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-)(i386|x86_64)(\\.exe)"
 	},
 	"Install": {
 		"Setup": "VMware-tools*.exe",
 		"Physical": {
 			"Arguments": "",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		}
 	}
 }
