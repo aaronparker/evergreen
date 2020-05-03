@@ -2,7 +2,7 @@ Function ConvertFrom-SourceForgeReleasesJson {
     <#
         .SYNOPSIS
             Validates a JSON string returned from a SourceForge releases API and returns a formatted object
-            Example: https://api.SourceForge.com/repos/PowerShell/PowerShell/releases/latest
+            Example: https://sourceforge.net/projects/sevenzip/best_release.json
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -58,7 +58,7 @@ Function ConvertFrom-SourceForgeReleasesJson {
 
         # Find version number
         try {
-            $Version = [RegEx]::Match($release.release.filename, $MatchVersion).Captures.Groups[1].Value
+            $Version = [RegEx]::Match($release.platform_releases.windows.filename, $MatchVersion).Captures.Groups[1].Value
         }
         catch {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to find version number."
@@ -72,12 +72,12 @@ Function ConvertFrom-SourceForgeReleasesJson {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
-                Platform     = (Get-Platform -String $release.release.filename)
-                Architecture = (Get-Architecture -String $release.release.filename)
-                Date         = ConvertTo-DateTime -DateTime $release.release.date -Pattern $DatePattern
-                Size         = $release.release.bytes
-                Md5Hash      = $release.release.md5sum
-                URI          = ("$DownloadUri$($release.release.filename)" -replace " ", "%20")
+                Platform     = (Get-Platform -String $release.platform_releases.windows.filename)
+                Architecture = (Get-Architecture -String $release.platform_releases.windows.filename)
+                Date         = ConvertTo-DateTime -DateTime $release.platform_releases.windows.date -Pattern $DatePattern
+                Size         = $release.platform_releases.windows.bytes
+                Md5Hash      = $release.platform_releases.windows.md5sum
+                URI          = ("$DownloadUri$($release.platform_releases.windows.filename)" -replace " ", "%20")
             }
             Write-Output -InputObject $PSObject
         }
