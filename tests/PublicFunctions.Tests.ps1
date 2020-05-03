@@ -71,15 +71,6 @@ Describe -Tag "General" -Name "Properties" {
                 Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
             }
 
-            # Test that the function output returns a Windows installer type in the URI property
-            ForEach ($object in $Output) {
-                If ($object.URI.Length -gt 0) {
-                    It "$($command.Name): [$($object.URI)] is a Windows installer" {
-                        $object.URI | Should -Match $MatchInstallers
-                    }
-                }
-            }
-
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
