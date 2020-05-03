@@ -32,7 +32,7 @@ New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 # RegEx
 $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
 $MatchVersions = "^\d[_\-.0-9b|insider]*$|Unknown|Preview|Any"
-$MatchInstallers = "\.exe$|\.msi$|\.msp$|\.zip$"
+$MatchInstallers = "\.exe$|\.msi$|\.msp$|\.zip$|\.html$"
 
 # Get the module commands
 $commands = Get-Command -Module Evergreen
