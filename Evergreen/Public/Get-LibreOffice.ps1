@@ -23,7 +23,7 @@ Function Get-LibreOffice {
             Returns the latest LibreOffice version and download URIs for the installers and language packs for Windows.
 
         .EXAMPLE
-            Get-LibreOffice | Where-Object { ($_.Language -eq "Neutral") -and ($_.Platform -eq "Windows") }
+            Get-LibreOffice | Where-Object { $_.Language -eq "Neutral" -and $_.Architecture -eq "x64" }
 
             Description:
             Returns the latest LibreOffice for Windows version and installer download URI.
@@ -36,24 +36,30 @@ Function Get-LibreOffice {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Query the LibreOffice download site
-    $DownloadUri = $res.Get.Uri
-    $iwrParams = @{
-        Uri             = "$DownloadUri/"
-        UseBasicParsing = $True
-        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+    # Query the LibreOffice update API
+    $iwcParams = @{
+        Uri                  = $res.Get.Uri
+        UserAgent            = $res.Get.UserAgent
+        Raw                  = $True
+        SkipCertificateCheck = $True
     }
-    $response = Invoke-WebRequest @iwrParams
+    $Content = Invoke-WebContent @iwcParams
 
-    If ($Null -ne $response) {
-        $versions = ($response.Links | Where-Object { $_.href -match $res.Get.MatchVersion }).href -replace "/", ""
-        $Version = $versions | Sort-Object -Descending | Select-Object -First 1
+    If ($Null -ne $Content) {
+
+        # Convert the content to XML to grab the version number
+        Try {
+            [System.XML.XMLDocument] $xmlDocument = $Content
+        }
+        Catch [System.Exception] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+        }
+        $Version = $xmlDocument.description.version
     
+        # Get downloads for each platform for the latest version
         ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
-
-            # Get downloads for each platform for the latest version
             $iwrParams = @{
-                Uri             = "$DownloadUri/$Version/$($platform.Name)/"
+                Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/"
                 UseBasicParsing = $True
                 ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
             }
@@ -64,7 +70,7 @@ Function Get-LibreOffice {
 
                 # Get downloads for each architecture for the latest version/platform
                 $iwrParams = @{
-                    Uri             = "$DownloadUri/$Version/$($platform.Name)/$arch/"
+                    Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/$arch/"
                     UseBasicParsing = $True
                     ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                 }
@@ -90,7 +96,7 @@ Function Get-LibreOffice {
                         Platform     = $res.Get.Platforms[$platform.Key]
                         Architecture = $arch
                         Language     = $Language
-                        URI          = $("$DownloadUri/$Version/$($platform.Name)/$arch/$file")
+                        URI          = $("$($res.Get.DownloadUri)/$Version/$($platform.Name)/$arch/$file")
                     }
                     Write-Output -InputObject $PSObject
                 }

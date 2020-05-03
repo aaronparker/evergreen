@@ -47,9 +47,11 @@
                     # Match version number from the title, account for title strings without version numbers
                     try {
                         $Version = [RegEx]::Match($node.title, $res.Get.MatchVersion).Captures.Groups[1].Value 4>$Null
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
                     }
                     catch {
                         $Version = "Unknown"
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Unknown version."
                     }
 
                     # Output the version object
@@ -57,7 +59,8 @@
                         Version     = $Version
                         Title       = $node.title -replace $res.Get.TitleReplace, ""
                         Description = $node.description
-                        Date        = [DateTime]::Parse($node.pubDate)
+                        Date        = $node.pubDate
+                        #Date        = ConvertTo-DateTime -DateTime $node.pubDate -Pattern $res.Get.DatePattern
                         URI         = $node.link
                     }
                     Write-Output -InputObject $PSObject

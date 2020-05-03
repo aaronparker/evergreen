@@ -5,6 +5,7 @@
 		"MatchVersion": "\\s([1-9]\\d{3,}|\\d+(\\.\\d+)+|Preview)",
 		"TitleReplace": "New - ",
 		"XmlNode": "//item",
+		"DatePattern": "ddd, dd MMM yyyy HH:mm:ss GMT",
 		"Receiver": {
 			"Uri": "https://www.citrix.com/content/citrix/en_us/downloads/citrix-receiver.rss",
 			"Include": "Receiver",

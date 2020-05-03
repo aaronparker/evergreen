@@ -47,12 +47,14 @@
     
             # Build an output object by selecting entries from the feed
             If ($xmlDocument -is [System.XML.XMLDocument]) {
-                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+                $item = Select-Xml -Xml $xmlDocument -XPath $res.Get.ItemXmlNode | Select-Object –ExpandProperty "node"
+                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.EnclosureXmlNode | Select-Object –ExpandProperty "node"
 
                 # Output the update object
                 ForEach ($node in $nodes) {
                     $PSObject = [PSCustomObject] @{
                         Version = $node.shortVersionString
+                        Date    = ConvertTo-DateTime -DateTime $item.pubDate -Pattern $res.Get.DatePattern
                         Channel = $release.Name
                         URI     = ($node.url -replace "//", "/")
                     }

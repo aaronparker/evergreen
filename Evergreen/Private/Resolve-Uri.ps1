@@ -12,6 +12,7 @@ Function Resolve-Uri {
     )
 
     try {
+        If ($Null -ne $webResponse) { $webResponse.Dispose() }
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = 3
         $httpWebRequest.AllowAutoRedirect = $true
@@ -24,8 +25,9 @@ Function Resolve-Uri {
     }
     finally {
         If ($webResponse) {
-            Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
-            $webResponse.Dispose()
+            #Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
+            Write-Output -InputObject $webResponse
+            #$webResponse.Dispose()
         }
     }
 }

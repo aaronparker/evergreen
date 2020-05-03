@@ -28,7 +28,7 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.WindowsUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]
+        $redirectUrl = (Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]).ResponseUri.AbsoluteUri
 
         # Match version number from the download URL
         $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
@@ -53,7 +53,7 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.CitrixVDIUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-Uri -Uri $res.Get.CitrixVDIUris[$installer.Key]
+        $redirectUrl = (Resolve-Uri -Uri $res.Get.CitrixVDIUris[$installer.Key]).ResponseUri.AbsoluteUri
 
         # Match version number from the download URL
         $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
@@ -78,7 +78,7 @@ Function Get-Zoom {
     ForEach ($installer in $res.Get.VMwareVDIUris.GetEnumerator()) {
 
         # Follow the download link which will return a 301/302
-        $redirectUrl = Resolve-Uri -Uri $res.Get.VMwareVDIUris[$installer.Key]
+        $redirectUrl = (Resolve-Uri -Uri $res.Get.VMwareVDIUris[$installer.Key]).ResponseUri.AbsoluteUri
 
         # Match version number from the download URL
         $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value

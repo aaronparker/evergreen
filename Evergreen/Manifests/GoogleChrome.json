@@ -8,7 +8,8 @@
 		"Platforms": {
 			"win": "/dl/chrome/install/googlechromestandaloneenterprise.msi",
 			"win64": "/dl/chrome/install/googlechromestandaloneenterprise64.msi"
-		}
+		},
+		"DatePattern": "MM/dd/yy"
 	},
 	"Install": {
 		"Setup": "googlechromestandaloneenterprise.msi",

@@ -26,12 +26,12 @@ Function Get-CitrixWorkspaceAppFeed {
     Write-Verbose -Message $res.Name
 
     # Read the feed and filter for include and exclude strings and return output to the pipeline
-    $gcfParams = @{
+    $params = @{
         Uri     = $res.Get.WorkspaceApp.Uri
         Include = $res.Get.WorkspaceApp.Include
         Exclude = $res.Get.WorkspaceApp.Exclude
     }
-    $Content = Get-CitrixRssFeed @gcfParams
+    $Content = Get-CitrixRssFeed @params
     If ($Null -ne $Content) {
         Write-Output -InputObject $Content
     }

@@ -1,9 +1,12 @@
 # Change Log
 
+## VERSION
+
 ## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
     * Returns Edge for Windows only
+	* Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
 	* Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
 	* Filters and returns only the latest version of each of the above channels and downloads
 	* Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering

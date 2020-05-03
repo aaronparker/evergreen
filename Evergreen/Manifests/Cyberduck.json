@@ -8,7 +8,9 @@
 			"Snapshot" : "https://version.cyberduck.io/windows/nightly/changelog.rss"
 		},
 		"ContentType": "text/xml",
-		"XmlNode": "//enclosure"
+		"EnclosureXmlNode": "//enclosure",
+		"ItemXmlNode": "//item",
+		"DatePattern": "dd/MM/yyyy hh:mm tt"
 	},
 	"Install": {
 		"Setup": "Cyberduck*.exe",

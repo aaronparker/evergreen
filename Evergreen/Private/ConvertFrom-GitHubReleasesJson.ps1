@@ -65,8 +65,8 @@ Function ConvertFrom-GitHubReleasesJson {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
                     $PSObject = [PSCustomObject] @{
                         Version      = [RegEx]::Match($release.tag_name, $MatchVersion).Captures.Groups[1].Value
-                        Platform     = (Get-Platform -String $asset.browser_download_url)
-                        Architecture = (Get-Architecture -String $asset.browser_download_url)
+                        Platform     = Get-Platform -String $asset.browser_download_url
+                        Architecture = Get-Architecture -String $asset.browser_download_url
                         Date         = ConvertTo-DateTime -DateTime $release.created_at
                         Size         = $asset.size
                         URI          = $asset.browser_download_url

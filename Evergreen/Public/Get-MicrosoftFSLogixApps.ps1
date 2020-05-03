@@ -27,25 +27,19 @@ Function Get-MicrosoftFSLogixApps {
     Write-Verbose -Message $res.Name
 
     # Follow the download link which will return a 301
-    $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.Uri
+    $response = Resolve-Uri -Uri $res.Get.Uri
             
     # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-    If ($redirectUrl -match $res.Get.MatchFwlink) {
-        $nextRedirectUrl = Resolve-RedirectedUri -Uri $redirectUrl
+    If ($Null -ne $response) {
 
-        # If this returned URL target is a file
-        If ($nextRedirectUrl -match $res.Get.MatchFile) {
-
-            # Construct the output; Return the custom object to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Version = [RegEx]::Match($nextRedirectUrl, $res.Get.MatchVersion).Captures.Value
-                URI     = $nextRedirectUrl
-            }
-            Write-Output -InputObject $PSObject
+        # Construct the output; Return the custom object to the pipeline
+        $PSObject = [PSCustomObject] @{
+            Version = [RegEx]::Match($($response.ResponseUri.AbsoluteUri), $res.Get.MatchVersion).Captures.Value
+            Date    = $response.LastModified
+            #Date    = ConvertTo-DateTime -DateTime $response.LastModified -Pattern "dd/MM/yyyy HH:mm:ss tt"
+            URI     = $response.ResponseUri.AbsoluteUri
         }
-        Else {
-            Write-Warning -Message "Failed to return a useable URL from $redirectUrl."
-        }
+        Write-Output -InputObject $PSObject
     }
     Else {
         Write-Warning -Message "Failed to return a useable URL from $($res.Get.Uri)."

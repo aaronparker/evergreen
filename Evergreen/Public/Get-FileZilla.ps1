@@ -27,9 +27,10 @@ Function Get-FileZilla {
 
     # Query the update feed
     $iwcParams = @{
-        Uri              = $res.Get.Uri
-        UserAgent        = $res.Get.UserAgent
+        Uri                  = $res.Get.Uri
+        UserAgent            = $res.Get.UserAgent
         SkipCertificateCheck = $True
+        Raw                  = $True
     }
     $Content = Invoke-WebContent @iwcParams
 

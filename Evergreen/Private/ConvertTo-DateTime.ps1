@@ -11,7 +11,7 @@ Function ConvertTo-DateTime {
         [System.String] $DateTime,
 
         [Parameter(Position = 1)]
-        [System.String] $Pattern = 'MM/dd/yyyy HH:mm:ss'
+        [System.String] $Pattern = 'MM/dd/yyyy'
     )
 
     # Convert the date/time passed to the function. If conversion fails, pass the same string back
@@ -20,9 +20,11 @@ Function ConvertTo-DateTime {
         $Output = $ConvertedDateTime.ToShortDateString()
     }
     catch {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to convert date, returning: [$DateTime]."
         $Output = $DateTime
     }
     
     # Write the output to the pipeline
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Returning date: [$Output]."
     Write-Output -InputObject $Output
 }

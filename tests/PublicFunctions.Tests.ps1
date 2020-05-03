@@ -32,6 +32,7 @@ New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 # RegEx
 $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
 $MatchVersions = "^\d[_\-.0-9b|insider]*$|Unknown|Preview|Any"
+$MatchInstallers = "\.exe$|\.msi$|\.msp$|\.zip$"
 
 # Get the module commands
 $commands = Get-Command -Module Evergreen
@@ -68,6 +69,15 @@ Describe -Tag "General" -Name "Properties" {
             }
             Else {
                 Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
+            }
+
+            # Test that the function output returns a Windows installer type in the URI property
+            ForEach ($object in $Output) {
+                If ($object.URI.Length -gt 0) {
+                    It "$($command.Name): [$($object.URI)] is a Windows installer" {
+                        $object.URI | Should -Match $MatchInstallers
+                    }
+                }
             }
 
             # Test that the functions that have a URI property return something we can download

@@ -67,6 +67,7 @@ Function Get-MicrosoftEdge {
                             Release      = $view.Name
                             Architecture = $release.Architecture
                             Date         = $release.PublishedTime
+                            #Date         = ConvertTo-DateTime -DateTime $release.PublishedTime -Pattern "dd/MM/yyyy hh:mm:ss tt" #"22/4/2020 6:06:00 pm"
                             Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
                             URI          = ($release.Artifacts.Location | Where-Object { $_ -match $res.Get.FileTypes } )
                         }
