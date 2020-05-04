@@ -51,12 +51,18 @@ Function Get-MicrosoftEdge {
             # For each product (Stable, Beta etc.)
             ForEach ($product in $res.Get.Channels) {
 
-                # Expand the Releases property for that product
-                $releases = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
+                # Find the latest version
+                $latestRelease = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
                     Where-Object { $_.Platform -in $res.Get.Platform } | `
                     Sort-Object -Property $res.Get.SortProperty -Descending | `
                     Select-Object -First 1
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($latestRelease.ProductVersion)."
+
+                # Expand the Releases property for that product version
+                $releases = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
+                    Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
+                    Where-Object { ($_.Platform -in $res.Get.Platform) -and ($_.ProductVersion -eq $latestRelease.ProductVersion) }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
                 ForEach ($release in $releases) {

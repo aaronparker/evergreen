@@ -38,7 +38,7 @@
         $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.CsvHeaders | Sort-Object -Property {[Version] $_.Version} -Descending
 
         # Match the latest version number
-        If ($VersionTable[0].Server -match $reg.Get.MatchNoServer) {
+        If ($VersionTable[0].Server -match $res.Get.MatchNoServer) {
             $Version = ($VersionTable | Select-Object -First 2 | Select-Object -Last 1).Version
         }
         Else {
