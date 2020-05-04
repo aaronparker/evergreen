@@ -4,8 +4,7 @@
 	"Get": {
 		"Uri": "https://edgeupdates.microsoft.com/api/products",
 		"Views": {
-			"Enterprise": "?view=enterprise",
-			"Consumer": ""
+			"Enterprise": "?view=enterprise"
 		},
 		"Platform": [
 			"Windows",
@@ -16,6 +15,12 @@
 			"Beta",
 			"EdgeUpdate",
 			"Policy"
+		],
+		"Architectures": [
+			"x64",
+			"x86",
+			"arm64",
+			"any"
 		],
 		"ReleaseProperty": "Releases",
 		"SortProperty": "ProductVersion",
