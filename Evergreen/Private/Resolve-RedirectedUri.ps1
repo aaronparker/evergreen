@@ -22,6 +22,7 @@ Function Resolve-RedirectedUri {
         MaximumRedirection = 0
         UserAgent          = $UserAgent
     }
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
 
     If (Test-PSCore) {
         # If running PowerShell Core, request URL and catch the response

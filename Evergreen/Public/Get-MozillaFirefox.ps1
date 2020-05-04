@@ -21,16 +21,16 @@ Function Get-MozillaFirefox {
             Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
 
         .EXAMPLE
-            Get-MozillaFirefoxUri
+            Get-MozillaFirefox
 
             Description:
-            Returns the 64-bit English (US) download URI for Firefox for Windows.
+            Returns the version and download URIs for Firefox for Windows.
 
         .EXAMPLE
-            Get-MozillaFirefoxUri -Language en-GB
+            Get-MozillaFirefox -Language en-GB
 
             Description:
-            Returns the UK English download URI for Firefox.
+            Returns the UK English version and download URIs for Firefox for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -57,25 +57,24 @@ Function Get-MozillaFirefox {
 
     # Get latest Firefox version
     $firefoxVersions = Invoke-WebContent -Uri $res.Get.Uri | ConvertFrom-Json
-    $version = ([Version]::new($firefoxVersions.LATEST_FIREFOX_VERSION))
-
+    
     # Construct custom object with output details
     ForEach ($lang in $Language) {
         ForEach ($plat in $Platform) {
 
             # Select the download file for the selected platform
             Switch ($plat) {
-                "win64" { $file = "Firefox%20Setup%20$($version).exe" }
-                "win32" { $file = "Firefox%20Setup%20$($version).exe" }
+                "win64" { $file = "Firefox%20Setup%20$($firefoxVersions.LATEST_FIREFOX_VERSION).exe" }
+                "win32" { $file = "Firefox%20Setup%20$($firefoxVersions.LATEST_FIREFOX_VERSION).exe" }
             }
 
             # Build object and output to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version      = $version
+                Version      = $firefoxVersions.LATEST_FIREFOX_VERSION
                 Architecture = Get-Architecture -String $plat
                 Language     = $lang
                 Filename     = $file.Replace('%20', ' ')
-                URI          = "$($res.Get.DownloadUri)$($version)/$($plat)/$($lang)/$($file)"
+                URI          = "$($res.Get.DownloadUri)$($firefoxVersions.LATEST_FIREFOX_VERSION)/$($plat)/$($lang)/$($file)"
             }
             Write-Output -InputObject $PSObject
         }

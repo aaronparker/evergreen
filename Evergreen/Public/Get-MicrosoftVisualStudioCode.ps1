@@ -65,7 +65,7 @@ Function Get-MicrosoftVisualStudioCode {
             $PSObject = [PSCustomObject] @{
                 Version      = $releaseJson.productVersion
                 Platform     = $plat
-                Architecture = (Get-Architecture -String $releaseJson.url)
+                Architecture = Get-Architecture -String $releaseJson.url
                 Channel      = $ch
                 URI          = $releaseJson.url
             }

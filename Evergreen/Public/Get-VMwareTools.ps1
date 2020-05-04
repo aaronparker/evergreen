@@ -60,7 +60,6 @@
                     Platform     = $platform
                     Architecture = $architecture
                     URI          = "https://packages.vmware.com/tools/esx/latest/$($platform.ToLower())/$architecture/$filename"
-                    #ESXi         = (($VersionTable | Select-Object -First 1).Server -replace "esx/", "")
                 }
                 Write-Output -InputObject $PSObject
             }

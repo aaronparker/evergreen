@@ -28,6 +28,7 @@ Function Get-MicrosoftWvdInfraAgent {
     If (Test-PSCore) {
         # Grab the download link headers to find the file name
         try {
+            #TODO: turn this into a function
             $tempFile = New-TemporaryFile
             $params = @{
                 Uri             = $res.Get.Uri

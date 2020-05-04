@@ -47,7 +47,7 @@ Function Get-MicrosoftTeams {
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = $item.Name
-                URI          = $res.Get.DownloadUri[$item.Key] -replace "#Version", $Version
+                URI          = $res.Get.DownloadUri[$item.Key] -replace $reg.Get.DownloadUriReplaceText, $Version
             }
 
             # Output object to the pipeline
