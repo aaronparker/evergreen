@@ -15,14 +15,26 @@ Function Resolve-Uri {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = 3
         $httpWebRequest.AllowAutoRedirect = $true
+        $httpWebRequest.UseDefaultCredentials = $true
         $webResponse = $httpWebRequest.GetResponse()
-        Write-Output -InputObject $webResponse.ResponseUri.AbsoluteUri
     }
     catch {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw $_
     }
     finally {
-        $webResponse.Dispose()
+        If ($webResponse) {
+            
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                LastModified  = $webResponse.LastModified
+                ContentLength = $webResponse.ContentLength
+                Headers       = $webResponse.Headers
+                ResponseUri   = $webResponse.ResponseUri
+                StatusCode    = $webResponse.StatusCode
+            }
+            Write-Output -InputObject $PSObject
+            $webResponse.Dispose()
+        }
     }
 }

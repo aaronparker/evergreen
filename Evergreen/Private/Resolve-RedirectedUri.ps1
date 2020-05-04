@@ -22,15 +22,16 @@ Function Resolve-RedirectedUri {
         MaximumRedirection = 0
         UserAgent          = $UserAgent
     }
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
 
     If (Test-PSCore) {
         # If running PowerShell Core, request URL and catch the response
         Try {
-            Invoke-WebRequest @iwrParams -ErrorAction $script:resourceStrings.Preferences.ErrorAction
+            Invoke-WebRequest @iwrParams -ErrorAction "SilentlyContinue"
         }
         Catch [System.Exception] {
             $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)"
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
         }
     }
     Else {
@@ -38,7 +39,7 @@ Function Resolve-RedirectedUri {
         Try {
             $response = Invoke-WebRequest @iwrParams -ErrorAction "SilentlyContinue"
             $redirectUrl = $response.Headers.Location
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($response.StatusCode) - $($response.StatusDescription)"
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
         Catch [System.Exception] {
             Write-Warning -Message ([string]::Format("$($MyInvocation.MyCommand): Error : {0}", $_.Exception.Message))

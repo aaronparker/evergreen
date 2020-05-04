@@ -7,22 +7,28 @@
 
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise applications. The module consists of a number of simple commands to use in scripts when performing several tasks including:
 
-* Retrieve the latest version of a particular software product when comparing against a version already installed or downloaded
-* Return the URL for the latest version of a software product if you need to download it locally
+* Retrieve the latest version of a particular application when comparing against a version already installed or downloaded
+* Return the URL for the latest version of the application if you need to download it locally for installation or deployment
 
-All functions consist of the following:
+![leaf by The Icon Z from the Noun Project](https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png)
 
-* Get verb - the module provides functions to retrieve data only
-* Vendor - the vendor / developer of the application (e.g. Adobe, Google, Microsoft)
-* Product name - product names and optionally version (e.g. Reader DC, Chrome, VisualStudioCode)
+Right now all functions consist of the following:
+
+* `Get` verb - the module provides functions to retrieve data only
+* Vendor - the vendor / developer of the application (e.g. `Adobe`, `Google`, `Microsoft`, etc.)
+* Product name - product names and optionally version (e.g. `AcrobatReaderDC`, `Chrome`, `VisualStudioCode`, etc.)
+
+This may change in a future release to simplify commands where the application can be a parameter or input into Evergreen to return the details for that application.
 
 ## Why
 
-There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, find the latest version of a particular software package for creating a Chocolatey submission.
+There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, Evergreen can be used with the [Chocolatey Automatic Package Updater Module](https://www.powershellgallery.com/packages/AU/) to find the latest version of an application and then creating and submitting a Chocolatey package.
 
-Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. **Data will only be pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
+Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. Ideal for use with the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment or with [Packer](https://www.packer.io/) to create evergreen machine images in Azure or AWS.
 
 ## How
+
+**Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
 
 Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API where possible. Evergreen uses several strategies to return the latest version of software:
 
@@ -53,7 +59,7 @@ Install-Module -Name Evergreen
 Import-Module -Name Evergreen
 ```
 
-### Updating the Module
+#### Updating the Module
 
 If you have installed a previous version of the module from the gallery, you can install the latest update with `Update-Module` and the `-Force` parameter:
 
@@ -95,3 +101,6 @@ Import-Module Evergreen
 [github-release]: https://github.com/aaronparker/Evergreen/releases/latest
 [license-badge]: https://img.shields.io/github/license/aaronparker/Evergreen.svg?style=flat-square
 [license]: https://github.com/aaronparker/Evergreen/blob/master/LICENSE
+
+---
+leaf by The Icon Z from the Noun Project

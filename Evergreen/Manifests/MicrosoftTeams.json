@@ -8,7 +8,8 @@
 		"DownloadUri": { 
 			"x64": "https://statics.teams.cdn.office.net/production-windows-x64/#Version/Teams_windows_x64.msi",
 			"x86": "https://statics.teams.cdn.office.net/production-windows/#Version/Teams_windows.msi"
-		}
+		},
+		"DownloadUriReplaceText": "#Version"
 	},
 	"Install": {
 		"Setup": "",
@@ -19,7 +20,7 @@
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "ALLUSER=1 ALLUSERS=1",
 			"PostInstall": [
 				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
 			]

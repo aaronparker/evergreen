@@ -53,7 +53,7 @@
                         Title    = $($node.ShortDescription -replace ":", "")
                         Size     = $(If ($node.Size) { $node.Size } Else { "Unknown" })
                         Hash     = $node.Hash
-                        Date     = $node.StartDate
+                        Date     = ConvertTo-DateTime -DateTime $node.StartDate -Pattern $res.Get.DatePattern
                         Platform = $item
                         URI      = "$($res.Get.DownloadUri)$($node.DownloadURL)"
                     }

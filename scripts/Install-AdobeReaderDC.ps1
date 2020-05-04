@@ -13,7 +13,7 @@ $Folder = "C:\Temp\Reader"
 New-Item -Path $Folder -ItemType Directory -Force -ErrorAction SilentlyContinue
 
 # Download Reader installer and updater
-$Reader = Get-AdobeAcrobatReaderDC | Where-Object { $_.Platform -eq "Windows" -and ($_.Language -eq "English" -or $_.Language -eq "Neutral") }
+$Reader = Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
 ForEach ($File in $Reader) {
     Invoke-WebRequest -Uri $File.Uri -OutFile (Join-Path -Path $Folder -ChildPath (Split-Path -Path $File.Uri -Leaf))
 }

@@ -42,19 +42,18 @@ Function Get-FoxitReader {
             
             # Build the download URL
             $Uri = $res.Get.DownloadUri -replace "#Version", $Version
-            $Uri = $Uri -replace "#Platform", $platform
-            $Uri = $Uri -replace "#Language", $language
-            $Uri = $Uri -replace "#Package", $PackageJson.package_info.type[0]
+            $Uri = (($Uri -replace "#Platform", $platform) -replace "#Language", $language) -replace "#Package", $PackageJson.package_info.type[0]
             
             # Follow the download link which will return a 301/302
             $redirectUrl = Resolve-RedirectedUri -Uri $Uri
+            #$redirectUrl = (Resolve-Uri -Uri $Uri).ResponseUri.AbsoluteUri
+            
             If ($Null -ne $redirectUrl) {
 
                 # Construct the output; Return the custom object to the pipeline
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
-                    #Date     = ([DateTime]::Parse($PackageJson.package_info.release))
-                    Date     = $PackageJson.package_info.release
+                    Date     = ConvertTo-DateTime -DateTime $PackageJson.package_info.release -Pattern $res.Get.DateTimePattern
                     Size     = $PackageJson.package_info.size
                     Language = $language
                     URI      = $redirectUrl

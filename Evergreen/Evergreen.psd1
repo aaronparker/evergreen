@@ -130,7 +130,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/aaronparker/Evergreen/'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md'

@@ -47,27 +47,19 @@ Function Get-MicrosoftSsms {
                 ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.MatchName })) {
 
                     # Follow the download link which will return a 301
-                    $redirectUrl = Resolve-RedirectedUri -Uri $res.Get.DownloadUri
+                    $ResponseUri = (Resolve-Uri -Uri $res.Get.DownloadUri).ResponseUri.AbsoluteUri
             
                     # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-                    If ($redirectUrl -match $res.Get.MatchFwlink) {
-                        $nextRedirectUrl = Resolve-RedirectedUri -Uri $redirectUrl
-
-                        # If this returned URL target is a file
-                        If ($nextRedirectUrl -match $res.Get.MatchFile) {
+                    If ($Null -ne $ResponseUri) {
 
                             # Construct the output; Return the custom object to the pipeline
                             $PSObject = [PSCustomObject] @{
                                 Version = $entry.Component.version
-                                Date    = ([DateTime]::Parse($entry.updated))
+                                Date    = ConvertTo-DateTime -DateTime $entry.updated
                                 Title   = $entry.Title
-                                URI     = $nextRedirectUrl
+                                URI     = $ResponseUri
                             }
                             Write-Output -InputObject $PSObject
-                        }
-                        Else {
-                            Write-Warning -Message "Failed to return a useable URL from $redirectUrl."
-                        }
                     }
                 }
             }

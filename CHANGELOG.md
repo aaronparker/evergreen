@@ -1,9 +1,23 @@
 # Change Log
 
+## VERSION
+
+* Updates `Get-MicrosoftEdge` to correctly return the latest version and policy files for the Enterprise ring
+* Updates output for private function `Resolve-Uri` with addition properties
+* Updates `Get-FoxitReader`, `Get-MicrosoftFSLogixApps`, and `Get-MicrosoftSsms` to use `Resolve-Uri` instead of `Resolve-RedirectedUri` for improved performance
+* Updates `Get-LibreOffice` to retrieve latest version from the update API instead of page scraping
+* Updates private function `ConvertTo-DateTime` with improvements in returning localised date (so the rest of us don't need to be stuck with US date formats)
+* Aligns `Get-NotepadPlusPlus` with private function `ConvertFrom-GitHubReleasesJson` to return GitHub release data
+* Fixes output in `Get-VMwareTools` to ensure correct version and download URL are returned
+* Adds date to output in several functions
+* General code and inline help improvements
+* Adds module icon for display in the PowerShell Gallery
+
 ## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
     * Returns Edge for Windows only
+	* Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
 	* Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
 	* Filters and returns only the latest version of each of the above channels and downloads
 	* Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering

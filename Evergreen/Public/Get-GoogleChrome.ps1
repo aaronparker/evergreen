@@ -14,7 +14,7 @@ Function Get-GoogleChrome {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-GoogleChromeVersion
+            Get-GoogleChrome
 
             Description:
             Returns the available Google Chrome versions and download URLs.
@@ -43,7 +43,7 @@ Function Get-GoogleChrome {
                 $PSObject = [PSCustomObject] @{
                     Version      = $version.current_version
                     Architecture = Get-Architecture -String $version.os
-                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim() -Pattern 'MM/dd/yy'
+                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim() -Pattern $res.Get.DatePattern
                     URI          = "$($res.Get.DownloadUri)$($res.Get.Platforms[$platform.Key])"
                 }
                 Write-Output -InputObject $PSObject

@@ -6,6 +6,8 @@
 		"Platforms": [
 			"Windows"
 		],
+		"ContentType": "text/html; charset=UTF-8",
+		"DateTimePattern": "MM/dd/yy",
 		"DownloadUri": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language"
 	},
 	"Install": {

@@ -39,11 +39,8 @@ Function ConvertFrom-GitHubReleasesJson {
 
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
-        $requiredProperties = @("assets", "assets_url", "author", "body", "created_at", "draft", `
-                "html_url", "id", "name", "node_id", "prerelease", "published_at", "tag_name", `
-                "tarball_url", "target_commitish", "upload_url", "url", "zipball_url")
         $params = @{
-            ReferenceObject  = $requiredProperties
+            ReferenceObject  = $script:resourceStrings.Properties.GitHub
             DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty)
             PassThru         = $True
             ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
@@ -68,9 +65,9 @@ Function ConvertFrom-GitHubReleasesJson {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
                     $PSObject = [PSCustomObject] @{
                         Version      = [RegEx]::Match($release.tag_name, $MatchVersion).Captures.Groups[1].Value
-                        Platform     = (Get-Platform -String $asset.browser_download_url)
-                        Architecture = (Get-Architecture -String $asset.browser_download_url)
-                        Date         = (ConvertTo-DateTime -DateTime $release.created_at)
+                        Platform     = Get-Platform -String $asset.browser_download_url
+                        Architecture = Get-Architecture -String $asset.browser_download_url
+                        Date         = ConvertTo-DateTime -DateTime $release.created_at
                         Size         = $asset.size
                         URI          = $asset.browser_download_url
                     }

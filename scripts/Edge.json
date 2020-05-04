@@ -1,0 +1,2117 @@
+[
+	{
+		"Product": "Dev",
+		"Releases": [
+			{
+				"ReleaseId": 5054,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "84.0.495.2",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6bd6d6cb-fa54-4ae8-a441-837061277a0b/MicrosoftEdgeDevEnterpriseX64.msi",
+						"Hash": "8A605C2F304679AB7D14B2381C29F1AE8809CAD987CE1A0FF6EA86D21E7F0B42",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 88334336
+					}
+				],
+				"PublishedTime": "2020-04-29T18:18:00",
+				"ExpectedExpiryDate": "2020-07-29T18:18:00"
+			},
+			{
+				"ReleaseId": 5055,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "84.0.495.2",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/bd17bda9-ea92-47e7-94a7-20379cd41a4e/MicrosoftEdgeDevEnterpriseX86.msi",
+						"Hash": "CC630FA65C6F2257E01ED7006250016D2F468FF24C1FFE10F63F4AB9F6A3E49D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 82464768
+					}
+				],
+				"PublishedTime": "2020-04-29T18:20:00",
+				"ExpectedExpiryDate": "2020-07-29T18:20:00"
+			},
+			{
+				"ReleaseId": 5070,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "84.0.495.2",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/2931b08e-9a07-4b32-8e59-3c148bd97e7d/MicrosoftEdgeDevEnterpriseARM64.msi",
+						"Hash": "2168FC189360F02330E1C75DDC786EF05B8F4FC335E9A7C10FE713CB4DCB9910",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 83234816
+					}
+				],
+				"PublishedTime": "2020-04-29T18:40:00",
+				"ExpectedExpiryDate": "2020-07-29T18:40:00"
+			},
+			{
+				"ReleaseId": 5076,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "84.0.495.2",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeDev-84.0.495.2.pkg",
+						"Hash": "F814E7033C71AE4482269D8F25CD6B448882FA76F476D5B4468AA4FFD0249C0F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 155636047
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeDev-84.0.495.2.plist",
+						"Hash": "AFA1FECC1130E182C3DDFE829DF784E2303604E933673D39151E82B6B23BDD46",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1907
+					}
+				],
+				"PublishedTime": "2020-04-29T19:49:00",
+				"ExpectedExpiryDate": "2020-07-29T19:49:00"
+			},
+			{
+				"ReleaseId": 4819,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "84.0.488.1",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9b79959b-8316-41c6-ae0f-9ec0cbdd7228/MicrosoftEdgeDevEnterpriseARM64.msi",
+						"Hash": "A740C93302075B7D5F701488983E4883D6407C886FB6A09E298CEA8F5EF90C33",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 83898368
+					}
+				],
+				"PublishedTime": "2020-04-21T18:09:00",
+				"ExpectedExpiryDate": "2020-07-21T18:09:00"
+			},
+			{
+				"ReleaseId": 4821,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "84.0.488.1",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/a494d2bc-7631-4ffe-b0c2-6e7b097fed92/MicrosoftEdgeDevEnterpriseX86.msi",
+						"Hash": "2B66CE7729500D9CB4B33D6EA2DB1E4F2B8D9587CFB0E8A1DC9E7C48DBFDA22D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 83103744
+					}
+				],
+				"PublishedTime": "2020-04-21T18:13:00",
+				"ExpectedExpiryDate": "2020-07-21T18:13:00"
+			},
+			{
+				"ReleaseId": 4822,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "84.0.488.1",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/281dc6a0-49c5-4d73-86e5-b2d793613714/MicrosoftEdgeDevEnterpriseX64.msi",
+						"Hash": "5CDA7C3159EEA8FAB83DE435B6CB2C89B157ABB77885D635D20756EF629B0438",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 88846336
+					}
+				],
+				"PublishedTime": "2020-04-21T18:15:00",
+				"ExpectedExpiryDate": "2020-07-21T18:15:00"
+			},
+			{
+				"ReleaseId": 4839,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "84.0.488.1",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeDev-84.0.488.1.pkg",
+						"Hash": "E99E39653ECCA109A3F64CA2C48B92F636B16AA39741EF4EAA699504FD9222D5",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 156306692
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeDev-84.0.488.1.plist",
+						"Hash": "47B66B81136FEDC60DFE5D606E51528B5EEDA6992C90109D5D9CE779A0E6E5AD",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1907
+					}
+				],
+				"PublishedTime": "2020-04-21T20:12:00",
+				"ExpectedExpiryDate": "2020-07-21T20:12:00"
+			}
+		]
+	},
+	{
+		"Product": "Beta",
+		"Releases": [
+			{
+				"ReleaseId": 4987,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "83.0.478.18",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/e5beea56-ab2c-49d3-927c-66bd2591deba/MicrosoftEdgeBetaEnterpriseARM64.msi",
+						"Hash": "E1B48BB4C49513013B318BC6D9639A381E296C0DB911F4E989A9A40EB4C2E82A",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 82210816
+					}
+				],
+				"PublishedTime": "2020-04-27T18:19:00",
+				"ExpectedExpiryDate": "2020-07-27T18:19:00"
+			},
+			{
+				"ReleaseId": 4989,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "83.0.478.18",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/901f9959-de32-4fd3-a8f0-16c2ab362c5f/MicrosoftEdgeBetaEnterpriseX64.msi",
+						"Hash": "51F4505B46740EED3B2D91F47B9005CA4BA9BC7FB968BED0DACFE579A99F59FA",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 85839872
+					}
+				],
+				"PublishedTime": "2020-04-27T18:22:00",
+				"ExpectedExpiryDate": "2020-07-27T18:22:00"
+			},
+			{
+				"ReleaseId": 4990,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "83.0.478.18",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/dc32c650-0969-46a1-b2ef-eb0182dcf187/MicrosoftEdgeBetaEnterpriseX86.msi",
+						"Hash": "5DA9BADB7C888AC96962D5D4366F31EB77C3147A88CD765EB059BFE618501061",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 80076800
+					}
+				],
+				"PublishedTime": "2020-04-27T18:22:00",
+				"ExpectedExpiryDate": "2020-07-27T18:22:00"
+			},
+			{
+				"ReleaseId": 5003,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "83.0.478.18",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeBeta-83.0.478.18.pkg",
+						"Hash": "DF5281BF9F994953FF3D5FAAA1B8A64C8B25D1BDCE5B660114604336A2A0C718",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 153645933
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeBeta-83.0.478.18.plist",
+						"Hash": "E91EF0F25CD91717CDA1205CA50381BCD0B8E39A17F55BFE5BD4EC964D8107B6",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1910
+					}
+				],
+				"PublishedTime": "2020-04-27T20:11:00",
+				"ExpectedExpiryDate": "2020-07-27T20:11:00"
+			},
+			{
+				"ReleaseId": 4870,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "83.0.478.13",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/45c88517-fc65-47ad-b59f-71370d25ebea/MicrosoftEdgeBetaEnterpriseARM64.msi",
+						"Hash": "1A184800F02FFF7E5BF92AE562BEFAE04D240BA0B4B5856808E24CCA72702C60",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 82231296
+					}
+				],
+				"PublishedTime": "2020-04-22T18:06:00",
+				"ExpectedExpiryDate": "2020-07-22T18:06:00"
+			},
+			{
+				"ReleaseId": 4872,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "83.0.478.13",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/0649e699-a344-4837-8bba-bf26dd2588db/MicrosoftEdgeBetaEnterpriseX64.msi",
+						"Hash": "43F34AD4467883D5E1A3E12696E153D0C56EDFB3D18748650735AFAC646FF65E",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 85782528
+					}
+				],
+				"PublishedTime": "2020-04-22T18:11:00",
+				"ExpectedExpiryDate": "2020-07-22T18:11:00"
+			},
+			{
+				"ReleaseId": 4873,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "83.0.478.13",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/a6805616-a1eb-4553-84d5-7744d8dc2e53/MicrosoftEdgeBetaEnterpriseX86.msi",
+						"Hash": "DCA87CF5FDECDA2D05B92AC52A9B7AD5C1242F2EEAD3D8BD43C8309D5776F870",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 80015360
+					}
+				],
+				"PublishedTime": "2020-04-22T18:11:00",
+				"ExpectedExpiryDate": "2020-07-22T18:11:00"
+			},
+			{
+				"ReleaseId": 4886,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "83.0.478.13",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeBeta-83.0.478.13.pkg",
+						"Hash": "FFCD72158BB2ED1CCAB83C7E7839EB979F8321264EDAB1795DFE108A05BC35AC",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 153777823
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdgeBeta-83.0.478.13.plist",
+						"Hash": "222C6F847E8BFEE6850FC3F3236770002DD82BD7F0D5641061AD5B8AB5501A93",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1910
+					}
+				],
+				"PublishedTime": "2020-04-22T19:45:00",
+				"ExpectedExpiryDate": "2020-07-22T19:45:00"
+			}
+		]
+	},
+	{
+		"Product": "Stable",
+		"Releases": [
+			{
+				"ReleaseId": 5045,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "81.0.416.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/2bdae45c-b24a-4900-8aa1-ace68d35d153/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "A9C1FA728A831E7AB652A5020FF0C959BE0C6211B76E16D9420600A703BE2522",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 76627968
+					}
+				],
+				"PublishedTime": "2020-04-29T17:53:00",
+				"ExpectedExpiryDate": "2021-04-29T17:18:00"
+			},
+			{
+				"ReleaseId": 5047,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "81.0.416.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/46b1beeb-b206-411f-af42-e94f87ed40cd/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "285FC88E8D54EC78EBCD14FA2B002100A556451F4F4442E3047A92EBCB64A30C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 78360576
+					}
+				],
+				"PublishedTime": "2020-04-29T18:01:00",
+				"ExpectedExpiryDate": "2021-04-29T17:21:00"
+			},
+			{
+				"ReleaseId": 5046,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/40e309b4-5d46-4ae8-b839-bd74b4cff36e/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "016009B06A8C22DBBCDC59339F047136756EAB1C6E7C3E414189A9E308DB754F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 84484096
+					}
+				],
+				"PublishedTime": "2020-04-29T18:02:00",
+				"ExpectedExpiryDate": "2021-04-29T17:18:00"
+			},
+			{
+				"ReleaseId": 5073,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.68.pkg",
+						"Hash": "BFAC4EF0032F4E84AAC5E01C5D041247EB24829ACEC4FC45B9A06DD41BF6E1F7",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149373971
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.68.plist",
+						"Hash": "61D1C7A9344A9DAB99B1F70457734AF4C82E8FF7D53D871BCC74A8C69B6C7E93",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					},
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.68.pkg",
+						"Hash": "BFAC4EF0032F4E84AAC5E01C5D041247EB24829ACEC4FC45B9A06DD41BF6E1F7",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149373971
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.68.plist",
+						"Hash": "61D1C7A9344A9DAB99B1F70457734AF4C82E8FF7D53D871BCC74A8C69B6C7E93",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-04-29T18:48:00",
+				"ExpectedExpiryDate": "2020-07-29T18:48:00"
+			},
+			{
+				"ReleaseId": 4921,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.64",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/b66ab30d-0d70-4efe-8764-b5ae8a661e1b/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "5A80CDEF4381D61A8CECB0072840985D53D4F07830D493FF003C0069F77FD096",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 84545536
+					}
+				],
+				"PublishedTime": "2020-04-23T18:00:00",
+				"ExpectedExpiryDate": "2021-04-23T17:20:00"
+			},
+			{
+				"ReleaseId": 4919,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "81.0.416.64",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/0a076160-76d7-4d86-a055-03372407bca6/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "071FBDF5DA07A1D6ED360EE7FDAB69B9A4ECD3CE725DC44A23DC55A13990A064",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 78368768
+					}
+				],
+				"PublishedTime": "2020-04-23T18:00:00",
+				"ExpectedExpiryDate": "2021-04-23T17:20:00"
+			},
+			{
+				"ReleaseId": 4920,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "81.0.416.64",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/e939faa9-d5f8-48af-8d11-7a97708f100f/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "A5DD770F6B12BF4F408E07A6F6C76CE1A8C615C3A7BC3B3A8DBD618767C04BED",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 76615680
+					}
+				],
+				"PublishedTime": "2020-04-23T18:51:00",
+				"ExpectedExpiryDate": "2021-04-23T17:20:00"
+			},
+			{
+				"ReleaseId": 4935,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.64",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.64.pkg",
+						"Hash": "2FC32B63C7A9AD530D8EFA3DCD539A1829187124BCC215AD75D2EE4D69261680",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149371438
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.64.plist",
+						"Hash": "EA842F3F2CB1D581D12DBA8A932E81CC709117428D3BA6E06F5B1B0A42AC2851",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-04-23T19:01:00",
+				"ExpectedExpiryDate": "2020-07-23T19:01:00"
+			},
+			{
+				"ReleaseId": 4848,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "81.0.416.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/aaf100ba-a4b1-44aa-bb9d-0f468e2c01ef/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "CF903416686C339A08100A28C16C4799AA70B2109A2319D8F265EA367C2C465C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 76681216
+					}
+				],
+				"PublishedTime": "2020-04-22T17:51:00",
+				"ExpectedExpiryDate": "2021-04-22T17:13:00"
+			},
+			{
+				"ReleaseId": 4849,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9fca3bd5-1f6a-403a-ab64-6702136db617/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "B5C2BD6155F32BDF7E37D917FDECE3290C7529909ADA1E2411E9DDEA3406815F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 84586496
+					}
+				],
+				"PublishedTime": "2020-04-22T17:55:00",
+				"ExpectedExpiryDate": "2021-04-22T17:14:00"
+			},
+			{
+				"ReleaseId": 4850,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "81.0.416.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/839e6445-2896-41d2-9f5e-4db9cfd8a47b/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "B079966DBD3B9CDB289FFD08E6B1AB1A87031D8FC663706DCC6163DE350F68AD",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 78348288
+					}
+				],
+				"PublishedTime": "2020-04-22T17:55:00",
+				"ExpectedExpiryDate": "2021-04-22T17:14:00"
+			},
+			{
+				"ReleaseId": 4884,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.62.pkg",
+						"Hash": "DCD9564F1C15E4BD38A15DEB5E9CDF7EF90F78B8F14603FDB95E102E81863D7A",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149360991
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.62.plist",
+						"Hash": "3870729F59CFCF784501C90A4E54B10049B7C5961A8F6A4E77F50E66BD011EB0",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-04-22T18:46:00",
+				"ExpectedExpiryDate": "2020-07-22T18:46:00"
+			},
+			{
+				"ReleaseId": 4720,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "81.0.416.58",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/46d5472b-2320-4966-8533-863e73a4cf89/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "B01B3F6FAE93D3E84D220A2285D0D6D197A99464C990553A4A89BBF75E5F425D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 78299136
+					}
+				],
+				"PublishedTime": "2020-04-17T18:52:00",
+				"ExpectedExpiryDate": "2021-04-17T18:11:00"
+			},
+			{
+				"ReleaseId": 4721,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.58",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9178ea11-b61e-465a-bc66-158a1868cfe0/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "EAEFF606F9662CD6EC84FA28F0909A36D40E2A55D91DFE039441BFEF6EDC8346",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 84475904
+					}
+				],
+				"PublishedTime": "2020-04-17T18:52:00",
+				"ExpectedExpiryDate": "2021-04-17T18:11:00"
+			},
+			{
+				"ReleaseId": 4724,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "81.0.416.58",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/f5c6b1cc-ea13-4cbf-b2ba-841fe8ba25aa/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "534E114DCF435BAD8D3695CBF347AA7DC43ED684F962A41CA894D9F9A67D5C7D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 76673024
+					}
+				],
+				"PublishedTime": "2020-04-17T19:03:00",
+				"ExpectedExpiryDate": "2021-04-17T18:29:00"
+			},
+			{
+				"ReleaseId": 4740,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.58",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.58.pkg",
+						"Hash": "8000AE2487BD839C501B8C2E3D1EBBFAE55FC78A6B806D58128166A073D3F7EB",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149276517
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.58.plist",
+						"Hash": "75CC569F53FE8DDC7A0614D389C75F575F2149447D9FEFB5AD73DABF2E3C2006",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-04-17T22:39:00",
+				"ExpectedExpiryDate": "2020-07-17T22:39:00"
+			},
+			{
+				"ReleaseId": 4574,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "81.0.416.53",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/0b3ea168-14af-4af3-9d5f-69acf1944cf4/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "74AB7EE8A8D854788F098B55D39C21E83DC297F11A1ED9F1C6CF3F25FAE92C86",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74686464
+					}
+				],
+				"PublishedTime": "2020-04-13T18:45:00",
+				"ExpectedExpiryDate": "2021-04-13T18:11:00"
+			},
+			{
+				"ReleaseId": 4573,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "81.0.416.53",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6794ee13-fa11-4363-856f-02157a15cb66/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "F0C4C2139104B9DC6C6F4447F217D9D7BBD8DCFE346CFAA13DA81322D23C6105",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 76484608
+					}
+				],
+				"PublishedTime": "2020-04-13T18:51:00",
+				"ExpectedExpiryDate": "2021-04-13T18:11:00"
+			},
+			{
+				"ReleaseId": 4572,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.53",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/48139845-89ac-44b5-af5b-ef7d2ac92c93/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "932BE382DB229D3AB4FF2DCA9CE5CBB9DED5B05E60958FD5B2D388EEB82E7152",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 82653184
+					}
+				],
+				"PublishedTime": "2020-04-13T18:51:00",
+				"ExpectedExpiryDate": "2021-04-13T18:11:00"
+			},
+			{
+				"ReleaseId": 4583,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "81.0.416.53",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.53.pkg",
+						"Hash": "3AB594984D8B9FBB24A95ADA8A87CB454E74DBA5D4C8EFEEDF69A07732650C9C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 149236793
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-81.0.416.53.plist",
+						"Hash": "2B64F8E090ECFED16113F48C98E9F885EC09CBB1EAA37963A48D43CCFC77D75B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-04-13T19:49:00",
+				"ExpectedExpiryDate": "2020-07-13T19:49:00"
+			},
+			{
+				"ReleaseId": 4423,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.111",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/712b9dcb-80a6-45a0-a3dc-d9785b9a8823/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "66B725DF0B3176A69100AABACE91B3DD9067BA3F4BDC76A37442809F100D1DCE",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 73072640
+					}
+				],
+				"PublishedTime": "2020-04-07T19:38:00",
+				"ExpectedExpiryDate": "2021-04-07T19:01:00"
+			},
+			{
+				"ReleaseId": 4421,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.111",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "D5BF4E2A6D8F6A036274A70ACD609474E3FA339BF76DA5DFF4F6069007595084",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77279232
+					}
+				],
+				"PublishedTime": "2020-04-07T19:43:00",
+				"ExpectedExpiryDate": "2021-04-07T19:00:00"
+			},
+			{
+				"ReleaseId": 4422,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.111",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/ee4a0a94-c037-42d3-af62-67f4e720a337/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "390427DC3861A905E153A3F0CBF8453FABC391C7BC889D69A21E5924311A11FF",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74817536
+					}
+				],
+				"PublishedTime": "2020-04-07T19:43:00",
+				"ExpectedExpiryDate": "2021-04-07T19:01:00"
+			},
+			{
+				"ReleaseId": 4441,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.111",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.111.pkg",
+						"Hash": "F0F76EB2329E71AC4153D982CF9797EDC38B4858D0FBB345280420A1F112D426",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 147055087
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.111.plist",
+						"Hash": "F39DC8B59BA9B94DF0896E2283BBD3D79FF6EB61032EC85251933094B14481DD",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1902
+					}
+				],
+				"PublishedTime": "2020-04-07T20:24:00",
+				"ExpectedExpiryDate": "2020-07-07T20:24:00"
+			},
+			{
+				"ReleaseId": 4265,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.109",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/7afe2547-ed72-40ea-987e-1cdb21125e71/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "4795402191C8FF2625AA859A6DC971A739913AD76907ECC99CB695465843CDD2",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72966144
+					}
+				],
+				"PublishedTime": "2020-04-01T17:38:00",
+				"ExpectedExpiryDate": "2021-04-01T17:04:00"
+			},
+			{
+				"ReleaseId": 4267,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.109",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/70874dc1-b23c-4634-ba85-84788783a1c4/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "0C1CA1C2A75E8E08DA598195EAD4ECD74BDAB9507468F7541BACF3A04926CC2B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74739712
+					}
+				],
+				"PublishedTime": "2020-04-01T17:43:00",
+				"ExpectedExpiryDate": "2021-04-01T17:05:00"
+			},
+			{
+				"ReleaseId": 4266,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.109",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/812c141f-8680-4aaa-83d2-f99316588162/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "A8BEC701783CF031B4D3D0C4E0476DE5461CF9D1482E462E630F3164B3F50E94",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77254656
+					}
+				],
+				"PublishedTime": "2020-04-01T17:43:00",
+				"ExpectedExpiryDate": "2021-04-01T17:05:00"
+			},
+			{
+				"ReleaseId": 4281,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.109",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.109.pkg",
+						"Hash": "5075C5D8862A4AC7FE3C580C29AC4DBC8B5763B8595D015F17E2134CACC74EC3",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 147000619
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.109.plist",
+						"Hash": "D2C9FBE9B8B934195474D60C47671206412EAA3048A6905D3767747F551E0D22",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1902
+					}
+				],
+				"PublishedTime": "2020-04-01T20:49:00",
+				"ExpectedExpiryDate": "2020-07-01T20:49:00"
+			},
+			{
+				"ReleaseId": 4243,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.106",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.106.pkg",
+						"Hash": "9A66B16202A3693D876E8846A0B2F5B2517925E89931D849FF9AD6E29EDE589F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 147000396
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.106.plist",
+						"Hash": "D1FDD188E263242DFBB71ED9BE2EECC32E9D02F4689A1645D41A2FE318F962AF",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1902
+					}
+				],
+				"PublishedTime": "2020-03-31T18:40:00",
+				"ExpectedExpiryDate": "2020-06-30T18:40:00"
+			},
+			{
+				"ReleaseId": 4210,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.103",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.103.pkg",
+						"Hash": "C3E858C22A2292C6CA5615D0FD727ED15748042257DAB6FF99F2A5279669F134",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146998655
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.103.plist",
+						"Hash": "97B1FA83F16AE23D8B592065BEAD912B7BD314C78C81C443F0CD9B84A5FB5585",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1902
+					}
+				],
+				"PublishedTime": "2020-03-30T21:36:00",
+				"ExpectedExpiryDate": "2020-06-30T21:36:00"
+			},
+			{
+				"ReleaseId": 4009,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.69",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9dd4c786-d34b-4bdf-90f7-dae7618ba8b4/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "8AB8030701240C8C71A2E657A306C73BF476B3839CD93368A6C8D777C46E82AF",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77107200
+					}
+				],
+				"PublishedTime": "2020-03-19T21:16:00",
+				"ExpectedExpiryDate": "2021-03-19T20:51:00"
+			},
+			{
+				"ReleaseId": 4010,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.69",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/72dd1c44-5a4c-47ef-88e5-5768b38b6eb2/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "8053FE71E44B9EB41AFE58DEC45C9D4761B824B1BA2411070DD44158DCAFAC2E",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74715136
+					}
+				],
+				"PublishedTime": "2020-03-19T21:18:00",
+				"ExpectedExpiryDate": "2021-03-19T20:52:00"
+			},
+			{
+				"ReleaseId": 4022,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.69",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.69.pkg",
+						"Hash": "A9D909F52F48A9F8B1CDFDE3824F3DDA4C824757ABD1C3F57C07873D580A1FFB",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146960826
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.69.plist",
+						"Hash": "492DC076EFC7B2DAAA1304AD074D2BF8198F11CA88B300EB4D84075CB1B1E5A5",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-03-19T22:22:00",
+				"ExpectedExpiryDate": "2020-06-19T22:22:00"
+			},
+			{
+				"ReleaseId": 4065,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.69",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/ea3c897f-52da-4c83-8db2-a09742ef85df/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "4FAE8531CFCDFD97FF0C1F8959EF9F06EE5C1AAF105E3CB3AC7638FC34E3699B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72888320
+					}
+				],
+				"PublishedTime": "2020-03-23T17:54:00",
+				"ExpectedExpiryDate": "2021-03-23T17:54:00"
+			},
+			{
+				"ReleaseId": 3705,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.66",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/d79c2c42-96fa-40a3-90ca-bdfd0d7c79b0/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "D111950A40D5DACC5766E82DE539B4062E4C05E2F071902C7070ECC240478BD7",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74719232
+					}
+				],
+				"PublishedTime": "2020-03-04T19:39:00",
+				"ExpectedExpiryDate": "2021-03-04T19:39:00"
+			},
+			{
+				"ReleaseId": 3706,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.66",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/2828e59b-2d46-4c1d-8d52-235fe21da25b/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "279B3E6EB2DDE04CA7601AE9C975A95A5057B1FC44E2B7E8A247944164B41EB2",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77164544
+					}
+				],
+				"PublishedTime": "2020-03-04T19:40:00",
+				"ExpectedExpiryDate": "2021-03-04T19:40:00"
+			},
+			{
+				"ReleaseId": 3732,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.66",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.66.pkg",
+						"Hash": "11B14ED28608D1D02046F0CDEA161CCB020BCB16213859329BE66EF6E6753A19",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146962454
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.66.plist",
+						"Hash": "EB10BB7333AC36F39DE7B26784165ED3A6B4207D3F087AFA7F57B0FAC5532B44",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-03-04T21:24:00",
+				"ExpectedExpiryDate": "2020-06-04T21:24:00"
+			},
+			{
+				"ReleaseId": 3738,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.66",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/0ad73d2e-94df-408d-84fb-e39f04889a20/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "87C2E9DAEBB30FE6ADCABF6BCBC6F3AE305B3303150A0D92E234490C4C29F017",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72843264
+					}
+				],
+				"PublishedTime": "2020-03-05T02:25:00",
+				"ExpectedExpiryDate": "2021-03-05T02:25:00"
+			},
+			{
+				"ReleaseId": 3556,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/8e27e3a7-5027-42aa-a35c-a9241ba689bf/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "2E42008AB489ADE0813066E7A5FC659A41681606C8848722CD815719EE35EE5A",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74735616
+					}
+				],
+				"PublishedTime": "2020-02-25T19:47:00",
+				"ExpectedExpiryDate": "2021-02-25T19:47:00"
+			},
+			{
+				"ReleaseId": 3557,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6bb6cf57-3fd8-48df-a810-2374bae95639/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "E286AA897D6F7B41B9A07119923CE384607108998776C74BA2CAB7742A2D3560",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77172736
+					}
+				],
+				"PublishedTime": "2020-02-25T19:47:00",
+				"ExpectedExpiryDate": "2021-02-25T19:47:00"
+			},
+			{
+				"ReleaseId": 3568,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.62.pkg",
+						"Hash": "7618377F6323D99A9473F38974EC3A7F2C2488124CB014D2A824D02D3E0DD2D0",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146963623
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.62.plist",
+						"Hash": "2503C33B2D0837D7A16C5BEF4B49F673A20119B27299EB8F81CBD0674DCC6638",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-25T21:06:00",
+				"ExpectedExpiryDate": "2020-05-25T21:06:00"
+			},
+			{
+				"ReleaseId": 3570,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/27bf7c8e-3dc1-46f3-b29f-be05793404dd/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "BF1E656D3BF0651311C319041BBFFD746F43F63D7F146A670E8F4A1B976F4C54",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72937472
+					}
+				],
+				"PublishedTime": "2020-02-25T23:48:00",
+				"ExpectedExpiryDate": "2021-02-25T23:48:00"
+			},
+			{
+				"ReleaseId": 3447,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.57",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.57.pkg",
+						"Hash": "BBA4CAC95960F7473D12B9C4A23DE05784A29C928B9C4D2D70062FA56078BE4F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146962285
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.57.plist",
+						"Hash": "AAC2740E03C912C61275EB28431DE1030C3B61E6FC42A0A3DA2BF845643649F7",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-20T20:54:00",
+				"ExpectedExpiryDate": "2021-02-20T20:54:00"
+			},
+			{
+				"ReleaseId": 3449,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.57",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/c56b8480-11c9-4f57-b859-6ccea629a572/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "74C85C32A9F5C23B745E043B0F71ECD4F88E06383C0376DF1F9723AE80B977E3",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77131776
+					}
+				],
+				"PublishedTime": "2020-02-20T22:16:00",
+				"ExpectedExpiryDate": "2021-02-20T22:16:00"
+			},
+			{
+				"ReleaseId": 3450,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.57",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/afde70e8-e123-4df4-b7b9-ad39d0092f76/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "928A3878BA658FE4C7F17FF86E9B5BAD48D496C1A45CD8D0A9A09A786903BE3F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74719232
+					}
+				],
+				"PublishedTime": "2020-02-20T22:16:00",
+				"ExpectedExpiryDate": "2021-02-20T22:16:00"
+			},
+			{
+				"ReleaseId": 3472,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.57",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/ee42c664-3d89-48ae-939e-71577704fa19/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "B835F6C98F407F7E4E0C6C2096523E775480F22892DB58971836D87FB8EFC887",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72925184
+					}
+				],
+				"PublishedTime": "2020-02-21T19:16:00",
+				"ExpectedExpiryDate": "2021-02-21T19:16:00"
+			},
+			{
+				"ReleaseId": 3400,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.56",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/b7c1c8ec-7641-4dc8-a434-114d55785956/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "F71756C2F6AE46AF84B6DDAE0AF15A19AF69FB14E6907632DC8C5C9844966961",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74731520
+					}
+				],
+				"PublishedTime": "2020-02-19T19:45:00",
+				"ExpectedExpiryDate": "2021-02-19T19:45:00"
+			},
+			{
+				"ReleaseId": 3401,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.56",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/2424f922-5e41-44b3-a5b7-c372fd13542b/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "EDAE013B82B6405607616A774C0C1BF9B5F482A77B8C41739A9DF2812ADA2076",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77283328
+					}
+				],
+				"PublishedTime": "2020-02-19T19:47:00",
+				"ExpectedExpiryDate": "2021-02-19T19:47:00"
+			},
+			{
+				"ReleaseId": 3414,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.56",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.56.pkg",
+						"Hash": "9589ACD4F326B6ADBCFF0DA33F78837FC09416FF5B4CAFABB1A337BFAC598255",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146973557
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.56.plist",
+						"Hash": "B103A4C430575EAE793821442F7FCBB87B4A0091F1E5D8470120F58D61D6EA2B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-19T21:17:00",
+				"ExpectedExpiryDate": "2021-02-19T21:17:00"
+			},
+			{
+				"ReleaseId": 3331,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.54",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6fd68764-6919-4cb0-8e26-1809c9c26d06/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "E36E1DAF4ED70BEF18DAD5A2AC3B8313DFEE437A85B6B3D71114E2D68E078A9E",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74739712
+					}
+				],
+				"PublishedTime": "2020-02-14T19:58:00",
+				"ExpectedExpiryDate": "2021-02-14T19:58:00"
+			},
+			{
+				"ReleaseId": 3332,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.54",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/45bac551-c68e-44a5-afd9-3be847a1985e/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "2E9FA71D0FA7D929A5C5C8148A88F2F342593A599FF209F386A74325E31E4A28",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77164544
+					}
+				],
+				"PublishedTime": "2020-02-14T19:58:00",
+				"ExpectedExpiryDate": "2021-02-14T19:58:00"
+			},
+			{
+				"ReleaseId": 3357,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.54",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.54.pkg",
+						"Hash": "C45B97FA4F470CB91B927835B69B0AF7655DFC9F13BD8BD498648EA003CAD797",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146973458
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.54.plist",
+						"Hash": "ABB7D994E3F8E62BB98E7FBE0DA3D16C1F4BB9CD93B7177B457CF868A43DC821",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-14T21:17:00",
+				"ExpectedExpiryDate": "2021-02-14T21:17:00"
+			},
+			{
+				"ReleaseId": 3365,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.54",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/8fa1648a-15ea-42bc-89c4-919aa48cd8e0/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "B3A02C4442C36D9485C9371BBAFFCCAB7D0F4C84E8E26922FE2AB834475C35B0",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72966144
+					}
+				],
+				"PublishedTime": "2020-02-15T00:50:00",
+				"ExpectedExpiryDate": "2021-02-15T00:50:00"
+			},
+			{
+				"ReleaseId": 3236,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.50",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/a2f08f71-f8f5-40b7-b779-0d9bc0e51994/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "CD08CA18C94A118BF7FD29B8898651F403CC455F98EC79F416A140A6BFAA2075",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74723328
+					}
+				],
+				"PublishedTime": "2020-02-11T19:44:00",
+				"ExpectedExpiryDate": "2021-02-11T19:44:00"
+			},
+			{
+				"ReleaseId": 3237,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.50",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/ab29d6b3-e631-44e2-9e87-34c28fad153e/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "D026DAADECAA664A916E295B18A15F42E952A9572EE0F779B1A49B540B98192F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77164544
+					}
+				],
+				"PublishedTime": "2020-02-11T19:45:00",
+				"ExpectedExpiryDate": "2021-02-11T19:45:00"
+			},
+			{
+				"ReleaseId": 3248,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.50",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.50.pkg",
+						"Hash": "86713909BAB904B5AB8CB1D28ADC9D96940D7D6022716765130CEB4D2388542D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146964853
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.50.plist",
+						"Hash": "7536B95294286BCBACA590C7030332BDCFEF3C5A80E000AE01EEB3BCA0C6F063",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-11T21:05:00",
+				"ExpectedExpiryDate": "2021-02-11T21:05:00"
+			},
+			{
+				"ReleaseId": 3259,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.50",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/8ddf1175-d2b5-4dbf-a2cc-018b8a1b1b1b/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "E10EBE1B3F3EF121E07BB1CAC9348C3A93190B06508AD83504C379B526C67355",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72978432
+					}
+				],
+				"PublishedTime": "2020-02-12T19:03:00",
+				"ExpectedExpiryDate": "2021-02-12T19:03:00"
+			},
+			{
+				"ReleaseId": 3154,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "80.0.361.48",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/fce294e9-ed2b-446e-8716-50cfbcb1a866/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "B5E3DB7F676451237779EE96F5DA7240911090C6C662219F36264E84C076F66C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74711040
+					}
+				],
+				"PublishedTime": "2020-02-07T19:08:00",
+				"ExpectedExpiryDate": "2021-02-07T19:08:00"
+			},
+			{
+				"ReleaseId": 3155,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.48",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/0af31313-0430-454d-908a-d55ce3df7b69/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "64585E35BF055E1B80DD6C850E82B181AFFE402C6AC9CA4E2D0F2123455FE7C6",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 77230080
+					}
+				],
+				"PublishedTime": "2020-02-07T19:08:00",
+				"ExpectedExpiryDate": "2021-02-07T19:08:00"
+			},
+			{
+				"ReleaseId": 3161,
+				"Platform": "Windows",
+				"Architecture": "arm64",
+				"ProductVersion": "80.0.361.48",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/a9d2b183-133b-4d4c-9993-d9efd7ee6172/MicrosoftEdgeEnterpriseARM64.msi",
+						"Hash": "05EA374D050FBE14378A92B12A9EA21285372134ECD1A98BC4A471CF3002245D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72953856
+					}
+				],
+				"PublishedTime": "2020-02-07T19:19:00",
+				"ExpectedExpiryDate": "2021-02-07T19:19:00"
+			},
+			{
+				"ReleaseId": 3165,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "80.0.361.48",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.48.pkg",
+						"Hash": "D699F06593BBBE3F94F8833B6D962D81E6185E8C0D24A7F81E1ADFF9D16899FA",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 146961946
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-80.0.361.48.plist",
+						"Hash": "CFE44865FADFE5001473D9E92E1B8A9CD45B4859C2148A4599BDCF54B984FD48",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1901
+					}
+				],
+				"PublishedTime": "2020-02-07T20:10:00",
+				"ExpectedExpiryDate": "2021-02-07T20:10:00"
+			},
+			{
+				"ReleaseId": 2845,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "79.0.309.71",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/d940bdf2-0d2a-4cad-ae8f-0700adcf7b9e/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "8A131F249E28D5E1CB0BB7B9156BA0FB93F5D7A2896BB5E3CE5DF6C80C39E372",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72060928
+					}
+				],
+				"PublishedTime": "2020-01-21T20:58:00",
+				"ExpectedExpiryDate": "2021-01-21T20:58:00"
+			},
+			{
+				"ReleaseId": 2846,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.71",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/07367ab9-ceee-4409-a22f-c50d77a8ae06/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "7E91F560469806F3842B16E185241BBAE82714A86808507FA23A4312EA1E0C11",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74633216
+					}
+				],
+				"PublishedTime": "2020-01-21T20:59:00",
+				"ExpectedExpiryDate": "2021-01-21T20:59:00"
+			},
+			{
+				"ReleaseId": 2857,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.71",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.71.pkg",
+						"Hash": "4604F405FA7E5459121506B041D4EDAA463150EE8157510E721EDF07C4687DB2",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 139645010
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.71.plist",
+						"Hash": "EB08B41776DD4DFE226A5A174DB07192EE061226536E061A9E58E927FC2224E4",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1845
+					}
+				],
+				"PublishedTime": "2020-01-21T22:30:00",
+				"ExpectedExpiryDate": "2021-01-21T22:30:00"
+			},
+			{
+				"ReleaseId": 2794,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/c39f1d27-cd11-495a-b638-eac3775b469d/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "4E680C5C531E27B3F46D6E377D346A5B4488AC34CD1655CF59C9399C611265EB",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74604544
+					}
+				],
+				"PublishedTime": "2020-01-17T19:24:00",
+				"ExpectedExpiryDate": "2021-01-17T19:24:00"
+			},
+			{
+				"ReleaseId": 2795,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "79.0.309.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/068a649d-3d9b-4286-a650-89aa9fea9f09/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "25478A9A37A43CA4678C5508013A4C26D49BDDAA89D22863AD2565B4DF017CD3",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72081408
+					}
+				],
+				"PublishedTime": "2020-01-17T19:25:00",
+				"ExpectedExpiryDate": "2021-01-17T19:25:00"
+			},
+			{
+				"ReleaseId": 2807,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.68.pkg",
+						"Hash": "E4BE807A55B1C31B625209FD6BC678DE976CE9A5A88D9F4CD2196F1243B2EA79",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 139642931
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.68.plist",
+						"Hash": "4E6B747222ECCF3E0ACA6C6DC5336DABDDD21DC6257B83BA7A1D2F3CEF7A1629",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1845
+					}
+				],
+				"PublishedTime": "2020-01-17T23:08:00",
+				"ExpectedExpiryDate": "2021-01-17T23:08:00"
+			},
+			{
+				"ReleaseId": 2676,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "79.0.309.65",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/f9658d03-0e86-45c3-9259-8c5d3795f41d/MicrosoftEdgeEnterpriseX86.msi",
+						"Hash": "8A97FF8F247354A6B62CF0FE0347EBA296B08836F0C6D07000F40A956889158C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 72077312
+					}
+				],
+				"PublishedTime": "2020-01-13T22:11:00",
+				"ExpectedExpiryDate": "2021-01-13T22:11:00"
+			},
+			{
+				"ReleaseId": 2678,
+				"Platform": "Windows",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.65",
+				"Artifacts": [
+					{
+						"ArtifactName": "msi",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/71919e66-4ee5-4e7c-994b-4a9f1933a15c/MicrosoftEdgeEnterpriseX64.msi",
+						"Hash": "1C508E761B0E947745AEA40F4256040CCC2F18A4ADE1B1C6F3A469B644D2F6C3",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 74596352
+					}
+				],
+				"PublishedTime": "2020-01-13T22:12:00",
+				"ExpectedExpiryDate": "2021-01-13T22:12:00"
+			},
+			{
+				"ReleaseId": 2687,
+				"Platform": "MacOS",
+				"Architecture": "x64",
+				"ProductVersion": "79.0.309.65",
+				"Artifacts": [
+					{
+						"ArtifactName": "pkg",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.65.pkg",
+						"Hash": "67B1E8E036C575782B1C9188DD48FA94D9EABCB81947C8632FD4ACAC7B01644B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 139639886
+					},
+					{
+						"ArtifactName": "plist",
+						"Location": "https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-79.0.309.65.plist",
+						"Hash": "8A322B919772229DFD9F21DEB8FE32BDC7EC18081462D86CF43863121170E2B9",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1845
+					}
+				],
+				"PublishedTime": "2020-01-13T23:28:00",
+				"ExpectedExpiryDate": "2021-01-13T23:28:00"
+			}
+		]
+	},
+	{
+		"Product": "EdgeUpdate",
+		"Releases": [
+			{
+				"ReleaseId": 5122,
+				"Platform": "Windows",
+				"Architecture": "x86",
+				"ProductVersion": "1.3.127.21",
+				"Artifacts": [
+					{
+						"ArtifactName": "exe",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/84b86051-643b-427d-a89f-d05699f2873e/MicrosoftEdgeUpdateSetup_X86_1.3.127.21.exe",
+						"Hash": "E6982BDD5DE14911DBDFE772B4D02C0DE6BC0A92DA42025874FD0F6E11547F91",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 1860808
+					}
+				],
+				"PublishedTime": "2020-05-04T00:41:00",
+				"ExpectedExpiryDate": "2021-05-04T00:41:00"
+			}
+		]
+	},
+	{
+		"Product": "Policy",
+		"Releases": [
+			{
+				"ReleaseId": 5069,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "84.0.495.2",
+				"Artifacts": [
+					{
+						"ArtifactName": "zip",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/c933efee-22d0-4687-9b7e-6a072996339f/MicrosoftEdgePolicyTemplates.zip",
+						"Hash": "C0AB3DF9D014E46D91D556DD262FC492CFEF6F9EB6628551FF1A7005359EBA60",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5598292
+					},
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/e6b1bd28-1a7d-40ac-8ba7-c79c04a03be4/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "E0F9D3D577A5CB4383B59BDBA0492045E9657361C2F022442A520FF2CECF19BA",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5591806
+					}
+				],
+				"PublishedTime": "2020-04-29T18:38:00",
+				"ExpectedExpiryDate": "2021-04-29T18:38:00"
+			},
+			{
+				"ReleaseId": 4825,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "84.0.488.1",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/16e7a0e8-9970-4772-8dde-79b3d1e56020/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "13E63A48428F20F5569A29532D090786FF781B3BC4C1BF693EDDC410CF57D1F8",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5551716
+					}
+				],
+				"PublishedTime": "2020-04-21T18:18:00",
+				"ExpectedExpiryDate": "2021-04-21T18:18:00"
+			},
+			{
+				"ReleaseId": 5000,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "83.0.478.18",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/a492dc90-a9ef-40b5-86dc-ce70b1af77aa/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "13953C8F80788F3C77FDB7DE75ACB708362268289C567FF30DDC2CD826C6A043",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5531313
+					},
+					{
+						"ArtifactName": "zip",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/87e40499-711f-4633-aa94-67f1d44d6277/MicrosoftEdgePolicyTemplates.zip",
+						"Hash": "7E75A2B245A6677C815792B326FE116D91A84A1811E1EF09A947825C5C0E8ACB",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5537712
+					}
+				],
+				"PublishedTime": "2020-04-27T18:30:00",
+				"ExpectedExpiryDate": "2021-04-27T18:30:00"
+			},
+			{
+				"ReleaseId": 4880,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "83.0.478.13",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/c688183d-f1ab-4e87-b247-837808a83ecb/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "CAE51CBF8E89F68AF181A9333233E3D1B9CA437DB71D884C1F4BDEC519898F4C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5546860
+					}
+				],
+				"PublishedTime": "2020-04-22T18:14:00",
+				"ExpectedExpiryDate": "2021-04-22T18:14:00"
+			},
+			{
+				"ReleaseId": 5053,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "81.0.416.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "zip",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/7152911b-879c-42d1-998c-64d0af7e9b33/MicrosoftEdgePolicyTemplates.zip",
+						"Hash": "8A6F5F7F078C6436E1C320593EF62AF405A4D83535C8D76D46B9F73B63AF97F4",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5215010
+					},
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9a911ae8-f700-4b94-8e78-735f06a8546a/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "E5D958191316E3EECD06F10B841F97390B86F32A6BF9C60A34EE82174CE2834F",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5208023
+					}
+				],
+				"PublishedTime": "2020-04-29T18:15:00",
+				"ExpectedExpiryDate": "2021-04-29T18:15:00"
+			},
+			{
+				"ReleaseId": 4926,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "81.0.416.64",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/3d0b2350-99f9-4af4-acbc-b3e4e3c23795/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "487B5DFCDE98658EED92B15489ECC3FE1E7BE4850F4BD80DAD5E7C06F4997141",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5208107
+					}
+				],
+				"PublishedTime": "2020-04-23T18:14:00",
+				"ExpectedExpiryDate": "2021-04-23T18:14:00"
+			},
+			{
+				"ReleaseId": 4808,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "81.0.416.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/d8979a48-626e-491d-90c7-4cad8439158a/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "B44F989B35DE6B18A94E17ABC8502FAC34B6364045DEFD98579152998B19E653",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5208017
+					}
+				],
+				"PublishedTime": "2020-04-21T14:50:00",
+				"ExpectedExpiryDate": "2021-04-21T14:50:00"
+			},
+			{
+				"ReleaseId": 4692,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "81.0.416.58",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/7ea295fb-7cba-4e7e-83dd-a15958a1d4e6/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "A99728F73685E1CCA93A1E350DB467A0842AD52B29F9088649877F24E16030F5",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5208373
+					}
+				],
+				"PublishedTime": "2020-04-17T16:04:00",
+				"ExpectedExpiryDate": "2021-04-17T16:04:00"
+			},
+			{
+				"ReleaseId": 4554,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "81.0.416.53",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/f58328e6-2dee-4183-8a8f-248312a68d90/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "532B1FB9326AF2B737C70133AAA7E268BD87EDB6496D8A0E49C29AEA72ECF22C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 5179624
+					}
+				],
+				"PublishedTime": "2020-04-13T15:20:00",
+				"ExpectedExpiryDate": "2021-04-13T15:20:00"
+			},
+			{
+				"ReleaseId": 4431,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.111",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9f5f346c-9be9-47d7-8411-5c59c668de90/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "0191371CA667F4CF82542723BE0D4A62A5A4F59C87A5DA4FABD1D11E4292670C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4789389
+					}
+				],
+				"PublishedTime": "2020-04-07T19:46:00",
+				"ExpectedExpiryDate": "2021-04-07T19:46:00"
+			},
+			{
+				"ReleaseId": 4278,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.109",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/e8b8029d-d559-4da6-9d25-0f08e37a15d6/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "754C780A84C3FEA873B5CD7DB917BD4429E13E87F786212755BB34E47D0C8DA9",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4741981
+					}
+				],
+				"PublishedTime": "2020-04-01T17:46:00",
+				"ExpectedExpiryDate": "2021-04-01T17:46:00"
+			},
+			{
+				"ReleaseId": 4770,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.106",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/e426aad2-90fb-4cf4-be74-1d2181751232/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "C63CCF47422212035159CE39459713F398F412E98A47A0FEC583F9478A1037BD",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4741833
+					}
+				],
+				"PublishedTime": "2020-04-20T17:45:00",
+				"ExpectedExpiryDate": "2021-04-20T17:45:00"
+			},
+			{
+				"ReleaseId": 4203,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.103",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/b3cf8150-8e77-4f81-a1ec-a52e0a605f19/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "3441635EF6623A16EA5A6F803DAA7CE6A45EA3F8E31143BE6EC1E23F7CEF069B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742048
+					}
+				],
+				"PublishedTime": "2020-03-30T20:47:00",
+				"ExpectedExpiryDate": "2021-03-30T20:47:00"
+			},
+			{
+				"ReleaseId": 4017,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.69",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/885961c5-3678-4598-b8c1-1e8cc3a2b3ec/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "EE7B0D3949C2057D64178C167D93CA6CF7A6B0D765599EA7314242D1AE983FCF",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4741818
+					}
+				],
+				"PublishedTime": "2020-03-19T21:20:00",
+				"ExpectedExpiryDate": "2020-07-19T21:20:00"
+			},
+			{
+				"ReleaseId": 3709,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.66",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/3f99bacd-f5d3-41e7-a9a6-043d828902c5/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "590443CB027ACFEB7392D64189E75CC9C921986F0E69785495802B3CBCEB288A",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742294
+					}
+				],
+				"PublishedTime": "2020-03-04T19:44:00",
+				"ExpectedExpiryDate": "2020-07-04T19:44:00"
+			},
+			{
+				"ReleaseId": 3567,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.62",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/24f65564-7352-48cd-834d-71cdc872c59d/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "615BF744913544AAC9E079F819C0CF6DC09E58B695BC74A330C5FA00D1595C71",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4741742
+					}
+				],
+				"PublishedTime": "2020-02-25T19:51:00",
+				"ExpectedExpiryDate": "2020-06-25T19:51:00"
+			},
+			{
+				"ReleaseId": 3460,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.57",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/1ad7597b-5e20-4f68-8d8f-2af387a71b87/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "4CAD736BE907C98DC4CD7B9C55A6969FCCFAC4498428DBAA554AD9ECD8C4D93B",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742096
+					}
+				],
+				"PublishedTime": "2020-02-20T22:20:00",
+				"ExpectedExpiryDate": "2020-06-20T22:20:00"
+			},
+			{
+				"ReleaseId": 3411,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.56",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/8e845588-9811-405b-8336-73035f93df44/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "1F9F06904B671FF37108A2BE5043ED7217696D325F269BECA773D89F156DE88A",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742547
+					}
+				],
+				"PublishedTime": "2020-02-19T19:50:00",
+				"ExpectedExpiryDate": "2020-06-19T19:50:00"
+			},
+			{
+				"ReleaseId": 3347,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.54",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/f599a631-bb0d-456d-94de-5c94d4316d4c/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "0CB856E8E78FE6C4397D0E9B46E9B373C73B3A88C5FBF23405BC39FD64536041",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742555
+					}
+				],
+				"PublishedTime": "2020-02-14T20:01:00",
+				"ExpectedExpiryDate": "2020-06-14T20:01:00"
+			},
+			{
+				"ReleaseId": 3198,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.50",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/9c98a9b8-54bf-4f15-a9df-02d52a0acd10/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "BD16166C1E48C1347DC1D99D96BAFD70EF41CBD14D0E16D35EDE2137ECA98B7D",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742249
+					}
+				],
+				"PublishedTime": "2020-02-10T19:42:00",
+				"ExpectedExpiryDate": "2020-06-10T19:42:00"
+			},
+			{
+				"ReleaseId": 3139,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "80.0.361.48",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/3dfff0d9-ceaa-4015-9a1a-9c03d256a5d6/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "22ACE3A49057E20A4C5E074D9F79AF4B40B00AC6C8701AD63E3B2BE4E536C93C",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4742366
+					}
+				],
+				"PublishedTime": "2020-02-06T19:20:00",
+				"ExpectedExpiryDate": "2020-06-06T19:20:00"
+			},
+			{
+				"ReleaseId": 2854,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "79.0.309.71",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/939b9f9b-a6f7-4ccd-908c-ac50b46a9af0/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "11798FA7C364F2DD9C179D04F23C598D028F4B786B6E11AE28931320085C7FFA",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4304469
+					}
+				],
+				"PublishedTime": "2020-01-21T21:02:00",
+				"ExpectedExpiryDate": "2020-05-21T21:02:00"
+			},
+			{
+				"ReleaseId": 2802,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "79.0.309.68",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/77969b35-d61e-4c50-8876-3b281c159a9d/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "FC8070E57A5B2D79CE07354B4F8119C7265F8B302F602E55B8969A6710F3D832",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4304595
+					}
+				],
+				"PublishedTime": "2020-01-17T19:27:00",
+				"ExpectedExpiryDate": "2020-05-17T19:27:00"
+			},
+			{
+				"ReleaseId": 2672,
+				"Platform": "Any",
+				"Architecture": "any",
+				"ProductVersion": "79.0.309.65",
+				"Artifacts": [
+					{
+						"ArtifactName": "cab",
+						"Location": "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/437f3c32-2bdb-49bc-b0f0-a0eb673b234c/MicrosoftEdgePolicyTemplates.cab",
+						"Hash": "5B003EDDE35796041C481677CE542479015D70BC64C4924631255DFAC5E64322",
+						"HashAlgorithm": "SHA256",
+						"SizeInBytes": 4304792
+					}
+				],
+				"PublishedTime": "2020-01-13T21:21:00",
+				"ExpectedExpiryDate": "2020-05-13T21:21:00"
+			}
+		]
+	}
+]
