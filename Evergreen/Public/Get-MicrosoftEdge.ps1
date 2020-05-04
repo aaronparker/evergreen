@@ -57,7 +57,7 @@ Function Get-MicrosoftEdge {
                     Where-Object { $_.Platform -in $res.Get.Platform } | `
                     Sort-Object -Property $res.Get.SortProperty -Descending | `
                     Select-Object -First 1
-                Write-Warning -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
                 ForEach ($release in $releases) {
                     If ($release.Artifacts.Count -gt 0) {
@@ -70,7 +70,7 @@ Function Get-MicrosoftEdge {
                             Date         = $release.PublishedTime
                             #Date         = ConvertTo-DateTime -DateTime $release.PublishedTime -Pattern "dd/MM/yyyy hh:mm:ss tt" #"22/4/2020 6:06:00 pm"
                             Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
-                            URI          = $release.Artifacts.Location
+                            URI          = $(If ($release.Artifacts.Location.Count -gt 1) { $release.Artifacts.Location[0] } Else { $release.Artifacts.Location })
                         }
 
                         # Output object to the pipeline
