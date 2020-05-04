@@ -7,7 +7,10 @@
 			"Enterprise": "?view=enterprise",
 			"Consumer": ""
 		},
-		"Platform": "Windows",
+		"Platform": [
+			"Windows",
+			"Any"
+		],
 		"Channels": [
 			"Stable",
 			"Beta",
@@ -18,7 +21,7 @@
 		"SortProperty": "ProductVersion",
 		"ContentType": "application/json; charset=utf-8",
 		"DateTime": "MM/dd/yyyy HH:mm",
-		"FileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$|\\.cab$"
+		"FileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
 		"Setup": "",
