@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2005.172
 
 * Updates `Get-MicrosoftEdge` to correctly return the latest version and policy files for the Enterprise ring
 * Updates output for private function `Resolve-Uri` with addition properties
