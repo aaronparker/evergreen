@@ -10,6 +10,8 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 * Retrieve the latest version of a particular software product when comparing against a version already installed or downloaded
 * Return the URL for the latest version of a software product if you need to download it locally
 
+![leaf by The Icon Z from the Noun Project](https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png)
+
 All functions consist of the following:
 
 * Get verb - the module provides functions to retrieve data only
@@ -95,3 +97,6 @@ Import-Module Evergreen
 [github-release]: https://github.com/aaronparker/Evergreen/releases/latest
 [license-badge]: https://img.shields.io/github/license/aaronparker/Evergreen.svg?style=flat-square
 [license]: https://github.com/aaronparker/Evergreen/blob/master/LICENSE
+
+---
+leaf by The Icon Z from the Noun Project
