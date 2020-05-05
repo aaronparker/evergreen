@@ -4,7 +4,7 @@
 
 * Fixes an issue where `Get-MicrosoftEdge` was only returning ARM64 downloads
 * Updates `Get-MicrosoftEdge` to only return downloads for the Enterprise ring (removed Consumer ring)
-* Fixes an issue with `Get-MicrosoftTeams` where is was returning an incorrect download URL
+* Fixes an issue with `Get-MicrosoftTeams` where it was returning an incorrect download URL
 
 ## 2005.172
 
