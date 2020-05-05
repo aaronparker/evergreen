@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2005.176
 
 * Fixes an issue where `Get-MicrosoftEdge` was only returning ARM64 downloads
 * Updates `Get-MicrosoftEdge` to only return downloads for the Enterprise ring (removed Consumer ring)
