@@ -35,15 +35,9 @@
         # Format the results returns and convert into an array that we can sort and use
         $Lines = $Content | Where-Object { $_ –notmatch "^#" }
         $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }
-        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.CsvHeaders | Sort-Object -Property {[Version] $_.Version} -Descending
-
-        # Match the latest version number
-        If ($VersionTable[0].Server -match $res.Get.MatchNoServer) {
-            $Version = ($VersionTable | Select-Object -First 2 | Select-Object -Last 1).Version
-        }
-        Else {
-            $Version = ($VersionTable | Select-Object -First 1).Version
-        }
+        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.CsvHeaders | `
+            Sort-Object -Property { [Int] $_.Client } -Descending
+        $LatestVersion = $VersionTable | Select-Object -First 1
 
         # Build the output object for each platform and architecture
         ForEach ($platform in $res.Get.Platforms) {
@@ -56,10 +50,10 @@
             
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
-                    Version      = $Version
+                    Version      = $LatestVersion.Version
                     Platform     = $platform
                     Architecture = $architecture
-                    URI          = "https://packages.vmware.com/tools/esx/latest/$($platform.ToLower())/$architecture/$filename"
+                    URI          = "$($res.Get.DownloadUri)$($platform.ToLower())/$architecture/$filename"
                 }
                 Write-Output -InputObject $PSObject
             }

@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Updates `Get-VMwareTools` to return the very latest version with updated download URL
+
 ## 2005.176
 
 * Fixes an issue where `Get-MicrosoftEdge` was only returning ARM64 downloads
