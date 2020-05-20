@@ -13,10 +13,10 @@
         https://github.com/aaronparker/Evergreen
 
     .EXAMPLE
-        New-WinGetManifest -Package MicrosoftFSLogixApps
+        New-WinGetManifest -Package MicrosoftFSLogixApps -Path C:\Manifests
 
         Description:
-        Creates a Windows Package Manager manifest for Microsoft FSLogix Apps
+        Creates a Windows Package Manager manifest for Microsoft FSLogix Apps and outputs the manifest in C:\Manifests
 #>
 [CmdletBinding()]
 Param(
