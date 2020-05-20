@@ -61,9 +61,9 @@ If (Get-Command -Name "Get-$PackageName") {
     While ($InstallerType.Length -eq 0) {
         $InstallerType = Read-Host -Prompt 'Enter the InstallerType. For example: exe, msi, msix, inno, nullsoft'
     }
-    $LicenseUrl =  Read-Host -Prompt '[OPTIONAL] Enter the license URL'
-    $AppMoniker =  Read-Host -Prompt '[OPTIONAL] Enter the AppMoniker (friendly name). For example: vscode'
-    $Tags =        Read-Host -Prompt '[OPTIONAL] Enter any tags that would be useful to discover this tool. For example: zip, c++'
+    $LicenseUrl = Read-Host -Prompt '[OPTIONAL] Enter the license URL'
+    $AppMoniker = Read-Host -Prompt '[OPTIONAL] Enter the AppMoniker (friendly name). For example: vscode'
+    $Tags = Read-Host -Prompt '[OPTIONAL] Enter any tags that would be useful to discover this tool. For example: zip, c++'
     $Description = Read-Host -Prompt '[OPTIONAL] Enter a description of the application'
 
     #region Write metadata
@@ -145,10 +145,10 @@ If (Get-Command -Name "Get-$PackageName") {
         $string = "    InstallerType: " + $InstallerType
         Write-Output $string | Out-File -Path $WinGetManifestFile -Append
         #endregion
-
-        Write-Host "Manifest saved to: $WinGetManifestFile."
-        Write-Host "Now place this file in the following location: \manifests\$publisher\$AppName"
     }
+
+    Write-Host "Manifest saved to: $WinGetManifestFile."
+    Write-Host "Now place this file in the following location: \manifests\$publisher\$AppName"
 }
 Else {
     Write-Warning -Message "Evergeen function Get-$PackageName does not exist."
