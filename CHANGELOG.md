@@ -3,6 +3,7 @@
 ## VERSION
 
 * Updates `Get-VMwareTools` to return the very latest version with updated download URL
+* Adds `Get-WixToolset`
 
 ## 2005.176
 
