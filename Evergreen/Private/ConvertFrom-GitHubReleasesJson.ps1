@@ -13,7 +13,11 @@ Function ConvertFrom-GitHubReleasesJson {
 
         [Parameter(Mandatory = $True, Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $MatchVersion
+        [System.String] $MatchVersion,
+
+        [Parameter(Mandatory = $False, Position = 2)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $VersionTag = "tag_name"
     )
 
     # Convert JSON string to a hashtable
@@ -64,7 +68,7 @@ Function ConvertFrom-GitHubReleasesJson {
                 If ($asset.browser_download_url -match $script:resourceStrings.Filters.WindowsInstallers) {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
                     $PSObject = [PSCustomObject] @{
-                        Version      = [RegEx]::Match($release.tag_name, $MatchVersion).Captures.Groups[1].Value
+                        Version      = [RegEx]::Match($release.$VersionTag, $MatchVersion).Captures.Groups[1].Value
                         Platform     = Get-Platform -String $asset.browser_download_url
                         Architecture = Get-Architecture -String $asset.browser_download_url
                         Date         = ConvertTo-DateTime -DateTime $release.created_at

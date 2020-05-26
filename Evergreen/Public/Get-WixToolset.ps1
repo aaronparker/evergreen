@@ -35,6 +35,11 @@ Function Get-WixToolset {
     $Content = Invoke-WebContent @iwcParams
 
     # Convert the returned release data into a useable object with Version, URI etc.
-    $object = ConvertFrom-GitHubReleasesJson -Content $Content -MatchVersion $res.Get.MatchVersion
+    $params = @{
+        Content      = $Content
+        MatchVersion = $res.Get.MatchVersion
+        VersionTag   = $res.Get.VersionTag
+    }
+    $object = ConvertFrom-GitHubReleasesJson @params
     Write-Output -InputObject $object
 }

@@ -5,7 +5,8 @@
 		"Uri": "https://api.github.com/repos/wixtoolset/wix3/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchExtensions": "\\.msi$|\\.exe$"
+		"MatchExtensions": ".msi$|.exe$",
+		"VersionTag": "name"
 	},
 	"Install": {
 		"Setup": "wix*.exe",
