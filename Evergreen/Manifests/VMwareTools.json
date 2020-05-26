@@ -3,7 +3,7 @@
 	"Source": "https://www.vmware.com",
 	"Get": {
 		"Uri": "https://packages.vmware.com/tools/versions",
-		"DownloadUri": "https://packages.vmware.com/tools/esx/latest/",
+		"DownloadUri": "https://packages.vmware.com/tools/releases/latest/",
 		"Platforms": [
 			"Windows"
 		],
