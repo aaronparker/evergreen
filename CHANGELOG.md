@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2005.183
 
 * Updates `Get-VMwareTools` to return the very latest version with updated download URL
 * Adds `Get-WixToolset`
