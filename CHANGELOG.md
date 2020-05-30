@@ -1,5 +1,9 @@
 # Change Log
 
+## 2005.187
+
+* Adds `Get-MicrosoftWvdRtcService` that returns the version, filename and download for the Microsoft Remote Desktop WebRTC Redirector service for Windows Virtual Desktop
+
 ## 2005.183
 
 * Updates `Get-VMwareTools` to return the very latest version with updated download URL
