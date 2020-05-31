@@ -33,12 +33,19 @@ Function Get-FoxitReader {
         $Uri = $res.Get.Uri -replace "#Platform", $platform
         $Content = Invoke-WebContent -Uri $Uri
 
-        # Grab values
-        $PackageJson = $Content | ConvertFrom-Json
-        $Languages = $PackageJson.package_info.language
-        $Version = ($PackageJson.package_info.version | Sort-Object -Descending) | Select-Object -First 1
+        # Convert JSON
+        try {
+            $PackageJson = $Content | ConvertFrom-Json
+        }
+        catch [System.Exception] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert to JSON."
+            Break
+        }
 
-        ForEach ($language in $Languages) {
+        # Grab latest version
+        $Version = ($PackageJson.package_info.version | Sort-Object { [Version]$_ } -Descending) | Select-Object -First 1
+
+        ForEach ($language in $PackageJson.package_info.language) {
             
             # Build the download URL
             $Uri = $res.Get.DownloadUri -replace "#Version", $Version
@@ -48,9 +55,8 @@ Function Get-FoxitReader {
             $redirectUrl = Resolve-RedirectedUri -Uri $Uri
             #$redirectUrl = (Resolve-Uri -Uri $Uri).ResponseUri.AbsoluteUri
             
+            # Construct the output; Return the custom object to the pipeline
             If ($Null -ne $redirectUrl) {
-
-                # Construct the output; Return the custom object to the pipeline
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
                     Date     = ConvertTo-DateTime -DateTime $PackageJson.package_info.release -Pattern $res.Get.DateTimePattern
