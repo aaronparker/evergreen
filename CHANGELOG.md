@@ -1,8 +1,13 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftWvdBootLoader` - Get the filename and download URL for the Microsoft Windows Virtual Desktop Remote Desktop Boot Loader
+* Updates `Get-FoxitReader` to sort release versions correctly and return latest (v10.x)
+
 ## 2005.187
 
-* Adds `Get-MicrosoftWvdRtcService` that returns the version, filename and download for the Microsoft Remote Desktop WebRTC Redirector service for Windows Virtual Desktop
+* Adds `Get-MicrosoftWvdRtcService` - returns the version, filename and download for the Microsoft Remote Desktop WebRTC Redirector service for Windows Virtual Desktop
 
 ## 2005.183
 
