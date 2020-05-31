@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2005.190
 
 * Adds `Get-MicrosoftWvdBootLoader` - Get the filename and download URL for the Microsoft Windows Virtual Desktop Remote Desktop Boot Loader
 * Updates `Get-FoxitReader` to sort release versions correctly and return latest (v10.x)
