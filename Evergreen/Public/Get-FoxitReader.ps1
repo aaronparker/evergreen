@@ -60,7 +60,7 @@ Function Get-FoxitReader {
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
                     Date     = ConvertTo-DateTime -DateTime $PackageJson.package_info.release -Pattern $res.Get.DateTimePattern
-                    Size     = $PackageJson.package_info.size
+                    #Size     = $PackageJson.package_info.size
                     Language = $language
                     URI      = $redirectUrl
                 }
