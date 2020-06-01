@@ -13,11 +13,11 @@ Function ConvertFrom-SourceForgeReleasesJson {
 
         [Parameter(Mandatory = $True, Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $MatchVersion,
+        [System.Collections.Hashtable] $Download,
 
         [Parameter(Mandatory = $True, Position = 2)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $DownloadUri,
+        [System.String] $MatchVersion,
 
         [Parameter(Mandatory = $False, Position = 3)]
         [ValidateNotNullOrEmpty()]
@@ -64,8 +64,44 @@ Function ConvertFrom-SourceForgeReleasesJson {
             $Version = "Unknown"
         }
 
+        # Get the downloads XML feed
+        $iwcParams = @{
+            Uri         = $Download.Feed
+            ContentType = $Download.ContentType
+            Raw         = $True
+        }
+        $Content = Invoke-WebContent @iwcParams
+        Try {
+            [System.XML.XMLDocument] $xmlDocument = $Content
+        }
+        Catch [System.Exception] {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+        }
+        # Select the required node/s from the XML feed
+        $nodes = Select-Xml -Xml $xmlDocument -XPath $Download.XPath | Select-Object –ExpandProperty "node"
+        $fileItems = $nodes | Select-Object -ExpandProperty $Download.FilterProperty | Where-Object { $_ -match $Version }
+
+        ForEach ($item in $fileItems) {
+            try {
+                $File = [RegEx]::Match($item, "$Version/$($script:resourceStrings.Filters.Filename)").Captures.Groups[1].Value
+            }
+            catch {
+                #Write-Verbose -Message "$($MyInvocation.MyCommand): not a file we want: $File."
+            }
+            If ($File) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $item."
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Version
+                    Architecture = Get-Architecture -String $File
+                    URI          = ("$($Download.Uri)/$Version/$File" -replace " ", "%20")
+                }
+                Write-Output -InputObject $PSObject
+                Remove-Variable -Name File
+            }
+        }
+
         # Build and array of the latest release and download URLs
-        If ($validate) {
+        <#If ($validate) {
 
             # Construct the output; Return the custom object to the pipeline
             Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
@@ -79,6 +115,6 @@ Function ConvertFrom-SourceForgeReleasesJson {
                 URI          = ("$DownloadUri$($release.platform_releases.windows.filename)" -replace " ", "%20")
             }
             Write-Output -InputObject $PSObject
-        }
+        }#>
     }
 }
