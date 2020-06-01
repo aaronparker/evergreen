@@ -1,0 +1,27 @@
+{
+	"Name": "Microsoft Power BI",
+	"Source": "https://powerbi.microsoft.com/en-us/desktop/",
+	"Get": {
+		"Uri": "https://go.microsoft.com/fwlink/?LinkID=524399",
+		"ContentType": "application/json; charset=utf-8",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"DownloadUri": { 
+			"x64": "https://aka.ms/pbiSingleInstaller",
+			"x86": "https://aka.ms/pbiSingleInstaller"
+		},
+		"DownloadUriReplaceText": "#Version"
+	},
+	"Install": {
+		"Setup": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		}
+	}
+}
