@@ -99,7 +99,7 @@
                 URI          = "$($Download.Uri)/$Version/$File" -replace " ", "%20"
             }
             Write-Output -InputObject $PSObject
-            Remove-Variable -Name File
+            If (Get-Variable -Name File) { Remove-Variable -Name File }
         }
     }
 }
