@@ -3,6 +3,7 @@
 ## VERSION
 
 * Removes Size property from `Get-FoxitReader` because this isn't being gathered consistently for each download
+* Updates version / releases feed for `Get-MicrosftSsms` to ensure the current version is returned
 
 ## 2005.190
 
