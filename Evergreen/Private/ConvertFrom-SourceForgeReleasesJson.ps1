@@ -89,9 +89,9 @@
             $File = [RegEx]::Match($item, "$Version/$($script:resourceStrings.Filters.Filename)").Captures.Groups[1].Value
         }
         catch {
-            #Write-Verbose -Message "$($MyInvocation.MyCommand): not a file we want: $File."
+            $File = $Null
         }
-        If ($File) {
+        If ($Null -ne $File) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $item."
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
@@ -99,7 +99,6 @@
                 URI          = "$($Download.Uri)/$Version/$File" -replace " ", "%20"
             }
             Write-Output -InputObject $PSObject
-            If (Get-Variable -Name File) { Remove-Variable -Name File }
         }
     }
 }
