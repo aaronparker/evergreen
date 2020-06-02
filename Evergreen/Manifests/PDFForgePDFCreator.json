@@ -2,11 +2,19 @@
 	"Name": "pdfforge PDFCreator",
 	"Source": "https://www.pdfforge.org/pdfcreator",
 	"Get": {
-		"Uri": "https://sourceforge.net/projects/pdfcreator/best_release.json",
-		"ContentType": "application/json; charset=utf-8",
+		"Update": {
+			"Uri": "https://sourceforge.net/projects/pdfcreator/best_release.json",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download" : {
+			"Feed": "https://sourceforge.net/projects/pdfcreator/rss?path=/PDFCreator",
+			"XPath": "//item",
+			"FilterProperty": "link",
+			"ContentType": "application/rss+xml; charset=utf-8",
+			"Uri": "https://nchc.dl.sourceforge.net/project/pdfcreator"
+		},
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"DatePattern": "yyyy-MM-dd HH:mm:ss",
-		"DownloadUri": "https://nchc.dl.sourceforge.net/project/pdfcreator"
+		"DatePattern": "yyyy-MM-dd HH:mm:ss"
 	},
 	"Install": {
 		"Setup": "WinMerge*.exe",

@@ -2,11 +2,19 @@
 	"Name": "WinSCP",
 	"Source": "https://winscp.net/",
 	"Get": {
-		"Uri": "https://sourceforge.net/projects/winscp/best_release.json",
-		"ContentType": "application/json; charset=utf-8",
+		"Update": {
+			"Uri": "https://sourceforge.net/projects/winscp/best_release.json",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download" : {
+			"Feed": "https://sourceforge.net/projects/winscp/rss?path=/WinSCP",
+			"XPath": "//item",
+			"FilterProperty": "link",
+			"ContentType": "application/rss+xml; charset=utf-8",
+			"Uri": "https://nchc.dl.sourceforge.net/project/winscp"
+		},
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"DatePattern": "yyyy-MM-dd HH:mm:ss",
-		"DownloadUri": "https://nchc.dl.sourceforge.net/project/winscp"
+		"DatePattern": "yyyy-MM-dd HH:mm:ss"
 	},
 	"Install": {
 		"Setup": "WinSCP*.exe",
