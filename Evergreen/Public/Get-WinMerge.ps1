@@ -37,7 +37,7 @@ Function Get-WinMerge {
         Content      = $Content
         Download     = $res.Get.Download
         MatchVersion = $res.Get.MatchVersion
-        DatePattern  = $res.Get.DatePattern
+        # DatePattern  = $res.Get.DatePattern
     }
     $object = ConvertFrom-SourceForgeReleasesJson @params
     Write-Output -InputObject $object
