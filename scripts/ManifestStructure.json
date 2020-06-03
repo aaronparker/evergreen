@@ -2,7 +2,7 @@
     "Name": "Foxit Reader",
     "Source": "https://www.foxitsoftware.com/pdf-reader/",
     "Get": {
-        "UpdateUri": {
+        "Update": {
             "Uri": "https://www.foxitsoftware.com/downloads/downloadForm.php?retJson=1&product=Foxit-Reader&platform=#Platform",
             "Platforms": [
                 "Windows"
@@ -14,7 +14,7 @@
                 "Version": "package_info.version"
             }
         },
-        "DownloadUri": {
+        "Download": {
             "302": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language",
             "ContentType": "text/html; charset=UTF-8",
             "ExpectedResponse": "application/x-msdos-program"

@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Removes Size property from `Get-FoxitReader` because this isn't being gathered consistently for each download
+* Updates version / releases feed for `Get-MicrosftSsms` to ensure the current version is returned
+* Updates the way private function `ConvertFrom-SourceForgeReleasesJson` returns available downloads from SourceForge
+* Updates `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator` and `Get-WinMerge` to support new approach to retrieving SourceForge downloads
+
 ## 2005.190
 
 * Adds `Get-MicrosoftWvdBootLoader` - Get the filename and download URL for the Microsoft Windows Virtual Desktop Remote Desktop Boot Loader

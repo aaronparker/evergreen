@@ -2,11 +2,19 @@
 	"Name": "7zip",
 	"Source": "https://www.7-zip.org/",
 	"Get": {
-		"Uri": "https://sourceforge.net/projects/sevenzip/best_release.json",
-		"ContentType": "application/json; charset=utf-8",
+		"Update": {
+			"Uri": "https://sourceforge.net/projects/sevenzip/best_release.json",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download" : {
+			"Feed": "https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip",
+			"XPath": "//item",
+			"FilterProperty": "link",
+			"ContentType": "application/rss+xml; charset=utf-8",
+			"Uri": "https://nchc.dl.sourceforge.net/project/sevenzip"
+		},
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"DatePattern": "yyyy-MM-dd HH:mm:ss",
-		"DownloadUri": "https://nchc.dl.sourceforge.net/project/sevenzip"
+		"DatePattern": "yyyy-MM-dd HH:mm:ss"
 	},
 	"Install": {
 		"Setup": "WinMerge*.exe",

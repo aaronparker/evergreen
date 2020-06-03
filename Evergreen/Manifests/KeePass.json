@@ -2,11 +2,19 @@
 	"Name": "KeePass",
 	"Source": "https://keepass.net/",
 	"Get": {
-		"Uri": "https://sourceforge.net/projects/keepass/best_release.json",
-		"ContentType": "application/json; charset=utf-8",
+		"Update": {
+			"Uri": "https://sourceforge.net/projects/keepass/best_release.json",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download" : {
+			"Feed": "https://sourceforge.net/projects/keepass/rss?path=/KeePass%202.x",
+			"XPath": "//item",
+			"FilterProperty": "link",
+			"ContentType": "application/rss+xml; charset=utf-8",
+			"Uri": "https://nchc.dl.sourceforge.net/project/keepass"
+		},
 		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"DatePattern": "yyyy-MM-dd HH:mm:ss",
-		"DownloadUri": "https://nchc.dl.sourceforge.net/project/keepass"
+		"DatePattern": "yyyy-MM-dd HH:mm:ss"
 	},
 	"Install": {
 		"Setup": "KeePass*.exe",
