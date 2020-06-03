@@ -17,11 +17,7 @@
 
         [Parameter(Mandatory = $True, Position = 2)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $MatchVersion,
-
-        [Parameter(Mandatory = $False, Position = 3)]
-        [ValidateNotNullOrEmpty()]
-        [System.String] $DatePattern = "yyyy-MM-dd HH:mm:ss"
+        [System.String] $MatchVersion
     )
 
     # Convert JSON string to a hashtable
