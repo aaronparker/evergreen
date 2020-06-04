@@ -62,7 +62,7 @@
 
     # Get the downloads XML feed
     $iwcParams = @{
-        Uri         = $Download.Feed
+        Uri         = "$($Download.Feed)/$($Download.Folder)"
         ContentType = $Download.ContentType
         Raw         = $True
     }
@@ -92,7 +92,7 @@
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = Get-Architecture -String $File
-                URI          = "$($Download.Uri)/$Version/$File" -replace " ", "%20"
+                URI          = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
             }
             Write-Output -InputObject $PSObject
         }

@@ -7,7 +7,8 @@
 			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download" : {
-			"Feed": "https://sourceforge.net/projects/keepass/rss?path=/KeePass%202.x",
+			"Folder": "KeePass%202.x",
+			"Feed": "https://sourceforge.net/projects/keepass/rss?path=",
 			"XPath": "//item",
 			"FilterProperty": "link",
 			"ContentType": "application/rss+xml; charset=utf-8",

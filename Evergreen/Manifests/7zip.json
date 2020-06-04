@@ -7,7 +7,8 @@
 			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download" : {
-			"Feed": "https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip",
+			"Folder": "7-Zip",
+			"Feed": "https://sourceforge.net/projects/sevenzip/rss?path=",
 			"XPath": "//item",
 			"FilterProperty": "link",
 			"ContentType": "application/rss+xml; charset=utf-8",
