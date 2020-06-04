@@ -12,7 +12,7 @@
 		"DatePattern": "MM/dd/yy"
 	},
 	"Install": {
-		"Setup": "googlechromestandaloneenterprise.msi",
+		"Setup": "googlechromestandaloneenterprise*.msi",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": []
