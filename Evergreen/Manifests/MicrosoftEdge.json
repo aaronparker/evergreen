@@ -29,17 +29,17 @@
 		"FileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
-		"Setup": "",
+		"Setup": "MicrosoftEdge*.msi",
 		"Physical": {
-			"Arguments": "DONOTCREATEDESKTOPSHORTCUT=TRUE",
+			"Arguments": "/passive /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE",
 			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
+				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Edge.lnk\" -Force -ErrorAction SilentlyContinue"
 			]
 		},
 		"Virtual": {
-			"Arguments": "DONOTCREATEDESKTOPSHORTCUT=TRUE",
+			"Arguments": "/passive /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE",
 			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Edge.lnk\" -Force"
+				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Edge.lnk\" -Force -ErrorAction SilentlyContinue"
 			]
 		}
 	}

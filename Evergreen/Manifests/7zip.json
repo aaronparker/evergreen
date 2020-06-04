@@ -18,13 +18,13 @@
 		"DatePattern": "yyyy-MM-dd HH:mm:ss"
 	},
 	"Install": {
-		"Setup": "WinMerge*.exe",
+		"Setup": "7z*.exe|7z.msi",
 		"Physical": {
-			"Arguments": "/Silent",
+			"Arguments": "",
 			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "/Silent",
+			"Arguments": "",
 			"PostInstall": []
 		}
 	}
