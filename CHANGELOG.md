@@ -2,6 +2,12 @@
 
 ## VERSION
 
+* Fix path in downloads from apps hosted on Source Forge returned in `ConvertFrom-SourceForgeReleasesJson.ps1`. Fixes #67
+* Update `Get-MozillaFirefox` to return Extended Support Release as well as Current Release. Address #61
+* Update manifests to address #57 #54 #53 #52
+
+## 2006.203
+
 * Removes Size property from `Get-FoxitReader` because this isn't being gathered consistently for each download
 * Updates version / releases feed for `Get-MicrosftSsms` to ensure the current version is returned
 * Updates the way private function `ConvertFrom-SourceForgeReleasesJson` returns available downloads from SourceForge
