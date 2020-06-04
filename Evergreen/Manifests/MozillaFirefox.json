@@ -2,7 +2,13 @@
 	"Name": "Mozilla Firefox",
 	"Source": "https://www.mozilla.org/",
 	"Get": {
-		"Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+		"Update": {
+			"Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+			"Channels": [
+				"FIREFOX_ESR",
+				"LATEST_FIREFOX_VERSION"
+			]
+		},
 		"DownloadUri": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
 	},
 	"Install": {
@@ -10,11 +16,14 @@
 		"Physical": {
 			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=true /PreventRebootRequired=true",
 			"PostInstall": [
+
 			]
 		},
 		"Virtual": {
 			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=false /PreventRebootRequired=true",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		}
 	}
 }
