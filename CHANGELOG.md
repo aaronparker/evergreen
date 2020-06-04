@@ -1,6 +1,6 @@
 # Change Log
 
-## 2006.203
+## 2006.207
 
 * Fix path in downloads from apps hosted on Source Forge returned in `ConvertFrom-SourceForgeReleasesJson.ps1`. Fixes #67
 * Update `Get-MozillaFirefox` to return Extended Support Release as well as Current Release. Address #61
@@ -49,11 +49,11 @@
 ## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
-    * Returns Edge for Windows only
-	* Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
-	* Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
-	* Filters and returns only the latest version of each of the above channels and downloads
-	* Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
+  * Returns Edge for Windows only
+  * Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
+  * Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
+  * Filters and returns only the latest version of each of the above channels and downloads
+  * Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
 
 ## 2004.157
 
