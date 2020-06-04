@@ -7,7 +7,8 @@
 			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download" : {
-			"Feed": "https://sourceforge.net/projects/pdfcreator/rss?path=/PDFCreator",
+			"Folder": "PDFCreator",
+			"Feed": "https://sourceforge.net/projects/pdfcreator/rss?path=",
 			"XPath": "//item",
 			"FilterProperty": "link",
 			"ContentType": "application/rss+xml; charset=utf-8",

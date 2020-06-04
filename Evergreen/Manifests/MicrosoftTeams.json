@@ -12,17 +12,17 @@
 		"DownloadUriReplaceText": "#Version"
 	},
 	"Install": {
-		"Setup": "",
+		"Setup": "Teams*.msi",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
+				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
 			]
 		},
 		"Virtual": {
 			"Arguments": "ALLUSER=1 ALLUSERS=1",
 			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Destkop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
+				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction SilentlyContinue"
 			]
 		}
 	}

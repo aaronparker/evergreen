@@ -7,7 +7,8 @@
 			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download" : {
-			"Feed": "https://sourceforge.net/projects/winscp/rss?path=/WinSCP",
+			"Folder": "WinSCP",
+			"Feed": "https://sourceforge.net/projects/winscp/rss?path=",
 			"XPath": "//item",
 			"FilterProperty": "link",
 			"ContentType": "application/rss+xml; charset=utf-8",

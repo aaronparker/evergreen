@@ -56,27 +56,29 @@ Function Get-MozillaFirefox {
     Write-Verbose -Message $res.Name
 
     # Get latest Firefox version
-    $firefoxVersions = Invoke-WebContent -Uri $res.Get.Uri | ConvertFrom-Json
+    $firefoxVersions = Invoke-WebContent -Uri $res.Get.Update.Uri | ConvertFrom-Json
     
     # Construct custom object with output details
     ForEach ($lang in $Language) {
         ForEach ($plat in $Platform) {
+            ForEach ($channel in $res.Get.Update.Channels) {
 
-            # Select the download file for the selected platform
-            Switch ($plat) {
-                "win64" { $file = "Firefox%20Setup%20$($firefoxVersions.LATEST_FIREFOX_VERSION).exe" }
-                "win32" { $file = "Firefox%20Setup%20$($firefoxVersions.LATEST_FIREFOX_VERSION).exe" }
-            }
+                # Select the download file for the selected platform
+                Switch ($plat) {
+                    "win64" { $file = "Firefox%20Setup%20$($firefoxVersions.$channel).exe" }
+                    "win32" { $file = "Firefox%20Setup%20$($firefoxVersions.$channel).exe" }
+                }
 
-            # Build object and output to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Version      = $firefoxVersions.LATEST_FIREFOX_VERSION
-                Architecture = Get-Architecture -String $plat
-                Language     = $lang
-                Filename     = $file.Replace('%20', ' ')
-                URI          = "$($res.Get.DownloadUri)$($firefoxVersions.LATEST_FIREFOX_VERSION)/$($plat)/$($lang)/$($file)"
+                # Build object and output to the pipeline
+                $PSObject = [PSCustomObject] @{
+                    Version      = $firefoxVersions.$channel
+                    Architecture = Get-Architecture -String $plat
+                    Language     = $lang
+                    Filename     = $file.Replace('%20', ' ')
+                    URI          = "$($res.Get.DownloadUri)$($firefoxVersions.$channel)/$($plat)/$($lang)/$($file)"
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
     }
 }
