@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2006.212
 
 * Renames `Get-CitrixXenServerTools` to `Get-CitrixVMTools` and adds `Get-CitrixXenServerTools` alias
 * Updates `Get-CitrixVMTools` with new release URL for v7 updates and add v9 updates
