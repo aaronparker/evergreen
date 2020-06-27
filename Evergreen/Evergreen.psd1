@@ -78,7 +78,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
-               'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
+               'Get-CitrixWorkspaceAppFeed', 'Get-CitrixVMTools', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-GitHubRelease', 'Get-Good', 
                'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 
@@ -103,7 +103,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio'
+AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-CitrixXenServerTools'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
