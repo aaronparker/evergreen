@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Renames `Get-CitrixXenServerTools` to `Get-CitrixVMTools` and adds `Get-CitrixXenServerTools` alias
+* Updates `Get-CitrixVMTools` with new release URL for v7 updates and add v9 updates
+* Updates install command lines for `Get-CitrixVMTools`
+* Adds `Get-AdoptOpenJDK` - closes #69
+
 ## 2006.207
 
 * Fix path in downloads from apps hosted on Source Forge returned in `ConvertFrom-SourceForgeReleasesJson.ps1`. Fixes #67

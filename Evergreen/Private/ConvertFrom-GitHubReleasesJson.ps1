@@ -64,11 +64,20 @@ Function ConvertFrom-GitHubReleasesJson {
 
         # Build and array of the latest release and download URLs
         If ($validate) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) assets."
             ForEach ($asset in $release.assets) {
                 If ($asset.browser_download_url -match $script:resourceStrings.Filters.WindowsInstallers) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Building output object."
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object."
+
+                    try {
+                        $version = [RegEx]::Match($release.$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                    }
+                    catch {
+                        $version = $release.$VersionTag
+                    }
+
                     $PSObject = [PSCustomObject] @{
-                        Version      = [RegEx]::Match($release.$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                        Version      = $version
                         Platform     = Get-Platform -String $asset.browser_download_url
                         Architecture = Get-Architecture -String $asset.browser_download_url
                         Date         = ConvertTo-DateTime -DateTime $release.created_at

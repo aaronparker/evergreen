@@ -72,13 +72,13 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-7zip', 
                'Get-AdobeAcrobatReaderDC', 'Get-Atom', 'Get-BISF', 
-               'Get-CitrixAppLayeringFeed', 
+               'Get-CitrixAppLayeringFeed', 'Get-AdoptOpenJDK',
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixWorkspaceApp', 
-               'Get-CitrixWorkspaceAppFeed', 'Get-CitrixXenServerTools', 
+               'Get-CitrixWorkspaceAppFeed', 'Get-CitrixVMTools', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-GitHubRelease', 'Get-Good', 
                'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 
@@ -103,7 +103,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio'
+AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-CitrixXenServerTools'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -31,7 +31,7 @@ New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 
 # RegEx
 $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
-$MatchVersions = "^\d[_\-.0-9b|insider]*$|Unknown|Preview|Any"
+$MatchVersions = "^\d[_\-.0-9b|insider]*$|Unknown|Preview|Any|jdk*"
 $MatchInstallers = "\.exe$|\.msi$|\.msp$|\.zip$|\.html$"
 
 # Get the module commands
