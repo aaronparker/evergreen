@@ -5,6 +5,8 @@
 [![PowerShell Gallery][psgallery-badge]][psgallery]
 [![Master build status][appveyor-badge]][appveyor-build]
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/767d96dec7bd40b69eb4665919d20f55)](https://www.codacy.com/manual/aaronparker/Evergreen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aaronparker/Evergreen&amp;utm_campaign=Badge_Grade)
+
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise applications. The module consists of a number of simple commands to use in scripts when performing several tasks including:
 
 * Retrieve the latest version of a particular application when comparing against a version already installed or downloaded
