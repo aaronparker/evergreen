@@ -31,8 +31,7 @@ Function Get-Zoom {
         $redirectUrl = (Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]).ResponseUri.AbsoluteUri
 
         # Match version number from the download URL
-        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
-        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
+        $regexMatch = [Regex]::Match($redirectUrl, $res.Get.MatchVersion)
         $Version = "Unknown"
         If ($regexMatch.Success -eq $true) {
             $Version = $regexMatch.Value
@@ -43,7 +42,7 @@ Function Get-Zoom {
             Version  = $Version
             Platform = "Windows"
             Type     = $installer.Name
-            URI      = $Url
+            URI      = $redirectUrl
         }
         Write-Output -InputObject $PSObject
     }

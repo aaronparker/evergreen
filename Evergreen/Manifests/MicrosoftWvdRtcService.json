@@ -1,8 +1,8 @@
 {
-	"Name": "Microsoft Windows Virtual Desktop Infrastructure agent",
-	"Source": "https://docs.microsoft.com/azure/virtual-desktop/",
+	"Name": "Microsoft Remote Desktop WebRTC Redirector Service",
+	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd",
 	"Get": {
-		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6",
+		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt",
 		"MatchFilename": "(MsRdcWebRTCSvc.*msi)",
 		"MatchVersion": "(\\d+\\.){2}\\d+"
 	},
