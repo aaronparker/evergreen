@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2009.218
 
 * Fix `Get-FoxitReader` with changes to download page in `FoxitReader.json`. Address #72
 * Fix `Get-Zoom` with changes to resolved URIs. Address #73
