@@ -1,5 +1,11 @@
 # Change Log
 
+## VERSION
+
+* Fix `Get-FoxitReader` with changes to download page. Address #72
+* Fix `Get-Zoom` with changes to resolved URIs. Address #73
+* Update `Resolve-Uri` with additional verbose output
+
 ## 2006.212
 
 * Renames `Get-CitrixXenServerTools` to `Get-CitrixVMTools` and adds `Get-CitrixXenServerTools` alias
