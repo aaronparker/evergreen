@@ -1,6 +1,6 @@
 {
-	"Name": "Microsoft Windows Virtual Desktop Infrastructure agent",
-	"Source": "https://docs.microsoft.com/azure/virtual-desktop/",
+	"Name": "Microsoft Windows Virtual Desktop Agent Bootloader",
+	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell",
 	"Get": {
 		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH",
 		"MatchFilename": "(Microsoft.*msi)",
