@@ -56,7 +56,7 @@
                         Version = $node.shortVersionString
                         Date    = ConvertTo-DateTime -DateTime $item.pubDate -Pattern $res.Get.DatePattern
                         Channel = $release.Name
-                        URI     = ($node.url -replace "//", "/")
+                        URI     = $node.url
                     }
                     Write-Output -InputObject $PSObject
                 }

@@ -14,7 +14,8 @@
 			"Hash",
 			"Signature"
 		],
-		"Channel": "release"
+		"Channel": "release",
+		"DownloadUri": "https://download.filezilla-project.org/client/"
 	},
 	"Install": {
 		"Setup": "FileZilla.*setup.exe",

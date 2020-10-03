@@ -36,7 +36,7 @@ Function Get-FileZilla {
 
     # Convert the content to an object
     try {
-        $Update = ($Content | ConvertFrom-Csv -Delimiter $res.Get.Delimiter -Header $res.Get.Headers) | Where-Object { $_.Channel -eq $res.Get.Channel }
+        $Updates = ($Content | ConvertFrom-Csv -Delimiter $res.Get.Delimiter -Header $res.Get.Headers) | Where-Object { $_.Channel -eq $res.Get.Channel }
     }
     catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert update feed."
@@ -44,11 +44,13 @@ Function Get-FileZilla {
     }
 
     # Output the object to the pipeline
-    $PSObject = [PSCustomObject] @{
-        Version = $Update.Version
-        Size    = $Update.Size
-        Hash    = $Update.Hash
-        URI     = $Update.URI
+    ForEach ($Update in $Updates) {
+        $PSObject = [PSCustomObject] @{
+            Version = $Update.Version
+            Size    = $Update.Size
+            Hash    = $Update.Hash
+            URI     = "$($res.Get.DownloadUri)$(Split-Path -Path $Update.URI -Leaf)"
+        }
+        Write-Output -InputObject $PSObject
     }
-    Write-Output -InputObject $PSObject
 }
