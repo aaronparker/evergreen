@@ -1,5 +1,10 @@
 # Change Log
 
+## VERSION
+
+* Update `Get-FileZilla` to fix invalid download URI returned from the FileZilla update feed. Fix #75
+* Update `Get-Cyberduck` to remove code that replaces `//` with `/`. Returns unfiltered URL from Cyberduck update feed. Fix #75
+
 ## 2009.218
 
 * Fix `Get-FoxitReader` with changes to download page in `FoxitReader.json`. Address #72
