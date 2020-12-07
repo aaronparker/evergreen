@@ -72,7 +72,7 @@ Function ConvertFrom-GitHubReleasesJson {
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {
                     If ($asset.browser_download_url -match $script:resourceStrings.Filters.WindowsInstallers) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object."
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $asset.browser_download_url."
 
                         try {
                             $version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
