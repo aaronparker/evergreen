@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-Microsoft.NET`, `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
+* Updates `Get-OpenJDK` to return all releases. Further filting will be added in the future per #76
+* Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI firefox installers and updates output with additional properties #83
+* Updates `Get-AdobeAcrobatReader` to return additional languages #84
+
 ## 2010.219
 
 * Update `Get-FileZilla` to fix invalid download URI returned from the FileZilla update feed. Fix #75
