@@ -12,6 +12,7 @@ Function Resolve-Uri {
     )
 
     try {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = 3
         $httpWebRequest.AllowAutoRedirect = $true

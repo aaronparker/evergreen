@@ -17,9 +17,6 @@ Function Get-MozillaFirefox {
         .PARAMETER Language
             Specify the Firefox language version to return.
 
-        .PARAMETER Platform
-            Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
-
         .EXAMPLE
             Get-MozillaFirefox
 
@@ -36,10 +33,6 @@ Function Get-MozillaFirefox {
     [CmdletBinding()]
     Param(
         [Parameter(Position = 0)]
-        [ValidateSet('win64', 'win32')]
-        [System.String[]] $Platform = @('win64', 'win32'),
-
-        [Parameter(Position = 1)]
         [ValidateSet('en-US', 'en-GB', 'en-CA', 'en-ZA', 'es-ES', 'es-AR', 'es-CL', 'es-MX', 'sv-SE', 'pt-BR', 'pt-PT', `
                 'de', 'fr', 'it', 'ja', 'nl', 'zh-CN', 'zh-TW', 'ach', 'af', 'sq', 'ar', 'an', 'hy-AM', 'as', `
                 'ast', 'az', 'eu', 'be', 'bn-BD', 'bn-IN', 'bs', 'br', 'bg', 'my', 'ca', 'hr', 'cs', `
@@ -60,24 +53,28 @@ Function Get-MozillaFirefox {
     
     # Construct custom object with output details
     ForEach ($lang in $Language) {
-        ForEach ($plat in $Platform) {
-            ForEach ($channel in $res.Get.Update.Channels) {
+        ForEach ($channel in $res.Get.Update.Channels) {
+            ForEach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                Switch ($plat) {
-                    "win64" { $file = "Firefox%20Setup%20$($firefoxVersions.$channel).exe" }
-                    "win32" { $file = "Firefox%20Setup%20$($firefoxVersions.$channel).exe" }
-                }
+                ForEach ($installer in $res.Get.Download.Uri.GetEnumerator()) {
+                    $params = @{
+                        Uri = (($res.Get.Download.Uri[$installer.Key] -replace $res.Get.Download.Text.Platform, $platform) -replace $res.Get.Download.Text.Language, $lang)
+                    }
+                    $response = Resolve-Uri @params
 
-                # Build object and output to the pipeline
-                $PSObject = [PSCustomObject] @{
-                    Version      = $firefoxVersions.$channel
-                    Architecture = Get-Architecture -String $plat
-                    Language     = $lang
-                    Filename     = $file.Replace('%20', ' ')
-                    URI          = "$($res.Get.DownloadUri)$($firefoxVersions.$channel)/$($plat)/$($lang)/$($file)"
+                    # Build object and output to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $firefoxVersions.$channel
+                        Architecture = Get-Architecture -String $platform
+                        Channel      = $channel
+                        Language     = $lang
+                        Type         = [System.IO.Path]::GetExtension($response.ResponseUri.AbsoluteUri).Split(".")[-1]
+                        Filename     = (Split-Path -Path $response.ResponseUri.AbsoluteUri -Leaf).Replace('%20', ' ')
+                        URI          = $response.ResponseUri.AbsoluteUri
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
             }
         }
     }

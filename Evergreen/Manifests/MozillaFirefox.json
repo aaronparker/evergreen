@@ -5,11 +5,24 @@
 		"Update": {
 			"Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
 			"Channels": [
-				"FIREFOX_ESR",
-				"LATEST_FIREFOX_VERSION"
+				"LATEST_FIREFOX_VERSION",
+				"FIREFOX_ESR"
 			]
 		},
-		"DownloadUri": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/"
+		"Download": {
+			"Uri": {
+				"Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
+				"Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"
+			},
+			"Platforms": [
+				"win64",
+				"win"
+			],
+			"Text": {
+				"Platform": "#platform",
+				"Language": "#language"
+			}
+		}
 	},
 	"Install": {
 		"Setup": "Firefox*.exe",
