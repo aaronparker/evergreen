@@ -9,7 +9,8 @@
                 "Current",
                 "LTS"
             ],
-            "ContentType": "text/plain; charset=utf-8"
+            "ContentType": "text/plain; charset=utf-8",
+            "Checksums": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/5.0.0-sha.txt"
         },
         "Download": {
             "Uri": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/#version/windowsdesktop-runtime-#version-win-#architecture.exe",

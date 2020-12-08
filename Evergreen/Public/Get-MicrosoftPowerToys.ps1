@@ -20,6 +20,7 @@ Function Get-MicrosoftPowerToys  {
             Returns the latest Microsoft PowerToys version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 
