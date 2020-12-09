@@ -4,8 +4,9 @@
 
 * Adds `Get-Microsoft.NET`, `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
 * Updates `Get-OpenJDK` to return all releases. Further filting will be added in the future per #76
-* Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI firefox installers and updates output with additional properties #83
-* Updates `Get-AdobeAcrobatReader` to return additional languages #84
+* Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI firefox installers and updates output with additional properties (`Architecture`, `Channel` and `Type`) #83.
+  * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
+* Updates `Get-AdobeAcrobatReader` to return additional languages #84. Note that Reader DC does not provide the latest version for all languages - it may be a better approach to use the [MUI version of the Reader installer](https://helpx.adobe.com/au/reader/faq.html#Enterprisedeployment) if your language is supported
 
 ## 2010.219
 
