@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2012.225
 
 * Adds `Get-Microsoft.NET`, `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
 * Updates `Get-OpenJDK` to return all releases. Further filting will be added in the future per #76
