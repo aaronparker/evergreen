@@ -24,7 +24,7 @@ Function ConvertTo-Hashtable {
         ## Check if the input is an array or collection. If so, we also need to convert
         ## those types into hash tables as well. This function will convert all child
         ## objects into hash tables (if applicable)
-        If ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [string]) {
+        If ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [System.String]) {
             $collection = @(
                 ForEach ($object in $InputObject) {
                     ConvertTo-Hashtable -InputObject $object

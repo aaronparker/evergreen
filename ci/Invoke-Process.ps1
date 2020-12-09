@@ -21,11 +21,11 @@ Function Invoke-Process {
     param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string] $FilePath,
+        [System.String] $FilePath,
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string] $ArgumentList
+        [System.String] $ArgumentList
     )
 
     $ErrorActionPreference = 'Stop'
@@ -56,7 +56,7 @@ Function Invoke-Process {
                 }
             }
             else {
-                if ([string]::IsNullOrEmpty($cmdOutput) -eq $false) {
+                if ([System.String]::IsNullOrEmpty($cmdOutput) -eq $false) {
                     Write-Output -InputObject $cmdOutput
                 }
             }

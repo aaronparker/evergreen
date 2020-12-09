@@ -38,11 +38,11 @@ Function Get-MicrosoftWvdBootLoader {
     }
     catch [System.Net.WebException] {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
+        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-        Throw ([string]::Format("Error : {0}", $_.Exception.StatusCode))
+        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
     }
 
     If ($Headers) {

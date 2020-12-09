@@ -42,7 +42,7 @@ Function Resolve-RedirectedUri {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
         Catch [System.Exception] {
-            Write-Warning -Message ([string]::Format("$($MyInvocation.MyCommand): Error : {0}", $_.Exception.Message))
+            Write-Warning -Message ([System.String]::Format("$($MyInvocation.MyCommand): Error : {0}", $_.Exception.Message))
         }
     }
 
