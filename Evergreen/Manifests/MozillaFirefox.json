@@ -11,8 +11,14 @@
 		},
 		"Download": {
 			"Uri": {
-				"Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
-				"Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"
+				"LATEST_FIREFOX_VERSION": {
+					"Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
+					"Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"					
+				},
+				"FIREFOX_ESR": {
+					"Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
+					"Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"					
+				}
 			},
 			"Platforms": [
 				"win64",
