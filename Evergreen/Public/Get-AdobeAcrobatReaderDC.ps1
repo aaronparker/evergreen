@@ -1,10 +1,10 @@
 Function Get-AdobeAcrobatReaderDC {
     <#
         .SYNOPSIS
-            Gets the download URLs for Adobe Reader DC Continuous track installers.
+            Gets the download URLs for Adobe Acrobat Reader DC Continuous track installers.
 
         .DESCRIPTION
-            Gets the download URLs for Adobe Reader DC Continuous track installers for the latest version for Windows.
+            Gets the download URLs for Adobe Acrobat Reader DC Continuous track installers for the latest version for Windows.
 
         .NOTES
             Author: Aaron Parker
@@ -28,17 +28,17 @@ Function Get-AdobeAcrobatReaderDC {
     Write-Verbose -Message $res.Name
 
     #region Installer downloads
-    ForEach ($platform in $res.Get.Platforms) {
-        ForEach ($language in $res.Get.Languages) {
+    ForEach ($platform in $res.Get.Installer.Platforms) {
+        ForEach ($language in $res.Get.Installer.Languages) {
             Write-Verbose -Message "Searching: [$($platform.platform_type)] [$language]"
-            $Uri = $res.Get.Uri -replace "#Platform", $platform.platform_type
+            $Uri = $res.Get.Installer.Uri -replace "#Platform", $platform.platform_type
             $Uri = $Uri -replace "#Dist", $platform.platform_dist
             $Uri = $Uri -replace "#Language", $language
             $Uri = $Uri -replace "#Arch", $platform.platform_arch
             $Uri = $Uri -replace " ", "%20"
             $iwcParams = @{
                 Uri             = $Uri
-                Headers         = $res.Get.Headers
+                Headers         = $res.Get.Installer.Headers
                 UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                 UseBasicParsing = $True
                 ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
@@ -55,7 +55,6 @@ Function Get-AdobeAcrobatReaderDC {
                 If ($ContentFromJson.download_url.Count -eq 1) { $downloadURI = $ContentFromJson.download_url } Else { $downloadURI = $ContentFromJson.download_url | Select-Object -First 1 }
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
-                    Platform = $platform.platform_type
                     Type     = "Installer"
                     Language = $language
                     URI      = $downloadURI
@@ -68,37 +67,28 @@ Function Get-AdobeAcrobatReaderDC {
 
     #region Update downloads
     $iwcParams = @{
-        Uri         = $res.Get.UpdateUri
-        ContentType = $res.Get.UpdateContentType
+        Uri         = $res.Get.Updater.Uri
+        ContentType = $res.Get.Updater.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
 
     # Construct update download list
     If ($Null -ne $Content) {
         $versionString = $Content.Replace(".", "")
-        ForEach ($platform in $res.Get.UpdatePlatforms) {
-            Switch ($platform) {
-                "win" {
-                    $updateUrl = $res.Get.UpdateDownloadUri -replace "#Platform", $platform
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Platform = "Windows"
-                        Type     = "Updater"
-                        Language = "Neutral"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString).msp"
-                    }
-                    Write-Output -InputObject $PSObject
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Platform = "Windows"
-                        Type     = "Updater"
-                        Language = "Multi"
-                        URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.msp"
-                    }
-                    Write-Output -InputObject $PSObject
-                }
-            }
+        $PSObject = [PSCustomObject] @{
+            Version  = $Content
+            Type     = "Updater"
+            Language = "Neutral"
+            URI      = $res.Get.Updater.Download -replace $res.Get.Updater.ReplaceText, $versionString
         }
+        Write-Output -InputObject $PSObject
+        $PSObject = [PSCustomObject] @{
+            Version  = $Content
+            Type     = "Updater"
+            Language = "Multi"
+            URI      = $res.Get.Updater.DownloadMsp -replace $res.Get.Updater.ReplaceText, $versionString
+        }
+        Write-Output -InputObject $PSObject
     }
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): unable to find Adobe Acrobat Reader DC version."
