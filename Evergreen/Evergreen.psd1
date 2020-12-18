@@ -73,7 +73,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Export-EvergreenResourceStrings', 'Get-7zip', 
                'Get-AdobeAcrobatReaderDC', 'Get-AdoptOpenJDK', 'Get-Atom', 'Get-BISF', 
                'Get-CitrixAppLayeringFeed', 'Get-AdobeAcrobatProDC',
-               'Get-CitrixApplicationDeliveryManagementFeed', 
+               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-TelerikFiddlerEverywhere'
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
                'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
