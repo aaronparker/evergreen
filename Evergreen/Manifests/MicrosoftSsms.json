@@ -1,22 +1,45 @@
 {
 	"Name": "Microsoft SQL Server Management Studio",
-	"Source": "https://www.app.com",
+	"Source": "https://go.microsoft.com/fwlink/?LinkId=531355",
 	"Get": {
-		"Uri": "https://download.microsoft.com/download/f/e/b/feb0e6be-21ce-4f98-abee-d74065e32d0a/SSMS_PRODUCTRELEASESFEED.xml",
-		"DownloadUri": "https://aka.ms/ssmsfullsetup",
-		"MatchName": "SQL Server Management Studio",
-		"MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
-		"MatchFile": ".*msi$|.*exe$|.*zip$"
+		"Update": {
+			"Uri": "https://go.microsoft.com/fwlink/?linkid=2021100"
+		},
+		"Download": {
+			"Uri": "https://go.microsoft.com/fwlink/?linkid=2151644&clcid=#lang",
+			"Uri2": "https://aka.ms/ssmsfullsetup",
+			"ReplaceText": "#lang",
+			"Language": {
+				"English": "0x409",
+				"French": "0x40c",
+				"German": "0x407",
+				"Italian": "0x410",
+				"Japanese": "0x411",
+				"Korean": "0x412",
+				"Portuguese (Brazil)": "0x416",
+				"Russian": "0x419",
+				"Spanish": "0x40a",
+				"Chinese (Simplified)": "0x804",
+				"Chinese (Traditional)": "0x404"
+			},
+			"MatchName": "SQL Server Management Studio",
+			"MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
+			"MatchFile": ".*msi$|.*exe$|.*zip$"
+		}
 	},
 	"Install": {
 		"Setup": "SSMS-Setup*.exe",
 		"Physical": {
 			"Arguments": "/install /quiet /norestart",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		},
 		"Virtual": {
 			"Arguments": "/install /quiet /norestart",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		}
 	}
 }

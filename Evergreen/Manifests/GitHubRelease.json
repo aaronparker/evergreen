@@ -3,7 +3,7 @@
 	"Source": "https://github.com/",
 	"Get": {
 		"Uri": "",
-		"ContentType": "application/json; charset=utf-8",
+		"ContentType": "application/vnd.github.v3+json",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 	},
 	"Install": {
