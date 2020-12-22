@@ -12,14 +12,12 @@
 		],
 		"Channels": [
 			"Stable",
-			"Beta",
 			"EdgeUpdate",
 			"Policy"
 		],
 		"Architectures": [
 			"x64",
 			"x86",
-			"arm64",
 			"any"
 		],
 		"ReleaseProperty": "Releases",

@@ -26,13 +26,13 @@ Function Get-TeamViewer {
     Write-Verbose -Message $res.Name
 
     # Get the latest TeamViewer version
-    $Content = Invoke-SystemNetRequest -Uri $res.Get.Uri
+    $Content = Invoke-SystemNetRequest -Uri $res.Get.Update.Uri
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {
         $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Content, $res.Get.MatchVersion).Captures.Groups[1].Value
-            URI     = $res.Get.DownloadUri
+            Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+            URI     = $res.Get.Download.Uri
         }
         Write-Output -InputObject $PSObject
     }

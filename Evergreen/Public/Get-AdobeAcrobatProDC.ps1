@@ -55,7 +55,7 @@ Function Get-AdobeAcrobatProDC {
         #>
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to find Adobe Acrobat Reader DC version."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."
     }
     #endregion
 }

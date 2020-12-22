@@ -5,7 +5,7 @@
 		"Uri": "https://api.github.com/repos/atom/atom/releases/latest",
 		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+		"MatchExtensions": "\\.zip$|\\.msi$|\\.exe$"
 	},
 	"Install": {
 		"Setup": "AtomSetup*.exe",

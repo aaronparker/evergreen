@@ -36,7 +36,7 @@
 				"Accept": "*/*"
 			}
 		},
-		"Updater": {
+		"Update": {
 			"Uri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
 			"Download": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version.msp",
 			"DownloadMsp": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version_MUI.msp",

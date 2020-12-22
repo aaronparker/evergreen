@@ -29,31 +29,31 @@
     Write-Verbose -Message $res.Name
 
     # Read the VMware version-mapping file
-    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
+    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri -Raw
 
     If ($Null -ne $Content) {
         # Format the results returns and convert into an array that we can sort and use
         $Lines = $Content | Where-Object { $_ –notmatch "^#" }
         $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }
-        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.CsvHeaders | `
+        $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.Update.CsvHeaders | `
             Sort-Object -Property { [Int] $_.Client } -Descending
         $LatestVersion = $VersionTable | Select-Object -First 1
 
         # Build the output object for each platform and architecture
-        ForEach ($platform in $res.Get.Platforms) {
-            ForEach ($architecture in $res.Get.Architecture) {
+        ForEach ($platform in $res.Get.Download.Platforms) {
+            ForEach ($architecture in $res.Get.Download.Architecture) {
 
                 # Query the download page for the download file name
-                $Uri = ("$($res.Get.DownloadUri)$platform/$architecture/index.html").ToLower()
+                $Uri = ("$($res.Get.Download.Uri)$platform/$architecture/index.html").ToLower()
                 $Content = Invoke-WebContent -Uri $Uri
-                $filename = [RegEx]::Match($Content, $res.Get.MatchFileName).Captures.Value
+                $filename = [RegEx]::Match($Content, $res.Get.Download.MatchFileName).Captures.Value
             
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
                     Version      = $LatestVersion.Version
                     Platform     = $platform
                     Architecture = $architecture
-                    URI          = "$($res.Get.DownloadUri)$($platform.ToLower())/$architecture/$filename"
+                    URI          = "$($res.Get.Download.Uri)$($platform.ToLower())/$architecture/$filename"
                 }
                 Write-Output -InputObject $PSObject
             }

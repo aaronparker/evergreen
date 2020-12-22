@@ -32,17 +32,6 @@ Function ConvertFrom-GitHubReleasesJson {
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."
 
-        # Ensure that we only have the latest release
-        <#If ($release.Count -gt 1) {
-            try {
-                Write-Warning -Message "$($MyInvocation.MyCommand): More than one release retrieved from GitHub."
-                $release = $release | Where-Object { $_.prerelease -eq $False } | Select-Object -First 1
-            }
-            catch {
-                Throw [System.Management.Automation.RuntimeException] "$($MyInvocation.MyCommand): Failed to filter to latest release."
-            }
-        }#>
-
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
         ForEach ($item in $release) {

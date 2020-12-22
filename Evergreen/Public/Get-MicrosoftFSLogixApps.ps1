@@ -35,8 +35,7 @@ Function Get-MicrosoftFSLogixApps {
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version = [RegEx]::Match($($response.ResponseUri.AbsoluteUri), $res.Get.MatchVersion).Captures.Value
-            Date    = $response.LastModified
-            #Date    = ConvertTo-DateTime -DateTime $response.LastModified -Pattern "dd/MM/yyyy HH:mm:ss tt"
+            Date    = ConvertTo-DateTime -DateTime $response.LastModified
             URI     = $response.ResponseUri.AbsoluteUri
         }
         Write-Output -InputObject $PSObject

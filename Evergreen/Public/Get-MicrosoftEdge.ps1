@@ -13,20 +13,11 @@ Function Get-MicrosoftEdge {
         .LINK
             https://github.com/aaronparker/Evergreen
 
-        .PARAMETER View
-            Specify the target views - Enterprise or Consumer, for supported versions.
-
         .EXAMPLE
             Get-MicrosoftEdge
 
             Description:
             Returns the Microsoft Edge version for all Enterprise channels and platforms.
-
-        .EXAMPLE
-            Get-MicrosoftEdge -View Consumer
-
-            Description:
-            Returns the Microsoft Edge version for all Consumer channels and platforms.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -62,7 +53,7 @@ Function Get-MicrosoftEdge {
                 # Expand the Releases property for that product version
                 $releases = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
-                    Where-Object { ($_.Platform -in $res.Get.Platform) -and ($_.ProductVersion -eq $latestRelease.ProductVersion) }
+                    Where-Object { ($_.ProductVersion -eq $latestRelease.ProductVersion) -and ($_.Platform -in $res.Get.Platform) -and ($_.Architecture -in $res.Get.Architectures) }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
                 ForEach ($release in $releases) {
@@ -73,8 +64,7 @@ Function Get-MicrosoftEdge {
                             Channel      = $product
                             Release      = $view.Name
                             Architecture = $release.Architecture
-                            Date         = $release.PublishedTime
-                            #Date         = ConvertTo-DateTime -DateTime $release.PublishedTime -Pattern "dd/MM/yyyy hh:mm:ss tt" #"22/4/2020 6:06:00 pm"
+                            Date         = ConvertTo-DateTime -DateTime $release.PublishedTime
                             Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
                             URI          = $(If ($release.Artifacts.Location.Count -gt 1) { $release.Artifacts.Location[0] } Else { $release.Artifacts.Location })
                         }

@@ -67,8 +67,8 @@ Function Get-AdobeAcrobatReaderDC {
 
     #region Update downloads
     $iwcParams = @{
-        Uri         = $res.Get.Updater.Uri
-        ContentType = $res.Get.Updater.ContentType
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
 
@@ -79,19 +79,19 @@ Function Get-AdobeAcrobatReaderDC {
             Version  = $Content
             Type     = "Updater"
             Language = "Neutral"
-            URI      = $res.Get.Updater.Download -replace $res.Get.Updater.ReplaceText, $versionString
+            URI      = $res.Get.Update.Download -replace $res.Get.Update.ReplaceText, $versionString
         }
         Write-Output -InputObject $PSObject
         $PSObject = [PSCustomObject] @{
             Version  = $Content
             Type     = "Updater"
             Language = "Multi"
-            URI      = $res.Get.Updater.DownloadMsp -replace $res.Get.Updater.ReplaceText, $versionString
+            URI      = $res.Get.Update.DownloadMsp -replace $res.Get.Update.ReplaceText, $versionString
         }
         Write-Output -InputObject $PSObject
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to find Adobe Acrobat Reader DC version."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."
     }
     #endregion
 }
