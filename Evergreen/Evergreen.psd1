@@ -76,7 +76,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-CitrixApplicationDeliveryManagementFeed', 'Get-TelerikFiddlerEverywhere'
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
-               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
+               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 'Get-1Password',
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixVMTools', 
                'Get-CitrixWorkspaceApp', 'Get-CitrixWorkspaceAppFeed', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 

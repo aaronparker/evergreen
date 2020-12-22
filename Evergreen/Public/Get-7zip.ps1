@@ -37,7 +37,6 @@ Function Get-7zip {
         Content      = $Content
         Download     = $res.Get.Download
         MatchVersion = $res.Get.MatchVersion
-        # DatePattern  = $res.Get.DatePattern
     }
     $object = ConvertFrom-SourceForgeReleasesJson @params
     Write-Output -InputObject $object
