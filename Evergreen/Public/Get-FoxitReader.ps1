@@ -49,7 +49,6 @@ Function Get-FoxitReader {
             
             # Follow the download link which will return a 301/302
             $redirectUrl = Resolve-RedirectedUri -Uri $Uri
-            #$redirectUrl = (Resolve-Uri -Uri $Uri).ResponseUri.AbsoluteUri
             
             # Construct the output; Return the custom object to the pipeline
             If ($Null -ne $redirectUrl) {

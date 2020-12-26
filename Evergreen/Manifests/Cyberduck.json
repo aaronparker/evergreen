@@ -1,5 +1,5 @@
 {
-	"Name": "Cyberduck",
+	"Name": "iterate GmbH Cyberduck",
 	"Source": "https://cyberduck.io/",
 	"Get": {
 		"Uri": {
@@ -8,7 +8,8 @@
 		"ContentType": "text/xml",
 		"EnclosureXmlNode": "//enclosure",
 		"ItemXmlNode": "//item",
-		"DatePattern": "dd/MM/yyyy hh:mm tt"
+		"DatePattern": "dd/MM/yyyy hh:mm tt",
+		"MatchUrlPath": "(?<=https://|http://)(.*)"
 	},
 	"Install": {
 		"Setup": "Cyberduck*.exe",
