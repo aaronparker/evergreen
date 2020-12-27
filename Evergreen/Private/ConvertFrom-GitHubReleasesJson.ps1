@@ -74,6 +74,7 @@ Function ConvertFrom-GitHubReleasesJson {
                             Version      = $version
                             Platform     = Get-Platform -String $asset.browser_download_url
                             Architecture = Get-Architecture -String $asset.browser_download_url
+                            Type         = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
                             Date         = ConvertTo-DateTime -DateTime $item.created_at
                             Size         = $asset.size
                             URI          = $asset.browser_download_url
