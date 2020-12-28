@@ -3,8 +3,8 @@
 	"Source": "https://openjdk.java.net/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/ojdkbuild/ojdkbuild/releases",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)"
+		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$"
 	},
 	"Install": {
 		"Setup": "java*.msi",

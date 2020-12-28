@@ -3,8 +3,8 @@
 	"Source": "https://handbrake.fr/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/handbrake/handbrake/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
 		"Setup": "AtomSetup*.exe",

@@ -27,19 +27,18 @@ Function Get-WixToolset {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Get latest version and download latest release via GitHub API
-    $iwcParams = @{
-        Uri         = $res.Get.Uri
-        ContentType = $res.Get.ContentType
-    }
-    $Content = Invoke-WebContent @iwcParams
-
-    # Convert the returned release data into a useable object with Version, URI etc.
+    # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Content      = $Content
+        Uri          = $res.Get.Uri
         MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
         VersionTag   = $res.Get.VersionTag
     }
-    $object = ConvertFrom-GitHubReleasesJson @params
-    Write-Output -InputObject $object
+    $object = Get-GitHubRepoRelease @params
+    If ($object) {
+        Write-Output -InputObject $object
+    }
+    Else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
+    }
 }

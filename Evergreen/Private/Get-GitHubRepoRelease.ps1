@@ -1,7 +1,7 @@
-Function ConvertFrom-GitHubReleasesJson {
+Function Get-GitHubRepoRelease {
     <#
         .SYNOPSIS
-            Validates a JSON string returned from a GitHub releases API and returns a formatted object
+            Calls the GitHub Releases API passed via $Uri, validates the response and returns a formatted object
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
     #>
     [OutputType([System.Management.Automation.PSObject])]
@@ -9,7 +9,7 @@ Function ConvertFrom-GitHubReleasesJson {
     Param(
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $Content,
+        [System.String] $Uri,
 
         [Parameter(Mandatory = $True, Position = 1)]
         [ValidateNotNullOrEmpty()]
@@ -17,16 +17,41 @@ Function ConvertFrom-GitHubReleasesJson {
 
         [Parameter(Mandatory = $False, Position = 2)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $VersionTag = "tag_name"
+        [System.String] $VersionTag = "tag_name",
+
+        [Parameter(Mandatory = $False, Position = 3)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $Filter = "\.exe$|\.msi$|\.msp$|\.zip$"
     )
 
-    # Convert JSON string to a hashtable
+    # Retrieve the releases from the GitHub API 
     try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Converting from JSON string."
-        $release = ConvertFrom-Json -InputObject $Content
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
+        
+        # Set TLS1.2 and a temp file for passthrough output
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        $tempFile = New-TemporaryFile
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
+        
+        # Invoke the GitHub releases REST API
+        # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
+        $params = @{
+            Uri             = $Uri
+            Method          = "Get"
+            ContentType     = "application/vnd.github.v3+json"
+            UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+            UseBasicParsing = $true
+            PassThru        = $true
+            OutFile         = $tempFile
+        }
+        $release = Invoke-RestMethod @params
+    }
+    catch [System.Net.WebException] {
+        Throw [System.Net.WebException] "$($MyInvocation.MyCommand): REST API call to $Uri failed."
+        Break
     }
     catch {
-        Throw [System.Management.Automation.RuntimeException] "$($MyInvocation.MyCommand): Failed to convert JSON string."
+        Throw "$($MyInvocation.MyCommand): REST API call to $Uri failed."
         Break
     }
     finally {
@@ -60,13 +85,14 @@ Function ConvertFrom-GitHubReleasesJson {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) assets."
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {
-                    If ($asset.browser_download_url -match $script:resourceStrings.Filters.WindowsInstallers) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $asset.browser_download_url."
+                    If ($asset.browser_download_url -match $Filter) {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $($asset.browser_download_url)."
 
                         try {
                             $version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
                         }
                         catch {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning: $($item.$VersionTag)."
                             $version = $item.$VersionTag
                         }
 
@@ -80,6 +106,9 @@ Function ConvertFrom-GitHubReleasesJson {
                             URI          = $asset.browser_download_url
                         }
                         Write-Output -InputObject $PSObject
+                    }
+                    Else {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Skip: $($asset.browser_download_url)."
                     }
                 }
             }

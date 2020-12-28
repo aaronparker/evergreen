@@ -27,14 +27,17 @@ Function Get-Greenshot {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Get latest version and download latest release via GitHub API
-    $iwcParams = @{
-        Uri         = $res.Get.Uri
-        ContentType = $res.Get.ContentType
+    # Pass the repo releases API URL and return a formatted object
+    $params = @{
+        Uri          = $res.Get.Uri
+        MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
     }
-    $Content = Invoke-WebContent @iwcParams
-
-    # Convert the returned release data into a useable object with Version, URI etc.
-    $object = ConvertFrom-GitHubReleasesJson -Content $Content -MatchVersion $res.Get.MatchVersion
-    Write-Output -InputObject $object
+    $object = Get-GitHubRepoRelease @params
+    If ($object) {
+        Write-Output -InputObject $object
+    }
+    Else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
+    }
 }
