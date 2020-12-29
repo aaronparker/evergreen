@@ -60,6 +60,8 @@ Function Get-GitHubRepoRelease {
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
         ForEach ($item in $release) {
+
+            # Compare the GitHub release object with properties that we expect
             $params = @{
                 ReferenceObject  = $script:resourceStrings.Properties.GitHub
                 DifferenceObject = (Get-Member -InputObject $item -MemberType NoteProperty)
@@ -67,6 +69,8 @@ Function Get-GitHubRepoRelease {
                 ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
             }
             $missingProperties = Compare-Object @params
+
+            # Throw an error for missing properties
             If ($Null -ne $missingProperties) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Validated successfully."
                 $validate = $True
@@ -85,9 +89,13 @@ Function Get-GitHubRepoRelease {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) assets."
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {
+
+                    # Filter out downloads we don't want by only including those in the filter
                     If ($asset.browser_download_url -match $Filter) {
+                        #TODO: filter out additional items that we don't want
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $($asset.browser_download_url)."
 
+                        # Capture the version string from the specified release tag
                         try {
                             $version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
                         }
@@ -96,6 +104,7 @@ Function Get-GitHubRepoRelease {
                             $version = $item.$VersionTag
                         }
 
+                        # Build the output object
                         $PSObject = [PSCustomObject] @{
                             Version      = $version
                             Platform     = Get-Platform -String $asset.browser_download_url

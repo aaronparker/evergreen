@@ -4,18 +4,18 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/handbrake/handbrake/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+		"MatchFileTypes": "([^SafeMode])(\\.exe$|\\.msi$|\\.msp$|\\.zip$)"
 	},
 	"Install": {
-		"Setup": "AtomSetup*.exe",
+		"Setup": "HandBrake*.exe",
 		"Preinstall": "",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/S",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/S",
 			"PostInstall": [
 			]
 		}
