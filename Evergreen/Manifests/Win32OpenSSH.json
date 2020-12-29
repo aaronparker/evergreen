@@ -4,7 +4,7 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/PowerShell/Win32-OpenSSH/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "([^Symbols])(\\.exe$|\\.msi$|\\.msp$|\\.zip$)"
+		"MatchFileTypes": "^(?!.*Symbols).*zip$|.*exe$"
 	},
 	"Install": {
 		"Setup": "OpenSSH*.zip",
