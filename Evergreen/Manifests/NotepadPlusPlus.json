@@ -3,8 +3,8 @@
 	"Source": "https://notepad-plus-plus.org/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/notepad-plus-plus/notepad-plus-plus/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
 		"Setup": "npp*.exe",

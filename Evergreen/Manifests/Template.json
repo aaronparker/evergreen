@@ -20,7 +20,7 @@
 		"Virtual": {
 			"Arguments": "",
 			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+
 			]
 		}
 	}

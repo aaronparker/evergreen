@@ -46,14 +46,17 @@ Function Get-GitHubRelease {
         Write-Warning -Message "$($MyInvocation.MyCommand): -Uri parameter not specified. Using the default repository."
     }
 
-    # Get latest version and download latest release via GitHub API
-    $iwcParams = @{
-        Uri         = $Uri
-        ContentType = $res.Get.ContentType
+    # Pass the repo releases API URL and return a formatted object
+    $params = @{
+        Uri          = $res.Get.Uri
+        MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
     }
-    $Content = Invoke-WebContent @iwcParams
-
-    # Convert the returned release data into a useable object with Version, URI etc.
-    $object = ConvertFrom-GitHubReleasesJson -Content $Content -MatchVersion $res.Get.MatchVersion
-    Write-Output -InputObject $object
+    $object = Get-GitHubRepoRelease @params
+    If ($object) {
+        Write-Output -InputObject $object
+    }
+    Else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
+    }
 }
