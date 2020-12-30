@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2012.242
 
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
 * Adds Windows Installer downloads ouput to `Get-FoxitReader`
