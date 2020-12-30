@@ -34,6 +34,7 @@ Function Get-GitHubRepoRelease {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
         
         # Invoke the GitHub releases REST API
+        # Note that the API performs rate limiting. 
         # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
         $params = @{
             Uri             = $Uri
@@ -41,17 +42,12 @@ Function Get-GitHubRepoRelease {
             ContentType     = "application/vnd.github.v3+json"
             UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
             UseBasicParsing = $true
-            PassThru        = $true
-            OutFile         = $tempFile
         }
         $release = Invoke-RestMethod @params
     }
-    catch [System.Net.WebException] {
-        Throw [System.Net.WebException] "$($MyInvocation.MyCommand): REST API call to $Uri failed."
-        Break
-    }
     catch {
-        Throw "$($MyInvocation.MyCommand): REST API call to $Uri failed."
+        Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
+        Throw $_
         Break
     }
     finally {
@@ -90,9 +86,8 @@ Function Get-GitHubRepoRelease {
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {
 
-                    # Filter out downloads we don't want by only including those in the filter
+                    # Filter downloads by matching the RegEx in the manifest. The the RegEx may perform includes and excludes
                     If ($asset.browser_download_url -match $Filter) {
-                        #TODO: filter out additional items that we don't want
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $($asset.browser_download_url)."
 
                         # Capture the version string from the specified release tag

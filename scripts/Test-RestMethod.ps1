@@ -1,7 +1,7 @@
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$Uri = "https://api.github.com/repos/git-for-windows/git/releases/latest"
+$Uri = "https://api.github.com/repos/git-for-windows/git1/releases/latest"
 $tempFile = New-TemporaryFile
 
 try {
@@ -16,14 +16,9 @@ try {
     }
     $response = Invoke-RestMethod @params
 }
-catch [System.Net.WebException] {
-    Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-    Get-Content $tempFile
-    Break
-}
 catch {
-    Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-    Get-Content $tempFile
+    Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
+    Throw $_
     Break
 }
 
