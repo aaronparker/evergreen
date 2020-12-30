@@ -3,10 +3,8 @@
 	"Source": "https://github.com/microsoft/PowerToys/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/microsoft/PowerToys/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchExtensions": ".msi$|.exe$",
-		"VersionTag": "name"
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$"
 	},
 	"Install": {
 		"Setup": "PowerToysSetup*.exe",

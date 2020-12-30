@@ -3,8 +3,8 @@
 	"Source": "https://github.com/PowerShell/Win32-OpenSSH/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/PowerShell/Win32-OpenSSH/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "^(?!.*Symbols).*zip$|.*exe$"
 	},
 	"Install": {
 		"Setup": "OpenSSH*.zip",
@@ -14,7 +14,7 @@
 			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "/",
+			"Arguments": "",
 			"PostInstall": []
 		}
 	}

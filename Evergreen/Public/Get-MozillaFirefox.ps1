@@ -21,7 +21,7 @@ Function Get-MozillaFirefox {
             Get-MozillaFirefox
 
             Description:
-            Returns the version and download URIs for Firefox for Windows.
+            Returns the version and download URIs for Firefox for Windows (en-US).
 
         .EXAMPLE
             Get-MozillaFirefox -Language en-GB
@@ -57,9 +57,9 @@ Function Get-MozillaFirefox {
             ForEach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                ForEach ($installer in $res.Get.Download.Uri.GetEnumerator()) {
+                ForEach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
                     $params = @{
-                        Uri = (($res.Get.Download.Uri[$installer.Key] -replace $res.Get.Download.Text.Platform, $platform) -replace $res.Get.Download.Text.Language, $lang)
+                        Uri = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.Text.Platform, $platform) -replace $res.Get.Download.Text.Language, $lang)
                     }
                     $response = Resolve-Uri @params
 

@@ -42,7 +42,7 @@
                 [System.XML.XMLDocument] $xmlDocument = $Content
             }
             Catch [System.Exception] {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+                Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
             }
     
             # Build an output object by selecting entries from the feed
@@ -52,11 +52,23 @@
 
                 # Output the update object
                 ForEach ($node in $nodes) {
+
+                    # Capture the URL without https:// & replace // with /
+                    # Then put the URL back together
+                    try {
+                        $path = [RegEx]::Match($node.url, $res.Get.MatchUrlPath).Groups[0].Value
+                        $url = "https://$($path -replace "//", "/")"
+                    }
+                    catch {
+                        $url = $node.url
+                    }
+
+                    # Output the object
                     $PSObject = [PSCustomObject] @{
-                        Version = $node.shortVersionString
+                        Version = "$($node.shortVersionString).$($node.version)"
                         Date    = ConvertTo-DateTime -DateTime $item.pubDate -Pattern $res.Get.DatePattern
                         Channel = $release.Name
-                        URI     = $node.url
+                        URI     = $url
                     }
                     Write-Output -InputObject $PSObject
                 }

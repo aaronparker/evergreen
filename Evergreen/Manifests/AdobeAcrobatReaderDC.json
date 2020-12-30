@@ -2,51 +2,47 @@
 	"Name": "Adobe Acrobat Reader DC",
 	"Source": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html",
 	"Get": {
-		"Uri": "https://get.adobe.com/reader/webservices/json/standalone/?platform_type=#Platform&platform_dist=#Dist&platform_arch=#Arch&language=#Language&eventname=readerotherversions",
-		"Languages": [
-			"English",
-			"English (UK)",
-			"Danish",
-			"Dutch",
-			"French",
-			"Finnish",
-			"German",
-			"Italian",
-			"Japanese",
-			"Korean",
-			"Norwegian",
-			"Spanish"
-		],
-		"Platforms": [
-			{
-				"platform_type": "Windows",
-				"platform_dist": "Windows 10",
-				"platform_arch": ""
+		"Installer": {
+			"Uri": "https://get.adobe.com/reader/webservices/json/standalone/?platform_type=win&platform_dist=#Dist&platform_arch=#Arch&language=#Language&eventname=readerotherversions",
+			"Languages": [
+				"English",
+				"English (UK)",
+				"Danish",
+				"Dutch",
+				"French",
+				"Finnish",
+				"German",
+				"Italian",
+				"Japanese",
+				"Korean",
+				"Norwegian",
+				"Spanish"
+			],
+			"Platforms": [
+				{
+					"platform_type": "Windows",
+					"platform_dist": "Windows 10",
+					"platform_arch": ""
+				}
+			],
+			"Headers": {
+				"Sec-Fetch-Site": "same-origin",
+				"Accept-Encoding": "gzip, deflate, br",
+				"Accept-Language": "en-US;q=0.9,en;q=0.8",
+				"DNT": "1",
+				"Sec-Fetch-Mode": "cors",
+				"X-Requested-With": "XMLHttpRequest",
+				"Referer": "https://get.adobe.com/reader/enterprise/",
+				"Accept": "*/*"
 			}
-		],
-		"Headers": {
-			"Sec-Fetch-Site": "same-origin",
-			"Accept-Encoding": "gzip, deflate, br",
-			"Accept-Language": "en-US;q=0.9,en;q=0.8",
-			"DNT": "1",
-			"Sec-Fetch-Mode": "cors",
-			"X-Requested-With": "XMLHttpRequest",
-			"Referer": "https://get.adobe.com/reader/enterprise/",
-			"Accept": "*/*"
 		},
-		"UpdateUri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
-		"UpdateDownloadUri": "http://ardownload.adobe.com/pub/adobe/reader/#Platform/AcrobatDC/",
-		"UpdateContentType": "text/plain; charset=utf-8",
-		"UpdatePlatforms": [
-			"win"
-		],
-		"UpdateLanguages": [
-			"en_US",
-			"de_DE",
-			"es_ES",
-			"fr_FR",
-			"ja_JP"
-		]
+		"Update": {
+			"Uri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
+			"Download": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version.msp",
+			"DownloadMsp": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version_MUI.msp",
+			"ContentType": "text/plain; charset=utf-8",
+			"ReplaceText": "#version"
+		}
 	},
 	"Install": {
 		"Preinstall": "",

@@ -3,8 +3,8 @@
 	"Source": "https://getsharex.com/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/ShareX/ShareX/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
 		"Setup": "ShareX*.exe",

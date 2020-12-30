@@ -28,29 +28,28 @@ Function Get-GoogleChrome {
     Write-Verbose -Message $res.Name
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    $Content = Invoke-WebContent -Uri $res.Get.Uri
-
+    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri
     If ($Null -ne $Content) {
         
         # Convert the returned JSON content to an object
         $Json = $Content | ConvertFrom-Json
 
         # Read the JSON and build an array of platform, channel, version
-        ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
+        ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): $($platform.Name)."
-            $stable = $Json.versions | Where-Object { ($_.channel -eq $res.Get.Channel) -and ($_.os -eq $platform.Name) }  
+            $stable = $Json.versions | Where-Object { ($_.channel -eq $res.Get.Download.Channel) -and ($_.os -eq $platform.Name) }  
             ForEach ($version in $stable) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $version.current_version
                     Architecture = Get-Architecture -String $version.os
-                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim() -Pattern $res.Get.DatePattern
-                    URI          = "$($res.Get.DownloadUri)$($res.Get.Platforms[$platform.Key])"
+                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim()
+                    URI          = "$($res.Get.Download.Uri)$($res.Get.Download.Platforms[$platform.Key])"
                 }
                 Write-Output -InputObject $PSObject
             }
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Update.Uri)."
     }
 }

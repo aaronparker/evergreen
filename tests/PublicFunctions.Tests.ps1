@@ -128,7 +128,7 @@ Describe -Tag "Download" -Name "Downloads" {
                             # Checking headers didn't work so let's pretend the URI is OK.
                             # Some URIs may require a login or the web server responds with a 403 when retrieving headers
                             $u = [System.Uri] $object.URI
-                            Write-Host -ForegroundColor Yellow "`tResponse from $($u.Host) was: $($_.Exception.Response.StatusCode). Requires manual testing."
+                            Write-Host -ForegroundColor Yellow "`tPerform manual test. Invoke-WebRequest response from $($u.Host) was: $($_.Exception.Response.StatusCode)."
                             $u = $Null
                             $r = [PSCustomObject] @{
                                 StatusCode = 200

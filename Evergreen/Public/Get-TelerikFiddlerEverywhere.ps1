@@ -1,7 +1,7 @@
-Function Get-TeamViewer {
+Function Get-TelerikFiddlerEverywhere {
     <#
         .SYNOPSIS
-            Get the current version and download URL for TeamViewer.
+            Get the current version and download URL for Telerik Fiddler Everywhere.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -12,10 +12,10 @@ Function Get-TeamViewer {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-TeamViewer
+            Get-TelerikFiddlerEverywhere
 
             Description:
-            Returns the current version and download URI for TeamViewer on Windows.
+            Returns the current version and download URI for Telerik Fiddler Everywhere.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -25,14 +25,14 @@ Function Get-TeamViewer {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Get the latest TeamViewer version
-    $Content = Invoke-SystemNetRequest -Uri $res.Get.Update.Uri
+    # Get the latest download
+    $Response = Resolve-Uri -Uri $res.Get.Download.Uri
 
     # Construct the output; Return the custom object to the pipeline
-    If ($Null -ne $Content) {
+    If ($Null -ne $Response) {
         $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
-            URI     = $res.Get.Download.Uri
+            Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            URI     = $Response.ResponseUri.AbsoluteUri
         }
         Write-Output -InputObject $PSObject
     }

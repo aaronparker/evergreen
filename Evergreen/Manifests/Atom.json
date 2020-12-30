@@ -3,9 +3,8 @@
 	"Source": "https://atom.io/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/atom/atom/releases/latest",
-		"ContentType": "application/json; charset=utf-8",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchExtensions": "\\.zip$|\\.msi$|\\.exe$|\\.rpm$|\\.deb$"
+		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
 	"Install": {
 		"Setup": "AtomSetup*.exe",

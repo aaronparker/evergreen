@@ -1,5 +1,29 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
+* Adds Windows Installer downloads ouput to `Get-FoxitReader`
+* Updates `Get-MicrosoftSsms` to query an evergreen update URL to gather new versions from the product releases feed
+  * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns
+  * See #82
+* Updates `Get-MicrosoftSsms` to output all supported languages for downloads - filter output on the `Language` property
+* Updates `Get-MozillaFirefox` to return both Exe and Msi versions of the Firefox installer
+* Adds SHA256 hash property to output from `Get-MicrosoftVisualStudioCode`
+* Fixes an issue with the `URI` output in `Get-Cyberduck` that was returning an additional `/` character
+* Refactors private function to query the GitHub releases API (`Get-GitHubRepoRelease`, replacing `ConvertFrom-GitHubReleasesJson`) to use `Invoke-RestMethod` for simpler public functions used to return GitHub releases
+* Updates the following functions to use `Get-GitHubRepoRelease` - `Get-Atom`, `Get-AdoptOpenJdk`, `Get-BISF`, `Get-dnGrep`, `Get-GitForWindows`, `Get-GitHubRelease`, `Get-Greenshot`, `Get-Handbrake`, `Get-MicrosoftPowerShellCore`, `Get-MicrosoftPowerToys`, `Get-mRemoteNG`, `Get-NotepadPlusPlus`, `Get-OpenJDK`, `Get-OpenShellMenu`, `Get-ShareX`, `Get-Win32OpenSSH`, `Get-WixToolSet`
+* Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
+* Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
+* BREAKING CHANGES:
+  * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see #76
+  * Removes Beta and Snapshots releases from `Get-Cyberduck`
+  * Removes Debug releases from `Get-Greenshot`
+  * Removes SafeMode releases from `Get-Handbrake`
+  * Removes Beta channel and ARM64 releases from `Get-MicrosoftEdge`
+  * Removes Zip format releases from `Get-MicrosoftPowerShellCore`
+  * Removes Symbols releases from `Get-Win32OpenSSH`
+
 ## 2012.225
 
 * Adds `Get-Microsoft.NET` (.NET 5.0 and .NET Core), `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`

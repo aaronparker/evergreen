@@ -29,8 +29,11 @@ Function Get-MicrosoftSsms {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
+    # Resolve the SSMS update feed
+    $UpdateFeed = Resolve-Uri -Uri $res.Get.Update.Uri
+
     # SQL Management Studio downloads/versions documentation
-    $Content = Invoke-WebContent -Uri $res.Get.Uri -Raw
+    $Content = Invoke-WebContent -Uri $UpdateFeed.ResponseUri.AbsoluteUri -Raw
 
     # Convert content to XML document
     If ($Null -ne $Content) {
@@ -44,22 +47,28 @@ Function Get-MicrosoftSsms {
         # Build an output object by selecting installer entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($entry in $xmlDocument.feed.entry) {
-                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.MatchName })) {
+                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version)."
 
-                    # Follow the download link which will return a 301
-                    $ResponseUri = (Resolve-Uri -Uri $res.Get.DownloadUri).ResponseUri.AbsoluteUri
+                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.Download.MatchName })) {
+                    ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
+
+                        # Follow the download link which will return a 301
+                        $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
+                        $ResponseUri = (Resolve-Uri -Uri $Uri).ResponseUri.AbsoluteUri
             
-                    # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-                    If ($Null -ne $ResponseUri) {
+                        # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+                        If ($Null -ne $ResponseUri) {
 
                             # Construct the output; Return the custom object to the pipeline
                             $PSObject = [PSCustomObject] @{
-                                Version = $entry.Component.version
-                                Date    = ConvertTo-DateTime -DateTime $entry.updated
-                                Title   = $entry.Title
-                                URI     = $ResponseUri
+                                Version  = $entry.Component.version
+                                Date     = ConvertTo-DateTime -DateTime $entry.updated
+                                Title    = $entry.Title
+                                Language = $language.key
+                                URI      = $ResponseUri
                             }
                             Write-Output -InputObject $PSObject
+                        }
                     }
                 }
             }

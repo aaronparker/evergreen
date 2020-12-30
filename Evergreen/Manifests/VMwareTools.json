@@ -2,23 +2,26 @@
 	"Name": "VMware Tools",
 	"Source": "https://www.vmware.com",
 	"Get": {
-		"Uri": "https://packages.vmware.com/tools/versions",
-		"DownloadUri": "https://packages.vmware.com/tools/releases/latest/",
-		"Platforms": [
-			"Windows"
-		],
-		"Architecture": [
-			"x64",
-			"x86"
-		],
-		"CsvHeaders": [
-			"Client",
-			"Server",
-			"Version",
-			"Build"
-		],
-		"MatchNoServer": "esx/0.0",
-		"MatchFileName": "(VMware-tools-)([0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-)(i386|x86_64)(\\.exe)"
+		"Update": {
+			"Uri": "https://packages.vmware.com/tools/versions",
+			"CsvHeaders": [
+				"Client",
+				"Server",
+				"Version",
+				"Build"
+			]
+		},
+		"Download": {
+			"Uri": "https://packages.vmware.com/tools/releases/latest/",
+			"Platforms": [
+				"Windows"
+			],
+			"Architecture": [
+				"x64",
+				"x86"
+			],
+			"MatchFileName": "(VMware-tools-)([0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-)(i386|x86_64)(\\.exe)"
+		}
 	},
 	"Install": {
 		"Setup": "VMware-tools*.exe",

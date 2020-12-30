@@ -2,9 +2,9 @@
 	"Name": "GitHub release",
 	"Source": "https://github.com/",
 	"Get": {
-		"Uri": "",
-		"ContentType": "application/json; charset=utf-8",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		"Uri": "https://api.github.com/repos/atom/atom/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
 	"Install": {
 		"Setup": "",

@@ -2,24 +2,32 @@
 	"Name": "Google Chrome",
 	"Source": "https://cloud.google.com/chrome-enterprise/browser/download/",
 	"Get": {
-		"Uri": "https://omahaproxy.appspot.com/all.json",
-		"DownloadUri": "https://dl.google.com",
-		"Channel": "stable",
-		"Platforms": {
-			"win": "/dl/chrome/install/googlechromestandaloneenterprise.msi",
-			"win64": "/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+		"Update": {
+			"Uri": "https://omahaproxy.appspot.com/all.json"
 		},
-		"DatePattern": "MM/dd/yy"
+		"Download": {
+			"Uri": "https://dl.google.com",
+			"Channel": "stable",
+			"Platforms": {
+				"win": "/dl/chrome/install/googlechromestandaloneenterprise.msi",
+				"win64": "/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+			},
+			"DatePattern": "dd/MM/yy"
+		}
 	},
 	"Install": {
 		"Setup": "googlechromestandaloneenterprise*.msi",
 		"Physical": {
 			"Arguments": "",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		}
 	}
 }

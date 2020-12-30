@@ -2,19 +2,25 @@
 	"Name": "Application Name",
 	"Source": "https://www.app.com",
 	"Get": {
-		"Uri": "https://update.app.com"
+		"Update": {
+			"Uri": "https://update.app.com"
+		},
+		"Download": {
+			"Uri": "https://download.app.com"
+		}
 	},
 	"Install": {
 		"Setup": "AppName.*.exe",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [
+
 			]
 		},
 		"Virtual": {
 			"Arguments": "",
 			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+
 			]
 		}
 	}
