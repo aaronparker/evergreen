@@ -8,7 +8,14 @@ Function Get-GitHubRepoRelease {
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $True, Position = 0)]
-        [ValidateNotNullOrEmpty()]
+        [ValidateScript( {
+            If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
+                $True
+            }
+            else {
+                Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
+            }
+        })]
         [System.String] $Uri,
 
         [Parameter(Mandatory = $True, Position = 1)]
