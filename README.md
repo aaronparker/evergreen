@@ -11,7 +11,7 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 * Retrieve the latest version of a particular application when comparing against a version already installed or downloaded
 * Return the URL for the latest version of the application if you need to download it locally for installation or deployment
 
-![leaf by The Icon Z from the Noun Project](https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png)
+![leaf by The Icon Z from the Noun Project](/img/EvergreenLeaf.png)
 
 Right now all functions consist of the following:
 
@@ -19,11 +19,11 @@ Right now all functions consist of the following:
 * Vendor - the vendor / developer of the application (e.g. `Adobe`, `Google`, `Microsoft`, etc.)
 * Product name - product names and optionally version (e.g. `AcrobatReaderDC`, `Chrome`, `VisualStudioCode`, etc.)
 
-This may change in a future release to simplify commands where the application can be a parameter or input into Evergreen to return the details for that application.
+This may change in a future release to simplify commands where the application can be a parameter or input into Evergreen to return the details for that application (e.g. `Get-Evergreen -App "MicrosoftEdge"`).
 
 ## Why
 
-There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, Evergreen can be used with the [Chocolatey Automatic Package Updater Module](https://www.powershellgallery.com/packages/AU/) to find the latest version of an application and then creating and submitting a Chocolatey package.
+There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, Evergreen can be used with the [Chocolatey Automatic Package Updater Module](https://www.powershellgallery.com/packages/AU/) to find the latest version of an application and then creating and submitting a Chocolatey package, or it can be used to create a [Windows Package Manager](https://github.com/microsoft/winget-cli) manifest (see a sample script here: [New-WinGetManifest.ps1](/tools/New-WinGetManifest.ps1)).
 
 Evergreen's focus is on simple integration for PowerShell scripts to provide product version numbers and download URLs. Ideal for use with the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment or with [Packer](https://www.packer.io/) to create evergreen machine images in Azure or AWS.
 
@@ -31,11 +31,15 @@ Evergreen's focus is on simple integration for PowerShell scripts to provide pro
 
 **Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
 
-Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API where possible. Evergreen uses several strategies to return the latest version of software:
+Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API wherever possible. Evergreen uses several strategies to return the latest version of software:
 
-1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. Microsoft Edge, Mozilla Firefox or Microsoft OneDrive
-2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return version and download links - e.g. Atom, Notepad++ or WinMerge
-3. Web page queries - often a vendor download pages will include a query when listing versions and download links. Evergreen can use the same approach - e.g. Microsoft FSLogix Apps or Zoom
+1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Public/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Public/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
+2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g. [Atom](/Evergreen/Public/Get-Atom.ps1), [Notepad++](/Evergreen/Public/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Public/Get-WinMerge.ps1)
+3. Web page queries - often a vendor download pages will include a query when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g. [Microsoft FSLogix Apps](/Evergreen/Public/Get-MicrosoftFSLogixApps.ps1) or [Zoom](/Evergreen/Public/Get-Zoom.ps1)
+
+## PowerShell Support
+
+Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
 
 ## Who
 
@@ -47,13 +51,15 @@ This module is maintained by the following community members
 
 ## Versioning
 
-The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it easy to understand when the last update was made.
+The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](/CHANGELOG.md) for details on changes introduced in each version.
 
 ## Installing the Module
 
 ### Install from the PowerShell Gallery
 
-The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). The module can be installed from the gallery with:
+The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). This is the best way to install Evergreen.
+
+The module can be installed from the gallery with:
 
 ```powershell
 Install-Module -Name Evergreen
@@ -101,7 +107,7 @@ Import-Module Evergreen
 [github-release-badge]: https://img.shields.io/github/release/aaronparker/Evergreen.svg?style=flat-square
 [github-release]: https://github.com/aaronparker/Evergreen/releases/latest
 [license-badge]: https://img.shields.io/github/license/aaronparker/Evergreen.svg?style=flat-square
-[license]: https://github.com/aaronparker/Evergreen/blob/master/LICENSE
+[license]: /LICENSE
 
 ---
 leaf by The Icon Z from the Noun Project

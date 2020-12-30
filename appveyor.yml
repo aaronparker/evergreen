@@ -24,4 +24,3 @@ skip_commits:
 only_commits:
   files:
     - Evergreen/**/*
-    - tests/**/*
