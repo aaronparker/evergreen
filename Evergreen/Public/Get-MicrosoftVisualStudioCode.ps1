@@ -55,7 +55,7 @@ Function Get-MicrosoftVisualStudioCode {
 
     # Walk through each platform
     ForEach ($plat in ($Platform | Sort-Object)) {
-        Write-Verbose "Getting release info for $plat."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $plat."
 
         # Walk through each channel in the platform
         ForEach ($ch in $Channel) {

@@ -49,9 +49,12 @@ Function Get-OracleVirtualBox {
             # Construct an array with the version number and each download
             ForEach ($link in $Links) {
                 $link -match $res.Get.Download.MatchDownloadFile | Out-Null
+                $Uri = "$($res.Get.Download.Uri)$Version/$($Matches[1])"
+
                 $PSObject = [PSCustomObject] @{
                     Version = $Version
-                    URI     = "$($res.Get.Download.Uri)$Version/$($Matches[1])"
+                    Type    = [System.IO.Path]::GetExtension($Uri).Split(".")[-1]
+                    URI     = $Uri
                 }
                 Write-Output -InputObject $PSObject
             }

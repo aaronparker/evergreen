@@ -8,7 +8,7 @@
 		"Download": {
 			"Uri": "https://download.virtualbox.org/virtualbox/",
 			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-			"MatchExtensions": ".*Version.*(exe)",
+			"MatchExtensions": ".*Version.*(exe)|.*Version.*(iso)",
 			"MatchDownloadFile": "<a[^>]*>([^<]+)</a>"
 		}
 	},
