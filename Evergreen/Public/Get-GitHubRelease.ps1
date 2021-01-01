@@ -48,7 +48,7 @@ Function Get-GitHubRelease {
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri          = $res.Get.Uri
+        Uri          = $Uri
         MatchVersion = $res.Get.MatchVersion
         Filter       = $res.Get.MatchFileTypes
     }

@@ -25,15 +25,15 @@ Function Get-OracleVirtualBox {
     Write-Verbose -Message $res.Name
     
     # Get latest VirtualBox version
-    $Version = Invoke-WebContent -Uri $res.Get.Uri
+    $Version = Invoke-WebContent -Uri $res.Get.Update.Uri
 
     If ($Null -ne $Version) {
-        $Version = [RegEx]::Match($Version, $res.Get.MatchVersion).Captures.Groups[1].Value
-        Write-Verbose "$($res.Get.DownloadUri)$Version/"
+        $Version = [RegEx]::Match($Version, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+        Write-Verbose "$($res.Get.Download.Uri)$Version/"
     
         # Get the content from the latest downloads folder
         $iwrParams = @{
-            Uri             = "$($res.Get.DownloadUri)$Version/"
+            Uri             = "$($res.Get.Download.Uri)$Version/"
             UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
             UseBasicParsing = $True
             ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
@@ -43,15 +43,15 @@ Function Get-OracleVirtualBox {
         If ($Null -ne $Downloads) {
             # Filter downloads with the version string and the file types we want
             $RegExVersion = $Version -replace ("\.", "\.")
-            $MatchExtensions = $res.Get.MatchExtensions -replace "Version", $RegExVersion
+            $MatchExtensions = $res.Get.Download.MatchExtensions -replace "Version", $RegExVersion
             $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
 
             # Construct an array with the version number and each download
             ForEach ($link in $Links) {
-                $link -match $res.Get.MatchDownloadFile | Out-Null
+                $link -match $res.Get.Download.MatchDownloadFile | Out-Null
                 $PSObject = [PSCustomObject] @{
                     Version = $Version
-                    URI     = "$($res.Get.DownloadUri)$Version/$($Matches[1])"
+                    URI     = "$($res.Get.Download.Uri)$Version/$($Matches[1])"
                 }
                 Write-Output -InputObject $PSObject
             }

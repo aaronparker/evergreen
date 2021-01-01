@@ -24,77 +24,36 @@ Function Get-Zoom {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    #region Zoom for Windows clients and plug-ins
-    ForEach ($installer in $res.Get.WindowsUris.GetEnumerator()) {
+    ForEach ($platform in $res.Get.Download.Keys) {
+        ForEach ($installer in $res.Get.Download[$platform].Keys) {
 
-        # Follow the download link which will return a 301/302
-        $redirectUrl = (Resolve-Uri -Uri $res.Get.WindowsUris[$installer.Key]).ResponseUri.AbsoluteUri
+            # Follow the download link which will return a 301/302
+            $redirectUrl = (Resolve-Uri -Uri $res.Get.Download[$platform][$installer]).ResponseUri.AbsoluteUri
 
-        # Match version number from the download URL
-        $regexMatch = [Regex]::Match($redirectUrl, $res.Get.MatchVersion)
-        $Version = "Unknown"
-        If ($regexMatch.Success -eq $true) {
-            $Version = $regexMatch.Value
+            # Match the URL without the text after the ?
+            try {
+                $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+            }
+            catch {
+                $Url = $redirectUrl
+            }
+
+            # Match version number from the download URL
+            try {
+                $Version = [RegEx]::Match($Url, $res.Get.MatchVersion).Captures.Groups[0].Value
+            }
+            catch {
+                $Version = "Latest"
+            }
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version  = $Version
+                Platform = $platform
+                Type     = $installer
+                URI      = $Url
+            }
+            Write-Output -InputObject $PSObject
         }
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version  = $Version
-            Platform = "Windows"
-            Type     = $installer.Name
-            URI      = $redirectUrl
-        }
-        Write-Output -InputObject $PSObject
     }
-    #endregion
-
-    #region Zoom for Virtual Desktops (Citrix)
-    ForEach ($installer in $res.Get.CitrixVDIUris.GetEnumerator()) {
-
-        # Follow the download link which will return a 301/302
-        $redirectUrl = (Resolve-Uri -Uri $res.Get.CitrixVDIUris[$installer.Key]).ResponseUri.AbsoluteUri
-
-        # Match version number from the download URL
-        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
-        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
-        $Version = "Unknown"
-        If ($regexMatch.Success -eq $true) {
-            $Version = $regexMatch.Value
-        }
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version  = $Version
-            Platform = "Citrix"
-            Type     = $installer.Name
-            URI      = $Url
-        }
-        Write-Output -InputObject $PSObject
-    }
-    #endregion
-
-    #region Zoom for Virtual Desktops (VMware)
-    ForEach ($installer in $res.Get.VMwareVDIUris.GetEnumerator()) {
-
-        # Follow the download link which will return a 301/302
-        $redirectUrl = (Resolve-Uri -Uri $res.Get.VMwareVDIUris[$installer.Key]).ResponseUri.AbsoluteUri
-
-        # Match version number from the download URL
-        $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
-        $regexMatch = [Regex]::Match($Url, $res.Get.MatchVersion)
-        $Version = "Unknown"
-        If ($regexMatch.Success -eq $true) {
-            $Version = $regexMatch.Value
-        }
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version  = $Version
-            Platform = "VMware"
-            Type     = $installer.Name
-            URI      = $Url
-        }
-        Write-Output -InputObject $PSObject
-    }
-    #endregion
 }

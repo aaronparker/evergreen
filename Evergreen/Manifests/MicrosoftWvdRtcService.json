@@ -4,17 +4,17 @@
 	"Get": {
 		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt",
 		"MatchFilename": "(MsRdcWebRTCSvc.*msi)",
-		"MatchVersion": "(\\d+\\.){2}\\d+"
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "MsRdcWebRTCSvc.*.msi",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/install /passive /norestart",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/install /passive /norestart",
 			"PostInstall": [
 			]
 		}

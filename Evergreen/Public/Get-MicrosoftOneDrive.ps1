@@ -50,13 +50,23 @@
                 # Find the latest version
                 ForEach ($node in $nodes) {
 
-                    # Construct the output; Return the custom object to the pipeline
+                    # Construct the output for EXE; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
                         Version    = $node.currentversion
-                        Platform   = "Windows"
                         Ring       = $ring.Name
                         SHA256hash = $node.binary.sha256hash
+                        Type       = "Exe"
                         URI        = $node.binary.url
+                    }
+                    Write-Output -InputObject $PSObject
+
+                    # Construct the output for MSIX; Return the custom object to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version    = $node.currentversion
+                        Ring       = $ring.Name
+                        SHA256hash = If ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } Else { "N/A" }
+                        Type       = "Msix"
+                        URI        = $node.msixbinary.url
                     }
                     Write-Output -InputObject $PSObject
                 }
