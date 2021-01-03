@@ -1,0 +1,43 @@
+{
+	"Name": "Mozilla Firefox",
+	"Source": "https://www.mozilla.org/",
+	"Get": {
+		"Update": {
+			"Uri": "https://product-details.mozilla.org/1.0/thunderbird_versions.json",
+			"Channels": [
+				"LATEST_THUNDERBIRD_VERSION"
+			]
+		},
+		"Download": {
+			"Uri": {
+				"LATEST_THUNDERBIRD_VERSION": {
+					"Exe": "https://download.mozilla.org/?product=thunderbird-latest-ssl&os=#platform&lang=#language",
+					"Msi": "https://download.mozilla.org/?product=thunderbird-msi-latest-ssl&os=#platform&lang=#language"					
+				}
+			},
+			"Platforms": [
+				"win64",
+				"win"
+			],
+			"Text": {
+				"Platform": "#platform",
+				"Language": "#language"
+			}
+		}
+	},
+	"Install": {
+		"Setup": "Thunderbird*.exe",
+		"Physical": {
+			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=true /PreventRebootRequired=true",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=false /PreventRebootRequired=true",
+			"PostInstall": [
+
+			]
+		}
+	}
+}

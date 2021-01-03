@@ -1,10 +1,10 @@
-Function Get-MicrosoftPowerShellCore {
+Function Get-MicrosoftPowerShell {
     <#
         .SYNOPSIS
-            Returns the latest PowerShell Core version number and download.
+            Returns the latest PowerShell version number and download.
 
         .DESCRIPTION
-            Returns the latest PowerShell Core version number and download.
+            Returns the latest PowerShell version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,11 +14,12 @@ Function Get-MicrosoftPowerShellCore {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-MicrosoftPowerShellCore
+            Get-MicrosoftPowerShell
 
             Description:
-            Returns the latest PowerShell Core version number and download for each platform.
+            Returns the latest PowerShell version number and download for each platform.
     #>
+    [Alias("Get-MicrosoftPowerShellCore")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()

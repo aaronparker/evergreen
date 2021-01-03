@@ -27,16 +27,16 @@ Function Get-VastLimitsUberAgent {
     
     # Get latest version and download latest release via SourceForge API
     $iwcParams = @{
-        Uri         = $res.Get.Uri
-        ContentType = $res.Get.ContentType
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
     }
     $Content = Invoke-WebContent @iwcParams
     
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {
         $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Content, $res.Get.MatchVersion).Captures.Groups[1].Value
-            URI     = $res.Get.DownloadUri -replace $res.Get.DownloadUriReplaceText, $Content
+            Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+            URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $Content
         }
         Write-Output -InputObject $PSObject
     }

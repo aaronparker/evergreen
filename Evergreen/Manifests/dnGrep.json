@@ -7,15 +7,15 @@
 		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "dngrep.*.msi",
 		"Preinstall": "",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/passive /norestart",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/passive /norestart",
 			"PostInstall": [
 			]
 		}

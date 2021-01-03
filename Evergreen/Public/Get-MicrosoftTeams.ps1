@@ -29,7 +29,7 @@ Function Get-MicrosoftTeams {
     Write-Verbose -Message $res.Name
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Teams
-    $Content = Invoke-WebContent -Uri $res.Get.Uri
+    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Content) {
@@ -38,24 +38,23 @@ Function Get-MicrosoftTeams {
         $Json = $Content | ConvertFrom-Json
 
         # Match version number
-        $Version = [RegEx]::Match($Json.releasesPath, $res.Get.MatchVersion).Captures.Groups[1].Value
+        $Version = [RegEx]::Match($Json.releasesPath, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
 
         # Step through each architecture
-        ForEach ($item in $res.Get.DownloadUri.GetEnumerator()) {
+        ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
             # Build the output object
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = $item.Name
-                URI          = $res.Get.DownloadUri[$item.Key] -replace $res.Get.DownloadUriReplaceText, $Version
+                URI          = $res.Get.Download.Uri[$item.Key] -replace $res.Get.Download.ReplaceText, $Version
             }
 
             # Output object to the pipeline
             Write-Output -InputObject $PSObject
         }
     }
-
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Update.Uri)."
     }
 }

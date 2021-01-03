@@ -7,15 +7,15 @@
 		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "setup.*.msi",
 		"Preinstall": "",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/passive /norestart",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/passive /norestart",
 			"PostInstall": [
 			]
 		}

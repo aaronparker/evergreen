@@ -1,0 +1,26 @@
+{
+	"Name": "Microsoft Remote Desktop",
+	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-7-10",
+	"Get": {
+		"Uri": {
+			"x64": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4IUH3",
+			"x86": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4J8oB",
+			"ARM64": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4J6o5"
+		},
+		"MatchFilename": "(RemoteDesktop.*msi)",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+	},
+	"Install": {
+		"Setup": "RemoteDesktop.*.msi",
+		"Physical": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": [
+			]
+		}
+	}
+}

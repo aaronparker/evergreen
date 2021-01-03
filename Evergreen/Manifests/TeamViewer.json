@@ -11,17 +11,17 @@
 		}
 	},
 	"Install": {
-		"Setup": "AppName.*.exe",
+		"Setup": "TeamViewer.*.exe",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "/S",
 			"PostInstall": [
 
 			]
 		},
 		"Virtual": {
-			"Arguments": "",
+			"Arguments": "/S",
 			"PostInstall": [
-				"Get-Service -Name AdobeARMservice -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled"
+
 			]
 		}
 	}
