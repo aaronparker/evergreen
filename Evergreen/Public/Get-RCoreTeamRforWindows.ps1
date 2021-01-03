@@ -17,6 +17,7 @@ Function Get-RCoreTeamRforWindows {
             Returns the current version and download URL for R for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 

@@ -1,5 +1,20 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-MicrosoftWvdRemoteDesktop`, `Get-MozillaThunderbird`, `Get-ProjectLibre`, `Get-RingCentral`, `Get-RCoreTeamRforWindows`, `Get-StefansToolsgregpWin`
+* Renames `Get-MicrosoftPowerShellCore` to `Get-MicrosoftPowerShell` - PowerShell Core was renamed to PowerShell with the release of PowerShell 7.0. The alias `Get-MicrosoftPowerShellCore` is included for backward compatibility
+* Fixes an issue with `Get-GitHubRelease` that ignored anything passed to the `-Uri` parameter
+* Adds the MSIX format to the output of `Get-MicrosoftOneDrive` - filter output with the `Type` property (I'm not really sure how useful MSIX format for the OneDrive client is right now though...)
+* Adds the VboxGuestAdditions ISO to the output of `Get-OracleVirtualBox` - filter output with the `Type` property
+* Refactors `Get-Zoom` to simplify function code and improve output
+* Updates version output for `Get-MicrosoftWvdRtcService` and `Get-MicrosoftWvdInfraAgent`
+* Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
+* BREAKING CHANGES:
+  * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
+  * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
+  * Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
+
 ## 2012.242
 
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
