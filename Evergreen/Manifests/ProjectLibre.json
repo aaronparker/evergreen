@@ -1,0 +1,35 @@
+{
+	"Name": "ProjectLibre",
+	"Source": "https://www.projectlibre.com/",
+	"Get": {
+		"Update": {
+			"Uri": "https://sourceforge.net/projects/projectlibre/best_release.json",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download": {
+			"Folder": "ProjectLibre",
+			"Feed": "https://sourceforge.net/projects/projectlibre/rss?path=",
+			"XPath": "//item",
+			"FilterProperty": "link",
+			"ContentType": "application/rss+xml; charset=utf-8",
+			"Uri": "https://nchc.dl.sourceforge.net/project/projectlibre"
+		},
+		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
+		"DatePattern": "yyyy-MM-dd HH:mm:ss"
+	},
+	"Install": {
+		"Setup": "projectlibre*.exe|projectlibre*.msi",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		}
+	}
+}
