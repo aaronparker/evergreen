@@ -1,5 +1,5 @@
 {
-	"Name": "PowerShell Core",
+	"Name": "Microsoft PowerShell",
 	"Source": "https://docs.microsoft.com/powershell/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/PowerShell/PowerShell/releases/latest",
