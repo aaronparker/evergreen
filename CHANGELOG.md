@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-Terminals`, `Get-PeaZipPeaZip`, `Get-Slack`, `Get-MicrosoftWindowsPackageManagerClient`, `Get-KeePassXCTeamKeePassXC`
+* Renames `Get-Atom`, to `Get-GitHubAtom` to better align with vendor name. The alias `Get-Atom` is included for backward compatibility
+* BREAKING CHANGES:
+  * None
+
 ## 2101.249
 
 * Adds `Get-MicrosoftWvdRemoteDesktop`, `Get-MozillaThunderbird`, `Get-ProjectLibre`, `Get-RingCentral`, `Get-RCoreTeamRforWindows`, `Get-StefansToolsgregpWin`
