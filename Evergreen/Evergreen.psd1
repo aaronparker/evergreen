@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-1Password', 'Get-7zip', 
                'Get-AdobeAcrobatProDC', 'Get-AdobeAcrobatReaderDC', 
-               'Get-AdoptOpenJDK', 'Get-Atom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
+               'Get-AdoptOpenJDK', 'Get-GitHubAtom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 'Get-Slack',
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
@@ -81,7 +81,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-CitrixWorkspaceApp', 'Get-CitrixWorkspaceAppFeed', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-GitHubRelease', 'Get-Good', 
-               'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 
+               'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 'Get-PeaZipPeaZip',
                'Get-JamTreeSizeFree', 'Get-JamTreeSizeProfessional', 'Get-KeePass', 
                'Get-LibreOffice', 'Get-Microsoft.NET', 'Get-MicrosoftEdge', 
                'Get-MicrosoftFSLogixApps', 'Get-MicrosoftOffice', 'Get-Terminals',
@@ -107,7 +107,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 
+AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom',
                'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore'
 
 # DSC resources to export from this module

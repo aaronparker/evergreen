@@ -1,10 +1,10 @@
-Function Get-Terminals {
+Function Get-PeaZipPeaZip {
     <#
         .SYNOPSIS
-            Returns the latest Terminals version number and download.
+            Returns the latest PeaZip version number and download.
 
         .DESCRIPTION
-            Returns the latest Terminals version number and download.
+            Returns the latest PeaZip version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,13 +14,12 @@ Function Get-Terminals {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-Terminals
+            Get-PeaZipPeaZip
 
             Description:
-            Returns the latest Terminals version number and download for each platform.
+            Returns the latest PeaZip version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 

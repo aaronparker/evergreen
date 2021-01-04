@@ -1,4 +1,4 @@
-Function Get-Atom {
+Function Get-GitHubAtom {
     <#
         .SYNOPSIS
             Returns the latest Atom version number and download.
@@ -14,11 +14,12 @@ Function Get-Atom {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-Atom
+            Get-GitHubAtom
 
             Description:
             Returns the latest Atom version number and download for each platform.
     #>
+    [Alias("Get-Atom")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
     Param()
