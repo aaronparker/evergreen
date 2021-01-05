@@ -1,10 +1,10 @@
-Function Get-Atom {
+Function Get-MicrosoftWindowsPackageManagerClient {
     <#
         .SYNOPSIS
-            Returns the latest Atom version number and download.
+            Returns the latest Microsoft Windows Package Manager Client (winget) version number and download.
 
         .DESCRIPTION
-            Returns the latest Atom version number and download.
+            Returns the latest Microsoft Windows Package Manager Client (winget) version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,10 +14,10 @@ Function Get-Atom {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-Atom
+            Get-MicrosoftWindowsPackageManagerClient
 
             Description:
-            Returns the latest Atom version number and download for each platform.
+            Returns the latest Microsoft Windows Package Manager Client (winget) version number and download.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]

@@ -1,0 +1,34 @@
+{
+	"Name": "Slack",
+	"Source": "https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer",
+	"Get": {
+		"Update": {
+			"Uri": "https://update.app.com"
+		},
+		"Download": {
+			"PerUser": {
+				"x64": "https://slack.com/ssb/download-win64-msi-legacy"
+			},
+			"PerMachine": {
+				"x86": "https://slack.com/ssb/download-win-msi",
+				"x64": "https://slack.com/ssb/download-win64-msi"
+			}
+		},
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+	},
+	"Install": {
+		"Setup": "Slack.*.msi",
+		"Physical": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": [
+
+			]
+		}
+	}
+}

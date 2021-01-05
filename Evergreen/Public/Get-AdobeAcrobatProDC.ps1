@@ -44,15 +44,6 @@ Function Get-AdobeAcrobatProDC {
             URI      = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $versionString
         }
         Write-Output -InputObject $PSObject
-        <#
-        $PSObject = [PSCustomObject] @{
-            Version  = $Content
-            Type     = "Updater"
-            Language = "Multi"
-            URI      = "$($updateUrl)$($versionString)/AcroRdrDCUpd$($versionString)_MUI.msp"
-        }
-        Write-Output -InputObject $PSObject
-        #>
     }
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."

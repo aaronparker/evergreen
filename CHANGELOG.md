@@ -1,5 +1,12 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-Terminals`, `Get-PeaZipPeaZip`, `Get-Slack`, `Get-MicrosoftWindowsPackageManagerClient`, `Get-KeePassXCTeamKeePassXC`
+* Renames `Get-Atom`, to `Get-GitHubAtom` to better align with vendor name. The alias `Get-Atom` is included for backward compatibility
+* Fixes an issue with `Get-AdobeAcrobatReaderDC` - Adobe doesn't use HTTPS with their download locations yet. See [#99](https://github.com/aaronparker/Evergreen/issues/99)
+* Updates `Get-AdobeAcrobatReaderDC` to simplify code and better align manifest with standard structure
+
 ## 2101.249
 
 * Adds `Get-MicrosoftWvdRemoteDesktop`, `Get-MozillaThunderbird`, `Get-ProjectLibre`, `Get-RingCentral`, `Get-RCoreTeamRforWindows`, `Get-StefansToolsgregpWin`
@@ -20,8 +27,7 @@
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
 * Adds Windows Installer downloads ouput to `Get-FoxitReader`
 * Updates `Get-MicrosoftSsms` to query an evergreen update URL to gather new versions from the product releases feed
-  * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns
-  * See #82
+  * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
 * Updates `Get-MicrosoftSsms` to output all supported languages for downloads - filter output on the `Language` property
 * Updates `Get-MozillaFirefox` to return both Exe and Msi versions of the Firefox installer
 * Adds SHA256 hash property to output from `Get-MicrosoftVisualStudioCode`
@@ -31,7 +37,7 @@
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
 * BREAKING CHANGES:
-  * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see #76
+  * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
   * Removes Beta and Snapshots releases from `Get-Cyberduck`
   * Removes Debug releases from `Get-Greenshot`
   * Removes SafeMode releases from `Get-Handbrake`
@@ -42,20 +48,20 @@
 ## 2012.225
 
 * Adds `Get-Microsoft.NET` (.NET 5.0 and .NET Core), `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
-* Updates `Get-OpenJDK` to return all releases. Further filtering will be added in the future per #76
-* Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI Firefox installers and updates output with additional properties (`Architecture`, `Channel` and `Type`) #83.
+* Updates `Get-OpenJDK` to return all releases. Further filtering will be added in the future per [#76](https://github.com/aaronparker/Evergreen/issues/76)
+* Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI Firefox installers and updates output with additional properties (`Architecture`, `Channel` and `Type`). See [#83](https://github.com/aaronparker/Evergreen/issues/83).
   * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
-* Updates `Get-AdobeAcrobatReader` to return additional languages #84. Note that Reader DC does not provide the latest version for all languages - it may be a better approach to use the [MUI version of the Reader installer](https://helpx.adobe.com/au/reader/faq.html#Enterprisedeployment) if your language is supported
+* Updates `Get-AdobeAcrobatReader` to return additional languages [#84](https://github.com/aaronparker/Evergreen/issues/84). Note that Reader DC does not provide the latest version for all languages - it may be a better approach to use the [MUI version of the Reader installer](https://helpx.adobe.com/au/reader/faq.html#Enterprisedeployment) if your language is supported
 
 ## 2010.219
 
-* Update `Get-FileZilla` to fix invalid download URI returned from the FileZilla update feed. Fix #75
-* Update `Get-Cyberduck` to remove code that replaces `//` with `/`. Returns unfiltered URL from Cyberduck update feed. Fix #75
+* Update `Get-FileZilla` to fix invalid download URI returned from the FileZilla update feed. Fix [#75](https://github.com/aaronparker/Evergreen/issues/75)
+* Update `Get-Cyberduck` to remove code that replaces `//` with `/`. Returns unfiltered URL from Cyberduck update feed. Fix [#75](https://github.com/aaronparker/Evergreen/issues/75)
 
 ## 2009.218
 
-* Fix `Get-FoxitReader` with changes to download page in `FoxitReader.json`. Address #72
-* Fix `Get-Zoom` with changes to resolved URIs. Address #73
+* Fix `Get-FoxitReader` with changes to download page in `FoxitReader.json`. Address [#72](https://github.com/aaronparker/Evergreen/issues/72)
+* Fix `Get-Zoom` with changes to resolved URIs. Address [#73](https://github.com/aaronparker/Evergreen/issues/73)
 * Update `MicrosoftWvdRtcService.json` to new version of the Microsoft Remote Desktop WebRTC Redirector Service
 * Update `Resolve-Uri` with additional verbose output
 

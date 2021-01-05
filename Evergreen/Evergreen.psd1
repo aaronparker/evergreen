@@ -27,7 +27,7 @@ Author = 'Aaron Parker; Bronson Magnan; Trond Eric Haarvarstein'
 CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
 
 # Copyright statement for this module
-Copyright = '(c) 2020 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
+Copyright = '(c) 2021 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Create evergeen Windows image build scripts with the latest versions of applications. Evergreen is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'
@@ -72,24 +72,24 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-1Password', 'Get-7zip', 
                'Get-AdobeAcrobatProDC', 'Get-AdobeAcrobatReaderDC', 
-               'Get-AdoptOpenJDK', 'Get-Atom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
-               'Get-CitrixApplicationDeliveryManagementFeed', 
+               'Get-AdoptOpenJDK', 'Get-GitHubAtom', 'Get-BISF', 'Get-CitrixAppLayeringFeed', 
+               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-Slack',
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
                'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
-               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
+               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 'Get-KeePassXCTeamKeePassXC',
                'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixVMTools', 
                'Get-CitrixWorkspaceApp', 'Get-CitrixWorkspaceAppFeed', 
                'Get-ControlUpAgent', 'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 
                'Get-FoxitReader', 'Get-GitforWindows', 'Get-GitHubRelease', 'Get-Good', 
-               'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 
+               'Get-GoogleChrome', 'Get-Greenshot', 'Get-Handbrake', 'Get-PeaZipPeaZip',
                'Get-JamTreeSizeFree', 'Get-JamTreeSizeProfessional', 'Get-KeePass', 
                'Get-LibreOffice', 'Get-Microsoft.NET', 'Get-MicrosoftEdge', 
-               'Get-MicrosoftFSLogixApps', 'Get-MicrosoftOffice', 
-               'Get-MicrosoftOneDrive', 'Get-MicrosoftPowerShell', 
+               'Get-MicrosoftFSLogixApps', 'Get-MicrosoftOffice', 'Get-Terminals',
+               'Get-MicrosoftOneDrive', 'Get-MicrosoftPowerShell', 'Get-MicrosoftWindowsPackageManagerClient',
                'Get-MicrosoftPowerToys', 'Get-MicrosoftSsms', 'Get-MicrosoftTeams', 
                'Get-MicrosoftVisualStudioCode', 'Get-MicrosoftWvdBootloader', 
                'Get-MicrosoftWvdInfraAgent', 'Get-MicrosoftWvdRemoteDesktop', 
-               'Get-MicrosoftWvdRtcService', 'Get-MozillaFirefox', 
+               'Get-MicrosoftWvdRtcService', 'Get-MozillaFirefox', 'Get-SumatraPDFReader',
                'Get-MozillaThunderbird', 'Get-mRemoteNG', 'Get-NotepadPlusPlus', 
                'Get-OpenJDK', 'Get-OpenShellMenu', 'Get-OracleJava8', 
                'Get-OracleVirtualBox', 'Get-PaintDotNet', 'Get-PDFForgePDFCreator', 
@@ -107,7 +107,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 
+AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom',
                'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore'
 
 # DSC resources to export from this module
