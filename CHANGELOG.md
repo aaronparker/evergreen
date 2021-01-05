@@ -2,7 +2,7 @@
 
 ## 2101.256
 
-* Adds `Get-Terminals`, `Get-PeaZipPeaZip`, `Get-Slack`, `Get-MicrosoftWindowsPackageManagerClient`, `Get-KeePassXCTeamKeePassXC`
+* Adds `Get-Terminals`, `Get-PeaZipPeaZip`, `Get-Slack`, `Get-MicrosoftWindowsPackageManagerClient`, `Get-KeePassXCTeamKeePassXC`, `Get-SumatraPDFReader`
 * Renames `Get-Atom`, to `Get-GitHubAtom` to better align with vendor name. The alias `Get-Atom` is included for backward compatibility
 * Fixes an issue with `Get-AdobeAcrobatReaderDC` - Adobe doesn't use HTTPS with their download locations yet. See [#99](https://github.com/aaronparker/Evergreen/issues/99)
 * Updates `Get-AdobeAcrobatReaderDC` to simplify code and better align manifest with standard structure
