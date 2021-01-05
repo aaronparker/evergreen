@@ -70,13 +70,13 @@
 * Renames `Get-CitrixXenServerTools` to `Get-CitrixVMTools` and adds `Get-CitrixXenServerTools` alias
 * Updates `Get-CitrixVMTools` with new release URL for v7 updates and add v9 updates
 * Updates install command lines for `Get-CitrixVMTools`
-* Adds `Get-AdoptOpenJDK` - closes #69
+* Adds `Get-AdoptOpenJDK` - closes [#69](https://github.com/aaronparker/Evergreen/issues/69)
 
 ## 2006.207
 
-* Fix path in downloads from apps hosted on Source Forge returned in `ConvertFrom-SourceForgeReleasesJson.ps1`. Fixes #67
-* Update `Get-MozillaFirefox` to return Extended Support Release as well as Current Release. Address #61
-* Update manifests to address #57 #54 #53 #52
+* Fix path in downloads from apps hosted on Source Forge returned in `ConvertFrom-SourceForgeReleasesJson.ps1`. Fixes [#67](https://github.com/aaronparker/Evergreen/issues/67)
+* Update `Get-MozillaFirefox` to return Extended Support Release as well as Current Release. Address [#61](https://github.com/aaronparker/Evergreen/issues/61)
+* Update manifests to address [#57](https://github.com/aaronparker/Evergreen/issues/57) [#54](https://github.com/aaronparker/Evergreen/issues/54) [#53](https://github.com/aaronparker/Evergreen/issues/53) [#52](https://github.com/aaronparker/Evergreen/issues/52)
 
 ## 2006.203
 
