@@ -28,21 +28,22 @@ Function Get-AdobeAcrobatReaderDC {
     Write-Verbose -Message $res.Name
 
     #region Installer downloads
-    ForEach ($platform in $res.Get.Installer.Platforms) {
-        ForEach ($language in $res.Get.Installer.Languages) {
-            Write-Verbose -Message "Searching: [$($platform.platform_type)] [$language]"
-            $Uri = $res.Get.Installer.Uri -replace "#Platform", $platform.platform_type
+    ForEach ($platform in $res.Get.Download.Platforms) {
+        ForEach ($language in $res.Get.Download.Languages) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
+            $Uri = $res.Get.Download.Uri -replace "#Platform", $platform.platform_type
             $Uri = $Uri -replace "#Dist", $platform.platform_dist
             $Uri = $Uri -replace "#Language", $language
             $Uri = $Uri -replace "#Arch", $platform.platform_arch
             $Uri = $Uri -replace " ", "%20"
             $iwcParams = @{
                 Uri             = $Uri
-                Headers         = $res.Get.Installer.Headers
+                Headers         = $res.Get.Download.Headers
                 UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
                 UseBasicParsing = $True
                 ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
             }
+            # TODO: revert back to Invoke-WebContent
             #$Content = Invoke-WebContent @iwcParams
             $Content = Invoke-WebRequest @iwcParams
 
@@ -74,21 +75,19 @@ Function Get-AdobeAcrobatReaderDC {
 
     # Construct update download list
     If ($Null -ne $Content) {
-        $versionString = $Content.Replace(".", "")
-        $PSObject = [PSCustomObject] @{
-            Version  = $Content
-            Type     = "Updater"
-            Language = "Neutral"
-            URI      = $res.Get.Update.Download -replace $res.Get.Update.ReplaceText, $versionString
+        
+        ForEach ($update in $res.Get.Download.Updates.GetEnumerator()) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching updates: [$($update.Name)]."
+
+            # Output objects
+            $PSObject = [PSCustomObject] @{
+                Version  = $Content
+                Type     = "Updater"
+                Language = $update.Name
+                URI      = $res.Get.Download.Updates[$update.key] -replace $res.Get.Download.ReplaceText, ($Content.Replace(".", ""))
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
-        $PSObject = [PSCustomObject] @{
-            Version  = $Content
-            Type     = "Updater"
-            Language = "Multi"
-            URI      = $res.Get.Update.DownloadMsp -replace $res.Get.Update.ReplaceText, $versionString
-        }
-        Write-Output -InputObject $PSObject
     }
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."

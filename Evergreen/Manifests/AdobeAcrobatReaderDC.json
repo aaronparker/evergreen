@@ -2,7 +2,11 @@
 	"Name": "Adobe Acrobat Reader DC",
 	"Source": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html",
 	"Get": {
-		"Installer": {
+		"Update": {
+			"Uri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
+			"ContentType": "text/plain; charset=utf-8"
+		},
+		"Download": {
 			"Uri": "https://get.adobe.com/reader/webservices/json/standalone/?platform_type=win&platform_dist=#Dist&platform_arch=#Arch&language=#Language&eventname=readerotherversions",
 			"Languages": [
 				"English",
@@ -34,13 +38,11 @@
 				"X-Requested-With": "XMLHttpRequest",
 				"Referer": "https://get.adobe.com/reader/enterprise/",
 				"Accept": "*/*"
-			}
-		},
-		"Update": {
-			"Uri": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt",
-			"Download": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version.msp",
-			"DownloadMsp": "https://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version_MUI.msp",
-			"ContentType": "text/plain; charset=utf-8",
+			},
+			"Updates": {
+				"Neutral": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version.msp",
+				"Multi": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version_MUI.msp"
+			},
 			"ReplaceText": "#version"
 		}
 	},
