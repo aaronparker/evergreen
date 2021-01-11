@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-VercelHyper`, `Get-AdobeBrackets`
+
 ## 2101.256
 
 * Adds `Get-Terminals`, `Get-PeaZipPeaZip`, `Get-Slack`, `Get-MicrosoftWindowsPackageManagerClient`, `Get-KeePassXCTeamKeePassXC`, `Get-SumatraPDFReader`

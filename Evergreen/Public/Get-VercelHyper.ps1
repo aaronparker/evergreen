@@ -1,10 +1,10 @@
-Function Get-AdobeBrackets {
+Function Get-VercelHyper {
     <#
         .SYNOPSIS
-            Returns the latest Adobe Brackets version number and download.
+            Returns the latest Vercel Hyper version number and download.
 
         .DESCRIPTION
-            Returns the latest Adobe Brackets version number and download.
+            Returns the latest Vercel Hyper version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,14 +14,13 @@ Function Get-AdobeBrackets {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-AdobeBrackets
+            Get-VercelHyper
 
             Description:
-            Returns the latest Adobe Brackets version number and download.
+            Returns the latest Vercel Hyper version number and download for each platform.
     #>
     [Alias("Get-Atom")]
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 
