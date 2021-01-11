@@ -12,7 +12,7 @@ Function Get-Fork {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-7zip
+            Get-Fork
 
             Description:
             Returns the current version and download URLs for Fork.
