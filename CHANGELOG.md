@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2101.263
 
 * Adds `Get-AdobeBrackets`, `Get-Fork`, `Get-MicrosoftVisualStudio`, `Get-VercelHyper`
 * Updates manifest for `MicrosoftWvdRemoteDesktop` to ensure evergreen source URLs used for resolving downloads
