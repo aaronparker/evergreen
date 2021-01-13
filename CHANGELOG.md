@@ -2,7 +2,9 @@
 
 ## VERSION
 
-* Adds `Get-VercelHyper`, `Get-AdobeBrackets`
+* Adds `Get-AdobeBrackets`, `Get-Fork`, `Get-MicrosoftVisualStudio`, `Get-VercelHyper`
+* Updates manifest for `MicrosoftWvdRemoteDesktop` to ensure evergreen source URLs used for resolving downloads
+* Updates manifest for `MicrosoftVisualStudioCode`
 
 ## 2101.256
 

@@ -25,24 +25,25 @@ Function Get-MicrosoftVisualStudio {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Resolve the update URI
-    $Url = (Resolve-Uri -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
-    If ($Url) {
+    # Resolve the update feed from the initial URI
+    $ResolvedUrl = (Resolve-Uri -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
 
-        # Get details from the update feed
+    If ($ResolvedUrl) {
         try {
+            # Get details from the update feed
             $params = @{
-                Uri             = $Url
+                Uri             = $ResolvedUrl
                 UseBasicParsing = $true
+                ErrorAction     = "SilentlyContinue"
             }
             $updateFeed = Invoke-RestMethod @params
         }
         catch {
-            Throw "Failed to resolve update feed: $Url."
+            Throw "Failed to resolve update feed: $ResolvedUrl."
             Break
         }
         finally {
-
+            # Build the output object/s
             $items = $updateFeed.channelItems | Where-Object { $_.id -eq $res.Get.Update.MatchFilter }
             ForEach ($item in $items) { 
                 $PSObject = [PSCustomObject] @{
