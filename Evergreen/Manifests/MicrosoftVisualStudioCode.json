@@ -8,11 +8,15 @@
 		"Setup": "VSCode*.exe",
 		"Physical": {
 			"Arguments": "/silent /mergetasks='!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'",
-			"PostInstall": []
+			"PostInstall": [
+
+			]
 		},
 		"Virtual": {
-			"Arguments": "",
-			"PostInstall": []
+			"Arguments": "/silent /mergetasks='!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath'",
+			"PostInstall": [
+
+			]
 		}
 	}
 }

@@ -1,0 +1,28 @@
+{
+	"Name": "Microsoft Visual Studio",
+	"Source": "https://visualstudio.microsoft.com/",
+	"Get": {
+		"Update": {
+            "Uri": "https://aka.ms/vs/16/release/channel",
+            "MatchFilter": "VisualStudio.16.Release.Bootstrappers.Setup"
+		},
+		"Download": {
+			"Uri": "https://download.app.com"
+		}
+	},
+	"Install": {
+		"Setup": "AppName.*.exe",
+		"Physical": {
+			"Arguments": "--channelid \"VisualStudio.16.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "--channelid \"VisualStudio.16.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
+			"PostInstall": [
+
+			]
+		}
+	}
+}

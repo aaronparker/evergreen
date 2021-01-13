@@ -3,9 +3,9 @@
 	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-7-10",
 	"Get": {
 		"Uri": {
-			"x64": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4IUH3",
-			"x86": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4J8oB",
-			"ARM64": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4J6o5"
+			"x64": "https://go.microsoft.com/fwlink/?linkid=2068602",
+			"x86": "https://go.microsoft.com/fwlink/?linkid=2098960",
+			"ARM64": "https://go.microsoft.com/fwlink/?linkid=2098961"
 		},
 		"MatchFilename": "(RemoteDesktop.*msi)",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4})"

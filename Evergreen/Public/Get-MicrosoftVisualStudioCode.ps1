@@ -67,7 +67,7 @@ Function Get-MicrosoftVisualStudioCode {
                 Platform     = $plat
                 Architecture = Get-Architecture -String $releaseJson.url
                 Channel      = $ch
-                SHA265Hash   = $releaseJson.sha256hash
+                Sha256       = $releaseJson.sha256hash
                 URI          = $releaseJson.url
             }
             Write-Output -InputObject $PSObject
