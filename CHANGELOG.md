@@ -1,5 +1,9 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-AtlassianBitbucket`
+
 ## 2101.263
 
 * Adds `Get-AdobeBrackets`, `Get-Fork`, `Get-MicrosoftVisualStudio`, `Get-VercelHyper`

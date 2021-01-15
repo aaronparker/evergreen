@@ -1,0 +1,32 @@
+{
+	"Name": "Atlassian Bitbucket",
+	"Source": "https://www.sourcetreeapp.com/",
+	"Get": {
+		"Update": {
+            "Uri": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/RELEASES?id=SourceTree&localVersion=3.4.2&arch=amd64",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		},
+		"Download": {
+            "Uri": {
+                "Exe": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/SourceTreeSetup-#version.exe",
+                "Msi": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/SourcetreeEnterpriseSetup_#version.msi"
+            },
+            "ReplaceText": "#version"
+		}
+	},
+	"Install": {
+		"Setup": "SourcetreeEnterpriseSetup*.msi",
+		"Physical": {
+			"Arguments": "ACCEPTEULA=1 /qn",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "ACCEPTEULA=1 /qn",
+			"PostInstall": [
+
+			]
+		}
+	}
+}
