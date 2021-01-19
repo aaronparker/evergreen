@@ -3,6 +3,8 @@
 ## VERSION
 
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`
+* BREAKING CHANGES
+  * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
 
 ## 2101.263
 
