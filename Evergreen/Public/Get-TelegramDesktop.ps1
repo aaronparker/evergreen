@@ -1,10 +1,7 @@
-Function Get-VercelHyper {
+Function Get-TelegramDesktop {
     <#
         .SYNOPSIS
-            Returns the latest Vercel Hyper version number and download.
-
-        .DESCRIPTION
-            Returns the latest Vercel Hyper version number and download.
+            Returns the latest Telegram Desktop version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -14,10 +11,10 @@ Function Get-VercelHyper {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-VercelHyper
+            Get-TelegramDesktop
 
             Description:
-            Returns the latest Vercel Hyper version number and download for each platform.
+            Returns the latest Telegram Desktop version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
