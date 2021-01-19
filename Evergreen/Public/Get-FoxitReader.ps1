@@ -12,10 +12,10 @@ Function Get-FoxitReader {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-CitrixFoxitReader
+            Get-FoxitReader
 
             Description:
-            Returns the current version and download URL Foxit Reader.
+            Returns the current version and download URL for Foxit Reader.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]

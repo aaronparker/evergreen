@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`
+* Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`
 
 ## 2101.263
 
