@@ -1,0 +1,23 @@
+{
+	"Name": "Bitwarden Desktop",
+	"Source": "https://bitwarden.com/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/bitwarden/desktop/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$"
+	},
+	"Install": {
+		"Setup": "Bitwarden*.exe",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/S",
+			"PostInstall": [
+			]
+		}
+	}
+}
