@@ -1,0 +1,23 @@
+{
+	"Name": "Microsoft Bicep",
+	"Source": "https://atom.io/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/azure/bicep/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$"
+	},
+	"Install": {
+		"Setup": "bicep-setup*.exe",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/install /quiet",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/install /quiet",
+			"PostInstall": [
+			]
+		}
+	}
+}
