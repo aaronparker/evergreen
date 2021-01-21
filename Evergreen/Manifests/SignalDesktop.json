@@ -1,0 +1,23 @@
+{
+	"Name": "Signal for Windows",
+	"Source": "https://www.signal.org/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/signalapp/Signal-Desktop/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$"
+	},
+	"Install": {
+		"Setup": "signal-desktop*.exe",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/S",
+			"PostInstall": [
+			]
+		}
+	}
+}

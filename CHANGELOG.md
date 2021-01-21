@@ -1,5 +1,13 @@
 # Change Log
 
+## VERSION
+
+* Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
+* Updates `Get-MicrosofPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
+* BREAKING CHANGES
+  * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
+  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Obect` to filter on `Stable` or `LTS`
+
 ## 2101.263
 
 * Adds `Get-AdobeBrackets`, `Get-Fork`, `Get-MicrosoftVisualStudio`, `Get-VercelHyper`

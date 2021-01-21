@@ -1,21 +1,30 @@
 {
-	"Name": "Microsoft PowerShell",
-	"Source": "https://docs.microsoft.com/powershell/",
-	"Get": {
-		"Uri": "https://api.github.com/repos/PowerShell/PowerShell/releases/latest",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$"
-	},
-	"Install": {
-		"Setup": "PowerShell*.msi",
-		"Preinstall": "",
-		"Physical": {
-			"Arguments": "/quiet /noinstall",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "/quiet /noinstall",
-			"PostInstall": []
-		}
-	}
+    "Name": "Microsoft PowerShell",
+    "Source": "https://docs.microsoft.com/powershell/",
+    "Get": {
+        "Update": {
+            "Uri": "https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/metadata.json"
+        },
+        "Download": {
+            "Tags": {
+                "Stable": "StableReleaseTag",
+                "LTS": "LTSReleaseTag"
+			},
+			"Uri": "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+            "MatchFileTypes": "\\.exe$|\\.msi$"
+        }
+    },
+    "Install": {
+        "Setup": "PowerShell*.msi",
+        "Preinstall": "",
+        "Physical": {
+            "Arguments": "/quiet /noinstall",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/quiet /noinstall",
+            "PostInstall": []
+        }
+    }
 }
