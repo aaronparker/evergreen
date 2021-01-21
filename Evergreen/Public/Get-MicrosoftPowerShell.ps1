@@ -3,9 +3,6 @@ Function Get-MicrosoftPowerShell {
         .SYNOPSIS
             Returns the latest PowerShell version number and download.
 
-        .DESCRIPTION
-            Returns the latest PowerShell version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
@@ -28,17 +25,43 @@ Function Get-MicrosoftPowerShell {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    # Pass the repo releases API URL and return a formatted object
-    $params = @{
-        Uri          = $res.Get.Uri
-        MatchVersion = $res.Get.MatchVersion
-        Filter       = $res.Get.MatchFileTypes
+    # Get the latest release from the PowerShell metadata
+    try {
+        # Get details from the update feed
+        $params = @{
+            Uri             = $res.Get.Update.Uri
+            UseBasicParsing = $true
+            ErrorAction     = "SilentlyContinue"
+        }
+        $metadata = Invoke-RestMethod @params
     }
-    $object = Get-GitHubRepoRelease @params
-    If ($object) {
-        Write-Output -InputObject $object
+    catch {
+        Throw "Failed to resolve metadata: $($res.Get.Update.Uri)."
+        Break
     }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
+
+    # Query the releases API for each release tag specified in the manifest
+    ForEach ($release in $res.Get.Download.Tags.GetEnumerator()) {
+
+        # Determine the tag
+        $Tag = $metadata.($res.Get.Download.Tags[$release.key])
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Query release for tag: $Tag."
+
+        # Pass the repo releases API URL and return a formatted object
+        $params = @{
+            Uri          = "$($res.Get.Download.Uri)$($Tag)"
+            MatchVersion = $res.Get.Download.MatchVersion
+            Filter       = $res.Get.Download.MatchFileTypes
+        }
+        $object = Get-GitHubRepoRelease @params
+
+        If ($object) {
+            # Add the Release property to the object returned from Get-GitHubRepoRelease
+            $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
+            Write-Output -InputObject $object
+        }
+        Else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
+        }
     }
 }
