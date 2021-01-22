@@ -1,6 +1,6 @@
 # Change Log
 
-## VERSION
+## 2101.275
 
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
 * Updates `Get-MicrosofPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
