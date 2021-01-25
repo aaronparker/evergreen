@@ -87,7 +87,7 @@ FunctionsToExport = @('Export-EvergreenFunctionStrings',
                'Get-JamTreeSizeProfessional', 'Get-KeePass', 
                'Get-KeePassXCTeamKeePassXC', 'Get-LibreOffice', 'Get-Microsoft.NET', 
                'Get-MicrosoftBicep', 'Get-MicrosoftEdge', 'Get-MicrosoftFSLogixApps', 
-               'Get-MicrosoftOffice', 'Get-MicrosoftOneDrive', 
+               'Get-Microsoft365Apps', 'Get-MicrosoftOneDrive', 
                'Get-MicrosoftPowerShell', 'Get-MicrosoftPowerToys', 
                'Get-MicrosoftSsms', 'Get-MicrosoftTeams', 
                'Get-MicrosoftVisualStudio', 'Get-MicrosoftVisualStudioCode', 
@@ -113,8 +113,8 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom', 
-               'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore'
+AliasesToExport = @('Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom', 
+               'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore', 'Get-MicrosoftOffice')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

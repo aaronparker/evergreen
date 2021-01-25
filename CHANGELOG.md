@@ -1,5 +1,10 @@
 # Change Log
 
+## VERSION
+
+* Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to better align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
+* Adds the `Monthly Enterprise` channel to `Get-Microsoft365Apps` output
+
 ## 2101.275
 
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
