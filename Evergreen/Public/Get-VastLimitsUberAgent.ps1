@@ -25,7 +25,7 @@ Function Get-VastLimitsUberAgent {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
     
-    # Get latest version and download latest release via SourceForge API
+    # Get latest version and download latest release via API
     $iwcParams = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType

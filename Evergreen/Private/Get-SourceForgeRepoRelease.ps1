@@ -1,4 +1,4 @@
-﻿Function ConvertFrom-SourceForgeReleasesJson {
+﻿Function Get-SourceForgeRepoRelease {
     <#
         .SYNOPSIS
             Validates a JSON string returned from a SourceForge releases API and returns a formatted object
@@ -9,7 +9,7 @@
     Param(
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $Content,
+        [System.String] $Uri,
 
         [Parameter(Mandatory = $True, Position = 1)]
         [ValidateNotNullOrEmpty()]
@@ -20,21 +20,20 @@
         [System.String] $MatchVersion
     )
 
-    # Convert JSON string to a hashtable
+    # Retreive best release json
     try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Converting from JSON string."
-        $release = ConvertFrom-Json -InputObject $Content
+        $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }
     catch {
-        Throw [System.Management.Automation.RuntimeException] "$($MyInvocation.MyCommand): Failed to convert JSON string."
+        Throw "Failed to resolve update feed: $Uri."
         Break
     }
 
-    # Validate that $release has the expected properties
+    # Validate that $bestRelease has the expected properties
     Write-Verbose -Message "$($MyInvocation.MyCommand): Validating SourceForge release object."
     $params = @{
         ReferenceObject  = $script:resourceStrings.Properties.SourceForge
-        DifferenceObject = (Get-Member -InputObject $release -MemberType NoteProperty)
+        DifferenceObject = (Get-Member -InputObject $bestRelease -MemberType NoteProperty)
         PassThru         = $True
         ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
     }
@@ -53,7 +52,7 @@
 
     # Find version number
     try {
-        $Version = [RegEx]::Match($release.platform_releases.windows.filename, $MatchVersion).Captures.Groups[1].Value
+        $Version = [RegEx]::Match($bestRelease.platform_releases.windows.filename, $MatchVersion).Captures.Groups[1].Value
     }
     catch {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to find version number."
