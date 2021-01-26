@@ -16,7 +16,9 @@
   * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
   * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 * BREAKING CHANGES
-  * Updates `Get-MozillaFirefox` and `Get-MozillaThunderbird` to remove the `-Language` parameter. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
+  * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
+  * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
+  * Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
 
 ## 2101.275
 
