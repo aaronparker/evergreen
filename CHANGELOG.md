@@ -2,8 +2,19 @@
 
 ## VERSION
 
-* Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to better align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
-* Adds the `Monthly Enterprise` channel to `Get-Microsoft365Apps` output
+* Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
+* Adds the `Monthly Enterprise` channel to `Get-Microsoft365Apps` output. See [#107](https://github.com/aaronparker/Evergreen/issues/107)
+* Adds private function `Invoke-RestMethodWrapper` to enable normalisation across public functions and PowerShell/Windows PowerShell that use `Invoke-RestMethod`
+  * Updates private function `Get-GitHubRepoRelease` to use `Invoke-RestMethodWrapper`
+  * Updates several public functions to use `Invoke-RestMethodWrapper` instead of the previous method of `Invoke-WebRequest | ConvertTo-Json` - `Get-1Password`, `Get-CitrixVMTools`, `Get-FoxitReader`, `Get-GoogleChrome`, `Get-Microsoft365Apps`, `Get-MicrosoftEdge`, `Get-MicrosoftTeams`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-MozillaThunderbird`
+  * Updates public functions that used `Invoke-RestMethod` to use `Invoke-RestMethodWrapper` instead - `Get-Gimp`, `Get-MicrosoftPowerShell`, `Get-MicrosoftVisualStudio`
+* Renames private function `Invoke-WebContent` to `Invoke-WebRequestWrapper` and makes general improvements to the handling of `Invoke-WebRequest`
+* Renames private function `ConvertFrom-SourceForgeReleasesJson` to `Get-SourceForgeRepoRelease`
+  * Updates and optimises this function to make use of `Invoke-RestMethodWrapper` so that it can query a SourceForge repository and return the required output in a single function
+  * Simplifies code in public functions that return SourceForge releases - `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator`, `Get-ProjectLibre`, `Get-WinMerge`, `Get-WinSCP`
+* Renames private functions for more descriptive function names (these resolve HTTP 301/302 return codes):
+  * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
+  * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 
 ## 2101.275
 
