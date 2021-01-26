@@ -32,7 +32,7 @@ Function Get-FileZilla {
         SkipCertificateCheck = $True
         Raw                  = $True
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Convert the content to an object
     try {

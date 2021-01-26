@@ -1,7 +1,11 @@
-Function Invoke-WebContent {
+Function Invoke-WebRequestWrapper {
     <#
         .SYNOPSIS
-            Return content from Invoke-WebRequest.
+            Validate and return content from Invoke-WebRequest for reading URLs
+            Enables normalisation for all public functions and across PowerShell/Windows PowerShell
+            Some validation of $Uri is expected before passing to this function
+
+            TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
     [CmdletBinding()]
@@ -10,15 +14,23 @@ Function Invoke-WebContent {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
-        [Parameter(Position = 1)]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.String] $ContentType,
 
-        [Parameter(Position = 2)]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Headers,
 
-        [Parameter(Position = 3)]
+        [Parameter()]
+        [ValidateSet("Default", "Get", "Head", "Post")]
+        [System.String] $Method = "Default",
+
+        [Parameter()]
+        [ValidateSet("Default", "Tls", "Tls11", "Tls12", "Tls13")]
+        [System.String] $SslProtocol = "Tls12",
+
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
 
@@ -29,24 +41,12 @@ Function Invoke-WebContent {
         [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
-    # Use TLS 1.2
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Write-Verbose -Message "$($MyInvocation.MyCommand): reading: $Uri."
-
     # Disable the Invoke-WebRequest progress bar for faster downloads
     If ($PSBoundParameters.ContainsKey('Verbose')) {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
     }
     Else {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-    }
-
-    # Set ErrorAction
-    If ($script:resourceStrings.Preferences.ErrorAction) {
-        $errorAction = $script:resourceStrings.Preferences.ErrorAction
-    }
-    Else {
-        $errorAction = "SilentlyContinue"
     }
 
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
@@ -66,13 +66,23 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
     }
 
+    # Use TLS for connections
+    If (($SslProtocol.IsPresent) -and -not(Test-PSCore)) {
+        If ($SslProtocol -eq "Tls13") {
+            $SslProtocol = "Tls12"
+            Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
+        }
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
+    }
+
+    # Call Invoke-WebRequest
     try {
         # Set core parameters
         $iwrParams = @{
+            ErrorAction     = "Stop"
             Uri             = $Uri
-            UserAgent       = $UserAgent
             UseBasicParsing = $True
-            ErrorAction     = $errorAction
+            UserAgent       = $UserAgent
         }
 
         # Set additional parameters
@@ -85,22 +95,23 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
             $iwrParams.SkipCertificateCheck = $True
         }
+        If (($SslProtocol.IsPresent) -and (Test-PSCore)) {
+            $iwrParams.SslProtocol = $SslProtocol
+        }
         If ($Raw.IsPresent) {
             $tempFile = New-TemporaryFile
             Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
             $iwrParams.OutFile = $tempFile
         }
 
-        # Call Invoke-WebRequest
+        ForEach ($item in $iwrParams.GetEnumerator()) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
+        }
         $Response = Invoke-WebRequest @iwrParams
     }
-    catch [System.Net.WebException] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-    }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $Uri."
-        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+        Throw $_
+        Break
     }
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."

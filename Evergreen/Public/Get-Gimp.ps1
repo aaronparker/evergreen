@@ -28,20 +28,16 @@ Function Get-Gimp {
     #region Get GIMP details        
     # Query the GIMP update URI to get the JSON
     try {
-        $params = @{
-            Uri             = $res.Get.Update.Uri
-            UseBasicParsing = $true
-        }
-        $Json = Invoke-RestMethod @params
+        $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     }
     catch {
         Throw "Failed to resolve update feed: $($res.Get.Update.Uri)."
         Break
     }
-    If ($Null -ne $Json) {
+    If ($Null -ne $updateFeed) {
 
         # Grab latest version
-        $Latest = $Json.STABLE[0]
+        $Latest = $updateFeed.STABLE[0]
         $MinorVersion = [System.Version] $Latest.version
             
         # Build the download URL
@@ -50,7 +46,7 @@ Function Get-Gimp {
         # Follow the download link which will return a 301/302
         try {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Uri."
-            $redirectUrl = Resolve-RedirectedUri -Uri $Uri
+            $redirectUrl = Resolve-InvokeWebRequest -Uri $Uri
         }
         catch {
             Throw "Failed to resolve mirror from: $Uri."

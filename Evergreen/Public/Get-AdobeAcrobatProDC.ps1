@@ -32,7 +32,7 @@ Function Get-AdobeAcrobatProDC {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Construct update download list
     If ($Null -ne $Content) {

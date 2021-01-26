@@ -31,19 +31,16 @@ Function Get-MicrosoftEdge {
     ForEach ($view in $res.Get.Views.GetEnumerator()) {
 
         # Read the JSON and convert to a PowerShell object. Return the current release version of Edge
-        $Content = Invoke-WebContent -Uri "$($res.Get.Uri)$($res.Get.Views[$view.Key])"
+        $updateFeed = Invoke-RestMethodWrapper -Uri "$($res.Get.Uri)$($res.Get.Views[$view.Key])"
 
         # Read the JSON and build an array of platform, channel, version
-        If ($Null -ne $Content) {
-
-            # Convert object from JSON
-            $EdgeReleases = $Content | ConvertFrom-Json
+        If ($Null -ne $updateFeed) {
 
             # For each product (Stable, Beta etc.)
             ForEach ($product in $res.Get.Channels) {
 
                 # Find the latest version
-                $latestRelease = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
+                $latestRelease = $updateFeed | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
                     Where-Object { $_.Platform -in $res.Get.Platform } | `
                     Sort-Object -Property $res.Get.SortProperty -Descending | `
@@ -51,7 +48,7 @@ Function Get-MicrosoftEdge {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($latestRelease.ProductVersion)."
 
                 # Expand the Releases property for that product version
-                $releases = $EdgeReleases | Where-Object { $_.Product -eq $product } | `
+                $releases = $updateFeed | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.ReleaseProperty | `
                     Where-Object { ($_.ProductVersion -eq $latestRelease.ProductVersion) -and ($_.Platform -in $res.Get.Platform) -and ($_.Architecture -in $res.Get.Architectures) }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."

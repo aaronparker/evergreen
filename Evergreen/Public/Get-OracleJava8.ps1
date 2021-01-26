@@ -23,7 +23,7 @@
     Write-Verbose -Message $res.Name
 
     # Read the update RSS feed
-    $Content = Invoke-WebContent -Uri $res.Get.Uri
+    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
 
     # Convert to XML document
     If ($Null -ne $Content) {
@@ -41,7 +41,7 @@
             $latestUpdate = $updateNodes | Select-Object -Last 1
 
             # Read the XML listed in the most revent update
-            $Content = Invoke-WebContent -Uri $latestUpdate.url
+            $Content = Invoke-WebRequestWrapper -Uri $latestUpdate.url
             If ($Null -ne $Content) {
                 Try {
                     [System.XML.XMLDocument] $xmlDocument = $Content

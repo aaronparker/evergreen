@@ -26,18 +26,12 @@ Function Get-ProjectLibre {
     Write-Verbose -Message $res.Name
 
     # Get latest version and download latest release via SourceForge API
-    $iwcParams = @{
-        Uri         = $res.Get.Update.Uri
-        ContentType = $res.Get.Update.ContentType
-    }
-    $Content = Invoke-WebContent @iwcParams
-
     # Convert the returned release data into a useable object with Version, URI etc.
     $params = @{
-        Content      = $Content
+        Uri          = $res.Get.Update.Uri
         Download     = $res.Get.Download
         MatchVersion = $res.Get.MatchVersion
     }
-    $object = ConvertFrom-SourceForgeReleasesJson @params
+    $object = Get-SourceForgeRepoRelease @params
     Write-Output -InputObject $object
 }

@@ -29,7 +29,7 @@
     ForEach ($ring in $res.Get.Uri.GetEnumerator()) {
 
         # Read the XML
-        $Content = Invoke-WebContent -Uri $res.Get.Uri[$ring.Key]
+        $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri[$ring.Key]
         If ($Null -ne $Content) {
 
             Try {

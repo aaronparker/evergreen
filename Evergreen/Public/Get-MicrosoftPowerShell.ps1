@@ -28,12 +28,7 @@ Function Get-MicrosoftPowerShell {
     # Get the latest release from the PowerShell metadata
     try {
         # Get details from the update feed
-        $params = @{
-            Uri             = $res.Get.Update.Uri
-            UseBasicParsing = $true
-            ErrorAction     = "SilentlyContinue"
-        }
-        $metadata = Invoke-RestMethod @params
+        $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     }
     catch {
         Throw "Failed to resolve metadata: $($res.Get.Update.Uri)."
@@ -44,7 +39,7 @@ Function Get-MicrosoftPowerShell {
     ForEach ($release in $res.Get.Download.Tags.GetEnumerator()) {
 
         # Determine the tag
-        $Tag = $metadata.($res.Get.Download.Tags[$release.key])
+        $Tag = $updateFeed.($res.Get.Download.Tags[$release.key])
         Write-Verbose -Message "$($MyInvocation.MyCommand): Query release for tag: $Tag."
 
         # Pass the repo releases API URL and return a formatted object

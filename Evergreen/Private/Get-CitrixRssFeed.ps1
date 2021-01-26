@@ -22,7 +22,7 @@
     )
 
     # Read the Citrix RSS feed
-    $Content = Invoke-WebContent -Uri $Uri
+    $Content = Invoke-WebRequestWrapper -Uri $Uri
 
     # Convert to XML document
     If ($Null -ne $Content) {

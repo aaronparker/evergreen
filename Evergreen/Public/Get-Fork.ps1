@@ -30,7 +30,7 @@ Function Get-Fork {
         Uri = $res.Get.Update.Uri
         Raw = $true
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     If ($Content) {
         # Parse the returned content and match the version number

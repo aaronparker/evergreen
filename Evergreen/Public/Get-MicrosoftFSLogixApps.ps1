@@ -27,7 +27,7 @@ Function Get-MicrosoftFSLogixApps {
     Write-Verbose -Message $res.Name
 
     # Follow the download link which will return a 301
-    $response = Resolve-Uri -Uri $res.Get.Uri
+    $response = Resolve-SystemNetWebRequest -Uri $res.Get.Uri
             
     # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
     If ($Null -ne $response) {

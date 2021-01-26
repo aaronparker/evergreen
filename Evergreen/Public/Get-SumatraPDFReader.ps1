@@ -31,7 +31,7 @@ Function Get-SumatraPDFReader {
             Uri = $res.Get.Update.Uri
             Raw = $true
         }
-        $Content = Invoke-WebContent @params
+        $Content = Invoke-WebRequestWrapper @params
         $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
     }
     catch {

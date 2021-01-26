@@ -28,7 +28,7 @@ Function Get-Slack {
         ForEach ($architecture in $res.Get.Download[$platform].Keys) {
 
             # Follow the download link which will return a 301/302
-            $Url = (Resolve-Uri -Uri $res.Get.Download[$platform][$architecture]).ResponseUri.AbsoluteUri
+            $Url = (Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$architecture]).ResponseUri.AbsoluteUri
 
             # Match version number from the download URL
             try {

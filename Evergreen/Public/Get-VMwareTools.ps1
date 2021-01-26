@@ -29,7 +29,7 @@
     Write-Verbose -Message $res.Name
 
     # Read the VMware version-mapping file
-    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri -Raw
+    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri -Raw
 
     If ($Null -ne $Content) {
         # Format the results returns and convert into an array that we can sort and use
@@ -45,7 +45,7 @@
 
                 # Query the download page for the download file name
                 $Uri = ("$($res.Get.Download.Uri)$platform/$architecture/index.html").ToLower()
-                $Content = Invoke-WebContent -Uri $Uri
+                $Content = Invoke-WebRequestWrapper -Uri $Uri
                 $filename = [RegEx]::Match($Content, $res.Get.Download.MatchFileName).Captures.Value
             
                 # Build the output object

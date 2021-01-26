@@ -33,33 +33,22 @@ Function Get-CitrixVMTools {
     ForEach ($update in $res.Get.Update.Uri.GetEnumerator()) {
         
         # Get content
-        $iwcParams = @{
+        $params = @{
             Uri         = $res.Get.Update.Uri[$update.Key]
             ContentType = $res.Get.Update.ContentType
         }
-        $Content = Invoke-WebContent @iwcParams
+        $updateFeed = Invoke-RestMethodWrapper @params
     
-        # Convert JSON string to a hashtable
-        try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Converting from JSON string."
-            $release = ConvertFrom-Json -InputObject $Content
-        }
-        catch {
-            Throw [System.Management.Automation.RuntimeException] "$($MyInvocation.MyCommand): Failed to convert JSON string."
-            Break
-        }
-
         # Convert the JSON to usable output
         ForEach ($architecture in $res.Get.Update.Architectures) {
             $PSObject = [PSCustomObject] @{
-                Version      = $release.version
+                Version      = $updateFeed.version
                 Architecture = $architecture
-                Size         = $release.$architecture.size
-                Checksum     = $release.$architecture.checksum
-                URI          = $release.$architecture.url
+                Size         = $updateFeed.$architecture.size
+                Checksum     = $updateFeed.$architecture.checksum
+                URI          = $updateFeed.$architecture.url
             }
             Write-Output -InputObject $PSObject
         }
     }
-    #endregion
 }
