@@ -25,7 +25,8 @@ Function Resolve-SystemNetWebRequest {
         $webResponse = $httpWebRequest.GetResponse()
     }
     catch {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw $_
     }
     finally {

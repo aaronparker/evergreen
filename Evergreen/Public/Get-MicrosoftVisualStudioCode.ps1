@@ -19,54 +19,35 @@ Function Get-MicrosoftVisualStudioCode {
         .LINK
             https://github.com/aaronparker/Evergreen/
 
-        .PARAMETER Channel
-            Specify the release channel to return Visual Studio Code details for. Specify Stable or Insider builds, or both.
-
-        .PARAMETER Platform
-            Specify the target platform to return Visual Studio Code details for. All supported platforms can be specified.
-
         .EXAMPLE
             Get-MicrosoftVisualStudioCode
 
             Description:
             Returns the Stable and Insider builds version numbers and download URLs for Windows.
-
-        .EXAMPLE
-            Get-MicrosoftVisualStudioCode -Channel stable -Platform win32-x64-user
-
-            Description:
-            Returns the Stable build version numbers and download URL for the user-install of VSCode for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param(
-        [Parameter()]
-        [ValidateSet('insider', 'stable')]
-        [System.String[]] $Channel = @('stable'),
-
-        [Parameter()]
-        [ValidateSet('win32', 'win32-user', 'win32-x64-user', 'win32-x64')]
-        [System.String[]] $Platform = @('win32', 'win32-user', 'win32-x64-user', 'win32-x64')
-    )
+    Param()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
     # Walk through each platform
-    ForEach ($plat in ($Platform | Sort-Object)) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $plat."
+    ForEach ($platform in $res.Get.Update.Platform) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $platform."
 
         # Walk through each channel in the platform
-        ForEach ($ch in $Channel) {
+        ForEach ($channel in $res.Get.Update.Channel) {
 
             # Read the version details from the API, format and return to the pipeline
-            $updateFeed = Invoke-RestMethodWrapper -Uri "$($res.Get.Uri)/$plat/$ch/VERSION"
+            $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/VERSION"
+            $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
             $PSObject = [PSCustomObject] @{
-                Version      = $updateFeed.productVersion
-                Platform     = $plat
+                Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
+                Platform     = $platform
+                Channel      = $channel
                 Architecture = Get-Architecture -String $updateFeed.url
-                Channel      = $ch
                 Sha256       = $updateFeed.sha256hash
                 URI          = $updateFeed.url
             }

@@ -15,6 +15,8 @@
 * Renames private functions for more descriptive function names (these resolve HTTP 301/302 return codes):
   * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
   * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
+* BREAKING CHANGES
+  * Updates `Get-MozillaFirefox` and `Get-MozillaThunderbird` to remove the `-Language` parameter. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
 
 ## 2101.275
 

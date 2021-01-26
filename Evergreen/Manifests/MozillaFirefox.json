@@ -1,48 +1,158 @@
 {
-	"Name": "Mozilla Firefox",
-	"Source": "https://www.mozilla.org/",
-	"Get": {
-		"Update": {
-			"Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-			"Channels": [
-				"LATEST_FIREFOX_VERSION",
-				"FIREFOX_ESR"
-			]
-		},
-		"Download": {
-			"Uri": {
-				"LATEST_FIREFOX_VERSION": {
-					"Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
-					"Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"					
-				},
-				"FIREFOX_ESR": {
-					"Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
-					"Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"					
-				}
-			},
-			"Platforms": [
-				"win64",
-				"win"
-			],
-			"Text": {
-				"Platform": "#platform",
-				"Language": "#language"
-			}
-		}
-	},
-	"Install": {
-		"Setup": "Firefox*.exe",
-		"Physical": {
-			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=true /PreventRebootRequired=true",
-			"PostInstall": [
-
-			]
-		},
-		"Virtual": {
-			"Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=false /PreventRebootRequired=true",
-			"PostInstall": [
-
-			]
-		}
-	}
+    "Name": "Mozilla Firefox",
+    "Source": "https://www.mozilla.org/",
+    "Get": {
+        "Update": {
+            "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+            "Channels": [
+                "LATEST_FIREFOX_VERSION",
+                "FIREFOX_ESR"
+            ]
+        },
+        "Download": {
+            "Uri": {
+                "LATEST_FIREFOX_VERSION": {
+                    "Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"
+                },
+                "FIREFOX_ESR": {
+                    "Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"
+                }
+            },
+            "Platforms": [
+                "win64",
+                "win"
+            ],
+            "Languages": [
+                "en-US",
+                "en-GB",
+                "en-CA",
+                "es-ES",
+                "sv-SE",
+                "pt-BR",
+                "pt-PT",
+                "de",
+                "fr",
+                "it",
+                "ja",
+                "nl",
+                "zh-CN",
+				"zh-TW",
+				"ar",
+				"hi-IN",
+				"ru"
+            ],
+            "FullLanguageList": [
+                "en-US",
+                "en-GB",
+                "en-CA",
+                "es-ES",
+                "es-AR",
+                "es-CL",
+                "es-MX",
+                "sv-SE",
+                "pt-BR",
+                "pt-PT",
+                "de",
+                "fr",
+                "it",
+                "ja",
+                "nl",
+                "zh-CN",
+                "zh-TW",
+                "ach",
+                "af",
+                "sq",
+                "ar",
+                "an",
+                "hy-AM",
+                "ast",
+                "az",
+                "eu",
+                "be",
+                "bs",
+                "br",
+                "bg",
+                "my",
+                "ca",
+                "hr",
+                "cs",
+                "da",
+                "eo",
+                "et",
+                "fi",
+                "fy-NL",
+                "ff",
+                "gd",
+                "gl",
+                "ka",
+                "el",
+                "gn",
+                "gu-IN",
+                "he",
+                "hi-IN",
+                "hu",
+                "is",
+                "id",
+                "ia",
+                "ga-IE",
+                "kab",
+                "kn",
+                "cak",
+                "kk",
+                "km",
+                "ko",
+                "lv",
+                "lij",
+                "lt",
+                "dsb",
+                "mk",
+                "ms",
+                "mr",
+                "ne-NP",
+                "nb-NO",
+                "nn-NO",
+                "oc",
+                "fa",
+                "pl",
+                "pa-IN",
+                "ro",
+                "rm",
+                "ru",
+                "sr",
+                "si",
+                "sk",
+                "sl",
+                "son",
+                "ta",
+                "te",
+                "th",
+                "tr",
+                "uk",
+                "hsb",
+                "ur",
+                "uz",
+                "vi",
+                "cy",
+                "xh"
+            ],
+            "ReplaceText": {
+                "Version": "esr",
+                "Platform": "#platform",
+                "Language": "#language"
+            }
+        }
+    },
+    "Install": {
+        "Setup": "Firefox*.exe",
+        "Physical": {
+            "Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=true /PreventRebootRequired=true",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/S /TaskbarShortcut=false /DesktopShortcut=false /MaintenanceService=false /PreventRebootRequired=true",
+            "PostInstall": []
+        }
+    }
 }
