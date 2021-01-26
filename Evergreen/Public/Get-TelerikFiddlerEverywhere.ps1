@@ -26,7 +26,7 @@ Function Get-TelerikFiddlerEverywhere {
     Write-Verbose -Message $res.Name
 
     # Get the latest download
-    $Response = Resolve-Uri -Uri $res.Get.Download.Uri
+    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Response) {

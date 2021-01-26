@@ -1,20 +1,25 @@
-Function Resolve-Uri {
+Function Resolve-SystemNetWebRequest {
     <#
         .SYNOPSIS
-        Resolved a URL that returns a 301/302 response and returns the redirected URL.
+            Resolve a URL that returns a 301/302 response and returns the redirected URL
+            Uses System.Net.WebRequest to find 301/302 headers and return the ResponseUri
     #>
     [OutputType([System.String])]
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $Uri
+        [System.String] $Uri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.Int32] $MaximumRedirection = 3
     )
 
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
-        $httpWebRequest.MaximumAutomaticRedirections = 3
+        $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
         $httpWebRequest.UseDefaultCredentials = $true
         $webResponse = $httpWebRequest.GetResponse()

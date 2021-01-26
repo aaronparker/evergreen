@@ -35,7 +35,7 @@
                 Uri       = $Content[1]
                 UserAgent = $res.Get.UserAgent
             }
-            $redirectUrl = Resolve-RedirectedUri @rruParams
+            $redirectUrl = Resolve-InvokeWebRequest @rruParams
 
             # Construct the output; Return the custom object to the pipeline
             ForEach ($extension in $res.Get.Extensions.Windows) {

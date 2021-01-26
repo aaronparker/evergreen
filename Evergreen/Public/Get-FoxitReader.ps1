@@ -38,7 +38,7 @@ Function Get-FoxitReader {
             $Uri = (($res.Get.DownloadUri -replace "#Version", $Version) -replace "#Language", $language) -replace "#Package", $updateFeed.package_info.type[0]
             
             # Follow the download link which will return a 301/302
-            $redirectUrl = Resolve-RedirectedUri -Uri $Uri
+            $redirectUrl = Resolve-InvokeWebRequest -Uri $Uri
             
             # Construct the output; Return the custom object to the pipeline
             If ($Null -ne $redirectUrl) {

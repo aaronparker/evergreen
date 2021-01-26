@@ -26,7 +26,7 @@ Function Get-MicrosoftVisualStudio {
     Write-Verbose -Message $res.Name
 
     # Resolve the update feed from the initial URI
-    $ResolvedUrl = (Resolve-Uri -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
+    $ResolvedUrl = (Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
 
     If ($ResolvedUrl) {
         try {

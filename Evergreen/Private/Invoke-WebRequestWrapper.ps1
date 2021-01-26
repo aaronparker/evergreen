@@ -14,19 +14,23 @@ Function Invoke-WebRequestWrapper {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.String] $ContentType,
 
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Headers,
 
-        [ValidateNotNullOrEmpty()]
+        [Parameter()]
+        [ValidateSet("Default", "Get", "Head", "Post")]
         [System.String] $Method = "Default",
 
-        [ValidateNotNullOrEmpty()]
+        [Parameter()]
         [ValidateSet("Default", "Tls", "Tls11", "Tls12", "Tls13")]
         [System.String] $SslProtocol = "Tls12",
 
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
 
@@ -101,7 +105,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         }
 
         ForEach ($item in $iwrParams.GetEnumerator()) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
         }
         $Response = Invoke-WebRequest @iwrParams
     }

@@ -46,7 +46,7 @@ Function Get-Gimp {
         # Follow the download link which will return a 301/302
         try {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Uri."
-            $redirectUrl = Resolve-RedirectedUri -Uri $Uri
+            $redirectUrl = Resolve-InvokeWebRequest -Uri $Uri
         }
         catch {
             Throw "Failed to resolve mirror from: $Uri."

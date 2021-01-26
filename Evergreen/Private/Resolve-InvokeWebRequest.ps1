@@ -1,7 +1,8 @@
-Function Resolve-RedirectedUri {
+Function Resolve-InvokeWebRequest {
     <#
         .SYNOPSIS
-        Resolved a URL that returns a 301/302 response and returns the redirected URL.
+            Resolve a URL that returns a 301/302 response and returns the redirected URL
+            Uses Invoke-WebRequest to find 301/302 headers and return the ResponseUri
     #>
     [OutputType([System.String])]
     [CmdletBinding()]
@@ -17,14 +18,16 @@ Function Resolve-RedirectedUri {
 
     # Build the Invoke-WebRequest parameters
     $iwrParams = @{
+        ErrorAction        = "SilentlyContinue"
+        MaximumRedirection = 0
         Uri                = $Uri
         UseBasicParsing    = $True
-        MaximumRedirection = 0
         UserAgent          = $UserAgent
-        #Method             = "Head"
-        ErrorAction        = "SilentlyContinue"
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
+    ForEach ($item in $iwrParams.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+    }
 
     If (Test-PSCore) {
         # If running PowerShell Core, request URL and catch the response
@@ -44,7 +47,7 @@ Function Resolve-RedirectedUri {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
         Catch [System.Exception] {
-            Write-Warning -Message ([System.String]::Format("$($MyInvocation.MyCommand): Error : {0}", $_.Exception.Message))
+            Throw $_
         }
     }
 

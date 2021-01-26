@@ -61,7 +61,7 @@ Function Get-MozillaThunderbird {
                     $params = @{
                         Uri = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.Text.Platform, $platform) -replace $res.Get.Download.Text.Language, $lang)
                     }
-                    $response = Resolve-Uri @params
+                    $response = Resolve-SystemNetWebRequest @params
 
                     # Build object and output to the pipeline
                     $PSObject = [PSCustomObject] @{
