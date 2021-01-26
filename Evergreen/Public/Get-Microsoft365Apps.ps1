@@ -18,6 +18,7 @@ Function Get-Microsoft365Apps {
     #>
     [Alias("Get-MicrosoftOffice")]
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     Param()
 

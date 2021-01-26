@@ -32,9 +32,6 @@ Function Invoke-RestMethodWrapper {
         [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
 
         [Parameter()]
-        [System.Management.Automation.SwitchParameter] $Raw,
-
-        [Parameter()]
         [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
