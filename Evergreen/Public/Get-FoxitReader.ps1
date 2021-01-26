@@ -25,27 +25,17 @@ Function Get-FoxitReader {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
-    #region Get Foxit Reader details        
     # Query the Foxit Reader package download form to get the JSON
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
-    If ($Null -ne $Content) {
-
-        # Convert JSON
-        try {
-            $PackageJson = $Content | ConvertFrom-Json
-        }
-        catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert to JSON."
-            Break
-        }
+    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Uri
+    If ($Null -ne $updateFeed) {
 
         # Grab latest version
-        $Version = ($PackageJson.package_info.version | Sort-Object { [Version]$_ } -Descending) | Select-Object -First 1
+        $Version = ($updateFeed.package_info.version | Sort-Object { [Version]$_ } -Descending) | Select-Object -First 1
 
-        ForEach ($language in $PackageJson.package_info.language) {
+        ForEach ($language in $updateFeed.package_info.language) {
             
             # Build the download URL
-            $Uri = (($res.Get.DownloadUri -replace "#Version", $Version) -replace "#Language", $language) -replace "#Package", $PackageJson.package_info.type[0]
+            $Uri = (($res.Get.DownloadUri -replace "#Version", $Version) -replace "#Language", $language) -replace "#Package", $updateFeed.package_info.type[0]
             
             # Follow the download link which will return a 301/302
             $redirectUrl = Resolve-RedirectedUri -Uri $Uri
@@ -54,7 +44,7 @@ Function Get-FoxitReader {
             If ($Null -ne $redirectUrl) {
                 $PSObject = [PSCustomObject] @{
                     Version  = $Version
-                    Date     = ConvertTo-DateTime -DateTime $PackageJson.package_info.release -Pattern $res.Get.DateTimePattern
+                    Date     = ConvertTo-DateTime -DateTime $updateFeed.package_info.release -Pattern $res.Get.DateTimePattern
                     Language = $language
                     URI      = $redirectUrl
                 }
@@ -68,5 +58,4 @@ Function Get-FoxitReader {
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Uri)."
     }
-    #endregion
 }

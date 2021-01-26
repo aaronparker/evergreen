@@ -29,16 +29,13 @@ Function Get-MicrosoftTeams {
     Write-Verbose -Message $res.Name
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Teams
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, version
-    If ($Null -ne $Content) {
-
-        # Convert object from JSON
-        $Json = $Content | ConvertFrom-Json
+    If ($Null -ne $updateFeed) {
 
         # Match version number
-        $Version = [RegEx]::Match($Json.releasesPath, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+        $Version = [RegEx]::Match($updateFeed.releasesPath, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
 
         # Step through each architecture
         ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {

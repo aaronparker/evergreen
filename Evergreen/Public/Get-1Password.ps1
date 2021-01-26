@@ -26,16 +26,15 @@ Function Get-1Password {
     Write-Verbose -Message $res.Name
 
     # Get latest version and download latest release via update API
-    $iwcParams = @{
+    $params = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
-    If ($Null -ne $Content) {
-        $Json = ConvertFrom-Json -InputObject $Content
+    $updateFeed = Invoke-RestMethodWrapper @params
+    If ($Null -ne $updateFeed) {
 
         # Output the object to the pipeline
-        ForEach ($item in $Json.($res.Get.Update.Property)) {
+        ForEach ($item in $updateFeed.($res.Get.Update.Property)) {
             $PSObject = [PSCustomObject] @{
                 Version = $item.before
                 URI     = $item.url

@@ -49,7 +49,7 @@ Function Get-MozillaFirefox {
     Write-Verbose -Message $res.Name
 
     # Get latest Firefox version
-    $firefoxVersions = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri | ConvertFrom-Json
+    $firefoxVersions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     
     # Construct custom object with output details
     ForEach ($lang in $Language) {
@@ -65,7 +65,7 @@ Function Get-MozillaFirefox {
 
                     # Build object and output to the pipeline
                     $PSObject = [PSCustomObject] @{
-                        Version      = $firefoxVersions.$channel
+                        Version      = $firefoxVersions.$channel -replace "esr", ""
                         Architecture = Get-Architecture -String $platform
                         Channel      = $channel
                         Language     = $lang

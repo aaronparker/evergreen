@@ -61,14 +61,14 @@ Function Get-MicrosoftVisualStudioCode {
         ForEach ($ch in $Channel) {
 
             # Read the version details from the API, format and return to the pipeline
-            $releaseJson = Invoke-WebRequestWrapper -Uri "$($res.Get.Uri)/$plat/$ch/VERSION" | ConvertFrom-Json
+            $updateFeed = Invoke-RestMethodWrapper -Uri "$($res.Get.Uri)/$plat/$ch/VERSION"
             $PSObject = [PSCustomObject] @{
-                Version      = $releaseJson.productVersion
+                Version      = $updateFeed.productVersion
                 Platform     = $plat
-                Architecture = Get-Architecture -String $releaseJson.url
+                Architecture = Get-Architecture -String $updateFeed.url
                 Channel      = $ch
-                Sha256       = $releaseJson.sha256hash
-                URI          = $releaseJson.url
+                Sha256       = $updateFeed.sha256hash
+                URI          = $updateFeed.url
             }
             Write-Output -InputObject $PSObject
         }

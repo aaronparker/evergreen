@@ -5,6 +5,8 @@ Function Invoke-RestMethodWrapper {
             Enables normalisation for all public functions and across PowerShell/Windows PowerShell
             Some validation of $Uri is expected before passing to this function
             Does not support redirection, as this should be handled before sending to this function
+
+            TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
     [CmdletBinding()]
@@ -62,7 +64,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
     }
 
-    # Invoke-RestMethod
+    # Call Invoke-RestMethod
     try {
         $irmParams = @{
             ContentType        = $ContentType
