@@ -34,7 +34,7 @@ Function Get-JamTreeSizeProfessional {
         UserAgent = $res.Get.UserAgent
         Raw       = $True
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Build object and output to the pipeline
     $PSObject = [PSCustomObject] @{

@@ -49,7 +49,7 @@ Function Get-MozillaFirefox {
     Write-Verbose -Message $res.Name
 
     # Get latest Firefox version
-    $firefoxVersions = Invoke-WebContent -Uri $res.Get.Update.Uri | ConvertFrom-Json
+    $firefoxVersions = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri | ConvertFrom-Json
     
     # Construct custom object with output details
     ForEach ($lang in $Language) {

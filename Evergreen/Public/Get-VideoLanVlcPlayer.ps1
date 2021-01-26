@@ -27,7 +27,7 @@
 
     #region Get current version for Windows
     ForEach ($platform in $res.Get.Uri.Windows.GetEnumerator()) {
-        $Content = Invoke-WebContent -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
+        $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
 
         If ($Null -ne $Content) {
             # Follow the download link which will return a 301

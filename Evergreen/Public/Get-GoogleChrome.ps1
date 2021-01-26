@@ -28,7 +28,7 @@ Function Get-GoogleChrome {
     Write-Verbose -Message $res.Name
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri
+    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
     If ($Null -ne $Content) {
         
         # Convert the returned JSON content to an object

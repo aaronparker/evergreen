@@ -34,7 +34,7 @@
             ContentType = $res.Get.ContentType
             Raw         = $True
         }
-        $Content = Invoke-WebContent @iwcParams
+        $Content = Invoke-WebRequestWrapper @iwcParams
 
         # Convert the update feed to an XML object
         If ($Null -ne $Content) {

@@ -31,7 +31,7 @@ Function Get-RCoreTeamRforWindows {
             Uri = $res.Get.Update.Uri
             Raw = $true
         }
-        $Content = Invoke-WebContent @params
+        $Content = Invoke-WebRequestWrapper @params
         $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
     }
     catch {
@@ -43,7 +43,7 @@ Function Get-RCoreTeamRforWindows {
         $params = @{
             Uri = $res.Get.Download.Uri
         }
-        $Content = Invoke-WebContent @params
+        $Content = Invoke-WebRequestWrapper @params
         $File = [RegEx]::Match($Content, $res.Get.Download.MatchFile).Captures.Groups[1].Value
         $Url = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $File
     }

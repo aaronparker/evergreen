@@ -25,7 +25,7 @@ Function Get-OracleVirtualBox {
     Write-Verbose -Message $res.Name
     
     # Get latest VirtualBox version
-    $Version = Invoke-WebContent -Uri $res.Get.Update.Uri
+    $Version = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
 
     If ($Null -ne $Version) {
         $Version = [RegEx]::Match($Version, $res.Get.Download.MatchVersion).Captures.Groups[1].Value

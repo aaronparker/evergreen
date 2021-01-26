@@ -37,7 +37,7 @@ Function Get-CitrixVMTools {
             Uri         = $res.Get.Update.Uri[$update.Key]
             ContentType = $res.Get.Update.ContentType
         }
-        $Content = Invoke-WebContent @iwcParams
+        $Content = Invoke-WebRequestWrapper @iwcParams
     
         # Convert JSON string to a hashtable
         try {

@@ -35,7 +35,7 @@
             UserAgent = $res.Get.UserAgent
             Raw       = $True
         }
-        $Content = Invoke-WebContent @iwcParams
+        $Content = Invoke-WebRequestWrapper @iwcParams
 
         # If something is returned
         If ($Null -ne $Content) {

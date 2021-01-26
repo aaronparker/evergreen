@@ -29,7 +29,7 @@ Function Get-MicrosoftTeams {
     Write-Verbose -Message $res.Name
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Teams
-    $Content = Invoke-WebContent -Uri $res.Get.Update.Uri
+    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Content) {

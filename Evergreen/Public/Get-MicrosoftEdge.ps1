@@ -31,7 +31,7 @@ Function Get-MicrosoftEdge {
     ForEach ($view in $res.Get.Views.GetEnumerator()) {
 
         # Read the JSON and convert to a PowerShell object. Return the current release version of Edge
-        $Content = Invoke-WebContent -Uri "$($res.Get.Uri)$($res.Get.Views[$view.Key])"
+        $Content = Invoke-WebRequestWrapper -Uri "$($res.Get.Uri)$($res.Get.Views[$view.Key])"
 
         # Read the JSON and build an array of platform, channel, version
         If ($Null -ne $Content) {

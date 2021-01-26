@@ -27,7 +27,7 @@ Function Get-FoxitReader {
 
     #region Get Foxit Reader details        
     # Query the Foxit Reader package download form to get the JSON
-    $Content = Invoke-WebContent -Uri $res.Get.Uri
+    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
     If ($Null -ne $Content) {
 
         # Convert JSON

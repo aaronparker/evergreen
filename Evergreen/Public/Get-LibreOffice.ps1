@@ -43,7 +43,7 @@ Function Get-LibreOffice {
         Raw                  = $True
         SkipCertificateCheck = $True
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     If ($Null -ne $Content) {
 

@@ -33,7 +33,7 @@ Function Get-MicrosoftSsms {
     $UpdateFeed = Resolve-Uri -Uri $res.Get.Update.Uri
 
     # SQL Management Studio downloads/versions documentation
-    $Content = Invoke-WebContent -Uri $UpdateFeed.ResponseUri.AbsoluteUri -Raw
+    $Content = Invoke-WebRequestWrapper -Uri $UpdateFeed.ResponseUri.AbsoluteUri -Raw
 
     # Convert content to XML document
     If ($Null -ne $Content) {

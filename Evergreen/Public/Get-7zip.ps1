@@ -30,7 +30,7 @@ Function Get-7zip {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Convert the returned release data into a useable object with Version, URI etc.
     $params = @{

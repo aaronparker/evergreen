@@ -49,7 +49,7 @@ Function Get-MozillaThunderbird {
     Write-Verbose -Message $res.Name
 
     # Get latest Thunderbird version
-    $thunderbirdVersions = Invoke-WebContent -Uri $res.Get.Update.Uri | ConvertFrom-Json
+    $thunderbirdVersions = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri | ConvertFrom-Json
     
     # Construct custom object with output details
     ForEach ($lang in $Language) {

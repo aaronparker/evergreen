@@ -66,7 +66,7 @@
         ContentType = $Download.ContentType
         Raw         = $True
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Convert to an XML object
     Try {

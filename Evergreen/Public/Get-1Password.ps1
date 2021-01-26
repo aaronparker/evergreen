@@ -30,7 +30,7 @@ Function Get-1Password {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
     If ($Null -ne $Content) {
         $Json = ConvertFrom-Json -InputObject $Content
 

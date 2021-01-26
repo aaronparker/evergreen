@@ -43,8 +43,8 @@ Function Get-AdobeAcrobatReaderDC {
                 UseBasicParsing = $True
                 ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
             }
-            # TODO: revert back to Invoke-WebContent
-            #$Content = Invoke-WebContent @iwcParams
+            # TODO: revert back to Invoke-WebRequestWrapper
+            #$Content = Invoke-WebRequestWrapper @iwcParams
             $Content = Invoke-WebRequest @iwcParams
 
             If ($Null -ne $Content) {
@@ -71,7 +71,7 @@ Function Get-AdobeAcrobatReaderDC {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebContent @iwcParams
+    $Content = Invoke-WebRequestWrapper @iwcParams
 
     # Construct update download list
     If ($Null -ne $Content) {

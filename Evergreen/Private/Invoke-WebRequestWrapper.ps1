@@ -1,7 +1,9 @@
-Function Invoke-WebContent {
+Function Invoke-WebRequestWrapper {
     <#
         .SYNOPSIS
-            Return content from Invoke-WebRequest.
+            Validate and return content from Invoke-WebRequest for reading URLs
+            Enables normalisation for all public functions and across PowerShell/Windows PowerShell
+            Some validation of $Uri is expected before passing to this function
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
     [CmdletBinding()]

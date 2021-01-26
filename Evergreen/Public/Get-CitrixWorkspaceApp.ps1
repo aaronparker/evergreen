@@ -29,7 +29,7 @@
 
     # Read the Citrix Workspace app for updater feed for each OS in the list
     ForEach ($item in $res.Get.Uri.Keys) {
-        $Content = Invoke-WebContent -Uri $res.Get.Uri[$item]
+        $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri[$item]
 
         # Convert content to XML document
         If ($Null -ne $Content) {
