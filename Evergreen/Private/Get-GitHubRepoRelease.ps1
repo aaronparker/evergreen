@@ -9,13 +9,13 @@ Function Get-GitHubRepoRelease {
     Param(
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateScript( {
-            If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
-                $True
-            }
-            else {
-                Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
-            }
-        })]
+                If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
+                    $True
+                }
+                else {
+                    Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
+                }
+            })]
         [System.String] $Uri,
 
         [Parameter(Mandatory = $True, Position = 1)]
@@ -44,13 +44,11 @@ Function Get-GitHubRepoRelease {
         # Note that the API performs rate limiting. 
         # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
         $params = @{
-            Uri             = $Uri
-            Method          = "Get"
-            ContentType     = "application/vnd.github.v3+json"
-            UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-            UseBasicParsing = $true
+            ContentType = "application/vnd.github.v3+json"
+            Method      = "Get"
+            Uri         = $Uri
         }
-        $release = Invoke-RestMethod @params
+        $release = Invoke-RestMethodWrapper @params
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."

@@ -31,17 +31,10 @@ Function Get-Microsoft365Apps {
         # Get latest version Microsoft Office versions from the Office API
         try {
             $Uri = "$($res.Get.Update.Uri)$($res.Get.Update.Channels[$channel.Key])"
-            $params = @{
-                Uri             = $Uri
-                UseBasicParsing = $true
-                ContentType     = $res.Get.Update.ContentType
-                UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-                ErrorAction     = "SilentlyContinue"
-            }
-            $updateFeed = Invoke-RestMethod @params
+            $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
         }
         catch {
-            Throw "Failed to resolve update feed: $ResolvedUrl."
+            Throw "Failed to resolve update feed: $Uri."
             Break
         }
 

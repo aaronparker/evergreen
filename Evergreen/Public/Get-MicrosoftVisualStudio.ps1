@@ -31,12 +31,7 @@ Function Get-MicrosoftVisualStudio {
     If ($ResolvedUrl) {
         try {
             # Get details from the update feed
-            $params = @{
-                Uri             = $ResolvedUrl
-                UseBasicParsing = $true
-                ErrorAction     = "SilentlyContinue"
-            }
-            $updateFeed = Invoke-RestMethod @params
+            $updateFeed = Invoke-RestMethodWrapper -Uri $ResolvedUrl
         }
         catch {
             Throw "Failed to resolve update feed: $ResolvedUrl."
