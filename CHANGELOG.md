@@ -1,5 +1,10 @@
 # Change Log
 
+## VERSION
+
+* Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`
+* Updates `Get-MicrosoftWvdRemoteDesktop` to output the `URI` property value in the format `https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MntQ` instead of the original fwlink source URL (e.g. `https://go.microsoft.com/fwlink/?linkid=2068602`)
+
 ## 2101.281
 
 * Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
