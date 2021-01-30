@@ -26,21 +26,25 @@
     Write-Verbose -Message $res.Name
 
     #region Get current version for Windows
-    ForEach ($platform in $res.Get.Uri.Windows.GetEnumerator()) {
-        $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri.Windows[$platform.Key] -Raw
+    ForEach ($platform in $res.Get.Update.Uri.Windows.GetEnumerator()) {
+        $params = @{
+            Uri         = $res.Get.Update.Uri.Windows[$platform.Key]
+            ContentType = "application/octet-stream"
+        }
+        $Content = Invoke-RestMethodWrapper @params
 
         If ($Null -ne $Content) {
             # Follow the download link which will return a 301
-            $rruParams = @{
-                Uri       = $Content[1]
-                UserAgent = $res.Get.UserAgent
+            $params = @{
+                Uri       = ($Content -split "\n")[$res.Get.Download.UrlLine]
+                UserAgent = $res.Get.Update.UserAgent
             }
-            $redirectUrl = Resolve-InvokeWebRequest @rruParams
+            $redirectUrl = Resolve-InvokeWebRequest @params
 
             # Construct the output; Return the custom object to the pipeline
-            ForEach ($extension in $res.Get.Extensions.Windows) {
+            ForEach ($extension in $res.Get.Download.Extensions.Windows) {
                 $PSObject = [PSCustomObject] @{
-                    Version      = $Content[0]
+                    Version      = ($Content -split "\n")[$res.Get.Download.VersionLine]
                     Platform     = "Windows"
                     Architecture = $platform.Name
                     Type         = $extension

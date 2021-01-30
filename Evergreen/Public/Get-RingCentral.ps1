@@ -27,9 +27,8 @@ Function Get-RingCentral {
     # Read the RingCentral version from the YML source
     $params = @{
         Uri = $res.Get.Update.Uri
-        Raw = $true
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-RestMethodWrapper @params
     try {
         $YmlVersion = [RegEx]::Match($Content, $res.Get.MatchYmlVersion).Captures.Groups[1].Value
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $YmlVersion."

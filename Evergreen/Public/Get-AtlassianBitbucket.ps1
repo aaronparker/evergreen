@@ -28,9 +28,8 @@ Function Get-AtlassianBitbucket {
     # Read the update URI
     $params = @{
         Uri = $res.Get.Update.Uri
-        Raw = $true
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-RestMethodWrapper @params
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Content) {

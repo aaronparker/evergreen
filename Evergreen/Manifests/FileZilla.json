@@ -1,35 +1,35 @@
 {
-	"Name": "FileZilla",
-	"Source": "https://filezilla-project.org/",
-	"Get": {
-		"Uri": "https://update.filezilla-project.org/update.php?initial=0&manual=1&osarch=64&osversion=10.0&package=1&platform=x86_64-w64-mingw32&updated=0&version=3.47.2.1",
-		"UserAgent": "FileZilla/3.47.2.1",
-		"Delimiter": " ",
-		"Headers": [
-			"Channel",
-			"Version",
-			"URI",
-			"Size",
-			"HashType",
-			"Hash",
-			"Signature"
-		],
-		"Channel": "release",
-		"DownloadUri": "https://download.filezilla-project.org/client/"
-	},
-	"Install": {
-		"Setup": "FileZilla.*setup.exe",
-		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-
-			]
-		},
-		"Virtual": {
-			"Arguments": "",
-			"PostInstall": [
-
-			]
-		}
-	}
+    "Name": "FileZilla",
+    "Source": "https://filezilla-project.org/",
+    "Get": {
+        "Update": {
+            "Uri": "https://update.filezilla-project.org/update.php?initial=0&manual=1&osarch=64&osversion=10.0&package=1&platform=x86_64-w64-mingw32&updated=0&version=3.47.2.1",
+            "UserAgent": "FileZilla/3.47.2.1",
+            "Delimiter": " ",
+            "Headers": [
+                "Channel",
+                "Version",
+                "URI",
+                "Size",
+                "HashType",
+                "Hash",
+                "Signature"
+            ],
+            "Channel": "release"
+        },
+        "Download": {
+            "Uri": "https://download.filezilla-project.org/client/"
+        }
+    },
+    "Install": {
+        "Setup": "FileZilla.*setup.exe",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
 }

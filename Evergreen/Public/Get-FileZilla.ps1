@@ -26,17 +26,18 @@ Function Get-FileZilla {
     Write-Verbose -Message $res.Name
 
     # Query the update feed
-    $iwcParams = @{
-        Uri                  = $res.Get.Uri
-        UserAgent            = $res.Get.UserAgent
+    $params = @{
+        Uri                  = $res.Get.Update.Uri
+        UserAgent            = $res.Get.Update.UserAgent
         SkipCertificateCheck = $True
         Raw                  = $True
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-WebRequestWrapper @params
 
     # Convert the content to an object
     try {
-        $Updates = ($Content | ConvertFrom-Csv -Delimiter $res.Get.Delimiter -Header $res.Get.Headers) | Where-Object { $_.Channel -eq $res.Get.Channel }
+        $Updates = ($Content | ConvertFrom-Csv -Delimiter $res.Get.Update.Delimiter -Header $res.Get.Update.Headers) | `
+            Where-Object { $_.Channel -eq $res.Get.Update.Channel }
     }
     catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert update feed."
@@ -49,7 +50,7 @@ Function Get-FileZilla {
             Version = $Update.Version
             Size    = $Update.Size
             Hash    = $Update.Hash
-            URI     = "$($res.Get.DownloadUri)$(Split-Path -Path $Update.URI -Leaf)"
+            URI     = "$($res.Get.Download.Uri)$(Split-Path -Path $Update.URI -Leaf)"
         }
         Write-Output -InputObject $PSObject
     }
