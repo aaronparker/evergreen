@@ -12,8 +12,6 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 * Retrieve the latest version of a particular application when comparing against a version already installed or downloaded
 * Return the URL for the latest version of the application if you need to download it locally for installation or deployment
 
-![leaf by The Icon Z from the Noun Project](/img/EvergreenLeaf.png)
-
 Right now all functions consist of the following:
 
 * `Get` verb - the module provides functions to retrieve data only
@@ -55,8 +53,5 @@ This module is maintained by the following community members
 ## Versioning
 
 The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](/CHANGELOG.md) for details on changes introduced in each version.
-
----
-leaf by The Icon Z from the Noun Project
 
 {% include links.html %}
