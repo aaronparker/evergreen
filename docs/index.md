@@ -41,12 +41,4 @@ Scraping web pages to parse text and determine version strings and download URLs
 
 Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
 
-## Who
-
-This module is maintained by the following community members
-
-* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
-* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
-* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
-
 {% include links.html %}

@@ -6,7 +6,6 @@ sidebar: home_sidebar
 permalink: examples.html
 summary: How to use sample Evergreen functions in your scripts.
 ---
-
 Here's a few examples of using `Evergreen` functions to return application versions and downloads.
 
 ## Microsoft Edge
