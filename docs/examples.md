@@ -2,7 +2,7 @@
 title: "Evergreen examples"
 keywords: evergreen
 tags: [getting_started]
-sidebar: mydoc_sidebar
+sidebar: home_sidebar
 permalink: examples.html
 summary: Evergreen example commands.
 ---

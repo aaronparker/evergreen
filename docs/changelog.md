@@ -2,7 +2,7 @@
 title: "Evergreen change log"
 keywords: evergreen
 tags: [getting_started]
-sidebar: mydoc_sidebar
+sidebar: home_sidebar
 permalink: changelog.html
 summary: Change log for Evergreen updates.
 ---

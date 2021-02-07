@@ -2,7 +2,7 @@
 title: "Getting started with Evergreen"
 keywords: evergreen
 tags: [getting_started]
-sidebar: mydoc_sidebar
+sidebar: home_sidebar
 permalink: index.html
 summary: These instructions will help you get started with using Evergreen in software deployments and image creation.
 ---
