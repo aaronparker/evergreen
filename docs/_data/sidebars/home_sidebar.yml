@@ -11,11 +11,11 @@ entries:
     - title: Introduction
       url: /index.html
       output: web
-    - title: Use
-      url: /use.html
-      output: web
     - title: Install
       url: /install.html
+      output: web
+    - title: Use
+      url: /use.html
       output: web
     - title: Examples
       url: /examples.html
