@@ -1,0 +1,25 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  levels: one
+  folders:
+
+  - title: Evergreen
+    output: web
+    folderitems:
+    - title: Introduction
+      url: /index.html
+      output: web
+    - title: Install
+      url: /install.html
+      output: web
+    - title: Use
+      url: /use.html
+      output: web
+    - title: Examples
+      url: /examples.html
+      output: web
+    - title: Change log
+      url: /changelog.html
+      output: web
