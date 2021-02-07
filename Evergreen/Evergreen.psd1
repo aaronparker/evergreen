@@ -147,7 +147,7 @@ PrivateData = @{
         IconUri = 'https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png'
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md'
+        ReleaseNotes = 'https://stealthpuppy.com/Evergreen/changelog.html'
 
         # Prerelease string of this module
         # Prerelease = ''
