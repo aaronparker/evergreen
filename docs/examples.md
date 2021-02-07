@@ -4,7 +4,7 @@ keywords: evergreen
 tags: [examples, usage]
 sidebar: home_sidebar
 permalink: examples.html
-summary: Evergreen example commands.
+summary: How to use sample Evergreen functions in your scripts.
 ---
 
 Here's a few examples of using `Evergreen` functions to return application versions and downloads.

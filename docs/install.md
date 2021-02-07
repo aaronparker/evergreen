@@ -1,12 +1,11 @@
 ---
-title: "Installing the Module"
+title: "Installing Evergreen"
 keywords: evergreen
-tags: [getting_started]
+tags: [install, update]
 sidebar: home_sidebar
 permalink: install.html
-summary: Installing Evergreen.
+summary: How to install the Evergreen PowerShell module
 ---
-
 ## Install from the PowerShell Gallery
 
 The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). The module can be installed from the gallery with:
@@ -24,9 +23,35 @@ If you have installed a previous version of the module from the gallery, you can
 Update-Module -Name Evergreen -Force
 ```
 
+### Advanced Installation
+
+In scripted installations (e.g. operating system deployment), you may wish to ensure that the PowerShell Gallery is first trusted before attempting to install the module:
+
+```powershell
+If (Get-PSRepository | Where-Object { $_.Name -eq "PSGallery" -and $_.InstallationPolicy -ne "Trusted" }) {
+    Install-PackageProvider -Name "NuGet" -MinimumVersion 2.8.5.208 -Force
+    Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted"
+}
+```
+
+Then we can install or update Evergreen based on whether the module is already installed or out of date:
+
+```powershell
+$Installed = Get-Module -Name "Evergreen" -ListAvailable | `
+    Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | `
+    Select-Object -First 1
+$Published = Find-Module -Name "Evergreen"
+If ($Null -eq $Installed) {
+    Install-Module -Name "Evergreen"
+}
+ElseIf ([System.Version]$Published.Version -gt [System.Version]$Installed.Version) {
+    Update-Module -Name "Evergreen"
+}
+```
+
 ## Manual Installation from the Repository
 
-The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/Evergreen) and includes the module in the `Evergreen` folder. The folder needs to be installed into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
+The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/Evergreen) which includes the module in the `Evergreen` folder. The folder needs to be copied into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
 
 Common PowerShell module paths include:
 

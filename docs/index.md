@@ -6,7 +6,6 @@ sidebar: home_sidebar
 permalink: index.html
 summary: These instructions will help you get started with using Evergreen in software deployments and image creation.
 ---
-
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise Windows applications. The module consists of a number of simple functions to use in scripts when performing several tasks including:
 
 * Retrieve the latest version of a particular application when comparing against a version already installed or downloaded
@@ -49,9 +48,5 @@ This module is maintained by the following community members
 * Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
 * Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
 * Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
-
-## Versioning
-
-The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](/CHANGELOG.md) for details on changes introduced in each version.
 
 {% include links.html %}

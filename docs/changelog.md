@@ -1,13 +1,12 @@
 ---
 title: "Evergreen change log"
 keywords: evergreen
-tags: [getting_started]
+tags: [changelog]
 sidebar: home_sidebar
 toc: false
 permalink: changelog.html
-summary: Change log for Evergreen updates.
+summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-
 ## 2101.281
 
 * Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
