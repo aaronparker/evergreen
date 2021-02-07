@@ -23,4 +23,5 @@ jobs:
       - name: Run a one-line script
         shell: pwsh
         working-directory: $GITHUB_WORKSPACE
-        run: scripts/New-EvergreenHtmlReport.ps1
+        run: . $GITHUB_WORKSPACE/scripts/New-EvergreenHtmlReport.ps1
+        
