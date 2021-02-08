@@ -23,7 +23,7 @@ jobs:
       - name: Get directory listing
         shell: pwsh
         run: |
-          Get-Location | Select-Object -ExpandProperty "FullName"
+          Write-Host "Current path: $(Get-Location | Select-Object -ExpandProperty "Path")"
       - name: Generate Evergreen report
         shell: pwsh
         run: ./scripts/New-EvergreenHtmlReport.ps1
