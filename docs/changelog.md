@@ -376,7 +376,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 
 ## 19.10.2
 
-* First verison pushed to the PowerShell Gallery
+* First version pushed to the PowerShell Gallery
 * Initial functions are:
 
 `Export-EvergreenResourceStrings`
