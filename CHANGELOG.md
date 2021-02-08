@@ -4,6 +4,9 @@
 
 * Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`
 * Updates `Get-MicrosoftWvdRemoteDesktop` to output the `URI` property value in the format `https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MntQ` instead of the original fwlink source URL (e.g. `https://go.microsoft.com/fwlink/?linkid=2068602`)
+* Updates the following functions to use `Invoke-RestMethod` (via `Invoke-RestMethodWrapper`) instead of `Invoke-WebRequest` to simplify code and fix an issue where some functions where returning `Version` as a PSObject instead of System.String ([#109](https://github.com/aaronparker/Evergreen/issues/109))
+  * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
+* Updates module `ReleaseNotes` location to: [https://stealthpuppy.com/Evergreen/changelog.html](https://stealthpuppy.com/Evergreen/changelog.html)
 
 ## 2101.281
 
