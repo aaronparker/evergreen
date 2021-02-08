@@ -26,27 +26,32 @@ Function Get-SumatraPDFReader {
     Write-Verbose -Message $res.Name
 
     # Read the SumatraPDFReader version from the text source
-    try {
-        $params = @{
-            Uri = $res.Get.Update.Uri
-            Raw = $true
-        }
-        $Content = Invoke-WebRequestWrapper @params
-        $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+    $params = @{
+        Uri = $res.Get.Update.Uri
     }
-    catch {
-        $Version = "Latest"
-    }
+    $Content = Invoke-WebRequestWrapper @params
 
-    # Construct the output for each architecture
-    ForEach ($architecture in $res.Get.Download.Uri.GetEnumerator()) {
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version      = $Version
-            Architecture = $architecture.Name
-            URI          = $res.Get.Download.Uri[$architecture.Key] -replace $res.Get.Download.ReplaceText, $Version
+    If ($Null -ne $Content) {
+        try {
+            $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
         }
-        Write-Output -InputObject $PSObject
+        catch {
+            $Version = "Latest"
+        }
+
+        # Construct the output for each architecture
+        ForEach ($architecture in $res.Get.Download.Uri.GetEnumerator()) {
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version      = $Version
+                Architecture = $architecture.Name
+                URI          = $res.Get.Download.Uri[$architecture.Key] -replace $res.Get.Download.ReplaceText, $Version
+            }
+            Write-Output -InputObject $PSObject
+        }
+    }
+    Else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from: $($res.Get.Update.Uri)."
     }
 }

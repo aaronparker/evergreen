@@ -26,11 +26,10 @@ Function Get-Fork {
     Write-Verbose -Message $res.Name
 
     # Get latest version from the update API
-    $iwcParams = @{
+    $params = @{
         Uri = $res.Get.Update.Uri
-        Raw = $true
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-RestMethodWrapper @params
 
     If ($Content) {
         # Parse the returned content and match the version number

@@ -33,34 +33,29 @@
         $iwcParams = @{
             Uri       = $res.Get.Uri[$language.key]
             UserAgent = $res.Get.UserAgent
-            Raw       = $True
         }
-        $Content = Invoke-WebRequestWrapper @iwcParams
+        $Content = Invoke-RestMethodWrapper @iwcParams
 
         # If something is returned
         If ($Null -ne $Content) {
-            Try {
-                [System.XML.XMLDocument] $xmlDocument = $Content
-            }
-            Catch [System.Exception] {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert content to an XML object."
-            }
 
-            # Build an output object by selecting Citrix XML entries from the feed
-            If ($xmlDocument -is [System.XML.XMLDocument]) {
+            # Build an array of the latest release and download URLs
+            ForEach ($update in $Content.Update) {
 
-                # Select the required node/s from the XML feed
-                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
-                ForEach ($node in $nodes) {
-
-                    # Build an array of the latest release and download URLs
-                    $PSObject = [PSCustomObject] @{
-                        Version  = [RegEx]::Match($node.latestversion, $res.Get.MatchVersion).Captures.Value
-                        Language = $res.Get.Languages[$language.key]
-                        URI      = $node.download
-                    }
-                    Write-Output -InputObject $PSObject
+                try {
+                    $version = [RegEx]::Match($update.latestversion, $res.Get.MatchVersion).Captures.Value
+                    $version = "$($version).$($update.latestBuild)"
                 }
+                catch {
+                    $version = $update.latestVersion
+                }
+
+                $PSObject = [PSCustomObject] @{
+                    Version  = $version
+                    Language = $res.Get.Languages[$language.key]
+                    URI      = $update.download
+                }
+                Write-Output -InputObject $PSObject
             }
         }
     }

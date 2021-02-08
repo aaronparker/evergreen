@@ -1,34 +1,38 @@
 {
-	"Name": "VideoLan VLC Player ",
-	"Source": "https://www.videolan.org/vlc/",
-	"Get": {
-		"Uri": {
-			"Windows": {
-				"x64": "https://update.videolan.org/vlc/status-win-x64",
-				"x86": "https://update.videolan.org/vlc/status-win-x86"
-			}
-		},
-		"ContentType": "application/octet-stream",
-		"UserAgent": "VLC/3.0.7 LibVLC/3.0.7",
-		"XmlNode": "//item",
-		"TrimVersion": "Version ",
-		"Extensions": {
-			"Windows": [
-				"EXE",
-				"MSI",
-				"ZIP"
-			]
-		}
-	},
-	"Install": {
-		"Setup": "vlc*.exe",
-		"Physical": {
-			"Arguments": "/L=1033 /S /NCRC",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "/L=1033 /S /NCRC",
-			"PostInstall": []
-		}
-	}
+    "Name": "VideoLan VLC Player ",
+    "Source": "https://www.videolan.org/vlc/",
+    "Get": {
+        "Update": {
+            "Uri": {
+                "Windows": {
+                    "x64": "https://update.videolan.org/vlc/status-win-x64",
+                    "x86": "https://update.videolan.org/vlc/status-win-x86"
+                }
+            },
+            "ContentType": "application/octet-stream",
+            "UserAgent": "VLC/3.0.7 LibVLC/3.0.7"
+        },
+        "Download": {
+			"VersionLine": 0,
+			"UrlLine": 1,
+            "Extensions": {
+                "Windows": [
+                    "EXE",
+                    "MSI",
+                    "ZIP"
+                ]
+            }
+        }
+    },
+    "Install": {
+        "Setup": "vlc*.exe",
+        "Physical": {
+            "Arguments": "/L=1033 /S /NCRC",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/L=1033 /S /NCRC",
+            "PostInstall": []
+        }
+    }
 }

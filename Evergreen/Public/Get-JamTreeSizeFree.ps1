@@ -32,7 +32,6 @@ Function Get-JamTreeSizeFree {
     $iwcParams = @{
         Uri       = $res.Get.Uri
         UserAgent = $res.Get.UserAgent
-        Raw       = $True
     }
     $Content = Invoke-WebRequestWrapper @iwcParams
 

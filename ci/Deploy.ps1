@@ -61,7 +61,8 @@ Else {
             (Get-Content -Path $yml) -replace $replaceString, $versionString | Set-Content -Path $yml
 
             # Update version number for latest release in CHANGELOG.md
-            $changeLog = Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath "CHANGELOG.md"
+            #$changeLog = Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath "CHANGELOG.md"
+            $changeLog = [System.IO.Path]::Combine($env:APPVEYOR_BUILD_FOLDER, "docs", "changelog.md")
             $replaceString = "^## VERSION$"
             $content = Get-Content -Path $changeLog
             If ($content -match $replaceString) {

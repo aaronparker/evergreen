@@ -27,7 +27,7 @@ Evergreen's focus is on integration for PowerShell scripts to provide product ve
 
 ## How
 
-**Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
+{% include important.html content="Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party." %}
 
 Wherever possible, Evergeen uses an approach that returns at least the verison number and download URI for applications programatically - thus for each run an Evergreen function it should return the latest version and dowload link.
 
