@@ -5,7 +5,9 @@
 		"Update": {
 			"Uri": {
 				"DC": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/acrobat/current_version.txt",
-				"2020": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2020/acrobat/current_version.txt"
+				"2020": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2020/acrobat/current_version.txt",
+				"2017": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2017/acrobat/current_version.txt",
+				"2015": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2015/acrobat/current_version.txt"
 			},
 			"ContentType": "text/plain; charset=utf-8"
 		},
