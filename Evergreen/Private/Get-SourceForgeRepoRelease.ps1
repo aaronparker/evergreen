@@ -20,7 +20,7 @@
         [System.String] $MatchVersion
     )
 
-    # Retreive best release json
+    # retrieve best release json
     try {
         $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }

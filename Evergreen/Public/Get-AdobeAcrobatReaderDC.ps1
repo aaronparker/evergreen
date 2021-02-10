@@ -90,7 +90,7 @@ Function Get-AdobeAcrobatReaderDC {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
     #endregion
 }

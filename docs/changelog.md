@@ -7,6 +7,14 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Rename function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and add support for Adobe Acrobat 2020
+  * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
+* Update correct spelling of `retrieve` across several functions
+* BREAKING CHANGES
+  * `Get-AdobeAcrobat` includes an additional property - `Track` with values of `DC` or `2020` which will need to be filtered with `Where-Object`
+
 ## 2102.286
 
 * Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`

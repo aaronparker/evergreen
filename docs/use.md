@@ -10,7 +10,7 @@ Evergreen is intended for use in solutions used to automate software deployments
 
 * Image creation with Hashicorp Packer - images can be created with the latest version of a set of applications
 * Import applications into Microsoft Endpoint Manager - keep Configuration Manager or Microsoft Intune up to date with the latest versions of applications
-* Create a libary of application installers - by regularly running Evergreen functions, you can retreive and download the current version of an application and store it in an application directory structure for later use
+* Create a libary of application installers - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
 * Submitting manifests to `Winget` or `Chocalatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
 
 ## Functions
