@@ -7,6 +7,16 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and add support for Adobe Acrobat 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
+  * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
+* Adds `Preview` ring to `Get-MicrosoftTeams`
+* Updates function comment-based help and corrects spelling across several functions
+* BREAKING CHANGES
+  * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` which will need to be filtered with `Where-Object`
+  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` and `Preview` rings
+
 ## 2102.286
 
 * Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`

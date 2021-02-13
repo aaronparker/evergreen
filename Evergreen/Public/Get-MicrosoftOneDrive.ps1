@@ -1,7 +1,7 @@
 ﻿Function Get-MicrosoftOneDrive {
     <#
         .SYNOPSIS
-            Get the current version and download URL for the Microsoft OneDrive sync client.
+            Returns the current version and download URL for the Microsoft OneDrive sync client for Windows.
 
         .NOTES
             Site: https://stealthpuppy.com

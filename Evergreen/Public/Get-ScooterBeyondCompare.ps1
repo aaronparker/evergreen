@@ -3,9 +3,6 @@
         .SYNOPSIS
             Returns the latest Beyond Compare and download URL.
 
-        .DESCRIPTION
-            Returns the latest Beyond Compare and download URL.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

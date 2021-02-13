@@ -1,9 +1,6 @@
 Function Get-MicrosoftVisualStudioCode {
     <#
         .SYNOPSIS
-            Returns Microsoft Visual Studio Code versions and download URLs.
-
-        .DESCRIPTION
             Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows.
 
         .NOTES

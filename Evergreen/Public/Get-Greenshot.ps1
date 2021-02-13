@@ -3,9 +3,6 @@ Function Get-Greenshot {
         .SYNOPSIS
             Returns the available Greenshot versions.
 
-        .DESCRIPTION
-            Returns the available Greenshot versions.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

@@ -1,10 +1,7 @@
 Function Get-MicrosoftEdge {
     <#
         .SYNOPSIS
-            Returns the available Microsoft Edge versions.
-
-        .DESCRIPTION
-            Returns the available Microsoft Edge versions across all platforms and channels by querying the offical Microsoft version JSON.
+            Returns the available Microsoft Edge versions and channels by querying the official Microsoft version JSON.
 
         .NOTES
             Author: Aaron Parker

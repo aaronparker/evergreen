@@ -3,9 +3,6 @@ Function Get-JamTreeSizeFree {
         .SYNOPSIS
             Returns the the latest JAM Software TreeSize Free version number and download URI.
 
-        .DESCRIPTION
-            Returns the the latest JAM Software TreeSize Free version number and download URI.
-
         .NOTES
             Site: https://stealthpuppy.com
             Author: Aaron Parker

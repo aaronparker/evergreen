@@ -3,9 +3,6 @@ Function Get-Microsoft.NET {
         .SYNOPSIS
             Returns the available Microsoft .NET Desktop Runtime versions and download URIs.
 
-        .DESCRIPTION
-            Returns the available Microsoft .NET Desktop Runtime versions and download URIs.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

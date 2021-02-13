@@ -3,9 +3,6 @@ Function Get-MozillaThunderbird {
         .SYNOPSIS
             Returns downloads for the latest Mozilla Thunderbird releases.
 
-        .DESCRIPTION
-            Returns downloads for the latest Mozilla Thunderbird releases.
-
         .NOTES
             Site: https://stealthpuppy.com
             Author: Aaron Parker

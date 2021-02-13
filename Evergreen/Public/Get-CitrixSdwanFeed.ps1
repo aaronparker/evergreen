@@ -1,11 +1,7 @@
 Function Get-CitrixSdwanFeed {
     <#
         .SYNOPSIS
-            Gets the current available Citrix SD-WAN release versions.
-
-        .DESCRIPTION
-            Reads the public Citrix Receiver web page to return an array of Receiver platforms and the available versions.
-            Does not provide the version number for Receiver where a login is required (e.g. HTML5, Chrome)
+            Reads the public Citrix SD-WAN feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker

@@ -1,9 +1,6 @@
 Function Get-GoogleChrome {
     <#
         .SYNOPSIS
-            Returns the available Google Chrome versions.
-
-        .DESCRIPTION
             Returns the available Google Chrome versions across all platforms and channels by querying the offical Google version JSON.
 
         .NOTES

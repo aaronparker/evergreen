@@ -3,9 +3,6 @@ Function Get-MicrosoftWindowsPackageManagerClient {
         .SYNOPSIS
             Returns the latest Microsoft Windows Package Manager Client (winget) version number and download.
 
-        .DESCRIPTION
-            Returns the latest Microsoft Windows Package Manager Client (winget) version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

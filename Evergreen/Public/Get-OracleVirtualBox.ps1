@@ -14,7 +14,7 @@ Function Get-OracleVirtualBox {
             Get-OracleVirtualBox
 
             Description:
-            Returns the latest verison and downloads for each operating system.
+            Returns the latest version and downloads for each operating system.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]

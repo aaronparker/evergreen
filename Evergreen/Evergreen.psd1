@@ -71,7 +71,7 @@ PowerShellVersion = '3.0'
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-1Password', 'Get-7zip', 
-               'Get-AdobeAcrobatProDC', 'Get-AdobeAcrobatReaderDC', 
+               'Get-AdobeAcrobat', 'Get-AdobeAcrobatReaderDC', 
                'Get-AdobeBrackets', 'Get-AdoptOpenJDK', 'Get-AtlassianBitbucket', 
                'Get-BISF', 'Get-BitwardenDesktop', 'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 
@@ -115,7 +115,7 @@ CmdletsToExport = @()
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom', 
                'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore', 
-               'Get-MicrosoftOffice'
+               'Get-MicrosoftOffice', 'Get-AdobeAcrobatProDC'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -56,6 +56,6 @@ Function Get-FoxitReader {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Uri)."
     }
 }

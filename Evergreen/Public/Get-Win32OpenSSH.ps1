@@ -3,9 +3,6 @@ Function Get-Win32OpenSSH {
         .SYNOPSIS
             Returns the available Win32-OpenSSH versions.
 
-        .DESCRIPTION
-            Returns the available Win32-OpenSSH versions.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

@@ -1,10 +1,7 @@
 Function Get-CitrixApplicationDeliveryManagementFeed {
     <#
         .SYNOPSIS
-            Gets the current available Citrix Application Delivery Management downloads.
-
-        .DESCRIPTION
-            Reads the public Citrix Application Delivery Management web page to return an array of platforms and the available versions.
+            Reads the public Citrix Application Delivery Management feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker

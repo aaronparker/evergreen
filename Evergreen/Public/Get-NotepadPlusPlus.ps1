@@ -3,9 +3,6 @@
         .SYNOPSIS
             Returns the latest Notepad++ version and download URI.
 
-        .DESCRIPTION
-            Returns the latest Notepad++ version and download URI.
-
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson

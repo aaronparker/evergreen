@@ -3,9 +3,14 @@
 	"Source": "https://www.microsoft.com/teams",
 	"Get": {
 		"Update": {
-			"Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=general",
+			"Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=#ring",
 			"ContentType": "application/json; charset=utf-8",
-			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+			"Rings": {
+				"General": "general",
+				"Preview": "ring3_6"
+			},
+			"ReplaceText": "#ring"
 		},
 		"Download": {
 			"Uri": {

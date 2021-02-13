@@ -3,9 +3,6 @@ Function Get-KeePassXCTeamKeePassXC {
         .SYNOPSIS
             Returns the latest KeePassXC version number and download.
 
-        .DESCRIPTION
-            Returns the latest KeePassXC version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

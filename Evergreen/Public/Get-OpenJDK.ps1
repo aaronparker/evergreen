@@ -3,9 +3,6 @@ Function Get-OpenJDK {
         .SYNOPSIS
             Returns the latest Open JDK version number and download.
 
-        .DESCRIPTION
-            Returns the latest Open JDK version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

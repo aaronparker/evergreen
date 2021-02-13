@@ -3,9 +3,6 @@ Function Get-AdobeAcrobatReaderDC {
         .SYNOPSIS
             Gets the download URLs for Adobe Acrobat Reader DC Continuous track installers.
 
-        .DESCRIPTION
-            Gets the download URLs for Adobe Acrobat Reader DC Continuous track installers for the latest version for Windows.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
@@ -90,7 +87,7 @@ Function Get-AdobeAcrobatReaderDC {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retreive content from $($res.Get.Update.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
     #endregion
 }

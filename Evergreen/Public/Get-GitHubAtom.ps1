@@ -1,10 +1,7 @@
 Function Get-GitHubAtom {
     <#
         .SYNOPSIS
-            Returns the latest Atom version number and download.
-
-        .DESCRIPTION
-            Returns the latest Atom version number and download.
+            Returns the latest GitHub Atom version number and download.
 
         .NOTES
             Author: Aaron Parker
@@ -17,7 +14,7 @@ Function Get-GitHubAtom {
             Get-GitHubAtom
 
             Description:
-            Returns the latest Atom version number and download for each platform.
+            Returns the latest GitHub Atom version number and download for each platform.
     #>
     [Alias("Get-Atom")]
     [OutputType([System.Management.Automation.PSObject])]

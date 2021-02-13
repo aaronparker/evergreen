@@ -3,9 +3,6 @@ Function Get-Handbrake {
         .SYNOPSIS
             Returns the latest Handbrake version number and download.
 
-        .DESCRIPTION
-            Returns the latest Handbrake version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

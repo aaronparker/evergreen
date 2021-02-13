@@ -3,9 +3,6 @@ Function Get-ShareX {
         .SYNOPSIS
             Returns the available ShareX versions.
 
-        .DESCRIPTION
-            Returns the available ShareX versions.
-
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog

@@ -3,9 +3,6 @@ Function Get-MicrosoftPowerToys {
         .SYNOPSIS
             Returns the latest Microsoft PowerToys version number and download.
 
-        .DESCRIPTION
-            Returns the latest Microsoft PowerToys version number and download.
-
         .NOTES
             Author: Jay Michaud
             Twitter: @jaymmichaud

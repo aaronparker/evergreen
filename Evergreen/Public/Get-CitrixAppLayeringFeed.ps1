@@ -1,10 +1,7 @@
 Function Get-CitrixAppLayeringFeed {
     <#
         .SYNOPSIS
-            Gets the current available Citrix App Layering release versions.
-
-        .DESCRIPTION
-            Reads the public Citrix App Layering web page to return an array of App Layering platforms and the available versions.
+            Reads the public Citrix App Layering feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker

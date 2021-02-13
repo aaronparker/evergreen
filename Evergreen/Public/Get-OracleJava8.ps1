@@ -40,7 +40,7 @@
             $updateNodes = $nodes | Where-Object { $_.url -notlike "*-cb.xml" }
             $latestUpdate = $updateNodes | Select-Object -Last 1
 
-            # Read the XML listed in the most revent update
+            # Read the XML listed in the most recent update
             $Content = Invoke-WebRequestWrapper -Uri $latestUpdate.url
             If ($Null -ne $Content) {
                 Try {

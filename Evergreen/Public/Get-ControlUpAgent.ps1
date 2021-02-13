@@ -1,9 +1,6 @@
 Function Get-ControlUpAgent {
     <#
         .SYNOPSIS
-            Gets the ControlUp latest agent version and download URI.
-
-        .DESCRIPTION
             Gets the ControlUp latest agent version and download URI for 64-bit or 32-bit Windows, .NET Framework 3.5 or .NET Framework 4.5.
 
         .NOTES

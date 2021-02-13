@@ -3,9 +3,6 @@ Function Get-MicrosoftSsms {
         .SYNOPSIS
             Returns the latest SQL Server Management Studio release version number and download.
 
-        .DESCRIPTION
-            Returns the latest SQL Server Management Studio release version number and download.
-
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson

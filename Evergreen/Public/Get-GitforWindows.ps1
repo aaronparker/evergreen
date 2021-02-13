@@ -3,9 +3,6 @@ Function Get-GitForWindows {
         .SYNOPSIS
             Returns the available Git for Windows versions.
 
-        .DESCRIPTION
-            Returns the available Git for Windows versions.
-
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog
