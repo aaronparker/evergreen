@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2102.291
 
 * Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and add support for Adobe Acrobat 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
   * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
