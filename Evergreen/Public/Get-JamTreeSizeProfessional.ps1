@@ -3,9 +3,6 @@ Function Get-JamTreeSizeProfessional {
         .SYNOPSIS
             Returns the the latest JAM Software TreeSize Professional version number and download URI.
 
-        .DESCRIPTION
-            Returns the the latest JAM Software TreeSize Professional version number and download URI.
-
         .NOTES
             Site: https://stealthpuppy.com
             Author: Aaron Parker

@@ -1,10 +1,7 @@
 ﻿Function Get-CitrixWorkspaceApp {
     <#
         .SYNOPSIS
-            Returns the current Citrix Workspace app, Receiver and HDX RTME releases.
-
-        .DESCRIPTION
-            Returns the current Citrix Workspace app, Receiver and HDX RTME releases.
+            Returns the current Citrix Workspace app releases and HDX RTME release.
 
         .NOTES
             Author: Aaron Parker
@@ -17,7 +14,7 @@
             Get-CitrixWorkspaceApp
 
             Description:
-            Returns the available Citrix Workspace app, Receiver and HDX RTME releases for all platforms.
+            Returns the current Citrix Workspace app releases and HDX RTME release.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
@@ -64,5 +61,6 @@
         Else {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Citrix Workspace update feed."
         }
+        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned by the feed this function uses is out of date. Use Get-CitrixWorkspaceAppFeed to find the latest HDX RTME version."
     }
 }

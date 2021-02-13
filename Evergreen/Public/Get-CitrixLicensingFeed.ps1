@@ -1,10 +1,7 @@
 Function Get-CitrixLicensingFeed {
     <#
         .SYNOPSIS
-            Gets the current available Citrix Licensing Server release versions.
-
-        .DESCRIPTION
-            Reads the public Citrix Licensing web page to return an array of Licensing platforms and the available versions.
+            Reads the public Citrix Licensing feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker

@@ -3,9 +3,6 @@ Function Get-BISF {
         .SYNOPSIS
             Returns the available Base Image Script Framework versions.
 
-        .DESCRIPTION
-            Returns the available Base Image Script Framework versions.
-
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog

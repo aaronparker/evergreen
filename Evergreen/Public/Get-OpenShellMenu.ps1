@@ -3,9 +3,6 @@ Function Get-OpenShellMenu {
         .SYNOPSIS
             Returns the available Open-Shell-Menu versions.
 
-        .DESCRIPTION
-            Returns the available Open-ShellMenu versions.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

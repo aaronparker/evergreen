@@ -3,9 +3,6 @@ Function Get-AdobeBrackets {
         .SYNOPSIS
             Returns the latest Adobe Brackets version number and download.
 
-        .DESCRIPTION
-            Returns the latest Adobe Brackets version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

@@ -3,9 +3,6 @@ Function Get-AdoptOpenJDK {
         .SYNOPSIS
             Returns the latest AdoptOpenJDK Open JDK version number and download.
 
-        .DESCRIPTION
-            Returns the latest AdoptOpenJDK Open JDK version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

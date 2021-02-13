@@ -3,9 +3,6 @@ Function Get-Terminals {
         .SYNOPSIS
             Returns the latest Terminals version number and download.
 
-        .DESCRIPTION
-            Returns the latest Terminals version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

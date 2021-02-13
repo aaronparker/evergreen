@@ -3,9 +3,6 @@ Function Get-mRemoteNG {
         .SYNOPSIS
             Returns the available mRemoteNG versions.
 
-        .DESCRIPTION
-            Returns the available mRemoteNG versions.
-
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog

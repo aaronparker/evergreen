@@ -3,9 +3,6 @@ Function Get-WixToolset {
         .SYNOPSIS
             Returns the latest Wix Toolset version number and download.
 
-        .DESCRIPTION
-            Returns the latest Wix Toolset version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

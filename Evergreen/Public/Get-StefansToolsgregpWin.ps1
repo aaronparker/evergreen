@@ -3,9 +3,6 @@ Function Get-StefansToolsgregpWin {
         .SYNOPSIS
             Returns the latest Stefans Tools gregpWin version number and download.
 
-        .DESCRIPTION
-            Returns the latest Stefans Tools gregpWin version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

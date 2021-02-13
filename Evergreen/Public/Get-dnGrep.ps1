@@ -3,9 +3,6 @@ Function Get-dnGrep {
         .SYNOPSIS
             Returns the available dnGrep versions and downloads.
 
-        .DESCRIPTION
-            Returns the available dnGrep versions and downloads.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

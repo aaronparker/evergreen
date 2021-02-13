@@ -3,9 +3,6 @@ Function Get-PeaZipPeaZip {
         .SYNOPSIS
             Returns the latest PeaZip version number and download.
 
-        .DESCRIPTION
-            Returns the latest PeaZip version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
