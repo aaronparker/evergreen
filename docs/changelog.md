@@ -9,13 +9,13 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
 ## 2102.291
 
-* Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and add support for Adobe Acrobat 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
+* Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and includes support for returning updates for Adobe Acrobat Pro/Standard DC, 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
   * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
 * Adds `Preview` ring to `Get-MicrosoftTeams`
 * Updates function comment-based help and corrects spelling across several functions
 * BREAKING CHANGES
-  * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` which will need to be filtered with `Where-Object`
-  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` and `Preview` rings
+  * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
+  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e. current / production ring) and `Preview` rings - filter with `Where-Object`
 
 ## 2102.286
 
