@@ -40,15 +40,20 @@ Function Get-MicrosoftVisualStudioCode {
             # Read the version details from the API, format and return to the pipeline
             $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/VERSION"
             $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
-            $PSObject = [PSCustomObject] @{
-                Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
-                Platform     = $platform
-                Channel      = $channel
-                Architecture = Get-Architecture -String $updateFeed.url
-                Sha256       = $updateFeed.sha256hash
-                URI          = $updateFeed.url
+            If ($updateFeed) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
+                    Platform     = $platform
+                    Channel      = $channel
+                    Architecture = Get-Architecture -String $updateFeed.url
+                    Sha256       = $updateFeed.sha256hash
+                    URI          = $updateFeed.url
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
+            Else {
+                Write-Warning -Message "$($MyInvocation.MyCommand): failed to get update feed from: $Uri."
+            }
         }
     }
 }
