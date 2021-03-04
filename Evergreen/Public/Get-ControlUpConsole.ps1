@@ -1,17 +1,17 @@
-Function Get-ControlUpAgent {
+Function Get-ControlUpConsole {
     <#
         .SYNOPSIS
-            Gets the ControlUp latest agent version and download URI for 64-bit or 32-bit Windows, .NET Framework 3.5 or .NET Framework 4.5.
+            Gets the ControlUp console version and download URI
 
         .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+
         .LINK
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-ControlUpAgent
+            Get-ControlUpConsole
 
             Description:
             Returns the latest ControlUp Agent with .NET Framework 4.5 support for 64-bit Windows.
@@ -38,12 +38,10 @@ Function Get-ControlUpAgent {
         }
     
         # Build and array of the latest release and download URLs
-        ForEach ($item in ($Json.($res.Get.Update.Properties.Agent) | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name)) {
+        ForEach ($item in $Json) {
             $PSObject = [PSCustomObject] @{
                 Version      = $Json.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
-                Framework    = $item
-                Architecture = Get-Architecture -String $item
-                URI          = $Json.($res.Get.Update.Properties.Agent).$item
+                URI          = $Json.($res.Get.Update.Properties.Console)
             }
             Write-Output -InputObject $PSObject
         }
