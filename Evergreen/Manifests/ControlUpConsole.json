@@ -1,6 +1,6 @@
 {
-	"Name": "ControlUp Agent",
-	"Source": "https://www.controlup.com/products/controlup/agent/",
+	"Name": "ControlUp Console",
+	"Source": "https://www.controlup.com/products/controlup/management/",
 	"Get": {
 		"Update": {
 			"Uri": "https://www.controlup.com/latest-agent-console/",
@@ -14,7 +14,7 @@
 		}
 	},
 	"Install": {
-		"Setup": "ControlUpAgent*.msi",
+		"Setup": "ControlUp.zip",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": []

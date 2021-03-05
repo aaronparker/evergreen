@@ -17,6 +17,8 @@ Function Get-Architecture {
         "x64" { $architecture = "x64"; Break }
         "64-bit" { $architecture = "x64"; Break }
         "32-bit" { $architecture = "x86"; Break }
+        "64bit" { $architecture = "x64"; Break }
+        "32bit" { $architecture = "x86"; Break }
         "-x86" { $architecture = "x86"; Break }
         "x86" { $architecture = "x86"; Break }
         "fxdependent" { $architecture = "fxdependent" }
