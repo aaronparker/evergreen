@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenFunctionStrings', 
                'Export-EvergreenResourceStrings', 'Get-1Password', 'Get-7zip', 
                'Get-AdobeAcrobat', 'Get-AdobeAcrobatReaderDC', 'Get-AdobeBrackets', 
-               'Get-AdoptOpenJDK', 'Get-AtlassianBitbucket', 'Get-BISF', 
+               'Get-AdoptOpenJDK', 'Get-Anki', 'Get-AtlassianBitbucket', 'Get-BISF', 
                'Get-BitwardenDesktop', 'Get-CitrixAppLayeringFeed', 
                'Get-CitrixApplicationDeliveryManagementFeed', 
                'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
