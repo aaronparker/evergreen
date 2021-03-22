@@ -1,0 +1,20 @@
+{
+	"Name": "NETworkManager",
+	"Source": "https://github.com/BornToBeRoot/NETworkManager",
+	"Get": {
+		"Uri": "https://api.github.com/repos/borntoberoot/networkmanager/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$"
+	},
+	"Install": {
+		"Setup": "NETworkManager_*_Setup.exe",
+		"Physical": {
+			"Arguments": "/VERYSILENT /SUPPRESSMSGBOXES /TASKS=\"desktopicon\" /NORESTART /SP-",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/VERYSILENT /SUPPRESSMSGBOXES /TASKS=\"desktopicon\" /NORESTART /SP-",
+			"PostInstall": []
+		}
+	}
+}
