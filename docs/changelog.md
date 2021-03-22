@@ -7,6 +7,13 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Adds `Get-NETworkManager`, `Get-Anki`
+* Updates `Get-AdobeAcrobat` to include updates for Adobe Acrobat Reader DC. This function now returns updates for both Acrobat Pro and Reader
+  * Retrieve the installers for Adobe Acrobat Reader DC with `Get-AdobeAcrobatReaderDC` and any available updates with `Get-AdobeAcrobat`
+* Temporarily disables `Get-ControlUpAgent` and `Get-ControlUpConsole`
+
 ## 2103.298
 
 * Adds `Get-MicrosoftAzureDataStudio`, `Get-ControlUpConsole`
