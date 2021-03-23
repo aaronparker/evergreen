@@ -47,7 +47,8 @@ Function Get-AdobeAcrobat {
                         Version  = $Content
                         Type     = $res.Get.Download.Type
                         Product  = $Product.Name
-                        Track    = $Url.Name
+                        Track    = $item.Name
+                        Language = $Url.Name
                         URI      = ($res.Get.Download.Uri.($Product.Name)[$Url.key] -replace $res.Get.Download.ReplaceText.Version, $versionString) -replace $res.Get.Download.ReplaceText.Track, $item.Name
                     }
                     Write-Output -InputObject $PSObject
