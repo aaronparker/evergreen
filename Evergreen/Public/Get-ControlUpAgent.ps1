@@ -1,17 +1,17 @@
-Function Get-ControlUpConsole {
+Function Get-ControlUpAgent {
     <#
         .SYNOPSIS
-            Gets the ControlUp console version and download URI
+            Gets the ControlUp latest agent version and download URI for 64-bit or 32-bit Windows, .NET Framework 3.5 or .NET Framework 4.5.
 
         .NOTES
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-
+            Author: Bronson Magnan
+            Twitter: @cit_bronson
+    
         .LINK
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-ControlUpConsole
+            Get-ControlUpAgent
 
             Description:
             Returns the latest ControlUp Agent with .NET Framework 4.5 support for 64-bit Windows.
@@ -25,23 +25,25 @@ Function Get-ControlUpConsole {
     Write-Verbose -Message $res.Name
 
     # Query the ControlUp Agent JSON
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri    
-    If ($Null -ne $Content) {
+    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri    
+    If ($Null -ne $Object) {
        
         # Strip out the Google script return in the request and convert to JSON
-        try {
+        <#try {
             $Json = [RegEx]::Match($Content, $res.Get.Update.Matches).Value | ConvertFrom-Json
         }
         catch {
             Throw $_
             Break
-        }
+        }#>
     
         # Build and array of the latest release and download URLs
-        ForEach ($item in $Json) {
+        ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name)) {
             $PSObject = [PSCustomObject] @{
-                Version      = $Json.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
-                URI          = $Json.($res.Get.Update.Properties.Console)
+                Version      = $Object.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
+                Framework    = $item
+                Architecture = Get-Architecture -String $item
+                URI          = $Object.($res.Get.Update.Properties.Agent).$item
             }
             Write-Output -InputObject $PSObject
         }
