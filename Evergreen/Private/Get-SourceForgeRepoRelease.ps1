@@ -88,10 +88,12 @@
         }
         If ($Null -ne $File) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $item."
+            $Url = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = Get-Architecture -String $File
-                URI          = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
+                Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                URI          = $Url
             }
             Write-Output -InputObject $PSObject
         }

@@ -48,10 +48,10 @@ Function Save-EvergreenApp {
 
         # Disable the Invoke-WebRequest progress bar for faster downloads
         If ($PSBoundParameters.ContainsKey("Verbose") -and !($PSBoundParameters.ContainsKey("NoProgress"))) {
-            $ProgressPreference = "Continue"
+            $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
         }
         Else {
-            $ProgressPreference = "SilentlyContinue"
+            $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
         }
         
         # Enable TLS 1.2

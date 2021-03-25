@@ -34,72 +34,73 @@ $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^
 $MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
 
 # Get the module commands
-$commands = Get-Command -Module Evergreen
+#$Applications = Get-Command -Module Evergreen
+$Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
 
 Describe -Tag "General" -Name "Properties" {
-    ForEach ($command in $commands) {
+    ForEach ($application in $Applications) {
 
-        Context "Validate $($command.Name) properties" {
+        Context "Validate $($application) properties" {
 
             # Run each command and capture output in a variable
-            New-Variable -Name "tempOutput" -Value (. $command.Name )
+            New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name tempOutput
             
             # Test that the function returns something
-            It "$($command.Name): Fuction returns something" {
+            It "$($application): Function returns something" {
                 ($Output | Measure-Object).Count | Should -BeGreaterThan 0
             }
 
             # Test that the function output matches OutputType in the function
-            It "$($command.Name): Function returns the expected output type" {
-                $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
+            It "$($application): Function returns the expected output type" {
+                $Output | Should -BeOfType ((Get-Command -Name $application).OutputType.Type.Name)
             }
 
-            # Test that output with Verison property includes numbers and "." only
-            If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
+            # Test that output with Version property includes numbers and "." only
+            If ([bool]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
-                        It "$($command.Name): [$($object.Version)] is a valid version number" {
+                        It "$($application): [$($object.Version)] is a valid version number" {
                             $object.Version | Should -Match $MatchVersions
                         }
                     }
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
+                Write-Host -ForegroundColor Yellow "`t$($application) does not have a Version property."
             }
 
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source
-            If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
+            If ([bool]($Output[0].PSObject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): URI property is a valid URL" {
+                    It "$($application): URI property is a valid URL" {
                         $object.URI | Should -Match $MatchUrl
                     }
                 }
             }
             Else {
-                Write-Host -ForegroundColor "Yellow" "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor "Yellow" "`t$($application) does not have a URI property."
             }
         }
     }
 }
 
 Describe -Tag "Download" -Name "Downloads" {
-    ForEach ($command in $commands) {
+    ForEach ($application in $Applications) {
 
-        Context "Validate $($command.Name) downloads" {
+        Context "Validate $($application) downloads" {
             # Run each command and capture output in a variable
-            New-Variable -Name "tempOutput" -Value (. $command.Name )
+            New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name tempOutput
             
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source
-            If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
+            If ([bool]($Output[0].PSObject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
-                    It "$($command.Name): [$(Split-Path -Path $object.URI -Leaf)] is a valid download target" {
+                    It "$($application): [$(Split-Path -Path $object.URI -Leaf)] is a valid download target" {
                         try {
                             # Test URI exists without downloading the file
                             $r = Invoke-WebRequest -Uri $object.URI -Method "Head" -UseBasicParsing -ErrorAction "SilentlyContinue"
@@ -117,7 +118,7 @@ Describe -Tag "Download" -Name "Downloads" {
                             }
                             catch {
                                 # If all else fails, let's pretend the URI is OK. Some URIs may require a login etc.
-                                Write-Host -ForegroundColor Yellow "`t$($command.Name) requires manual testing."
+                                Write-Host -ForegroundColor Yellow "`t$($application) requires manual testing."
                                 $r = [PSCustomObject] @{
                                     StatusCode = 200
                                 }
@@ -139,7 +140,7 @@ Describe -Tag "Download" -Name "Downloads" {
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor Yellow "`t$($application) does not have a URI property."
             }
         }
     }
