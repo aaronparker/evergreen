@@ -69,42 +69,7 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Export-EvergreenFunctionStrings', 
-               'Export-EvergreenResourceStrings', 'Get-1Password', 'Get-7zip', 
-               'Get-AdobeAcrobat', 'Get-AdobeAcrobatReaderDC', 'Get-AdobeBrackets', 
-               'Get-AdoptOpenJDK', 'Get-Anki', 'Get-AtlassianBitbucket', 'Get-BISF', 
-               'Get-BitwardenDesktop', 'Get-CitrixAppLayeringFeed', 'Get-ControlUpConsole',
-               'Get-CitrixApplicationDeliveryManagementFeed', 'Get-ControlUpAgent',
-               'Get-CitrixEndpointManagementFeed', 'Get-CitrixGatewayFeed', 
-               'Get-CitrixHypervisorFeed', 'Get-CitrixLicensingFeed', 
-               'Get-CitrixReceiverFeed', 'Get-CitrixSdwanFeed', 
-               'Get-CitrixVirtualAppsDesktopsFeed', 'Get-CitrixVMTools', 
-               'Get-CitrixWorkspaceApp', 'Get-CitrixWorkspaceAppFeed', 
-               'Get-Cyberduck', 'Get-dnGrep', 'Get-FileZilla', 'Get-Fork', 
-               'Get-FoxitReader', 'Get-Gimp', 'Get-GitforWindows', 'Get-GitHubAtom', 
-               'Get-GitHubRelease', 'Get-Good', 'Get-GoogleChrome', 'Get-Greenshot', 
-               'Get-Handbrake', 'Get-JamTreeSizeFree', 'Get-JamTreeSizeProfessional', 
-               'Get-KeePass', 'Get-KeePassXCTeamKeePassXC', 'Get-LibreOffice', 
-               'Get-Microsoft.NET', 'Get-Microsoft365Apps', 'Save-EvergreenApp',
-               'Get-MicrosoftAzureDataStudio', 'Get-MicrosoftBicep', 
-               'Get-MicrosoftEdge', 'Get-MicrosoftFSLogixApps', 
-               'Get-MicrosoftOneDrive', 'Get-MicrosoftPowerShell', 
-               'Get-MicrosoftPowerToys', 'Get-MicrosoftSsms', 'Get-MicrosoftTeams', 
-               'Get-MicrosoftVisualStudio', 'Get-MicrosoftVisualStudioCode', 
-               'Get-MicrosoftWindowsPackageManagerClient', 
-               'Get-MicrosoftWvdBootloader', 'Get-MicrosoftWvdInfraAgent', 
-               'Get-MicrosoftWvdRemoteDesktop', 'Get-MicrosoftWvdRtcService', 
-               'Get-MozillaFirefox', 'Get-MozillaThunderbird', 'Get-mRemoteNG', 
-               'Get-NETworkManager', 'Get-NotepadPlusPlus', 'Get-OpenJDK', 
-               'Get-OpenShellMenu', 'Get-OracleJava8', 'Get-OracleVirtualBox', 
-               'Get-PaintDotNet', 'Get-PDFForgePDFCreator', 'Get-PeaZipPeaZip', 
-               'Get-ProjectLibre', 'Get-RCoreTeamRforWindows', 'Get-RingCentral', 
-               'Get-ScooterBeyondCompare', 'Get-ShareX', 'Get-Slack', 
-               'Get-StefansToolsgregpWin', 'Get-SumatraPDFReader', 'Get-TeamViewer', 
-               'Get-TelegramDesktop', 'Get-TelerikFiddlerEverywhere', 
-               'Get-Terminals', 'Get-VastLimitsUberAgent', 'Get-VercelHyper', 
-               'Get-VideoLanVlcPlayer', 'Get-VMwareTools', 'Get-Win32OpenSSH', 
-               'Get-WinMerge', 'Get-WinSCP', 'Get-WixToolset', 'Get-Zoom')
+FunctionsToExport = @('Get-EvergreenApp', 'Find-EvergreenApp', 'Save-EvergreenApp', 'Export-EvergreenManifest')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -113,9 +78,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-Java8', 'Get-MicrosoftSQLServerManagementStudio', 'Get-Atom', 
-               'Get-CitrixXenServerTools', 'Get-MicrosoftPowerShellCore', 
-               'Get-MicrosoftOffice', 'Get-AdobeAcrobatProDC'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

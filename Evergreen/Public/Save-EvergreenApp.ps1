@@ -56,7 +56,7 @@ Function Save-EvergreenApp {
         
         # Enable TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Use as your own risk."
+        Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Use at your own risk."
     }
 
     Process {
