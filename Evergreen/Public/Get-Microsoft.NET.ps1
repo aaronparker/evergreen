@@ -42,7 +42,7 @@ s
                     Version      = $Version
                     Architecture = $architecture
                     Channel      = $Channel
-                    URI          = (($res.Get.Download.Uri -replace $res.Get.Download.ReplaceTextVersion, $Version) -replace $res.Get.Download.ReplaceTextArch, $architecture)
+                    URI          = (($res.Get.Download.Uri.$Channel -replace $res.Get.Download.ReplaceTextVersion, $Version) -replace $res.Get.Download.ReplaceTextArch, $architecture)
                 }
 
                 # Output object to the pipeline
@@ -51,7 +51,4 @@ s
             }
         }
     }
-    <#Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Update.Uri)."
-    }#>
 }
