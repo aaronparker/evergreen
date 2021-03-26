@@ -184,7 +184,7 @@ Function Save-EvergreenApp {
                     If ($PSBoundParameters.ContainsKey("ProxyCredential")) {
                         $params.ProxyCredential = $ProxyCredential
                     }
-                    $result = Invoke-WebRequest @params
+                    Invoke-WebRequest @params
                 }
                 catch [System.Exception] {
                     Write-Warning -Message "$($MyInvocation.MyCommand): URL: [$($Object.URI)]."
