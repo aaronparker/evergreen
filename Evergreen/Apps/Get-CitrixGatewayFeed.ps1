@@ -18,7 +18,7 @@ Function Get-CitrixGatewayFeed {
     Param()
 
     # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName "CitrixFeeds"
+    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name
 
     # Read the feed and filter for include and exclude strings and return output to the pipeline
