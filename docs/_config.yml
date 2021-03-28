@@ -34,10 +34,10 @@ exclude:
 
 feedback_subject_line: Evergreen
 
-feedback_email: aaron@stealthpuppy.com
+feedback_email: 
 # used as a contact email for the Feedback link in the top navigation bar
 
-# feedback_disable: true
+feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 
 # feedback_text: "Need help?"
