@@ -39,12 +39,13 @@ Function Get-EvergreenApp {
             Returns the current version and download URL for the Production ring of Microsoft OneDrive and selects the latest version in the event that more that one release is returned.
 
         .EXAMPLE
-            Get-EvergreenApp -Name "AdobeAcrobatReaderDC" | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
+            Get-EvergreenApp -Name "AdobeAcrobatReaderDC" | Where-Object { $_.Language -eq "English" -and $_.Architecture -eq "x86" }
 
             Description:
-            Returns the current version and download URL that matches the English language or Neutral release of Adobe Acrobat Reader DC. This returns the exe installer and any updaters included in the output.
+            Returns the current version and download URL that matches the English language, 32-bit release of Adobe Acrobat Reader DC.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Alias("gea")]
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $True, Position = 0)]
@@ -62,17 +63,21 @@ Function Get-EvergreenApp {
 
     # Test that the function exists and run it to return output
     Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
-    If (Test-Path -Path $Function) {
+    If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
         try {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Call: $Function."
             $Output = . Get-$Name
         }
         catch {
             Throw $_
         }
-        If ($Output) { Write-Output -InputObject $Output }
+        If ($Output) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
+            Write-Output -InputObject $Output
+        }
     }
     Else {
         Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
-        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: https://github.com/aaronparker/Evergreen."
+        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
     }
 }

@@ -30,7 +30,7 @@ CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
 Copyright = '(c) 2021 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Create evergeen Windows image build scripts with the latest versions of applications. Evergreen is a simple PowerShell module to get latest version numbers and download URLs for various software products. The module consists of Get commands to use in scripts when performing software management tasks.'
+Description = 'Create evergeen Windows image build scripts with the latest versions of applications. Evergreen is a simple PowerShell module that retrieves the latest version numbers and download URLs for various software products directly from the source.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
@@ -78,7 +78,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('sea', 'gea', 'fea')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -98,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps'
+        Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps', 'WindowsVirtualDesktop'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/master/LICENSE'

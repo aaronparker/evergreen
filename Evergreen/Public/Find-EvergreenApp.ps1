@@ -36,6 +36,7 @@ Function Find-EvergreenApp {
             Returns a table with the all of the currently supported applications that match "Microsoft".
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Alias("fea")]
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $False, Position = 0)]
