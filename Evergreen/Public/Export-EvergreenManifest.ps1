@@ -24,14 +24,19 @@ Function Export-EvergreenManifest {
             Exports the application manifest for the application "MicrosoftEdge".
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     Param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]
-        [System.String] $Name = "Template"
+        [System.String] $Name
     )
     
     $Output = Get-FunctionResource -AppName $Name
-    If ($Output) { Write-Output -InputObject $Output }
+    If ($Output) {
+        Write-Output -InputObject $Output
+    }
+    Else {
+        Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
+        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+    }
 }

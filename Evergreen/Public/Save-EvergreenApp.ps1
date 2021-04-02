@@ -22,9 +22,9 @@ Function Save-EvergreenApp {
             Description:
             Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\<version>.
     #>
+    [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("sea")]
-    [OutputType([System.Management.Automation.PSObject])]
     Param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
         [ValidateNotNull()]

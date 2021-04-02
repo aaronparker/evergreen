@@ -36,8 +36,8 @@ Function Find-EvergreenApp {
             Returns a table with the all of the currently supported applications that match "Microsoft".
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("fea")]
-    [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
@@ -78,5 +78,9 @@ Function Find-EvergreenApp {
             Link        = $Json.Source
         }
         Write-Output -InputObject $PSObject
+    }
+    Else {
+        Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
+        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
     }
 }

@@ -1,7 +1,7 @@
 Function Get-EvergreenApp {
     <#
         .SYNOPSIS
-            Returns the latest version and download link/s for an application.
+            Returns the latest version and download link/s for an application supported by the module.
 
         .DESCRIPTION
             Queries the internal application functions and manifests included in the module to find the latest version and download link/s for the specified application.
@@ -45,8 +45,8 @@ Function Get-EvergreenApp {
             Returns the current version and download URL that matches the English language, 32-bit release of Adobe Acrobat Reader DC.
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("gea")]
-    [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]

@@ -60,7 +60,6 @@
                         Title       = $node.title -replace $res.Get.TitleReplace, ""
                         Description = $node.description
                         Date        = $node.pubDate
-                        #Date        = ConvertTo-DateTime -DateTime $node.pubDate -Pattern $res.Get.DatePattern
                         URI         = $node.link
                     }
                     Write-Output -InputObject $PSObject
