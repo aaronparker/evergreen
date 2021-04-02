@@ -11,6 +11,9 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 
 * **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`.
 * Adds `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
+* Re-instates `ControlUpAgent` and `ControlUpConsole`
+* Fixes the `LTS` release in `Microsoft.NET`
+* Adds file type to SourceForge applications
 
 ## 2103.305
 
