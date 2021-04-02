@@ -11,13 +11,7 @@ Function Save-EvergreenApp {
             https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
-            Get-AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
-
-            Description:
-            Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\<version>.
-
-        .EXAMPLE
-            Get-AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
+            Get-EvergreenApp -Name AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
 
             Description:
             Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\<version>.
@@ -57,7 +51,7 @@ Function Save-EvergreenApp {
         
         # Enable TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Use at your own risk."
+        Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Output paths cannot be customised."
     }
 
     Process {
@@ -67,7 +61,7 @@ Function Save-EvergreenApp {
 
             #region Validate the URI property and find the output filename
             If ([System.Boolean]($Object.URI)) {
-                Write-Verbose -Message "$($MyInvocation.MyCommand):            URL: $($Object.URI)."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): URL: $($Object.URI)."
                 If ([System.Boolean]($Object.FileName)) {
                     $OutFile = $Object.FileName
                 }
@@ -87,80 +81,16 @@ Function Save-EvergreenApp {
 
                 #region Validate the Version property
                 If ([System.Boolean]($Object.Version)) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand):        Version: $($Object.Version)."
-                    $OutPath = Join-Path -Path $OutPath -ChildPath $Object.Version
-                    If (Test-Path -Path $OutPath) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand):   Path exists: $OutPath."
-                    }
-                    Else {
-                        try {
-                            $params = @{
-                                Path        = $OutPath
-                                ItemType    = "Directory"
-                                ErrorAction = "SilentlyContinue"
-                            }
-                            New-Item @params > $Null
-                        }
-                        catch {
-                            Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
-                            Break
-                        }
-                    }
+
+                    # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
+                    $OutPath = New-EvergreenSavePath -InputObject $Object -Path $OutPath
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
                 }
                 Else {
                     Write-Error -Message "$($MyInvocation.MyCommand): Object does not have valid Version property."
                     Break
                 }
                 #endregion
-
-                #region Validate the Language property
-                If ([System.Boolean]($Object.Language)) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand):       Language: $($Object.Language)."
-                    $OutPath = Join-Path -Path $OutPath -ChildPath $Object.Language
-                    If (Test-Path -Path $OutPath) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand):   Path exists: $OutPath."
-                    }
-                    Else {
-                        try {
-                            $params = @{
-                                Path        = $OutPath
-                                ItemType    = "Directory"
-                                ErrorAction = "SilentlyContinue"
-                            }
-                            New-Item @params > $Null
-                        }
-                        catch {
-                            Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
-                            Break
-                        }
-                    }
-                }
-                #endregion
-
-                #region Validate the Architecture property
-                If ([System.Boolean]($Object.Architecture)) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand):   Architecture: $($Object.Architecture)."
-                    $OutPath = Join-Path -Path $OutPath -ChildPath $Object.Architecture
-                    If (Test-Path -Path $OutPath) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand):   Path exists: $OutPath."
-                    }
-                    Else {
-                        try {
-                            $params = @{
-                                Path        = $OutPath
-                                ItemType    = "Directory"
-                                ErrorAction = "SilentlyContinue"
-                            }
-                            New-Item @params > $Null
-                        }
-                        catch {
-                            Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
-                            Break
-                        }
-                    }
-                }
-                #endregion
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
             }
             Else {
                 Write-Warning -Message "$($MyInvocation.MyCommand): Failed validating $Path."
@@ -176,7 +106,6 @@ Function Save-EvergreenApp {
                         Uri             = $Object.URI
                         OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
                         UseBasicParsing = $True
-                        PassThru        = $True
                         ErrorAction     = "SilentlyContinue"
                     }
                     If ($PSBoundParameters.ContainsKey("Proxy")) {
@@ -200,7 +129,6 @@ Function Save-EvergreenApp {
                     }
                     Write-Output -InputObject $Output
                 }
-                #endregion
             }
             #endregion
         }

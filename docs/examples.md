@@ -10,10 +10,10 @@ Here's a few examples of using `Evergreen` functions to return application versi
 
 ## Microsoft Edge
 
-`Get-MicrosoftEdge` will return the latest versions and downloads for Microsoft Edge, including Group Policy administrative templates. To return the latest version of Microsoft Edge and the download URI for 64-bit Windows, use the following syntax:
+`Get-EvergreenApp -Name MicrosoftEdge` will return the latest versions and downloads for Microsoft Edge, including Group Policy administrative templates. To return the latest version of Microsoft Edge and the download URI for 64-bit Windows, use the following syntax:
 
 ```powershell
-Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" }
+Get-EvergreenApp -Name MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" }
 ```
 
 This will return output similar to the following:
@@ -31,15 +31,11 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
 
 ## Microsoft FSLogix Apps
 
-`Get-MicrosoftFSLogixApps` will return the latest version and download URI for Microsoft FSLogix Apps:
+`Get-EvergreenApp -Name MicrosoftFSLogixApps` will return the latest version and download URI for Microsoft FSLogix Apps. Because the output is simple, no additional filtering is required:
 
 ```powershell
-Get-MicrosoftFSLogixApps
-```
+Get-EvergreenApp -Name MicrosoftFSLogixApps
 
-Because the output is simple, no additional filtering is required:
-
-```powershell
 Version : 2.9.7654.46150
 Date    : 9/1/2021 12:54:48 am
 URI     : https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-cce0f54ce04c/FSLogix_Apps_2.9.7654.46150.zip
@@ -50,12 +46,12 @@ URI     : https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-
 Most Windows desktop environments are going to be on 64-bit Windows, so to get the 64-bit version of Microsoft Teams use the following syntax:
 
 ```powershell
-Get-MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" }
+Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" }
 ```
 
 ## Microsoft OneDrive
 
-`Get-MicrosoftOneDrive` uses the OneDrive update feed to return version from several release rings - `Enterprise`, `Production` and `Insider`. Often the Production ring returns more than one release:
+`Get-EvergreenApp -Name MicrosoftOneDrive` uses the OneDrive update feed to return version from several release rings - `Enterprise`, `Production` and `Insider`. Often the Production ring returns more than one release:
 
 ```powershell
 Version : 21.016.0124.0002
@@ -98,7 +94,7 @@ URI     : https://oneclient.sfx.ms/Win/Enterprise/20.169.0823.0008/Microsoft.One
 To ensure that we return only the very latest `Production` version, we need to filter the output:
 
 ```powershell
-(Get-MicrosoftOneDrive | Where-Object { $_.Type -eq "Exe" -and $_.Ring -eq "Production" }) | `
+(Get-EvergreenApp -Name MicrosoftOneDrive | Where-Object { $_.Type -eq "Exe" -and $_.Ring -eq "Production" }) | `
     Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
 ```
 
@@ -107,7 +103,7 @@ To ensure that we return only the very latest `Production` version, we need to f
 Getting the version number and downloads for Acrobat Reader requires some more complex filtering. Adobe provides not only an executable installer but also a Windows Installer patch which you may need to apply to ensure the latest version is installed. The following command will return both the en-US installer and the latest update:
 
 ```powershell
-Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
+Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
 ```
 
 Output should then look similar to the following:
@@ -127,7 +123,7 @@ URI      : http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074
 When downloading the Adobe Acrobat Reader, this could be taken a step further to unnecessarily downloading the Windows Installer patch if the executable installer is already up to date.
 
 ```powershell
-$Reader = Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
+$Reader = Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
 $Installer = ($Reader | Where-Object { $_.Type -eq "Installer" | Sort-Object -Property "Version" -Descending })[-1]
 $Updater = ($Reader | Where-Object { $_.Type -eq "Updater" | Sort-Object -Property "Version" -Descending })[-1]
 Invoke-WebRequest -Uri $Installer.URI -OutFile (Split-Path -Path $Installer.URI -Leaf) -UseBasicParsing
@@ -138,10 +134,10 @@ If ($Updater.Version -gt $Installer.Version) {
 
 ## Mozilla Firefox
 
-`Get-MozillaFirefox` returns both the current version and extended support release, along with installers in several languages. This means that to return a single version of the Firefox installer, we have a fairly complex query. The example below will return the 64-bit current release of Firefox in the US langauage and a Windows Installer package. To be doubly sure that we get a single installer, `Sort-Object` is also used to sort the `Version` property and return the most recent:
+`Get-EvergreenApp -Name MozillaFirefox` returns both the current version and extended support release, along with installers in several languages. This means that to return a single version of the Firefox installer, we have a fairly complex query. The example below will return the 64-bit current release of Firefox in the US language and a Windows Installer package. To be doubly sure that we get a single installer, `Sort-Object` is also used to sort the `Version` property and return the most recent:
 
 ```powershell
-(Get-MozillaFirefox | Where-Object { $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Architecture -eq "x64" -and $_.type -eq "msi" -and $_.Language -eq "en-US" }) | `
+(Get-EvergreenApp -Name MozillaFirefox | Where-Object { $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Architecture -eq "x64" -and $_.type -eq "msi" -and $_.Language -eq "en-US" }) | `
     Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
 ```
 

@@ -15,7 +15,7 @@ Function Find-EvergreenApp {
             https://github.com/aaronparker/Evergreen
 
         .PARAMETER Name
-            The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.
+            The application name to return details for. This can be the entire application name or a portion thereof.
 
         .EXAMPLE
             Find-EvergreenApp
@@ -39,7 +39,11 @@ Function Find-EvergreenApp {
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("fea")]
     Param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(
+            Mandatory = $True,
+            Position = 0,
+            ValueFromPipeline,
+            HelpMessage = "Specify an a string to search from the list of supported applications.")]
         [ValidateNotNull()]
         [System.String] $Name
     )
@@ -65,22 +69,24 @@ Function Find-EvergreenApp {
     }
 
     # Build an object from the manifest details and file name and output to the pipeline
-    ForEach ($manifest in $Manifests) {
-        try {
-            $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
+    If ($Null -ne $Manifests) {
+        ForEach ($manifest in $Manifests) {
+            try {
+                $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
+            }
+            catch {
+                Throw $_
+            }
+            $PSObject = [PSCustomObject] @{
+                Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
+                Application = $Json.Name
+                Link        = $Json.Source
+            }
+            Write-Output -InputObject $PSObject
         }
-        catch {
-            Throw $_
-        }
-        $PSObject = [PSCustomObject] @{
-            Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
-            Application = $Json.Name
-            Link        = $Json.Source
-        }
-        Write-Output -InputObject $PSObject
     }
     Else {
-        Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
+        Write-Error -Message "Cannot find application: $Name. Omit the -Name parameter to return the full list of supported applications."
         Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
     }
 }

@@ -48,7 +48,12 @@ Function Get-EvergreenApp {
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("gea")]
     Param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(
+            Mandatory = $True,
+            Position = 0,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "Specify an application name. Use Find-EvergreenApp to list supported applications.")]
         [ValidateNotNull()]
         [System.String] $Name
     )

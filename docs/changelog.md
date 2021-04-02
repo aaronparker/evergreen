@@ -7,6 +7,11 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`.
+* Adds `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
+
 ## 2103.305
 
 * Fixes an issue with `Get-AdobeAcrobat` to ensure that `Track` property has the correct value (DC, 2020, etc.) and the `Language` property (Neutral, Multi) [#130](https://github.com/aaronparker/Evergreen/issues/130)

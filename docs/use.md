@@ -6,46 +6,45 @@ sidebar: home_sidebar
 permalink: use.html
 summary: An introduction on how to use Evergreen in your scripts.
 ---
-Evergreen is intended for use in solutions used to automate software deployments. These solutions could be:
+`Get-EvergreenApp` is used to return application details by specifying an application with the `-Name` parameter.
 
-* Image creation with Hashicorp Packer - images can be created with the latest version of a set of applications
-* Import applications into Microsoft Endpoint Manager - keep Configuration Manager or Microsoft Intune up to date with the latest versions of applications
-* Create a libary of application installers - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
-* Submitting manifests to `Winget` or `Chocalatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
+For example, let's find the latest version of the Microsoft FSLogix Apps agent:
 
-## Functions
+```powershell
+Get-EvergreenApp -Name "MicrosoftFSLogixApps"
+```
 
-The Evergreen module include a function per supported application that return objects to the pipeline. Included functions can be viewed with `Get-Command -Module "Evergreen"`. This will return a list of finctions with the following structure:
+This will return output similar to the following that lists the version number and download URL for the application. This application output also includes the release date:
 
-* `Get` verb - the module provides functions to retrieve data only
-* Vendor - the vendor / developer of the application (e.g. `Adobe`, `Google`, `Microsoft`, etc.)
-* Product name - product names and optionally version (e.g. `AcrobatReaderDC`, `Chrome`, `VisualStudioCode`, etc.)
+```powershell
+Version : 2.9.7654.46150
+Date    : 9/1/2021 12:54:48 am
+URI     : https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-cce0f54ce04c/FSLogix_Apps_2.9.7654.46150.zip
+```
 
-For example, Evergreen includes: `Get-AdobeAcrobatReaderDC`, `Get-GoogleChrome`, and `Get-MicrosoftVisualStudioCode`.
-
-{% include note.html content="A future release will simplify commands where the application can be a parameter or input into Evergreen to return the details for that application (e.g. `Get-Evergreen -App MicrosoftEdge`)." %}
+All output properties are strings that can be acted on with other functions and cmdlets including filtering the output with `Where-Object`.
 
 ## Output
 
-Each Evergreen `Get` function returns at least two properties in the object is sends to the pipeline:
+Each Evergreen application returns at least two properties in the object is sends to the pipeline:
 
-* `Version` - a string property that is the version number of the application. If you need these in a verion format, cast them with `[System.Version]`
-* `URI` - a string property that is the download location for the latest version of the application. These will be publically available locations that provide installers in typicaly Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
+* `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
+* `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
-Several functions may include additional properties in their output, which will often require filtering, including:
+Several applications may include additional properties in their output, which will often require filtering, including:
 
-* `Architecture` - the processor archiecture of the installer
-* `Type` - a function may return installer downloads in `exe`, `msi`, `zip`, format etc. In some instances, `Type` may return slightly different data
+* `Architecture` - the processor architecture of the installer
+* `Type` - an application may return installer downloads in `exe`, `msi`, `zip`, format etc. In some instances, `Type` may return slightly different data
 * `Ring`, `Channel`, and/or `Release` - some applications include different release rings or channels for enterprise use. The value of this property is often unique to that application
-* `Language` - some application installers may support specific lanaguages
+* `Language` - some application installers may support specific languages
 * `Date` - in some cases, Evergreen can return the release date of the returned version
 
 ### Filter Output
 
-Where a function returns more than one object to the pipeline, you will need to filter the output with `Where-Object` or `Sort-Object`. For example, `Get-MicrosoftTeams` returns both the 32-bit and 64-bit versions of the Microsoft Teams installer. As most environments should be on 64-bit Windows these days, we can filter the 64-bit version of Teams with:
+Where an application returns more than one object to the pipeline, you will need to filter the output with `Where-Object` or `Sort-Object`. For example, `Get-EvergreenApp -Name MicrosoftTeams` returns both the 32-bit and 64-bit versions of the General and Preview release rings ot the Microsoft Teams installer. As most environments should be on 64-bit Windows these days, we can filter the 64-bit version of Teams with:
 
 ```powershell
-Get-MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" }
+Get-EvergreenApp -Name "MicrosoftTeams" | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
 ```
 
 This will return details of the 64-bit Microsoft Teams installer that we can use in a script.
@@ -58,10 +57,10 @@ URI          : https://statics.teams.cdn.office.net/production-windows-x64/1.3.0
 
 ### Use Output
 
-With the filtered output we can download the latest version of Microsoft Teams before copying it to a target location or installing it directly to the current system. The following commands filters `Get-MicrosoftTeams` to get the latest version and download, then grabs the `Teams_windows_x64.msi` filename from the `URI` property with `Split-Path`, downloads the file locally with `Invoke-WebRequest` and finally uses `msiexec` to install Teams:
+With the filtered output we can download the latest version of Microsoft Teams before copying it to a target location or installing it directly to the current system. The following commands filters `Get-EvergreenApp -Name MicrosoftTeams` to get the latest version and download, then grabs the `Teams_windows_x64.msi` filename from the `URI` property with `Split-Path`, downloads the file locally with `Invoke-WebRequest` and finally uses `msiexec` to install Teams:
 
 ```powershell
-$Teams = Get-MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" }
+$Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
 $TeamsInstaller = Split-Path -Path $Teams.Uri -Leaf
 Invoke-WebRequest -Uri $Teams.Uri -OutFile ".\$TeamsInstaller" -UseBasicParsing
 & "$env:SystemRoot\System32\msiexec.exe" "/package $TeamsInstaller ALLUSERS=1 /quiet"
