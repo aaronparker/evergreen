@@ -18,7 +18,7 @@ Function Get-GoogleChrome {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param ()
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

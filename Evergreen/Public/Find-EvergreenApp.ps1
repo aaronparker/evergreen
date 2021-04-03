@@ -38,7 +38,7 @@ Function Find-EvergreenApp {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("fea")]
-    Param (
+    param (
         [Parameter(
             Mandatory = $True,
             Position = 0,
@@ -48,45 +48,52 @@ Function Find-EvergreenApp {
         [System.String] $Name
     )
 
-    # Get application resource strings from its manifest
-    $params = @{
-        Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
-        Filter      = "*.json"
-        ErrorAction = "SilentlyContinue"
-    }
-    Write-Verbose -Message "$($MyInvocation.MyCommand): Search path: $($params.Path)."
-    $Manifests = Get-ChildItem @params
+    Begin {
 
-    # Filter the included manifests based on the -Name parameter
-    If ($PSBoundParameters.ContainsKey('Name')) {
-        try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Filter for: $Name."
-            $Manifests = $Manifests | Where-Object { $_.Name -match $Name }
+        # Get application resource strings from its manifest
+        $params = @{
+            Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
+            Filter      = "*.json"
+            ErrorAction = "SilentlyContinue"
         }
-        catch {
-            Throw $_
-        }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Search path for application manifests: $($params.Path)."
+        $Manifests = Get-ChildItem @params
     }
 
-    # Build an object from the manifest details and file name and output to the pipeline
-    If ($Null -ne $Manifests) {
-        ForEach ($manifest in $Manifests) {
+    Process {
+        # Filter the included manifests based on the -Name parameter
+        If ($PSBoundParameters.ContainsKey('Name')) {
             try {
-                $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Filter for: $Name."
+                $Manifests = $Manifests | Where-Object { $_.Name -match $Name }
             }
             catch {
                 Throw $_
             }
-            $PSObject = [PSCustomObject] @{
-                Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
-                Application = $Json.Name
-                Link        = $Json.Source
+        }
+
+        # Build an object from the manifest details and file name and output to the pipeline
+        If ($Null -ne $Manifests) {
+            ForEach ($manifest in $Manifests) {
+                try {
+                    $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
+                }
+                catch {
+                    Throw $_
+                }
+                $PSObject = [PSCustomObject] @{
+                    Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
+                    Application = $Json.Name
+                    Link        = $Json.Source
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
+        }
+        Else {
+            Write-Error -Message "Cannot find application: $Name. Omit the -Name parameter to return the full list of supported applications."
+            Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
         }
     }
-    Else {
-        Write-Error -Message "Cannot find application: $Name. Omit the -Name parameter to return the full list of supported applications."
-        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
-    }
+
+    End {}
 }

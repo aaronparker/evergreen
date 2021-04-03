@@ -19,7 +19,7 @@ Function Save-EvergreenApp {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("sea")]
-    Param (
+    param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject] $InputObject,
@@ -83,7 +83,7 @@ Function Save-EvergreenApp {
                 If ([System.Boolean]($Object.Version)) {
 
                     # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
-                    $OutPath = New-EvergreenSavePath -InputObject $Object -Path $OutPath
+                    $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
                 }
                 Else {

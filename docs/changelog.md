@@ -80,7 +80,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 * Updates `Get-MicrosofPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 * BREAKING CHANGES
   * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
-  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Obect` to filter on `Stable` or `LTS`
+  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
 ## 2101.263
 

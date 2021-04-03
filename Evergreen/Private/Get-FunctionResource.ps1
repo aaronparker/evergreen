@@ -5,7 +5,7 @@ Function Get-FunctionResource {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding()]
-    Param (
+    param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.String] $AppName = "Template"

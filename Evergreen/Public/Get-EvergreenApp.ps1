@@ -47,7 +47,7 @@ Function Get-EvergreenApp {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
     [Alias("gea")]
-    Param (
+    param (
         [Parameter(
             Mandatory = $True,
             Position = 0,
@@ -58,31 +58,37 @@ Function Get-EvergreenApp {
         [System.String] $Name
     )
 
-    # Build a path to the application function
-    try {
-        $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
-    }
-    catch {
-        Throw "Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
-    }
+    Begin {}
 
-    # Test that the function exists and run it to return output
-    Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
-    If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+    Process {
+        # Build a path to the application function
         try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Call: $Function."
-            $Output = . Get-$Name
+            $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
         }
         catch {
-            Throw $_
+            Throw "Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
         }
-        If ($Output) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
-            Write-Output -InputObject $Output
+
+        # Test that the function exists and run it to return output
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
+        If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+            try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Call: $Function."
+                $Output = . Get-$Name
+            }
+            catch {
+                Throw $_
+            }
+            If ($Output) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
+                Write-Output -InputObject $Output
+            }
+        }
+        Else {
+            Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
+            Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
         }
     }
-    Else {
-        Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
-        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
-    }
+
+    End {}
 }

@@ -9,7 +9,7 @@ Function ConvertTo-Hashtable {
     #>
     [OutputType([System.Collections.Hashtable])]
     [CmdletBinding()]
-    Param (
+    param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
         $InputObject
     )

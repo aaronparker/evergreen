@@ -1,4 +1,4 @@
-Function New-EvergreenSavePath {
+Function New-EvergreenPath {
     <#
         .SYNOPSIS
             Build a path from the Evergreen input object properties
@@ -8,7 +8,7 @@ Function New-EvergreenSavePath {
             Twitter: @stealthpuppy        
     #>
     [OutputType([System.String])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $True)]
     Param(
         [Parameter()]
         [System.Management.Automation.PSObject] $InputObject,
@@ -29,17 +29,20 @@ Function New-EvergreenSavePath {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $OutPath."
             }
             Else {
-                try {
-                    $params = @{
-                        Path        = $OutPath
-                        ItemType    = "Directory"
-                        ErrorAction = "SilentlyContinue"
+                If ($PSCmdlet.ShouldProcess($OutPath, "Create Directory")) {
+                    try {
+                        $params = @{
+                            Path        = $OutPath
+                            ItemType    = "Directory"
+                            ErrorAction = "SilentlyContinue"
+                        }
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Create path: $OutPath."
+                        New-Item @params > $Null
                     }
-                    New-Item @params > $Null
-                }
-                catch {
-                    Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
-                    Break
+                    catch {
+                        Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
+                        Break
+                    }
                 }
             }
         }
