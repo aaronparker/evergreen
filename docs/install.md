@@ -61,7 +61,7 @@ Common PowerShell module paths include:
 
 To install from the repository
 
-1. Download the `master branch` to your workstation
+1. Download the `main branch` to your workstation
 2. Copy the contents of the Evergreen folder onto your workstation into the desired PowerShell Module path
 3. Open a Powershell console with the Run as Administrator option
 4. Run `Set-ExecutionPolicy` using the parameter `RemoteSigned` or `Bypass`

@@ -54,4 +54,24 @@ C:\Apps\OneDrive\Insider\21.056.0318.0001\OneDriveSetup.exe
 
 Right now, the output path that `Save-EvergreenApp` builds cannot be customised.
 
+## Parameters
+
+### InputObject
+
+The `-Name` parameter is used to specify the application name to return details for. This is a required parameter. The list of supported applications can be found with `Find-EvergreenApp`.
+
+### Path
+
+### Verbose
+
+The `-Verbose` parameter can be useful for observing application downloads and save paths, including troubleshooting when the expected application details are not returned. When using the `-Verbose` parameter, `Invoke-WebRequest` will show download progress which significantly impacts download speed. To suppress download progress, add the `-NoProgress` switch parameter as well.
+
+## Alias
+
+`Save-EvergeeenApp` has an alias of `sea` to simplify downloading applications, for example:
+
+```powershell
+PS /Users/aaron> gea Slack | sea -Path /Users/aaron/Temp/Slack
+```
+
 {% include links.html %}

@@ -51,3 +51,24 @@ AdobeAcrobat         Adobe Acrobat           https://helpx.adobe.com/au/enterpri
 AdobeAcrobatReaderDC Adobe Acrobat Reader DC https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html
 AdobeBrackets        Adobe Brackets          http://brackets.io/
 ```
+
+## Parameters
+
+### Name
+
+The `-Name` parameter is used to specify the application name to return details for. This is a required parameter. The list of supported applications can be found with `Find-EvergreenApp`.
+
+## Alias
+
+`Find-EvergeeenApp` has an alias of `fea` to simplify retrieving supported applications, for example:
+
+```powershell
+PS /Users/aaron> fea
+
+Name      Application   Link
+----      -----------   ----
+1Password 1Password     https://1password.com/
+7zip      7zip          https://www.7-zip.org/
+```
+
+include links.html %}

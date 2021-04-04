@@ -30,7 +30,7 @@ CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
 Copyright = '(c) 2021 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Create evergeen Windows image build scripts with the latest versions of applications. Evergreen is a simple PowerShell module that retrieves the latest version numbers and download URLs for various software products directly from the source.'
+Description = 'Create evergreen Windows image builds with the latest versions of applications. Evergreen is a simple PowerShell module that retrieves the latest version numbers and download URLs for various software products directly from the vendor source.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'

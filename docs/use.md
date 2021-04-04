@@ -65,3 +65,28 @@ $TeamsInstaller = Split-Path -Path $Teams.Uri -Leaf
 Invoke-WebRequest -Uri $Teams.Uri -OutFile ".\$TeamsInstaller" -UseBasicParsing
 & "$env:SystemRoot\System32\msiexec.exe" "/package $TeamsInstaller ALLUSERS=1 /quiet"
 ```
+
+## Parameters
+
+### Name
+
+The `-Name` parameter is used to specify the application name to return details for. This is a required parameter. The list of supported applications can be found with `Find-EvergreenApp`.
+
+### Verbose
+
+The `-Verbose` parameter can be useful for observing where the application details are obtained from (e.g. the application update URL) and for troubleshooting when the expected application details are not returned.
+
+## Alias
+
+`Get-EvergeeenApp` has an alias of `gea` to simplify retrieving application details, for example:
+
+```powershell
+PS /Users/aaron> gea Slack
+
+Version      : 4.14.0
+Platform     : PerMachine
+Architecture : x64
+URI          : https://downloads.slack-edge.com/releases/windows/4.14.0/prod/x64/slack-standalone-4.14.0.0.msi
+```
+
+{% include links.html %}
