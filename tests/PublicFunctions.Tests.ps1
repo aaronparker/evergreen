@@ -39,7 +39,7 @@ Describe -Tag "Find" -Name "Properties" {
 
         # Test that the function returns OK
         It "Find-EvergreenApp should not Throw" {
-            $Applications = Find-EvergreenApp | Should Not Throw
+            { $Applications = Find-EvergreenApp } | Should Not Throw
         }
 
         # Test that the function returns something
@@ -114,14 +114,36 @@ Describe -Tag "Save" -Name "Targets" {
 
             # Test that Save-EvergreenApp accepts the object and saves the file
             It "Save-EvergreenApp should not Throw" {
-                { $installer | Save-EvergreenApp -Path $Path } | Should Not Throw
+                { $File = $installer | Save-EvergreenApp -Path $Path } | Should Not Throw
             }
 
-            # Test that the file downloaded into the path: "$Path/Stable/Enterprise/89.0.774.68/x64/MicrosoftEdgeEnterpriseX64.msi"
+            # Test that the file downloaded into the path: "$Path/Stable/Enterprise/<version>/x64/MicrosoftEdgeEnterpriseX64.msi"
             It "Should save in the right path" {
+                Test-Path -Path $File.Path | Should Be $True
+            }
+        }
+    }
+}
 
-                $File = [System.IO.Path]::Combine($Path, $install.Channel, $install.Release, $install.Architecture, $(Split-Path -Path $installer.URI -Leaf))
-                Test-Path -Path $File | Should Be $True
+Describe -Tag "Export" -Name "Properties" {
+
+    # Get the list of applications
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
+
+    Context "Validate Export-EvergreenManifest" {
+        ForEach ($Application in $Applications) {
+
+            # Test that Export-EvergreenManifest does not throw
+            It "Export-EvergreenManifest should not Throw" {
+                { Export-EvergreenManifest -Name $Application } | Should Not Throw
+            }
+
+            # The manifest should have the right properties
+            It "$Application has expected properties" {
+                $Application.Name.Length | Should -BeGreaterThan 0
+                $Application.Source.Length | Should -BeGreaterThan 0
+                $Application.Get.Length | Should -BeGreaterThan 0
+                $Application.Install.Length | Should -BeGreaterThan 0
             }
         }
     }

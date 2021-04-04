@@ -31,7 +31,12 @@ Function Export-EvergreenManifest {
         [System.String] $Name
     )
     
-    $Output = Get-FunctionResource -AppName $Name
+    try {
+        $Output = Get-FunctionResource -AppName $Name
+    }
+    catch {
+        Throw "Failed to retrieve manifest for application: $Name."
+    }
     If ($Output) {
         Write-Output -InputObject $Output
     }
