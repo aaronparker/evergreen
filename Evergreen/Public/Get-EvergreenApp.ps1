@@ -45,7 +45,7 @@ Function Get-EvergreenApp {
             Returns the current version and download URL that matches the English language, 32-bit release of Adobe Acrobat Reader DC.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/use.html")]
     [Alias("gea")]
     param (
         [Parameter(

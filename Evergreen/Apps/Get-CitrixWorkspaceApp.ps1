@@ -61,6 +61,6 @@
         Else {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Citrix Workspace update feed."
         }
-        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned by the feed this function uses is out of date. Use Get-CitrixWorkspaceAppFeed to find the latest HDX RTME version."
+        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. Use 'CitrixWorkspaceAppFeed' to find the latest HDX RTME version."
     }
 }

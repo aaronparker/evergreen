@@ -10,6 +10,7 @@ Function Find-EvergreenApp {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
+            Alias: with apologies to Spanish speaking people ;)
         
         .LINK
             https://github.com/aaronparker/Evergreen
@@ -36,7 +37,7 @@ Function Find-EvergreenApp {
             Returns a table with the all of the currently supported applications that match "Microsoft".
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/find.html")]
     [Alias("fea")]
     param (
         [Parameter(
