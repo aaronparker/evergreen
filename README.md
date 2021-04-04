@@ -13,13 +13,10 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 
 ![leaf by The Icon Z from the Noun Project](/img/EvergreenLeaf.png)
 
-Right now all functions consist of the following:
+Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
 
-* `Get` verb - the module provides functions to retrieve data only
-* Vendor - the vendor / developer of the application (e.g. `Adobe`, `Google`, `Microsoft`, etc.)
-* Product name - product names and optionally version (e.g. `AcrobatReaderDC`, `Chrome`, `VisualStudioCode`, etc.)
-
-This may change in a future release to simplify commands where the application can be a parameter or input into Evergreen to return the details for that application (e.g. `Get-Evergreen -App "MicrosoftEdge"`).
+* `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
+* `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
 ## Why
 

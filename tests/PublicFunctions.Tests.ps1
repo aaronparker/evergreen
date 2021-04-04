@@ -60,7 +60,6 @@ Describe -Tag "Get" -Name "Properties" {
     $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
 
     ForEach ($application in $Applications) {
-
         Context "Validate 'Get-EvergreenApp -Name $($application)'" {
 
             # Run each command and capture output in a variable
@@ -105,11 +104,11 @@ Describe -Tag "Get" -Name "Properties" {
                 Write-Host -ForegroundColor "Yellow" "`t$($application) does not have a URI property."
             }
         }
+    }
 
-        Context "Validate additional scenarios" {
-            It "Should Throw with invalid app" {
-                { Get-EvergreenApp -Name "NonExistentApplication" } | Should Throw
-            }
+    Context "Validate additional scenarios" {
+        It "Should Throw with invalid app" {
+            { Get-EvergreenApp -Name "NonExistentApplication" } | Should Throw
         }
     }
 }
