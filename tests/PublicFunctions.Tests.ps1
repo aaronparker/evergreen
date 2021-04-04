@@ -33,13 +33,31 @@ New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
 $MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
 
-# Get the module commands
-$Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
+Describe -Tag "Find" -Name "Properties" {
 
-Describe -Tag "General" -Name "Properties" {
+    Context "Validate Find-EvergreenApp" {
+
+        # Test that the function returns OK
+        It "Find-EvergreenApp should not Throw" {
+            $Applications = Find-EvergreenApp | Should Not Throw
+        }
+
+        # Test that the function returns something
+        It "Find-EvergreenApp returns something" {
+            $Applications = Find-EvergreenApp
+            ($Applications | Measure-Object).Count | Should -BeGreaterThan 0
+        }
+    }
+}
+
+Describe -Tag "Get" -Name "Properties" {
+
+    # Get the module commands
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
+
     ForEach ($application in $Applications) {
 
-        Context "Validate $($application) properties" {
+        Context "Validate 'Get-EvergreenApp -Name $($application)' properties" {
 
             # Run each command and capture output in a variable
             New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
@@ -47,12 +65,12 @@ Describe -Tag "General" -Name "Properties" {
             Remove-Variable -Name tempOutput
             
             # Test that the function returns something
-            It "$($application): Function returns something" {
+            It "$($application): returns something" {
                 ($Output | Measure-Object).Count | Should -BeGreaterThan 0
             }
 
             # Test that the function output matches OutputType in the function
-            It "$($application): Function returns the expected output type" {
+            It "$($application): returns the expected output type" {
                 $Output | Should -BeOfType "PSCustomObject"
             }
 
@@ -81,6 +99,29 @@ Describe -Tag "General" -Name "Properties" {
             }
             Else {
                 Write-Host -ForegroundColor "Yellow" "`t$($application) does not have a URI property."
+            }
+        }
+    }
+}
+
+Describe -Tag "Save" -Name "Targets" {
+
+    Context "Validate Save-EvergreenApp" {
+
+        # Get details for Microsoft Edge
+        $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
+        ForEach ($installer in $Installers) {
+
+            # Test that Save-EvergreenApp accepts the object and saves the file
+            It "Save-EvergreenApp should not Throw" {
+                { $installer | Save-EvergreenApp -Path $Path } | Should Not Throw
+            }
+
+            # Test that the file downloaded into the path: "$Path/Stable/Enterprise/89.0.774.68/x64/MicrosoftEdgeEnterpriseX64.msi"
+            It "Should save in the right path" {
+
+                $File = [System.IO.Path]::Combine($Path, $install.Channel, $install.Release, $install.Architecture, $(Split-Path -Path $installer.URI -Leaf))
+                Test-Path -Path $File | Should Be $True
             }
         }
     }

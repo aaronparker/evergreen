@@ -119,6 +119,7 @@ Function Save-EvergreenApp {
                 catch [System.Exception] {
                     Write-Warning -Message "$($MyInvocation.MyCommand): URL: [$($Object.URI)]."
                     Write-Warning -Message "$($MyInvocation.MyCommand): Download failed with: [$($_.Exception.Message)]"
+                    Throw $_
                 }
 
                 #region Write the downloaded file path to the pipeline

@@ -40,7 +40,7 @@ Function Find-EvergreenApp {
     [Alias("fea")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $False,
             Position = 0,
             ValueFromPipeline,
             HelpMessage = "Specify an a string to search from the list of supported applications.")]
