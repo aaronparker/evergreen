@@ -41,7 +41,8 @@ Function Export-EvergreenManifest {
         Write-Output -InputObject $Output
     }
     Else {
-        Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
-        Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+        Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
+        Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+        Throw "Cannot find application: $Name."
     }
 }

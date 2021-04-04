@@ -51,11 +51,11 @@ InModuleScope Evergreen {
 
         Context "It returns expected output" {
             It "Returns x64" {
-                { Get-Architecture -String $64bitUrl } | Should Be "x64"
+                Get-Architecture -String $64bitUrl | Should Be "x64"
             }
 
             It "Returns x86" {
-                { Get-Architecture -String $32bitUrl } | Should Be "x86"
+                Get-Architecture -String $32bitUrl | Should Be "x86"
             }
         }
     }
