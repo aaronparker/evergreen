@@ -6,20 +6,11 @@ Function Get-SumatraPDFReader {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-SumatraPDFReader
-
-            Description:
-            Returns the current version and download URL for Sumatra PDF Reader.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

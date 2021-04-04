@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-Param()
+param ()
 
 # Set variables
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
@@ -40,6 +40,48 @@ InModuleScope Evergreen {
                 If (($PSVersionTable.PSVersion -lt [version]::Parse($Version)) -and ($PSVersionTable.PSEdition -eq "Desktop")) {
                     Test-PSCore | Should -Be $False
                 }
+            }
+        }
+    }
+
+    Describe "Get-Architecture" {
+
+        $64bitUrl = "https://statics.teams.cdn.office.net/production-windows-x64/1.3.00.34662/Teams_windows_x64.msi"
+        $32bitUrl = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDCUpd2001320074.msp"
+
+        Context "It returns expected output" {
+            It "Returns x64" {
+                { Get-Architecture -String $64bitUrl } | Should Be "x64"
+            }
+
+            It "Returns x86" {
+                { Get-Architecture -String $32bitUrl } | Should Be "x86"
+            }
+        }
+    }
+
+    Describe "Get-GitHubRepoRelease" {
+
+        $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
+        $params = @{
+            Uri          = $Uri
+            MatchVersion = "(\d+(\.\d+){1,4}).*"
+        }
+
+        Context "It correctly returns an object" {
+            It "Does not Throw" {
+                { Get-GitHubRepoRelease @params } | Should Not Throw
+            }
+
+            $result = Get-GitHubRepoRelease @params
+            It "Returns the expected properties" {
+                $result.Version.Length | Should -BeGreaterThan 0
+                $result.Platform.Length | Should -BeGreaterThan 0
+                $result.Architecture.Length | Should -BeGreaterThan 0
+                $result.Type.Length | Should -BeGreaterThan 0
+                $result.Date.Length | Should -BeGreaterThan 0
+                $result.Size.Length | Should -BeGreaterThan 0
+                $result.URI.Length | Should -BeGreaterThan 0
             }
         }
     }

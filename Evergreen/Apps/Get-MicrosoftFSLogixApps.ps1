@@ -7,20 +7,11 @@ Function Get-MicrosoftFSLogixApps {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftFSLogixApps
-
-            Description:
-            Returns the current version and download URL for the Microsoft FSLogix Apps agent.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

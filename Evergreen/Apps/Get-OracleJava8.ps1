@@ -6,17 +6,11 @@
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-OracleJava8
-
-            Description:
-            Returns the available Java8 versions for Windows.
     #>
     [Alias("Get-Java8")]
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

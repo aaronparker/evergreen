@@ -4,8 +4,8 @@ Function ConvertTo-DateTime {
             Return a date/time string converted to a localised short date string.
     #>
     [OutputType([System.DateTime])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $DateTime,

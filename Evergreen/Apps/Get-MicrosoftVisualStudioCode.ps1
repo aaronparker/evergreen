@@ -12,19 +12,10 @@ Function Get-MicrosoftVisualStudioCode {
             "https://aka.ms/win32-x64-user-stable"
             "https://update.code.visualstudio.com/latest/win32-x64-user/stable"
             "https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable"
-
-        .LINK
-            https://github.com/aaronparker/Evergreen/
-
-        .EXAMPLE
-            Get-MicrosoftVisualStudioCode
-
-            Description:
-            Returns the Stable and Insider builds version numbers and download URLs for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

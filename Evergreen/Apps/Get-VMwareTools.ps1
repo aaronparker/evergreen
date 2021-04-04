@@ -6,20 +6,11 @@
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-VMwareTools
-
-            Description:
-            Returns the current version and download URLs for VMware Tools.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

@@ -6,19 +6,10 @@ Function Get-Greenshot {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-Greenshot
-
-            Description:
-            Returns the released Greenshot version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

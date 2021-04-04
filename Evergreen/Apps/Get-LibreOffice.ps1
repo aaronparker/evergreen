@@ -12,22 +12,10 @@ Function Get-LibreOffice {
         
         .LINK
             https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-LibreOffice
-
-            Description:
-            Returns the latest LibreOffice version and download URIs for the installers and language packs for Windows.
-
-        .EXAMPLE
-            Get-LibreOffice | Where-Object { $_.Language -eq "Neutral" -and $_.Architecture -eq "x64" }
-
-            Description:
-            Returns the latest LibreOffice for Windows version and installer download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

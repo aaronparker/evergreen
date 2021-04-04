@@ -6,20 +6,11 @@ Function Get-AdobeAcrobat {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-AdobeAcrobat
-
-            Description:
-            Returns an array with version, download URL for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Alias("Get-AdobeAcrobatProDC")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

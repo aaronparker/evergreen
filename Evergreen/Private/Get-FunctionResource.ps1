@@ -4,7 +4,7 @@ Function Get-FunctionResource {
             Reads the function strings from the JSON file and returns a hashtable.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]

@@ -7,19 +7,10 @@ Function Get-MicrosoftVisualStudio {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftVisualStudio
-
-            Description:
-            Returns the current version of Microsoft Visual Studio and the download URL for Microsoft Visual Studio boot strapper.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

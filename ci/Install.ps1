@@ -3,7 +3,7 @@
         AppVeyor install script.
 #>
 [OutputType()]
-Param()
+param ()
 
 # Set variables
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {

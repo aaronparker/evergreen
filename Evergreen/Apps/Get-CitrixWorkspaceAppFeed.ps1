@@ -8,16 +8,10 @@ Function Get-CitrixWorkspaceAppFeed {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-CitrixWorkspaceAppFeed
-
-            Description:
-            Returns the available Citrix Workspace app versions for all platforms.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

@@ -2,8 +2,8 @@
     .SYNOPSIS
     Uses the Evergreen module to download and install the latest version of Adobe Reader DC
 #>
-[CmdletBinding()]
-Param()
+[CmdletBinding(SupportsShouldProcess = $False)]
+param ()
 
 # Install the Evergreen module
 Install-Module -Name Evergreen

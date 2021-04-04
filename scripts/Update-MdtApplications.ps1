@@ -2,8 +2,8 @@
     .SYNOPSIS
     Updates appplications in an MDT deployment share using Evergreen and VcRedist
 #>
-[CmdletBinding()]
-Param(
+[CmdletBinding(SupportsShouldProcess = $False)]
+param (
     $AppParentPath = "E:\Deployment\Insentra\Automata\Applications",
     $DeploymentShare = "E:\Deployment\Insentra\Automata"
 )

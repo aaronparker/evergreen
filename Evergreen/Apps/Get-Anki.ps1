@@ -6,19 +6,10 @@ Function Get-Anki {
         .NOTES
             Author: Jay Michaud
             Twitter: @jaymmichaud
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-Anki
-
-            Description:
-            Returns the latest Anki version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

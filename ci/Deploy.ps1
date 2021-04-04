@@ -3,7 +3,7 @@
         AppVeyor pre-deploy script.
 #> 
 [OutputType()]
-Param()
+param ()
 
 # Line break for readability in AppVeyor console
 Write-Host ""

@@ -9,21 +9,12 @@ Function Get-CitrixVMTools {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-CitrixVMTools
-
-            Description:
-            Returns the current version and download URLs for the Citrix VM Tools.
     #>
     [Alias("Get-CitrixXenServerTools")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

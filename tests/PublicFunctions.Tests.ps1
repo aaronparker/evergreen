@@ -3,7 +3,7 @@
         Public Pester function tests.
 #>
 [OutputType()]
-Param()
+param ()
 
 # Set variables
 If (Test-Path "env:APPVEYOR_BUILD_FOLDER") {
@@ -33,28 +33,28 @@ New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
 $MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
 
-Describe -Tag "Find" -Name "Properties" {
+Describe -Tag "Find" -Name "Find-EvergreenApp" {
 
     Context "Validate Find-EvergreenApp" {
 
         # Test that the function returns OK
-        It "Find-EvergreenApp should not Throw" {
+        It "Should not Throw" {
             { $Applications = Find-EvergreenApp } | Should Not Throw
         }
 
-        It "Find-EvergreenApp should Throw with invalid app" {
+        It "Should Throw with invalid app" {
             { Find-EvergreenApp -Name "NonExistentApplication" } | Should Throw
         }
 
         # Test that the function returns something
-        It "Find-EvergreenApp returns an object" {
+        It "Should returns an object" {
             $Applications = Find-EvergreenApp
             ($Applications | Measure-Object).Count | Should -BeGreaterThan 0
         }
     }
 }
 
-Describe -Tag "Get" -Name "Properties" {
+Describe -Tag "Get" -Name "Get-EvergreenApp" {
 
     # Get the module commands
     $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
@@ -68,20 +68,20 @@ Describe -Tag "Get" -Name "Properties" {
             Remove-Variable -Name tempOutput
             
             # Test that the function returns something
-            It "$($application): returns something" {
+            It "$($application): should return something" {
                 ($Output | Measure-Object).Count | Should -BeGreaterThan 0
             }
 
             # Test that the function output matches OutputType in the function
-            It "$($application): returns the expected output type" {
+            It "$($application): should return the expected output type" {
                 $Output | Should -BeOfType "PSCustomObject"
             }
 
             # Test that output with Version property includes numbers and "." only
-            If ([bool]($Output[0].PSObject.Properties.name -match "Version")) {
+            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
-                        It "$($application): [$($object.Version)] is a valid version number" {
+                        It "$($application): [$($object.Version)] should be a valid version number" {
                             $object.Version | Should -Match $MatchVersions
                         }
                     }
@@ -93,7 +93,7 @@ Describe -Tag "Get" -Name "Properties" {
 
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source
-            If ([bool]($Output[0].PSObject.Properties.name -match "URI")) {
+            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "URI")) {
                 ForEach ($object in $Output) {
                     It "$($application): URI property is a valid URL" {
                         $object.URI | Should -Match $MatchUrl
@@ -106,14 +106,15 @@ Describe -Tag "Get" -Name "Properties" {
         }
     }
 
-    Context "Validate additional scenarios" {
+    Context "Validate 'Get-EvergreenApp fails" {
+
         It "Should Throw with invalid app" {
             { Get-EvergreenApp -Name "NonExistentApplication" } | Should Throw
         }
     }
 }
 
-Describe -Tag "Save" -Name "Targets" {
+Describe -Tag "Save" -Name "Save-EvergreenApp" {
 
     Context "Validate Save-EvergreenApp" {
 
@@ -135,7 +136,7 @@ Describe -Tag "Save" -Name "Targets" {
     }
 }
 
-Describe -Tag "Export" -Name "Properties" {
+Describe -Tag "Export" -Name "Export-EvergreenManifest" {
 
     # Get the list of applications
     $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
@@ -159,6 +160,13 @@ Describe -Tag "Export" -Name "Properties" {
                 $Manifest.Get.Length | Should -BeGreaterThan 0
                 $Manifest.Install.Length | Should -BeGreaterThan 0
             }
+        }
+    }
+
+    Context "Validate Export-EvergreenManifest fails" {
+
+        It "Should Throw with invalid app" {
+            { Export-EvergreenManifest -Name "NonExistentApplication" } | Should Throw
         }
     }
 }

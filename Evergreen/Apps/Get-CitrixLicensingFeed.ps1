@@ -6,16 +6,10 @@ Function Get-CitrixLicensingFeed {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-CitrixLicensingFeed
-
-            Description:
-            Returns the available Citrix Licensing versions for all platforms.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

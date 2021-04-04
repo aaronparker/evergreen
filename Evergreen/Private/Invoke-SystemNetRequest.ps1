@@ -4,8 +4,8 @@ Function Invoke-SystemNetRequest {
             Uses System.Net.WebRequest to make a HTTP request and returns the response.
     #>
     [OutputType([System.String])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri

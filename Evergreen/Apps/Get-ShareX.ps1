@@ -6,19 +6,10 @@ Function Get-ShareX {
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-ShareX
-
-            Description:
-            Returns the released ShareX version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
     Write-Verbose -Message $res.Name

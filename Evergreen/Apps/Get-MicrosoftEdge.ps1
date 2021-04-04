@@ -6,18 +6,9 @@ Function Get-MicrosoftEdge {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftEdge
-
-            Description:
-            Returns the Microsoft Edge version for all Enterprise channels and platforms.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 
     # Get application resource strings from its manifest

@@ -5,8 +5,8 @@
             Example: https://sourceforge.net/projects/sevenzip/best_release.json
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,

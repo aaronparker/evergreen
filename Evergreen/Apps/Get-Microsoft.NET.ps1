@@ -6,19 +6,10 @@ Function Get-Microsoft.NET {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftTeams
-s
-            Description:
-            Returns the available Microsoft .NET Desktop Runtime versions and download URIs for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 
     # Get application resource strings from its manifest

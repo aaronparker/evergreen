@@ -6,19 +6,10 @@ Function Get-NETworkManager {
         .NOTES
             Author: BornToBeRoot
             Twitter: @_BornToBeRoot
-        
-        .LINK
-            https://github.com/BornToBeRoot/NETworkManager
-
-        .EXAMPLE
-            Get-NETworkManager
-
-            Description:
-            Returns the released NETworkManager version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

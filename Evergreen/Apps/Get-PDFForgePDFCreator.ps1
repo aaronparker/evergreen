@@ -7,19 +7,10 @@ Function Get-PDFForgePDFCreator {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-PDFForgePDFCreator
-
-            Description:
-            Returns the current version and download URLs for PDFForge PDFCreator.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

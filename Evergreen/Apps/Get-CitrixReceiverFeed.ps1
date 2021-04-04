@@ -6,16 +6,10 @@ Function Get-CitrixReceiverFeed {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-CitrixReceiverFeed
-
-            Description:
-            Returns the available Citrix Receiver versions for all platforms.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

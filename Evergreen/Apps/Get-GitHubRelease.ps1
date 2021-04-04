@@ -10,9 +10,6 @@ Function Get-GitHubRelease {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
 
         .EXAMPLE
             Get-GitHubRelease -Uri "https://api.github.com/repos/Open-Shell/Open-Shell-Menu/releases/latest"
@@ -21,14 +18,14 @@ Function Get-GitHubRelease {
             Returns version and download URIs from the supplied GitHub repository URL.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateScript( {
                 If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
                     $True
                 }
-                else {
+                Else {
                     Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]

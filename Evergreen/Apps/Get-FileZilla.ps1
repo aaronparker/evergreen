@@ -7,19 +7,10 @@ Function Get-FileZilla {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-FileZilla
-
-            Description:
-            Get the current version and download URI for FileZilla for Windows.
     #>
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     [OutputType([System.Management.Automation.PSObject])]
-    Param()
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

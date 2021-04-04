@@ -6,20 +6,11 @@ Function Get-MicrosoftPowerShell {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftPowerShell
-
-            Description:
-            Returns the latest PowerShell version number and download for each platform.
     #>
     [Alias("Get-MicrosoftPowerShellCore")]
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

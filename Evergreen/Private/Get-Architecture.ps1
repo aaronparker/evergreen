@@ -1,7 +1,7 @@
 Function Get-Architecture {
     [OutputType([System.String])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $String

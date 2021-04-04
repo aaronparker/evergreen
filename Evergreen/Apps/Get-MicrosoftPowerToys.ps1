@@ -6,20 +6,11 @@ Function Get-MicrosoftPowerToys {
         .NOTES
             Author: Jay Michaud
             Twitter: @jaymmichaud
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftPowerToys
-
-            Description:
-            Returns the latest Microsoft PowerToys version number and download for each platform.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

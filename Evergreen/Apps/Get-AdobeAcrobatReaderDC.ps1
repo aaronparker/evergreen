@@ -9,16 +9,10 @@ Function Get-AdobeAcrobatReaderDC {
         
         .LINK
             https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-AdobeAcrobatReaderDC
-
-            Description:
-            Returns an array with version, installer type, language and download URL for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

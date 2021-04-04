@@ -7,7 +7,7 @@ https://softwareupdate.vmware.com/horizon-clients/viewcrt-windows/5.4.1/15897311
 http://softwareupdate.vmware.com/horizon-clients/viewcrt-windows/5.4.2/15936851/VMware-Horizon-Client-5.4.2-15936851.exe.tar
 
 Function DeGZip-File{
-    Param(
+    param (
         $infile,
         $outfile = ($infile -replace '\.gz$','')
         )

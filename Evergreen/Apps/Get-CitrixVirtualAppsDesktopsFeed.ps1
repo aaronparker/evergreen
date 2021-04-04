@@ -6,16 +6,10 @@ Function Get-CitrixVirtualAppsDesktopsFeed {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-CitrixVirtualAppsDesktopsFeed
-
-            Description:
-            Returns the available Citrix Virtual Apps and Desktops downloads.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

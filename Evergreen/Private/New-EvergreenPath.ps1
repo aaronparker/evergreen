@@ -9,7 +9,7 @@ Function New-EvergreenPath {
     #>
     [OutputType([System.String])]
     [CmdletBinding(SupportsShouldProcess = $True)]
-    Param(
+    param (
         [Parameter()]
         [System.Management.Automation.PSObject] $InputObject,
 

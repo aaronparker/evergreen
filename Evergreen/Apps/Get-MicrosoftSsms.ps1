@@ -6,21 +6,12 @@ Function Get-MicrosoftSsms {
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftSsms
-
-            Description:
-            Returns the latest SQL Server Management Studio for Windows version number and download URL
     #>
     [Alias("Get-MicrosoftSQLServerManagementStudio")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

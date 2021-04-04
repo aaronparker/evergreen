@@ -6,19 +6,10 @@
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://stealthpuppy.com/latest-receiver-version-powershell/
-
-        .EXAMPLE
-            Get-CitrixWorkspaceApp
-
-            Description:
-            Returns the current Citrix Workspace app releases and HDX RTME release.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

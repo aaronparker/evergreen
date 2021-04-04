@@ -6,19 +6,10 @@ Function Get-Zoom {
         .NOTES
             Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-Zoom
-
-            Description:
-            Returns the current version and download URL for Zoom.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

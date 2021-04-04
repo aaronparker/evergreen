@@ -6,19 +6,10 @@ Function Get-ControlUpAgent {
         .NOTES
             Author: Bronson Magnan
             Twitter: @cit_bronson
-    
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-ControlUpAgent
-
-            Description:
-            Returns the latest ControlUp Agent with .NET Framework 4.5 support for 64-bit Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

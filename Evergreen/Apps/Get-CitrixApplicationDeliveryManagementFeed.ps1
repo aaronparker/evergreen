@@ -6,16 +6,10 @@ Function Get-CitrixApplicationDeliveryManagementFeed {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .EXAMPLE
-            Get-CitrixApplicationDeliveryManagementFeed
-
-            Description:
-            Returns the available Citrix Application Delivery Management downloads.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

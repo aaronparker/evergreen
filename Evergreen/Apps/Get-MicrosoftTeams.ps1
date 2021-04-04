@@ -6,19 +6,10 @@ Function Get-MicrosoftTeams {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftTeams
-
-            Description:
-            Returns the available Microsoft Teams versions and download URIs.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 
     # Get application resource strings from its manifest

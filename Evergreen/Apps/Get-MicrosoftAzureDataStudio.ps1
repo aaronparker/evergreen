@@ -7,19 +7,10 @@ Function Get-MicrosoftAzureDataStudio {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-
-        .LINK
-            https://github.com/aaronparker/Evergreen/
-
-        .EXAMPLE
-            Get-MicrosoftAzureDataStudio
-
-            Description:
-            Returns the Stable and Insider builds version numbers and download URLs for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

@@ -6,19 +6,10 @@ Function Get-AtlassianBitbucket {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-MicrosoftTeams
-
-            Description:
-            Returns the available Atlassian Bitbucket versions and download URIs for Windows.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 
     # Get application resource strings from its manifest

@@ -8,7 +8,7 @@ Function ConvertTo-Hashtable {
             Link: https://4sysops.com/archives/convert-json-to-a-powershell-hash-table
     #>
     [OutputType([System.Collections.Hashtable])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
         $InputObject

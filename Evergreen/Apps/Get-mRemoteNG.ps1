@@ -6,19 +6,10 @@ Function Get-mRemoteNG {
         .NOTES
             Author: Trond Eirik Haavarstein 
             Twitter: @xenappblog
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-mRemoteNG
-
-            Description:
-            Returns the released mRemoteNG version and download URI.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param()
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param ()
 
     # Get application resource strings from its manifest
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]

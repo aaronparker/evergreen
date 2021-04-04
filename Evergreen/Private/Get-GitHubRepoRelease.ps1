@@ -5,14 +5,14 @@ Function Get-GitHubRepoRelease {
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateScript( {
                 If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
                     $True
                 }
-                else {
+                Else {
                     Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]

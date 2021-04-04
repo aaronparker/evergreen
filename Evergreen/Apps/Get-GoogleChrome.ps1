@@ -1,23 +1,14 @@
 Function Get-GoogleChrome {
     <#
         .SYNOPSIS
-            Returns the available Google Chrome versions across all platforms and channels by querying the offical Google version JSON.
+            Returns the available Google Chrome versions across all platforms and channels by querying the official Google version JSON.
 
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Evergreen
-
-        .EXAMPLE
-            Get-GoogleChrome
-
-            Description:
-            Returns the available Google Chrome versions and download URLs.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 
     # Get application resource strings from its manifest
