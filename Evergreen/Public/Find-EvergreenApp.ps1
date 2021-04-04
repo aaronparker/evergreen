@@ -1,4 +1,4 @@
-Function Find-EvergreenApp {
+﻿Function Find-EvergreenApp {
     <#
         .SYNOPSIS
             Outputs a table with the applications that Evergreen supports.
@@ -10,10 +10,10 @@ Function Find-EvergreenApp {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
-            Alias: with apologies to Spanish speaking people ;)
+            Alias: Espero que este módulo no sea fea. ;)
         
         .LINK
-            https://github.com/aaronparker/Evergreen
+            https://stealthpuppy.com/Evergreen/find.html
 
         .PARAMETER Name
             The application name to return details for. This can be the entire application name or a portion thereof.
@@ -51,14 +51,19 @@ Function Find-EvergreenApp {
 
     Begin {
 
-        # Get application resource strings from its manifest
-        $params = @{
-            Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
-            Filter      = "*.json"
-            ErrorAction = "SilentlyContinue"
+        # Get the application manifests from the module/Manifests folder
+        try {
+            $params = @{
+                Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
+                Filter      = "*.json"
+                ErrorAction = "SilentlyContinue"
+            }
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Search path for application manifests: $($params.Path)."
+            $Manifests = Get-ChildItem @params
         }
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Search path for application manifests: $($params.Path)."
-        $Manifests = Get-ChildItem @params
+        catch {
+            Throw $_
+        }
     }
 
     Process {
@@ -91,8 +96,9 @@ Function Find-EvergreenApp {
             }
         }
         Else {
-            Write-Error -Message "Cannot find application: $Name. Omit the -Name parameter to return the full list of supported applications."
-            Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
+            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Throw "Cannot find application: $Name."
         }
     }
 

@@ -42,8 +42,12 @@ Describe -Tag "Find" -Name "Properties" {
             { $Applications = Find-EvergreenApp } | Should Not Throw
         }
 
+        It "Find-EvergreenApp should Throw with invalid app" {
+            { Find-EvergreenApp -Name "NonExistentApplication" } | Should Throw
+        }
+
         # Test that the function returns something
-        It "Find-EvergreenApp returns something" {
+        It "Find-EvergreenApp returns an object" {
             $Applications = Find-EvergreenApp
             ($Applications | Measure-Object).Count | Should -BeGreaterThan 0
         }
@@ -57,7 +61,7 @@ Describe -Tag "Get" -Name "Properties" {
 
     ForEach ($application in $Applications) {
 
-        Context "Validate 'Get-EvergreenApp -Name $($application)' properties" {
+        Context "Validate 'Get-EvergreenApp -Name $($application)'" {
 
             # Run each command and capture output in a variable
             New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
@@ -101,6 +105,12 @@ Describe -Tag "Get" -Name "Properties" {
                 Write-Host -ForegroundColor "Yellow" "`t$($application) does not have a URI property."
             }
         }
+
+        Context "Validate additional scenarios" {
+            It "Should Throw with invalid app" {
+                { Get-EvergreenApp -Name "NonExistentApplication" } | Should Throw
+            }
+        }
     }
 }
 
@@ -135,7 +145,7 @@ Describe -Tag "Export" -Name "Properties" {
         
         # Test that Export-EvergreenManifest does not throw
         ForEach ($Application in $Applications) {
-            It "Export-EvergreenManifest should not Throw" {
+            It "'Export-EvergreenManifest -Name $Application' should not Throw" {
                 { Export-EvergreenManifest -Name $Application } | Should Not Throw
             }
         }

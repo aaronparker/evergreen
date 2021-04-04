@@ -14,7 +14,7 @@ Function Get-EvergreenApp {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Evergreen
+            https://stealthpuppy.com/Evergreen/use.html
 
         .PARAMETER Name
             The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.
@@ -83,10 +83,14 @@ Function Get-EvergreenApp {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
                 Write-Output -InputObject $Output
             }
+            Else {
+                Throw "Failed to capture output from: Get-$Name."
+            }
         }
         Else {
-            Write-Error -Message "Cannot find application: $Name. Please list valid application names with Find-EvergreenApp."
-            Write-Error -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
+            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Throw "Cannot find application: $Name."
         }
     }
 

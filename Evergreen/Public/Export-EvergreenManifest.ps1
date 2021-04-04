@@ -12,7 +12,7 @@ Function Export-EvergreenManifest {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Evergreen
+            https://stealthpuppy.com/Evergreen/
 
         .PARAMETER Name
             The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.

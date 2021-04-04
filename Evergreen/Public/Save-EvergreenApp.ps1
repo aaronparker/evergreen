@@ -8,7 +8,7 @@ Function Save-EvergreenApp {
             Twitter: @stealthpuppy
         
         .LINK
-            https://github.com/aaronparker/Evergreen
+            https://stealthpuppy.com/Evergreen/save.html
 
         .EXAMPLE
             Get-EvergreenApp -Name AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
