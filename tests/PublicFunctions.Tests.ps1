@@ -118,8 +118,9 @@ Describe -Tag "Save" -Name "Targets" {
             }
 
             # Test that the file downloaded into the path: "$Path/Stable/Enterprise/<version>/x64/MicrosoftEdgeEnterpriseX64.msi"
+            $File = [System.IO.Path]::Combine($Path, $installer.Channel, $installer.Release, $installer.Version, $installer.Architecture, $(Split-Path -Path $installer.URI -Leaf))
             It "Should save in the right path" {
-                Test-Path -Path $File.Path | Should Be $True
+                Test-Path -Path $File -PathType Leaf | Should Be $True
             }
         }
     }
