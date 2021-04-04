@@ -131,19 +131,23 @@ Describe -Tag "Export" -Name "Properties" {
     $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
 
     Context "Validate Export-EvergreenManifest" {
+        
+        # Test that Export-EvergreenManifest does not throw
         ForEach ($Application in $Applications) {
-
-            # Test that Export-EvergreenManifest does not throw
             It "Export-EvergreenManifest should not Throw" {
                 { Export-EvergreenManifest -Name $Application } | Should Not Throw
             }
+        }
 
-            # The manifest should have the right properties
+        # The manifest should have the right properties
+        ForEach ($Application in $Applications) {
+            $Manifest = Export-EvergreenManifest -Name $Application
+
             It "$Application has expected properties" {
-                $Application.Name.Length | Should -BeGreaterThan 0
-                $Application.Source.Length | Should -BeGreaterThan 0
-                $Application.Get.Length | Should -BeGreaterThan 0
-                $Application.Install.Length | Should -BeGreaterThan 0
+                $Manifest.Name.Length | Should -BeGreaterThan 0
+                $Manifest.Source.Length | Should -BeGreaterThan 0
+                $Manifest.Get.Length | Should -BeGreaterThan 0
+                $Manifest.Install.Length | Should -BeGreaterThan 0
             }
         }
     }
