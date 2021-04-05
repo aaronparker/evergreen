@@ -8,19 +8,23 @@ param ()
 If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
 
     # Invoke Pester tests and upload results to AppVeyor
-    $testsPath = Join-Path $projectRoot "tests"
-    $testOutput = Join-Path $projectRoot "TestsResults.xml"
-    $testConfig = [PesterConfiguration] @{
+    $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"
+    $testOutput = Join-Path -Path $projectRoot -ChildPath "TestsResults.xml"
+    $testConfig = [PesterConfiguration]@{
+        Run        = @{
+            Path     = $testsPath
+            PassThru = $True
+        }
         TestResult = @{
             OutputFormat = "NUnitXml"
-            OutputFile = $testOutput
+            OutputFile   = $testOutput
         }
-        Output = @{
+        Output     = @{
             Verbosity = "Detailed"
         }
     }
     #$res = Invoke-Pester -Path $testsPath -OutputFormat NUnitXml -OutputFile $testOutput -PassThru
-    $res = Invoke-Pester -Configuration $testConfig -Path $testsPath -PassThru
+    $res = Invoke-Pester -Configuration $testConfig
 
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
