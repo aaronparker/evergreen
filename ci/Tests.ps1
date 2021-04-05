@@ -20,7 +20,7 @@ If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
         }
     }
     #$res = Invoke-Pester -Path $testsPath -OutputFormat NUnitXml -OutputFile $testOutput -PassThru
-    $res = Invoke-Pester -Configuration $config -Path $testsPath -PassThru
+    $res = Invoke-Pester -Configuration $testConfig -Path $testsPath -PassThru
 
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
