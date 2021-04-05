@@ -21,60 +21,82 @@ $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
 # Import module
-Write-Host ""
-Write-Host "Importing module." -ForegroundColor Cyan
-Import-Module $manifestPath -Force
+BeforeAll {
+    Write-Host ""
+    Write-Host "Importing module: $manifestPath." -ForegroundColor Cyan
+    Import-Module $manifestPath -Force
+}
 
-InModuleScope Evergreen {
-    Describe 'Test-PSCore' {
-        $Version = '6.0.0'
-        Context "Tests whether we are running on PowerShell Core" {
-            It "Returns True if running Windows PowerShell" {
+Describe 'Test-PSCore' {
+    Context "Tests whether we are running on PowerShell Core" {
+        It "Returns True if running Windows PowerShell" {
+            InModuleScope Evergreen {
+
+                $Version = '6.0.0'
                 If (($PSVersionTable.PSVersion -ge [version]::Parse($Version)) -and ($PSVersionTable.PSEdition -eq "Core")) {
                     Test-PSCore | Should -Be $True
                 }
             }
         }
-        Context "Tests whether we are running on Windows PowerShell" {
-            It "Returns False if running Windows PowerShell" {
+    }
+    Context "Tests whether we are running on Windows PowerShell" {
+        It "Returns False if running Windows PowerShell" {
+            InModuleScope Evergreen {
+
+                $Version = '6.0.0'
                 If (($PSVersionTable.PSVersion -lt [version]::Parse($Version)) -and ($PSVersionTable.PSEdition -eq "Desktop")) {
                     Test-PSCore | Should -Be $False
                 }
             }
         }
     }
+}
 
-    Describe "Get-Architecture" {
+Describe "Get-Architecture" {
+    Context "It returns expected output" {
+        It "Returns x64" {
+            InModuleScope Evergreen {
 
-        $64bitUrl = "https://statics.teams.cdn.office.net/production-windows-x64/1.3.00.34662/Teams_windows_x64.msi"
-        $32bitUrl = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDCUpd2001320074.msp"
-
-        Context "It returns expected output" {
-            It "Returns x64" {
-                Get-Architecture -String $64bitUrl | Should Be "x64"
+                $64bitUrl = "https://statics.teams.cdn.office.net/production-windows-x64/1.3.00.34662/Teams_windows_x64.msi"
+                Get-Architecture -String $64bitUrl | Should -Be "x64"
             }
+        }
 
-            It "Returns x86" {
-                Get-Architecture -String $32bitUrl | Should Be "x86"
+        It "Returns x86" {
+            InModuleScope Evergreen {
+
+                $32bitUrl = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDCUpd2001320074.msp"
+                Get-Architecture -String $32bitUrl | Should -Be "x86"
             }
         }
     }
+}
 
-    Describe "Get-GitHubRepoRelease" {
+Describe "Get-GitHubRepoRelease" {
+    Context "It correctly returns an object" {
+        It "Does not Throw" {
+            InModuleScope Evergreen {
 
-        $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
-        $params = @{
-            Uri          = $Uri
-            MatchVersion = "(\d+(\.\d+){1,4}).*"
+                $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
+                $gitHubParams = @{
+                    Uri          = $Uri
+                    MatchVersion = "(\d+(\.\d+){1,4}).*"
+                }
+
+                { Get-GitHubRepoRelease @gitHubParams } | Should -Not -Throw
+            }
         }
 
-        Context "It correctly returns an object" {
-            It "Does not Throw" {
-                { Get-GitHubRepoRelease @params } | Should Not Throw
-            }
+        It "Returns the expected properties" {
+            InModuleScope Evergreen {
 
-            $result = Get-GitHubRepoRelease @params
-            It "Returns the expected properties" {
+                $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
+                $gitHubParams = @{
+                    Uri          = $Uri
+                    MatchVersion = "(\d+(\.\d+){1,4}).*"
+                }
+                $result = Get-GitHubRepoRelease @gitHubParams
+
                 $result.Version.Length | Should -BeGreaterThan 0
                 $result.Platform.Length | Should -BeGreaterThan 0
                 $result.Architecture.Length | Should -BeGreaterThan 0
