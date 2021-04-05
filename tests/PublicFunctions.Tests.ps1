@@ -52,22 +52,20 @@ Describe -Tag "Get" -Name "Get-EvergreenApp" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
+        $Output = Get-EvergreenApp -Name $application
     }
 
     Context "Validate 'Get-EvergreenApp works with: $application." {
         It "$($application): should return something" {
-            $Output = Get-EvergreenApp -Name $application
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }
 
         It "$($application): should return the expected output type" {
-            $Output = Get-EvergreenApp -Name $application
             $Output | Should -BeOfType "PSCustomObject"
         }
 
         # Test that output with Version property includes numbers and "." only
         It "$($application): [$($object.Version)] should be a valid version number" {
-            $Output = Get-EvergreenApp -Name $application
             If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
