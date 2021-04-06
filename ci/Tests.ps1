@@ -5,12 +5,25 @@
 [OutputType()]
 param ()
 
+If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
+    # AppVeyor Testing
+    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
+    $module = $env:Module
+}
+Else {
+    # Local Testing 
+    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
+    $module = Split-Path -Path $projectRoot -Leaf
+}
+$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
+$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
+$modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
 If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
 
-    # Invoke Pester tests and upload results to AppVeyor
+    # Configure the test environment
     $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"
     $testOutput = Join-Path -Path $projectRoot -ChildPath "TestsResults.xml"
     $testConfig = [PesterConfiguration]@{
@@ -26,9 +39,13 @@ If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
             Verbosity = "Detailed"
         }
     }
-    #$res = Invoke-Pester -Path $testsPath -OutputFormat NUnitXml -OutputFile $testOutput -PassThru
+    Write-Host "Tests path:      $testsPath."
+    Write-Host "Output path:     $testOutput."
+
+    # Invoke Pester tests
     $res = Invoke-Pester -Configuration $testConfig
 
+    # Upload test results to AppVeyor
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
         (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $testOutput))

@@ -5,37 +5,17 @@
 [OutputType()]
 param ()
 
-# Set variables
-If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
-    # AppVeyor Testing
-    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
-    $module = $env:Module
-}
-Else {
-    # Local Testing 
-    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-    $module = Split-Path -Path $projectRoot -Leaf
-}
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-$modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
-$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-$WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-
-# Import module
-BeforeAll {
-    Write-Host ""
-    Write-Host "Importing module: $manifestPath." -ForegroundColor Cyan
-    Import-Module $manifestPath -Force
-}
-
 Describe "General project validation" {
-    $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1, *.psm1
+    BeforeAll {
+        # TestCases are splatted to the script so we need hashtables
+        $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1, *.psm1
+        $testCase = $scripts | ForEach-Object { @{file = $_ } }
 
-    # TestCases are splatted to the script so we need hashtables
-    $testCase = $scripts | ForEach-Object { @{file = $_ } }
-    It "Script <file> should be valid PowerShell" -TestCases $testCase {
-        param($file)
+        $scriptAnalyzerRules = Get-ScriptAnalyzerRule
+    }
+    
+    It "Script <file.Name> should be valid PowerShell" -TestCases $testCase {
+        param ($file)
 
         $file.FullName | Should -Exist
 
@@ -44,10 +24,10 @@ Describe "General project validation" {
         $null = [System.Management.Automation.PSParser]::Tokenize($contents, [ref]$errors)
         $errors.Count | Should -Be 0
     }
-    $scriptAnalyzerRules = Get-ScriptAnalyzerRule
-    It "<file> should pass ScriptAnalyzer" -TestCases $testCase {
-        param($file)
-        $analysis = Invoke-ScriptAnalyzer -Path  $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingConvertToSecureStringWithPlainText', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
+
+    It "<file.Name> should pass ScriptAnalyzer" -TestCases $testCase {
+        param ($file)
+        $analysis = Invoke-ScriptAnalyzer -Path  $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
         
         ForEach ($rule in $scriptAnalyzerRules) {
             If ($analysis.RuleName -contains $rule) {
@@ -61,18 +41,22 @@ Describe "General project validation" {
 }
 
 Describe "Module Function validation" {
-    $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1
-    $testCase = $scripts | ForEach-Object { @{file = $_ } }
-    It "Script <file> should only contain one function" -TestCases $testCase {
-        param($file)   
+    BeforeAll {
+        $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1
+        $testCase = $scripts | ForEach-Object { @{file = $_ } }
+    }
+
+    It "Script <file.Name> should only contain one function" -TestCases $testCase {
+        param ($file)   
         $file.FullName | Should -Exist
         $contents = Get-Content -Path $file.FullName -ErrorAction Stop
         $describes = [Management.Automation.Language.Parser]::ParseInput($contents, [ref]$null, [ref]$null)
         $test = $describes.FindAll( { $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true) 
         $test.Count | Should -Be 1
     }
-    It "<file> should match function name" -TestCases $testCase {
-        param($file)
+
+    It "<file.Name> should match function name" -TestCases $testCase {
+        param ($file)
         $file.FullName | Should -Exist
         $contents = Get-Content -Path $file.FullName -ErrorAction Stop
         $describes = [Management.Automation.Language.Parser]::ParseInput($contents, [ref]$null, [ref]$null)
@@ -85,7 +69,8 @@ Describe "Module Function validation" {
 Describe 'Module Metadata validation' {
     It 'Script fileinfo should be OK' {
         { Test-ModuleManifest -Path $manifestPath -ErrorAction Stop } | Should -Not -Throw
-    }   
+    }
+
     It 'Import module should be OK' {
         { Import-Module $modulePath -Force -ErrorAction Stop } | Should -Not -Throw
     }

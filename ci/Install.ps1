@@ -27,8 +27,6 @@ Write-Host "Module name:     $module."
 Write-Host "Module parent:   $moduleParent."
 Write-Host "Module manifest: $manifestPath."
 Write-Host "Module path:     $modulePath."
-Write-Host "Tests path:      $tests."
-Write-Host "Output path:     $output."
 
 # Line break for readability in AppVeyor console
 Write-Host ""

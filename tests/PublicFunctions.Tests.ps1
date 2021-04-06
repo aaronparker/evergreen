@@ -5,28 +5,6 @@
 [OutputType()]
 param ()
 
-# Set variables
-If (Test-Path "env:APPVEYOR_BUILD_FOLDER") {
-    # AppVeyor Testing
-    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
-    $module = $env:Module
-}
-Else {
-    # Local Testing 
-    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-    $module = Split-Path -Path $projectRoot -Leaf
-}
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-$WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-
-# Import module
-Write-Host ""
-Write-Host "Importing module: $manifestPath." -ForegroundColor Cyan
-Import-Module $manifestPath -Force
-
-
 BeforeDiscovery {
     # Get the module commands
     $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
@@ -117,7 +95,7 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
     }
 
     # Test that Save-EvergreenApp accepts the object and saves the file
-    Context "Validate Save-EvergreenApp works with <installer>." {
+    Context "Validate Save-EvergreenApp works with <installer.Architecture>." {
         It "Save-EvergreenApp should not Throw" {
             { $File = $installer | Save-EvergreenApp -Path $Path } | Should -Not -Throw
         }

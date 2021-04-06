@@ -1,5 +1,6 @@
 <#
     Downloads Pester tests saved for future use
+    Causes excessive downloads and account lockouts in AppVeyor
 #>
 
 Describe -Tag "Download" -Name "Downloads" {
@@ -24,7 +25,7 @@ Describe -Tag "Download" -Name "Downloads" {
                             ## Testing with direct download consumes too much bandwidth skip downloading packages
                             ## AppVeyor has bandwidth limits that will cause the account to be locked if consumed
 
-                            <# # If Method Head fails, try downloading the URI
+                            # If Method Head fails, try downloading the URI
                             # Write-Host -ForegroundColor Cyan "`tException grabbing URI via header. Retrying full request."
                             $OutFile = Join-Path -Path $Path (Split-Path -Path $object.URI -Leaf)
                             try {
@@ -37,7 +38,7 @@ Describe -Tag "Download" -Name "Downloads" {
                                 $r = [PSCustomObject] @{
                                     StatusCode = 200
                                 }
-                            } #>
+                            }
 
                             # Checking headers didn't work so let's pretend the URI is OK.
                             # Some URIs may require a login or the web server responds with a 403 when retrieving headers

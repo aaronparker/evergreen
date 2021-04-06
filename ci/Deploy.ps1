@@ -7,6 +7,7 @@ param ()
 
 # Line break for readability in AppVeyor console
 Write-Host ""
+$WarningPreference = [System.Management.Automation.ActionPreference]::Continue
 
 # Make sure we're using the Master branch and that it's not a pull request
 # Environmental Variables Guide: https://www.appveyor.com/docs/environment-variables/

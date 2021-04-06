@@ -5,29 +5,6 @@
 [OutputType()]
 param ()
 
-# Set variables
-If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
-    # AppVeyor Testing
-    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
-    $module = $env:Module
-}
-Else {
-    # Local Testing 
-    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-    $module = Split-Path -Path $projectRoot -Leaf
-}
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-$WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
-
-# Import module
-BeforeAll {
-    Write-Host ""
-    Write-Host "Importing module: $manifestPath." -ForegroundColor Cyan
-    Import-Module $manifestPath -Force
-}
-
 Describe 'Test-PSCore' {
     Context "Tests whether we are running on PowerShell Core" {
         It "Returns True if running Windows PowerShell" {
