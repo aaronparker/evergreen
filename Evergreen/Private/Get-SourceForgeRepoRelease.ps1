@@ -40,11 +40,9 @@
     $missingProperties = Compare-Object @params
     If ($Null -ne $missingProperties) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validated successfully."
-        #$validate = $True
     }
     Else {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validation failed."
-        #$validate = $False
         $missingProperties | ForEach-Object {
             Throw [System.Management.Automation.ValidationMetadataException] "$($MyInvocation.MyCommand): Property: '$_' missing"
         }
@@ -72,7 +70,8 @@
         [System.XML.XMLDocument] $xmlDocument = $Content
     }
     Catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert feed into an XML object."
+        Throw $_
     }
         
     # Select the required node/s from the XML feed

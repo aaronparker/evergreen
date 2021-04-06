@@ -5,15 +5,20 @@
 [OutputType()]
 param ()
 
-Describe "General project validation" {
-    BeforeAll {
-        # TestCases are splatted to the script so we need hashtables
-        $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1, *.psm1
-        $testCase = $scripts | ForEach-Object { @{file = $_ } }
+BeforeDiscovery {
+    # TestCases are splatted to the script so we need hashtables
+    $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1, *.psm1
+    $testCase = $scripts | ForEach-Object { @{file = $_ } }
 
-        $scriptAnalyzerRules = Get-ScriptAnalyzerRule
-    }
-    
+    # Get the ScriptAnalyzer rules
+    $scriptAnalyzerRules = Get-ScriptAnalyzerRule
+
+    # Find module scripts to create the test cases
+    $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1
+    $testCase = $scripts | ForEach-Object { @{file = $_ } }
+}
+
+Describe "General project validation" {    
     It "Script <file.Name> should be valid PowerShell" -TestCases $testCase {
         param ($file)
 
@@ -25,7 +30,7 @@ Describe "General project validation" {
         $errors.Count | Should -Be 0
     }
 
-    It "<file.Name> should pass ScriptAnalyzer" -TestCases $testCase {
+    It "Script <file.Name> should pass ScriptAnalyzer" -TestCases $testCase {
         param ($file)
         $analysis = Invoke-ScriptAnalyzer -Path  $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
         
@@ -41,11 +46,6 @@ Describe "General project validation" {
 }
 
 Describe "Module Function validation" {
-    BeforeAll {
-        $scripts = Get-ChildItem -Path $moduleParent -Recurse -Include *.ps1
-        $testCase = $scripts | ForEach-Object { @{file = $_ } }
-    }
-
     It "Script <file.Name> should only contain one function" -TestCases $testCase {
         param ($file)   
         $file.FullName | Should -Exist
@@ -55,7 +55,7 @@ Describe "Module Function validation" {
         $test.Count | Should -Be 1
     }
 
-    It "<file.Name> should match function name" -TestCases $testCase {
+    It "Script <file.Name> should match function name" -TestCases $testCase {
         param ($file)
         $file.FullName | Should -Exist
         $contents = Get-Content -Path $file.FullName -ErrorAction Stop
@@ -66,12 +66,12 @@ Describe "Module Function validation" {
 }
 
 # Test module and manifest
-Describe 'Module Metadata validation' {
-    It 'Script fileinfo should be OK' {
+Describe "Module Metadata validation" {
+    It "Script fileinfo should be OK" {
         { Test-ModuleManifest -Path $manifestPath -ErrorAction Stop } | Should -Not -Throw
     }
 
-    It 'Import module should be OK' {
+    It "Import module should be OK" {
         { Import-Module $modulePath -Force -ErrorAction Stop } | Should -Not -Throw
     }
 }

@@ -34,7 +34,7 @@ Function ConvertTo-Hashtable {
             ## Return the array but don't enumerate it because the object may be pretty complex
             Write-Output -NoEnumerate -InputObject $collection
         }
-        ElseIf ($InputObject -is [psobject]) {
+        ElseIf ($InputObject -is [PSObject]) {
             ## If the object has properties that need enumeration
             ## Convert it to its own hash table and return it
             $hash = @{ }
