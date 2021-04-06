@@ -3,7 +3,8 @@
 	"Source": "https://www.gimp.org/",
 	"Get": {
 		"Update": {
-			"Uri": "https://www.gimp.org/gimp_versions.json"
+			"Uri": "https://www.gimp.org/gimp_versions.json",
+			"DatePattern": "yyyy-MM-dd"
 		},
 		"Download": {
             "Uri": "https://download.gimp.org/mirror/pub/gimp/v#minorversion/windows/#filename",

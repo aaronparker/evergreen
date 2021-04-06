@@ -48,7 +48,7 @@ Function Get-Gimp {
         If ($Null -ne $redirectUrl) {
             $PSObject = [PSCustomObject] @{
                 Version = $Latest.version
-                Date    = ConvertTo-DateTime -DateTime $Latest.date
+                Date    = ConvertTo-DateTime -DateTime $Latest.date -Pattern $res.Get.Update.DatePattern
                 Sha256  = $Latest.windows.sha256
                 URI     = $redirectUrl
             }

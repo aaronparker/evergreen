@@ -29,7 +29,7 @@ Function Get-GoogleChrome {
                 $PSObject = [PSCustomObject] @{
                     Version      = $version.current_version
                     Architecture = Get-Architecture -String $version.os
-                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim()
+                    Date         = ConvertTo-DateTime -DateTime $version.current_reldate.Trim() -Pattern $res.Get.Download.DatePattern
                     URI          = "$($res.Get.Download.Uri)$($res.Get.Download.Platforms[$platform.Key])"
                 }
                 Write-Output -InputObject $PSObject

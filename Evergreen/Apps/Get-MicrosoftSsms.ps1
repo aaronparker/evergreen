@@ -50,7 +50,7 @@ Function Get-MicrosoftSsms {
                             # Construct the output; Return the custom object to the pipeline
                             $PSObject = [PSCustomObject] @{
                                 Version  = $entry.Component.version
-                                Date     = ConvertTo-DateTime -DateTime $entry.updated
+                                Date     = ConvertTo-DateTime -DateTime ($entry.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
                                 Title    = $entry.Title
                                 Language = $language.key
                                 URI      = $ResponseUri
