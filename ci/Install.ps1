@@ -3,7 +3,7 @@
         AppVeyor install script.
 #>
 [OutputType()]
-Param()
+param ()
 
 # Set variables
 If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
@@ -16,8 +16,6 @@ Else {
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }
-$tests = Join-Path $projectRoot "tests"
-$output = Join-Path $projectRoot "TestsResults.xml"
 $moduleParent = Join-Path -Path $projectRoot -ChildPath $module
 $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
 $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
@@ -29,8 +27,6 @@ Write-Host "Module name:     $module."
 Write-Host "Module parent:   $moduleParent."
 Write-Host "Module manifest: $manifestPath."
 Write-Host "Module path:     $modulePath."
-Write-Host "Tests path:      $tests."
-Write-Host "Output path:     $output."
 
 # Line break for readability in AppVeyor console
 Write-Host ""
@@ -42,13 +38,16 @@ If (Get-PSRepository -Name PSGallery | Where-Object { $_.InstallationPolicy -ne 
     Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 }
 If ([Version]((Find-Module -Name Pester).Version) -gt (Get-Module -Name Pester).Version) {
-    Install-Module -Name Pester -SkipPublisherCheck -RequiredVersion 4.10.1 -Force
+    Install-Module -Name Pester -SkipPublisherCheck -Force #-RequiredVersion 4.10.1
+    Import-Module -Name Pester
 }
 If ([Version]((Find-Module -Name PSScriptAnalyzer).Version) -gt (Get-Module -Name PSScriptAnalyzer).Version) {
     Install-Module -Name PSScriptAnalyzer -SkipPublisherCheck -Force
+    Import-Module -Name PSScriptAnalyzer
 }
 If ([Version]((Find-Module -Name posh-git).Version) -gt (Get-Module -Name posh-git).Version) {
-    Install-Module -Name posh-git -Force
+    Install-Module -Name posh-git -SkipPublisherCheck -Force
+    Import-Module -Name posh-git
 }
 
 # Import module

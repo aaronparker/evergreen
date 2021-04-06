@@ -18,8 +18,8 @@
         Description:
         Creates a Windows Package Manager manifest for Microsoft FSLogix Apps and outputs the manifest in C:\Manifests
 #>
-[CmdletBinding()]
-Param(
+[CmdletBinding(SupportsShouldProcess = $False)]
+param (
     [Parameter(Mandatory, Position = 0)]
     [System.String] $PackageName,
 

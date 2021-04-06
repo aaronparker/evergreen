@@ -3,7 +3,7 @@
 [![License][license-badge]][license]
 [![PowerShell Gallery Version][psgallery-version-badge]][psgallery]
 [![PowerShell Gallery][psgallery-badge]][psgallery]
-[![Master build status][appveyor-badge]][appveyor-build]
+[![main build status][appveyor-badge]][appveyor-build]
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/767d96dec7bd40b69eb4665919d20f55)](https://www.codacy.com/manual/aaronparker/Evergreen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aaronparker/Evergreen&amp;utm_campaign=Badge_Grade)
 
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise Windows applications. The module consists of a number of simple functions to use in scripts when performing several tasks including:
@@ -13,13 +13,10 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 
 ![leaf by The Icon Z from the Noun Project](/img/EvergreenLeaf.png)
 
-Right now all functions consist of the following:
+Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
 
-* `Get` verb - the module provides functions to retrieve data only
-* Vendor - the vendor / developer of the application (e.g. `Adobe`, `Google`, `Microsoft`, etc.)
-* Product name - product names and optionally version (e.g. `AcrobatReaderDC`, `Chrome`, `VisualStudioCode`, etc.)
-
-This may change in a future release to simplify commands where the application can be a parameter or input into Evergreen to return the details for that application (e.g. `Get-Evergreen -App "MicrosoftEdge"`).
+* `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
+* `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
 ## Why
 
@@ -88,7 +85,7 @@ Common PowerShell module paths include:
 
 To install from the repository
 
-1. Download the `master branch` to your workstation
+1. Download the `main branch` to your workstation
 2. Copy the contents of the Evergreen folder onto your workstation into the desired PowerShell Module path
 3. Open a Powershell console with the Run as Administrator option
 4. Run `Set-ExecutionPolicy` using the parameter `RemoteSigned` or `Bypass`
@@ -100,7 +97,7 @@ Once installation is complete, you can validate that the module exists by runnin
 Import-Module Evergreen
 ```
 
-[appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/master.svg?style=flat-square&logo=appveyor
+[appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
 [psgallery-badge]: https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat-square
 [psgallery]: https://www.powershellgallery.com/packages/Evergreen

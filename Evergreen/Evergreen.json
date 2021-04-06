@@ -31,5 +31,9 @@
 			"url",
 			"zipball_url"
 		]
+	},
+	"Uri": {
+		"Project": "https://github.com/aaronparker/Evergreen/",
+		"Documentation": "https://stealthpuppy.com/Evergreen/"
 	}
 }

@@ -4,8 +4,8 @@ Function Get-ModuleResource {
             Reads the module strings from the JSON file and returns a hashtable.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param (
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [ValidateScript( { If (Test-Path -Path $_ -PathType 'Leaf') { $True } Else { Throw "Cannot find file $_" } })]

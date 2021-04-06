@@ -19,7 +19,7 @@ deploy_script:
 - ps: . .\ci\Deploy.ps1
 
 skip_commits:
-  message: /AppVeyor validate.*|Merge branch 'master' of.*/
+  message: /AppVeyor validate.*|Merge branch 'main' of.*/
 
 only_commits:
   files:

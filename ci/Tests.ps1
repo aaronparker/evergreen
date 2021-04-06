@@ -3,16 +3,52 @@
         AppVeyor tests script.
 #>
 [OutputType()]
-Param()
+param ()
+
+If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
+    # AppVeyor Testing
+    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
+    $module = $env:Module
+}
+Else {
+    # Local Testing 
+    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
+    $module = Split-Path -Path $projectRoot -Leaf
+}
+$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
+$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
+$modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
+$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
+$WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
 If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
 
-    # Invoke Pester tests and upload results to AppVeyor
-    # Excluding download tests as this is problematic for a few reasons
-    $res = Invoke-Pester -Path $tests -OutputFormat NUnitXml -OutputFile $output -PassThru -ExcludeTag "Download"
+    # Configure the test environment
+    $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"
+    $testOutput = Join-Path -Path $projectRoot -ChildPath "TestsResults.xml"
+    $testConfig = [PesterConfiguration]@{
+        Run        = @{
+            Path     = $testsPath
+            PassThru = $True
+        }
+        TestResult = @{
+            OutputFormat = "NUnitXml"
+            OutputFile   = $testOutput
+        }
+        Output     = @{
+            Verbosity = "Detailed"
+        }
+    }
+    Write-Host "Tests path:      $testsPath."
+    Write-Host "Output path:     $testOutput."
+
+    # Invoke Pester tests
+    $res = Invoke-Pester -Configuration $testConfig
+
+    # Upload test results to AppVeyor
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $output))
+        (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $testOutput))
     }
     Else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"

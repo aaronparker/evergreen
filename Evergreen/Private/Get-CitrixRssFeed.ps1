@@ -8,8 +8,8 @@
             Twitter: @stealthpuppy        
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]
         [System.String] $Uri,
@@ -60,7 +60,6 @@
                         Title       = $node.title -replace $res.Get.TitleReplace, ""
                         Description = $node.description
                         Date        = $node.pubDate
-                        #Date        = ConvertTo-DateTime -DateTime $node.pubDate -Pattern $res.Get.DatePattern
                         URI         = $node.link
                     }
                     Write-Output -InputObject $PSObject

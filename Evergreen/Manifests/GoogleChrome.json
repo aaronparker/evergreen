@@ -12,7 +12,7 @@
 				"win": "/dl/chrome/install/googlechromestandaloneenterprise.msi",
 				"win64": "/dl/chrome/install/googlechromestandaloneenterprise64.msi"
 			},
-			"DatePattern": "dd/MM/yy"
+			"DatePattern": "MM/dd/yy"
 		}
 	},
 	"Install": {

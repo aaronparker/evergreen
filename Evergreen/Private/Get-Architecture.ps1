@@ -1,7 +1,7 @@
 Function Get-Architecture {
     [OutputType([System.String])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $String
@@ -23,7 +23,7 @@ Function Get-Architecture {
         "x86" { $architecture = "x86"; Break }
         "fxdependent" { $architecture = "fxdependent" }
         Default {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Architecture not found, defaulting to x86."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Architecture not found in $String, defaulting to x86."
             $architecture = "x86"
         }
     }

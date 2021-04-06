@@ -5,8 +5,8 @@
             Example: https://sourceforge.net/projects/sevenzip/best_release.json
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
@@ -40,11 +40,9 @@
     $missingProperties = Compare-Object @params
     If ($Null -ne $missingProperties) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validated successfully."
-        #$validate = $True
     }
     Else {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validation failed."
-        #$validate = $False
         $missingProperties | ForEach-Object {
             Throw [System.Management.Automation.ValidationMetadataException] "$($MyInvocation.MyCommand): Property: '$_' missing"
         }
@@ -72,7 +70,8 @@
         [System.XML.XMLDocument] $xmlDocument = $Content
     }
     Catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert feed into an XML object."
+        Throw $_
     }
         
     # Select the required node/s from the XML feed
@@ -88,10 +87,12 @@
         }
         If ($Null -ne $File) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $item."
+            $Url = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = Get-Architecture -String $File
-                URI          = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
+                Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                URI          = $Url
             }
             Write-Output -InputObject $PSObject
         }

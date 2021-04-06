@@ -8,8 +8,8 @@ Function ConvertTo-Hashtable {
             Link: https://4sysops.com/archives/convert-json-to-a-powershell-hash-table
     #>
     [OutputType([System.Collections.Hashtable])]
-    [CmdletBinding()]
-    Param (
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
         $InputObject
     )
@@ -34,7 +34,7 @@ Function ConvertTo-Hashtable {
             ## Return the array but don't enumerate it because the object may be pretty complex
             Write-Output -NoEnumerate -InputObject $collection
         }
-        ElseIf ($InputObject -is [psobject]) {
+        ElseIf ($InputObject -is [PSObject]) {
             ## If the object has properties that need enumeration
             ## Convert it to its own hash table and return it
             $hash = @{ }

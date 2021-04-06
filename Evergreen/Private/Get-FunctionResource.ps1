@@ -4,8 +4,8 @@ Function Get-FunctionResource {
             Reads the function strings from the JSON file and returns a hashtable.
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param (
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.String] $AppName = "Template"
@@ -26,14 +26,14 @@ Function Get-FunctionResource {
 
     try {
         If (Test-PSCore) {
-            $hashTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction SilentlyContinue
+            $hashTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "SilentlyContinue"
         }
         Else {
-            $hashTable = $content | ConvertFrom-Json -ErrorAction SilentlyContinue | ConvertTo-Hashtable
+            $hashTable = $content | ConvertFrom-Json -ErrorAction "SilentlyContinue" | ConvertTo-Hashtable
         }
     }
     catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required object."
+        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required hashtable object."
         Throw $_.Exception.Message
     }
     finally {

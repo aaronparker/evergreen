@@ -8,17 +8,26 @@ entries:
   - title: Evergreen
     output: web
     folderitems:
-    - title: Introduction
+    - title: Getting started
       url: /index.html
       output: web
-    - title: Install
+    - title: Install Evergreen
       url: /install.html
       output: web
-    - title: Use
+    - title: Using Evergreen
       url: /use.html
+      output: web
+    - title: Find supported applications
+      url: /find.html
+      output: web
+    - title: Download installers
+      url: /save.html
       output: web
     - title: Examples
       url: /examples.html
+      output: web
+    - title: How Evergreen works
+      url: /how.html
       output: web
     - title: Change log
       url: /changelog.html

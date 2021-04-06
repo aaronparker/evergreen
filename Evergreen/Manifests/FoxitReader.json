@@ -4,7 +4,7 @@
 	"Get": {
 		"Uri": "https://www.foxitsoftware.com/portal/download/getdownloadform.html?retJson=1&product=Foxit-Reader&platform=Windows&formId=download-reader",
 		"ContentType": "text/html; charset=UTF-8",
-		"DateTimePattern": "dd/MM/yy",
+		"DateTimePattern": "MM/dd/yy",
 		"DownloadUri": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Reader&platform=Windows&version=#Version&package_type=#Package&language=#Language",
 		"DownloadMsi": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Enterprise-Reader&platform=Windows&version=#Version&package_type=msi&language=#Language&distID="
 	},

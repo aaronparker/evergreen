@@ -9,8 +9,8 @@ Function Invoke-RestMethodWrapper {
             TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,

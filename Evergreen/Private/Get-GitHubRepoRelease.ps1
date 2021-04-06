@@ -5,14 +5,14 @@ Function Get-GitHubRepoRelease {
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding()]
-    Param(
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateScript( {
                 If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
                     $True
                 }
-                else {
+                Else {
                     Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]
@@ -110,7 +110,7 @@ Function Get-GitHubRepoRelease {
                             Platform     = Get-Platform -String $asset.browser_download_url
                             Architecture = Get-Architecture -String $asset.browser_download_url
                             Type         = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
-                            Date         = ConvertTo-DateTime -DateTime $item.created_at
+                            Date         = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
                             Size         = $asset.size
                             URI          = $asset.browser_download_url
                         }

@@ -7,6 +7,18 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`. See the docs site on how to use the new functions [https://stealthpuppy.com/Evergreen/](https://stealthpuppy.com/Evergreen/)
+* Adds `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
+* Adds file type to SourceForge applications
+* Re-instates `ControlUpAgent` and `ControlUpConsole`
+* Fixes the `LTS` release in `Microsoft.NET`
+* Fixes localised date format for `Gimp`, `GoogleChrome`, `MicrosoftEdge`, `MicrosoftFSLogixApps`, `MicrosoftSsms`, `FoxitReader`
+* Migrates tests to Pester 5
+* Adds additional Pester tests for private functions
+* General code optimisations and fixes
+
 ## 2103.305
 
 * Fixes an issue with `Get-AdobeAcrobat` to ensure that `Track` property has the correct value (DC, 2020, etc.) and the `Language` property (Neutral, Multi) [#130](https://github.com/aaronparker/Evergreen/issues/130)
@@ -72,7 +84,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 * Updates `Get-MicrosofPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 * BREAKING CHANGES
   * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
-  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Obect` to filter on `Stable` or `LTS`
+  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
 ## 2101.263
 
@@ -312,7 +324,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ## 1911.87
 
 * Adds `Get-JamTreeSizeFree` and `Get-JamTreeSizeProfessional`
-* Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md) in module manifest
+* Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/main/CHANGELOG.md) in module manifest
 
 ## 1911.84
 

@@ -3,7 +3,8 @@
 	"Source": "https://go.microsoft.com/fwlink/?LinkId=531355",
 	"Get": {
 		"Update": {
-			"Uri": "https://go.microsoft.com/fwlink/?linkid=2021100"
+			"Uri": "https://go.microsoft.com/fwlink/?linkid=2021100",
+			"DatePattern": "yyyy-MM-ddTHH:mm:ss"
 		},
 		"Download": {
 			"Uri": "https://go.microsoft.com/fwlink/?linkid=2151644&clcid=#lang",

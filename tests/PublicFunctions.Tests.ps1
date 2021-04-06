@@ -3,145 +3,141 @@
         Public Pester function tests.
 #>
 [OutputType()]
-Param()
+param ()
 
-# Set variables
-If (Test-Path "env:APPVEYOR_BUILD_FOLDER") {
-    # AppVeyor Testing
-    $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
-    $module = $env:Module
+BeforeDiscovery {
+    # Get the module commands
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
+
+    # Get details for Microsoft Edge
+    $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
 }
-Else {
-    # Local Testing 
-    $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-    $module = Split-Path -Path $projectRoot -Leaf
-}
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
-# Import module
-Write-Host ""
-Write-Host "Importing module." -ForegroundColor Cyan
-Import-Module $manifestPath -Force
+Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Applications {
+    BeforeAll {
+        # Renaming the automatic $_ variable to $application to make it easier to work with
+        $application = $_
+        $Output = Get-EvergreenApp -Name $application
 
-# Create download path
-$Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
-New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue"
+        # RegEx
+        $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+        $MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
+    }
 
-# RegEx
-$MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
-$MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
+    Context "Validate 'Get-EvergreenApp works with: <application>." {
+        It "<application>: should return something" {
+            ($Output | Measure-Object).Count | Should -BeGreaterThan 0
+        }
 
-# Get the module commands
-$commands = Get-Command -Module Evergreen
+        It "<application>: should return the expected output type" {
+            $Output | Should -BeOfType "PSCustomObject"
+        }
 
-Describe -Tag "General" -Name "Properties" {
-    ForEach ($command in $commands) {
-
-        Context "Validate $($command.Name) properties" {
-
-            # Run each command and capture output in a variable
-            New-Variable -Name "tempOutput" -Value (. $command.Name )
-            $Output = (Get-Variable -Name "tempOutput").Value
-            Remove-Variable -Name tempOutput
-            
-            # Test that the function returns something
-            It "$($command.Name): Fuction returns something" {
-                ($Output | Measure-Object).Count | Should -BeGreaterThan 0
-            }
-
-            # Test that the function output matches OutputType in the function
-            It "$($command.Name): Function returns the expected output type" {
-                $Output | Should -BeOfType ((Get-Command -Name $command.Name).OutputType.Type.Name)
-            }
-
-            # Test that output with Verison property includes numbers and "." only
-            If ([bool]($Output[0].PSobject.Properties.name -match "Version")) {
+        # Test that output with Version property includes numbers and "." only
+        It "<application>: should have a valid version number" {
+            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
-                        It "$($command.Name): [$($object.Version)] is a valid version number" {
-                            $object.Version | Should -Match $MatchVersions
-                        }
+                        $object.Version | Should -Match $MatchVersions
                     }
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a Version property."
-            }
-
-            # Test that the functions that have a URI property return something we can download
-            # If URI is 'Unknown' there's probably a problem with the source
-            If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
-                ForEach ($object in $Output) {
-                    It "$($command.Name): URI property is a valid URL" {
-                        $object.URI | Should -Match $MatchUrl
-                    }
-                }
-            }
-            Else {
-                Write-Host -ForegroundColor "Yellow" "`t$($command.Name) does not have a URI property."
+                Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
             }
         }
     }
 }
 
-Describe -Tag "Download" -Name "Downloads" {
-    ForEach ($command in $commands) {
-
-        Context "Validate $($command.Name) downloads" {
-            # Run each command and capture output in a variable
-            New-Variable -Name "tempOutput" -Value (. $command.Name )
-            $Output = (Get-Variable -Name "tempOutput").Value
-            Remove-Variable -Name tempOutput
-            
-            # Test that the functions that have a URI property return something we can download
-            # If URI is 'Unknown' there's probably a problem with the source
-            If ([bool]($Output[0].PSobject.Properties.name -match "URI")) {
-                ForEach ($object in $Output) {
-                    It "$($command.Name): [$(Split-Path -Path $object.URI -Leaf)] is a valid download target" {
-                        try {
-                            # Test URI exists without downloading the file
-                            $r = Invoke-WebRequest -Uri $object.URI -Method "Head" -UseBasicParsing -ErrorAction "SilentlyContinue"
-                        }
-                        catch {
-                            ## Testing with direct download consumes too much bandwidth skip downloading packages
-                            ## AppVeyor has bandwidth limits that will cause the account to be locked if consumed
-
-                            <# # If Method Head fails, try downloading the URI
-                            # Write-Host -ForegroundColor Cyan "`tException grabbing URI via header. Retrying full request."
-                            $OutFile = Join-Path -Path $Path (Split-Path -Path $object.URI -Leaf)
-                            try {
-                                $r = Invoke-WebRequest -Uri $object.URI -OutFile $OutFile -UseBasicParsing -PassThru `
-                                    -ErrorAction "SilentlyContinue"
-                            }
-                            catch {
-                                # If all else fails, let's pretend the URI is OK. Some URIs may require a login etc.
-                                Write-Host -ForegroundColor Yellow "`t$($command.Name) requires manual testing."
-                                $r = [PSCustomObject] @{
-                                    StatusCode = 200
-                                }
-                            } #>
-
-                            # Checking headers didn't work so let's pretend the URI is OK.
-                            # Some URIs may require a login or the web server responds with a 403 when retrieving headers
-                            $u = [System.Uri] $object.URI
-                            Write-Host -ForegroundColor Yellow "`tPerform manual test. Invoke-WebRequest response from $($u.Host) was: $($_.Exception.Response.StatusCode)."
-                            $u = $Null
-                            $r = [PSCustomObject] @{
-                                StatusCode = 200
-                            }
-                        }
-                        finally {
-                            $r.StatusCode | Should -Be 200
-                        }
-                    }
-                }
-            }
-            Else {
-                Write-Host -ForegroundColor Yellow "`t$($command.Name) does not have a URI property."
-            }
+Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
+    Context "Validate 'Get-EvergreenApp fails gracefully" {
+        It "Should Throw with invalid app" {
+            { Get-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
         }
     }
 }
+
+Describe -Tag "Find" -Name "Find-EvergreenApp" {
+    Context "Validate Find-EvergreenApp works" {
+
+        # Test that the function returns OK
+        It "Should not Throw" {
+            { Find-EvergreenApp } | Should -Not -Throw
+        }
+
+        # Test that the function returns something
+        It "Should returns an object" {
+            $Applications = Find-EvergreenApp
+            ($Applications | Measure-Object).Count | Should -BeGreaterThan 0
+        }
+    }
+
+    Context "Validate Find-EvergreenApp fails gracefully" {
+        It "Should Throw with invalid app" {
+            { Find-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
+        }
+    }
+}
+
+Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
+    BeforeAll {
+        # Renaming the automatic $_ variable to $application to make it easier to work with
+        $installer = $_
+
+        # Create download path
+        If ($env:Temp) {
+            $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
+        }
+        else {
+            $Path = Join-Path -Path $env:TMPDIR -ChildPath "Downloads"
+        }
+        New-Item -Path $Path -ItemType "Directory" -Force -ErrorAction "SilentlyContinue" > $Null
+    }
+
+    # Test that Save-EvergreenApp accepts the object and saves the file
+    Context "Validate Save-EvergreenApp works with <installer.Architecture>." {
+        It "Save-EvergreenApp should not Throw" {
+            { $File = $installer | Save-EvergreenApp -Path $Path } | Should -Not -Throw
+        }
+
+        # Test that the file downloaded into the path: "$Path/Stable/Enterprise/<version>/x64/MicrosoftEdgeEnterpriseX64.msi"
+        It "Should save in the right path" {
+            $File = [System.IO.Path]::Combine($Path, $installer.Channel, $installer.Release, $installer.Version, $installer.Architecture, $(Split-Path -Path $installer.URI -Leaf))
+            Test-Path -Path $File -PathType Leaf | Should -Be $True
+        }
+    }
+}
+
+Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
+    BeforeAll {
+        # Renaming the automatic $_ variable to $application to make it easier to work with
+        $application = $_
+    }
+
+    Context "Validate Export-EvergreenManifest works with: <application>." {
+        
+        # Test that Export-EvergreenManifest does not throw
+        It "'Export-EvergreenManifest -Name <application>' should not Throw" {
+            { Export-EvergreenManifest -Name $application } | Should -Not -Throw
+        }
+
+        # The manifest should have the right properties
+        It "<application> has expected properties" {
+            $Manifest = Export-EvergreenManifest -Name $application
+            $Manifest.Name.Length | Should -BeGreaterThan 0
+            $Manifest.Source.Length | Should -BeGreaterThan 0
+            $Manifest.Get.Length | Should -BeGreaterThan 0
+            $Manifest.Install.Length | Should -BeGreaterThan 0
+        }
+    }
+}
+
+Describe -Tag "Export" -Name "Export-EvergreenManifest fail tests" {
+    Context "Validate Export-EvergreenManifest fails gracefully" {
+        It "Should Throw with invalid app" {
+            { Export-EvergreenManifest -Name "NonExistentApplication" } | Should -Throw
+        }
+    }
+}
+
 Write-Host ""
