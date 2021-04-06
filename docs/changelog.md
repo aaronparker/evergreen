@@ -9,11 +9,15 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
 ## VERSION
 
-* **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`.
+* **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`. See the docs site on how to use the new functions [https://stealthpuppy.com/Evergreen/](https://stealthpuppy.com/Evergreen/)
 * Adds `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
+* Adds file type to SourceForge applications
 * Re-instates `ControlUpAgent` and `ControlUpConsole`
 * Fixes the `LTS` release in `Microsoft.NET`
-* Adds file type to SourceForge applications
+* Fixes localised date format for `Gimp`, `GoogleChrome`, `MicrosoftEdge`, `MicrosoftFSLogixApps`, `MicrosoftSsms`, `FoxitReader`
+* Migrates tests to Pester 5
+* Adds additional Pester tests for private functions
+* General code optimisations and fixes
 
 ## 2103.305
 
