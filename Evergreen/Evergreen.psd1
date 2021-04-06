@@ -101,13 +101,13 @@ PrivateData = @{
         Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps', 'WindowsVirtualDesktop'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/master/LICENSE'
+        LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/main/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/aaronparker/Evergreen/'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://raw.githubusercontent.com/aaronparker/Evergreen/master/img/EvergreenLeaf.png'
+        IconUri = 'https://raw.githubusercontent.com/aaronparker/Evergreen/main/img/EvergreenLeaf.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://stealthpuppy.com/Evergreen/changelog.html'

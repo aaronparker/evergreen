@@ -324,7 +324,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ## 1911.87
 
 * Adds `Get-JamTreeSizeFree` and `Get-JamTreeSizeProfessional`
-* Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/master/CHANGELOG.md) in module manifest
+* Fixes URL to [Release notes / CHANGELOG](https://github.com/aaronparker/Evergreen/blob/main/CHANGELOG.md) in module manifest
 
 ## 1911.84
 

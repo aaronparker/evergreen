@@ -46,15 +46,15 @@ Invoke-WebRequest -Uri $AppUpdate.URI -OutFile $OutFile -UseBasicParsing
 Unblock-File -Path $OutFile
 
 # Image customisations
-$URL = "https://github.com/aaronparker/image-customise/archive/master.zip"
+$URL = "https://github.com/aaronparker/image-customise/archive/main.zip"
 $AppChildPath = Join-Path -Path $AppParentPath -ChildPath "ImageCustomisations"
 $OutFile = Join-Path -Path $AppChildPath -ChildPath $(Split-Path -Path $URL -Leaf)
 Invoke-WebRequest -Uri $URL -OutFile $OutFile -UseBasicParsing
 Expand-Archive -Path $OutFile -DestinationPath $AppChildPath
 Remove-Item -Path $OutFile -Force
-Copy-Item -Path $(Join-Path -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-master") -ChildPath "*.ps1") -Destination $AppChildPath -Force
-Copy-Item -Path $(Join-Path -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-master") -ChildPath "*.xml") -Destination $AppChildPath -Force
-Remove-Item -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-master") -Recurse -Force
+Copy-Item -Path $(Join-Path -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-main") -ChildPath "*.ps1") -Destination $AppChildPath -Force
+Copy-Item -Path $(Join-Path -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-main") -ChildPath "*.xml") -Destination $AppChildPath -Force
+Remove-Item -Path $(Join-Path -Path $AppChildPath -ChildPath "image-customise-main") -Recurse -Force
 
 # VcRedists
 $Path = "C:\Temp\VcRedists"

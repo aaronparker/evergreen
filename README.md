@@ -3,7 +3,7 @@
 [![License][license-badge]][license]
 [![PowerShell Gallery Version][psgallery-version-badge]][psgallery]
 [![PowerShell Gallery][psgallery-badge]][psgallery]
-[![Master build status][appveyor-badge]][appveyor-build]
+[![main build status][appveyor-badge]][appveyor-build]
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/767d96dec7bd40b69eb4665919d20f55)](https://www.codacy.com/manual/aaronparker/Evergreen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aaronparker/Evergreen&amp;utm_campaign=Badge_Grade)
 
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise Windows applications. The module consists of a number of simple functions to use in scripts when performing several tasks including:
@@ -85,7 +85,7 @@ Common PowerShell module paths include:
 
 To install from the repository
 
-1. Download the `master branch` to your workstation
+1. Download the `main branch` to your workstation
 2. Copy the contents of the Evergreen folder onto your workstation into the desired PowerShell Module path
 3. Open a Powershell console with the Run as Administrator option
 4. Run `Set-ExecutionPolicy` using the parameter `RemoteSigned` or `Bypass`
@@ -97,7 +97,7 @@ Once installation is complete, you can validate that the module exists by runnin
 Import-Module Evergreen
 ```
 
-[appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/master.svg?style=flat-square&logo=appveyor
+[appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
 [psgallery-badge]: https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat-square
 [psgallery]: https://www.powershellgallery.com/packages/Evergreen
