@@ -21,19 +21,6 @@ $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
-# Create download path
-If ($env:Temp) {
-    $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
-}
-else {
-    $Path = Join-Path -Path $env:TMPDIR -ChildPath "Downloads"
-}
-New-Item -Path $Path -ItemType Directory -Force -ErrorAction "SilentlyContinue" > $Null
-
-# RegEx
-$MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
-$MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
-
 # Import module
 Write-Host ""
 Write-Host "Importing module: $manifestPath." -ForegroundColor Cyan
@@ -48,24 +35,28 @@ BeforeDiscovery {
     $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
 }
 
-Describe -Tag "Get" -Name "Get-EvergreenApp" -ForEach $Applications {
+Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
         $Output = Get-EvergreenApp -Name $application
+
+        # RegEx
+        $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
+        $MatchVersions = "(\d+(\.\d+){1,4}).*|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
     }
 
-    Context "Validate 'Get-EvergreenApp works with: $application." {
-        It "$($application): should return something" {
+    Context "Validate 'Get-EvergreenApp works with: <application>." {
+        It "<application>: should return something" {
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }
 
-        It "$($application): should return the expected output type" {
+        It "<application>: should return the expected output type" {
             $Output | Should -BeOfType "PSCustomObject"
         }
 
         # Test that output with Version property includes numbers and "." only
-        It "$($application): [$($object.Version)] should be a valid version number" {
+        It "<application>: should have a valid version number" {
             If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     If ($object.Version.Length -gt 0) {
@@ -74,11 +65,13 @@ Describe -Tag "Get" -Name "Get-EvergreenApp" -ForEach $Applications {
                 }
             }
             Else {
-                Write-Host -ForegroundColor Yellow "`t$($application) does not have a Version property."
+                Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
             }
         }
     }
+}
 
+Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
     Context "Validate 'Get-EvergreenApp fails gracefully" {
         It "Should Throw with invalid app" {
             { Get-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
@@ -91,7 +84,7 @@ Describe -Tag "Find" -Name "Find-EvergreenApp" {
 
         # Test that the function returns OK
         It "Should not Throw" {
-            { $Applications = Find-EvergreenApp } | Should -Not -Throw
+            { Find-EvergreenApp } | Should -Not -Throw
         }
 
         # Test that the function returns something
@@ -112,10 +105,19 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $installer = $_
+
+        # Create download path
+        If ($env:Temp) {
+            $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
+        }
+        else {
+            $Path = Join-Path -Path $env:TMPDIR -ChildPath "Downloads"
+        }
+        New-Item -Path $Path -ItemType "Directory" -Force -ErrorAction "SilentlyContinue" > $Null
     }
 
     # Test that Save-EvergreenApp accepts the object and saves the file
-    Context "Validate Save-EvergreenApp works with $($installer.Architecture)." {
+    Context "Validate Save-EvergreenApp works with <installer>." {
         It "Save-EvergreenApp should not Throw" {
             { $File = $installer | Save-EvergreenApp -Path $Path } | Should -Not -Throw
         }
@@ -134,23 +136,25 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
         $application = $_
     }
 
-    Context "Validate Export-EvergreenManifest works with: $application." {
+    Context "Validate Export-EvergreenManifest works with: <application>." {
         
         # Test that Export-EvergreenManifest does not throw
-        It "'Export-EvergreenManifest -Name $Application' should not Throw" {
-            { Export-EvergreenManifest -Name $Application } | Should -Not -Throw
+        It "'Export-EvergreenManifest -Name <application>' should not Throw" {
+            { Export-EvergreenManifest -Name $application } | Should -Not -Throw
         }
 
         # The manifest should have the right properties
-        It "$Application has expected properties" {
-            $Manifest = Export-EvergreenManifest -Name $Application
+        It "<application> has expected properties" {
+            $Manifest = Export-EvergreenManifest -Name $application
             $Manifest.Name.Length | Should -BeGreaterThan 0
             $Manifest.Source.Length | Should -BeGreaterThan 0
             $Manifest.Get.Length | Should -BeGreaterThan 0
             $Manifest.Install.Length | Should -BeGreaterThan 0
         }
     }
+}
 
+Describe -Tag "Export" -Name "Export-EvergreenManifest fail tests" {
     Context "Validate Export-EvergreenManifest fails gracefully" {
         It "Should Throw with invalid app" {
             { Export-EvergreenManifest -Name "NonExistentApplication" } | Should -Throw

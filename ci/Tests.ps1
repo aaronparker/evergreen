@@ -5,6 +5,9 @@
 [OutputType()]
 param ()
 
+$ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
+$WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
+
 If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
 
     # Invoke Pester tests and upload results to AppVeyor
