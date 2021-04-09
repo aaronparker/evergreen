@@ -5,6 +5,7 @@
         "Update": {
             "Uri": "https://edgeupdates.microsoft.com/api/products",
             "Views": {
+                "Consumer": "",
                 "Enterprise": "?view=enterprise"
             },
             "Platform": [
@@ -12,6 +13,8 @@
                 "Any"
             ],
             "Channels": [
+                "Dev",
+                "Beta",
                 "Stable",
                 "EdgeUpdate",
                 "Policy"
