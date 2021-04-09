@@ -8,7 +8,6 @@ Function Get-AdobeAcrobat {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Alias("Get-AdobeAcrobatProDC")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param ()
 

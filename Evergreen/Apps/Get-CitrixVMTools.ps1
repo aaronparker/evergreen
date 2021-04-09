@@ -10,7 +10,6 @@ Function Get-CitrixVMTools {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-CitrixXenServerTools")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]

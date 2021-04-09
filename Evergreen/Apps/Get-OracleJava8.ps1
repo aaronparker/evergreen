@@ -7,7 +7,6 @@
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-Java8")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param ()

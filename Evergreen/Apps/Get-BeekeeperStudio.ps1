@@ -1,8 +1,5 @@
-Function Get-GitHubAtom {
+Function Get-BeekeeperStudio {
     <#
-        .SYNOPSIS
-            Returns the latest GitHub Atom version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

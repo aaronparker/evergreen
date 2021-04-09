@@ -7,7 +7,6 @@ Function Get-MicrosoftPowerShell {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-MicrosoftPowerShellCore")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param ()

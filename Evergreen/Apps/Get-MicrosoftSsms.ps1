@@ -7,7 +7,6 @@ Function Get-MicrosoftSsms {
             Author: Bronson Magnan
             Twitter: @cit_bronson
     #>
-    [Alias("Get-MicrosoftSQLServerManagementStudio")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
