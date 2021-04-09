@@ -72,13 +72,27 @@ Function Get-EvergreenApp {
         # Test that the function exists and run it to return output
         Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
         If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+
+            # Dot source the function so that we can use it
+            # Import function here rather than at module import to reduce IO and memory footprint at the module grows
             try {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Call: $Function."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Dot sourcing: $Function."
+                . $Function
+            }
+            catch {
+                Throw $_
+            }
+
+            # Run the function to grab the application details
+            try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Call: Get-$Name."
                 $Output = . Get-$Name
             }
             catch {
                 Throw $_
             }
+
+            # If we get an object, return it to the pipeline
             If ($Output) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
                 Write-Output -InputObject $Output
@@ -90,7 +104,7 @@ Function Get-EvergreenApp {
         Else {
             Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
-            Throw "Cannot find application: $Name."
+            Throw "Cannot find application script at: $Function."
         }
     }
 

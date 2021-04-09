@@ -32,14 +32,7 @@ Function Get-GitHubRepoRelease {
     )
 
     # Retrieve the releases from the GitHub API 
-    try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
-        
-        # Set TLS1.2 and a temp file for passthrough output
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        $tempFile = New-TemporaryFile
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
-        
+    try {        
         # Invoke the GitHub releases REST API
         # Note that the API performs rate limiting. 
         # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
@@ -48,6 +41,7 @@ Function Get-GitHubRepoRelease {
             Method      = "Get"
             Uri         = $Uri
         }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
         $release = Invoke-RestMethodWrapper @params
     }
     catch {

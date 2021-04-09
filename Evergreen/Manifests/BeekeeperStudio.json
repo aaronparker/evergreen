@@ -1,5 +1,5 @@
 {
-	"Name": "GitHub Atom",
+	"Name": "Beekeeper Studio",
 	"Source": "https://www.beekeeperstudio.io/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/beekeeper-studio/beekeeper-studio/releases/latest",
