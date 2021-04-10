@@ -22,25 +22,11 @@
     )
 
     # Read the Citrix RSS feed
-    $Content = Invoke-WebRequestWrapper -Uri $Uri
-
-    # Convert to XML document
-    If ($Null -ne $Content) {
-        Try {
-            [System.XML.XMLDocument] $xmlDocument = $Content
-        }
-        Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert content to an XML object."
-        }
-
-        # Build an output object by selecting Citrix XML entries from the feed
-        If ($xmlDocument -is [System.XML.XMLDocument]) {
-
-            # Select the required node/s from the XML feed
-            $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
+    $Nodes = Invoke-RestMethodWrapper -Uri $Uri
+    If ($Null -ne $Nodes) {
 
             # Walk through each node to output details
-            ForEach ($node in $nodes) {
+            ForEach ($node in $Nodes) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): matching [$($node.title)]"
                 If (($node.title -match $Include) -and ($node.title -notmatch $Exclude)) {
 
@@ -59,13 +45,12 @@
                         Version     = $Version
                         Title       = $node.title -replace $res.Get.TitleReplace, ""
                         Description = $node.description
-                        Date        = $node.pubDate
+                        Date        = ConvertTo-DateTime -DateTime $node.pubDate.Trim() -Pattern "ddd, dd MMM yyyy HH:mm:ss zzz" #"Tue, 02 Feb 2021 13:30:00 -0500"
                         URI         = $node.link
                     }
                     Write-Output -InputObject $PSObject
                 }
             }
-        }
     }
     Else {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Citrix RSS feed [$Uri]."
