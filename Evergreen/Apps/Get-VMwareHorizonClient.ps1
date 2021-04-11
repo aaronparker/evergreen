@@ -1,4 +1,4 @@
-Function Get-VMwareHorizonClient {
+﻿Function Get-VMwareHorizonClient {
     <#
         .NOTES
             Author: Aaron Parker
@@ -6,22 +6,27 @@ Function Get-VMwareHorizonClient {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Query the Horizon Client update feed
     $params = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Updates = Invoke-RestMethodWrapper @params  #-Uri "https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-windows.xml"
+    $Updates = Invoke-RestMethodWrapper @params
 
     # Select the latest version
     # TODO: Update this to find the latest version based on the Url property as well
-    # $LatestVersion = $Updates.($res.Get.Update.Property) | `
+    #$LatestVersion = $Updates.($res.Get.Update.Property) | `
     $LatestVersion = $Updates.metaList.metadata | `
         Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
         Select-Object -First 1
@@ -53,8 +58,7 @@ Function Get-VMwareHorizonClient {
     # Get the version specific details from the XML file
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Read XML content from: $ExpandFile."
-        $Content = Get-Content -Path $ExpandFile
-        [System.XML.XMLDocument] $xmlDocument = $Content
+        [System.XML.XMLDocument] $xmlDocument = Get-Content -Path $ExpandFile
         $Version = (Select-Xml -Xml $xmlDocument -XPath $res.Get.Download.VersionXPath | Select-Object –ExpandProperty "node").($res.Get.Download.VersionProperty)
         $FileName = (Select-Xml -Xml $xmlDocument -XPath $res.Get.Download.FileXPath | Select-Object –ExpandProperty "node").($res.Get.Download.FileProperty)
     }
