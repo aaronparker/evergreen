@@ -1,30 +1,29 @@
-https://softwareupdate.vmware.com/horizon-clients/index.xml
-https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-windows.xml
-https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-mac.xml
+# https://softwareupdate.vmware.com/horizon-clients/index.xml
+# "https://softwareupdate.vmware.com/horizon-clients/viewcrt-windows/8.2.0/17759012/VMware-Horizon-Client-2103-8.2.0-17759012.exe.tar"
+# "https://download3.vmware.com/software/view/viewclients/CART22FQ1/VMware-Horizon-Client-2103-8.2.0-17759012.exe"
 
-https://softwareupdate.vmware.com/horizon-clients/viewcrt-windows/5.4.1/15897311/metadata.xml.gz
+# Horizon Client
+$r = Invoke-RestMethod -Uri "https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-windows.xml"
+$v = $r.metaList.metadata | Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | Select-Object -First 1
+$url = "https://softwareupdate.vmware.com/horizon-clients/"
+$data = "$url$($v.Url.TrimStart("../"))"
 
-http://softwareupdate.vmware.com/horizon-clients/viewcrt-windows/5.4.2/15936851/VMware-Horizon-Client-5.4.2-15936851.exe.tar
+$ZipFile = Join-Path -Path $env:TMPDIR -ChildPath (Split-Path -Path $data -Leaf)
+$ExpandFile = $ZipFile -replace "\.gz$", ""
 
-Function DeGZip-File{
-    param (
-        $infile,
-        $outfile = ($infile -replace '\.gz$','')
-        )
-    $input = New-Object System.IO.FileStream $inFile, ([IO.FileMode]::Open), ([IO.FileAccess]::Read), ([IO.FileShare]::Read)
-    $output = New-Object System.IO.FileStream $outFile, ([IO.FileMode]::Create), ([IO.FileAccess]::Write), ([IO.FileShare]::None)
-    $gzipStream = New-Object System.IO.Compression.GzipStream $input, ([IO.Compression.CompressionMode]::Decompress)
-    $buffer = New-Object byte[](1024)
-    while($true){
-        $read = $gzipstream.Read($buffer, 0, 1024)
-        if ($read -le 0){break}
-        $output.Write($buffer, 0, $read)
-        }
-    $gzipStream.Close()
-    $output.Close()
-    $input.Close()
+Invoke-WebRequest -Uri $data -OutFile $ZipFile
+Expand-GzipArchive -Path $ZipFile -DestinationPath $ExpandFile
+$Content = Get-Content -Path $ExpandFile
+Remove-Item -Path $ZipFile
+Remove-Item -Path $ExpandFile
+
+[System.XML.XMLDocument] $xmlDocument = $Content
+$Version = (Select-Xml -Xml $xmlDocument -XPath "//productList" | Select-Object –ExpandProperty "node").product
+$FileName = (Select-Xml -Xml $xmlDocument -XPath "//relativePath" | Select-Object –ExpandProperty "node").'#text'
+
+# Object
+$PSObject = [PSCustomObject] @{
+    Version = "$($Version.version).$($Version.buildNumber)"
+    URI     = "$url$($Version.productId)/$($Version.version)/$($Version.buildNumber)/$($FileName)"
 }
-DeGZip-File "C:\temp\maxmind\temp.tar.gz" "C:\temp\maxmind\temp.tar"
-
-https://scatteredcode.net/download-and-extract-gzip-tar-with-powershell/
-
+Write-Output -InputObject $PSObject
