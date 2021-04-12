@@ -1,8 +1,5 @@
-Function Get-AdoptOpenJDK {
+Function Get-AdoptOpenJDK11 {
     <#
-        .SYNOPSIS
-            Returns the latest AdoptOpenJDK Open JDK version number and download.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

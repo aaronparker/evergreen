@@ -48,8 +48,8 @@ Function Get-GitHubRepoRelease {
         Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
         Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    finally {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."
+
+    If ($Null -ne $release) {
 
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
@@ -80,6 +80,7 @@ Function Get-GitHubRepoRelease {
 
         # Build and array of the latest release and download URLs
         If ($validate) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) assets."
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {
