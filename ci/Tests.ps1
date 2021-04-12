@@ -21,7 +21,7 @@ $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
-If (Get-Variable -Name projectRoot -ErrorAction SilentlyContinue) {
+If (Get-Variable -Name projectRoot -ErrorAction "SilentlyContinue") {
 
     # Configure the test environment
     $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"

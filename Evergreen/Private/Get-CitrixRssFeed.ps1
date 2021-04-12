@@ -53,6 +53,6 @@
             }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Citrix RSS feed [$Uri]."
+        Throw "$($MyInvocation.MyCommand): failed to read Citrix RSS feed [$Uri]."
     }
 }

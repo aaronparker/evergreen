@@ -47,9 +47,6 @@ Function Get-MicrosoftVisualStudioCode {
                 }
                 Write-Output -InputObject $PSObject
             }
-            Else {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to get update feed from: $Uri."
-            }
         }
     }
 }

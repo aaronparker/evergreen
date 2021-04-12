@@ -110,8 +110,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-WebRequest @iwrParams
     }
     catch {
-        Throw $_
-        Break
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."

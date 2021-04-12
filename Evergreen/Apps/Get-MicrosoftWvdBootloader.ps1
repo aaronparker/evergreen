@@ -32,13 +32,8 @@ Function Get-MicrosoftWvdBootLoader {
         }
         $Headers = (Invoke-WebRequest @params).Headers
     }
-    catch [System.Net.WebException] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-    }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-        Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+        Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
     }
 
     If ($Headers) {
@@ -61,6 +56,6 @@ Function Get-MicrosoftWvdBootLoader {
         Write-Output -InputObject $PSObject
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
+        Throw "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
     }
 }

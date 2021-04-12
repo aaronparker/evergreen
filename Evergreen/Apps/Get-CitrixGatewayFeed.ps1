@@ -27,7 +27,5 @@ Function Get-CitrixGatewayFeed {
         Exclude = $res.Get.Gateway.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

@@ -46,8 +46,7 @@ Function Get-GitHubRepoRelease {
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
-        Throw $_
-        Break
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."

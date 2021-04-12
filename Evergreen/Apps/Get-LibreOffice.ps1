@@ -70,8 +70,8 @@ Function Get-LibreOffice {
                 ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
     
                     # Match language string
-                    Remove-Variable Language -ErrorAction SilentlyContinue
-                    Remove-Variable match -ErrorAction SilentlyContinue
+                    Remove-Variable Language -ErrorAction "SilentlyContinue"
+                    Remove-Variable match -ErrorAction "SilentlyContinue"
                     $match = $file | Select-String -Pattern $res.Get.MatchLanguage
                     If ($Null -ne $match) {
                         $Language = $match.Matches.Groups[1].Value

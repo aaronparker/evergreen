@@ -45,13 +45,10 @@ Function Get-MicrosoftAzureDataStudio {
                     }
                     Write-Output -InputObject $PSObject
                 }
-                Else {
-                    Write-Warning -Message "$($MyInvocation.MyCommand): failed to get update feed from: $Uri."
-                }
             }
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to get commit details from: $($res.Get.Update.Version.Uri)."
+        Throw "$($MyInvocation.MyCommand): failed to get commit details from: $($res.Get.Update.Version.Uri)."
     }
 }

@@ -29,7 +29,5 @@ Function Get-CitrixWorkspaceAppFeed {
         Exclude = $res.Get.WorkspaceApp.Exclude
     }
     $Content = Get-CitrixRssFeed @params
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

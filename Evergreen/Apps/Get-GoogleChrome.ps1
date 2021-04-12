@@ -41,7 +41,4 @@ Function Get-GoogleChrome {
             }
         }
     }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to return content from $($res.Get.Update.Uri)."
-    }
 }

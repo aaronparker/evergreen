@@ -30,8 +30,7 @@ Function Get-Microsoft365Apps {
             $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
         }
         catch {
-            Throw "Failed to resolve update feed: $Uri."
-            Break
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
         }
 
         If ($Null -ne $updateFeed) {
@@ -44,9 +43,6 @@ Function Get-Microsoft365Apps {
                 URI     = $res.Get.Download.Uri
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from: $Uri."
         }
     }
 }

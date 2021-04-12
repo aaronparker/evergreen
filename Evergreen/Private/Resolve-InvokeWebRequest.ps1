@@ -47,7 +47,7 @@ Function Resolve-InvokeWebRequest {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
         Catch [System.Exception] {
-            Throw $_
+            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
 

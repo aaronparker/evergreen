@@ -27,7 +27,5 @@ Function Get-CitrixEndpointManagementFeed {
         Exclude = $res.Get.EndpointManagement.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

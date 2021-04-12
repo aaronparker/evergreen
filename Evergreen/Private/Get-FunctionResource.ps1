@@ -6,9 +6,9 @@ Function Get-FunctionResource {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]
-        [System.String] $AppName = "Template"
+        [System.String] $AppName
     )
     
     # Setup path to the manifests folder and the app manifest
@@ -17,11 +17,11 @@ Function Get-FunctionResource {
 
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$AppManifest]"
-        $content = Get-Content -Path $AppManifest -Raw -ErrorAction SilentlyContinue
+        $content = Get-Content -Path $AppManifest -Raw -ErrorAction "SilentlyContinue"
     }
     catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $AppManifest."
-        Throw $_.Exception.Message
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     try {
@@ -34,7 +34,7 @@ Function Get-FunctionResource {
     }
     catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required hashtable object."
-        Throw $_.Exception.Message
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         If ($Null -ne $hashTable) {

@@ -27,7 +27,5 @@ Function Get-CitrixLicensingFeed {
         Exclude = $res.Get.Licensing.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

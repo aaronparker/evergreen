@@ -83,10 +83,10 @@ Function Get-EvergreenApp {
                 Throw $_
             }
 
-            # Run the function to grab the application details
+            # Run the function to grab the application details; pass app manifest to the app function
             try {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Call: Get-$Name."
-                $Output = . Get-$Name
+                $Output = . Get-$Name -res (Get-FunctionResource -AppName $Name)
             }
             catch {
                 Throw $_

@@ -36,7 +36,4 @@ Function Get-MicrosoftFSLogixApps {
         }
         Write-Output -InputObject $PSObject
     }
-    Else {
-        Write-Warning -Message "Failed to return a useable URL from $($res.Get.Download.Uri)."
-    }
 }

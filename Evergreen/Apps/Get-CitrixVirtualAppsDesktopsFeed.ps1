@@ -27,7 +27,5 @@ Function Get-CitrixVirtualAppsDesktopsFeed {
         Exclude = $res.Get.VirtualAppsDesktops.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

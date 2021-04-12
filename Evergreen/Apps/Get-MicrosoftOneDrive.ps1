@@ -33,8 +33,7 @@
                 [System.XML.XMLDocument] $xmlDocument = ($Content -replace "ï»¿", "")
             }
             Catch [System.Exception] {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-                Break
+                Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
             }
 
             # Build an output object by selecting installer entries from the feed

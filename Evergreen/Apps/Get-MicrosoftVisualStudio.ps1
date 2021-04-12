@@ -23,15 +23,13 @@ Function Get-MicrosoftVisualStudio {
 
     # Resolve the update feed from the initial URI
     $ResolvedUrl = (Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
-
     If ($ResolvedUrl) {
         try {
             # Get details from the update feed
             $updateFeed = Invoke-RestMethodWrapper -Uri $ResolvedUrl
         }
         catch {
-            Throw "Failed to resolve update feed: $ResolvedUrl."
-            Break
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $ResolvedUrl."
         }
         finally {
             # Build the output object/s
@@ -46,8 +44,5 @@ Function Get-MicrosoftVisualStudio {
                 Write-Output -InputObject $PSObject
             }
         }
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to resolve the update API: $($res.Get.Update.Uri)."
     }
 }

@@ -26,21 +26,20 @@ Function Get-AdobeAcrobatReaderDC {
     #region Installer downloads
     ForEach ($language in $res.Get.Download.Languages) {
 
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
-        $Uri = $res.Get.Download.Uri -replace "#Language", $language
-        $params = @{
-            Uri             = $Uri
-            Headers         = $res.Get.Download.Headers
-            UseBasicParsing = $True
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
-        }
         try {
             #TODO: update Invoke-RestMethodWrapper to support this query correctly
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
+            $Uri = $res.Get.Download.Uri -replace "#Language", $language
+            $params = @{
+                Uri             = $Uri
+                Headers         = $res.Get.Download.Headers
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
             $Content = Invoke-RestMethod @params
         }
         catch {
-            Throw $_
-            Break
+            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
 
         If ($Content) {

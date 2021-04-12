@@ -50,7 +50,7 @@ Function Get-AdobeAcrobat {
                 }
             }
             Else {
-                Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri[$item.key])."
+                Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri[$item.key])."
             }
         }
     }

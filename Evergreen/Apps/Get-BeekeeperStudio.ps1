@@ -24,10 +24,5 @@ Function Get-BeekeeperStudio {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-    If ($object) {
-        Write-Output -InputObject $object
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
-    }
+    Write-Output -InputObject $object
 }

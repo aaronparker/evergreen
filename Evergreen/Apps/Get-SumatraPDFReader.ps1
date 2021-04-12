@@ -47,7 +47,4 @@ Function Get-SumatraPDFReader {
             Write-Output -InputObject $PSObject
         }
     }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from: $($res.Get.Update.Uri)."
-    }
 }

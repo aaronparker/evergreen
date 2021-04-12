@@ -45,13 +45,8 @@ Function Get-MicrosoftPowerShell {
         }
         $object = Get-GitHubRepoRelease @params
 
-        If ($object) {
-            # Add the Release property to the object returned from Get-GitHubRepoRelease
-            $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
-            Write-Output -InputObject $object
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
-        }
+        # Add the Release property to the object returned from Get-GitHubRepoRelease
+        $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
+        Write-Output -InputObject $object
     }
 }

@@ -29,7 +29,7 @@
             [System.XML.XMLDocument] $xmlDocument = $Content
         }
         Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert content to an XML object."
+            Throw "$($MyInvocation.MyCommand): failed to convert content to an XML object."
         }
 
         # Build an output object by selecting entries from the feed
@@ -65,6 +65,6 @@
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read update feed [$Uri]."
+        Throw "$($MyInvocation.MyCommand): failed to read update feed [$Uri]."
     }
 }

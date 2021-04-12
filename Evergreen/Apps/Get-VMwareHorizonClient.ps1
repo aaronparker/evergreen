@@ -81,6 +81,6 @@
         Write-Output -InputObject $PSObject
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return usable properties from the XML file."
+        Throw "$($MyInvocation.MyCommand): Failed to return usable properties from the XML file."
     }
 }

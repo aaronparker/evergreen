@@ -34,13 +34,8 @@ Function Get-MicrosoftWvdInfraAgent {
             }
             (Invoke-WebRequest @params).RawContent | Out-File -FilePath $tempFile
         }
-        catch [System.Net.WebException] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-        }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
         }
 
         # Convert to an object, without the first line
@@ -78,13 +73,8 @@ Function Get-MicrosoftWvdInfraAgent {
             }
             $Content = (Invoke-WebRequest @params).RawContent
         }
-        catch [System.Net.WebException] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-        }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
         }
 
         If ($Content) {
@@ -99,9 +89,6 @@ Function Get-MicrosoftWvdInfraAgent {
                 URI          = $res.Get.Uri
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
         }
     }
 }

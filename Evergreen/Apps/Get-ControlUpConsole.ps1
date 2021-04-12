@@ -23,15 +23,6 @@ Function Get-ControlUpConsole {
     # Query the ControlUp Agent JSON
     $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri     
     If ($Null -ne $Object) {
-       
-        # Strip out the Google script return in the request and convert to JSON
-        <#try {
-            $Json = [RegEx]::Match($Content, $res.Get.Update.Matches).Value | ConvertFrom-Json
-        }
-        catch {
-            Throw $_
-            Break
-        }#>
     
         # Build and array of the latest release and download URLs
         ForEach ($item in $Object) {

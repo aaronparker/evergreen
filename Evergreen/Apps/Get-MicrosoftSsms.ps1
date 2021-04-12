@@ -33,7 +33,7 @@ Function Get-MicrosoftSsms {
             [System.XML.XMLDocument] $xmlDocument = $Content
         }
         Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+            Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
         }
 
         # Build an output object by selecting installer entries from the feed
@@ -65,8 +65,5 @@ Function Get-MicrosoftSsms {
                 }
             }
         }
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Microsoft SQL Server Management Studio update feed."
     }
 }

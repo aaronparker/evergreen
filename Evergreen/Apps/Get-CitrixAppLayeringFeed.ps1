@@ -27,7 +27,5 @@ Function Get-CitrixAppLayeringFeed {
         Exclude = $res.Get.AppLayering.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }
