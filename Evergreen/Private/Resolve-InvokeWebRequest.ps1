@@ -16,13 +16,13 @@ Function Resolve-InvokeWebRequest {
         [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
     )
 
-    # Build the Invoke-WebRequest parameters
+    # Build the Invoke-WebRequest parameters; Use ErrorAction:SilentlyContinue to enable the try/catch to work
     $iwrParams = @{
         MaximumRedirection = 0
         Uri                = $Uri
         UseBasicParsing    = $True
         UserAgent          = $UserAgent
-        ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
+        ErrorAction        = "SilentlyContinue"
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
     ForEach ($item in $iwrParams.GetEnumerator()) {
@@ -30,23 +30,23 @@ Function Resolve-InvokeWebRequest {
     }
 
     If (Test-PSCore) {
-        # If running PowerShell Core, request URL and catch the response
-        Try {
+        try {
+            # If running PowerShell Core, request URL and catch the response
             Invoke-WebRequest @iwrParams
         }
-        Catch [System.Exception] {
+        catch [System.Exception] {
             $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
         }
     }
     Else {
-        # If running Windows PowerShell, request the URL and return the response
-        Try {
+        try {
+            # If running Windows PowerShell, request the URL and return the response
             $response = Invoke-WebRequest @iwrParams
             $redirectUrl = $response.Headers.Location
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
-        Catch [System.Exception] {
+        catch [System.Exception] {
             Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
