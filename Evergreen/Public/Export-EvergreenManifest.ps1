@@ -35,14 +35,11 @@ Function Export-EvergreenManifest {
         $Output = Get-FunctionResource -AppName $Name
     }
     catch {
+        Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
+        Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
         Throw "Failed to retrieve manifest for application: $Name."
     }
     If ($Output) {
         Write-Output -InputObject $Output
-    }
-    Else {
-        Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
-        Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
-        Throw "Cannot find application: $Name."
     }
 }

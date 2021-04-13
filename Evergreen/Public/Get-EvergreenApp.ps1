@@ -80,7 +80,7 @@ Function Get-EvergreenApp {
                 . $Function
             }
             catch {
-                Throw $_
+                Throw "$($MyInvocation.MyCommand): Failed to load function: $Function."
             }
 
             # Run the function to grab the application details; pass app manifest to the app function
@@ -89,7 +89,7 @@ Function Get-EvergreenApp {
                 $Output = . Get-$Name -res (Get-FunctionResource -AppName $Name)
             }
             catch {
-                Throw $_
+                Throw "Internal application function: $Function, failed with: $($_.Exception.Message)"
             }
 
             # If we get an object, return it to the pipeline
@@ -98,7 +98,7 @@ Function Get-EvergreenApp {
                 Write-Output -InputObject $Output
             }
             Else {
-                Throw "Failed to capture output from: Get-$Name."
+                Throw "$($MyInvocation.MyCommand): Failed to capture output from: Get-$Name."
             }
         }
         Else {
@@ -108,5 +108,7 @@ Function Get-EvergreenApp {
         }
     }
 
-    End {}
+    End {
+        Remove-Variable -Name "Output", "Function"
+    }
 }

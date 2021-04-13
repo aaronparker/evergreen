@@ -21,7 +21,7 @@ Function New-EvergreenPath {
     $OutPath = $Path
 
     # Build the new path using the specified object properties
-    ForEach ($property in ("Channel", "Release", "Ring", "Version", "Language", "Architecture")) {
+    ForEach ($property in ("Product", "Track", "Channel", "Release", "Ring", "Version", "Language", "Architecture")) {
         If ([System.Boolean]($InputObject.$property)) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): $($property): $($InputObject.$property)."
             $OutPath = Join-Path -Path $OutPath -ChildPath $InputObject.$property

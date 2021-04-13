@@ -102,5 +102,7 @@
         }
     }
 
-    End {}
+    End {
+        Remove-Variable -Name "PSObject", "Json", "Manifests"
+    }
 }

@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Export-EvergreenManifest</command:name>
+      <command:verb>Export</command:verb>
+      <command:noun>EvergreenManifest</command:noun>
+      <maml:description>
+        <maml:para>Exports an Evergreen application JSON manifest as a hashtable.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Exports an Evergreen application JSON manifest as a hashtable that can be used for various functions including scripting or saving to an external file.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Export-EvergreenManifest</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Export-EvergreenManifest -Name "MicrosoftEdge"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Exports the application manifest for the application "MicrosoftEdge".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://stealthpuppy.com/Evergreen/</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/Evergreen/</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Find-EvergreenApp</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>EvergreenApp</command:noun>
+      <maml:description>
+        <maml:para>Outputs a table with the applications that Evergreen supports.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Returns a table built from the internal application manifests to list the applications supported by Evergreen. The table includes the Name (the internal name used when querying for the application via Get-EvergreenApp), Application (typically the full vendor and application name) and Link (a URL hosting official vendor information about the application) properties.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-EvergreenApp</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The application name to return details for. This can be the entire application name or a portion thereof.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The application name to return details for. This can be the entire application name or a portion thereof.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy Alias: Espero que este módulo no sea fea. ;)</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Find-EvergreenApp</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns a table with the all of the currently supported applications.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Find-EvergreenApp -Name "Edge"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns a table with the all of the currently supported applications that match "Edge".</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Find-EvergreenApp -Name "Microsoft"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns a table with the all of the currently supported applications that match "Microsoft".</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://stealthpuppy.com/Evergreen/find.html</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/Evergreen/find.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-EvergreenApp</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>EvergreenApp</command:noun>
+      <maml:description>
+        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Queries the internal application functions and manifests included in the module to find the latest version and download link/s for the specified application.</maml:para>
+      <maml:para>The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.</maml:para>
+      <maml:para>`Get-EvergreenApp` uses official vendor sites including update APIs, web queries, and code repository locations to return details of a target application at run time.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-EvergreenApp</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "MicrosoftEdge"
+
+Version      : 89.0.774.76
+Platform     : Windows
+Channel      : Stable
+Release      : Enterprise
+Architecture : x64
+Date         : 12/4/2021
+Hash         : 9E7A29B4BE6E1CD707F80B4B79008F19D2D5DD5C774D317A493EC6DE5BE0B7D7
+URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/4d12f620-174c-4259-85e6-8a80ea45ff10/MicrosoftEdgeEnterpriseX64.msi</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URLs for Microsoft Edge using the official Microsoft Edge update API at https://edgeupdates.microsoft.com/api/products (https://edgeupdates.microsoft.com/api/products).</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URL for the Stable channel of the 64-bit Enterprise ring of Microsoft Edge.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>(Get-EvergreenApp -Name "MicrosoftOneDrive" | Where-Object { $_.Type -eq "Exe" -and $_.Ring -eq "Production" }) | `
+    Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URL for the Production ring of Microsoft OneDrive and selects the latest version in the event that more that one release is returned.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 4 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "AdobeAcrobatReaderDC" | Where-Object { $_.Language -eq "English" -and $_.Architecture -eq "x86" }</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URL that matches the English language, 32-bit release of Adobe Acrobat Reader DC.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 5 --------------------------</maml:title>
+        <dev:code>Find-EvergreenApp -Name "Teams" | Get-EvergreenApp</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Lists the available applications matching the string "Teams" (for example, Microsoft Teams), and passes the output to Get-EvergreenApp, which will query the matching application name. Note that Get-EvergreenApp will only process the first application returned on the pipeline and not all multiple matching applications.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 6 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Get-EvergreenApp returns the details for the latest version of Microsoft Teams which is passed via the pipeline to Save-EvergreenApp. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://stealthpuppy.com/Evergreen/use.html</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/Evergreen/use.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Save-EvergreenApp</command:name>
+      <command:verb>Save</command:verb>
+      <command:noun>EvergreenApp</command:noun>
+      <maml:description>
+        <maml:para>Saves target URLs passed to this function from Evergreen output to simplify downloads.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Saves target URLs passed to this function from Evergreen output to into a folder structure below -Path using the properties from the object passed from `Get-EvergreenApp`.</maml:para>
+      <maml:para>`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.</maml:para>
+      <maml:para>This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Save-EvergreenApp</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>`Save-EvergreenApp` accepts the PSObject from `Get-EvergreenApp`. `Save-EvergreenApp` will test for the existence of at least these properties - Version and URI.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+          <dev:type>
+            <maml:name>PSObject</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Proxy</maml:name>
+          <maml:description>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>ProxyCredential</maml:name>
+          <maml:description>
+            <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential cmdlet`.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>[System.Management.Automation.PSCredential]::Empty</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NoProgress</maml:name>
+          <maml:description>
+            <maml:para>`Save-EvergreenApp` uses `Invoke-WebRequest` to download target application installers. Download progress is suppressed by default for faster downloads; however, when `-Verbose` is used, download progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>`Save-EvergreenApp` accepts the PSObject from `Get-EvergreenApp`. `Save-EvergreenApp` will test for the existence of at least these properties - Version and URI.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+        <dev:type>
+          <maml:name>PSObject</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Proxy</maml:name>
+        <maml:description>
+          <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>ProxyCredential</maml:name>
+        <maml:description>
+          <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+          <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential cmdlet`.</maml:para>
+          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxies.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>[System.Management.Automation.PSCredential]::Empty</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NoProgress</maml:name>
+        <maml:description>
+          <maml:para>`Save-EvergreenApp` uses `Invoke-WebRequest` to download target application installers. Download progress is suppressed by default for faster downloads; however, when `-Verbose` is used, download progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Save-EvergreenApp accepts the output from Get-EvergreenApp.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Provides a list of paths of the downloaded target files.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\&lt;version&gt;.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://stealthpuppy.com/Evergreen/save.html</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/Evergreen/save.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>
