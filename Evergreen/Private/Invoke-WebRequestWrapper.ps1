@@ -79,10 +79,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     try {
         # Set core parameters
         $iwrParams = @{
-            ErrorAction     = "Stop"
             Uri             = $Uri
             UseBasicParsing = $True
             UserAgent       = $UserAgent
+            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
         }
 
         # Set additional parameters

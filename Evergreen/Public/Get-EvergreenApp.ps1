@@ -74,7 +74,8 @@ Function Get-EvergreenApp {
         If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
 
             # Dot source the function so that we can use it
-            # Import function here rather than at module import to reduce IO and memory footprint at the module grows
+            # Import function here rather than at module import to reduce IO and memory footprint as the module grows
+            # This also allows us to add an application manifest and function without having to re-load the module
             try {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Dot sourcing: $Function."
                 . $Function

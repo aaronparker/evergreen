@@ -56,7 +56,7 @@
             $params = @{
                 Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
                 Filter      = "*.json"
-                ErrorAction = "SilentlyContinue"
+                ErrorAction = $script:resourceStrings.Preferences.ErrorAction
             }
             Write-Verbose -Message "$($MyInvocation.MyCommand): Search path for application manifests: $($params.Path)."
             $Manifests = Get-ChildItem @params

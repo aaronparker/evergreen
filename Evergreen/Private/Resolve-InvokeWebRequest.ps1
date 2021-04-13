@@ -18,11 +18,11 @@ Function Resolve-InvokeWebRequest {
 
     # Build the Invoke-WebRequest parameters
     $iwrParams = @{
-        ErrorAction        = "SilentlyContinue"
         MaximumRedirection = 0
         Uri                = $Uri
         UseBasicParsing    = $True
         UserAgent          = $UserAgent
+        ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
     ForEach ($item in $iwrParams.GetEnumerator()) {

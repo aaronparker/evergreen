@@ -70,7 +70,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $irmParams = @{
             ContentType        = $ContentType
             DisableKeepAlive   = $true
-            ErrorAction        = "Stop"
+            ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
             MaximumRedirection = 0
             Uri                = $Uri
             UseBasicParsing    = $true

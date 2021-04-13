@@ -34,7 +34,7 @@ Function New-EvergreenPath {
                         $params = @{
                             Path        = $OutPath
                             ItemType    = "Directory"
-                            ErrorAction = "SilentlyContinue"
+                            ErrorAction = $script:resourceStrings.Preferences.ErrorAction
                         }
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Create path: $OutPath."
                         New-Item @params > $Null
