@@ -12,30 +12,34 @@ Function Get-AdobeAcrobatReaderDC {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     #region Installer downloads
     ForEach ($language in $res.Get.Download.Languages) {
 
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
-        $Uri = $res.Get.Download.Uri -replace "#Language", $language
-        $params = @{
-            Uri             = $Uri
-            Headers         = $res.Get.Download.Headers
-            UseBasicParsing = $True
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
-        }
         try {
             #TODO: update Invoke-RestMethodWrapper to support this query correctly
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
+            $Uri = $res.Get.Download.Uri -replace "#Language", $language
+            $params = @{
+                Uri             = $Uri
+                Headers         = $res.Get.Download.Headers
+                UseBasicParsing = $True
+                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            }
             $Content = Invoke-RestMethod @params
         }
         catch {
-            Throw $_
-            Break
+            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
 
         If ($Content) {

@@ -5,6 +5,7 @@
         "Update": {
             "Uri": "https://edgeupdates.microsoft.com/api/products",
             "Views": {
+                "Consumer": "",
                 "Enterprise": "?view=enterprise"
             },
             "Platform": [
@@ -12,6 +13,8 @@
                 "Any"
             ],
             "Channels": [
+                "Dev",
+                "Beta",
                 "Stable",
                 "EdgeUpdate",
                 "Policy"
@@ -19,6 +22,7 @@
             "Architectures": [
                 "x64",
                 "x86",
+                "arm64",
                 "any"
             ],
             "ReleaseProperty": "Releases",

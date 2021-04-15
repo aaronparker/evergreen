@@ -9,14 +9,20 @@
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Read the Citrix Workspace app for updater feed for each OS in the list
     ForEach ($item in $res.Get.Uri.Keys) {
+        #TODO: Update for Invoke-RestMethod
         $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri[$item]
 
         # Convert content to XML document
@@ -25,7 +31,7 @@
                 [System.XML.XMLDocument] $xmlDocument = $Content
             }
             Catch [System.Exception] {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+                Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
             }
 
             # Build an output object by selecting installer entries from the feed
@@ -48,9 +54,6 @@
                     Write-Output -InputObject $PSObject
                 }
             }
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Citrix Workspace update feed."
         }
         Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. Use 'CitrixWorkspaceAppFeed' to find the latest HDX RTME version."
     }

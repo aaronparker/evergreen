@@ -10,11 +10,16 @@ Function Get-1Password {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Get latest version and download latest release via update API
     $params = @{
@@ -34,6 +39,6 @@ Function Get-1Password {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
+        Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
 }

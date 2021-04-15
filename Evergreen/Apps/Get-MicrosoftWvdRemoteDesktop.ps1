@@ -10,11 +10,16 @@ Function Get-MicrosoftWvdRemoteDesktop {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     ForEach ($architecture in $res.Get.Download.Uri.Keys) {
 
@@ -30,9 +35,7 @@ Function Get-MicrosoftWvdRemoteDesktop {
             $Headers = (Invoke-WebRequest @params).Headers
         }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Download.Uri."
-            Throw $_
-            Break
+            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
         }
 
         If ($Headers) {
@@ -53,9 +56,6 @@ Function Get-MicrosoftWvdRemoteDesktop {
                 URI          = $Url
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Download.Uri)."
         }
     }
 }

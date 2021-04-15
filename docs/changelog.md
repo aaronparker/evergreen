@@ -7,6 +7,15 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Modifies `Get-EvergreenApp` to load internal per-application functions on demand, instead of the module loading all of these function into memory at import
+* Adds the Consumer and Dev, Beta channels to `MicrosoftEdge`
+* Adds `BeekeeperStudio`, `VMwareHorizonClient`, `AdoptOpenJDK 8`, `AdoptOpenJDK 11`, AdoptOpenJDK 16`
+* Updates `Get-CitrixRssFeed` to use `Invoke-RestMethod` to simplify handling of the XML feed
+* Updates various functions to Throw more consistently when encountering errors
+* General code improvements
+
 ## 2104.337
 
 * **BREAKING CHANGE**: This version removes the `Get-` function for each application and introduces `Get-EvergreenApp`. See the docs site on how to use the new functions [https://stealthpuppy.com/Evergreen/](https://stealthpuppy.com/Evergreen/)

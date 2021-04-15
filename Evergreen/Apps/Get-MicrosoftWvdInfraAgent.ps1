@@ -10,11 +10,16 @@ Function Get-MicrosoftWvdInfraAgent {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     If (Test-PSCore) {
         # Grab the download link headers to find the file name
@@ -29,13 +34,8 @@ Function Get-MicrosoftWvdInfraAgent {
             }
             (Invoke-WebRequest @params).RawContent | Out-File -FilePath $tempFile
         }
-        catch [System.Net.WebException] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-        }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
         }
 
         # Convert to an object, without the first line
@@ -73,13 +73,8 @@ Function Get-MicrosoftWvdInfraAgent {
             }
             $Content = (Invoke-WebRequest @params).RawContent
         }
-        catch [System.Net.WebException] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
-        }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at: $res.Get.Uri."
-            Throw ([System.String]::Format("Error : {0}", $_.Exception.Response.StatusCode))
+            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
         }
 
         If ($Content) {
@@ -94,9 +89,6 @@ Function Get-MicrosoftWvdInfraAgent {
                 URI          = $res.Get.Uri
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Uri)."
         }
     }
 }

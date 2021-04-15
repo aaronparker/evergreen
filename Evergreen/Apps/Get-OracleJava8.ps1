@@ -7,14 +7,18 @@
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-Java8")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Read the update RSS feed
     $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
@@ -25,7 +29,7 @@
             [System.XML.XMLDocument] $xmlDocument = $Content
         }
         Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert content to an XML object."
+            Throw "$($MyInvocation.MyCommand): failed to convert content to an XML object."
         }
 
         # Build an output object by selecting entries from the feed
@@ -61,6 +65,6 @@
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read update feed [$Uri]."
+        Throw "$($MyInvocation.MyCommand): failed to read update feed [$Uri]."
     }
 }

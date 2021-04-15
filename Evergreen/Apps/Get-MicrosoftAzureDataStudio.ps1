@@ -10,11 +10,16 @@ Function Get-MicrosoftAzureDataStudio {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Get the commit details
     $commit = (Invoke-RestMethodWrapper -Uri $res.Get.Update.Version.Uri).($res.Get.Update.Version.Property)
@@ -40,13 +45,10 @@ Function Get-MicrosoftAzureDataStudio {
                     }
                     Write-Output -InputObject $PSObject
                 }
-                Else {
-                    Write-Warning -Message "$($MyInvocation.MyCommand): failed to get update feed from: $Uri."
-                }
             }
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to get commit details from: $($res.Get.Update.Version.Uri)."
+        Throw "$($MyInvocation.MyCommand): failed to get commit details from: $($res.Get.Update.Version.Uri)."
     }
 }

@@ -70,7 +70,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $irmParams = @{
             ContentType        = $ContentType
             DisableKeepAlive   = $true
-            ErrorAction        = "Stop"
+            ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
             MaximumRedirection = 0
             Uri                = $Uri
             UseBasicParsing    = $true
@@ -95,8 +95,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
-        Throw $_
-        Break
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Output -InputObject $Response

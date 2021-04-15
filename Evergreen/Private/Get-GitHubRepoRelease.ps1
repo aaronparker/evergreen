@@ -32,14 +32,7 @@ Function Get-GitHubRepoRelease {
     )
 
     # Retrieve the releases from the GitHub API 
-    try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
-        
-        # Set TLS1.2 and a temp file for passthrough output
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        $tempFile = New-TemporaryFile
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
-        
+    try {        
         # Invoke the GitHub releases REST API
         # Note that the API performs rate limiting. 
         # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
@@ -48,15 +41,15 @@ Function Get-GitHubRepoRelease {
             Method      = "Get"
             Uri         = $Uri
         }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
         $release = Invoke-RestMethodWrapper @params
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
-        Throw $_
-        Break
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    finally {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."
+
+    If ($Null -ne $release) {
 
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
@@ -87,6 +80,7 @@ Function Get-GitHubRepoRelease {
 
         # Build and array of the latest release and download URLs
         If ($validate) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) releases."
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) assets."
             ForEach ($item in $release) {
                 ForEach ($asset in $item.assets) {

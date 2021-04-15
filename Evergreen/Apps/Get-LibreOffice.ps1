@@ -15,11 +15,16 @@ Function Get-LibreOffice {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Query the LibreOffice update API
     $iwcParams = @{
@@ -65,8 +70,8 @@ Function Get-LibreOffice {
                 ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
     
                     # Match language string
-                    Remove-Variable Language -ErrorAction SilentlyContinue
-                    Remove-Variable match -ErrorAction SilentlyContinue
+                    Remove-Variable Language -ErrorAction "SilentlyContinue"
+                    Remove-Variable match -ErrorAction "SilentlyContinue"
                     $match = $file | Select-String -Pattern $res.Get.MatchLanguage
                     If ($Null -ne $match) {
                         $Language = $match.Matches.Groups[1].Value

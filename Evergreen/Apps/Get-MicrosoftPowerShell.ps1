@@ -7,14 +7,18 @@ Function Get-MicrosoftPowerShell {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-MicrosoftPowerShellCore")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Get the latest release from the PowerShell metadata
     try {
@@ -41,13 +45,8 @@ Function Get-MicrosoftPowerShell {
         }
         $object = Get-GitHubRepoRelease @params
 
-        If ($object) {
-            # Add the Release property to the object returned from Get-GitHubRepoRelease
-            $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
-            Write-Output -InputObject $object
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
-        }
+        # Add the Release property to the object returned from Get-GitHubRepoRelease
+        $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
+        Write-Output -InputObject $object
     }
 }

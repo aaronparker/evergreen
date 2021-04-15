@@ -79,10 +79,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     try {
         # Set core parameters
         $iwrParams = @{
-            ErrorAction     = "Stop"
             Uri             = $Uri
             UseBasicParsing = $True
             UserAgent       = $UserAgent
+            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
         }
 
         # Set additional parameters
@@ -110,8 +110,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-WebRequest @iwrParams
     }
     catch {
-        Throw $_
-        Break
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."

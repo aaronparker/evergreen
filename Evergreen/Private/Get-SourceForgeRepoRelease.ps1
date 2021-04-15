@@ -25,8 +25,7 @@
         $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }
     catch {
-        Throw "Failed to resolve update feed: $Uri."
-        Break
+        Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
     }
 
     # Validate that $bestRelease has the expected properties
@@ -71,7 +70,7 @@
     }
     Catch [System.Exception] {
         Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert feed into an XML object."
-        Throw $_
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
         
     # Select the required node/s from the XML feed

@@ -7,15 +7,19 @@ Function Get-MicrosoftSsms {
             Author: Bronson Magnan
             Twitter: @cit_bronson
     #>
-    [Alias("Get-MicrosoftSQLServerManagementStudio")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Resolve the SSMS update feed
     $UpdateFeed = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri
@@ -29,7 +33,7 @@ Function Get-MicrosoftSsms {
             [System.XML.XMLDocument] $xmlDocument = $Content
         }
         Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
+            Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
         }
 
         # Build an output object by selecting installer entries from the feed
@@ -61,8 +65,5 @@ Function Get-MicrosoftSsms {
                 }
             }
         }
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read Microsoft SQL Server Management Studio update feed."
     }
 }

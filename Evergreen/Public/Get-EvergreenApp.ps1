@@ -72,27 +72,44 @@ Function Get-EvergreenApp {
         # Test that the function exists and run it to return output
         Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
         If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+
+            # Dot source the function so that we can use it
+            # Import function here rather than at module import to reduce IO and memory footprint as the module grows
+            # This also allows us to add an application manifest and function without having to re-load the module
             try {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Call: $Function."
-                $Output = . Get-$Name
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Dot sourcing: $Function."
+                . $Function
             }
             catch {
-                Throw $_
+                Throw "$($MyInvocation.MyCommand): Failed to load function: $Function."
             }
+
+            # Run the function to grab the application details; pass app manifest to the app function
+            try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Call: Get-$Name."
+                $Output = . Get-$Name -res (Get-FunctionResource -AppName $Name)
+            }
+            catch {
+                Throw "Internal application function: $Function, failed with: $($_.Exception.Message)"
+            }
+
+            # If we get an object, return it to the pipeline
             If ($Output) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
                 Write-Output -InputObject $Output
             }
             Else {
-                Throw "Failed to capture output from: Get-$Name."
+                Throw "$($MyInvocation.MyCommand): Failed to capture output from: Get-$Name."
             }
         }
         Else {
             Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
-            Throw "Cannot find application: $Name."
+            Throw "Cannot find application script at: $Function."
         }
     }
 
-    End {}
+    End {
+        Remove-Variable -Name "Output", "Function"
+    }
 }

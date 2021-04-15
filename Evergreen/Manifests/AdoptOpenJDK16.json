@@ -1,13 +1,13 @@
 {
-	"Name": "AdoptOpenJDK",
+	"Name": "AdoptOpenJDK OpenJDK Official Binaries (JDK 16u)",
 	"Source": "https://adoptopenjdk.net/index.html",
 	"Get": {
-		"Uri": "https://api.github.com/repos/AdoptOpenJDK/openjdk8-upstream-binaries/releases/latest",
+		"Uri": "https://api.github.com/repos/AdoptOpenJDK/openjdk16-binaries/releases/latest",
 		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$"
 	},
 	"Install": {
-		"Setup": "java*.msi",
+		"Setup": "OpenJDK*",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": []

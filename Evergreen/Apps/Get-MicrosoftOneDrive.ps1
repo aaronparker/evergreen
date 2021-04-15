@@ -10,11 +10,16 @@
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Step through each release URI
     ForEach ($ring in $res.Get.Uri.GetEnumerator()) {
@@ -28,8 +33,7 @@
                 [System.XML.XMLDocument] $xmlDocument = ($Content -replace "ï»¿", "")
             }
             Catch [System.Exception] {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-                Break
+                Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
             }
 
             # Build an output object by selecting installer entries from the feed
@@ -42,24 +46,42 @@
                 ForEach ($node in $nodes) {
 
                     # Construct the output for EXE; Return the custom object to the pipeline
-                    $PSObject = [PSCustomObject] @{
-                        Version = $node.currentversion
-                        Ring    = $ring.Name
-                        Sha256  = $node.binary.sha256hash
-                        Type    = "Exe"
-                        URI     = $node.binary.url
+                    If ([System.Boolean]($node.PSobject.Properties.name -match "binary")) {
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $node.currentversion
+                            Architecture = Get-Architecture -String $node.binary.url
+                            Ring         = $ring.Name
+                            Sha256       = $node.binary.sha256hash
+                            Type         = [System.IO.Path]::GetExtension($node.binary.url).Split(".")[-1]
+                            URI          = $node.binary.url
+                        }
+                        Write-Output -InputObject $PSObject
                     }
-                    Write-Output -InputObject $PSObject
 
-                    # Construct the output for MSIX; Return the custom object to the pipeline
-                    $PSObject = [PSCustomObject] @{
-                        Version = $node.currentversion
-                        Ring    = $ring.Name
-                        Sha256  = If ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } Else { "N/A" }
-                        Type    = "Msix"
-                        URI     = $node.msixbinary.url
+                    If ([System.Boolean]($node.PSobject.Properties.name -match "amd64binary")) {
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $node.currentversion
+                            Architecture = Get-Architecture -String $node.amd64binary.url
+                            Ring         = $ring.Name
+                            Sha256       = $node.amd64binary.sha256hash
+                            Type         = [System.IO.Path]::GetExtension($node.amd64binary.url).Split(".")[-1]
+                            URI          = $node.amd64binary.url
+                        }
+                        Write-Output -InputObject $PSObject
                     }
-                    Write-Output -InputObject $PSObject
+
+                    If ([System.Boolean]($node.PSobject.Properties.name -match "msixbinary")) {
+                        # Construct the output for MSIX; Return the custom object to the pipeline
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $node.currentversion
+                            Architecture = Get-Architecture -String $node.msixbinary.url
+                            Ring         = $ring.Name
+                            Sha256       = If ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } Else { "N/A" }
+                            Type         = [System.IO.Path]::GetExtension($node.msixbinary.url).Split(".")[-1]
+                            URI          = $node.msixbinary.url
+                        }
+                        Write-Output -InputObject $PSObject
+                    }
                 }
             }
         }

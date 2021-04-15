@@ -21,7 +21,7 @@
 [CmdletBinding(SupportsShouldProcess = $False)]
 param (
     [Parameter(Mandatory, Position = 0)]
-    [System.String] $PackageName,
+    [System.String] $Name,
 
     [Parameter(Mandatory, Position = 1)]
     [System.String] $Path
@@ -31,20 +31,14 @@ param (
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # Get details from the target Evergreen package
-If (Get-Command -Name "Get-$PackageName") {
-    try {
-        $Packages = Invoke-Expression -Command "Get-$PackageName"
-    }
-    catch {
-        Throw "Failed to return package details from Get-$PackageName."
-        Break
-    }
+If (Find-EvergreenApp -Name $Name) {
+    $Packages = Get-EvergreenApp -Name $Name
 
     try {
-        $Manifest = Invoke-Expression -Command "Export-EvergreenFunctionStrings -AppName $PackageName"
+        $Manifest = Export-EvergreenManifest -AppName $Name
     }
     catch {
-        Write-Warning -Message "Failed to return package details from Get-$PackageName."
+        Write-Warning -Message "Failed to return package details from Get-$Name."
     }
 
     # Get the package properties
@@ -151,5 +145,5 @@ If (Get-Command -Name "Get-$PackageName") {
     Write-Host "Now place this file in the following location: \manifests\$publisher\$AppName"
 }
 Else {
-    Write-Warning -Message "Evergeen function Get-$PackageName does not exist."
+    Write-Warning -Message "Evergeen application $Name does not exist."
 }

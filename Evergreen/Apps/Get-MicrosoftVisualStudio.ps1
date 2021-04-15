@@ -10,23 +10,26 @@ Function Get-MicrosoftVisualStudio {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Resolve the update feed from the initial URI
     $ResolvedUrl = (Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
-
     If ($ResolvedUrl) {
         try {
             # Get details from the update feed
             $updateFeed = Invoke-RestMethodWrapper -Uri $ResolvedUrl
         }
         catch {
-            Throw "Failed to resolve update feed: $ResolvedUrl."
-            Break
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $ResolvedUrl."
         }
         finally {
             # Build the output object/s
@@ -41,8 +44,5 @@ Function Get-MicrosoftVisualStudio {
                 Write-Output -InputObject $PSObject
             }
         }
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to resolve the update API: $($res.Get.Update.Uri)."
     }
 }

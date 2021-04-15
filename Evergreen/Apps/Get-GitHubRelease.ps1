@@ -21,6 +21,15 @@ Function Get-GitHubRelease {
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
+
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter,
+
+        [Parameter(Mandatory = $False, Position = 2)]
         [ValidateScript( {
                 If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
                     $True
@@ -47,10 +56,5 @@ Function Get-GitHubRelease {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-    If ($object) {
-        Write-Output -InputObject $object
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from the repo."
-    }
+    Write-Output -InputObject $object
 }

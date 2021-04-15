@@ -9,24 +9,20 @@ Function Get-ControlUpAgent {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Query the ControlUp Agent JSON
     $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri    
     If ($Null -ne $Object) {
-       
-        # Strip out the Google script return in the request and convert to JSON
-        <#try {
-            $Json = [RegEx]::Match($Content, $res.Get.Update.Matches).Value | ConvertFrom-Json
-        }
-        catch {
-            Throw $_
-            Break
-        }#>
     
         # Build and array of the latest release and download URLs
         ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name)) {

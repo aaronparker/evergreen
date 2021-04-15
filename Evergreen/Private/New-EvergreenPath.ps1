@@ -21,7 +21,7 @@ Function New-EvergreenPath {
     $OutPath = $Path
 
     # Build the new path using the specified object properties
-    ForEach ($property in ("Channel", "Release", "Ring", "Version", "Language", "Architecture")) {
+    ForEach ($property in ("Product", "Track", "Channel", "Release", "Ring", "Version", "Language", "Architecture")) {
         If ([System.Boolean]($InputObject.$property)) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): $($property): $($InputObject.$property)."
             $OutPath = Join-Path -Path $OutPath -ChildPath $InputObject.$property
@@ -34,14 +34,13 @@ Function New-EvergreenPath {
                         $params = @{
                             Path        = $OutPath
                             ItemType    = "Directory"
-                            ErrorAction = "SilentlyContinue"
+                            ErrorAction = $script:resourceStrings.Preferences.ErrorAction
                         }
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Create path: $OutPath."
                         New-Item @params > $Null
                     }
                     catch {
-                        Write-Error -Message "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
-                        Break
+                        Throw "$($MyInvocation.MyCommand): Failed to create target directory. Error failed with: $($_.Exception.Message)."
                     }
                 }
             }

@@ -10,7 +10,7 @@ Install-Module -Name Evergreen
 
 # Target folder
 $Folder = "C:\Temp\Reader"
-New-Item -Path $Folder -ItemType Directory -Force -ErrorAction SilentlyContinue
+New-Item -Path $Folder -ItemType Directory -Force -ErrorAction "SilentlyContinue"
 
 # Download Reader installer and updater
 $Reader = Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }

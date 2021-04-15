@@ -7,15 +7,19 @@ Function Get-Microsoft365Apps {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Alias("Get-MicrosoftOffice")]
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # For each Office channel
     ForEach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
@@ -26,8 +30,7 @@ Function Get-Microsoft365Apps {
             $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
         }
         catch {
-            Throw "Failed to resolve update feed: $Uri."
-            Break
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
         }
 
         If ($Null -ne $updateFeed) {
@@ -40,9 +43,6 @@ Function Get-Microsoft365Apps {
                 URI     = $res.Get.Download.Uri
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a usable object from: $Uri."
         }
     }
 }

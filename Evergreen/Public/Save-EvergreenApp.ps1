@@ -14,7 +14,7 @@ Function Save-EvergreenApp {
             Get-EvergreenApp -Name AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
 
             Description:
-            Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\<version>.
+            Downloads all of the URIs returned by 'Get-EvergreenApp -Name AdobeAcrobat' to C:\Temp\Adobe\<version>.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/save.html")]
@@ -70,8 +70,7 @@ Function Save-EvergreenApp {
                 }
             }
             Else {
-                Write-Error -Message "$($MyInvocation.MyCommand): Object does not have valid URI property."
-                Break
+                Throw "$($MyInvocation.MyCommand): Object does not have valid URI property."
             }
             #endregion
 
@@ -87,14 +86,12 @@ Function Save-EvergreenApp {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
                 }
                 Else {
-                    Write-Error -Message "$($MyInvocation.MyCommand): Object does not have valid Version property."
-                    Break
+                    Throw "$($MyInvocation.MyCommand): Object does not have valid Version property."
                 }
                 #endregion
             }
             Else {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Failed validating $Path."
-                Break
+                Throw "$($MyInvocation.MyCommand): Failed validating $Path."
             }
 
             #region Download the file
@@ -106,7 +103,7 @@ Function Save-EvergreenApp {
                         Uri             = $Object.URI
                         OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
                         UseBasicParsing = $True
-                        ErrorAction     = "SilentlyContinue"
+                        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
                     }
                     If ($PSBoundParameters.ContainsKey("Proxy")) {
                         $params.Proxy = $Proxy
@@ -117,9 +114,7 @@ Function Save-EvergreenApp {
                     Invoke-WebRequest @params
                 }
                 catch [System.Exception] {
-                    Write-Warning -Message "$($MyInvocation.MyCommand): URL: [$($Object.URI)]."
-                    Write-Warning -Message "$($MyInvocation.MyCommand): Download failed with: [$($_.Exception.Message)]"
-                    Throw $_
+                    Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
                 }
 
                 #region Write the downloaded file path to the pipeline
@@ -136,6 +131,7 @@ Function Save-EvergreenApp {
     }
 
     End {
+        Remove-Variable -Name "Output", "params", "OutPath", "OutFile"
         Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
     }
 }

@@ -14,22 +14,27 @@ Function Get-ModuleResource {
     
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$Path]"
-        $content = Get-Content -Path $Path -Raw -ErrorAction "SilentlyContinue"
+        $params = @{
+            Path        = $Path
+            Raw         = $True
+            ErrorAction = "Stop"
+        }
+        $content = Get-Content @params
     }
-    catch [System.Exception] {
+    catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $Path."
         Throw $_.Exception.Message
     }
 
     try {
         If (Test-PSCore) {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "SilentlyContinue"
+            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "Stop"
         }
         Else {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction "SilentlyContinue" | ConvertTo-Hashtable
+            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction "Stop" | ConvertTo-Hashtable
         }
     }
-    catch [System.Exception] {
+    catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required object."
         Throw $_.Exception.Message
     }

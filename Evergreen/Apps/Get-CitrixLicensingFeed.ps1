@@ -9,11 +9,16 @@ Function Get-CitrixLicensingFeed {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $gcfParams = @{
@@ -22,7 +27,5 @@ Function Get-CitrixLicensingFeed {
         Exclude = $res.Get.Licensing.Exclude
     }
     $Content = Get-CitrixRssFeed @gcfParams
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }

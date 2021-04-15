@@ -6,39 +6,46 @@ Function Get-FunctionResource {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]
-        [System.String] $AppName = "Template"
+        [System.String] $AppName
     )
     
     # Setup path to the manifests folder and the app manifest
     $Path = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
     $AppManifest = Join-Path -Path $Path -ChildPath "$AppName.json"
 
-    try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$AppManifest]"
-        $content = Get-Content -Path $AppManifest -Raw -ErrorAction SilentlyContinue
+    # Read the content from the manifest file
+    If (Test-Path -Path $AppManifest) {
+        try {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$AppManifest]"
+            $content = Get-Content -Path $AppManifest -Raw -ErrorAction "Stop"
+        }
+        catch {
+            Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $AppManifest."
+            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        }
     }
-    catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $AppManifest."
-        Throw $_.Exception.Message
+    Else {
+        Throw "$($MyInvocation.MyCommand): manifest does not exist: $AppManifest."
     }
 
+    # Convert the content from JSON into a hashtable
     try {
         If (Test-PSCore) {
-            $hashTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "SilentlyContinue"
+            $hashTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "Stop"
         }
         Else {
-            $hashTable = $content | ConvertFrom-Json -ErrorAction "SilentlyContinue" | ConvertTo-Hashtable
+            $hashTable = $content | ConvertFrom-Json -ErrorAction "Stop" | ConvertTo-Hashtable
         }
     }
-    catch [System.Exception] {
+    catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required hashtable object."
-        Throw $_.Exception.Message
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    finally {
-        If ($Null -ne $hashTable) {
-            Write-Output -InputObject $hashTable
-        }
+
+    # If we got a hashtable, return it to the pipeline
+    If ($Null -ne $hashTable) {
+        Write-Output -InputObject $hashTable
     }
 }

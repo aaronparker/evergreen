@@ -23,7 +23,7 @@ Function Invoke-SystemNetRequest {
     }
     Catch [System.Exception] {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
-        Throw $_
+        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     Finally {
         $webResponse.Dispose()

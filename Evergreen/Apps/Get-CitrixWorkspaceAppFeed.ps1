@@ -11,11 +11,16 @@ Function Get-CitrixWorkspaceAppFeed {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
-    param ()
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-    # Get application resource strings from its manifest
-    $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
-    Write-Verbose -Message $res.Name
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
 
     # Read the feed and filter for include and exclude strings and return output to the pipeline
     $params = @{
@@ -24,7 +29,5 @@ Function Get-CitrixWorkspaceAppFeed {
         Exclude = $res.Get.WorkspaceApp.Exclude
     }
     $Content = Get-CitrixRssFeed @params
-    If ($Null -ne $Content) {
-        Write-Output -InputObject $Content
-    }
+    Write-Output -InputObject $Content
 }
