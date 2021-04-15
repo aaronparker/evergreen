@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2104.348
 
 * Modifies `Get-EvergreenApp` to load internal per-application functions on demand, instead of the module loading all of these function into memory at import
 * Adds the Consumer and Dev, Beta channels to `MicrosoftEdge`
