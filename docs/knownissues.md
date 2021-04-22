@@ -38,3 +38,11 @@ The product release feed used by the Microsoft SQL Server Management Studio (e.g
 ### 7zip
 
 The 32-bit installers returned by `7Zip` link to a SourceForge download page instead of the file directly.
+
+### Zoom
+
+`Zoom` returns versions as `Latest` for some downloads - the source used by this function does not provide a method for determining the version number.
+
+### CitrixWorkspaceApp
+
+The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME. Note that returns a link to the download page and not the installer directly.
