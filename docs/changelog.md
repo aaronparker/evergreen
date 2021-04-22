@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2104.355
 
 * Changes `FoxitReader` to return MSI installers instead of EXEs. Removes Elex, Portuguese (Portugal), and Turkish language support from this application because the installers returned are out of date.
 * Adds the following languages to `AdobeAcrobatReaderDC`: Swedish, Basque, Catalan, Croatian, Czech, Hungarian, Polish, Romanian, Russian, Slovakian, Slovenian, Turkish, Ukrainian
