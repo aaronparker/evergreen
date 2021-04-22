@@ -20,7 +20,20 @@
                 "Japanese",
                 "Korean",
                 "Norwegian",
-                "Spanish"
+                "Spanish",
+                "Swedish",
+                "Basque",
+                "Catalan",
+                "Croatian",
+                "Czech",
+                "Hungarian",
+                "Polish",
+                "Romanian",
+                "Russian",
+                "Slovakian",
+                "Slovenian",
+                "Turkish",
+                "Ukrainian"
             ],
             "Headers": {
                 "Sec-Fetch-Dest": "empty",
