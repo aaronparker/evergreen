@@ -39,7 +39,7 @@ Function Get-MicrosoftSsms {
         # Build an output object by selecting installer entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($entry in $xmlDocument.feed.entry) {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version)."
+                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version). See https://stealthpuppy.com/Evergreen/knownissues.html for more information."
 
                 ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.Download.MatchName })) {
                     ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {

@@ -34,3 +34,7 @@ The product release feed used by the Microsoft SQL Server Management Studio (e.g
 `VMwareHorizonClient` may not always return the current release - the major version property in the VMware Horizon Client software update data does not use easily sortable versioning.
 
 `VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
+
+### 7zip
+
+The 32-bit installers returned by `7Zip` link to a SourceForge download page instead of the file directly.
