@@ -7,6 +7,12 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Changes `FoxitReader` to return MSI installers instead of EXEs. Removes Elex, Portuguese (Portugal), and Turkish language support from this application because the installers returned are out of date.
+* Adds the following languages to `AdobeAcrobatReaderDC`: Swedish, Basque, Catalan, Croatian, Czech, Hungarian, Polish, Romanian, Russian, Slovakian, Slovenian, Turkish, Ukrainian
+* Adds a known issues list to the documentation: [https://stealthpuppy.com/Evergreen/knownissues.html](https://stealthpuppy.com/Evergreen/knownissues.html)
+
 ## 2104.348
 
 * Adds the Consumer release (to the existing Enterprise release) and Dev, Beta channels, and ARM64 architecture to `MicrosoftEdge`

@@ -1,22 +1,31 @@
 {
-	"Name": "Foxit Reader",
-	"Source": "https://www.foxitsoftware.com/pdf-reader/",
-	"Get": {
-		"Uri": "https://www.foxitsoftware.com/portal/download/getdownloadform.html?retJson=1&product=Foxit-Reader&platform=Windows&formId=download-reader",
-		"ContentType": "text/html; charset=UTF-8",
-		"DateTimePattern": "MM/dd/yy",
-		"DownloadUri": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Reader&platform=Windows&version=#Version&package_type=#Package&language=#Language",
-		"DownloadMsi": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Enterprise-Reader&platform=Windows&version=#Version&package_type=msi&language=#Language&distID="
-	},
-	"Install": {
-		"Setup": "FoxitReader*.exe",
-		"Physical": {
-			"Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"1\" /passive /norestart /qn",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"0\" /passive /norestart /qn",
-			"PostInstall": []
-		}
-	}
+    "Name": "Foxit Reader",
+    "Source": "https://www.foxitsoftware.com/pdf-reader/",
+    "Get": {
+        "Update": {
+            "Uri": "https://www.foxitsoftware.com/portal/download/getdownloadform.html?retJson=1&product=Foxit-Reader&platform=Windows&formId=download-reader",
+            "ContentType": "text/html; charset=UTF-8",
+            "SkipLanguages": [
+                "Elex",
+                "Portuguese(Portugal)",
+                "Turkish"
+            ],
+			"DateTimePattern": "MM/dd/yy"
+        },
+        "Download": {
+            "Exe": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Reader&platform=Windows&version=#Version&package_type=#Package&language=#Language",
+            "Uri": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Enterprise-Reader&platform=Windows&version=#Version&package_type=msi&language=#Language&distID="
+        }
+    },
+    "Install": {
+        "Setup": "FoxitReader*.exe",
+        "Physical": {
+            "Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"1\" /passive /norestart /qn",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "DESKTOP_SHORTCUT=\"0\" MAKEDEFAULT=\"0\" VIEWINBROWSER=\"0\" LAUNCHCHECKDEFAULT=\"0\" AUTO_UPDATE=\"0\" /passive /norestart /qn",
+            "PostInstall": []
+        }
+    }
 }
