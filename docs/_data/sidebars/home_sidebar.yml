@@ -29,6 +29,9 @@ entries:
     - title: How Evergreen works
       url: /how.html
       output: web
+    - title: Known issues
+      url: /knownissues.html
+      output: web
     - title: Change log
       url: /changelog.html
       output: web

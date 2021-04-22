@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2104.355
 
 * Changes `FoxitReader` to return MSI installers instead of EXEs. Removes Elex, Portuguese (Portugal), and Turkish language support from this application because the installers returned are out of date.
 * Adds the following languages to `AdobeAcrobatReaderDC`: Swedish, Basque, Catalan, Croatian, Czech, Hungarian, Polish, Romanian, Russian, Slovakian, Slovenian, Turkish, Ukrainian
@@ -15,9 +15,10 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 
 ## 2104.348
 
-* Modifies `Get-EvergreenApp` to load internal per-application functions on demand, instead of the module loading all of these function into memory at import
-* Adds the Consumer and Dev, Beta channels to `MicrosoftEdge`
-* Adds `BeekeeperStudio`, `VMwareHorizonClient`, `AdoptOpenJDK 8`, `AdoptOpenJDK 11`, AdoptOpenJDK 16`
+* Adds the Consumer release (to the existing Enterprise release) and Dev, Beta channels, and ARM64 architecture to `MicrosoftEdge`
+* Adds 64-bit architecture to `MicrosoftOneDrive`
+* Adds `BeekeeperStudio`, `VMwareHorizonClient`, `AdoptOpenJDK 8`, `AdoptOpenJDK 11`, `AdoptOpenJDK 16`
+* Modifies `Get-EvergreenApp` to load internal per-application functions on demand, instead of loading all of these function into memory at module import
 * Updates `Get-CitrixRssFeed` to use `Invoke-RestMethod` to simplify handling of the XML feed
 * Updates various functions to Throw more consistently when encountering errors
 * General code improvements
