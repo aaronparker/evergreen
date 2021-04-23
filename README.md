@@ -18,6 +18,10 @@ Via `Get-EvergreenApp` each Evergreen application returns at least two propertie
 * `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
 * `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
+## Documentation
+
+For full documentation on the module, see the documentation located here: [https://stealthpuppy.com/Evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
+
 ## Why
 
 There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, Evergreen can be used with the [Chocolatey Automatic Package Updater Module](https://www.powershellgallery.com/packages/AU/) to find the latest version of an application and then creating and submitting a Chocolatey package, or it can be used to create a [Windows Package Manager](https://github.com/microsoft/winget-cli) manifest (see a sample script here: [New-WinGetManifest.ps1](/tools/New-WinGetManifest.ps1)).
@@ -28,13 +32,13 @@ Evergreen's focus is on integration for PowerShell scripts to provide product ve
 
 **Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
 
-Wherever possible, Evergeen uses an approach that returns at least the version number and download URI for applications programatically - thus for each run an Evergreen function it should return the latest version and download link.
+Wherever possible, Evergreen uses an approach that returns at least the version number and download URI for applications programmatically - thus for each run an Evergreen function it should return the latest version and download link.
 
 Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API wherever possible. Evergreen uses several strategies to return the latest version of software:
 
-1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Public/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Public/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
-2. Repository APIs - repo hosters including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g. [Atom](/Evergreen/Public/Get-Atom.ps1), [Notepad++](/Evergreen/Public/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Public/Get-WinMerge.ps1)
-3. Web page queries - often a vendor download pages will include a query when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g. [Microsoft FSLogix Apps](/Evergreen/Public/Get-MicrosoftFSLogixApps.ps1) or [Zoom](/Evergreen/Public/Get-Zoom.ps1)
+1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Apps/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Apps/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
+2. Repository APIs - repo hosts including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g. [Atom](/Evergreen/Apps/Get-Atom.ps1), [Notepad++](/Evergreen/Apps/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Apps/Get-WinMerge.ps1)
+3. Web page queries - often a vendor download pages will include a query when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g. [Microsoft FSLogix Apps]((/Evergreen/Apps/Get-MicrosoftFSLogixApps.ps1)) or [Zoom]((/Evergreen/Apps/Get-Zoom.ps1))
 
 ## PowerShell Support
 
@@ -50,7 +54,7 @@ This module is maintained by the following community members
 
 ## Versioning
 
-The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](/CHANGELOG.md) for details on changes introduced in each version.
+The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](https://stealthpuppy.com/Evergreen/changelog.html) for details on changes introduced in each version.
 
 ## Installing the Module
 
