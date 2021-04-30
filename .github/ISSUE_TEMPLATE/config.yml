@@ -1,8 +1,5 @@
 ﻿blank_issues_enabled: false
 contact_links:
-  - name: Evergreen documentation
-    url: https://stealthpuppy.com/Evergreen/
-    about: Please ensure you have read the Evergreen documentation before creating an issue.
-  - name: Evergreen known issues
+  - name: Review known issues
     url: https://stealthpuppy.com/Evergreen/knownissues.html
-    about: Please ensure you have read the Evergreen known issues before creating an issue.
+    about: Please ensure you have read the Evergreen known issues list before creating an issue.
