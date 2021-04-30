@@ -64,7 +64,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 * Updates function comment-based help and corrects spelling across several functions
 * BREAKING CHANGES
   * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
-  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e. current / production ring) and `Preview` rings - filter with `Where-Object`
+  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
 
 ## 2102.286
 
@@ -97,10 +97,10 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ## 2101.275
 
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
-* Updates `Get-MicrosofPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
+* Updates `Get-MicrosoftPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 * BREAKING CHANGES
   * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
-  * Adds a `Release` property to the output of `Get-MicrosofPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
+  * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
 ## 2101.263
 
@@ -133,7 +133,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ## 2012.242
 
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
-* Adds Windows Installer downloads ouput to `Get-FoxitReader`
+* Adds Windows Installer downloads output to `Get-FoxitReader`
 * Updates `Get-MicrosoftSsms` to query an evergreen update URL to gather new versions from the product releases feed
   * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
 * Updates `Get-MicrosoftSsms` to output all supported languages for downloads - filter output on the `Language` property
@@ -189,7 +189,7 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ## 2006.203
 
 * Removes Size property from `Get-FoxitReader` because this isn't being gathered consistently for each download
-* Updates version / releases feed for `Get-MicrosftSsms` to ensure the current version is returned
+* Updates version / releases feed for `Get-MicrosoftSsms` to ensure the current version is returned
 * Updates the way private function `ConvertFrom-SourceForgeReleasesJson` returns available downloads from SourceForge
 * Updates `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator` and `Get-WinMerge` to support new approach to retrieving SourceForge downloads
 
@@ -438,34 +438,6 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 * First version pushed to the PowerShell Gallery
 * Initial functions are:
 
-`Export-EvergreenResourceStrings`
-`Get-AdobeAcrobatReaderDC`
-`Get-CitrixAppLayeringFeed`
-`Get-CitrixApplicationDeliveryManagementFeed`
-`Get-CitrixEndpointManagementFeed`
-`Get-CitrixGatewayFeed`
-`Get-CitrixHypervisorFeed`
-`Get-CitrixLicensingFeed`
-`Get-CitrixReceiverFeed`
-`Get-CitrixSdwanFeed`
-`Get-CitrixVirtualAppsDesktopsFeed`
-`Get-CitrixWorkspaceApp`
-`Get-CitrixWorkspaceAppFeed`
-`Get-CitrixXenServerTools`
-`Get-ControlUpAgent`
-`Get-FileZilla`
-`Get-GoogleChrome`
-`Get-Greenshot`
-`Get-LibreOffice`
-`Get-MicrosoftPowerShellCore`
-`Get-MicrosoftSsms`
-`Get-MicrosoftVisualStudioCode`
-`Get-MozillaFirefox`
-`Get-NotepadPlusPlus`
-`Get-OracleVirtualBox`
-`Get-PaintDotNet`
-`Get-VideoLanVlcPlayer`
-`Get-VMwareTools`
-`Get-Zoom`
+`Export-EvergreenResourceStrings`, `Get-AdobeAcrobatReaderDC`, `Get-CitrixAppLayeringFeed`, `Get-CitrixApplicationDeliveryManagementFeed`, `Get-CitrixEndpointManagementFeed`, `Get-CitrixGatewayFeed`, `Get-CitrixHypervisorFeed`, `Get-CitrixLicensingFeed`, `Get-CitrixReceiverFeed`, `Get-CitrixSdwanFeed`, `Get-CitrixVirtualAppsDesktopsFeed`, `Get-CitrixWorkspaceApp`, `Get-CitrixWorkspaceAppFeed`, `Get-CitrixXenServerTools`, `Get-ControlUpAgent`, `Get-FileZilla`, `Get-GoogleChrome`, `Get-Greenshot`, `Get-LibreOffice`, `Get-MicrosoftPowerShellCore`, `Get-MicrosoftSsms`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-NotepadPlusPlus`, `Get-OracleVirtualBox`, `Get-PaintDotNet`, `Get-VideoLanVlcPlayer`, `Get-VMwareTools`, `Get-Zoom`
 
 {% include links.html %}
