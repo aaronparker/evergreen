@@ -61,22 +61,24 @@ Function Get-EvergreenApp {
     Begin {}
 
     Process {
-        # Build a path to the application function
+        
         try {
+            # Build a path to the application function
+            # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
             $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
         }
         catch {
             Throw "Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
         }
 
-        # Test that the function exists and run it to return output
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Test path: $Function."
+        #region Test that the function exists and run it to return output
         If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Function exists: $Function."
 
-            # Dot source the function so that we can use it
-            # Import function here rather than at module import to reduce IO and memory footprint as the module grows
-            # This also allows us to add an application manifest and function without having to re-load the module
             try {
+                # Dot source the function so that we can use it
+                # Import function here rather than at module import to reduce IO and memory footprint as the module grows
+                # This also allows us to add an application manifest and function without having to re-load the module
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Dot sourcing: $Function."
                 . $Function
             }
@@ -84,10 +86,11 @@ Function Get-EvergreenApp {
                 Throw "$($MyInvocation.MyCommand): Failed to load function: $Function."
             }
 
-            # Run the function to grab the application details; pass app manifest to the app function
             try {
+                # Run the function to grab the application details; pass the per-app manifest to the app function
+                # Application manifests are located under Evergreen/Manifests 
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Call: Get-$Name."
-                $Output = . Get-$Name -res (Get-FunctionResource -AppName $Name)
+                $Output = Get-$Name -res (Get-FunctionResource -AppName $Name)
             }
             catch {
                 Throw "Internal application function: $Function, failed with: $($_.Exception.Message)"
@@ -107,9 +110,11 @@ Function Get-EvergreenApp {
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
             Throw "Cannot find application script at: $Function."
         }
+        #endregion
     }
 
     End {
+        # Remove these variables for next run
         Remove-Variable -Name "Output", "Function"
     }
 }

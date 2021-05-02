@@ -86,8 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Site: https://stealthpuppy.com
 Author: Aaron Parker
 Twitter: @stealthpuppy
-Alias: Espero que este módulo no sea fea.
-;)
+Alias: Espero que este módulo no sea fea. ;)
 
 ## RELATED LINKS
 

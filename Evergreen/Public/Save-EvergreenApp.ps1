@@ -94,11 +94,11 @@ Function Save-EvergreenApp {
                 Throw "$($MyInvocation.MyCommand): Failed validating $Path."
             }
 
-            #region Download the file
+            # Download the file
             If ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
                 try {
                     
-                    # Download the file
+                    #region Download the file
                     $params = @{
                         Uri             = $Object.URI
                         OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
@@ -112,6 +112,7 @@ Function Save-EvergreenApp {
                         $params.ProxyCredential = $ProxyCredential
                     }
                     Invoke-WebRequest @params
+                    #endregion
                 }
                 catch [System.Exception] {
                     Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
@@ -125,8 +126,8 @@ Function Save-EvergreenApp {
                     }
                     Write-Output -InputObject $Output
                 }
+                #endregion
             }
-            #endregion
         }
     }
 

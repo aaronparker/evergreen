@@ -18,7 +18,7 @@ Function Get-FunctionResource {
     # Read the content from the manifest file
     If (Test-Path -Path $AppManifest) {
         try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$AppManifest]"
+            Write-Verbose -Message "$($MyInvocation.MyCommand): read application resource strings from [$AppManifest]"
             $content = Get-Content -Path $AppManifest -Raw -ErrorAction "Stop"
         }
         catch {
