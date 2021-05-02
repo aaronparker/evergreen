@@ -48,7 +48,7 @@ Function Get-EvergreenApp {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
                 # Application manifests are located under Evergreen/Manifests 
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Call: Get-$Name."
-                $Output = Get-$Name -res (Get-FunctionResource -AppName $Name)
+                $Output = & Get-$Name -res (Get-FunctionResource -AppName $Name)
             }
             catch {
                 Throw "Internal application function: $Function, failed with: $($_.Exception.Message)"
