@@ -90,4 +90,4 @@ Alias: Espero que este módulo no sea fea. ;)
 
 ## RELATED LINKS
 
-[https://stealthpuppy.com/Evergreen/find.html](https://stealthpuppy.com/Evergreen/find.html)
+[Find supported applications:](https://stealthpuppy.com/Evergreen/find.html)

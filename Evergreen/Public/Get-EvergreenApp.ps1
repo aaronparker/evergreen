@@ -1,48 +1,6 @@
 Function Get-EvergreenApp {
     <#
-        .SYNOPSIS
-            Returns the latest version and download link/s for an application supported by the module.
-
-        .DESCRIPTION
-            Queries the internal application functions and manifests included in the module to find the latest version and download link/s for the specified application.
-
-            The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.
-
-        .NOTES
-            Site: https://stealthpuppy.com
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-        
-        .LINK
-            https://stealthpuppy.com/Evergreen/use.html
-
-        .PARAMETER Name
-            The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.
-
-        .EXAMPLE
-            Get-EvergreenApp -Name "MicrosoftEdge"
-
-            Description:
-            Returns the current version and download URLs for Microsoft Edge.
-
-        .EXAMPLE
-            Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" }
-
-            Description:
-            Returns the current version and download URL for the Stable channel of the 64-bit release of Microsoft Edge.
-
-        .EXAMPLE
-            (Get-EvergreenApp -Name "MicrosoftOneDrive" | Where-Object { $_.Type -eq "Exe" -and $_.Ring -eq "Production" }) | `
-                Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
-
-            Description:
-            Returns the current version and download URL for the Production ring of Microsoft OneDrive and selects the latest version in the event that more that one release is returned.
-
-        .EXAMPLE
-            Get-EvergreenApp -Name "AdobeAcrobatReaderDC" | Where-Object { $_.Language -eq "English" -and $_.Architecture -eq "x86" }
-
-            Description:
-            Returns the current version and download URL that matches the English language, 32-bit release of Adobe Acrobat Reader DC.
+        Returns the latest version and download link/s for an application supported by the module.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/use.html")]

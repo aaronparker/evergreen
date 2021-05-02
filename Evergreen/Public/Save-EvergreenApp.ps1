@@ -1,20 +1,6 @@
 Function Save-EvergreenApp {
     <#
-        .SYNOPSIS
-            Saves target URLs passed to this function from Evergreen output to simplify downloads.
-
-        .NOTES
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-        
-        .LINK
-            https://stealthpuppy.com/Evergreen/save.html
-
-        .EXAMPLE
-            Get-EvergreenApp -Name AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
-
-            Description:
-            Downloads all of the URIs returned by 'Get-EvergreenApp -Name AdobeAcrobat' to C:\Temp\Adobe\<version>.
+        Saves target URLs passed to this function from Evergreen output to simplify downloads.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/save.html")]

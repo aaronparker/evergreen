@@ -180,4 +180,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[https://stealthpuppy.com/Evergreen/save.html](https://stealthpuppy.com/Evergreen/save.html)
+[Download application installers:](https://stealthpuppy.com/Evergreen/save.html)

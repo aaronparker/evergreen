@@ -1,40 +1,6 @@
 ﻿Function Find-EvergreenApp {
     <#
-        .SYNOPSIS
-            Outputs a table with the applications that Evergreen supports.
-
-        .DESCRIPTION
-            Outputs a table from the internal application functions and manifests to list the applications supported by Evergreen. 
-
-        .NOTES
-            Site: https://stealthpuppy.com
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-            Alias: Espero que este módulo no sea fea. ;)
-        
-        .LINK
-            https://stealthpuppy.com/Evergreen/find.html
-
-        .PARAMETER Name
-            The application name to return details for. This can be the entire application name or a portion thereof.
-
-        .EXAMPLE
-            Find-EvergreenApp
-
-            Description:
-            Returns a table with the all of the currently supported applications.
-
-        .EXAMPLE
-            Find-EvergreenApp -Name "Edge"
-
-            Description:
-            Returns a table with the all of the currently supported applications that match "Edge".
-
-        .EXAMPLE
-            Find-EvergreenApp -Name "Microsoft"
-
-            Description:
-            Returns a table with the all of the currently supported applications that match "Microsoft".
+        Outputs a table with the applications that Evergreen supports.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/find.html")]
