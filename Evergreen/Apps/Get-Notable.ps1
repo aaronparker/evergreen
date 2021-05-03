@@ -1,7 +1,7 @@
-Function Get-MicrosoftAzureStorageExplorer {
+Function Get-Notable {
     <#
         .SYNOPSIS
-            Returns the available Microsoft Azure Storage Explorer versions.
+            Returns the available Notable versions.
 
         .NOTES
             Author: Aaron Parker
