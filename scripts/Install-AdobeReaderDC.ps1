@@ -28,7 +28,7 @@ Start-Process -FilePath $exe.FullName -ArgumentList $res.Install.Virtual.Argumen
 
 # Run post install actions
 ForEach ($command in $res.Install.Virtual.PostInstall) {
-    Invoke-Command -ScriptBlock ($executioncontext.invokecommand.NewScriptBlock($command))
+    Invoke-Command -ScriptBlock ($ExecutionContext.InvokeCommand.NewScriptBlock($command))
 }
 
 # Update Adobe Reader
