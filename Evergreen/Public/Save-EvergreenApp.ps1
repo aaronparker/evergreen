@@ -14,10 +14,10 @@ Function Save-EvergreenApp {
         [ValidateScript( { If (Test-Path -Path $_ -PathType 'Container') { $True } Else { Throw "Cannot find path $_" } })]
         [System.String] $Path = (Resolve-Path -Path $PWD),
 
-        [Parameter(Mandatory = $False, Position = 3)]
+        [Parameter(Mandatory = $False, Position = 2)]
         [System.String] $Proxy,
 
-        [Parameter(Mandatory = $False, Position = 4)]
+        [Parameter(Mandatory = $False, Position = 3)]
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
@@ -107,10 +107,7 @@ Function Save-EvergreenApp {
                 #region Write the downloaded file path to the pipeline
                 If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
-                    $Output = [PSCustomObject] @{
-                        Path = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-                    }
-                    Write-Output -InputObject $Output
+                    Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
                 }
                 #endregion
             }
