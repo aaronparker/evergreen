@@ -19,7 +19,7 @@ Find-EvergreenApp [[-Name] <String>] [<CommonParameters>]
 
 ## DESCRIPTION
 
-Returns a table built from the internal application manifests to list the applications supported by Evergreen. The table includes the Name (the internal name used when querying for the application via Get-EvergreenApp), Application (typically the full vendor and application name) and Link (a URL hosting official vendor information about the application) properties.
+Returns a table built from the internal application manifests to list the applications supported by Evergreen. The table includes the Name (the internal name used when querying for the application via `Get-EvergreenApp`), Application (typically the full vendor and application name) and Link (a URL hosting official vendor information about the application) properties.
 
 ## EXAMPLES
 
@@ -86,7 +86,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Site: https://stealthpuppy.com
 Author: Aaron Parker
 Twitter: @stealthpuppy
-Alias: Espero que este módulo no sea fea. ;)
 
 ## RELATED LINKS
 

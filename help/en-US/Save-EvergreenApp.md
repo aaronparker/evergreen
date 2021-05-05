@@ -35,7 +35,7 @@ Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"
 ```
 
 Description:
-Downloads all of the URIs returned by Get-AdobeAcrobat to a folder structure below C:\Temp\Adobe\<version>.
+Downloads all of the URIs returned by `Get-AdobeAcrobat` to a folder structure below C:\Temp\Adobe\<version>.
 
 ## PARAMETERS
 

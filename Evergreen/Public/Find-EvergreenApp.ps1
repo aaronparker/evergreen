@@ -1,6 +1,6 @@
 ﻿Function Find-EvergreenApp {
     <#
-        Outputs a table with the applications that Evergreen supports.
+        .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/find.html")]

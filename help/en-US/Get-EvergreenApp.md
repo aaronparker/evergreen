@@ -80,7 +80,7 @@ Find-EvergreenApp -Name "Teams" | Get-EvergreenApp
 ```
 
 Description:
-Lists the available applications matching the string "Teams" (for example, Microsoft Teams), and passes the output to Get-EvergreenApp, which will query the matching application name. Note that Get-EvergreenApp will only process the first application returned on the pipeline and not all multiple matching applications.
+Lists the available applications matching the string "Teams" (for example, Microsoft Teams), and passes the output to `Get-EvergreenApp`, which will query the matching application name. Note that `Get-EvergreenApp` will only process the first application returned on the pipeline and not all multiple matching applications.
 
 ### EXAMPLE 6
 
@@ -89,14 +89,14 @@ Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams
 ```
 
 Description:
-Get-EvergreenApp returns the details for the latest version of Microsoft Teams which is passed via the pipeline to Save-EvergreenApp. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.
+`Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.
 
 ## PARAMETERS
 
 ### -Name
 
 The application name to return details for.
-The list of supported applications can be found with Find-EvergreenApp.
+The list of supported applications can be found with `Find-EvergreenApp`.
 
 ```yaml
 Type: String

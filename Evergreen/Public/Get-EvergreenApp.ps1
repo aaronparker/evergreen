@@ -1,6 +1,6 @@
 Function Get-EvergreenApp {
     <#
-        Returns the latest version and download link/s for an application supported by the module.
+        .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/use.html")]

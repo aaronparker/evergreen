@@ -1,6 +1,6 @@
 Function Save-EvergreenApp {
     <#
-        Saves target URLs passed to this function from Evergreen output to simplify downloads.
+        .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/save.html")]

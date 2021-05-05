@@ -1,6 +1,6 @@
 Function Export-EvergreenManifest {
     <#
-        Exports an Evergreen application JSON manifest as a hashtable.
+        .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
