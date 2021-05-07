@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2105.363
 
 * Adds `ImageGlass`, `MicrosoftAzureStorageExplorer`, `Nomacs`, `Notable`, `OBSStudio`
 * Updates URL used by `TeamViewer` to return the current version [#147](https://github.com/aaronparker/Evergreen/issues/147)
