@@ -79,7 +79,7 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>https://stealthpuppy.com/Evergreen/</maml:linkText>
+        <maml:linkText>Getting started with Evergreen:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/Evergreen/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -177,7 +177,7 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>https://stealthpuppy.com/Evergreen/find.html</maml:linkText>
+        <maml:linkText>Find supported applications:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/Evergreen/find.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -308,7 +308,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>https://stealthpuppy.com/Evergreen/use.html</maml:linkText>
+        <maml:linkText>Use Evergreen:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/Evergreen/use.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -319,13 +319,13 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <command:verb>Save</command:verb>
       <command:noun>EvergreenApp</command:noun>
       <maml:description>
-        <maml:para>Saves target URLs passed to this function from Evergreen output to simplify downloads.</maml:para>
+        <maml:para>Downloads target URIs passed to this function from `Get-EvergreenApp` into a folder structure.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Saves target URLs passed to this function from Evergreen output to into a folder structure below -Path using the properties from the object passed from `Get-EvergreenApp`.</maml:para>
-      <maml:para>`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.</maml:para>
-      <maml:para>This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself.</maml:para>
+      <maml:para>Saves target URLs passed to this function from `Get-EvergreenApp` output to into a folder structure below -Path using the properties from the object passed to the function.</maml:para>
+      <maml:para>`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track, Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.</maml:para>
+      <maml:para>This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself or deal with other functions to download the file.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -533,13 +533,13 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\&lt;version&gt;.</maml:para>
+          <maml:para>Description: Downloads all of the URIs returned by Get-AdobeAcrobat to a folder structure below C:\Temp\Adobe&lt;version&gt;.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>https://stealthpuppy.com/Evergreen/save.html</maml:linkText>
+        <maml:linkText>Download application installers:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/Evergreen/save.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>

@@ -7,6 +7,13 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Adds `ImageGlass`, `MicrosoftAzureStorageExplorer`, `Nomacs`, `Notable`, `OBSStudio`
+* Updates URL used by `TeamViewer` to return the current version [#147](https://github.com/aaronparker/Evergreen/issues/147)
+* Updates module to use external help MAML-based help with [platyPS](https://github.com/PowerShell/platyPS) to make updating help content easier
+* General code improvements
+
 ## 2104.355
 
 * Changes `FoxitReader` to return MSI installers instead of EXEs. Removes Elex, Portuguese (Portugal), and Turkish language support from this application because the installers returned are out of date.

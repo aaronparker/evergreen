@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Saves target URLs passed to this function from Evergreen output to simplify downloads.
+Downloads target URIs passed to this function from `Get-EvergreenApp` into a folder structure.
 
 ## SYNTAX
 
@@ -20,11 +20,11 @@ Save-EvergreenApp [-InputObject] <PSObject> [[-Path] <String>] [[-Proxy] <String
 
 ## DESCRIPTION
 
-Saves target URLs passed to this function from Evergreen output to into a folder structure below -Path using the properties from the object passed from `Get-EvergreenApp`.
+Saves target URLs passed to this function from `Get-EvergreenApp` output to into a folder structure below -Path using the properties from the object passed to the function.
 
-`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.
+`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track, Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.
 
-This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself.
+This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself or deal with other functions to download the file.
 
 ## EXAMPLES
 
@@ -35,7 +35,7 @@ Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"
 ```
 
 Description:
-Downloads all of the URIs returned by Get-AdobeAcrobat to C:\Temp\Adobe\\\<version\>.
+Downloads all of the URIs returned by `Get-AdobeAcrobat` to a folder structure below C:\Temp\Adobe\<version>.
 
 ## PARAMETERS
 
@@ -180,4 +180,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[https://stealthpuppy.com/Evergreen/save.html](https://stealthpuppy.com/Evergreen/save.html)
+[Download application installers:](https://stealthpuppy.com/Evergreen/save.html)

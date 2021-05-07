@@ -18,9 +18,9 @@ Function Get-GitHubRepoRelease {
             })]
         [System.String] $Uri,
 
-        [Parameter(Mandatory = $True, Position = 1)]
+        [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $MatchVersion,
+        [System.String] $MatchVersion = "(\d+(\.\d+){1,4}).*",
 
         [Parameter(Mandatory = $False, Position = 2)]
         [ValidateNotNullOrEmpty()]

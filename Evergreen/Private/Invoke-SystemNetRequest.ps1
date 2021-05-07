@@ -8,24 +8,30 @@ Function Invoke-SystemNetRequest {
     param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $Uri
+        [System.String] $Uri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.Int32] $MaximumRedirection = 3
     )
     
-    Try {
+    try {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
-        $httpWebRequest.MaximumAutomaticRedirections = 3
+        $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
+        $httpWebRequest.UseDefaultCredentials = $true
         $webResponse = $httpWebRequest.GetResponse()
         $responseStream = $webResponse.GetResponseStream()
         $streamReader = New-Object -TypeName "System.IO.StreamReader" $responseStream
         $result = $streamReader.ReadToEnd()
         Write-Output -InputObject $result
     }
-    Catch [System.Exception] {
+    catch [System.Exception] {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
         Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    Finally {
+    finally {
         $webResponse.Dispose()
     }
 }

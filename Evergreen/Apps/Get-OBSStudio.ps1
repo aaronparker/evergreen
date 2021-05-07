@@ -1,0 +1,51 @@
+﻿Function Get-OBSStudio {
+    <#
+        .SYNOPSIS
+            Get the current version and download URI for OBS Studio.
+
+        .NOTES
+            Site: https://stealthpuppy.com
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
+    #>
+    [CmdletBinding(SupportsShouldProcess = $False)]
+    [OutputType([System.Management.Automation.PSObject])]
+    param (
+        [Parameter(Mandatory = $False, Position = 0)]
+        [ValidateNotNull()]
+        [System.Management.Automation.PSObject]
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
+
+        [Parameter(Mandatory = $False, Position = 1)]
+        [ValidateNotNull()]
+        [System.String] $Filter
+    )
+
+    # Query the update feed
+    $params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
+    }
+    $Updates = Invoke-RestMethodWrapper @params
+
+    # Output the object to the pipeline
+    If ($Null -ne $Updates) {
+        ForEach ($Update in $Updates) {
+
+            # Build the latest version number
+            $Version = "$($Update.version_major).$($Update.version_minor).$($Update.version_patch)"
+
+            # Build the output object
+            ForEach ($Architecture in $res.Get.Download.Architectures) {            
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Version
+                    Architecture = $Architecture
+                    URI          = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText.FileName, $res.Get.Download.FileName `
+                        -replace $res.Get.Download.ReplaceText.Version, $Version `
+                        -replace $res.Get.Download.ReplaceText.Architecture, $Architecture
+                }
+                Write-Output -InputObject $PSObject
+            }
+        }
+    }
+}

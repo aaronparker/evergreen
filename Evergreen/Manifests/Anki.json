@@ -4,7 +4,7 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/ankitects/anki/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.tar.bz2$|\\.dmg$",
+		"MatchFileTypes": "\\.exe$|\\.msi$",
 		"VersionTag": "tag_name"
 	},
 	"Install": {

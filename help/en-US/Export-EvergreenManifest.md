@@ -70,4 +70,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[https://stealthpuppy.com/Evergreen/](https://stealthpuppy.com/Evergreen/)
+[Getting started with Evergreen:](https://stealthpuppy.com/Evergreen/)

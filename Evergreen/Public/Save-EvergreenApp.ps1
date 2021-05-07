@@ -1,20 +1,6 @@
 Function Save-EvergreenApp {
     <#
-        .SYNOPSIS
-            Saves target URLs passed to this function from Evergreen output to simplify downloads.
-
-        .NOTES
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-        
-        .LINK
-            https://stealthpuppy.com/Evergreen/save.html
-
-        .EXAMPLE
-            Get-EvergreenApp -Name AdobeAcrobat | Save-EvergreenApp -Path "C:\Temp\Adobe"
-
-            Description:
-            Downloads all of the URIs returned by 'Get-EvergreenApp -Name AdobeAcrobat' to C:\Temp\Adobe\<version>.
+        .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/Evergreen/save.html")]
@@ -28,10 +14,10 @@ Function Save-EvergreenApp {
         [ValidateScript( { If (Test-Path -Path $_ -PathType 'Container') { $True } Else { Throw "Cannot find path $_" } })]
         [System.String] $Path = (Resolve-Path -Path $PWD),
 
-        [Parameter(Mandatory = $False, Position = 3)]
+        [Parameter(Mandatory = $False, Position = 2)]
         [System.String] $Proxy,
 
-        [Parameter(Mandatory = $False, Position = 4)]
+        [Parameter(Mandatory = $False, Position = 3)]
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
@@ -94,11 +80,11 @@ Function Save-EvergreenApp {
                 Throw "$($MyInvocation.MyCommand): Failed validating $Path."
             }
 
-            #region Download the file
+            # Download the file
             If ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
                 try {
                     
-                    # Download the file
+                    #region Download the file
                     $params = @{
                         Uri             = $Object.URI
                         OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
@@ -112,6 +98,7 @@ Function Save-EvergreenApp {
                         $params.ProxyCredential = $ProxyCredential
                     }
                     Invoke-WebRequest @params
+                    #endregion
                 }
                 catch [System.Exception] {
                     Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
@@ -120,13 +107,10 @@ Function Save-EvergreenApp {
                 #region Write the downloaded file path to the pipeline
                 If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
-                    $Output = [PSCustomObject] @{
-                        Path = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-                    }
-                    Write-Output -InputObject $Output
+                    Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
                 }
+                #endregion
             }
-            #endregion
         }
     }
 
