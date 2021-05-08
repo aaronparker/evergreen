@@ -22,6 +22,9 @@ Function Save-EvergreenApp {
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
         [Parameter(Mandatory = $False)]
+        [System.Management.Automation.SwitchParameter] $Force,
+
+        [Parameter(Mandatory = $False)]
         [System.Management.Automation.SwitchParameter] $NoProgress
     )
 
@@ -82,26 +85,28 @@ Function Save-EvergreenApp {
 
             # Download the file
             If ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
-                try {
-                    
-                    #region Download the file
-                    $params = @{
-                        Uri             = $Object.URI
-                        OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-                        UseBasicParsing = $True
-                        ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                If ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile))) {
+
+                    try {                    
+                        #region Download the file
+                        $params = @{
+                            Uri             = $Object.URI
+                            OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
+                            UseBasicParsing = $True
+                            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                        }
+                        If ($PSBoundParameters.ContainsKey("Proxy")) {
+                            $params.Proxy = $Proxy
+                        }
+                        If ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                            $params.ProxyCredential = $ProxyCredential
+                        }
+                        Invoke-WebRequest @params
+                        #endregion
                     }
-                    If ($PSBoundParameters.ContainsKey("Proxy")) {
-                        $params.Proxy = $Proxy
+                    catch [System.Exception] {
+                        Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
                     }
-                    If ($PSBoundParameters.ContainsKey("ProxyCredential")) {
-                        $params.ProxyCredential = $ProxyCredential
-                    }
-                    Invoke-WebRequest @params
-                    #endregion
-                }
-                catch [System.Exception] {
-                    Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
                 }
 
                 #region Write the downloaded file path to the pipeline
@@ -115,7 +120,11 @@ Function Save-EvergreenApp {
     }
 
     End {
-        Remove-Variable -Name "Output", "params", "OutPath", "OutFile"
+
         Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
+        If ($PSCmdlet.ShouldProcess("Remove variables")) {
+            If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" }
+            Remove-Variable -Name "OutPath", "OutFile"
+        }
     }
 }

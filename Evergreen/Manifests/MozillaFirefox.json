@@ -36,12 +36,13 @@
                 "fr",
                 "it",
                 "ja",
+                "nb-NO",
                 "nl",
                 "zh-CN",
-				"zh-TW",
-				"ar",
-				"hi-IN",
-				"ru"
+                "zh-TW",
+                "ar",
+                "hi-IN",
+                "ru"
             ],
             "FullLanguageList": [
                 "en-US",

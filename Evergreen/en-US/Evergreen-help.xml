@@ -94,7 +94,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns a table built from the internal application manifests to list the applications supported by Evergreen. The table includes the Name (the internal name used when querying for the application via Get-EvergreenApp), Application (typically the full vendor and application name) and Link (a URL hosting official vendor information about the application) properties.</maml:para>
+      <maml:para>Returns a table built from the internal application manifests to list the applications supported by Evergreen. The table includes the Name (the internal name used when querying for the application via `Get-EvergreenApp`), Application (typically the full vendor and application name) and Link (a URL hosting official vendor information about the application) properties.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -149,7 +149,7 @@
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy Alias: Espero que este módulo no sea fea. ;)</maml:para>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -202,7 +202,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.</maml:para>
+            <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -217,7 +217,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>The application name to return details for. The list of supported applications can be found with Find-EvergreenApp.</maml:para>
+          <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -295,14 +295,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 5 --------------------------</maml:title>
         <dev:code>Find-EvergreenApp -Name "Teams" | Get-EvergreenApp</dev:code>
         <dev:remarks>
-          <maml:para>Description: Lists the available applications matching the string "Teams" (for example, Microsoft Teams), and passes the output to Get-EvergreenApp, which will query the matching application name. Note that Get-EvergreenApp will only process the first application returned on the pipeline and not all multiple matching applications.</maml:para>
+          <maml:para>Description: Lists the available applications matching the string "Teams" (for example, Microsoft Teams), and passes the output to `Get-EvergreenApp`, which will query the matching application name. Note that `Get-EvergreenApp` will only process the first application returned on the pipeline and not all multiple matching applications.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 6 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Get-EvergreenApp returns the details for the latest version of Microsoft Teams which is passed via the pipeline to Save-EvergreenApp. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.</maml:para>
+          <maml:para>Description: `Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -413,6 +413,17 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces this function to download the target application installers from the URI property even if they already exist in the target directory.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -502,6 +513,18 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Forces this function to download the target application installers from the URI property even if they already exist in the target directory.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -533,7 +556,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Downloads all of the URIs returned by Get-AdobeAcrobat to a folder structure below C:\Temp\Adobe&lt;version&gt;.</maml:para>
+          <maml:para>Description: Downloads all of the URIs returned by `Get-AdobeAcrobat` to a folder structure below C:\Temp\Adobe&lt;version&gt;.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
