@@ -7,10 +7,16 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Fixes an issue with `Remove-Variable` in `Save-EvergreenApp` [#149](https://github.com/aaronparker/Evergreen/issues/149)
+* Updates `Save-EvergreenApp` to skip downloading a file if it already exists and adds support for `-Force`
+
 ## 2105.363
 
 * Adds `ImageGlass`, `MicrosoftAzureStorageExplorer`, `Nomacs`, `Notable`, `OBSStudio`
 * Updates URL used by `TeamViewer` to return the current version [#147](https://github.com/aaronparker/Evergreen/issues/147)
+* Updates `Save-EvergreenApp` to output the result of `Get-ChildItem` as the output to the pipeline
 * Updates module to use external help MAML-based help with [platyPS](https://github.com/PowerShell/platyPS) to make updating help content easier
 * General code improvements
 
