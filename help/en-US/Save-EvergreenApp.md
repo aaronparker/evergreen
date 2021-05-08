@@ -13,9 +13,9 @@ Downloads target URIs passed to this function from `Get-EvergreenApp` into a fol
 
 ## SYNTAX
 
-```powershell
+```
 Save-EvergreenApp [-InputObject] <PSObject> [[-Path] <String>] [[-Proxy] <String>]
- [[-ProxyCredential] <PSCredential>] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ProxyCredential] <PSCredential>] [-Force] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,8 +156,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### -Force
 
+Forces this function to download the target application installers from the URI property even if they already exist in the target directory.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
