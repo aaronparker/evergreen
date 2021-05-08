@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2105.366
 
 * Fixes an issue with `Remove-Variable` in `Save-EvergreenApp` [#149](https://github.com/aaronparker/Evergreen/issues/149)
 * Updates `Save-EvergreenApp` to skip downloading a file if it already exists and adds support for `-Force`
