@@ -9,8 +9,10 @@ summary: Changes, updates, fixes and breaking changes in each Evergreen version.
 ---
 ## 2105.366
 
-* Fixes an issue with `Remove-Variable` in `Save-EvergreenApp` [#149](https://github.com/aaronparker/Evergreen/issues/149)
+* Fixes an issue with `Remove-Variable` in `Save-EvergreenApp` [Fix #149](https://github.com/aaronparker/Evergreen/issues/149)
 * Updates `Save-EvergreenApp` to skip downloading a file if it already exists and adds support for `-Force`
+* Updates help for `Save-EvergreenApp`
+* Adds `nb-NO` language support to `MozillaFirefox` [Fix #146](https://github.com/aaronparker/Evergreen/issues/146)
 
 ## 2105.363
 
