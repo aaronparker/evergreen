@@ -1,6 +1,6 @@
 {
     "Name": "Microsoft Remote Desktop",
-    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-7-10",
+    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10",
     "Get": {
         "Download": {
             "Uri": {
