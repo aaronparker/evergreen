@@ -18,9 +18,26 @@ Via `Get-EvergreenApp` each Evergreen application returns at least two propertie
 * `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
 * `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
-## Documentation
+## How Evergreen Works
 
-For full documentation on the module, see the documentation located here: [https://stealthpuppy.com/Evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
+**Application version and download links are only pulled from official sources (vendor's web site, vendor's application update API, GitHub, SourceForge etc.) and never a third party**.
+
+Evergreen uses an approach that returns at least the version number and download URI for applications programmatically - thus for each run an Evergreen function it should return the latest version and download link.
+
+Evergreen uses several strategies to return the latest version of software:
+
+1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g., [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Apps/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Apps/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
+2. Repository APIs - repo hosts including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g., [Atom](/Evergreen/Apps/Get-Atom.ps1), [Notepad++](/Evergreen/Apps/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Apps/Get-WinMerge.ps1)
+3. Web page queries - often a vendor download pages will include a query that returns JSON when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g., [Adobe Acrobat Reader DC](/Evergreen/Apps/Get-AdobeAcrobatReaderDC.ps1)
+4. Static URLs - some vendors provide static or evergreen URLs to their application installers. These URLs often provide additional information in the URL that can be used to determine the application version and can be resolved to the actual target URL - e.g., [Microsoft FSLogix Apps]((/Evergreen/Apps/Get-MicrosoftFSLogixApps.ps1)) or [Zoom]((/Evergreen/Apps/Get-Zoom.ps1))
+
+## What Evergreen Doesn't Do
+
+Evergreen does not scape HTML - scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Pull requests that use web page scraping will be closed.
+
+While the use of RegEx to determine application properties (particularly version numbers) is used for some applications, this approach is not preferred, if possible.
+
+For additional applications where the only recourse it to use web page scraping, see the [Nevergreen](https://github.com/DanGough/Nevergreen) project.
 
 ## Why
 
@@ -28,29 +45,9 @@ There are several community and commercial products that manage application depl
 
 Evergreen's focus is on integration for PowerShell scripts to provide product version numbers and download URLs. Ideal for use with the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment, creating applications packages in Microsoft Intune, or with [Packer](https://www.packer.io/) to create evergreen machine images in Azure or AWS.
 
-## How
+## Documentation
 
-**Application version and download links are only pulled from official sources (vendor web site, GitHub, SourceForge etc.) and never a third party**.
-
-Wherever possible, Evergreen uses an approach that returns at least the version number and download URI for applications programmatically - thus for each run an Evergreen function it should return the latest version and download link.
-
-Scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Evergreen instead uses approaches that should be less prone to failure by querying an API wherever possible. Evergreen uses several strategies to return the latest version of software:
-
-1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g. [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Apps/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Apps/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
-2. Repository APIs - repo hosts including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g. [Atom](/Evergreen/Apps/Get-Atom.ps1), [Notepad++](/Evergreen/Apps/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Apps/Get-WinMerge.ps1)
-3. Web page queries - often a vendor download pages will include a query when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g. [Microsoft FSLogix Apps]((/Evergreen/Apps/Get-MicrosoftFSLogixApps.ps1)) or [Zoom]((/Evergreen/Apps/Get-Zoom.ps1))
-
-## PowerShell Support
-
-Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
-
-## Who
-
-This module is maintained by the following community members
-
-* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
-* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
-* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
+Documentation for Evergreen, including usage examples, is located here: [https://stealthpuppy.com/Evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
 
 ## Versioning
 
@@ -58,9 +55,13 @@ The module uses a version notation that follows: YearMonth.Build. It is expected
 
 ## Installing the Module
 
+### PowerShell Support
+
+Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
+
 ### Install from the PowerShell Gallery
 
-The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). This is the best way to install Evergreen.
+The Evergreen module is published to the PowerShell Gallery and can be found here: [Evergreen](https://www.powershellgallery.com/packages/Evergreen/). This is the best and recommend method to install Evergreen.
 
 The module can be installed from the gallery with:
 
@@ -100,6 +101,14 @@ Once installation is complete, you can validate that the module exists by runnin
 ```powershell
 Import-Module Evergreen
 ```
+
+## Who
+
+This module is maintained by the following community members
+
+* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
+* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
+* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
