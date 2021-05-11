@@ -5,8 +5,12 @@ tags: [changelog]
 sidebar: home_sidebar
 toc: false
 permalink: changelog.html
-summary: Changes, updates, fixes and breaking changes in each Evergreen version.
+summary: Changes, updates, fixes, and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Adds `Audacity`, `Wireshark` ([#153](https://github.com/aaronparker/Evergreen/issues/153)), `LogMeInGoToMeeting` ([#152](https://github.com/aaronparker/Evergreen/issues/152)), `LogMeInGoToOpener`
+
 ## 2105.366
 
 * Fixes an issue with `Remove-Variable` in `Save-EvergreenApp` [Fix #149](https://github.com/aaronparker/Evergreen/issues/149)
