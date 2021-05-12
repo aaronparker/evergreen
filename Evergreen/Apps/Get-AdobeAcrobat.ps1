@@ -24,6 +24,7 @@ Function Get-AdobeAcrobat {
     ForEach ($Product in $res.Get.Update.Uri.GetEnumerator()) {
         ForEach ($item in $res.Get.Update.Uri.($Product.Name).GetEnumerator()) {
 
+            # Find the latest version number
             $params = @{
                 Uri         = $res.Get.Update.Uri.($Product.Name)[$item.key]
                 ContentType = $res.Get.Update.ContentType
@@ -32,21 +33,47 @@ Function Get-AdobeAcrobat {
 
             # Construct update download list
             If ($Null -ne $Content) {
-            
+
                 # Format version string
                 $versionString = $Content.Replace(".", "")
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Update found: [$($Content)] and converted to version string: [$($versionString)]."
 
                 # Build the output object
-                ForEach ($Url in $res.Get.Download.Uri.($Product.Name).GetEnumerator()) {
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $Content
-                        Type     = $res.Get.Download.Type
-                        Product  = $Product.Name
-                        Track    = $item.Name
-                        Language = $Url.Name
-                        URI      = ($res.Get.Download.Uri.($Product.Name)[$Url.key] -replace $res.Get.Download.ReplaceText.Version, $versionString) -replace $res.Get.Download.ReplaceText.Track, $item.Name
+                ForEach ($Architecture in $res.Get.Download.Uri.($Product.Name).GetEnumerator()) {
+                    ForEach ($Url in $res.Get.Download.Uri.($Product.Name).($Architecture.Name).GetEnumerator()) {
+
+                        # Filter the output object for combinations that don't exist
+                        [System.Boolean] $Build = $True
+                        If (($Architecture.Name -eq "x64") -and ($item.Name -notin $res.Get.Download.Filter.x64)) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Skip x64 architecture for track: [$($item.Name)]."
+                            [System.Boolean] $Build = $False
+                        }
+                        If (($Product.Name -eq "Reader") -and ($Url.Name -eq "Neutral") -and ($item.Name -in $res.Get.Download.Filter.Neutral)) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Skip Neutral language for track: [$($item.Name)]."
+                            [System.Boolean] $Build = $False
+                        }
+
+                        If ($Build) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Construct object for: [$($Product.Name) $($item.Name) $($Url.Name) $($Architecture.Name)]."
+
+                            # Construct the URI property
+                            $Uri = ($res.Get.Download.Uri.($Product.Name).($Architecture.Name)[$Url.key] `
+                                    -replace $res.Get.Download.ReplaceText.Version, $versionString) `
+                                -replace $res.Get.Download.ReplaceText.Track, $item.Name
+
+                            # Build the object
+                            $PSObject = [PSCustomObject] @{
+                                Version      = $Content
+                                Type         = $res.Get.Download.Type
+                                Product      = $Product.Name
+                                Track        = $item.Name
+                                Language     = $Url.Name
+                                Architecture = $Architecture.Name
+                                URI          = $Uri
+                            }
+                            Write-Output -InputObject $PSObject
+                        }
                     }
-                    Write-Output -InputObject $PSObject
                 }
             }
             Else {

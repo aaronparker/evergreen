@@ -11,6 +11,9 @@
                     "DC": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/acrobat/current_version.txt"
                 },
                 "Reader": {
+                    "2015": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2015/reader/current_version.txt",
+                    "2017": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2017/reader/current_version.txt",
+                    "2020": "https://armmf.adobe.com/arm-manifests/mac/Acrobat2020/reader/current_version.txt",
                     "DC": "https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt"
                 }
             },
@@ -19,12 +22,30 @@
         "Download": {
             "Uri": {
                 "Acrobat": {
-                    "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/Acrobat#trackUpd#version.msp"
+                    "x86": {
+                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/Acrobat#trackUpd#version.msp"
+                    },
+                    "x64": {
+                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/Acrobat#trackx64Upd#version.msp"
+                    }
                 },
                 "Reader": {
-                    "Neutral": "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version.msp",
-                    "Multi": "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/#version/AcroRdrDCUpd#version_MUI.msp"
+                    "x86": {
+                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat#track/#version/AcroRdr#trackUpd#version.msp",
+                        "Multi": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat#track/#version/AcroRdr#trackUpd#version_MUI.msp"
+                    },
+                    "x64": {
+                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/AcroRdr#trackx64Upd#version.msp"
+                    }
                 }
+            },
+            "Filter": {
+                "x64": "DC",
+                "Neutral": [
+                    "2015",
+                    "2017",
+                    "2020"
+                ]
             },
             "ReplaceText": {
                 "Version": "#version",
