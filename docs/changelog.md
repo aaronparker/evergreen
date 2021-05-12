@@ -10,6 +10,10 @@ summary: Changes, updates, fixes, and breaking changes in each Evergreen version
 ## VERSION
 
 * Adds `Audacity`, `Wireshark` ([#153](https://github.com/aaronparker/Evergreen/issues/153)), `LogMeInGoToMeeting` ([#152](https://github.com/aaronparker/Evergreen/issues/152)), `LogMeInGoToOpener`
+* Updates `AdobeAcrobat` to include Reader updates for `2015`, `2017`, `2020`
+* Updates `AdobeAcrobat` to include 64-bit updates for Reader and Acrobat DC
+* BREAKING CHANGES
+  * Adds the `Architecture` property to `AdobeAcrobat`
 
 ## 2105.366
 
