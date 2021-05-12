@@ -21,7 +21,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
-        $MatchVersions = "(\d+(\.\d+){1,4}).*|(\\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
+        $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*"
     }
 
     Context "Validate 'Get-EvergreenApp works with: <application>." {
