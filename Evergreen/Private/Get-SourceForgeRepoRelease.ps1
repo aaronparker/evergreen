@@ -56,26 +56,13 @@
         $Version = "Unknown"
     }
 
-    # Get the downloads XML feed
-    $iwcParams = @{
+    # Get the downloads XML feed and select the latest item via the $Version value
+    $params = @{
         Uri         = "$($Download.Feed)/$($Download.Folder)"
         ContentType = $Download.ContentType
-        Raw         = $True
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
-
-    # Convert to an XML object
-    Try {
-        [System.XML.XMLDocument] $xmlDocument = $Content
-    }
-    Catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to convert feed into an XML object."
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-    }
-        
-    # Select the required node/s from the XML feed
-    $nodes = Select-Xml -Xml $xmlDocument -XPath $Download.XPath | Select-Object –ExpandProperty "node"
-    $fileItems = $nodes | Select-Object -ExpandProperty $Download.FilterProperty | Where-Object { $_ -match $Version }
+    $Content = Invoke-RestMethodWrapper @params
+    $fileItems = $Content | Select-Object -ExpandProperty $Download.FilterProperty | Where-Object { $_ -match $Version }
 
     ForEach ($item in $fileItems) {
         try {
