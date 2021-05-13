@@ -10,7 +10,7 @@ Evergreen includes the function `Save-EvergreenApp` that simplifies downloading 
 
 All applications will return at least a `Version` and `URI` property with many returning additional properties including `Architecture`, `Language`, `Type`, `Ring`, `Channel` and `Release`, dependent on the target application. Additionally, the installer file name is typically determined dynamically  with the `URI` property.
 
-So to retrieve and download an application installer, we need to use code similar to the following the filters for the specific download and determines the file name before using `Invoke-WebRequest` to download the file.
+So to retrieve and download an application installer, we need to use code similar to the following that the filters for the required download and determines the file name before using `Invoke-WebRequest` to download the file.
 
 ```powershell
 $Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
@@ -62,9 +62,19 @@ The `-Name` parameter is used to specify the application name to return details 
 
 ### Path
 
+The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.
+
 ### Verbose
 
 The `-Verbose` parameter can be useful for observing application downloads and save paths, including troubleshooting when the expected application details are not returned. When using the `-Verbose` parameter, `Invoke-WebRequest` will show download progress which significantly impacts download speed. To suppress download progress, add the `-NoProgress` switch parameter as well.
+
+### -NoProgress
+
+`Save-EvergreenApp` uses `Invoke-WebRequest` to download target application installers. Download progress is suppressed by default for faster downloads; however, when `-Verbose` is used, download progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.
+
+### -Force
+
+Forces this function to download the target application installers from the URI property even if they already exist in the target directory.
 
 ## Alias
 

@@ -23,11 +23,11 @@ The folder structure created by `Save-EvergreenApp` uses a static set of propert
 
 ### 7zip
 
-The 32-bit installers returned by `7Zip` link to a SourceForge download page instead of the file directly.
+The 32-bit installers returned by `7Zip` link to a SourceForge download page instead of the file directly. These installers can be downloaded by `Invoke-WebRequest` by setting the UserAgent to the [Googlebot](https://github.com/aaronparker/Evergreen/issues/124#issuecomment-839447242).
 
 ### AdobeAcrobat
 
-Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurance.
+Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
 
 The determine the current update version of `AdobeAcrobat`, the URL for macOS updates is used, for example: [https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt](https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt). This provides a simple text lookup of the latest version number.
 
