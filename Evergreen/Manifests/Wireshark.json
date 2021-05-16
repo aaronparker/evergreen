@@ -10,17 +10,21 @@
             "UserAgent": "Wireshark/3.4.5 WinSparkle/0.5.7 (Win64)"
         },
         "Download": {
-            "Uri": ""
+            "Uri": "",
+            "FileTypes": [
+                "exe",
+                "msi"
+            ]
         }
     },
     "Install": {
         "Setup": "Wireshark*.exe",
         "Physical": {
-            "Arguments": "",
+            "Arguments": "/S",
             "PostInstall": []
         },
         "Virtual": {
-            "Arguments": "",
+            "Arguments": "/S",
             "PostInstall": []
         }
     }
