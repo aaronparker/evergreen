@@ -7,6 +7,11 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes, and breaking changes in each Evergreen version.
 ---
+## VERSION
+
+* Adds `CiscoWebEx` ([#141](https://github.com/aaronparker/Evergreen/issues/141)), `VeraCrypt` ([#160](https://github.com/aaronparker/Evergreen/issues/160))
+* Updates internal function `Get-SourceForgeRepoRelease` with improvements to find releases and download URIs
+
 ## 2105.371
 
 * Adds `Audacity`, `Wireshark` ([#153](https://github.com/aaronparker/Evergreen/issues/153)), `LogMeInGoToMeeting` ([#152](https://github.com/aaronparker/Evergreen/issues/152)), `LogMeInGoToOpener`

@@ -20,7 +20,7 @@
         [System.String] $MatchVersion
     )
 
-    # retrieve best release json
+    # Retrieve best release json
     try {
         $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }
@@ -47,7 +47,7 @@
         }
     }
 
-    # Find version number
+    # Find version number and the releases folder
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Capture version number from: $($bestRelease.platform_releases.windows.filename)."
         $Filename = Split-Path -Path $bestRelease.platform_releases.windows.filename -Leaf
@@ -67,9 +67,12 @@
         ContentType = $Download.ContentType
     }
     $Content = Invoke-RestMethodWrapper @params
+
+    # Filter items for file types that we've included in the manifest
     $fileItems = $Content | Where-Object { ($_.link -replace $Download.ReplaceText.Link, "") -match $Download.MatchFileTypes }
     Write-Verbose -Message "$($MyInvocation.MyCommand): found $($fileItems.Count) items."
 
+    # For each filtered file, build a release object
     ForEach ($item in $fileItems) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $($item.link)."
         $Url = "$($Download.Uri)$($item.description.'#cdata-section')" -replace " ", "%20"
