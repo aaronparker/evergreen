@@ -16,12 +16,12 @@ Function Get-Architecture {
         "x86_64" { $architecture = "x64"; Break }
         "x64" { $architecture = "x64"; Break }
         "64-bit" { $architecture = "x64"; Break }
-        "32-bit" { $architecture = "x86"; Break }
         "64bit" { $architecture = "x64"; Break }
+        "32-bit" { $architecture = "x86"; Break }
         "32bit" { $architecture = "x86"; Break }
+        "x32" { $architecture = "x86"; Break }
         "-x86" { $architecture = "x86"; Break }
         "x86" { $architecture = "x86"; Break }
-        "fxdependent" { $architecture = "fxdependent" }
         Default {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Architecture not found in $String, defaulting to x86."
             $architecture = "x86"
