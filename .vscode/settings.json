@@ -1,10 +1,12 @@
 {
     "files.encoding": "utf8bom",
     "cSpell.words": [
+        "Foxit",
         "Karakun",
         "Sobject",
         "Wireshark",
         "currentversion",
-        "msixbinary"
+        "msixbinary",
+        "notin"
     ]
 }

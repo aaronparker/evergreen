@@ -28,11 +28,12 @@ Function Get-Fork {
     $Content = Invoke-RestMethodWrapper @params
 
     If ($Content) {
-        # Parse the returned content and match the version number
         try {
+            # Parse the returned content and match the version number
+            # Content returned as a single string - split into lines and return the last line (with the latest version number)
             $Line = ($Content -split "\n")[-1]
             Write-Verbose -Message "$($MyInvocation.MyCommand): Checking string for version match: [$Line]."
-            $Version = [RegEx]::Match(($Content -split "\n")[-1], $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+            $Version = [RegEx]::Match($Line, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
         }
         catch {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number."
