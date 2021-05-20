@@ -7,7 +7,7 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes, and breaking changes in each Evergreen version.
 ---
-## VERSION
+## 2105.383
 
 * Adds `CiscoWebEx` ([#141](https://github.com/aaronparker/Evergreen/issues/141)), `VeraCrypt` ([#160](https://github.com/aaronparker/Evergreen/issues/160)), `KarakunOpenWebStart` ([#163](https://github.com/aaronparker/Evergreen/issues/163))
 * Updates `MicrosoftWvdRemoteDesktop` with the Preview release and fixes source URLs for the public release
