@@ -51,7 +51,7 @@
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Capture version number from: $($bestRelease.platform_releases.windows.filename)."
         $Filename = Split-Path -Path $bestRelease.platform_releases.windows.filename -Leaf
-        $Folder = $bestRelease.platform_releases.windows.filename.Split($Filename)[0]
+        $Folder = ($bestRelease.platform_releases.windows.filename -split $Filename)[0]
         $Version = [RegEx]::Match($Folder, $MatchVersion).Captures.Groups[1].Value
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found filename: [$Filename]."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found folder:   [$Folder]."
