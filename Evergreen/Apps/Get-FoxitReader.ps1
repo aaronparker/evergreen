@@ -22,18 +22,23 @@ Function Get-FoxitReader {
     )
 
     # Query the Foxit Reader package download form to get the JSON
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    # TODO: Fix issue with Invoke-RestMethodWrapper that produces "Operation is not valid due to the current state of the object."
+    $updateFeed = Invoke-RestMethod -Uri $res.Get.Update.Uri -UseBasicParsing
+
     If ($Null -ne $updateFeed) {
 
         # Grab latest version
         $Version = ($updateFeed.package_info.version | Sort-Object { [Version]$_ } -Descending) | Select-Object -First 1
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
 
         # Build the output object for each language. Excludes languages with out-of-date versions
         ForEach ($language in ($updateFeed.package_info.language | Where-Object { $_ -notin $res.Get.Update.SkipLanguages })) {
             
             # Build the download URL; Follow the download link which will return a 301/302
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Return details for language: $language."
             $Uri = (($res.Get.Download.Uri -replace "#Version", $Version) -replace "#Language", $language) -replace "#Package", $updateFeed.package_info.type[0]
-            $redirectUrl = Resolve-InvokeWebRequest -Uri $Uri
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve URI: $Uri."
+            $redirectUrl = Resolve-SystemNetWebRequest -Uri $Uri
             
             # Construct the output; Return the custom object to the pipeline
             If ($Null -ne $redirectUrl) {
@@ -41,12 +46,12 @@ Function Get-FoxitReader {
                     Version  = $Version
                     Date     = ConvertTo-DateTime -DateTime $updateFeed.package_info.release -Pattern $res.Get.Update.DateTimePattern
                     Language = $language
-                    URI      = $redirectUrl
+                    URI      = $redirectUrl.ResponseUri
                 }
                 Write-Output -InputObject $PSObject
             }
             Else {
-                Write-Warning -Message "Failed to return a useable URL from $Uri."
+                Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a useable URL from $Uri."
             }
         }
     }
