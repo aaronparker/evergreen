@@ -25,7 +25,11 @@ Function Get-MicrosoftTeams {
 
         # Read the JSON and convert to a PowerShell object. Return the release version of Teams
         $Uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $res.Get.Update.Rings[$ring.Key]
-        $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
+        $params = @{
+            Uri       = $Uri
+            UserAgent = $res.Get.Update.UserAgent
+        }
+        $updateFeed = Invoke-RestMethodWrapper @params
 
         # Read the JSON and build an array of platform, channel, version
         If ($Null -ne $updateFeed) {

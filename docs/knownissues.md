@@ -29,9 +29,9 @@ The 32-bit installers returned by `7Zip` link to a SourceForge download page ins
 
 Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
 
-The determine the current update version of `AdobeAcrobat`, the URL for macOS updates is used, for example: [https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt](https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt). This provides a simple text lookup of the latest version number.
+The determine the current update version of `AdobeAcrobat`, the URL for macOS updates is used: `https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt`. This provides a simple text lookup of the latest version number.
 
-The Windows version of Adobe Acrobat and Reader uses an update URL like: [https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi](https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi), which would require unpacking and parsing the MSI file. Doing so may modify the host, so it will not be implemented.
+The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Doing so may modify the host, so it will not be implemented.
 
 ### AdobeAcrobatReaderDC
 

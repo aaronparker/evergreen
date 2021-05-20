@@ -1,3 +1,10 @@
 {
-    "files.encoding": "utf8bom"
+    "files.encoding": "utf8bom",
+    "cSpell.words": [
+        "Karakun",
+        "Sobject",
+        "Wireshark",
+        "currentversion",
+        "msixbinary"
+    ]
 }

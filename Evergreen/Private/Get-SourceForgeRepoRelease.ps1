@@ -20,7 +20,7 @@
         [System.String] $MatchVersion
     )
 
-    # retrieve best release json
+    # Retrieve best release json
     try {
         $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }
@@ -47,40 +47,41 @@
         }
     }
 
-    # Find version number
+    # Find version number and the releases folder
     try {
-        $Version = [RegEx]::Match($bestRelease.platform_releases.windows.filename, $MatchVersion).Captures.Groups[1].Value
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Capture version number from: $($bestRelease.platform_releases.windows.filename)."
+        $Filename = Split-Path -Path $bestRelease.platform_releases.windows.filename -Leaf
+        $Folder = ($bestRelease.platform_releases.windows.filename -split $Filename)[0]
+        $Version = [RegEx]::Match($Folder, $MatchVersion).Captures.Groups[1].Value
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found filename: [$Filename]."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found folder:   [$Folder]."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$Version]."
     }
     catch {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to find version number."
-        $Version = "Unknown"
+        Throw "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($bestRelease.platform_releases.windows.filename)."
     }
 
     # Get the downloads XML feed and select the latest item via the $Version value
     $params = @{
-        Uri         = "$($Download.Feed)/$($Download.Folder)"
+        Uri         = "$($Download.Feed)$Folder"
         ContentType = $Download.ContentType
     }
     $Content = Invoke-RestMethodWrapper @params
-    $fileItems = $Content | Select-Object -ExpandProperty $Download.FilterProperty | Where-Object { $_ -match $Version }
 
+    # Filter items for file types that we've included in the manifest
+    $fileItems = $Content | Where-Object { ($_.link -replace $Download.ReplaceText.Link, "") -match $Download.MatchFileTypes }
+    Write-Verbose -Message "$($MyInvocation.MyCommand): found $($fileItems.Count) items."
+
+    # For each filtered file, build a release object
     ForEach ($item in $fileItems) {
-        try {
-            $File = [RegEx]::Match($item, "$Version/$($script:resourceStrings.Filters.Filename)").Captures.Groups[1].Value
+        Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $($item.link)."
+        $Url = "$($Download.Uri)$($item.description.'#cdata-section')" -replace " ", "%20"
+        $PSObject = [PSCustomObject] @{
+            Version      = $Version
+            Architecture = Get-Architecture -String $Url
+            Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+            URI          = $Url
         }
-        catch {
-            $File = $Null
-        }
-        If ($Null -ne $File) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $item."
-            $Url = "$($Download.Uri)/$($Download.Folder)/$Version/$File" -replace " ", "%20"
-            $PSObject = [PSCustomObject] @{
-                Version      = $Version
-                Architecture = Get-Architecture -String $File
-                Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
-                URI          = $Url
-            }
-            Write-Output -InputObject $PSObject
-        }
+        Write-Output -InputObject $PSObject
     }
 }

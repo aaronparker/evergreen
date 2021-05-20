@@ -21,24 +21,27 @@ Function Get-MicrosoftWvdRemoteDesktop {
         [System.String] $Filter
     )
 
-    ForEach ($architecture in $res.Get.Download.Uri.Keys) {
+    ForEach ($channel in $res.Get.Download.Uri.Keys) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for channel: $channel."
 
-        # Grab the download link headers to find the file name
-        try {
-            #TODO: Update Invoke-WebRequestWrapper to optionally return Headers instead of Content
-            $params = @{
-                Uri             = $res.Get.Download.Uri[$architecture]
-                Method          = "Head"
-                UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+        ForEach ($architecture in $res.Get.Download.Uri.$channel.Keys) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for architecture: $architecture."
+
+            # Grab the download link headers to find the file name
+            try {
+                #TODO: Update Invoke-WebRequestWrapper to optionally return Headers instead of Content
+                $params = @{
+                    Uri             = $res.Get.Download.Uri.$channel[$architecture]
+                    Method          = "Head"
+                    UseBasicParsing = $True
+                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                }
+                $Headers = (Invoke-WebRequest @params).Headers
             }
-            $Headers = (Invoke-WebRequest @params).Headers
-        }
-        catch {
-            Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Uri) with: $($_.Exception.Response.StatusCode)"
-        }
+            catch {
+                Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Download.Uri.$channel[$architecture]) with: $($_.Exception.Response.StatusCode)"
+            }
 
-        If ($Headers) {
             # Match filename
             $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
 
@@ -50,7 +53,8 @@ Function Get-MicrosoftWvdRemoteDesktop {
             $PSObject = [PSCustomObject] @{
                 Version      = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchVersion).Captures.Value
                 Architecture = $architecture
-                Date         = $Headers['Last-Modified'] | Select-Object -First 1
+                Channel      = $channel
+                Date         = ConvertTo-DateTime -DateTime $($Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
                 Size         = $Headers['Content-Length'] | Select-Object -First 1
                 Filename     = $Filename
                 URI          = $Url

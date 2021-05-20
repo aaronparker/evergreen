@@ -36,8 +36,17 @@
                 $PSObject = [PSCustomObject] @{
                     Version      = $enclosure.version
                     Architecture = $item.Name
-                    Size         = $enclosure.length
+                    Type         = $([System.IO.Path]::GetExtension($enclosure.url).Split(".")[-1])
                     URI          = $enclosure.url
+                }
+                Write-Output -InputObject $PSObject
+
+                # Build the output object; Output object to the pipeline
+                $PSObject = [PSCustomObject] @{
+                    Version      = $enclosure.version
+                    Architecture = $item.Name
+                    Type         = "msi"
+                    URI          = $($enclosure.url -replace ([System.IO.Path]::GetExtension($enclosure.url).Split(".")[-1]), "msi")
                 }
                 Write-Output -InputObject $PSObject
             }

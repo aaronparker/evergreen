@@ -9,8 +9,12 @@
 		"Download" : {
 			"Folder": "KeePass%202.x",
 			"Feed": "https://sourceforge.net/projects/keepass/rss?path=",
-			"XPath": "//item",
 			"FilterProperty": "link",
+            "ReplaceText": {
+                "Link": "/download"
+            },
+            "MatchFileTypes": "\\.exe$|\\.msi$",
+            "FileProperty": "description.'#cdata-section'",
 			"ContentType": "application/rss+xml; charset=utf-8",
 			"Uri": "https://nchc.dl.sourceforge.net/project/keepass"
 		},
