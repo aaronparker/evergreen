@@ -4,16 +4,24 @@
     "Get": {
         "Download": {
             "Uri": {
-                "x64": "https://go.microsoft.com/fwlink/?linkid=2068602",
-                "x86": "https://go.microsoft.com/fwlink/?linkid=2098960",
-                "ARM64": "https://go.microsoft.com/fwlink/?linkid=2098961"
-			},
-			"ApiUri": "https://query.prod.cms.rt.microsoft.com/cms/api",
-			"ApiHeader1": "X-CMS-Tenant",
-			"ApiHeader2": "X-CMS-Type",
-			"ApiHeader3": "X-CMS-DocumentId",
+                "Public": {
+                    "x64": "https://go.microsoft.com/fwlink/?linkid=2139369",
+                    "x86": "https://go.microsoft.com/fwlink/?linkid=2139144",
+                    "ARM64": "https://go.microsoft.com/fwlink/?linkid=2139368"
+                },
+                "Insider": {
+                    "x64": "https://go.microsoft.com/fwlink/?linkid=2139233",
+                    "x86": "https://go.microsoft.com/fwlink/?linkid=2139144",
+                    "ARM64": "https://go.microsoft.com/fwlink/?linkid=2139368"
+                }
+            },
+            "ApiUri": "https://query.prod.cms.rt.microsoft.com/cms/api",
+            "ApiHeader1": "X-CMS-Tenant",
+            "ApiHeader2": "X-CMS-Type",
+            "ApiHeader3": "X-CMS-DocumentId",
             "MatchFilename": "(RemoteDesktop.*msi)",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})",
+            "DatePattern": "ddd, dd MMM yyyy HH:mm:ss GMT"
         }
     },
     "Install": {

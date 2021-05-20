@@ -9,7 +9,10 @@ summary: Changes, updates, fixes, and breaking changes in each Evergreen version
 ---
 ## VERSION
 
-* Adds `CiscoWebEx` ([#141](https://github.com/aaronparker/Evergreen/issues/141)), `VeraCrypt` ([#160](https://github.com/aaronparker/Evergreen/issues/160))
+* Adds `CiscoWebEx` ([#141](https://github.com/aaronparker/Evergreen/issues/141)), `VeraCrypt` ([#160](https://github.com/aaronparker/Evergreen/issues/160)), `KarakunOpenWebStart` ([#163](https://github.com/aaronparker/Evergreen/issues/163))
+* Updates `MicrosoftWvdRemoteDesktop` with the Preview release and fixes source URLs for the public release
+* Adds `ARM64` architecture to `MicrosoftTeams` [#162](https://github.com/aaronparker/Evergreen/issues/162)
+* Adds `MSI` file type to `Wireshark`
 * Updates internal function `Get-SourceForgeRepoRelease` with improvements to find releases and download URIs
 
 ## 2105.371
