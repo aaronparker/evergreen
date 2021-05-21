@@ -3,7 +3,7 @@ Function Export-EvergreenManifest {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/")]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/")]
     param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNull()]

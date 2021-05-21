@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/Evergreen/
+online version: https://stealthpuppy.com/evergreen/
 schema: 2.0.0
 ---
 
@@ -69,4 +69,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Getting started with Evergreen:](https://stealthpuppy.com/Evergreen/)
+[Getting started with Evergreen:](https://stealthpuppy.com/evergreen/)
