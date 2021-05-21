@@ -47,7 +47,7 @@ Evergreen's focus is on integration for PowerShell scripts to provide product ve
 
 ## Documentation
 
-Documentation for Evergreen, including usage examples, is located here: [https://stealthpuppy.com/Evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
+Documentation for Evergreen, including usage examples, is located here: [https://stealthpuppy.com/evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
 
 ## Versioning
 
@@ -80,7 +80,7 @@ Update-Module -Name Evergreen -Force
 
 ### Manual Installation from the Repository
 
-The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/Evergreen) and includes the module in the `Evergreen` folder. The folder needs to be installed into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
+The module can be downloaded from the [GitHub source repository](https://github.com/aaronparker/evergreen) and includes the module in the `Evergreen` folder. The folder needs to be installed into one of your PowerShell Module Paths. To see the full list of available PowerShell Module paths, use `$env:PSModulePath.split(';')` in a PowerShell console.
 
 Common PowerShell module paths include:
 
