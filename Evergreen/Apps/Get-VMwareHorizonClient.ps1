@@ -58,28 +58,14 @@
 
     # Download the version specific update XML in Gzip format
     If ($Null -ne $LatestVersion) {
-        #TODO: turn this into a function
-        try {
-            $Url = "$($res.Get.Download.Uri)$($LatestVersion.Url.TrimStart("../"))"
-            $GZipFile = Join-Path -Path $([System.IO.Path]::GetTempPath()) -ChildPath (Split-Path -Path $Url -Leaf)
-            $params = @{
-                Uri             = $Url
-                OutFile         = $GZipFile
-                UseBasicParsing = $True
-                UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-            }
-            Invoke-WebRequest @params
-        }
-        catch {
-            Throw "$($MyInvocation.MyCommand): Failed to download from: $Url, to $GZipFile."
-        }
+        $GZipFile = Save-File -Uri "$($res.Get.Download.Uri)$($LatestVersion.Url.TrimStart("../"))"
     }
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to determine metadata property for the Horizon Client latest version."
     }
     
     # Expand the downloaded Gzip file to get the XMl file
-    $ExpandFile = Expand-GzipArchive -Path $GZipFile
+    $ExpandFile = Expand-GzipArchive -Path $GZipFile.FullName
 
     # Get the version specific details from the XML file
     try {
@@ -92,8 +78,8 @@
         Throw "$($MyInvocation.MyCommand): Failed to convert metadata XML."
     }
     finally {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $GZipFile."
-        Remove-Item -Path $GZipFile -ErrorAction "SilentlyContinue"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $($GZipFile.FullName)."
+        Remove-Item -Path $GZipFile.FullName -ErrorAction "SilentlyContinue"
         Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $ExpandFile."
         Remove-Item -Path $ExpandFile -ErrorAction "SilentlyContinue"
     }

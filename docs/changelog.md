@@ -7,6 +7,11 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes, and breaking changes in each Evergreen version.
 ---
+### VERSION
+
+* Update `VMwareHorizonClient` with additional filtering to select the latest version correctly [#161](https://github.com/aaronparker/evergreen/issues/161)
+* Add internal function `Save-File` to download a URL with `Invoke-WebRequest` and return the downloaded file path
+
 ## 2105.383
 
 * Adds `CiscoWebEx` ([#141](https://github.com/aaronparker/Evergreen/issues/141)), `VeraCrypt` ([#160](https://github.com/aaronparker/Evergreen/issues/160)), `KarakunOpenWebStart` ([#163](https://github.com/aaronparker/Evergreen/issues/163))
