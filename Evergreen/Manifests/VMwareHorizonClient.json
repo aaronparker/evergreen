@@ -5,7 +5,8 @@
 		"Update": {
 			"Uri": "https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-windows.xml",
 			"ContentType": "application/xml",
-			"Property": "metaList.metadata"
+			"Property": "metaList.metadata",
+			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 		},
 		"Download": {
 			"Uri": "https://softwareupdate.vmware.com/horizon-clients/",

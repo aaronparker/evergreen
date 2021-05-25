@@ -36,7 +36,7 @@
     $PSObject = [PSCustomObject] @{
         Version = $Version
         Date    = $Response.LastModified
-        URI     = $Response.ResponseUri
+        URI     = $Response.ResponseUri.AbsoluteUri
     }
     Write-Output -InputObject $PSObject
 }

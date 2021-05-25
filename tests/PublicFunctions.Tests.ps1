@@ -33,7 +33,19 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
             $Output | Should -BeOfType "PSCustomObject"
         }
 
-        # Test that output with Version property includes numbers and "." only
+        # Test that the output has a Version property and that property is a string
+        It "<application>: should have a Version property that is a string" {
+            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
+                ForEach ($object in $Output) {
+                    $object.Version | Should -BeOfType [System.String]
+                }
+            }
+            Else {
+                Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
+            }
+        }
+
+        # Test that output with Version property is valid
         It "<application>: should have a valid version number" {
             If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
@@ -44,6 +56,13 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
             }
             Else {
                 Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
+            }
+        }
+
+        # Test that the output has a URI property and that property is a string
+        It "<application>: should have a URI property that is a string" {
+            ForEach ($object in $Output) {
+                $object.URI | Should -BeOfType [System.String]
             }
         }
     }

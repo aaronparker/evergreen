@@ -55,6 +55,6 @@
                 }
             }
         }
-        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. See https://stealthpuppy.com/Evergreen/changelog.html for more information."
+        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. See https://stealthpuppy.com/evergreen/changelog.html for more information."
     }
 }

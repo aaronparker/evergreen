@@ -46,7 +46,7 @@ Function Get-FoxitReader {
                     Version  = $Version
                     Date     = ConvertTo-DateTime -DateTime $updateFeed.package_info.release -Pattern $res.Get.Update.DateTimePattern
                     Language = $language
-                    URI      = $redirectUrl.ResponseUri
+                    URI      = $redirectUrl.ResponseUri.AbsoluteUri
                 }
                 Write-Output -InputObject $PSObject
             }

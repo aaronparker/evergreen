@@ -47,11 +47,11 @@ Evergreen's focus is on integration for PowerShell scripts to provide product ve
 
 ## Documentation
 
-Documentation for Evergreen, including usage examples, is located here: [https://stealthpuppy.com/evergreen/index.html](https://stealthpuppy.com/Evergreen/index.html).
+Documentation for Evergreen, including usage examples, is located here: [https://stealthpuppy.com/evergreen/index.html](https://stealthpuppy.com/evergreen/index.html).
 
 ## Versioning
 
-The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](https://stealthpuppy.com/Evergreen/changelog.html) for details on changes introduced in each version.
+The module uses a version notation that follows: YearMonth.Build. It is expected that the module will have changes on a regular basis, so the version numbering is intended to make it as simple as possible to understand when the last update was made. See the [CHANGELOG](https://stealthpuppy.com/evergreen/changelog.html) for details on changes introduced in each version.
 
 ## Installing the Module
 

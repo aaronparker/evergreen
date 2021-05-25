@@ -80,7 +80,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Getting started with Evergreen:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/Evergreen/</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -178,7 +178,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Find supported applications:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/Evergreen/find.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/find.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -309,7 +309,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Use Evergreen:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/Evergreen/use.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -563,7 +563,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Download application installers:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/Evergreen/save.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/save.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>

@@ -3,7 +3,7 @@ Function Get-EvergreenApp {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/Evergreen/use.html")]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/use.html")]
     [Alias("gea")]
     param (
         [Parameter(

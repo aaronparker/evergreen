@@ -25,35 +25,47 @@
     $Updates = Invoke-RestMethodWrapper @params
 
     # Select the latest version
-    # TODO: Update this to find the latest version based on the Url property as well
-    #$LatestVersion = $Updates.($res.Get.Update.Property) | `
+    #$LatestVersion = $Updates.($res.Get.Update.Property)
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Selecting latest version from the update data."
     $LatestVersion = $Updates.metaList.metadata | `
         Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
         Select-Object -First 1
+    $UpdateList = $Updates.metaList.metadata | Where-Object { $_.version -match $LatestVersion.version }
+
+    # $_.version number property needs to also be match to latest version in $_.url property
+    If ($UpdateList.Count -gt 1) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($UpdateList.Count) available updates for version: $($LatestVersion.version)."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Match latest update."
+        $VersionList = New-Object -TypeName "System.Collections.ArrayList"
+        ForEach ($Update in $UpdateList) {
+            $Version = [RegEx]::Match($Update.url, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+            $VersionList.Add($Version) | Out-Null
+        }
+
+        # Find the latest version and re-filter the update data to find the latest release
+        $Version = $VersionList | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
+            Select-Object -First 1
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Filter update list for version: $Version."
+        $LatestVersion = $Updates.metaList.metadata | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
+            Where-Object { $_.url -match $Version } | Select-Object -First 1
+    }
+    Else {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found one available update for version: $($LatestVersion.version)."
+    }
 
     # Download the version specific update XML in Gzip format
     If ($Null -ne $LatestVersion) {
-        try {
-            $Url = "$($res.Get.Download.Uri)$($LatestVersion.Url.TrimStart("../"))"
-            $GZipFile = Join-Path -Path $([System.IO.Path]::GetTempPath()) -ChildPath (Split-Path -Path $Url -Leaf)
-            $params = @{
-                Uri             = $Url
-                OutFile         = $GZipFile
-                UseBasicParsing = $True
-                UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-            }
-            Invoke-WebRequest @params
-        }
-        catch {
-            Throw "$($MyInvocation.MyCommand): Failed to download from: $Url, to $GZipFile."
-        }
+        $GZipFile = Save-File -Uri "$($res.Get.Download.Uri)$($LatestVersion.Url.TrimStart("../"))"
     }
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to determine metadata property for the Horizon Client latest version."
     }
     
     # Expand the downloaded Gzip file to get the XMl file
-    $ExpandFile = Expand-GzipArchive -Path $GZipFile
+    $ExpandFile = Expand-GzipArchive -Path $GZipFile.FullName
 
     # Get the version specific details from the XML file
     try {
@@ -66,8 +78,8 @@
         Throw "$($MyInvocation.MyCommand): Failed to convert metadata XML."
     }
     finally {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $GZipFile."
-        Remove-Item -Path $GZipFile -ErrorAction "SilentlyContinue"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $($GZipFile.FullName)."
+        Remove-Item -Path $GZipFile.FullName -ErrorAction "SilentlyContinue"
         Write-Verbose -Message "$($MyInvocation.MyCommand): Delete: $ExpandFile."
         Remove-Item -Path $ExpandFile -ErrorAction "SilentlyContinue"
     }

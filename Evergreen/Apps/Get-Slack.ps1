@@ -24,11 +24,11 @@ Function Get-Slack {
         ForEach ($architecture in $res.Get.Download[$platform].Keys) {
 
             # Follow the download link which will return a 301/302
-            $Url = (Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$architecture]).ResponseUri.AbsoluteUri
+            $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$architecture]
 
             # Match version number from the download URL
             try {
-                $Version = [RegEx]::Match($Url, $res.Get.MatchVersion).Captures.Groups[0].Value
+                $Version = [RegEx]::Match($redirectUrl.ResponseUri.AbsoluteUri, $res.Get.MatchVersion).Captures.Groups[0].Value
             }
             catch {
                 $Version = "Latest"
@@ -39,7 +39,7 @@ Function Get-Slack {
                 Version      = $Version
                 Platform     = $platform
                 Architecture = $architecture
-                URI          = $Url
+                URI          = $redirectUrl.ResponseUri.AbsoluteUri
             }
             Write-Output -InputObject $PSObject
         }

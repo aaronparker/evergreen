@@ -39,14 +39,14 @@ Function Get-MicrosoftSsms {
         # Build an output object by selecting installer entries from the feed
         If ($xmlDocument -is [System.XML.XMLDocument]) {
             ForEach ($entry in $xmlDocument.feed.entry) {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version). See https://stealthpuppy.com/Evergreen/knownissues.html for more information."
+                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version). See https://stealthpuppy.com/evergreen/knownissues.html for more information."
 
                 ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.Download.MatchName })) {
                     ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
 
                         # Follow the download link which will return a 301
                         $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
-                        $ResponseUri = (Resolve-SystemNetWebRequest -Uri $Uri).ResponseUri.AbsoluteUri
+                        $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
             
                         # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
                         If ($Null -ne $ResponseUri) {
@@ -57,7 +57,7 @@ Function Get-MicrosoftSsms {
                                 Date     = ConvertTo-DateTime -DateTime ($entry.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
                                 Title    = $entry.Title
                                 Language = $language.key
-                                URI      = $ResponseUri
+                                URI      = $ResponseUri.ResponseUri.AbsoluteUri
                             }
                             Write-Output -InputObject $PSObject
                         }
