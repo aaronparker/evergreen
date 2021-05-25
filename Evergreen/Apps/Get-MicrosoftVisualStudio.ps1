@@ -22,14 +22,14 @@ Function Get-MicrosoftVisualStudio {
     )
 
     # Resolve the update feed from the initial URI
-    $ResolvedUrl = (Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri).ResponseUri.AbsoluteUri
+    $ResolvedUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri
     If ($ResolvedUrl) {
         try {
             # Get details from the update feed
-            $updateFeed = Invoke-RestMethodWrapper -Uri $ResolvedUrl
+            $updateFeed = Invoke-RestMethodWrapper -Uri $ResolvedUrl.ResponseUri.AbsoluteUri
         }
         catch {
-            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $ResolvedUrl."
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $($ResolvedUrl.ResponseUri.AbsoluteUri)."
         }
         finally {
             # Build the output object/s

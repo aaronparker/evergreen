@@ -46,7 +46,7 @@ Function Get-MicrosoftSsms {
 
                         # Follow the download link which will return a 301
                         $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
-                        $ResponseUri = (Resolve-SystemNetWebRequest -Uri $Uri).ResponseUri.AbsoluteUri
+                        $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
             
                         # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
                         If ($Null -ne $ResponseUri) {
@@ -57,7 +57,7 @@ Function Get-MicrosoftSsms {
                                 Date     = ConvertTo-DateTime -DateTime ($entry.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
                                 Title    = $entry.Title
                                 Language = $language.key
-                                URI      = $ResponseUri
+                                URI      = $ResponseUri.ResponseUri.AbsoluteUri
                             }
                             Write-Output -InputObject $PSObject
                         }

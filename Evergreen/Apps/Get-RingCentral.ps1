@@ -39,14 +39,14 @@ Function Get-RingCentral {
         ForEach ($installer in $res.Get.Download[$platform].Keys) {
 
             # Follow the download link which will return a 301/302
-            $redirectUrl = (Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$installer]).ResponseUri.AbsoluteUri
+            $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$installer]
 
             # Match the URL without the text after the ?
             try {
-                $Url = [RegEx]::Match($redirectUrl, $res.Get.MatchUrl).Captures.Groups[1].Value
+                $Url = [RegEx]::Match($redirectUrl.ResponseUri.AbsoluteUri, $res.Get.MatchUrl).Captures.Groups[1].Value
             }
             catch {
-                $Url = $redirectUrl
+                $Url = $redirectUrl.ResponseUri.AbsoluteUri
             }
 
             # Match version number from the download URL
