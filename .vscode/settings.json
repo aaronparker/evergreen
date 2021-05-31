@@ -1,6 +1,7 @@
 {
     "files.encoding": "utf8bom",
     "cSpell.words": [
+        "Akeo",
         "Anki",
         "Atlassian",
         "Bitwarden",
@@ -20,11 +21,14 @@
         "Twork",
         "Vercel",
         "Wireshark",
+        "centos",
         "currentversion",
         "fwlink",
         "iainbrighton",
         "linkid",
         "msixbinary",
-        "notin"
+        "notin",
+        "nupkg",
+        "rhel"
     ]
 }
