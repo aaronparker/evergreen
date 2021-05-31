@@ -9,7 +9,10 @@ summary: Changes, updates, fixes, and breaking changes in each Evergreen version
 ---
 ## VERSION
 
-* Adds `AkeoRufus`
+* Adds `AkeoRufus` [#179](https://github.com/aaronparker/evergreen/issues/179), `BlenderLauncher` [#178](https://github.com/aaronparker/evergreen/issues/178)
+* Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
+* BREAKING CHANGES
+  * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 
 ## 2105.388
 
