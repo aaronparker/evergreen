@@ -7,7 +7,11 @@ toc: false
 permalink: changelog.html
 summary: Changes, updates, fixes, and breaking changes in each Evergreen version.
 ---
-### VERSION
+## VERSION
+
+* Adds `AkeoRufus`
+
+## 2105.388
 
 * Update `VMwareHorizonClient` with additional filtering to select the latest version correctly to address [#161](https://github.com/aaronparker/evergreen/issues/161)
 * Add internal function `Save-File` to download a URL with `Invoke-WebRequest` and return the downloaded file path
