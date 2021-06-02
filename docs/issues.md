@@ -47,6 +47,10 @@ The product release feed used by the Microsoft SQL Server Management Studio (e.g
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).
 
+### OBS Studio
+
+Returning the latest version and download for OBS Studio may fail when the OBS Project modifies the availability of the update manifest at `https://obsproject.com/update_studio/manifest.json`. `Get-EvergreenApp -Name OBSStudio` will return a 404 error. The only recourse would be to wait until the OBS Project makes the manifest available again. Evergreen could query versions from the GitHub repository; however, the repository doesn't consistently maintain versions as well.
+
 ### VMwareHorizonClient
 
 `VMwareHorizonClient` may not always return the current release - the major version property in the VMware Horizon Client software update data does not use easily sortable versioning. This may be fixed in a future release. Also see [VMware Horizon Client reporting out of date version](https://github.com/aaronparker/Evergreen/issues/161).

@@ -4,6 +4,7 @@
 
 * Adds `AkeoRufus` [#179](https://github.com/aaronparker/evergreen/issues/179), `BlenderLauncher` [#178](https://github.com/aaronparker/evergreen/issues/178)
 * Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
+* Updates `Veracrypt` to return the complete version number (e.g. `1.24-Update7`) [#166](https://github.com/aaronparker/evergreen/issues/166)
 * BREAKING CHANGES:
   * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 

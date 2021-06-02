@@ -12,6 +12,8 @@ Evergreen is intended for use in solutions used to automate software deployments
 * Create a library of application installers - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
 * Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
 
+## Functions
+
 Primary functions in Evergreen are:
 
 * `Get-EvergreenApp` - returns details of the latest release of an application including the version number and download URL
