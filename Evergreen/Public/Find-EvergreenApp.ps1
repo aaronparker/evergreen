@@ -3,7 +3,7 @@
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/find.html")]
+    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/find/")]
     [Alias("fea")]
     param (
         [Parameter(

@@ -1,12 +1,5 @@
-﻿---
-title: "Known Issues"
-keywords: evergreen
-tags: [issues]
-sidebar: home_sidebar
-toc: false
-permalink: knownissues.html
-summary: 
----
+﻿# Known issues
+
 ## Public Functions
 
 ### Get-EvergreenApp
@@ -17,7 +10,8 @@ summary:
 
 The folder structure created by `Save-EvergreenApp` uses a static set of properties from the input object. This path cannot currently by customised by the user.
 
-`Save-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
+!!! attention "Attention"
+    `Save-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
 
 ## Application Functions
 
@@ -31,7 +25,8 @@ Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, th
 
 The determine the current update version of `AdobeAcrobat`, the URL for macOS updates is used: `https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt`. This provides a simple text lookup of the latest version number.
 
-The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Doing so may modify the host, so it will not be implemented.
+!!! info "Note"
+    The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Doing so may modify the host, so it will not be implemented.
 
 ### AdobeAcrobatReaderDC
 
@@ -39,7 +34,10 @@ The JSON data returned from the Adobe Acrobat Reader DC download URL (`https://g
 
 ### CitrixWorkspaceApp
 
-The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME. Note that returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
+The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME.
+
+!!! info "Note"
+    `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
 
 ### MicrosoftSsms
 
@@ -53,7 +51,8 @@ The version number returned by the Microsoft Teams update API may be slightly di
 
 `VMwareHorizonClient` may not always return the current release - the major version property in the VMware Horizon Client software update data does not use easily sortable versioning. This may be fixed in a future release. Also see [VMware Horizon Client reporting out of date version](https://github.com/aaronparker/Evergreen/issues/161).
 
-`VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
+!!! info "Note"
+    `VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
 
 ### Zoom
 

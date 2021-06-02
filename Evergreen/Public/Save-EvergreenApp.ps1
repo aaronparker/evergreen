@@ -3,7 +3,7 @@ Function Save-EvergreenApp {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save.html")]
+    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save/")]
     [Alias("sea")]
     param (
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]

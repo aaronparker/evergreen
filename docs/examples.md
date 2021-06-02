@@ -1,11 +1,5 @@
----
-title: "Evergreen examples"
-keywords: evergreen
-tags: [examples, usage]
-sidebar: home_sidebar
-permalink: examples.html
-summary: How to use sample Evergreen functions in your scripts.
----
+# Example usage
+
 Here's a few examples of using `Evergreen` functions to return application versions and downloads.
 
 ## Microsoft Edge
@@ -140,5 +134,3 @@ If ($Updater.Version -gt $Installer.Version) {
 (Get-EvergreenApp -Name MozillaFirefox | Where-Object { $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Architecture -eq "x64" -and $_.type -eq "msi" -and $_.Language -eq "en-US" }) | `
     Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
 ```
-
-{% include links.html %}
