@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2106.395
 
 * Adds `AkeoRufus` [#179](https://github.com/aaronparker/evergreen/issues/179), `BlenderLauncher` [#178](https://github.com/aaronparker/evergreen/issues/178)
 * Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
