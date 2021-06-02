@@ -22,18 +22,22 @@ Function Get-MicrosoftFSLogixApps {
         [System.String] $Filter
     )
 
-    # Follow the download link which will return a 301
-    $response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
-            
-    # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-    If ($Null -ne $response) {
+    ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($($response.ResponseUri.AbsoluteUri), $res.Get.Download.MatchVersion).Captures.Value
-            Date    = ConvertTo-DateTime -DateTime $response.LastModified -Pattern $res.Get.Download.DatePattern
-            URI     = $response.ResponseUri.AbsoluteUri
+        # Follow the download link which will return a 301
+        $response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri[$item.Key]
+            
+        # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+        If ($Null -ne $response) {
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version = [RegEx]::Match($($response.ResponseUri.AbsoluteUri), $res.Get.Download.MatchVersion).Captures.Value
+                Date    = ConvertTo-DateTime -DateTime $response.LastModified -Pattern $res.Get.Download.DatePattern
+                Channel = $item.Name
+                URI     = $response.ResponseUri.AbsoluteUri
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

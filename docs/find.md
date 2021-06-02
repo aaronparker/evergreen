@@ -1,11 +1,5 @@
----
-title: "Find supported applications"
-keywords: evergreen
-tags: [find]
-sidebar: home_sidebar
-permalink: find.html
-summary: 
----
+# Find supported applications
+
 `Find-EvergreenApp` is used to return a list of applications supported by Evergreen. For example, let's find out whether the Microsoft FSLogix Apps agent is supported by Evergreen:
 
 ```powershell
@@ -70,5 +64,3 @@ Name      Application   Link
 1Password 1Password     https://1password.com/
 7zip      7zip          https://www.7-zip.org/
 ```
-
-include links.html %}

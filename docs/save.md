@@ -1,11 +1,5 @@
----
-title: "Download application installers"
-keywords: evergreen
-tags: [save]
-sidebar: home_sidebar
-permalink: save.html
-summary: 
----
+# Download installers
+
 Evergreen includes the function `Save-EvergreenApp` that simplifies downloading application installers that are returned from `Get-EvergreenApp`.
 
 All applications will return at least a `Version` and `URI` property with many returning additional properties including `Architecture`, `Language`, `Type`, `Ring`, `Channel` and `Release`, dependent on the target application. Additionally, the installer file name is typically determined dynamically  with the `URI` property.
@@ -83,5 +77,3 @@ Forces this function to download the target application installers from the URI 
 ```powershell
 PS /Users/aaron> gea Slack | sea -Path /Users/aaron/Temp/Slack
 ```
-
-{% include links.html %}

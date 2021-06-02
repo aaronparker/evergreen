@@ -1,11 +1,5 @@
----
-title: "Using Evergreen"
-keywords: evergreen
-tags: [use]
-sidebar: home_sidebar
-permalink: use.html
-summary: An introduction on how to use Evergreen in your scripts.
----
+# Using Evergreen
+
 `Get-EvergreenApp` is used to return application details by specifying an application with the `-Name` parameter.
 
 For example, let's find the latest version of the Microsoft FSLogix Apps agent:
@@ -88,5 +82,3 @@ Platform     : PerMachine
 Architecture : x64
 URI          : https://downloads.slack-edge.com/releases/windows/4.14.0/prod/x64/slack-standalone-4.14.0.0.msi
 ```
-
-{% include links.html %}

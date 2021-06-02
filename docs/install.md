@@ -1,11 +1,5 @@
----
-title: "Installing Evergreen"
-keywords: evergreen
-tags: [install, update]
-sidebar: home_sidebar
-permalink: install.html
-summary: How to install the Evergreen PowerShell module
----
+# Installing Evergreen
+
 ## PowerShell Support
 
 Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
@@ -76,5 +70,3 @@ Once installation is complete, you can validate that the module exists by runnin
 ```powershell
 Import-Module Evergreen
 ```
-
-{% include links.html %}
