@@ -115,8 +115,9 @@ nav:
     - Download installers: save.md
     - Example usage: examples.md
     - Under the hood: under.md
-  - Known issues: issues.md
-  - Changelog: changelog.md
+  - Resources:
+    - Known issues: issues.md
+    - Changelog: changelog.md
 
 # Customization
 extra:
