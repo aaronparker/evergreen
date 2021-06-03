@@ -30,6 +30,7 @@ theme:
   features:
     - navigation.instant
     - navigation.sections
+    - navigation.top
     #- navigation.tabs
   palette:
     - scheme: default
