@@ -28,9 +28,9 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
-    # - navigation.instant
+    - navigation.instant
     - navigation.sections
-    - navigation.tabs
+    #- navigation.tabs
   palette:
     - scheme: default
       primary: teal
