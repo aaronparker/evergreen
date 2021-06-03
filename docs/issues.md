@@ -49,7 +49,11 @@ The version number returned by the Microsoft Teams update API may be slightly di
 
 ### OBS Studio
 
-Returning the latest version and download for OBS Studio may fail when the OBS Project modifies the availability of the update manifest at `https://obsproject.com/update_studio/manifest.json`. `Get-EvergreenApp -Name OBSStudio` will return a 404 error. The only recourse would be to wait until the OBS Project makes the manifest available again. Evergreen could query versions from the GitHub repository; however, the repository doesn't consistently maintain versions as well.
+Returning the latest version and download for OBS Studio may fail when the OBS Project modifies the availability of the update manifest at `https://obsproject.com/update_studio/manifest.json`. `Get-EvergreenApp -Name OBSStudio` will return a 404 error. The only recourse is to wait until the OBS Project makes the manifest available again.
+
+Evergreen could query versions from the GitHub repository; however, the the OBS Project does not consistently maintain releases in the repository. In some instances a specific release of OBS Studio may address an issue with the macOS version only and `OBSStudio` would then return no results.
+
+Also see [Get-evergreenapp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
 
 ### VMwareHorizonClient
 

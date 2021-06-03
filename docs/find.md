@@ -54,7 +54,7 @@ The `-Name` parameter is used to specify the application name to return details 
 
 ## Alias
 
-`Find-EvergeeenApp` has an alias of `fea` to simplify retrieving supported applications, for example:
+`Find-EvergreenApp` has an alias of `fea` to simplify retrieving supported applications, for example:
 
 ```powershell
 PS /Users/aaron> fea

@@ -72,7 +72,7 @@ Forces this function to download the target application installers from the URI 
 
 ## Alias
 
-`Save-EvergeeenApp` has an alias of `sea` to simplify downloading applications, for example:
+`Save-EvergreenApp` has an alias of `sea` to simplify downloading applications, for example:
 
 ```powershell
 PS /Users/aaron> gea Slack | sea -Path /Users/aaron/Temp/Slack

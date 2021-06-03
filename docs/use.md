@@ -72,7 +72,7 @@ The `-Verbose` parameter can be useful for observing where the application detai
 
 ## Alias
 
-`Get-EvergeeenApp` has an alias of `gea` to simplify retrieving application details, for example:
+`Get-EvergreenApp` has an alias of `gea` to simplify retrieving application details, for example:
 
 ```powershell
 PS /Users/aaron> gea Slack
