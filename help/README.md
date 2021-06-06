@@ -1,6 +1,6 @@
 ﻿# platyPS Help
 
-platyPS help markdown can be found here: [docs/help](docs/help).
+platyPS help markdown can be found here: [/docs/help](/docs/help).
 
 To generate the external help use `New-ExternalHelp`:
 
