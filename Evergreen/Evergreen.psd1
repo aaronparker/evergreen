@@ -105,13 +105,13 @@ PrivateData = @{
         LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/aaronparker/Evergreen/'
+        ProjectUri = 'https://stealthpuppy.com/evergreen/'
 
         # A URL to an icon representing this module.
         IconUri = 'https://raw.githubusercontent.com/aaronparker/Evergreen/main/img/EvergreenLeaf.png'
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://stealthpuppy.com/evergreen/changelog.html'
+        ReleaseNotes = 'https://stealthpuppy.com/evergreen/changelog/'
 
         # Prerelease string of this module
         # Prerelease = ''
