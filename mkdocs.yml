@@ -58,7 +58,6 @@ plugins:
   - search
   - redirects:
       redirect_maps:
-        changelog/insiders.md: insiders/changelog.md
   - minify:
       minify_html: true
       minify_js: true
@@ -103,6 +102,17 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/aaronparker
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/stealthpuppy
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/aaronedwardparker/
+  generator: false
+
 # Page tree
 nav:
   - Home:
@@ -118,14 +128,10 @@ nav:
   - Resources:
     - Known issues: issues.md
     - Changelog: changelog.md
-
-# Customization
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/aaronparker
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/stealthpuppy
-    - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/aaronedwardparker/
-  generator: false
+  - Module help:
+    - en-US:
+      - about_Evergreen: help/en-US/about_Evergreen.md
+      - Find-EvergreenApp: help/en-US/Find-EvergreenApp.md
+      - Get-EvergreenApp: help/en-US/Get-EvergreenApp.md
+      - Save-EvergreenApp: help/en-US/Save-EvergreenApp.md
+      - Export-EvergreenManifest: help/en-US/Export-EvergreenManifest.md

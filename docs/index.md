@@ -1,5 +1,8 @@
 # Evergreen
 
+![PowerShell Gallery version](https://img.shields.io/powershellgallery/v/Evergreen.svg?style=flat-square)
+![PowerShell Gallery downloads](https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat-square)
+
 Evergreen is a PowerShell module that returns the latest version and download URLs for a set of common Windows applications. The module consists of simple functions to use in scripts when performing several tasks including:
 
 * Retrieve the latest version of an application to compare against a version already installed or downloaded
