@@ -9,26 +9,20 @@
 			"JDK": {
 				"8": {
 					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x64-windows-jdk.msi",
-					"x64zip" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x64-windows-jdk.zip",
 					"x64jre" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x64-windows-jre.zip",
 					"x86msi" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x86-windows-jdk.msi",
-					"x86zip" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x86-windows-jdk.zip",
 					"x86jre" :"https://corretto.aws/downloads/latest/amazon-corretto-8-x86-windows-jre.zip"
 				},
 				"11": {
 					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi",
-					"x64zip" :"https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.zip",
-					"x86msi" :"https://corretto.aws/downloads/latest/amazon-corretto-11-x86-windows-jdk.msi",
-					"x86zip" :"https://corretto.aws/downloads/latest/amazon-corretto-11-x86-windows-jdk.zip"
+					"x86msi" :"https://corretto.aws/downloads/latest/amazon-corretto-11-x86-windows-jdk.msi"
 				},
 				"15": {
-					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-15-x64-windows-jdk.msi",
-					"x64zip" :"https://corretto.aws/downloads/latest/amazon-corretto-15-x64-windows-jdk.zip"
+					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-15-x64-windows-jdk.msi"
 
 				},
 				"16": {
-					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-16-x64-windows-jdk.msi",
-					"x64zip" :"https://corretto.aws/downloads/latest/amazon-corretto-16-x64-windows-jdk.zip"
+					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-16-x64-windows-jdk.msi"
 				}
 			},
 			"Property": "ResponseUri.Headers.Location",

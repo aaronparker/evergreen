@@ -1,4 +1,4 @@
-Function Get-Ghostscript {
+Function Get-ArtifexGhostscript {
     <#
         .SYNOPSIS
             Returns the available Ghostscript versions.
@@ -26,7 +26,7 @@ Function Get-Ghostscript {
         Uri          = $res.Get.Uri
         MatchVersion = $res.Get.MatchVersion
         Filter       = $res.Get.MatchFileTypes
-	VersionTag   = $res.Get.VersionTag
+        VersionTag   = $res.Get.VersionTag
     }
     $object = Get-GitHubRepoRelease @params
     Write-Output -InputObject $object
