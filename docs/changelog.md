@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2106.402
 
 * Adds `AmazonCorretto`, `ArtifexGhostscript`, `FreeFem`, `Gephi`, `Praat`, `SAGAGIS`, `Scratch`, `TeXstudio`, `gretl`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates private function `Get-Architecture` with additional processor architecture detections
