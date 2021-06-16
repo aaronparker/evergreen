@@ -6,7 +6,8 @@
 * Updates private function `Get-Architecture` with additional processor architecture detections
 * Updates private function `Get-GitHubRepoRelease` to return a custom object if the GitHub API is rate limited
 * BREAKING CHANGES:
-  - Remove portable installers and `.zip` file types from `Notepad++`
+
+      * Remove portable installers and `.zip` file types from `Notepad++`
 
 ## 2106.395
 
@@ -15,7 +16,7 @@
 * Updates `Veracrypt` to return the complete version number (e.g. `1.24-Update7`) [#166](https://github.com/aaronparker/evergreen/issues/166)
 * BREAKING CHANGES:
 
-  * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
+    * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 
 ## 2105.388
 
@@ -39,7 +40,7 @@
 * Updates `AdobeAcrobat` to include 64-bit updates for Reader and Acrobat DC
 * BREAKING CHANGES
 
-  * Adds the `Architecture` property to `AdobeAcrobat`
+    * Adds the `Architecture` property to `AdobeAcrobat`
 
 ## 2105.366
 
@@ -92,7 +93,7 @@
 
 * Adds `Get-NETworkManager`, `Get-Anki`
 * Updates `Get-AdobeAcrobat` to include updates for Adobe Acrobat Reader DC. This function now returns updates for both Acrobat Pro and Reader
-  * Retrieve the installers for Adobe Acrobat Reader DC with `Get-AdobeAcrobatReaderDC` and any available updates with `Get-AdobeAcrobat`
+    * Retrieve the installers for Adobe Acrobat Reader DC with `Get-AdobeAcrobatReaderDC` and any available updates with `Get-AdobeAcrobat`
 * Temporarily disables `Get-ControlUpAgent` and `Get-ControlUpConsole`
 
 ## 2103.298
@@ -102,27 +103,27 @@
 * Updates `Get-AdobeAcrobatReaderDC` to account for the new 64-bit version of Reader to add [#121](https://github.com/aaronparker/Evergreen/issues/121). Filter with `Where-Object` to return the required version, language and architecture
 * BREAKING CHANGES
 
-  * Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
-  * Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
-  * Changes the output of `Get-ControlUpAgent` - the values in the `Framework` property have changed and the function only returns the most recent agent version
+    * Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
+    * Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
+    * Changes the output of `Get-ControlUpAgent` - the values in the `Framework` property have changed and the function only returns the most recent agent version
 
 ## 2102.291
 
 * Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and includes support for returning updates for Adobe Acrobat Pro/Standard DC, 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
-  * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
+    * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
 * Adds `Preview` ring to `Get-MicrosoftTeams`
 * Updates function comment-based help and corrects spelling across several functions
 * BREAKING CHANGES
 
-  * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
-  * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
+    * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
+    * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
 
 ## 2102.286
 
 * Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`
 * Updates `Get-MicrosoftWvdRemoteDesktop` to output the `URI` property value in the format `https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MntQ` instead of the original `fwlink` source URL (e.g. `https://go.microsoft.com/fwlink/?linkid=2068602`)
 * Updates the following functions to use `Invoke-RestMethod` (via `Invoke-RestMethodWrapper`) instead of `Invoke-WebRequest` to simplify code and fix an issue where some functions where returning `Version` as a PSObject instead of System.String ([#109](https://github.com/aaronparker/Evergreen/issues/109))
-  * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
+    * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
 * Updates module `ReleaseNotes` location to: [https://stealthpuppy.com/evergreen/changelog.html](https://stealthpuppy.com/evergreen/changelog.html)
 
 ## 2101.281
@@ -130,21 +131,21 @@
 * Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
 * Adds the `Monthly Enterprise` channel to `Get-Microsoft365Apps` output. See [#107](https://github.com/aaronparker/Evergreen/issues/107)
 * Adds private function `Invoke-RestMethodWrapper` to enable normalisation across public functions and PowerShell/Windows PowerShell that use `Invoke-RestMethod`
-  * Updates private function `Get-GitHubRepoRelease` to use `Invoke-RestMethodWrapper`
-  * Updates several public functions to use `Invoke-RestMethodWrapper` instead of the previous method of `Invoke-WebRequest | ConvertTo-Json` - `Get-1Password`, `Get-CitrixVMTools`, `Get-FoxitReader`, `Get-GoogleChrome`, `Get-Microsoft365Apps`, `Get-MicrosoftEdge`, `Get-MicrosoftTeams`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-MozillaThunderbird`
-  * Updates public functions that used `Invoke-RestMethod` to use `Invoke-RestMethodWrapper` instead - `Get-Gimp`, `Get-MicrosoftPowerShell`, `Get-MicrosoftVisualStudio`
+    * Updates private function `Get-GitHubRepoRelease` to use `Invoke-RestMethodWrapper`
+    * Updates several public functions to use `Invoke-RestMethodWrapper` instead of the previous method of `Invoke-WebRequest | ConvertTo-Json` - `Get-1Password`, `Get-CitrixVMTools`, `Get-FoxitReader`, `Get-GoogleChrome`, `Get-Microsoft365Apps`, `Get-MicrosoftEdge`, `Get-MicrosoftTeams`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-MozillaThunderbird`
+    * Updates public functions that used `Invoke-RestMethod` to use `Invoke-RestMethodWrapper` instead - `Get-Gimp`, `Get-MicrosoftPowerShell`, `Get-MicrosoftVisualStudio`
 * Renames private function `Invoke-WebContent` to `Invoke-WebRequestWrapper` and makes general improvements to the handling of `Invoke-WebRequest`
 * Renames private function `ConvertFrom-SourceForgeReleasesJson` to `Get-SourceForgeRepoRelease`
-  * Updates and optimises this function to make use of `Invoke-RestMethodWrapper` so that it can query a SourceForge repository and return the required output in a single function
-  * Simplifies code in public functions that return SourceForge releases - `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator`, `Get-ProjectLibre`, `Get-WinMerge`, `Get-WinSCP`
+    * Updates and optimises this function to make use of `Invoke-RestMethodWrapper` so that it can query a SourceForge repository and return the required output in a single function
+    * Simplifies code in public functions that return SourceForge releases - `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator`, `Get-ProjectLibre`, `Get-WinMerge`, `Get-WinSCP`
 * Renames private functions for more descriptive function names (these resolve HTTP 301/302 return codes):
-  * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
-  * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
+    * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
+    * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 * BREAKING CHANGES
 
-  * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
-  * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
-  * Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
+    * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
+    * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
+    * Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
 
 ## 2101.275
 
@@ -152,8 +153,8 @@
 * Updates `Get-MicrosoftPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 * BREAKING CHANGES
 
-  * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
-  * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
+    * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
+    * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
 ## 2101.263
 
@@ -180,16 +181,16 @@
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * BREAKING CHANGES:
 
-  * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
-  * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
-  * Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
+    * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
+    * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
+    * Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
 
 ## 2012.242
 
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
 * Adds Windows Installer downloads output to `Get-FoxitReader`
 * Updates `Get-MicrosoftSsms` to query an evergreen update URL to gather new versions from the product releases feed
-  * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
+    * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
 * Updates `Get-MicrosoftSsms` to output all supported languages for downloads - filter output on the `Language` property
 * Updates `Get-MozillaFirefox` to return both Exe and Msi versions of the Firefox installer
 * Adds SHA256 hash property to output from `Get-MicrosoftVisualStudioCode`
@@ -200,20 +201,20 @@
 * Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
 * BREAKING CHANGES:
 
-  * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
-  * Removes Beta and Snapshots releases from `Get-Cyberduck`
-  * Removes Debug releases from `Get-Greenshot`
-  * Removes SafeMode releases from `Get-Handbrake`
-  * Removes Beta channel and ARM64 releases from `Get-MicrosoftEdge`
-  * Removes Zip format releases from `Get-MicrosoftPowerShellCore`
-  * Removes Symbols releases from `Get-Win32OpenSSH`
+    * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
+    * Removes Beta and Snapshots releases from `Get-Cyberduck`
+    * Removes Debug releases from `Get-Greenshot`
+    * Removes SafeMode releases from `Get-Handbrake`
+    * Removes Beta channel and ARM64 releases from `Get-MicrosoftEdge`
+    * Removes Zip format releases from `Get-MicrosoftPowerShellCore`
+    * Removes Symbols releases from `Get-Win32OpenSSH`
 
 ## 2012.225
 
 * Adds `Get-Microsoft.NET` (.NET 5.0 and .NET Core), `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
 * Updates `Get-OpenJDK` to return all releases. Further filtering will be added in the future per [#76](https://github.com/aaronparker/Evergreen/issues/76)
 * Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI Firefox installers and updates output with additional properties (`Architecture`, `Channel` and `Type`). See [#83](https://github.com/aaronparker/Evergreen/issues/83).
-  * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
+    * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
 * Updates `Get-AdobeAcrobatReader` to return additional languages [#84](https://github.com/aaronparker/Evergreen/issues/84). Note that Reader DC does not provide the latest version for all languages - it may be a better approach to use the [MUI version of the Reader installer](https://helpx.adobe.com/au/reader/faq.html#Enterprisedeployment) if your language is supported
 
 ## 2010.219
@@ -284,11 +285,11 @@
 ## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
-  * Returns Edge for Windows only
-  * Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
-  * Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
-  * Filters and returns only the latest version of each of the above channels and downloads
-  * Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
+    * Returns Edge for Windows only
+    * Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
+    * Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
+    * Filters and returns only the latest version of each of the above channels and downloads
+    * Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
 
 ## 2004.157
 
