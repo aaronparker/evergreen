@@ -32,24 +32,54 @@ Function Get-GitHubRepoRelease {
     )
 
     # Retrieve the releases from the GitHub API 
-    try {        
+    try {
+
+        # Use TLS for connections
+        $SslProtocol = "Tls12"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Set TLS to $SslProtocol."
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
+
         # Invoke the GitHub releases REST API
-        # Note that the API performs rate limiting. 
+        # Note that the API performs rate limiting.
         # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
         $params = @{
-            ContentType = "application/vnd.github.v3+json"
-            Method      = "Get"
-            Uri         = $Uri
+            ContentType        = "application/vnd.github.v3+json"
+            ErrorAction        = "SilentlyContinue"
+            MaximumRedirection = 0
+            DisableKeepAlive   = $true
+            UseBasicParsing    = $true
+            UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+            Uri                = $Uri
         }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
-        $release = Invoke-RestMethodWrapper @params
+        $response = $True
+        $release = Invoke-RestMethod @params
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): REST API call to [$Uri] failed with: $($_.Exception.Response.StatusCode)."
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        $response = $False
+
+        # Return a custom object so that we gracefully handle rate limiting and we don't break testing
+        If ($_.Exception.Response.StatusCode.value__ -eq 403) {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Request to URI has been rate limited: $Uri."
+
+            # TODO: Report on the current rate limited status
+            # Invoke-RestMethod -Uri "https://api.github.com/rate_limit"
+
+            $PSObject = [PSCustomObject] @{
+                Version = "RateLimited"
+                URI     = "https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting"
+            }
+            Write-Output -InputObject $PSObject
+            Break
+        }
+        Else {
+
+            # If it's not a 403, return the exception to the pipeline
+            Throw $_
+        }
     }
 
-    If ($Null -ne $release) {
+    If ($response -eq $True) {
 
         # Validate that $release has the expected properties
         Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."

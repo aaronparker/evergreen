@@ -95,6 +95,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
+        #TODO: Should we return $_ on catch?
         Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
