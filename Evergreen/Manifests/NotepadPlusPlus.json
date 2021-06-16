@@ -4,7 +4,7 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/notepad-plus-plus/notepad-plus-plus/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+		"MatchFileTypes": "^(?!.*portable).*exe$|\\.msi$|\\.msp$"
 	},
 	"Install": {
 		"Setup": "npp*.exe",
