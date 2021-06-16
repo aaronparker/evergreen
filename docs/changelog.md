@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `AmazonCorretto`, `ArtifexGhostscript`, `FreeFem`, `Gephi`, `Praat`, `SAGAGIS`, `Scratch`, `TeXstudio`, `gretl`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* BREAKING CHANGE:
+  * Remove portable installers and `.zip` file types from `Notepad++`
+* Updates private function `Get-Architecture` with additional processor architecture detections
+
 ## 2106.395
 
 * Adds `AkeoRufus` [#179](https://github.com/aaronparker/evergreen/issues/179), `BlenderLauncher` [#178](https://github.com/aaronparker/evergreen/issues/178)
