@@ -3,9 +3,10 @@
 ## VERSION
 
 * Adds `AmazonCorretto`, `ArtifexGhostscript`, `FreeFem`, `Gephi`, `Praat`, `SAGAGIS`, `Scratch`, `TeXstudio`, `gretl`. Thanks to [@adotcoop](https://github.com/adotcoop)
-* BREAKING CHANGE:
-  * Remove portable installers and `.zip` file types from `Notepad++`
 * Updates private function `Get-Architecture` with additional processor architecture detections
+* BREAKING CHANGE:
+
+  * Remove portable installers and `.zip` file types from `Notepad++`
 
 ## 2106.395
 
@@ -13,6 +14,7 @@
 * Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
 * Updates `Veracrypt` to return the complete version number (e.g. `1.24-Update7`) [#166](https://github.com/aaronparker/evergreen/issues/166)
 * BREAKING CHANGES:
+
   * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 
 ## 2105.388
@@ -36,6 +38,7 @@
 * Updates `AdobeAcrobat` to include Reader updates for `2015`, `2017`, `2020`
 * Updates `AdobeAcrobat` to include 64-bit updates for Reader and Acrobat DC
 * BREAKING CHANGES
+
   * Adds the `Architecture` property to `AdobeAcrobat`
 
 ## 2105.366
@@ -98,6 +101,7 @@
 * Updates `Get-ControlUpAgent` to use the published JSON at [https://www.controlup.com/latest-agent-console/](https://www.controlup.com/latest-agent-console/) - the last vestiges of any screen scraping code have been swept away
 * Updates `Get-AdobeAcrobatReaderDC` to account for the new 64-bit version of Reader to add [#121](https://github.com/aaronparker/Evergreen/issues/121). Filter with `Where-Object` to return the required version, language and architecture
 * BREAKING CHANGES
+
   * Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
   * Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
   * Changes the output of `Get-ControlUpAgent` - the values in the `Framework` property have changed and the function only returns the most recent agent version
@@ -109,6 +113,7 @@
 * Adds `Preview` ring to `Get-MicrosoftTeams`
 * Updates function comment-based help and corrects spelling across several functions
 * BREAKING CHANGES
+
   * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
   * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
 
@@ -136,6 +141,7 @@
   * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
   * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 * BREAKING CHANGES
+
   * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
   * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
   * Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
@@ -145,6 +151,7 @@
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
 * Updates `Get-MicrosoftPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 * BREAKING CHANGES
+
   * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
   * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
@@ -172,6 +179,7 @@
 * Updates version output for `Get-MicrosoftWvdRtcService` and `Get-MicrosoftWvdInfraAgent`
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * BREAKING CHANGES:
+
   * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
   * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
   * Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
@@ -191,6 +199,7 @@
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
 * BREAKING CHANGES:
+
   * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
   * Removes Beta and Snapshots releases from `Get-Cyberduck`
   * Removes Debug releases from `Get-Greenshot`

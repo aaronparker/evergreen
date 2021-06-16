@@ -5,7 +5,7 @@ skip_tags: true
 image: Visual Studio 2019
 environment:
   GitHubKey:
-    secure: 085aq77wGuI+EI1wXVyiB8ERrsksUfSVrPjoxCzusqT8SFnY/Sb8P0PsKqvhybgF
+    secure: bGxozoCJoYVeoQCF1W+tLhKbjvFoyr7zGcc2A57UiP356gpE7k8/fhqH6NPi8eQ2
   NuGetApiKey:
     secure: /YPozcX4yV1XCrZuS8DAhOmH/OOjkg6+zrCTT3lHR3a7/SY7S83JNNgYBsROlLq3
   Module: Evergreen
