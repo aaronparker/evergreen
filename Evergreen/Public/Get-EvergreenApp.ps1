@@ -73,6 +73,6 @@ Function Get-EvergreenApp {
 
     End {
         # Remove these variables for next run
-        Remove-Variable -Name "Output", "Function"
+        Remove-Variable -Name "Output", "Function" -ErrorAction "SilentlyContinue"
     }
 }
