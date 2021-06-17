@@ -126,14 +126,14 @@ nav:
   - Getting started:
     - Installation: install.md
     - Using Evergreen: use.md
-    - Find supported applications: find.md
+    - Find supported apps: find.md
     - Download installers: save.md
     - Example usage: examples.md
     - Under the hood: under.md
   - Resources:
     - Known issues: issues.md
     - Changelog: changelog.md
-    - Applications: apps.md
+    - Supported apps: apps.md
   - Module help:
     - en-US:
       - about_Evergreen: help/en-US/about_Evergreen.md
