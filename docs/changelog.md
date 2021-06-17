@@ -7,7 +7,7 @@
 * Updates private function `Get-GitHubRepoRelease` to return a custom object if the GitHub API is rate limited
 * BREAKING CHANGES:
 
-      * Remove portable installers and `.zip` file types from `Notepad++`
+    * Remove portable installers and `.zip` file types from `Notepad++`
 
 ## 2106.395
 

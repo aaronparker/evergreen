@@ -1,6 +1,6 @@
 {
 	"Name": "WiX Toolset",
-	"Source": "http://wixtoolset.org/",
+	"Source": "https://wixtoolset.org/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/wixtoolset/wix3/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
