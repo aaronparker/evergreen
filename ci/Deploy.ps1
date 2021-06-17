@@ -77,7 +77,8 @@ Else {
             $OutFile = [System.IO.Path]::Combine($env:APPVEYOR_BUILD_FOLDER, "docs", "apps.md")
             $markdown = New-MDHeader -Text "Supported applications" -Level 1
             $markdown += "`n"
-            $markdown += "Evergreen $newVersion supports the following applications:"
+            $line = "Evergreen " + '`' + $newVersion + '`' + " supports the following applications:"
+            $markdown += $line
             $markdown += "`n`n"
             $markdown += Find-EvergreenApp | New-MDTable
             ($markdown.TrimEnd("`n")) | Out-File -FilePath $OutFile -Force -Encoding "Utf8"

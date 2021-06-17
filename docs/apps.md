@@ -1,6 +1,6 @@
 # Supported applications
 
-Evergreen 2106.402 supports the following applications:
+Evergreen `2106.402` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
