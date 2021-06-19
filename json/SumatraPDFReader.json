@@ -1,0 +1,12 @@
+[
+  {
+    "Version": "3.2",
+    "Architecture": "x86",
+    "URI": "https://www.sumatrapdfreader.org/dl2/SumatraPDF-3.2-install.exe"
+  },
+  {
+    "Version": "3.2",
+    "Architecture": "x64",
+    "URI": "https://www.sumatrapdfreader.org/dl2/SumatraPDF-3.2-64-install.exe"
+  }
+]

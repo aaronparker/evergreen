@@ -1,0 +1,12 @@
+[
+  {
+    "Version": "41.6.4.8",
+    "Type": "Desktop",
+    "URI": "https://welcome.webex.com/client/T33L/webexapp.msi"
+  },
+  {
+    "Version": "41.6.4.8",
+    "Type": "VDI",
+    "URI": "https://welcome.webex.com/client/T33L/webexvdi.msi"
+  }
+]

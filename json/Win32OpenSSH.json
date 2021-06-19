@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "8.6.0.0",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "zip",
+    "Date": "26/5/2021",
+    "Size": 3198737,
+    "URI": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V8.6.0.0p1-Beta/OpenSSH-Win32.zip"
+  },
+  {
+    "Version": "8.6.0.0",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "zip",
+    "Date": "26/5/2021",
+    "Size": 3659296,
+    "URI": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V8.6.0.0p1-Beta/OpenSSH-Win64.zip"
+  }
+]

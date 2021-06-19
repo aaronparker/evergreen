@@ -1,0 +1,26 @@
+[
+  {
+    "Version": "5.0.7",
+    "Architecture": "x64",
+    "Channel": "Current",
+    "URI": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/5.0.7/windowsdesktop-runtime-5.0.7-win-x64.exe"
+  },
+  {
+    "Version": "5.0.7",
+    "Architecture": "x86",
+    "Channel": "Current",
+    "URI": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/5.0.7/windowsdesktop-runtime-5.0.7-win-x86.exe"
+  },
+  {
+    "Version": "3.1.16",
+    "Architecture": "x64",
+    "Channel": "LTS",
+    "URI": "https://dotnetcli.azureedge.net/dotnet/Runtime/3.1.16/windowsdesktop-runtime-3.1.16-win-x64.exe"
+  },
+  {
+    "Version": "3.1.16",
+    "Architecture": "x86",
+    "Channel": "LTS",
+    "URI": "https://dotnetcli.azureedge.net/dotnet/Runtime/3.1.16/windowsdesktop-runtime-3.1.16-win-x86.exe"
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "Version": "11.17.2.0",
+    "Title": "License Server for Windows - Version 11.17.2.0 Build 35000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "17/6/2021",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111720-35-for-windows.html"
+  },
+  {
+    "Version": "11.16.6.0",
+    "Title": "License Server VPX – Version 11.16.6.0 Build 33500",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "18/3/2021",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-vpx.html"
+  },
+  {
+    "Version": "11.16.6.0",
+    "Title": "License Server for Windows - Version 11.16.6.0 Build 34000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "18/3/2021",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111660-34-for-windows.html"
+  },
+  {
+    "Version": "11.16.6.0",
+    "Title": "License Server for Windows - Version 11.16.6.0 Build 33000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "15/12/2020",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111660-33-for-windows.html"
+  },
+  {
+    "Version": "11.16.6.0",
+    "Title": "License Server for Windows - Version 11.16.6.0 Build 32000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "30/9/2020",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111660-32-for-windows.html"
+  },
+  {
+    "Version": "11.16.6.0",
+    "Title": "License Server for Windows - Version 11.16.6.0 Build 31000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "18/6/2020",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111660-31-for-windows.html"
+  },
+  {
+    "Version": "11.16.3.0",
+    "Title": "License Server for Windows - Version 11.16.3.0 Build 30000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "27/3/2020",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111633-for-windows.html"
+  },
+  {
+    "Version": "11.16.3.0",
+    "Title": "License Server for Windows - Version 11.16.3.0 Build 29000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "19/12/2019",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-11163-for-windows.html"
+  },
+  {
+    "Version": "11.16.3.0",
+    "Title": "License Server for Windows - Version 11.16.3.0 Build 28000",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "20/9/2019",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-1116-for-windows.html"
+  },
+  {
+    "Version": "Unknown",
+    "Title": "Automatic License Updates with Citrix Licensing Manager ",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "13/9/2016",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/automatic-license-update.html"
+  },
+  {
+    "Version": "Unknown",
+    "Title": "Simple License Service",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "29/6/2012",
+    "URI": "https://www.citrix.com/downloads/licensing/components/simple-license-service.html"
+  }
+]

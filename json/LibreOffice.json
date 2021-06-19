@@ -1,0 +1,926 @@
+[
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "Neutral",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "am",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_am.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ar",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ar.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ast",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ast.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "bg",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_bg.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "bn-IN",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_bn-IN.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "bn",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_bn.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "bo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_bo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "bs",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_bs.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ca-valencia",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ca-valencia.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ca",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ca.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "cs",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_cs.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "da",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_da.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "de",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_de.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "dz",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_dz.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "el",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_el.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "en-GB",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_en-GB.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "en-US",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_en-US.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "en-ZA",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_en-ZA.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "eo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_eo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "es",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_es.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "et",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_et.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "eu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_eu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "fi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_fi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "fr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_fr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "gl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_gl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "gu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_gu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "he",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_he.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "hi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_hi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "hr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_hr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "hu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_hu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "id",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_id.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "is",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_is.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "it",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_it.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ja",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ja.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ka",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ka.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "km",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_km.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ko",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ko.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "lo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_lo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "lt",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_lt.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "lv",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_lv.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "mk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_mk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "nb",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_nb.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ne",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ne.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "nl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_nl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "nn",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_nn.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "om",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_om.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "pl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_pl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "pt-BR",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_pt-BR.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "pt",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_pt.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ro",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ro.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ru",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ru.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "si",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_si.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "sid",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_sid.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "sk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_sk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "sl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_sl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "sq",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_sq.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "sv",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_sv.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ta",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ta.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "tg",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_tg.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "tr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_tr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "ug",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_ug.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "uk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_uk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "vi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_vi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "zh-CN",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_zh-CN.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Language": "zh-TW",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86/LibreOffice_7.1.3_Win_x86_helppack_zh-TW.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "Neutral",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "am",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_am.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ar",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ar.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ast",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ast.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "bg",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_bg.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "bn-IN",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_bn-IN.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "bn",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_bn.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "bo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_bo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "bs",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_bs.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ca-valencia",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ca-valencia.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ca",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ca.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "cs",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_cs.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "da",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_da.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "de",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_de.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "dz",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_dz.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "el",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_el.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "en-GB",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_en-GB.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "en-US",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_en-US.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "en-ZA",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_en-ZA.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "eo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_eo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "es",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_es.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "et",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_et.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "eu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_eu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "fi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_fi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "fr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_fr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "gl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_gl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "gu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_gu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "he",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_he.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "hi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_hi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "hr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_hr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "hu",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_hu.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "id",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_id.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "is",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_is.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "it",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_it.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ja",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ja.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ka",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ka.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "km",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_km.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ko",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ko.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "lo",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_lo.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "lt",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_lt.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "lv",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_lv.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "mk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_mk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "nb",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_nb.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ne",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ne.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "nl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_nl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "nn",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_nn.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "om",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_om.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "pl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_pl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "pt-BR",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_pt-BR.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "pt",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_pt.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ro",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ro.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ru",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ru.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "si",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_si.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "sid",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_sid.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "sk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_sk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "sl",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_sl.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "sq",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_sq.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "sv",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_sv.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ta",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ta.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "tg",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_tg.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "tr",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_tr.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "ug",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_ug.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "uk",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_uk.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "vi",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_vi.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "zh-CN",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_zh-CN.msi"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86_64",
+    "Language": "zh-TW",
+    "URI": "https://download.documentfoundation.org/libreoffice/stable/7.1.3/win/x86_64/LibreOffice_7.1.3_Win_x64_helppack_zh-TW.msi"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "6.1.49",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "zip",
+    "Date": "12/6/2021",
+    "Size": 11824167,
+    "URI": "https://github.com/praat/praat/releases/download/v6.1.49/praat6149_win32.zip"
+  },
+  {
+    "Version": "6.1.49",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "zip",
+    "Date": "12/6/2021",
+    "Size": 12262480,
+    "URI": "https://github.com/praat/praat/releases/download/v6.1.49/praat6149_win64.zip"
+  }
+]

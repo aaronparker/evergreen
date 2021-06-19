@@ -1,0 +1,26 @@
+[
+  {
+    "Version": "19.00",
+    "Architecture": "x64",
+    "Type": "msi",
+    "URI": "https://nchc.dl.sourceforge.net/project/sevenzip/7-Zip/19.00/7z1900-x64.msi"
+  },
+  {
+    "Version": "19.00",
+    "Architecture": "x64",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/sevenzip/7-Zip/19.00/7z1900-x64.exe"
+  },
+  {
+    "Version": "19.00",
+    "Architecture": "x86",
+    "Type": "msi",
+    "URI": "https://nchc.dl.sourceforge.net/project/sevenzip/7-Zip/19.00/7z1900.msi"
+  },
+  {
+    "Version": "19.00",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/sevenzip/7-Zip/19.00/7z1900.exe"
+  }
+]

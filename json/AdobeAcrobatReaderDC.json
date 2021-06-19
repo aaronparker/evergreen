@@ -1,0 +1,191 @@
+[
+  {
+    "Version": "21.005.20048",
+    "Language": "English",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 English for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_en_US.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "English",
+    "Architecture": "x64",
+    "Name": "Reader DC 2021.005.20048 English Windows(64Bit)",
+    "URI": "http://ardownload.adobe.com/pub/adobe/acrobat/win/AcrobatDC/2100520048/AcroRdrDCx642100520048_en_US.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "English (UK)",
+    "Architecture": "x64",
+    "Name": "Reader DC 2021.005.20048 English UK Windows(64Bit)",
+    "URI": "http://ardownload.adobe.com/pub/adobe/acrobat/win/AcrobatDC/2100520048/AcroRdrDCx642100520048_en_US.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "English (UK)",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 English UK for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_en_US.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Danish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Danish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_da_DK.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Dutch",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Dutch for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_nl_NL.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "French",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 French for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_fr_FR.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Finnish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Finnish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_fi_FI.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "German",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 German for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_de_DE.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Italian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Italian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_it_IT.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "Japanese",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 Japanese for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_ja_JP.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Korean",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Korean for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_ko_KR.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Norwegian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Norwegian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_nb_NO.exe"
+  },
+  {
+    "Version": "21.005.20048",
+    "Language": "Spanish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2021.005.20048 Spanish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2100520048/AcroRdrDC2100520048_es_ES.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Swedish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Swedish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_sv_SE.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Basque",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Basque for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_eu_ES.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Catalan",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Catalan for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_ca_ES.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Croatian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Croatian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_hr_HR.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Czech",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Czech for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_cs_CZ.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Hungarian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Hungarian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_hu_HU.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Polish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Polish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_pl_PL.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Romanian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Romanian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_ro_RO.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Russian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Russian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_ru_RU.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Slovakian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Slovakian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_sk_SK.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Slovenian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Slovenian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_sl_SI.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Turkish",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Turkish for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_tr_TR.exe"
+  },
+  {
+    "Version": "19.008.20071",
+    "Language": "Ukrainian",
+    "Architecture": "x86",
+    "Name": "Reader DC 2019.008.20071 Ukrainian for Windows",
+    "URI": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1900820071/AcroRdrDC1900820071_uk_UA.exe"
+  }
+]

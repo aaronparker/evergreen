@@ -1,0 +1,9 @@
+{
+  "Version": "1.19.1",
+  "Platform": "Windows",
+  "Architecture": "x86",
+  "Type": "exe",
+  "Date": "23/4/2021",
+  "Size": 101913608,
+  "URI": "https://github.com/microsoft/AzureStorageExplorer/releases/download/V1.19.1/Windows_StorageExplorer.exe"
+}

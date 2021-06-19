@@ -1,0 +1,38 @@
+[
+  {
+    "Version": "3.14",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "30/4/2021",
+    "Size": 1173560,
+    "URI": "https://github.com/pbatard/rufus/releases/download/v3.14/rufus-3.14.exe"
+  },
+  {
+    "Version": "3.14",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "30/4/2021",
+    "Size": 1173560,
+    "URI": "https://github.com/pbatard/rufus/releases/download/v3.14/rufus-3.14p.exe"
+  },
+  {
+    "Version": "3.14",
+    "Platform": "Windows",
+    "Architecture": "ARM32",
+    "Type": "exe",
+    "Date": "30/4/2021",
+    "Size": 3085368,
+    "URI": "https://github.com/pbatard/rufus/releases/download/v3.14/rufus-3.14_arm.exe"
+  },
+  {
+    "Version": "3.14",
+    "Platform": "Windows",
+    "Architecture": "ARM64",
+    "Type": "exe",
+    "Date": "30/4/2021",
+    "Size": 3355704,
+    "URI": "https://github.com/pbatard/rufus/releases/download/v3.14/rufus-3.14_arm64.exe"
+  }
+]

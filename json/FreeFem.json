@@ -1,0 +1,9 @@
+{
+  "Version": "4.9",
+  "Platform": "Windows",
+  "Architecture": "x64",
+  "Type": "exe",
+  "Date": "19/4/2021",
+  "Size": 234192583,
+  "URI": "https://github.com/FreeFem/FreeFem-sources/releases/download/v4.9/FreeFEM-4.9-win7-64.exe"
+}

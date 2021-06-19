@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "9.54.0",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "30/3/2021",
+    "Size": 28619928,
+    "URI": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/gs9540w32.exe"
+  },
+  {
+    "Version": "9.54.0",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "exe",
+    "Date": "30/3/2021",
+    "Size": 29088752,
+    "URI": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/gs9540w64.exe"
+  }
+]

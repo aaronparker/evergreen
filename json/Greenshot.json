@@ -1,0 +1,29 @@
+[
+  {
+    "Version": "1.2.10.6",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "9/8/2017",
+    "Size": 1783200,
+    "URI": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe"
+  },
+  {
+    "Version": "1.2.10.6",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "zip",
+    "Date": "9/8/2017",
+    "Size": 1502832,
+    "URI": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-NO-INSTALLER-1.2.10.6-RELEASE.zip"
+  },
+  {
+    "Version": "1.2.10.6",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "9/8/2017",
+    "Size": 1392480,
+    "URI": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot_for_PortableApps_1.2.10.6-RELEASE.paf.exe"
+  }
+]

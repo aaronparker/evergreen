@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "3.16.224",
+    "Platform": "macOS",
+    "Architecture": "x64",
+    "Type": "exe",
+    "Date": "17/7/2020",
+    "Size": 24207408,
+    "URI": "https://github.com/nomacs/nomacs/releases/download/3.16.224/nomacs-setup-x64.exe"
+  },
+  {
+    "Version": "3.16.224",
+    "Platform": "macOS",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "17/7/2020",
+    "Size": 39862272,
+    "URI": "https://github.com/nomacs/nomacs/releases/download/3.16.224/nomacs-setup-x64.msi"
+  }
+]
