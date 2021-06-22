@@ -83,6 +83,6 @@
 
     End {
         # Remove these variables for next run
-        Remove-Variable -Name "PSObject", "Json", "Manifests"
+        Remove-Variable -Name "PSObject", "Json", "Manifests" -ErrorAction "SilentlyContinue"
     }
 }

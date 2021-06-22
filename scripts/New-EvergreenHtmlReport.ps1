@@ -24,7 +24,7 @@ New-HTML -TitleText $Module -Online -FilePath $ReportPath -ShowHTML:$False {
         New-Variable -Name "tempOutput" -Value (. $command.Name ) -ErrorAction "SilentlyContinue"
         If ($tempOutput) {
             $Output = (Get-Variable -Name "tempOutput").Value
-            Remove-Variable -Name tempOutput
+            Remove-Variable -Name "tempOutput" -ErrorAction "SilentlyContinue"
 
             # Get function string resources
             $res = Export-EvergreenFunctionStrings -AppName ("$($command.Name)".Split("-"))[1]
