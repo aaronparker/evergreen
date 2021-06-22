@@ -1,0 +1,27 @@
+{
+	"Name": "RStudio",
+	"Source": "https://www.rstudio.com/",
+	"Get": {
+		"Update": {
+            "Uri": "https://www.rstudio.org/links/check_for_update?version=1.2.1335&os=windows&format=kvp&manual=true",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+		},
+		"Download": {
+            "Uri": {
+                "Exe": "https://download1.rstudio.org/desktop/windows/RStudio-#version.exe"
+            },
+            "ReplaceText": "#version"
+		}
+	},
+	"Install": {
+		"Setup": "RStudio-*.exe",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/S",
+			"PostInstall": []
+		}
+	}
+}

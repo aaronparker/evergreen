@@ -1,0 +1,28 @@
+﻿{
+    "Name": "Minitab",
+    "Source": "https://www.minitab.com/",
+    "Get": {
+        "Update": {
+            "Uri": "https://files3.minitab.com/prodinstalls/aiupdates/minitab#release/1033/Minitab#releasex64Updates.ait",
+            "ReplaceRelease": "#release"
+
+        },
+        "Download": {
+            "Releases": [
+                "19",
+                "20"
+            ]
+        }
+    },
+    "Install": {
+        "Setup": "minitab*.exe",
+        "Physical": {
+            "Arguments": "/exenoui /exelang 1033 /qn DISABLE_UPDATES=1 DISABLE_ANALYTICS=1",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/exenoui /exelang 1033 /qn DISABLE_UPDATES=1 DISABLE_ANALYTICS=1",
+            "PostInstall": []
+        }
+    }
+}
