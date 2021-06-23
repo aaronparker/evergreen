@@ -34,16 +34,23 @@
 
         # Convert from unicode
         $Updates = [System.Text.Encoding]::Unicode.GetString($Updatefeed)
-        # Remove header from ini file
-        $UpdatesWithoutHeader = $Updates.Split(']')[1]
+        
+        # Get the URI(s) and Version(s) from the Ini file
+        $URIs = [RegEx]::Matches($Updates, $res.Get.Update.MatchFile) | Select-Object -ExpandProperty Value
+        $Versions = [RegEx]::Match($URIs, $res.Get.Update.MatchVersion) | Select-Object -ExpandProperty Value
 
-        $Data = $UpdatesWithoutHeader.Replace("\", "\\")  | ConvertFrom-StringData
+        # Grab latest version, sort by descending version number 
+        $LatestVersion = $Versions | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
+            Select-Object -First 1
+        
+        $LatestURI = $URIs | Select-String -Pattern $LatestVersion
 
         # Build the output object        
         $PSObject = [PSCustomObject] @{
-            Version = $Data.Version
+            Version = $LatestVersion
             Release = $Release
-            URI     = $Data.url
+            URI     = $LatestURI
         }
         Write-Output -InputObject $PSObject
             

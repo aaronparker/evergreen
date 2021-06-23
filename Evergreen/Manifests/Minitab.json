@@ -4,7 +4,9 @@
     "Get": {
         "Update": {
             "Uri": "https://files3.minitab.com/prodinstalls/aiupdates/minitab#release/1033/Minitab#releasex64Updates.ait",
-            "ReplaceRelease": "#release"
+            "ReplaceRelease": "#release",
+            "MatchFile": "(?<=URL = )(https.*.exe)",
+            "MatchVersion": "((?<=minitab)\\d+(\\.\\d+){1,4})"
 
         },
         "Download": {
