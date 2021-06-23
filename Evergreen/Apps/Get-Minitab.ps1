@@ -44,7 +44,7 @@
             Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1
         
-        $LatestURI = $URIs | Select-String -Pattern $LatestVersion
+        [String]$LatestURI = $URIs | Select-String -Pattern $LatestVersion
 
         # Build the output object        
         $PSObject = [PSCustomObject] @{
