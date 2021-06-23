@@ -30,8 +30,7 @@ Function Get-JetBrainsIntelliJIDEA {
             $updateFeed = Invoke-RestMethodWrapper -Uri $uri
         }
         catch {
-            Throw "Failed to resolve update feed: $($uri)."
-            Break
+            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $($uri)."
         }
         If ($Null -ne $updateFeed) {
 
