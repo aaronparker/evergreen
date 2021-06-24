@@ -26,12 +26,8 @@ Function Get-JetBrainsIntelliJIDEA {
         $uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceEdition, $Edition.Value
 
         # Query the Jetbrains URI to get the JSON
-        try {
-            $updateFeed = Invoke-RestMethodWrapper -Uri $uri
-        }
-        catch {
-            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $($uri)."
-        }
+        $updateFeed = Invoke-RestMethodWrapper -Uri $uri
+   
         If ($Null -ne $updateFeed) {
 
             # Construct the output; Return the custom object to the pipeline
@@ -48,7 +44,7 @@ Function Get-JetBrainsIntelliJIDEA {
             Write-Output -InputObject $PSObject
         }
         Else {
-            Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
+            Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($uri)."
         }
     }
 }

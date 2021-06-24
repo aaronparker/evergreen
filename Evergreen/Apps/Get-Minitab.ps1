@@ -26,31 +26,40 @@
         $uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceRelease, $Release
 
         # Query the update feed
-        $params = @{
-            Uri             = $uri
-            UseBasicParsing = $True
-        }
-        $Updatefeed = (Invoke-WebRequest @params).Content
+        $Updatefeed = Invoke-WebRequestWrapper $uri
 
         # Convert from unicode
         $Updates = [System.Text.Encoding]::Unicode.GetString($Updatefeed)
-        
-        # Get the URI(s) and Version(s) from the Ini file
-        $URIs = [RegEx]::Matches($Updates, $res.Get.Update.MatchFile) | Select-Object -ExpandProperty Value
-        $Versions = [RegEx]::Match($URIs, $res.Get.Update.MatchVersion) | Select-Object -ExpandProperty Value
+
+        # Get the URI(s) from the Ini file
+        try {
+            $URIs = [RegEx]::Matches($Updates, $res.Get.Update.MatchFile) | Select-Object -ExpandProperty Value
+        }
+        catch {
+            Throw "$($MyInvocation.MyCommand): Failed to determine the download URI(s) from the Ini file."
+        }
+
+        # Get the Version(s) from the URI(s) found from the Ini file
+        try {
+            $Versions = [RegEx]::Matches($URIs, $res.Get.Update.MatchVersion) | Select-Object -ExpandProperty Value
+        }
+        catch {
+            Throw "$($MyInvocation.MyCommand): Failed to determine Version(s) from the URI(s)."
+        }
 
         # Grab latest version, sort by descending version number 
         $LatestVersion = $Versions | `
             Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1
         
-        [String]$LatestURI = $URIs | Select-String -Pattern $LatestVersion
+        [System.String]$LatestURI = $URIs | Select-String -Pattern $LatestVersion
 
         # Build the output object        
         $PSObject = [PSCustomObject] @{
-            Version = $LatestVersion
-            Release = $Release
-            URI     = $LatestURI
+            Version      = $LatestVersion
+            Architecture = Get-Architecture -String $LatestURI 
+            Release      = $Release
+            URI          = $LatestURI
         }
         Write-Output -InputObject $PSObject
             
