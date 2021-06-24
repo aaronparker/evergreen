@@ -32,25 +32,22 @@ Write-Host "Module path:     $modulePath."
 Write-Host ""
 Write-Host "PowerShell Version:" $PSVersionTable.PSVersion.ToString()
 
-# Install packages
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208
-If (Get-PSRepository -Name PSGallery | Where-Object { $_.InstallationPolicy -ne "Trusted" }) {
-    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-}
-If ([Version]((Find-Module -Name Pester).Version) -gt (Get-Module -Name Pester).Version) {
-    Install-Module -Name Pester -SkipPublisherCheck -Force #-RequiredVersion 4.10.1
-    Import-Module -Name Pester
-}
-If ([Version]((Find-Module -Name PSScriptAnalyzer).Version) -gt (Get-Module -Name PSScriptAnalyzer).Version) {
-    Install-Module -Name PSScriptAnalyzer -SkipPublisherCheck -Force
-    Import-Module -Name PSScriptAnalyzer
-}
-If ([Version]((Find-Module -Name posh-git).Version) -gt (Get-Module -Name posh-git).Version) {
-    Install-Module -Name posh-git -SkipPublisherCheck -Force
-    Import-Module -Name posh-git
-}
-
 # Import module
 Write-Host ""
-Write-Host "Importing module." -ForegroundColor Cyan
+Write-Host "Importing module." -ForegroundColor "Cyan"
 Import-Module $manifestPath -Force
+
+# Install packages
+Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208"
+If (Get-PSRepository -Name "PSGallery" | Where-Object { $_.InstallationPolicy -ne "Trusted" }) {
+    Write-Host "Trust repository: PSGallery." -ForegroundColor "Cyan"
+    Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted"
+}
+$Modules = @("Pester", "PSScriptAnalyzer", "posh-git", "MarkdownPS")
+ForEach ($Module in $Modules) {
+    If ([System.Version]((Find-Module -Name $Module).Version) -gt (Get-Module -Name $Module -ListAvailable).Version) {
+        Write-Host "Checking module $Module." -ForegroundColor "Cyan"
+        Install-Module -Name $Module -SkipPublisherCheck -Force
+        Import-Module -Name $Module -Force
+    }
+}

@@ -1,0 +1,25 @@
+{
+	"Name": "Zotero",
+	"Source": "https://www.zotero.org/",
+	"Get": {
+		"Update": {
+			"Uri": ""
+		},
+		"Download": {
+			"Uri": "https://www.zotero.org/download/client/dl?channel=release&platform=win32",
+			"Property": "ResponseUri.Headers.Location",
+			"MatchVersion": "(\\d+(\\.\\d+){1,4})"
+		}
+	},
+	"Install": {
+		"Setup": "Zotero-*.exe",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/S",
+			"PostInstall": []
+		}
+	}
+}

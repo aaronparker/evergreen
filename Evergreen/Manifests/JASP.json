@@ -1,0 +1,21 @@
+{
+	"Name": "JASP",
+	"Source": "https://jasp-stats.org/",
+        
+	"Get": {
+		"Uri": "https://api.github.com/repos/jasp-stats/jasp-desktop/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.msi$"
+	},
+	"Install": {
+		"Setup": "JASP-*.msi",
+		"Physical": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": []
+		}
+	}
+}
