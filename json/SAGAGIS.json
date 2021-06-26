@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "7.9.0",
+    "Architecture": "x64",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/saga-gis/SAGA%20-%207/SAGA%20-%207.9.0/saga-7.9.0_x64_setup.exe"
+  },
+  {
+    "Version": "7.9.0",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/saga-gis/SAGA%20-%207/SAGA%20-%207.9.0/saga-7.9.0_win32_setup.exe"
+  }
+]

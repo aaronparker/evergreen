@@ -123,8 +123,8 @@ Function Save-EvergreenApp {
 
         Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
         If ($PSCmdlet.ShouldProcess("Remove variables")) {
-            If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" }
-            Remove-Variable -Name "OutPath", "OutFile"
+            If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" -ErrorAction "SilentlyContinue" }
+            Remove-Variable -Name "OutPath", "OutFile" -ErrorAction "SilentlyContinue" 
         }
     }
 }

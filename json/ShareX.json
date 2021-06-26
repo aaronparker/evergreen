@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "13.5.0",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "13/5/2021",
+    "Size": 8218418,
+    "URI": "https://github.com/ShareX/ShareX/releases/download/v13.5.0/ShareX-13.5.0-setup.exe"
+  },
+  {
+    "Version": "13.5.0",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "zip",
+    "Date": "13/5/2021",
+    "Size": 7492980,
+    "URI": "https://github.com/ShareX/ShareX/releases/download/v13.5.0/ShareX-portable.zip"
+  }
+]

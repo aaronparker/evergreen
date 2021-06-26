@@ -1,0 +1,578 @@
+[
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-US",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-US/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-US",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-US/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-US",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-US/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-US",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-US/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-GB",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-GB/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-GB",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-GB/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-GB",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-GB/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-GB",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-GB/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-CA",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-CA/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-CA",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/en-CA/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-CA",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-CA/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "en-CA",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/en-CA/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "es-ES",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/es-ES/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "es-ES",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/es-ES/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "es-ES",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/es-ES/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "es-ES",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/es-ES/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "sv-SE",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/sv-SE/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "sv-SE",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/sv-SE/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "sv-SE",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/sv-SE/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "sv-SE",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/sv-SE/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-BR",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/pt-BR/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-BR",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/pt-BR/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-BR",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/pt-BR/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-BR",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/pt-BR/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-PT",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/pt-PT/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-PT",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/pt-PT/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-PT",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/pt-PT/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "pt-PT",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/pt-PT/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "de",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/de/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "de",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/de/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "de",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/de/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "de",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/de/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "fr",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/fr/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "fr",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/fr/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "fr",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/fr/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "fr",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/fr/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "it",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/it/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "it",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/it/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "it",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/it/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "it",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/it/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ja",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ja/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ja",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ja/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ja",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ja/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ja",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ja/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "nl",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/nl/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "nl",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/nl/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "nl",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/nl/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "nl",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/nl/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-CN",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/zh-CN/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-CN",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/zh-CN/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-CN",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/zh-CN/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-CN",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/zh-CN/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-TW",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/zh-TW/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-TW",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/zh-TW/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-TW",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/zh-TW/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "zh-TW",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/zh-TW/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ar",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ar/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ar",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ar/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ar",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ar/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ar",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ar/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ru",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ru/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x64",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ru",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win64/ru/Thunderbird%20Setup%2078.11.0.exe"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ru",
+    "Type": "msi",
+    "Filename": "Thunderbird Setup 78.11.0.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ru/Thunderbird%20Setup%2078.11.0.msi"
+  },
+  {
+    "Version": "78.11.0",
+    "Architecture": "x86",
+    "Channel": "LATEST_THUNDERBIRD_VERSION",
+    "Language": "ru",
+    "Type": "exe",
+    "Filename": "Thunderbird Setup 78.11.0.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/78.11.0/win32/ru/Thunderbird%20Setup%2078.11.0.exe"
+  }
+]

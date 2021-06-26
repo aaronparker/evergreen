@@ -1,0 +1,28 @@
+{
+	"Name": "JetBrains PyCharm",
+	"Source": "https://www.jetbrains.com/",
+	"Get": {
+		"Update": {
+			"Uri" : "https://data.services.jetbrains.com/products/releases?code=#ReplaceEdition&latest",
+			"Editions" : {
+				"PyCharm Community": "PCC",
+				"PyCharm Edu": "PCE",
+				"PyCharm Professional": "PCP"
+			},
+			"ReplaceEdition" : "#ReplaceEdition",
+			"DatePattern": "yyyy-MM-dd"
+		},
+		"Download": {}
+	},
+	"Install": {
+		"Setup": "ideaI*.exe",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/S",
+			"PostInstall": []
+		}
+	}
+}

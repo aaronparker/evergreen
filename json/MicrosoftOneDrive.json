@@ -1,0 +1,98 @@
+[
+  {
+    "Version": "21.109.0530.0001",
+    "Architecture": "x86",
+    "Ring": "Production",
+    "Sha256": "EiZlYkVnIe7lbYUAV1h8APBYaZ2xxaNs979KfSh7tRs=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.109.0530.0001/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.109.0530.0001",
+    "Architecture": "AMD64",
+    "Ring": "Production",
+    "Sha256": "TiHUAxQmH2gk73eEBpSCHL2nxRhUxLEXZXuMs/QKQn0=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.109.0530.0001/amd64/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.109.0530.0001",
+    "Architecture": "x86",
+    "Ring": "Production",
+    "Sha256": "N/A",
+    "Type": "msix",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.109.0530.0001/Microsoft.OneDriveSyncClient_8wekyb3d8bbwe.msix"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "x86",
+    "Ring": "Production",
+    "Sha256": "xdQf5W3vN/y6kZfkUCqutON6Zzu5bZBTh8vX8yS6Mm8=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.119.0613.0001/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "AMD64",
+    "Ring": "Production",
+    "Sha256": "xpYdXPkhpXi5hspqSMFgnKmtdiVY2Xa4HT115nLug1c=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.119.0613.0001/amd64/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "x86",
+    "Ring": "Production",
+    "Sha256": "N/A",
+    "Type": "msix",
+    "URI": "https://oneclient.sfx.ms/Win/Prod/21.119.0613.0001/Microsoft.OneDriveSyncClient_8wekyb3d8bbwe.msix"
+  },
+  {
+    "Version": "21.030.0211.0003",
+    "Architecture": "x86",
+    "Ring": "Enterprise",
+    "Sha256": "tgUK6X8fwj81XrBFSvnhHWUFZaoUeSznsPIiTwUtsnw=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Enterprise/21.030.0211.0003/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.030.0211.0003",
+    "Architecture": "AMD64",
+    "Ring": "Enterprise",
+    "Sha256": "R6UZShzaTD8bTEXcgQ8MKSIKQYHlOqAEwkIDz9Sr5zo=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Enterprise/21.030.0211.0003/amd64/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.030.0211.0003",
+    "Architecture": "x86",
+    "Ring": "Enterprise",
+    "Sha256": "N/A",
+    "Type": "msix",
+    "URI": "https://oneclient.sfx.ms/Win/Enterprise/21.030.0211.0003/Microsoft.OneDriveSyncClient_8wekyb3d8bbwe.msix"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "x86",
+    "Ring": "Insider",
+    "Sha256": "xdQf5W3vN/y6kZfkUCqutON6Zzu5bZBTh8vX8yS6Mm8=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Insiders/21.119.0613.0001/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "AMD64",
+    "Ring": "Insider",
+    "Sha256": "xpYdXPkhpXi5hspqSMFgnKmtdiVY2Xa4HT115nLug1c=",
+    "Type": "exe",
+    "URI": "https://oneclient.sfx.ms/Win/Insiders/21.119.0613.0001/amd64/OneDriveSetup.exe"
+  },
+  {
+    "Version": "21.119.0613.0001",
+    "Architecture": "x86",
+    "Ring": "Insider",
+    "Sha256": "N/A",
+    "Type": "msix",
+    "URI": "https://oneclient.sfx.ms/Win/Insiders/21.119.0613.0001/Microsoft.OneDriveSyncClient_8wekyb3d8bbwe.msix"
+  }
+]

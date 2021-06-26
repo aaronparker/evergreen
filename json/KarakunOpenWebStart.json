@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "1.4.0",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "11/5/2021",
+    "Size": 55107000,
+    "URI": "https://github.com/karakun/OpenWebStart/releases/download/v1.4.0/OpenWebStart_windows-x32_1_4_0.exe"
+  },
+  {
+    "Version": "1.4.0",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "exe",
+    "Date": "11/5/2021",
+    "Size": 54403512,
+    "URI": "https://github.com/karakun/OpenWebStart/releases/download/v1.4.0/OpenWebStart_windows-x64_1_4_0.exe"
+  }
+]

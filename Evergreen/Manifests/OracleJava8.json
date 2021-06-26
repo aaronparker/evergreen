@@ -1,6 +1,6 @@
 {
 	"Name": "Oracle Java 8",
-	"Source": "http://www.java.com",
+	"Source": "https://www.java.com",
 	"Get": {
 		"Uri": "https://javadl-esd-secure.oracle.com/update/1.8.0/map-m-1.8.0.xml",
 		"FileStrings": {

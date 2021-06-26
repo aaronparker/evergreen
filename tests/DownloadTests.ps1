@@ -10,7 +10,7 @@ Describe -Tag "Download" -Name "Downloads" {
             # Run each command and capture output in a variable
             New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
             $Output = (Get-Variable -Name "tempOutput").Value
-            Remove-Variable -Name tempOutput
+            Remove-Variable -Name "tempOutput" -ErrorAction "SilentlyContinue"
             
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source

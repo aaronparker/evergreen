@@ -1,0 +1,26 @@
+[
+  {
+    "Version": "8.2.5.17",
+    "Framework": "32bit-.net35",
+    "Architecture": "x86",
+    "URI": "https://downloads.controlup.com/agent/8.2.5.17/ControlUpAgent-net35-x86-8.2.5.17-signed.msi"
+  },
+  {
+    "Version": "8.2.5.17",
+    "Framework": "32bit-.net45",
+    "Architecture": "x86",
+    "URI": "https://downloads.controlup.com/agent/8.2.5.17/ControlUpAgent-net45-x86-8.2.5.17-signed.msi"
+  },
+  {
+    "Version": "8.2.5.17",
+    "Framework": "64bit-.net35",
+    "Architecture": "x64",
+    "URI": "https://downloads.controlup.com/agent/8.2.5.17/ControlUpAgent-net35-x64-8.2.5.17-signed.msi"
+  },
+  {
+    "Version": "8.2.5.17",
+    "Framework": "64bit-.net45",
+    "Architecture": "x64",
+    "URI": "https://downloads.controlup.com/agent/8.2.5.17/ControlUpAgent-net45-x64-8.2.5.17-signed.msi"
+  }
+]

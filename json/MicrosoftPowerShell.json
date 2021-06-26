@@ -1,0 +1,42 @@
+[
+  {
+    "Version": "7.0.6",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "11/3/2021",
+    "Size": 91078656,
+    "URI": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.6/PowerShell-7.0.6-win-x64.msi",
+    "Release": "LTS"
+  },
+  {
+    "Version": "7.0.6",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "11/3/2021",
+    "Size": 82604032,
+    "URI": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.6/PowerShell-7.0.6-win-x86.msi",
+    "Release": "LTS"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "11/3/2021",
+    "Size": 99622912,
+    "URI": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x64.msi",
+    "Release": "Stable"
+  },
+  {
+    "Version": "7.1.3",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "11/3/2021",
+    "Size": 89952256,
+    "URI": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x86.msi",
+    "Release": "Stable"
+  }
+]

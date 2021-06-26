@@ -1,0 +1,38 @@
+[
+  {
+    "Version": "16.0.13127.21668",
+    "Date": "21/6/2021",
+    "Channel": "Semi-Annual Channel",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.13801.20738",
+    "Date": "12/6/2021",
+    "Channel": "Semi-Annual Channel (Targeted)",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.14026.20308",
+    "Date": "22/6/2021",
+    "Channel": "Monthly",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.14131.20250",
+    "Date": "25/6/2021",
+    "Channel": "Monthly (Targeted)",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.13929.20408",
+    "Date": "12/6/2021",
+    "Channel": "Monthly Enterprise",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.10375.20036",
+    "Date": "15/6/2021",
+    "Channel": "Office 2019 Enterprise",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  }
+]

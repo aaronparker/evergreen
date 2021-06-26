@@ -1,0 +1,56 @@
+[
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "ARM64",
+    "Channel": "Insider",
+    "Date": "22/6/2021",
+    "Size": "24207360",
+    "Filename": "RemoteDesktop_1.2.2130.0_ARM64.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OV3V"
+  },
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "x64",
+    "Channel": "Insider",
+    "Date": "22/6/2021",
+    "Size": "22142976",
+    "Filename": "RemoteDesktop_1.2.2130.0_x64.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OV3W"
+  },
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "x86",
+    "Channel": "Insider",
+    "Date": "22/6/2021",
+    "Size": "20414464",
+    "Filename": "RemoteDesktop_1.2.2130.0_x86.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OSuo"
+  },
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "ARM64",
+    "Channel": "Public",
+    "Date": "22/6/2021",
+    "Size": "24207360",
+    "Filename": "RemoteDesktop_1.2.2130.0_ARM64.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OV3V"
+  },
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "x64",
+    "Channel": "Public",
+    "Date": "22/6/2021",
+    "Size": "22142976",
+    "Filename": "RemoteDesktop_1.2.2130.0_x64.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OV3W"
+  },
+  {
+    "Version": "1.2.2130.0",
+    "Architecture": "x86",
+    "Channel": "Public",
+    "Date": "22/6/2021",
+    "Size": "20414464",
+    "Filename": "RemoteDesktop_1.2.2130.0_x86.msi",
+    "URI": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4OSuo"
+  }
+]

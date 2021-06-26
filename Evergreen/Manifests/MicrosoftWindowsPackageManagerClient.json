@@ -4,10 +4,10 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/microsoft/winget-cli/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.appxbundle"
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msixbundle"
 	},
 	"Install": {
-		"Setup": "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle",
+		"Setup": "Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
 		"Preinstall": "",
 		"Physical": {
 			"Arguments": "",

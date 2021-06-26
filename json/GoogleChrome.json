@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "91.0.4472.124",
+    "Architecture": "x64",
+    "Date": "24/6/2021",
+    "URI": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+  },
+  {
+    "Version": "91.0.4472.124",
+    "Architecture": "x86",
+    "Date": "24/6/2021",
+    "URI": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise.msi"
+  }
+]

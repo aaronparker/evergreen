@@ -1,0 +1,29 @@
+[
+  {
+    "Version": "8.1",
+    "Platform": "Windows",
+    "Architecture": "ARM64",
+    "Type": "exe",
+    "Date": "17/6/2021",
+    "Size": 3868520,
+    "URI": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1/npp.8.1.Installer.arm64.exe"
+  },
+  {
+    "Version": "8.1",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "17/6/2021",
+    "Size": 3981312,
+    "URI": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1/npp.8.1.Installer.exe"
+  },
+  {
+    "Version": "8.1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "exe",
+    "Date": "17/6/2021",
+    "Size": 4244288,
+    "URI": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1/npp.8.1.Installer.x64.exe"
+  }
+]

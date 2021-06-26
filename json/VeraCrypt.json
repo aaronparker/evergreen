@@ -1,0 +1,26 @@
+[
+  {
+    "Version": "1.24-Update7",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/veracrypt/VeraCrypt%201.24-Update7/VeraCrypt%20Setup%201.24-Update7.exe"
+  },
+  {
+    "Version": "1.24-Update7",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/veracrypt/VeraCrypt%201.24-Update7/VeraCrypt%20Portable%201.24-Update7.exe"
+  },
+  {
+    "Version": "1.24-Update7",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/veracrypt/VeraCrypt%201.24-Update7/VeraCrypt%20Legacy%20Setup%201.24-Update7.exe"
+  },
+  {
+    "Version": "1.24-Update7",
+    "Architecture": "x86",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/veracrypt/VeraCrypt%201.24-Update7/VeraCrypt%20Legacy%20Portable%201.24-Update7.exe"
+  }
+]

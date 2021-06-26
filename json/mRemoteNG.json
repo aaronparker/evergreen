@@ -1,0 +1,9 @@
+{
+  "Version": "1.76.20",
+  "Platform": "Windows",
+  "Architecture": "x86",
+  "Type": "msi",
+  "Date": "12/4/2019",
+  "Size": 43593728,
+  "URI": "https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.76.20/mRemoteNG-Installer-1.76.20.24615.msi"
+}

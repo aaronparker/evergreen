@@ -1,0 +1,9 @@
+{
+  "Version": "3.11.2",
+  "Platform": "Windows",
+  "Architecture": "x86",
+  "Type": "exe",
+  "Date": "17/9/2019",
+  "Size": 27977104,
+  "URI": "https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311.exe"
+}

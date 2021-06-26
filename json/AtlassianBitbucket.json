@@ -1,0 +1,12 @@
+[
+  {
+    "Version": "3.4.5",
+    "Type": "Msi",
+    "URI": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/SourcetreeEnterpriseSetup_3.4.5.msi"
+  },
+  {
+    "Version": "3.4.5",
+    "Type": "Exe",
+    "URI": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/SourceTreeSetup-3.4.5.exe"
+  }
+]

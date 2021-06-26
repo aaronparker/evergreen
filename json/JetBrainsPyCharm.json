@@ -1,0 +1,29 @@
+[
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7628.16",
+    "Edition": "PyCharm Edu",
+    "Date": "24/6/2021",
+    "Size": 346202424,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-edu-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-edu-2021.1.2.exe"
+  },
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7442.45",
+    "Edition": "PyCharm Community",
+    "Date": "2/6/2021",
+    "Size": 380900896,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-community-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-community-2021.1.2.exe"
+  },
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7442.45",
+    "Edition": "PyCharm Professional",
+    "Date": "2/6/2021",
+    "Size": 467615400,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-professional-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-professional-2021.1.2.exe"
+  }
+]

@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `CendioThinLinc`, `JASP`, `JetBrainsIntelliJIDEA`, `JetBrainsPyCharm`, `MendeleyDesktop`, `MiniZincIDE`, `Minitab`, `MuseScore`, `Pandoc`, `Protege`, `RDAnalyzer`, `RStudio`, `SafeExamBrowser`, `Zotero`.  Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates `MicrosoftWindowsPackageManagerClient` to return the `.appxbundle` installer
+* Fixes an issue in `Save-EvergreenApp` when calling `Remove-Variable`
+
 ## 2106.402
 
 * Adds `AmazonCorretto`, `ArtifexGhostscript`, `FreeFem`, `Gephi`, `Praat`, `SAGAGIS`, `Scratch`, `TeXstudio`, `gretl`. Thanks to [@adotcoop](https://github.com/adotcoop)
@@ -7,7 +13,7 @@
 * Updates private function `Get-GitHubRepoRelease` to return a custom object if the GitHub API is rate limited
 * BREAKING CHANGES:
 
-      * Remove portable installers and `.zip` file types from `Notepad++`
+    * Remove portable installers and `.zip` file types from `Notepad++`
 
 ## 2106.395
 

@@ -1,0 +1,12 @@
+[
+  {
+    "Version": "27.0.1",
+    "Architecture": "x64",
+    "URI": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-27.0.1-Full-Installer-x64.exe"
+  },
+  {
+    "Version": "27.0.1",
+    "Architecture": "x86",
+    "URI": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-27.0.1-Full-Installer-x86.exe"
+  }
+]
