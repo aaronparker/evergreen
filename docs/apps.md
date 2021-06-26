@@ -1,6 +1,6 @@
-# Supported applications
+﻿# Supported applications
 
-Evergreen `2106.402` supports the following applications:
+Evergreen `2106.407` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -22,6 +22,7 @@ Evergreen `2106.402` supports the following applications:
 | BISF                                    | Base Image Script Framework                        | https://eucweb.com/                                                                        |
 | BitwardenDesktop                        | Bitwarden Desktop                                  | https://bitwarden.com/                                                                     |
 | BlenderLauncher                         | Blender Launcher                                   | https://dotbow.github.io/Blender-Launcher/                                                 |
+| CendioThinLinc                          | Cendio ThinLinc                                    | https://www.cendio.com/                                                                    |
 | CiscoWebex                              | Cisco Webex                                        | https://www.webex.com/                                                                     |
 | CitrixAppLayeringFeed                   | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
 | CitrixApplicationDeliveryManagementFeed | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
@@ -38,7 +39,7 @@ Evergreen `2106.402` supports the following applications:
 | ControlUpAgent                          | ControlUp Agent                                    | https://www.controlup.com/products/controlup/agent/                                        |
 | ControlUpConsole                        | ControlUp Console                                  | https://www.controlup.com/products/controlup/management/                                   |
 | Cyberduck                               | iterate GmbH Cyberduck                             | https://cyberduck.io/                                                                      |
-| dnGrep                                  | dnGrep                                             | http://dngrep.github.io/                                                                   |
+| dnGrep                                  | dnGrep                                             | https://dngrep.github.io/                                                                  |
 | FileZilla                               | FileZilla                                          | https://filezilla-project.org/                                                             |
 | Fork                                    | Dan Pristupov Fork                                 | https://www.fork.dev                                                                       |
 | FoxitReader                             | Foxit Reader                                       | https://www.foxitsoftware.com/pdf-reader/                                                  |
@@ -55,12 +56,16 @@ Evergreen `2106.402` supports the following applications:
 | ImageGlass                              | ImageGlass                                         | https://imageglass.org/                                                                    |
 | JamTreeSizeFree                         | JAM Software TreeSize Free                         | https://www.jam-software.com/treesize_free/                                                |
 | JamTreeSizeProfessional                 | JAM Software TreeSize Professional                 | https://www.jam-software.com/treesize/                                                     |
+| JASP                                    | JASP                                               | https://jasp-stats.org/                                                                    |
+| JetBrainsIntelliJIDEA                   | JetBrains IntelliJ IDEA                            | https://www.jetbrains.com/                                                                 |
+| JetBrainsPyCharm                        | JetBrains PyCharm                                  | https://www.jetbrains.com/                                                                 |
 | KarakunOpenWebStart                     | Karakun OpenWebStart                               | https://openwebstart.com/ows/                                                              |
 | KeePass                                 | KeePass                                            | https://keepass.net/                                                                       |
 | KeePassXCTeamKeePassXC                  | KeePassXC Team KeePassXC                           | https://keepassxc.org/                                                                     |
 | LibreOffice                             | LibreOffice                                        | https://www.libreoffice.org/                                                               |
 | LogMeInGoToMeeting                      | LogMeIn GoToMeeting                                | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                       | LogMeIn GoToOpener                                 | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
+| MendeleyDesktop                         | Mendeley Desktop                                   | https://www.mendeley.com/                                                                  |
 | Microsoft.NET                           | Microsoft .NET Desktop Runtime                     | https://dotnet.microsoft.com/download/                                                     |
 | Microsoft365Apps                        | Microsoft 365 Apps                                 | https://www.microsoft.com/office                                                           |
 | MicrosoftAzureDataStudio                | Microsoft Azure Data Studio                        | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                    |
@@ -80,9 +85,12 @@ Evergreen `2106.402` supports the following applications:
 | MicrosoftWvdInfraAgent                  | Microsoft Windows Virtual Desktop Agent            | https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell        |
 | MicrosoftWvdRemoteDesktop               | Microsoft Remote Desktop                           | https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10                |
 | MicrosoftWvdRtcService                  | Microsoft Remote Desktop WebRTC Redirector Service | https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd                        |
+| Minitab                                 | Minitab                                            | https://www.minitab.com/                                                                   |
+| MiniZincIDE                             | MiniZinc IDE                                       | https://www.minizinc.org/                                                                  |
 | MozillaFirefox                          | Mozilla Firefox                                    | https://www.mozilla.org/                                                                   |
 | MozillaThunderbird                      | Mozilla Firefox                                    | https://www.mozilla.org/                                                                   |
 | mRemoteNG                               | mRemoteNG                                          | https://mremoteng.org/                                                                     |
+| MuseScore                               | MuseScore                                          | https://musescore.org/                                                                     |
 | NETworkManager                          | NETworkManager                                     | https://github.com/BornToBeRoot/NETworkManager                                             |
 | Nomacs                                  | nomacs Image Lounge                                | https://nomacs.org/                                                                        |
 | Notable                                 | Notable                                            | https://notable.app/                                                                       |
@@ -90,17 +98,22 @@ Evergreen `2106.402` supports the following applications:
 | OBSStudio                               | OBS Studio                                         | https://obsproject.com/                                                                    |
 | OpenJDK                                 | OpenJDK                                            | https://openjdk.java.net/                                                                  |
 | OpenShellMenu                           | Open-Shell-Menu                                    | https://open-shell.github.io/Open-Shell-Menu/                                              |
-| OracleJava8                             | Oracle Java 8                                      | http://www.java.com                                                                        |
+| OracleJava8                             | Oracle Java 8                                      | https://www.java.com                                                                       |
 | OracleVirtualBox                        | Oracle VirtualBox                                  | https://www.virtualbox.org/                                                                |
 | PaintDotNet                             | dotPDN LLC Paint.NET                               | https://getpaint.net                                                                       |
+| Pandoc                                  | Pandoc                                             | https://pandoc.org/                                                                        |
 | PDFForgePDFCreator                      | pdfforge PDFCreator                                | https://www.pdfforge.org/pdfcreator                                                        |
 | PeaZipPeaZip                            | PeaZip PeaZip                                      | https://peazip.github.io/                                                                  |
 | Praat                                   | Praat                                              | https://www.fon.hum.uva.nl/praat/                                                          |
 | ProjectLibre                            | ProjectLibre                                       | https://www.projectlibre.com/                                                              |
+| Protege                                 | Protege                                            | https://protege.stanford.edu/                                                              |
 | RCoreTeamRforWindows                    | R Core Team R for Windows                          | https://cran.r-project.org/bin/windows/base/                                               |
+| RDAnalyzer                              | Remote Desktop Analyzer                            | https://rdanalyzer.com/                                                                    |
 | RingCentral                             | RingCentral                                        | https://www.ringcentral.com                                                                |
+| RStudio                                 | RStudio                                            | https://www.rstudio.com/                                                                   |
+| SafeExamBrowser                         | Safe Exam Browser                                  | https://safeexambrowser.org/                                                               |
 | SAGAGIS                                 | SAGA-GIS                                           | http://www.saga-gis.org/                                                                   |
-| ScooterBeyondCompare                    | Scooter Beyond Compare                             | http://scootersoftware.com/                                                                |
+| ScooterBeyondCompare                    | Scooter Beyond Compare                             | https://scootersoftware.com/                                                               |
 | Scratch                                 | Scratch                                            | https://scratch.mit.edu/                                                                   |
 | ShareX                                  | ShareX                                             | https://getsharex.com/                                                                     |
 | Slack                                   | Slack                                              | https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer  |
@@ -121,5 +134,6 @@ Evergreen `2106.402` supports the following applications:
 | WinMerge                                | WinMerge                                           | https://winmerge.org/                                                                      |
 | WinSCP                                  | WinSCP                                             | https://winscp.net/                                                                        |
 | Wireshark                               | Wireshark                                          | https://www.wireshark.org/#download                                                        |
-| WixToolset                              | WiX Toolset                                        | http://wixtoolset.org/                                                                     |
+| WixToolset                              | WiX Toolset                                        | https://wixtoolset.org/                                                                    |
 | Zoom                                    | Zoom                                               | https://zoom.us/                                                                           |
+| Zotero                                  | Zotero                                             | https://www.zotero.org/                                                                    |

@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2106.407
 
 * Adds `CendioThinLinc`, `JASP`, `JetBrainsIntelliJIDEA`, `JetBrainsPyCharm`, `MendeleyDesktop`, `MiniZincIDE`, `Minitab`, `MuseScore`, `Pandoc`, `Protege`, `RDAnalyzer`, `RStudio`, `SafeExamBrowser`, `Zotero`.  Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates `MicrosoftWindowsPackageManagerClient` to return the `.appxbundle` installer
