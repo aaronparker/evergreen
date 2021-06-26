@@ -1,17 +1,17 @@
 [
   {
+    "Version": "11.16.6.0",
+    "Title": "License Server VPX – Version 11.16.6.0 Build 33500",
+    "Description": "New downloads are available for Citrix Licensing",
+    "Date": "24/6/2021",
+    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-vpx.html"
+  },
+  {
     "Version": "11.17.2.0",
     "Title": "License Server for Windows - Version 11.17.2.0 Build 35000",
     "Description": "New downloads are available for Citrix Licensing",
     "Date": "17/6/2021",
     "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-version-111720-35-for-windows.html"
-  },
-  {
-    "Version": "11.16.6.0",
-    "Title": "License Server VPX – Version 11.16.6.0 Build 33500",
-    "Description": "New downloads are available for Citrix Licensing",
-    "Date": "18/3/2021",
-    "URI": "https://www.citrix.com/downloads/licensing/license-server/license-server-vpx.html"
   },
   {
     "Version": "11.16.6.0",

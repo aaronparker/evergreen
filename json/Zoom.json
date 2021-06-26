@@ -1,15 +1,15 @@
 [
   {
-    "Version": "Latest",
-    "Platform": "VMware",
-    "Type": "Client",
-    "URI": "https://cdn.zoom.us/prod/vdi/ZoomVmwareMediaPlugin.msi"
+    "Version": "5.6.6.153",
+    "Platform": "Windows",
+    "Type": "Outlook",
+    "URI": "https://cdn.zoom.us/prod/5.6.6.153/ZoomOutlookPluginSetup.msi"
   },
   {
-    "Version": "5.6.6.154",
+    "Version": "5.7.0.522",
     "Platform": "Windows",
-    "Type": "Notes",
-    "URI": "https://cdn.zoom.us/prod/5.6.6.154/ZoomNotesPluginSetup.msi"
+    "Type": "Msi",
+    "URI": "https://cdn.zoom.us/prod/5.7.0.522/ZoomInstallerFull.msi"
   },
   {
     "Version": "5.2.44882.0827",
@@ -18,16 +18,10 @@
     "URI": "https://cdn.zoom.us/prod/5.2.44882.0827/ZoomLyncPluginSetup.msi"
   },
   {
-    "Version": "5.6.7.1016",
+    "Version": "5.6.6.154",
     "Platform": "Windows",
-    "Type": "Msi",
-    "URI": "https://cdn.zoom.us/prod/5.6.7.1016/ZoomInstallerFull.msi"
-  },
-  {
-    "Version": "5.6.6.153",
-    "Platform": "Windows",
-    "Type": "Outlook",
-    "URI": "https://cdn.zoom.us/prod/5.6.6.153/ZoomOutlookPluginSetup.msi"
+    "Type": "Notes",
+    "URI": "https://cdn.zoom.us/prod/5.6.6.154/ZoomNotesPluginSetup.msi"
   },
   {
     "Version": "5.6.2691.0607",
@@ -36,16 +30,22 @@
     "URI": "https://cdn.zoom.us/prod/5.6.2691.0607/ZoomRooms.exe"
   },
   {
-    "Version": "5.6.7.1016",
+    "Version": "5.7.0.522",
     "Platform": "Windows",
     "Type": "Exe",
-    "URI": "https://cdn.zoom.us/prod/5.6.7.1016/ZoomInstaller.exe"
+    "URI": "https://cdn.zoom.us/prod/5.7.0.522/ZoomInstaller.exe"
   },
   {
     "Version": "Latest",
     "Platform": "Citrix",
     "Type": "Client",
     "URI": "https://cdn.zoom.us/prod/vdi/ZoomCitrixHDXMediaPlugin.msi"
+  },
+  {
+    "Version": "Latest",
+    "Platform": "VMware",
+    "Type": "Client",
+    "URI": "https://cdn.zoom.us/prod/vdi/ZoomVmwareMediaPlugin.msi"
   },
   {
     "Version": "Latest",

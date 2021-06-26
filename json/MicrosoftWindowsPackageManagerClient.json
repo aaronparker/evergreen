@@ -1,9 +1,9 @@
 {
-  "Version": "1.0.11451",
+  "Version": "1.0.11692",
   "Platform": "Windows",
   "Architecture": "x86",
-  "Type": "appxbundle",
-  "Date": "26/5/2021",
-  "Size": 18358954,
-  "URI": "https://github.com/microsoft/winget-cli/releases/download/v1.0.11451/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle"
+  "Type": "msixbundle",
+  "Date": "14/6/2021",
+  "Size": 18388295,
+  "URI": "https://github.com/microsoft/winget-cli/releases/download/v1.0.11692/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 }

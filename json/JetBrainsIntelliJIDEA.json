@@ -1,0 +1,29 @@
+[
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7628.16",
+    "Edition": "IntelliJ IDEA Edu",
+    "Date": "24/6/2021",
+    "Size": 694791920,
+    "Sha256": "https://download.jetbrains.com/idea/ideaIE-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/idea/ideaIE-2021.1.2.exe"
+  },
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7442.40",
+    "Edition": "IntelliJ IDEA Ultimate",
+    "Date": "1/6/2021",
+    "Size": 763487888,
+    "Sha256": "https://download.jetbrains.com/idea/ideaIU-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/idea/ideaIU-2021.1.2.exe"
+  },
+  {
+    "Version": "2021.1.2",
+    "Build": "211.7442.40",
+    "Edition": "IntelliJ IDEA Community",
+    "Date": "1/6/2021",
+    "Size": 673200768,
+    "Sha256": "https://download.jetbrains.com/idea/ideaIC-2021.1.2.exe.sha256",
+    "URI": "https://download.jetbrains.com/idea/ideaIC-2021.1.2.exe"
+  }
+]

@@ -2,14 +2,8 @@
   {
     "Version": "21.2.30",
     "Platform": "Windows",
-    "Type": "Msi",
-    "URI": "https://app.ringcentral.com/download/RingCentral-x64.msi"
-  },
-  {
-    "Version": "21.2.30",
-    "Platform": "Windows",
-    "Type": "Rooms",
-    "URI": "https://downloads.ringcentral.com/RCM/RC/rooms/win/RingCentralRoomsSetup.msi"
+    "Type": "Meetings",
+    "URI": "https://downloads.ringcentral.com/RCM/RC/meetings/win/RCMeetingsClientSetup.msi"
   },
   {
     "Version": "21.2.30",
@@ -20,8 +14,14 @@
   {
     "Version": "21.2.30",
     "Platform": "Windows",
-    "Type": "Meetings",
-    "URI": "https://downloads.ringcentral.com/RCM/RC/meetings/win/RCMeetingsClientSetup.msi"
+    "Type": "Rooms",
+    "URI": "https://downloads.ringcentral.com/RCM/RC/rooms/win/RingCentralRoomsSetup.msi"
+  },
+  {
+    "Version": "21.2.30",
+    "Platform": "Windows",
+    "Type": "Msi",
+    "URI": "https://app.ringcentral.com/download/RingCentral-x64.msi"
   },
   {
     "Version": "21.2.30",

@@ -1,5 +1,10 @@
 [
   {
+    "Version": "10.16.19598",
+    "Type": "Latest",
+    "URI": "https://builds.cdn.getgo.com/builds/g2m/19598/G2MSetup10.16.19598_IT.msi"
+  },
+  {
     "Version": "10.8",
     "Type": "Multi-build",
     "URI": "https://builds.cdn.getgo.com/builds/G2MSetupBundle/20210427_42/G2MSetup10.8-10.16_IT.msi"
@@ -8,11 +13,6 @@
     "Version": "10.16.19598",
     "Type": "XenAppLatest",
     "URI": "https://builds.cdn.getgo.com/builds/g2m/19598/G2MSetup10.16.19598_Xen.msi"
-  },
-  {
-    "Version": "10.16.19598",
-    "Type": "Latest",
-    "URI": "https://builds.cdn.getgo.com/builds/g2m/19598/G2MSetup10.16.19598_IT.msi"
   },
   {
     "Version": "10.15.19228",

@@ -1,6 +1,20 @@
 [
   {
     "Version": "11.4.0",
+    "Title": "SD-WAN Center Management Console Software Release 11.4.0a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/6/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-1140123.html"
+  },
+  {
+    "Version": "11.4.0",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.4.0a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/6/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-1140123.html"
+  },
+  {
+    "Version": "11.4.0",
     "Title": "SD-WAN Standard/Premium Edition Appliance Software Release 11.4.0a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/6/2021",
@@ -12,20 +26,6 @@
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/6/2021",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-1140123.html"
-  },
-  {
-    "Version": "11.4.0",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.4.0a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/6/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-1140123.html"
-  },
-  {
-    "Version": "11.4.0",
-    "Title": "SD-WAN Center Management Console Software Release 11.4.0a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/6/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-1140123.html"
   },
   {
     "Version": "11.3.2",
@@ -64,13 +64,6 @@
   },
   {
     "Version": "11.1.2",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.1.2c",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-11125.html"
-  },
-  {
-    "Version": "11.1.2",
     "Title": "SD-WAN Standard/Premium Appliance Software Release 11.1.2c",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
@@ -78,17 +71,24 @@
   },
   {
     "Version": "11.1.2",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.1.2c",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-11125.html"
-  },
-  {
-    "Version": "11.1.2",
     "Title": "SD-WAN Center Management Console Software Release 11.1.2c",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/management-console-release-11125.html"
+  },
+  {
+    "Version": "11.1.2",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.1.2c",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-11125.html"
+  },
+  {
+    "Version": "11.1.2",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.1.2c",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-11125.html"
   },
   {
     "Version": "11.2.3",
@@ -99,17 +99,17 @@
   },
   {
     "Version": "11.2.3",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.3a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112311.html"
-  },
-  {
-    "Version": "11.2.3",
     "Title": "SD-WAN Center Management Console Software Release 11.2.3a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-112311.html"
+  },
+  {
+    "Version": "11.2.3",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.3a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112311.html"
   },
   {
     "Version": "11.2.3",
@@ -119,32 +119,11 @@
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-112311.html"
   },
   {
-    "Version": "11.3.1",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.3.1a",
+    "Version": "10.2.9",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.9a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-113153.html"
-  },
-  {
-    "Version": "11.3.1",
-    "Title": "SD-WAN Center Management Console Software Release 11.3.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-113153.html"
-  },
-  {
-    "Version": "11.3.1",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.3.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-113153.html"
-  },
-  {
-    "Version": "11.3.1",
-    "Title": "SD-WAN Standard/Premium Edition Appliance Software Release 11.3.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-113153.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-10292.html"
   },
   {
     "Version": "10.2.9",
@@ -152,13 +131,6 @@
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/management-console-release-10292.html"
-  },
-  {
-    "Version": "10.2.9",
-    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.9a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-10292.html"
   },
   {
     "Version": "10.2.9",
@@ -183,10 +155,38 @@
   },
   {
     "Version": "10.2.9",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.9a",
+    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.9a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/5/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-10292.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-10292.html"
+  },
+  {
+    "Version": "11.3.1",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.3.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-113153.html"
+  },
+  {
+    "Version": "11.3.1",
+    "Title": "SD-WAN Center Management Console Software Release 11.3.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-113153.html"
+  },
+  {
+    "Version": "11.3.1",
+    "Title": "SD-WAN Standard/Premium Edition Appliance Software Release 11.3.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-113153.html"
+  },
+  {
+    "Version": "11.3.1",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.3.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "10/5/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-113153.html"
   },
   {
     "Version": "9.6.1",
@@ -194,13 +194,6 @@
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "10/4/2021",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/orchestrator-for-on-premises/onprem-software-release-961170.html"
-  },
-  {
-    "Version": "11.3.0",
-    "Title": "SD-WAN Standard/Premium Edition Appliance Software Release 11.3.0",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "16/12/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-1130167.html"
   },
   {
     "Version": "11.3.0",
@@ -224,18 +217,25 @@
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-1130167.html"
   },
   {
+    "Version": "11.3.0",
+    "Title": "SD-WAN Standard/Premium Edition Appliance Software Release 11.3.0",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "16/12/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-1130167.html"
+  },
+  {
+    "Version": "11.2.2",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.2",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "19/10/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112214.html"
+  },
+  {
     "Version": "11.2.2",
     "Title": "SD-WAN Center Management Console Software Release 11.2.2",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "19/10/2020",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-112214.html"
-  },
-  {
-    "Version": "11.2.2",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.2.2",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "19/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-112214.html"
   },
   {
     "Version": "11.2.2",
@@ -246,17 +246,17 @@
   },
   {
     "Version": "11.2.2",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.2",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.2.2",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "19/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112214.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/vpx-release-112214.html"
   },
   {
     "Version": "10.2.8",
-    "Title": "SD-WAN Standard Edition VPXL for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.8",
+    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.8",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "7/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpxl-release-10289.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-10289.html"
   },
   {
     "Version": "10.2.8",
@@ -274,17 +274,10 @@
   },
   {
     "Version": "10.2.8",
-    "Title": "SD-WAN WANOP VPX for XenServer, ESXi, Hyper-V,  AWS Rel 10.2.8",
+    "Title": "SD-WAN Standard Edition VPXL for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.8",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "7/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/vpx-release-10289.html"
-  },
-  {
-    "Version": "10.2.8",
-    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.8",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "7/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-10289.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpxl-release-10289.html"
   },
   {
     "Version": "10.2.8",
@@ -292,6 +285,13 @@
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "7/10/2020",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/management-console-release-10289.html"
+  },
+  {
+    "Version": "10.2.8",
+    "Title": "SD-WAN WANOP VPX for XenServer, ESXi, Hyper-V,  AWS Rel 10.2.8",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "7/10/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/vpx-release-10289.html"
   },
   {
     "Version": "10.2.8",
@@ -344,6 +344,20 @@
   },
   {
     "Version": "10.2.7",
+    "Title": "SD-WAN Standard Edition VPXL for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.7b",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "15/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpxl-release-102717.html"
+  },
+  {
+    "Version": "10.2.7",
+    "Title": "SD-WAN Center Management Console Software Release 10.2.7b",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "15/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/management-console-release-102717.html"
+  },
+  {
+    "Version": "10.2.7",
     "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.7b",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "15/9/2020",
@@ -351,10 +365,10 @@
   },
   {
     "Version": "10.2.7",
-    "Title": "SD-WAN Standard Edition VPXL for XenServer, ESXi, Hyper-V, KVM, AWS, Azure Software Rel 10.2.7b",
+    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.7b",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpxl-release-102717.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-102717.html"
   },
   {
     "Version": "10.2.7",
@@ -378,32 +392,11 @@
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/client-software-release-102717.html"
   },
   {
-    "Version": "10.2.7",
-    "Title": "SD-WAN Standard/Premium Appliance Software Release 10.2.7b",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-102717.html"
-  },
-  {
-    "Version": "10.2.7",
-    "Title": "SD-WAN Center Management Console Software Release 10.2.7b",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/management-console-release-102717.html"
-  },
-  {
     "Version": "11.2.1",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.1a",
+    "Title": "SD-WAN Center Management Console Software Release 11.2.1a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112156.html"
-  },
-  {
-    "Version": "11.2.1",
-    "Title": "SD-WAN Standard/Premium/Advance Appliance Software Release 11.2.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-112156.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-112156.html"
   },
   {
     "Version": "11.2.1",
@@ -414,10 +407,17 @@
   },
   {
     "Version": "11.2.1",
-    "Title": "SD-WAN Center Management Console Software Release 11.2.1a",
+    "Title": "SD-WAN Standard/Premium/Advance Appliance Software Release 11.2.1a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "15/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/management-console-release-112156.html"
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-112156.html"
+  },
+  {
+    "Version": "11.2.1",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "15/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112156.html"
   },
   {
     "Version": "11.2.0",
@@ -435,38 +435,17 @@
   },
   {
     "Version": "11.2.0",
-    "Title": "SD-WAN Standard/Premium/Advance Appliance Software Release 11.2.0a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "22/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-112088.html"
-  },
-  {
-    "Version": "11.2.0",
     "Title": "SD-WAN WANOP Appliance Software Upgrade 11.2.0a",
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "22/7/2020",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-112088.html"
   },
   {
-    "Version": "11.1.1",
-    "Title": "SD-WAN Standard/Premium Appliance Software Release 11.1.1a",
+    "Version": "11.2.0",
+    "Title": "SD-WAN Standard/Premium/Advance Appliance Software Release 11.2.0a",
     "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "7/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-release-111139.html"
-  },
-  {
-    "Version": "11.1.1",
-    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.1.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "7/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-111139.html"
-  },
-  {
-    "Version": "11.1.1",
-    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.1.1a",
-    "Description": "New downloads are available for Citrix SD-WAN",
-    "Date": "7/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-111139.html"
+    "Date": "22/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/citrix-sd-wan-standard-premium-advance-edition/appliance-software-release-112088.html"
   },
   {
     "Version": "11.1.1",
@@ -481,6 +460,27 @@
     "Description": "New downloads are available for Citrix SD-WAN",
     "Date": "7/7/2020",
     "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/appliance-software-release-111139.html"
+  },
+  {
+    "Version": "11.1.1",
+    "Title": "SD-WAN Standard/Premium Appliance Software Release 11.1.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "7/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-release-111139.html"
+  },
+  {
+    "Version": "11.1.1",
+    "Title": "SD-WAN Standard Edition VPX for XenServer, ESXi, Hyper-V, KVM Software Rel 11.1.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "7/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/standard-premium-edition/vpx-release-111139.html"
+  },
+  {
+    "Version": "11.1.1",
+    "Title": "SD-WAN WANOP Appliance Software Upgrade 11.1.1a",
+    "Description": "New downloads are available for Citrix SD-WAN",
+    "Date": "7/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-sd-wan/sd-wan-wanop-edition/appliance-software-upgrade-111139.html"
   },
   {
     "Version": "10.2.6",

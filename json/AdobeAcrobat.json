@@ -1,32 +1,5 @@
 [
   {
-    "Version": "15.006.30527",
-    "Type": "Update",
-    "Product": "Reader",
-    "Track": "2015",
-    "Language": "Multi",
-    "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2015/1500630527/AcroRdr2015Upd1500630527_MUI.msp"
-  },
-  {
-    "Version": "20.004.30005",
-    "Type": "Update",
-    "Product": "Reader",
-    "Track": "2020",
-    "Language": "Multi",
-    "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2020/2000430005/AcroRdr2020Upd2000430005_MUI.msp"
-  },
-  {
-    "Version": "17.011.30197",
-    "Type": "Update",
-    "Product": "Reader",
-    "Track": "2017",
-    "Language": "Multi",
-    "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2017/1701130197/AcroRdr2017Upd1701130197_MUI.msp"
-  },
-  {
     "Version": "21.005.20048",
     "Type": "Update",
     "Product": "Reader",
@@ -56,29 +29,29 @@
   {
     "Version": "15.006.30527",
     "Type": "Update",
-    "Product": "Acrobat",
+    "Product": "Reader",
     "Track": "2015",
-    "Language": "Neutral",
+    "Language": "Multi",
     "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2015/1500630527/Acrobat2015Upd1500630527.msp"
-  },
-  {
-    "Version": "20.004.30005",
-    "Type": "Update",
-    "Product": "Acrobat",
-    "Track": "2020",
-    "Language": "Neutral",
-    "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2020/2000430005/Acrobat2020Upd2000430005.msp"
+    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2015/1500630527/AcroRdr2015Upd1500630527_MUI.msp"
   },
   {
     "Version": "17.011.30197",
     "Type": "Update",
-    "Product": "Acrobat",
+    "Product": "Reader",
     "Track": "2017",
-    "Language": "Neutral",
+    "Language": "Multi",
     "Architecture": "x86",
-    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2017/1701130197/Acrobat2017Upd1701130197.msp"
+    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2017/1701130197/AcroRdr2017Upd1701130197_MUI.msp"
+  },
+  {
+    "Version": "20.004.30005",
+    "Type": "Update",
+    "Product": "Reader",
+    "Track": "2020",
+    "Language": "Multi",
+    "Architecture": "x86",
+    "URI": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat2020/2000430005/AcroRdr2020Upd2000430005_MUI.msp"
   },
   {
     "Version": "21.005.20048",
@@ -97,5 +70,32 @@
     "Language": "Neutral",
     "Architecture": "x64",
     "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/AcrobatDC/2100520048/AcrobatDCx64Upd2100520048.msp"
+  },
+  {
+    "Version": "15.006.30527",
+    "Type": "Update",
+    "Product": "Acrobat",
+    "Track": "2015",
+    "Language": "Neutral",
+    "Architecture": "x86",
+    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2015/1500630527/Acrobat2015Upd1500630527.msp"
+  },
+  {
+    "Version": "17.011.30197",
+    "Type": "Update",
+    "Product": "Acrobat",
+    "Track": "2017",
+    "Language": "Neutral",
+    "Architecture": "x86",
+    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2017/1701130197/Acrobat2017Upd1701130197.msp"
+  },
+  {
+    "Version": "20.004.30005",
+    "Type": "Update",
+    "Product": "Acrobat",
+    "Track": "2020",
+    "Language": "Neutral",
+    "Architecture": "x86",
+    "URI": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat2020/2000430005/Acrobat2020Upd2000430005.msp"
   }
 ]

@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "19.2020.1.0",
+    "Architecture": "x64",
+    "Release": "19",
+    "URI": "https://files3.minitab.com/prodinstalls/minitab/minitab19/19.2020.1.0/updates/commercial/minitab19.2020.1.0setup.x64.exe"
+  },
+  {
+    "Version": "20.3.0.0",
+    "Architecture": "x64",
+    "Release": "20",
+    "URI": "https://files3.minitab.com/prodinstalls/minitab/minitab20/20.3.0.0/updates/commercial/minitab20.3.0.0setup.x64.exe"
+  }
+]
