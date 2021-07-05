@@ -96,7 +96,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
     catch {
         #TODO: Should we return $_ on catch?
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Output -InputObject $Response

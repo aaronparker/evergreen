@@ -110,7 +110,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-WebRequest @iwrParams
     }
     catch {
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."

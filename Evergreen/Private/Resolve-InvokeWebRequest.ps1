@@ -47,7 +47,9 @@ Function Resolve-InvokeWebRequest {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
         }
         catch [System.Exception] {
-            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
+            #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
 
