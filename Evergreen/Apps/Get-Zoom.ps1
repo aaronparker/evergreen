@@ -27,11 +27,16 @@ Function Get-Zoom {
             $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$installer]
 
             # Match the URL without the text after the ?
-            try {
-                $Url = [RegEx]::Match($redirectUrl.ResponseUri.AbsoluteUri, $res.Get.MatchUrl).Captures.Groups[1].Value
+            If ($Null -eq $redirectUrl) {
+                $Url = $script:resourceStrings.Uri.Issues
             }
-            catch {
-                $Url = $redirectUrl.ResponseUri.AbsoluteUri
+            Else {
+                try {
+                    $Url = [RegEx]::Match($redirectUrl.ResponseUri.AbsoluteUri, $res.Get.MatchUrl).Captures.Groups[1].Value
+                }
+                catch {
+                    $Url = $redirectUrl.ResponseUri.AbsoluteUri
+                }
             }
 
             # Match version number from the download URL

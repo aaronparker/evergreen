@@ -33,7 +33,8 @@
 		]
 	},
 	"Uri": {
-		"Project": "https://github.com/aaronparker/Evergreen/",
-		"Documentation": "https://stealthpuppy.com/evergreen/"
+		"Project": "https://github.com/aaronparker/evergreen/",
+		"Documentation": "https://stealthpuppy.com/evergreen/",
+		"Issues": "https://stealthpuppy.com/evergreen/issues/"
 	}
 }
