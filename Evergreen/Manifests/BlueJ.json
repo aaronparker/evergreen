@@ -5,16 +5,17 @@
 		"Uri": "http://www.bluej.org/version.info",
 		"UserAgent": "Java/11.0.2",
 		"DownloadUri": "https://www.bluej.org/download/files/BlueJ-windows-#version.msi",
-		"ReplaceText": "#version"
+		"ReplaceText": "#version",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
 	},
 	"Install": {
-		"Setup": "BlueJ-windows-*.exe",
+		"Setup": "BlueJ-windows-*.msi",
 		"Physical": {
-			"Arguments": "/install /passive /norestart",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "/install /passive /norestart",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": []
 		}
 	}
