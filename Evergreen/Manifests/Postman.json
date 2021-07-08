@@ -1,0 +1,19 @@
+{
+	"Name": "Postman",
+	"Source": "https://www.getpostman.com/",
+	"Get": {
+		"Uri": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+		"DatePattern": "yyyy-MM-ddTHH:mm:ss.fffK"
+	},
+	"Install": {
+		"Setup": "Postman*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}
