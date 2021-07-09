@@ -28,6 +28,7 @@ Function Get-Zoom {
 
             # Match the URL without the text after the ?
             If ($Null -eq $redirectUrl) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Setting fallback URL to: $($script:resourceStrings.Uri.Issues)."
                 $Url = $script:resourceStrings.Uri.Issues
             }
             Else {

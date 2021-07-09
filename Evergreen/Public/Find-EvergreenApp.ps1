@@ -46,7 +46,7 @@
             }
             If ($Null -eq $Manifests) {
                 Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
-                Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+                Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
                 Throw "Cannot find application: $Name."
             }
         }
@@ -75,7 +75,7 @@
         }
         Else {
             Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
-            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
             Throw "Failed to return application manifests."
         }
         #endregion

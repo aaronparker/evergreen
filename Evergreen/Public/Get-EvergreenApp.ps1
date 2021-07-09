@@ -58,7 +58,7 @@ Function Get-EvergreenApp {
             # Sort object on the Version property
             If ($Output) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
-                Write-Output -InputObject ($Output | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true })
+                Write-Output -InputObject ($Output | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
             }
             Else {
                 Throw "$($MyInvocation.MyCommand): Failed to capture output from: Get-$Name."
@@ -66,7 +66,7 @@ Function Get-EvergreenApp {
         }
         Else {
             Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
-            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Documentation)."
+            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
             Throw "$($MyInvocation.MyCommand): Cannot find application script at: $Function."
         }
         #endregion
