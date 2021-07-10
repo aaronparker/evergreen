@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2107.418
 
 * Adds `BlueJ`, `Postman`, `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Adds `MicrosoftAzureFunctionsCoreTools`, `MasterPackager`

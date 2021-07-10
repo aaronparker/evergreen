@@ -1,6 +1,6 @@
-# Supported applications
+﻿# Supported applications
 
-Evergreen `2106.407` supports the following applications:
+Evergreen `2107.418` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -22,6 +22,7 @@ Evergreen `2106.407` supports the following applications:
 | BISF                                    | Base Image Script Framework                        | https://eucweb.com/                                                                        |
 | BitwardenDesktop                        | Bitwarden Desktop                                  | https://bitwarden.com/                                                                     |
 | BlenderLauncher                         | Blender Launcher                                   | https://dotbow.github.io/Blender-Launcher/                                                 |
+| BlueJ                                   | BlueJ                                              | https://www.bluej.org/                                                                     |
 | CendioThinLinc                          | Cendio ThinLinc                                    | https://www.cendio.com/                                                                    |
 | CiscoWebex                              | Cisco Webex                                        | https://www.webex.com/                                                                     |
 | CitrixAppLayeringFeed                   | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
@@ -65,10 +66,12 @@ Evergreen `2106.407` supports the following applications:
 | LibreOffice                             | LibreOffice                                        | https://www.libreoffice.org/                                                               |
 | LogMeInGoToMeeting                      | LogMeIn GoToMeeting                                | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                       | LogMeIn GoToOpener                                 | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
+| MasterPackager                          | Master Packager                                    | https://www.masterpackager.com/                                                            |
 | MendeleyDesktop                         | Mendeley Desktop                                   | https://www.mendeley.com/                                                                  |
 | Microsoft.NET                           | Microsoft .NET Desktop Runtime                     | https://dotnet.microsoft.com/download/                                                     |
 | Microsoft365Apps                        | Microsoft 365 Apps                                 | https://www.microsoft.com/office                                                           |
 | MicrosoftAzureDataStudio                | Microsoft Azure Data Studio                        | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                    |
+| MicrosoftAzureFunctionsCoreTools        | Azure Functions Core Tools                         | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                 |
 | MicrosoftAzureStorageExplorer           | Microsoft Azure Storage Explorer                   | https://azure.microsoft.com/en-au/features/storage-explorer/                               |
 | MicrosoftBicep                          | Microsoft Bicep                                    | https://atom.io/                                                                           |
 | MicrosoftEdge                           | Microsoft Edge                                     | https://www.microsoft.com/edge                                                             |
@@ -104,6 +107,7 @@ Evergreen `2106.407` supports the following applications:
 | Pandoc                                  | Pandoc                                             | https://pandoc.org/                                                                        |
 | PDFForgePDFCreator                      | pdfforge PDFCreator                                | https://www.pdfforge.org/pdfcreator                                                        |
 | PeaZipPeaZip                            | PeaZip PeaZip                                      | https://peazip.github.io/                                                                  |
+| Postman                                 | Postman                                            | https://www.getpostman.com/                                                                |
 | Praat                                   | Praat                                              | https://www.fon.hum.uva.nl/praat/                                                          |
 | ProjectLibre                            | ProjectLibre                                       | https://www.projectlibre.com/                                                              |
 | Protege                                 | Protege                                            | https://protege.stanford.edu/                                                              |
@@ -119,6 +123,7 @@ Evergreen `2106.407` supports the following applications:
 | Slack                                   | Slack                                              | https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer  |
 | StefansToolsgregpWin                    | Stefans Tools gregpWin                             | https://tools.stefankueng.com/grepWin.html                                                 |
 | SumatraPDFReader                        | Sumatra PDF Reader                                 | https://www.sumatrapdfreader.org/                                                          |
+| TableauDesktop                          | Tableau Desktop                                    | https://www.tableau.com/                                                                   |
 | TeamViewer                              | TeamViewer                                         | https://www.teamviewer.com/                                                                |
 | TelegramDesktop                         | Telegram Desktop                                   | https://desktop.telegram.org/                                                              |
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                         | https://www.telerik.com/fiddler                                                            |
