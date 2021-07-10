@@ -34,7 +34,7 @@ Function Get-MicrosoftWvdRemoteDesktop {
                     Uri             = $res.Get.Download.Uri.$channel[$architecture]
                     Method          = "Head"
                     UseBasicParsing = $True
-                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                    ErrorAction     = "Continue"
                 }
                 $Headers = (Invoke-WebRequest @params).Headers
             }

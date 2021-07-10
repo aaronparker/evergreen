@@ -93,7 +93,7 @@ Function Save-EvergreenApp {
                             Uri             = $Object.URI
                             OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
                             UseBasicParsing = $True
-                            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                            ErrorAction     = "Continue"
                         }
                         If ($PSBoundParameters.ContainsKey("Proxy")) {
                             $params.Proxy = $Proxy

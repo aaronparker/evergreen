@@ -70,7 +70,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $irmParams = @{
             ContentType        = $ContentType
             DisableKeepAlive   = $true
-            ErrorAction        = $script:resourceStrings.Preferences.ErrorAction
+            ErrorAction        = "Continue"
             MaximumRedirection = 0
             Uri                = $Uri
             UseBasicParsing    = $true
@@ -95,7 +95,8 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri, with: $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }

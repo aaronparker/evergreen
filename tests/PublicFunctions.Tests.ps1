@@ -24,7 +24,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Validate 'Get-EvergreenApp works with: <application>." {
+    Context "Validate Get-EvergreenApp works with: <application>." {
         It "<application>: should return something" {
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }

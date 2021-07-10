@@ -82,7 +82,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
             Uri             = $Uri
             UseBasicParsing = $True
             UserAgent       = $UserAgent
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            ErrorAction     = "Continue"
         }
 
         # Set additional parameters
@@ -110,7 +110,8 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-WebRequest @iwrParams
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri, with: $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }

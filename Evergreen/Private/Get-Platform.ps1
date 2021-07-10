@@ -12,7 +12,7 @@ Function Get-Platform {
         "\.rpm" { $platform = "RedHat"; Break }
         "\.tar.gz|linux" { $platform = "Linux"; Break }
         "\.nupkg" { $platform = "NuGet"; Break }
-        "mac|osx|darwin" { $platform = "macOS"; Break }
+        "macos|osx|darwin" { $platform = "macOS"; Break }
         "\.deb|debian" { $platform = "Debian"; Break }
         "ubuntu" { $platform = "Ubuntu"; Break }
         "centos" { $platform = "CentOS"; Break }
