@@ -30,7 +30,7 @@ Function Get-MicrosoftWvdInfraAgent {
                 Uri             = $res.Get.Uri
                 Method          = "Head"
                 UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                ErrorAction     = "Continue"
             }
             (Invoke-WebRequest @params).RawContent | Out-File -FilePath $tempFile
         }
@@ -69,7 +69,7 @@ Function Get-MicrosoftWvdInfraAgent {
                 Uri             = $res.Get.Uri
                 Method          = "Head"
                 UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                ErrorAction     = "Continue"
             }
             $Content = (Invoke-WebRequest @params).RawContent
         }

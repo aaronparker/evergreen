@@ -21,34 +21,25 @@ Function Get-TableauDesktop {
     )
 
     # Query the Tableau update API
-    $iwcParams = @{
-        Uri       = $res.Get.Uri
-        UserAgent = $res.Get.UserAgent
+    $params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
     }
-
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-RestMethodWrapper @params
 
     If ($Null -ne $Content) {
 
-        # Convert the content to XML to grab the version number
-        Try {
-            [System.XML.XMLDocument] $xmlDocument = $Content
-        }
-        Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-        }
-
         # Work out latest version
-        $LatestVersion = $xmlDocument.versions.version | `
+        $LatestVersion = $Content.versions.version | `
             Sort-Object -Property @{ Expression = { [System.Version]$_.name }; Descending = $true } | `
             Select-Object -First 1
 
-        ForEach ($file in ($LatestVersion.Installer | Where-Object { $_.name -match $res.Get.MatchExtensions })) {
+        ForEach ($file in ($LatestVersion.Installer | Where-Object { $_.name -match $res.Get.Update.MatchExtensions })) {
 
             # Attempt to work out Tableau type based on filename
             try {
 
-                $Type = [RegEx]::Match($file.Name, $res.Get.MatchType).Captures.Groups[1].Value
+                $Type = [RegEx]::Match($file.Name, $res.Get.Update.MatchType).Captures.Groups[1].Value
             }
             catch {
                 $Type = $file.Name
@@ -61,7 +52,7 @@ Function Get-TableauDesktop {
                 Architecture = Get-Architecture $file.Name
                 Hash         = $file.hash
                 HashAlg      = $LatestVersion.hashAlg
-                URI          = $("$($res.Get.DownloadUri)/$($LatestVersion.latestVersionPath)/$($file.Name)")
+                URI          = $("$($res.Get.Download.Uri)/$($LatestVersion.latestVersionPath)/$($file.Name)")
             }
             Write-Output -InputObject $PSObject
         }

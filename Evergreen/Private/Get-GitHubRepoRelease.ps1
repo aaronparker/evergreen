@@ -73,7 +73,6 @@ Function Get-GitHubRepoRelease {
             Break
         }
         Else {
-
             # If it's not a 403, return the exception to the pipeline
             Throw $_
         }
@@ -90,7 +89,7 @@ Function Get-GitHubRepoRelease {
                 ReferenceObject  = $script:resourceStrings.Properties.GitHub
                 DifferenceObject = (Get-Member -InputObject $item -MemberType NoteProperty)
                 PassThru         = $True
-                ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
+                ErrorAction      = "Continue"
             }
             $missingProperties = Compare-Object @params
 

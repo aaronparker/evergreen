@@ -32,7 +32,7 @@ Function Get-OracleVirtualBox {
             Uri             = "$($res.Get.Download.Uri)$Version/"
             UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
             UseBasicParsing = $True
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            ErrorAction     = "Continue"
         }
         $Downloads = Invoke-WebRequest @iwrParams
 

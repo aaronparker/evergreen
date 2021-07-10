@@ -28,7 +28,7 @@ Function Get-MicrosoftWvdBootLoader {
             Uri             = $res.Get.Uri
             Method          = "Head"
             UseBasicParsing = $True
-            ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+            ErrorAction     = "Continue"
         }
         $Headers = (Invoke-WebRequest @params).Headers
     }

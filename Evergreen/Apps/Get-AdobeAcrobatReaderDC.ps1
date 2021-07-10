@@ -34,7 +34,7 @@ Function Get-AdobeAcrobatReaderDC {
                 Uri             = $Uri
                 Headers         = $res.Get.Download.Headers
                 UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                ErrorAction     = "Continue"
             }
             $Content = Invoke-RestMethod @params
         }

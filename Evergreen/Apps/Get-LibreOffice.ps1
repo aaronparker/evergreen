@@ -51,7 +51,7 @@ Function Get-LibreOffice {
             $iwrParams = @{
                 Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/"
                 UseBasicParsing = $True
-                ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                ErrorAction     = "Continue"
             }
             $response = Invoke-WebRequest @iwrParams
             $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.MatchArchitectures }).href -replace "/", ""
@@ -62,7 +62,7 @@ Function Get-LibreOffice {
                 $iwrParams = @{
                     Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/$arch/"
                     UseBasicParsing = $True
-                    ErrorAction     = $script:resourceStrings.Preferences.ErrorAction
+                    ErrorAction     = "Continue"
                 }
                 $response = Invoke-WebRequest @iwrParams
                 $Files = ($response.Links | Where-Object { $_.href -match $res.Get.MatchExtensions }).href -replace "/", ""

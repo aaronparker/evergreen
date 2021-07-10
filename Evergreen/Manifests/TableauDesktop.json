@@ -1,22 +1,27 @@
 {
-	"Name": "Tableau Desktop",
-	"Source": "https://www.tableau.com/",
-	"Get": {
-		"Uri": "https://downloads.tableau.com/TableauAutoUpdate.xml",
-		"UserAgent": "Tableau Desktop 20203.20.0801.1333; pro; libcurl-client; 64-bit; en_US; Microsoft Windows 10 Enterprise (Build 19042);",
-		"DownloadUri": "https://downloads.tableau.com",
-		"MatchExtensions": "\\.exe$",
-		"MatchType": "Tableau(.*)-64"
-	},
-	"Install": {
-		"Setup": "TableauDesktop*.exe",
-		"Physical": {
-			"Arguments": "/quiet /norestart",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "/quiet /norestart",
-			"PostInstall": []
-		}
-	}
+    "Name": "Tableau Desktop",
+    "Source": "https://www.tableau.com/",
+    "Get": {
+        "Update": {
+            "Uri": "https://downloads.tableau.com/TableauAutoUpdate.xml",
+            "UserAgent": "Tableau Desktop 20203.20.0801.1333; pro; libcurl-client; 64-bit; en_US; Microsoft Windows 10 Enterprise (Build 19042);",
+            "ContentType": "application/xml; charset=utf-8",
+			"MatchExtensions": "\\.exe$",
+            "MatchType": "Tableau(.*)-64"
+        },
+        "Download": {
+            "Uri": "https://downloads.tableau.com"
+        }
+    },
+    "Install": {
+        "Setup": "TableauDesktop*.exe",
+        "Physical": {
+            "Arguments": "/quiet /norestart",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/quiet /norestart",
+            "PostInstall": []
+        }
+    }
 }

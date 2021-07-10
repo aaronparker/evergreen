@@ -34,7 +34,7 @@
         ReferenceObject  = $script:resourceStrings.Properties.SourceForge
         DifferenceObject = (Get-Member -InputObject $bestRelease -MemberType NoteProperty)
         PassThru         = $True
-        ErrorAction      = $script:resourceStrings.Preferences.ErrorAction
+        ErrorAction      = "Continue"
     }
     $missingProperties = Compare-Object @params
     If ($Null -ne $missingProperties) {
