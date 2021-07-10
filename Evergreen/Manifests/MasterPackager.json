@@ -1,0 +1,28 @@
+﻿{
+    "Name": "Master Packager",
+    "Source": "https://www.masterpackager.com/",
+    "Get": {
+        "Update": {
+            "Uri": "https://www.masterpackager.com/uploads/file_archive/version.txt"
+        },
+        "Download": {
+            "Uri": {
+                "Free": "https://www.masterpackager.com/installer/public/standard/masterpackager_#version.0.msi"
+            },
+            "ReplaceText": {
+                "Version": "#version"
+            }
+        }
+    },
+    "Install": {
+        "Setup": "masterpackager_*.msi",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
