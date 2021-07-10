@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `jq`
+* Adds `jq`, `PSAppDeployToolkit`
 
 ## 2107.418
 
