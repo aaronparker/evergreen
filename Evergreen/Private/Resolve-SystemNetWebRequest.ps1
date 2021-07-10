@@ -27,11 +27,11 @@ Function Resolve-SystemNetWebRequest {
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode) - $($webResponse.StatusDescription)"
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
+        #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         If ($webResponse) {
-
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($webResponse.StatusCode)]."
             Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
             

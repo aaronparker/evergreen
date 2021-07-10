@@ -131,6 +131,7 @@ nav:
     - Example usage: examples.md
     - Under the hood: under.md
   - Resources:
+    - Troubleshooting: troubleshoot.md
     - Known issues: issues.md
     - Changelog: changelog.md
     - Supported apps: apps.md

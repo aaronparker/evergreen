@@ -95,8 +95,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
-        #TODO: Should we return $_ on catch?
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri, with: $($_.Exception.Message)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
+        #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         Write-Output -InputObject $Response

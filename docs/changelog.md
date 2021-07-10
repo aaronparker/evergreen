@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `BlueJ`, `Postman`, `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates `Get-EvergreenApp` to sort output on the `Version` property in descending order
+* Updates internal functions `Invoke-SystemNetRequest`, `Invoke-WebRequestWrapper`, `Resolve-InvokeWebRequest`, `Resolve-SystemNetWebRequest` to now throw in the event of a source URL being unavailable, to allow for more graceful handling of vendor sources being temporarily unavailable
+
 ## 2106.407
 
 * Adds `CendioThinLinc`, `JASP`, `JetBrainsIntelliJIDEA`, `JetBrainsPyCharm`, `MendeleyDesktop`, `MiniZincIDE`, `Minitab`, `MuseScore`, `Pandoc`, `Protege`, `RDAnalyzer`, `RStudio`, `SafeExamBrowser`, `Zotero`.  Thanks to [@adotcoop](https://github.com/adotcoop)

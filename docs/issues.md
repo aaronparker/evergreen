@@ -1,5 +1,9 @@
 ﻿# Known issues
 
+## General
+
+Where an application source is unavailable the value of the `URI` property returned may be `https://stealthpuppy.com/evergreen/issues/`. If you encounter this scenario, follow [the troubleshooting steps](https://stealthpuppy.com/evergreen/troubleshooting/).
+
 ## Public Functions
 
 ### Get-EvergreenApp
