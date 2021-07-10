@@ -3,6 +3,8 @@ Function Get-GitHubRepoRelease {
         .SYNOPSIS
             Calls the GitHub Releases API passed via $Uri, validates the response and returns a formatted object
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
+
+            TODO: update to optionally return just the version number
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -137,7 +139,9 @@ Function Get-GitHubRepoRelease {
                             Size         = $asset.size
                             URI          = $asset.browser_download_url
                         }
-                        Write-Output -InputObject $PSObject
+                        If ($PSObject.Platform -eq "Windows") {
+                            Write-Output -InputObject $PSObject
+                        }
                     }
                     Else {
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Skip: $($asset.browser_download_url)."
