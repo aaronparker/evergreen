@@ -53,7 +53,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
-        [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
     # Use TLS for connections
