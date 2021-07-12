@@ -1,0 +1,25 @@
+{
+	"Name": "PSF Python",
+	"Source": "https://www.python.org/",
+	"Get": {
+		"Update": {
+			"UpdateFeed": "https://www.python.org/api/v2/downloads/release/",
+			"DownloadFeed": "https://www.python.org/api/v2/downloads/release_file/",
+			"DatePattern": "yyyy-MM-ddTHH:mm:ssK",
+			"MatchFileTypes": "\\.exe$|\\.msi$",
+			"MatchRelease" : "(?<=\\/downloads\\/release\\/)(\\d+)",
+			"MatchVersion": "(\\d+(\\.\\d+){1,3})"
+		}
+	},
+	"Install": {
+		"Setup": "python-*.exe",
+		"Physical": {
+			"Arguments": "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0",
+			"PostInstall": []
+		}
+	}
+}

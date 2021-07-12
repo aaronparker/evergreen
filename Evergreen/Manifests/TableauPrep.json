@@ -1,0 +1,25 @@
+{
+	"Name": "Tableau Prep",
+	"Source": "https://www.tableau.com/",
+	"Get": {
+		"Update": {
+			"Uri": ""
+		},
+		"Download": {
+			"Uri": "https://www.tableau.com/downloads/prep/pc64",
+			"Property": "ResponseUri.Headers.Location",
+			"MatchVersion": "(\\d+(\\-\\d+){1,3})"
+		}
+	},
+	"Install": {
+		"Setup": "TableauPrep*.exe",
+		"Physical": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
+		}
+	}
+}
