@@ -40,7 +40,7 @@ Function Get-TechSmithCamtasia {
             If ($Null -ne $latestupdateFeed) {
                 
                 # Strip the file extension from the filename (eg camtasia.exe becomes camtasia) 
-                $FileName = ($latestupdateFeed.Name).Split(".")[0]
+                $FileName = [System.IO.Path]::GetFileNameWithoutExtension($latestupdateFeed.Name)
 
                 ForEach ($InstallerType in $res.Get.Download.Uri.GetEnumerator()) {
 

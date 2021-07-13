@@ -21,7 +21,7 @@ Function Get-PSFPython {
     )
       
     # Query the python API to get the list of versions
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.UpdateFeed
+    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     
     If ($Null -ne $updateFeed) {
              
@@ -43,7 +43,7 @@ Function Get-PSFPython {
 
                 # Query the python API to get the list of download uris
                 $iwcParams = @{
-                    Uri  = $res.Get.Update.DownloadFeed
+                    Uri  = $res.Get.Download.Uri
                     Body = @{ 
                         os      = "1"
                         release = $releaseToQuery 
@@ -54,7 +54,7 @@ Function Get-PSFPython {
 
                 # Filter the download feed to obtain the installers
                 Try {
-                    $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Update.MatchFileTypes }
+                    $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Download.MatchFileTypes }
                 }
                 Catch {
                     Throw "$($MyInvocation.MyCommand): could not filter download feed for executable filetypes."
@@ -74,7 +74,7 @@ Function Get-PSFPython {
 
                         # Extract exact version (eg 3.9.6) from URI
                         Try {
-                            $FileVersion = [RegEx]::Match($UniqueFile.url, $res.Get.Update.MatchVersion).Captures.Groups[0].Value
+                            $FileVersion = [RegEx]::Match($UniqueFile.url, $res.Get.Download.MatchVersion).Captures.Groups[0].Value
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$FileVersion]."
                         }
                         Catch {
@@ -87,7 +87,7 @@ Function Get-PSFPython {
                             Python       = $PythonVersion.version
                             md5          = $UniqueFile.md5_sum
                             Size         = $UniqueFile.filesize
-                            Date         = ConvertTo-DateTime -DateTime $PythonVersion.release_date -Pattern $res.Get.Update.DatePattern
+                            Date         = ConvertTo-DateTime -DateTime $PythonVersion.release_date -Pattern $res.Get.Download.DatePattern
                             Type         = ($UniqueFile.url).Split('.')[-1]
                             Architecture = Get-Architecture $UniqueFile.name
                             URI          = $UniqueFile.url

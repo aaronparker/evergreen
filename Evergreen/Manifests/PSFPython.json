@@ -3,11 +3,13 @@
 	"Source": "https://www.python.org/",
 	"Get": {
 		"Update": {
-			"UpdateFeed": "https://www.python.org/api/v2/downloads/release/",
-			"DownloadFeed": "https://www.python.org/api/v2/downloads/release_file/",
+			"Uri": "https://www.python.org/api/v2/downloads/release/",
+			"MatchRelease" : "(?<=\\/downloads\\/release\\/)(\\d+)"
+		},
+		"Download": {
+			"Uri": "https://www.python.org/api/v2/downloads/release_file/",
 			"DatePattern": "yyyy-MM-ddTHH:mm:ssK",
 			"MatchFileTypes": "\\.exe$|\\.msi$",
-			"MatchRelease" : "(?<=\\/downloads\\/release\\/)(\\d+)",
 			"MatchVersion": "(\\d+(\\.\\d+){1,3})"
 		}
 	},

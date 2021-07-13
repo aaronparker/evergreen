@@ -20,35 +20,20 @@ Function Get-McNeelRhino {
         [System.String] $Filter
     )
 
-    foreach ($Release in $res.Get.Releases.GetEnumerator()) {
+    foreach ($Release in $res.Get.Update.GetEnumerator()) {
 
         # Query the Rhino update API
-        $UpdateFeed = Invoke-WebRequestWrapper $Release.Value
+        
+        # This requires redirection so Invoke-RestMethodWrapper produces "Operation is not valid due to the current state of the object." 
+        $UpdateFeed = Invoke-RestMethod -Uri $Release.Value
 
         If ($Null -ne $UpdateFeed) {
 
-            # Convert response from UTF8
-            Try { 
-                $Update = [System.Text.Encoding]::UTF8.GetString($Updatefeed)
-            }
-            Catch {
-                Throw "$($MyInvocation.MyCommand): failed to convert feed into to UTF8."
-            
-            }
-
-            # Convert the content to XML to grab the version number
-            Try {
-                [System.XML.XMLDocument] $xmlDocument = $Update 
-            }
-            Catch {
-                Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-            }
-                
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version = $xmlDocument.ProductVersionDescription.Version
+                Version = $updateFeed.ProductVersionDescription.Version
                 Release = $Release.Name
-                URI     = $xmlDocument.ProductVersionDescription.DownloadUrl
+                URI     = $updateFeed.ProductVersionDescription.DownloadUrl
             }
             Write-Output -InputObject $PSObject
             

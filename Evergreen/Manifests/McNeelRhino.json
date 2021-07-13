@@ -2,10 +2,10 @@
 	"Name": "McNeel Rhino",
 	"Source": "https://www.rhino3d.com/",
 	"Get": {
-		"Releases": {
+		"Update": {
 		"7": "https://store.mcneel.com/api/v1/mcneelupdate/78464c2c-9aeb-456e-8c27-865a524f5ca0/release/win64/en-us/stable/7.0.20314.3001",
 		"6": "https://store.mcneel.com/api/v1/mcneelupdate/06bb1079-5a56-47a1-ad6d-0b45183d894b/release/win64/en-us/stable/6.16.19190.7001"
-	}
+		}
 	},
 	"Install": {
 		"Setup": "",

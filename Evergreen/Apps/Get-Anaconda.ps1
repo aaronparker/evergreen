@@ -23,7 +23,7 @@ Function Get-Anaconda {
     # Construct the Anaconda repo uri
     $Uri = $res.Get.Update.Uri -replace "#replace", $res.Get.Update.ReplaceFileList
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethod -Uri $Uri -UseBasicParsing
+    $updateFeed = Invoke-RestMethodWrapper -Uri $Uri 
 
     If ($Null -ne $updateFeed) {
 
