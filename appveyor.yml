@@ -15,6 +15,7 @@ build_script:
 - ps: . .\ci\Build.ps1
 test_script:
 - ps: . .\ci\Tests.ps1
+- ps: . .\ci\GitHub.ps1
 deploy_script:
 - ps: . .\ci\Deploy.ps1
 
