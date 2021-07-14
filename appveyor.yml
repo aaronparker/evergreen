@@ -12,6 +12,7 @@ environment:
 install:
 - ps: . .\ci\Install.ps1
 build_script:
+- ps: . .\ci\GitHub.ps1
 - ps: . .\ci\Build.ps1
 test_script:
 - ps: . .\ci\Tests.ps1
