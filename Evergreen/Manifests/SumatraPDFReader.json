@@ -16,9 +16,9 @@
 	},
 	"Install": {
 		"Setup": "SumatraPDF.*.exe",
-		"Preinstall": "-s -d \"$env:ProgramFiles\\SumatraPDF\"",
+		"Preinstall": "",
 		"Physical": {
-			"Arguments": "",
+			"Arguments": "-s -d \"$env:ProgramFiles\\SumatraPDF\"",
 			"PostInstall": [
 
 			]

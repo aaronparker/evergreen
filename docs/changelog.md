@@ -1,11 +1,18 @@
 # Change log
 
+## VERSION
+
+* Adds `jq`, `PSAppDeployToolkit`
+* Adds `Anaconda`, `McNeelRhino`, `PSFPython`, `TableauPrep`, `TableauReader`, `TechSmithCamtasia`, `TechSmithSnagIt`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates `Get-GitHubRepoRelease` to actively query the GitHub API for available requests to avoid issues when [rate limited](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)
+* Updates `Get-GitHubRepoRelease` with a new parameter - `-ReturnVersionOnly` that enables returning only the version property of the latest release. This enables finding the version number and using alternative download sources, where the vendor does not include binary releases on the GitHub repository
+
 ## 2107.418
 
 * Adds `BlueJ`, `Postman`, `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Adds `MicrosoftAzureFunctionsCoreTools`, `MasterPackager`
 * Updates `Get-EvergreenApp` to sort output on the `Version` property in descending order
-* Updates internal functions `Invoke-SystemNetRequest`, `Invoke-WebRequestWrapper`, `Resolve-InvokeWebRequest`, `Resolve-SystemNetWebRequest` to now throw in the event of a source URL being unavailable, to allow for more graceful handling of vendor sources being temporarily unavailable
+* Updates internal functions `Invoke-SystemNetRequest`, `Invoke-WebRequestWrapper`, `Resolve-InvokeWebRequest`, `Resolve-SystemNetWebRequest` to not throw in the event of a source URL being unavailable, to allow for more graceful handling of vendor sources being temporarily unavailable
 
 ## 2106.407
 

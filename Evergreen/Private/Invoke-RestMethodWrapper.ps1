@@ -22,6 +22,10 @@ Function Invoke-RestMethodWrapper {
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Headers,
+        
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.Collections.Hashtable] $Body,
 
         [Parameter()]
         [ValidateSet("Default", "Get", "Head", "Post")]
@@ -53,7 +57,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
-        [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
     # Use TLS for connections
@@ -78,6 +82,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         }
         If ($Headers.IsPresent) {
             $irmParams.Headers = $Headers
+        }
+        If ($Body.IsPresent) {
+            $irmParams.$Body = $Body
         }
         If ($Method.IsPresent) {
             $irmParams.Method = $Method
