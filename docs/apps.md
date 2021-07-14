@@ -1,6 +1,6 @@
-# Supported applications
+﻿# Supported applications
 
-Evergreen `2107.418` supports the following applications:
+Evergreen `2107.425` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -14,6 +14,7 @@ Evergreen `2107.418` supports the following applications:
 | AdoptOpenJDK8                           | AdoptOpenJDK OpenJDK Official Binaries (JDK 8u)    | https://adoptopenjdk.net/index.html                                                        |
 | AkeoRufus                               | Akeo Rufus                                         | https://rufus.ie/                                                                          |
 | AmazonCorretto                          | Amazon Corretto                                    | https://aws.amazon.com/corretto/                                                           |
+| Anaconda                                | Anaconda                                           | https://www.anaconda.com/                                                                  |
 | Anki                                    | Anki                                               | https://github.com/ankitects/anki/                                                         |
 | ArtifexGhostscript                      | Artifex Ghostscript                                | https://www.ghostscript.com/                                                               |
 | AtlassianBitbucket                      | Atlassian Bitbucket                                | https://www.sourcetreeapp.com/                                                             |
@@ -60,6 +61,7 @@ Evergreen `2107.418` supports the following applications:
 | JASP                                    | JASP                                               | https://jasp-stats.org/                                                                    |
 | JetBrainsIntelliJIDEA                   | JetBrains IntelliJ IDEA                            | https://www.jetbrains.com/                                                                 |
 | JetBrainsPyCharm                        | JetBrains PyCharm                                  | https://www.jetbrains.com/                                                                 |
+| jq                                      | jq                                                 | http://stedolan.github.io/jq/                                                              |
 | KarakunOpenWebStart                     | Karakun OpenWebStart                               | https://openwebstart.com/ows/                                                              |
 | KeePass                                 | KeePass                                            | https://keepass.net/                                                                       |
 | KeePassXCTeamKeePassXC                  | KeePassXC Team KeePassXC                           | https://keepassxc.org/                                                                     |
@@ -67,6 +69,7 @@ Evergreen `2107.418` supports the following applications:
 | LogMeInGoToMeeting                      | LogMeIn GoToMeeting                                | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                       | LogMeIn GoToOpener                                 | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
 | MasterPackager                          | Master Packager                                    | https://www.masterpackager.com/                                                            |
+| McNeelRhino                             | McNeel Rhino                                       | https://www.rhino3d.com/                                                                   |
 | MendeleyDesktop                         | Mendeley Desktop                                   | https://www.mendeley.com/                                                                  |
 | Microsoft.NET                           | Microsoft .NET Desktop Runtime                     | https://dotnet.microsoft.com/download/                                                     |
 | Microsoft365Apps                        | Microsoft 365 Apps                                 | https://www.microsoft.com/office                                                           |
@@ -111,6 +114,8 @@ Evergreen `2107.418` supports the following applications:
 | Praat                                   | Praat                                              | https://www.fon.hum.uva.nl/praat/                                                          |
 | ProjectLibre                            | ProjectLibre                                       | https://www.projectlibre.com/                                                              |
 | Protege                                 | Protege                                            | https://protege.stanford.edu/                                                              |
+| PSAppDeployToolkit                      | PSAppDeployToolkit                                 | https://psappdeploytoolkit.com/                                                            |
+| PSFPython                               | PSF Python                                         | https://www.python.org/                                                                    |
 | RCoreTeamRforWindows                    | R Core Team R for Windows                          | https://cran.r-project.org/bin/windows/base/                                               |
 | RDAnalyzer                              | Remote Desktop Analyzer                            | https://rdanalyzer.com/                                                                    |
 | RingCentral                             | RingCentral                                        | https://www.ringcentral.com                                                                |
@@ -124,7 +129,11 @@ Evergreen `2107.418` supports the following applications:
 | StefansToolsgregpWin                    | Stefans Tools gregpWin                             | https://tools.stefankueng.com/grepWin.html                                                 |
 | SumatraPDFReader                        | Sumatra PDF Reader                                 | https://www.sumatrapdfreader.org/                                                          |
 | TableauDesktop                          | Tableau Desktop                                    | https://www.tableau.com/                                                                   |
+| TableauPrep                             | Tableau Prep                                       | https://www.tableau.com/                                                                   |
+| TableauReader                           | Tableau Reader                                     | https://www.tableau.com/                                                                   |
 | TeamViewer                              | TeamViewer                                         | https://www.teamviewer.com/                                                                |
+| TechSmithCamtasia                       | TechSmith Camtasia                                 | https://www.techsmith.com/                                                                 |
+| TechSmithSnagIt                         | TechSmith SnagIt                                   | https://www.techsmith.com/                                                                 |
 | TelegramDesktop                         | Telegram Desktop                                   | https://desktop.telegram.org/                                                              |
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                         | https://www.telerik.com/fiddler                                                            |
 | Terminals                               | Terminals                                          | https://github.com/terminals-Origin/Terminals/                                             |
