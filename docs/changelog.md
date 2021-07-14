@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `jq`, `PSAppDeployToolkit`
+* Adds `Anaconda`, `McNeelRhino`, `PSFPython`, `TableauPrep`, `TableauReader`, `TechSmithCamtasia`, `TechSmithSnagIt`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates `Get-GitHubRepoRelease` to actively query the GitHub API for available requests to avoid issues when [rate limited](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)
 * Updates `Get-GitHubRepoRelease` with a new parameter - `-ReturnVersionOnly` that enables returning only the version property of the latest release. This enables finding the version number and using alternative download sources, where the vendor does not include binary releases on the GitHub repository
 
