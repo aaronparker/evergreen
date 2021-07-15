@@ -1,14 +1,14 @@
 ---
 name: Feature request / update
 about: Suggest an idea or a feature update for this project
-title: '[FEATURE]'
+title: '[Feature]'
 labels: ''
 assignees: ''
 
 ---
 
 **Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+A clear and concise description of what the problem is or what the new feature would be.
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
