@@ -1,0 +1,66 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Describe the issue you're seeing with Evergreen, a function or a specific application supported by Evergreen.
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version Evergreen is installed?
+    validations:
+      required: true
+  - type: dropdown
+    id: powershell
+    attributes:
+      label: What PowerShell edition are you running Evergreen on?
+      multiple: true
+      options:
+        - PowerShell Core
+        - Windows PowerShell
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Which operating system are you running Evergreen on?
+      multiple: true
+      options:
+        - Windows 10
+        - Windows Server 2016+
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: documentation
+    attributes:
+      label: Have you reviewed the documentation?
+      description: Please confirm that you've reviewed the following links.
+      options:
+        - label: Troubleshooting at https://stealthpuppy.com/evergreen/troubleshoot/
+        - label: Known issues at https://stealthpuppy.com/evergreen/issues/
+    validations:
+      required: true
+  - type: textarea
+    id: verbose
+    attributes:
+      label: Verbose output
+      description: Please copy and paste the output from the target Evergreen function with the -Verbose parameter. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+    validations:
+      required: true
