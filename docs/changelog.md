@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `SignalDesktop`
+* Renames `AtlassianBitbucket` to `AtlassianSourcetree` [#177](https://github.com/aaronparker/evergreen/issues/177)
+* Updates `MicrosoftAzureCoreFunctionTools` to return MSI installers [#213](https://github.com/aaronparker/evergreen/issues/213)
+* Updates `LibreOffice` to use `Invoke-RestMethodWrapper` [#171](https://github.com/aaronparker/evergreen/issues/171)
+
 ## 2107.425
 
 * Adds `jq`, `PSAppDeployToolkit`
