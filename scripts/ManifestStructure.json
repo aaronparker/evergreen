@@ -15,7 +15,7 @@
             }
         },
         "Download": {
-            "302": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language",
+            "Uri": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Reader&platform=#Platform&version=#Version&package_type=#Package&language=#Language",
             "ContentType": "text/html; charset=UTF-8",
             "ExpectedResponse": "application/x-msdos-program"
         }
