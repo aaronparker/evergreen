@@ -10,13 +10,14 @@ If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
     # AppVeyor Testing
     $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
     $module = $env:Module
+    $source = $env:Source
 }
 Else {
     # Local Testing 
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $module
+$moduleParent = Join-Path -Path $projectRoot -ChildPath $source
 $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
 $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 
