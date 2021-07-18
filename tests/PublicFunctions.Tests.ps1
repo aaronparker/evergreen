@@ -6,8 +6,9 @@
 param ()
 
 BeforeDiscovery {
-    # Get the module commands
-    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty Name
+    # Get the supported applications
+    # Sort randomly so that we get test various GitHub applications when we have API request limits
+    $Applications = Find-EvergreenApp | Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 
     # Get details for Microsoft Edge
     $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
@@ -122,7 +123,7 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
         # Test that the file downloaded into the path: "$Path/Stable/Enterprise/<version>/x64/MicrosoftEdgeEnterpriseX64.msi"
         It "Should save in the right path" {
             $File = [System.IO.Path]::Combine($Path, $installer.Channel, $installer.Release, $installer.Version, $installer.Architecture, $(Split-Path -Path $installer.URI -Leaf))
-            Test-Path -Path $File -PathType Leaf | Should -Be $True
+            Test-Path -Path $File -PathType "Leaf" | Should -Be $True
         }
     }
 }

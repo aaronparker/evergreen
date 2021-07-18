@@ -1,7 +1,7 @@
-Function Get-AtlassianBitbucket {
+Function Get-AtlassianSourcetree {
     <#
         .SYNOPSIS
-            Returns the available Atlassian Bitbucket versions and download URIs.
+            Returns the available Atlassian Sourcetree versions and download URIs.
 
         .NOTES
             Author: Aaron Parker
