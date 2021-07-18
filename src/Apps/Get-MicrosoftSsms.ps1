@@ -1,11 +1,11 @@
 Function Get-MicrosoftSsms {
     <#
         .SYNOPSIS
-            Returns the latest SQL Server Management Studio release version number and download.
+            Returns the latest SQL Server Management Studio 
 
         .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
@@ -25,43 +25,33 @@ Function Get-MicrosoftSsms {
     $UpdateFeed = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri
 
     # SQL Management Studio downloads/versions documentation
-    $Content = Invoke-WebRequestWrapper -Uri $UpdateFeed.ResponseUri.AbsoluteUri -Raw
+    $params = @{
+        Uri = $UpdateFeed.ResponseUri.AbsoluteUri
+    }
+    $Content = Invoke-RestMethodWrapper @params
 
-    # Convert content to XML document
     If ($Null -ne $Content) {
-        Try {
-            [System.XML.XMLDocument] $xmlDocument = $Content
-        }
-        Catch [System.Exception] {
-            Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-        }
+        ForEach ($entry in $Content.component) {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.version). See $($script:resourceStrings.Uri.Issues) for more information."
 
-        # Build an output object by selecting installer entries from the feed
-        If ($xmlDocument -is [System.XML.XMLDocument]) {
-            ForEach ($entry in $xmlDocument.feed.entry) {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.Component.version). See https://stealthpuppy.com/evergreen/knownissues.html for more information."
+            ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
 
-                ForEach ($components in ($entry.component | Where-Object { $_.name -eq $res.Get.Download.MatchName })) {
-                    ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
-
-                        # Follow the download link which will return a 301
-                        $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
-                        $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
+                # Follow the download link which will return a 301
+                $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
+                $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
             
-                        # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-                        If ($Null -ne $ResponseUri) {
+                # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
+                If ($Null -ne $ResponseUri) {
 
-                            # Construct the output; Return the custom object to the pipeline
-                            $PSObject = [PSCustomObject] @{
-                                Version  = $entry.Component.version
-                                Date     = ConvertTo-DateTime -DateTime ($entry.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
-                                Title    = $entry.Title
-                                Language = $language.key
-                                URI      = $ResponseUri.ResponseUri.AbsoluteUri
-                            }
-                            Write-Output -InputObject $PSObject
-                        }
+                    # Construct the output; Return the custom object to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version  = $entry.version
+                        Date     = ConvertTo-DateTime -DateTime ($Content.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
+                        Title    = $Content.Title
+                        Language = $language.key
+                        URI      = $ResponseUri.ResponseUri.AbsoluteUri
                     }
+                    Write-Output -InputObject $PSObject
                 }
             }
         }

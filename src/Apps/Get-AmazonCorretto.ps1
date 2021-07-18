@@ -23,10 +23,14 @@ Function Get-AmazonCorretto {
     # Get the latest download
     ForEach ($JDKversion in $res.Get.Download.JDK.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Looking for JDK version $($JDKversion.Name)."
+
         ForEach ($JDKType in $res.Get.Download.JDK.($JDKversion.Name).GetEnumerator()) {
+            
             $Url = $JDKType.Value
             $Response = Resolve-SystemNetWebRequest -Uri $Url
+            
             # Construct the output; Return the custom object to the pipeline
+            #NOTE: Version can now be returned with `Get-GitHubRepoRelease -ReturnVersionOnly`
             If ($Null -ne $Response) {
                 $PSObject = [PSCustomObject] @{
                     Version      = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value

@@ -21,40 +21,30 @@
     )
 
     # Read the Citrix Workspace app for updater feed for each OS in the list
-    ForEach ($item in $res.Get.Uri.Keys) {
-        #TODO: Update for Invoke-RestMethod
-        $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri[$item]
+    $params = @{
+        Uri       = $res.Get.Update.Uri
+        UserAgent = $res.Get.Update.UserAgent
+    }
+    $UpdateFeed = Invoke-RestMethodWrapper @params
 
-        # Convert content to XML document
-        If ($Null -ne $Content) {
-            Try {
-                [System.XML.XMLDocument] $xmlDocument = $Content
-            }
-            Catch [System.Exception] {
-                Throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-            }
+    # Convert content to XML document
+    If ($Null -ne $UpdateFeed) {
 
-            # Build an output object by selecting installer entries from the feed
-            If ($xmlDocument -is [System.XML.XMLDocument]) {
-
-                # Select the required node/s from the XML feed
-                $nodes = Select-Xml -Xml $xmlDocument -XPath $res.Get.XmlNode | Select-Object –ExpandProperty "node"
-
-                # Walk through each node to output details
-                ForEach ($node in $nodes) {
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $node.Version
-                        Title    = $($node.ShortDescription -replace ":", "")
-                        Size     = $(If ($node.Size) { $node.Size } Else { "Unknown" })
-                        Hash     = $node.Hash
-                        Date     = ConvertTo-DateTime -DateTime $node.StartDate -Pattern $res.Get.DatePattern
-                        Platform = $item
-                        URI      = "$($res.Get.DownloadUri)$($node.DownloadURL)"
-                    }
-                    Write-Output -InputObject $PSObject
+        # Walk through each node to output details
+        ForEach ($Installer in $UpdateFeed.Catalog.Installers) {
+            ForEach ($node in $Installer.Installer) {
+                $PSObject = [PSCustomObject] @{
+                    Version = $node.Version
+                    Title   = $($node.ShortDescription -replace ":", "")
+                    Size    = $(If ($node.Size) { $node.Size } Else { "Unknown" })
+                    Hash    = $node.Hash
+                    Date    = ConvertTo-DateTime -DateTime $node.StartDate -Pattern $res.Get.Update.DatePattern
+                    Stream  = $node.Stream
+                    URI     = "$($res.Get.Download.Uri)$($node.DownloadURL)"
                 }
+                Write-Output -InputObject $PSObject
             }
         }
-        Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. See https://stealthpuppy.com/evergreen/knownissues.html for more information."
     }
+    Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. See $($script:resourceStrings.Uri.Issues) for more information."
 }

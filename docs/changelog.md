@@ -5,7 +5,9 @@
 * Adds `SignalDesktop`
 * Renames `AtlassianBitbucket` to `AtlassianSourcetree` [#177](https://github.com/aaronparker/evergreen/issues/177)
 * Updates `MicrosoftAzureCoreFunctionTools` to return MSI installers [#213](https://github.com/aaronparker/evergreen/issues/213)
-* Updates `LibreOffice` to use `Invoke-RestMethodWrapper` [#171](https://github.com/aaronparker/evergreen/issues/171)
+* Updates `LibreOffice` to use `Invoke-RestMethodWrapper` to avoid needing to convert update feed into XML simplifying the code [#171](https://github.com/aaronparker/evergreen/issues/171)
+* Updates `CitrixWorkspaceApp`, `OracleJava8` to use `Invoke-RestMethodWrapper` to avoid needing to convert update feed into XML simplifying the code
+* Updates `CitrixWorkspaceApp` to return a `Stream` property that includes a value of `Current` or `LTSR`
 
 ## 2107.425
 

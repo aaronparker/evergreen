@@ -21,50 +21,41 @@
     )
 
     # Read the update RSS feed
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
+    $params = @{
+        Uri = $res.Get.Update.Uri
+    }
+    $UpdateFeed = Invoke-RestMethodWrapper @params
 
-    # Convert to XML document
-    If ($Null -ne $Content) {
-        Try {
-            [System.XML.XMLDocument] $xmlDocument = $Content
+    If ($Null -ne $UpdateFeed) {
+
+        # Latest version is the last item in the feed
+        # Can't cast $_.version to [System.Version] because underscore character is in the string
+        $Count = $UpdateFeed.'java-update-map'.mapping.Count
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Filter $Count items in feed for latest update."
+        $latestUpdate = $UpdateFeed.'java-update-map'.mapping | Where-Object { $_.url -notlike "*-cb.xml" } | Select-Object -Last 1
+
+        # Read the XML listed in the most recent update
+        $params = @{
+            Uri = $latestUpdate.url
         }
-        Catch [System.Exception] {
-            Throw "$($MyInvocation.MyCommand): failed to convert content to an XML object."
-        }
+        $Feed = Invoke-RestMethodWrapper @params
 
-        # Build an output object by selecting entries from the feed
-        If ($xmlDocument -is [System.XML.XMLDocument]) {
-            $nodes = Select-Xml -Xml $xmlDocument -XPath "//mapping" | Select-Object –ExpandProperty "node"
-            $updateNodes = $nodes | Where-Object { $_.url -notlike "*-cb.xml" }
-            $latestUpdate = $updateNodes | Select-Object -Last 1
+        If ($Null -ne $Feed) {
 
-            # Read the XML listed in the most recent update
-            $Content = Invoke-WebRequestWrapper -Uri $latestUpdate.url
-            If ($Null -ne $Content) {
-                Try {
-                    [System.XML.XMLDocument] $xmlDocument = $Content
+            # Select the update info
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Select item in feed for $($res.Get.Update.Filter)."
+            $Update = $Feed.'java-update'.information | Where-Object { $_.lang -eq $res.Get.Update.Filter } | Select-Object -First 1
+
+            # Construct the output; Return the custom object to the pipeline
+            ForEach ($item in $res.Get.Update.FileStrings.GetEnumerator()) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($item.Name)."
+                $PSObject = [PSCustomObject] @{
+                    Version      = $($Update.version | Select-Object -Last 1)
+                    Architecture = $item.Name
+                    URI          = $Update.url -replace $res.Get.Update.ReplaceText, $res.Get.Update.FileStrings[$item.Key]
                 }
-                Catch [System.Exception] {
-                    Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert content to an XML object."
-                }
-
-                # Select the update info
-                $nodes = Select-Xml -Xml $xmlDocument -XPath "//information" | Select-Object –ExpandProperty "node"
-                $Update = $nodes | Where-Object { $_.lang -eq "en" }
-
-                # Construct the output; Return the custom object to the pipeline
-                ForEach ($arch in "x64", "x86") {
-                    $PSObject = [PSCustomObject] @{
-                        Version      = (($Update.version | Sort-Object -Descending) | Select-Object -First 1)
-                        Architecture = $arch
-                        URI          = $Update.url -replace "-au.exe", $res.Get.FileStrings[$arch]
-                    }
-                    Write-Output -InputObject $PSObject
-                }
+                Write-Output -InputObject $PSObject
             }
         }
-    }
-    Else {
-        Throw "$($MyInvocation.MyCommand): failed to read update feed [$Uri]."
     }
 }
