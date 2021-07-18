@@ -26,7 +26,7 @@ body:
   - type: checkboxes
     id: documentation
     attributes:
-      label: Have you reviewed the documentation?
+      label: Have you reviewed the list of supported applications?
       description: "Please confirm that you've reviewed the list of currently supported before making this application request." 
       options:
         - label: "Support apps at: https://stealthpuppy.com/evergreen/apps/"
