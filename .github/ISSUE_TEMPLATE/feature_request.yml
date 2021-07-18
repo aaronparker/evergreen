@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest an idea or a feature update for this project
+title: "[Feature]: "
+labels: [feature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request and provide feedback!
+  - type: textarea
+    id: feature
+    attributes:
+      label: What is your feature request?
+      description: Provide clear details about the feature or the new application you want to see added to Evergreen.
+      placeholder: "Describe details about the feature you'd like to see, or provide details of the new application that could be added to Evergreen."
+    validations:
+      required: true
+  - type: checkboxes
+    id: version
+    attributes:
+      label: Have you tested against the current version?
+      description: "Please confirm that you've tested the current version before making this feature request."
+      options:
+        - label: "Yes, I've updated Evergreen and tested against the current version."
+    validations:
+      required: true
+  - type: checkboxes
+    id: documentation
+    attributes:
+      label: Have you reviewed the documentation?
+      description: "Please confirm that you've reviewed the documentation before making this feature request." 
+      options:
+        - label: "Documentation at: https://stealthpuppy.com/evergreen/"
+    validations:
+      required: true
