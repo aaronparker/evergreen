@@ -24,10 +24,22 @@ Function Get-MicrosoftAzureFunctionsCoreTools {
     #TODO: Update to include links to msi files: https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local
     # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri          = $res.Get.Uri
-        MatchVersion = $res.Get.MatchVersion
-        Filter       = $res.Get.MatchFileTypes
+        Uri               = $res.Get.Update.Uri
+        MatchVersion      = $res.Get.Update.MatchVersion
+        Filter            = $res.Get.Update.MatchFileTypes
+        ReturnVersionOnly = $True
     }
     $object = Get-GitHubRepoRelease @params
-    Write-Output -InputObject $object
+
+    # Build the output object
+    If ($Null -ne $object) {
+        ForEach ($architecture in $res.Get.Download.Uri.GetEnumerator()) {
+            $PSObject = [PSCustomObject] @{
+                Version      = $object.Version
+                Architecture = $architecture.Name
+                URI          = $res.Get.Download.Uri[$architecture.Key] -replace $res.Get.Download.ReplaceText, $object.Version
+            }
+            Write-Output -InputObject $PSObject
+        }
+    }
 }
