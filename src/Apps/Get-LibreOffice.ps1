@@ -30,26 +30,16 @@ Function Get-LibreOffice {
     $iwcParams = @{
         Uri                  = $res.Get.Uri
         UserAgent            = $res.Get.UserAgent
-        Raw                  = $True
         SkipCertificateCheck = $True
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-RestMethodWrapper @iwcParams
 
     If ($Null -ne $Content) {
 
-        # Convert the content to XML to grab the version number
-        Try {
-            [System.XML.XMLDocument] $xmlDocument = $Content
-        }
-        Catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert feed into an XML object."
-        }
-        $Version = $xmlDocument.description.version
-    
         # Get downloads for each platform for the latest version
         ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
             $iwrParams = @{
-                Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/"
+                Uri             = "$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/"
                 UseBasicParsing = $True
                 ErrorAction     = "Continue"
             }
@@ -60,7 +50,7 @@ Function Get-LibreOffice {
 
                 # Get downloads for each architecture for the latest version/platform
                 $iwrParams = @{
-                    Uri             = "$($res.Get.DownloadUri)/$Version/$($platform.Name)/$arch/"
+                    Uri             = "$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/$arch/"
                     UseBasicParsing = $True
                     ErrorAction     = "Continue"
                 }
@@ -81,11 +71,11 @@ Function Get-LibreOffice {
     
                     # Construct the output; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
-                        Version      = $Version
+                        Version      = $($Content.description.version)
                         Platform     = $res.Get.Platforms[$platform.Key]
                         Architecture = $arch
                         Language     = $Language
-                        URI          = $("$($res.Get.DownloadUri)/$Version/$($platform.Name)/$arch/$file")
+                        URI          = $("$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/$arch/$file")
                     }
                     Write-Output -InputObject $PSObject
                 }
