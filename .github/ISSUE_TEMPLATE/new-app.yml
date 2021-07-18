@@ -1,0 +1,34 @@
+name: New application
+description: Suggest a new application for this project.
+title: "[New app]: "
+labels: [new application]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this new application request!
+  - type: textarea
+    id: feature
+    attributes:
+      label: What is the new application?
+      description: Provide clear details about the new application you want to see added to Evergreen.
+      placeholder: "Provide details of the new application that could be added to Evergreen. If known, please add details of an update source/API etc., where current versions of this application can be queried."
+    validations:
+      required: true
+  - type: input
+    id: site
+    attributes:
+      label: Vendor site
+      description: Add a link to the official site for this application
+      placeholder: https://www.vendor.com
+    validations:
+      required: true
+  - type: checkboxes
+    id: documentation
+    attributes:
+      label: Have you reviewed the documentation?
+      description: "Please confirm that you've reviewed the list of currently supported before making this application request." 
+      options:
+        - label: "Support apps at: https://stealthpuppy.com/evergreen/apps/"
+    validations:
+      required: true

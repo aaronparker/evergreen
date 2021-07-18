@@ -1,7 +1,7 @@
 name: Feature request
-description: Suggest an idea or a feature update for this project
+description: Suggest an idea or feature update this project.
 title: "[Feature]: "
-labels: [feature]
+labels: [enhancement]
 body:
   - type: markdown
     attributes:
@@ -11,8 +11,8 @@ body:
     id: feature
     attributes:
       label: What is your feature request?
-      description: Provide clear details about the feature or the new application you want to see added to Evergreen.
-      placeholder: "Describe details about the feature you'd like to see, or provide details of the new application that could be added to Evergreen."
+      description: Provide clear details about the feature you want to see added to Evergreen.
+      placeholder: "Describe details about the feature you'd like to see that could be added to Evergreen."
     validations:
       required: true
   - type: checkboxes
