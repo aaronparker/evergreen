@@ -91,7 +91,7 @@ Else {
         Try {
             # Set up a path to the git.exe cmd, import posh-git to give us control over git
             $env:Path += ";$env:ProgramFiles\Git\cmd"
-            Import-Module posh-git -ErrorAction Stop
+            Import-Module posh-git -ErrorAction "Stop"
 
             # Dot source Invoke-Process.ps1. Prevent 'RemoteException' error when running specific git commands
             . $projectRoot\ci\Invoke-Process.ps1
@@ -110,7 +110,7 @@ Else {
             git status
             git commit -s -m "AppVeyor validate: $newVersion"
             Invoke-Process -FilePath "git" -ArgumentList "push origin main"
-            Write-Host "$module $newVersion pushed to GitHub." -ForegroundColor Cyan
+            Write-Host "$module $newVersion pushed to GitHub." -ForegroundColor "Cyan"
         }
         Catch {
             # Sad panda; it broke
@@ -125,10 +125,10 @@ Else {
             $PM = @{
                 Path        = $moduleParent
                 NuGetApiKey = $env:NuGetApiKey
-                ErrorAction = 'Stop'
+                ErrorAction = "Stop"
             }
             Publish-Module @PM
-            Write-Host "$module $newVersion published to the PowerShell Gallery." -ForegroundColor Cyan
+            Write-Host "$module $newVersion published to the PowerShell Gallery." -ForegroundColor "Cyan"
         }
         Catch {
             # Sad panda; it broke
