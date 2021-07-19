@@ -36,12 +36,20 @@ The determine the current update version of `AdobeAcrobat`, the URL for macOS up
 
 The JSON data returned from the Adobe Acrobat Reader DC download URL (`https://get.adobe.com/reader/webservices/json/standalone/`) returns extraneous data for the following languages, thus they have not been included in the manifest: Portuguese, Chinese (Simplified), Chinese (Traditional).
 
+## Cisco WebEx
+
+The versions returned for Cisco WebEx may be out of date. Refer to [Cisco WebEx - new app available, Evergreen returning legacy version only](https://github.com/aaronparker/evergreen/issues/197) until a fix is found.
+
 ### CitrixWorkspaceApp
 
 The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME.
 
 !!! info "Note"
     `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
+
+## MicrosoftFSLogixApps
+
+Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApps -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.
 
 ### MicrosoftSsms
 
@@ -68,4 +76,4 @@ Also see [Get-evergreenapp OBSStudio not working due to a 404 errors](https://gi
 
 ### Zoom
 
-`Zoom` returns versions as `Latest` for some downloads - the source used by this function does not provide a method for determining the version number.
+`Zoom` returns versions as `Latest` for some downloads - the source used by this function does not provide a method for determining the version number. Also see [Zoom currently failing](https://github.com/aaronparker/Evergreen/issues/200)
