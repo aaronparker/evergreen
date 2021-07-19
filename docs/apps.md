@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2107.425` supports the following applications:
+Evergreen `2107.429` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -17,7 +17,7 @@ Evergreen `2107.425` supports the following applications:
 | Anaconda                                | Anaconda                                           | https://www.anaconda.com/                                                                  |
 | Anki                                    | Anki                                               | https://github.com/ankitects/anki/                                                         |
 | ArtifexGhostscript                      | Artifex Ghostscript                                | https://www.ghostscript.com/                                                               |
-| AtlassianBitbucket                      | Atlassian Bitbucket                                | https://www.sourcetreeapp.com/                                                             |
+| AtlassianSourcetree                     | Atlassian Sourcetree                               | https://www.sourcetreeapp.com/                                                             |
 | Audacity                                | Audacity                                           | https://www.audacityteam.org/                                                              |
 | BeekeeperStudio                         | Beekeeper Studio                                   | https://www.beekeeperstudio.io/                                                            |
 | BISF                                    | Base Image Script Framework                        | https://eucweb.com/                                                                        |
@@ -125,6 +125,7 @@ Evergreen `2107.425` supports the following applications:
 | ScooterBeyondCompare                    | Scooter Beyond Compare                             | https://scootersoftware.com/                                                               |
 | Scratch                                 | Scratch                                            | https://scratch.mit.edu/                                                                   |
 | ShareX                                  | ShareX                                             | https://getsharex.com/                                                                     |
+| SignalDesktop                           | Signal for Windows                                 | https://www.signal.org/                                                                    |
 | Slack                                   | Slack                                              | https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer  |
 | StefansToolsgregpWin                    | Stefans Tools gregpWin                             | https://tools.stefankueng.com/grepWin.html                                                 |
 | SumatraPDFReader                        | Sumatra PDF Reader                                 | https://www.sumatrapdfreader.org/                                                          |

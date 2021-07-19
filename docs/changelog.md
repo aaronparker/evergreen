@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2107.429
 
 * Adds `SignalDesktop`
 * Updates `MicrosoftAzureCoreFunctionTools` to return MSI installers [#213](https://github.com/aaronparker/evergreen/issues/213)
