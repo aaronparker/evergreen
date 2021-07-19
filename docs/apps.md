@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2107.429` supports the following applications:
+Evergreen `2107.431` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
