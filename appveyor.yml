@@ -9,6 +9,7 @@ environment:
   NuGetApiKey:
     secure: /YPozcX4yV1XCrZuS8DAhOmH/OOjkg6+zrCTT3lHR3a7/SY7S83JNNgYBsROlLq3
   Module: Evergreen
+  Source: src
 install:
 - ps: . .\ci\Install.ps1
 build_script:
@@ -25,4 +26,5 @@ skip_commits:
 
 only_commits:
   files:
+    - src/**/*
     - Evergreen/**/*

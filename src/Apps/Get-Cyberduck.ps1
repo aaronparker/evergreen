@@ -31,7 +31,6 @@
         }
         $Content = Invoke-RestMethodWrapper @params
 
-        # Convert the update feed to an XML object
         If ($Null -ne $Content) {
     
             # Capture the URL without https:// & replace // with /

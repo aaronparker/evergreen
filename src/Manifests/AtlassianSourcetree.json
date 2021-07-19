@@ -1,9 +1,9 @@
 {
-	"Name": "Atlassian Bitbucket",
+	"Name": "Atlassian Sourcetree",
 	"Source": "https://www.sourcetreeapp.com/",
 	"Get": {
 		"Update": {
-            "Uri": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/RELEASES?id=SourceTree&localVersion=3.4.2&arch=amd64",
+            "Uri": "https://product-downloads.atlassian.com/software/sourcetree/windows/ga/RELEASES?id=SourceTree",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 		},
 		"Download": {

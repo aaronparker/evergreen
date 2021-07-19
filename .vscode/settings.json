@@ -34,6 +34,7 @@
         "linkid",
         "msixbinary",
         "notin",
+        "notlike",
         "nupkg",
         "rhel"
     ]
