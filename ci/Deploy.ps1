@@ -81,7 +81,7 @@ Else {
             $markdown += $line
             $markdown += "`n`n"
             $markdown += Find-EvergreenApp | New-MDTable
-            ($markdown.TrimEnd("`n")) | Out-File -FilePath $OutFile -Force -Encoding "Utf8"
+            ($markdown.TrimEnd("`n")) | Out-File -FilePath $OutFile -Force #-Encoding "Utf8"
         }
         Catch {
             Throw $_

@@ -1,4 +1,4 @@
-﻿# Supported applications
+# Supported applications
 
 Evergreen `2107.431` supports the following applications:
 
