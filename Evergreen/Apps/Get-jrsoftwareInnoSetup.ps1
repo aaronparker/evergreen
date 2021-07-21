@@ -1,7 +1,7 @@
-Function Get-TableauDesktop {
+Function Get-jrsoftwareInnoSetup {
     <#
         .SYNOPSIS
-            Get the current version and download URL for Tableau Desktop.
+            Get the current version and download URL for jrsoftware InnoSetup.
 
         .NOTES
             Author: Andrew Cooper
@@ -36,7 +36,7 @@ Function Get-TableauDesktop {
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version = $Version.Replace('-', '.')
+            Version = $Version
             URI     = $Response.ResponseUri.AbsoluteUri
         }
         Write-Output -InputObject $PSObject

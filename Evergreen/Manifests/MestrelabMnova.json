@@ -1,0 +1,22 @@
+{
+	"Name": "Mestrelab Mnova",
+	"Source": "https://mestrelab.com/software/mnova/",
+	"Get": {
+		"Update": {
+			"Uri": "https://mestrelab.com/auto-upgrade-mnova/"
+		},
+		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
+		"Platform": "Windows"
+	},
+	"Install": {
+		"Setup": "MestReNova-*.exe",
+		"Physical": {
+			"Arguments": "/quiet /noreboot INSTALL_DESKTOP_SHORTCUT=0",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet /noreboot INSTALL_DESKTOP_SHORTCUT=0",
+			"PostInstall": []
+		}
+	}
+}
