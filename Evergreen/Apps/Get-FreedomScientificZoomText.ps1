@@ -60,5 +60,4 @@ Function Get-FreedomScientificZoomText {
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."      
     }
-    
 }

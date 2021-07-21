@@ -33,7 +33,6 @@ Function Get-FreedomScientificJAWS {
 
     # Query the API to get the list of releases
     $DownloadFeedURI = ($res.Get.Download.Uri -replace $res.Get.Download.ReplaceMajorVersion, $LatestVersion.MajorVersion ) -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
-
     $downloadFeed = Invoke-RestMethodWrapper $DownloadFeedURI 
 
     If ($Null -ne $downloadFeed) {
@@ -61,5 +60,4 @@ Function Get-FreedomScientificJAWS {
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."      
     }
-    
 }
