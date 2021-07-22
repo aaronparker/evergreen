@@ -1,6 +1,6 @@
 {
 	"Name": "Microsoft Bicep",
-	"Source": "https://atom.io/",
+	"Source": "https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview",
 	"Get": {
 		"Uri": "https://api.github.com/repos/azure/bicep/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

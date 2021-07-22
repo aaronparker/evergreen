@@ -11,7 +11,7 @@ Function Save-EvergreenApp {
         [System.Management.Automation.PSObject] $InputObject,
 
         [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateScript( { If (Test-Path -Path $_ -PathType 'Container') { $True } Else { Throw "Cannot find path $_" } })]
+        [ValidateNotNull()]
         [System.String] $Path = (Resolve-Path -Path $PWD),
 
         [Parameter(Mandatory = $False, Position = 2)]
@@ -38,6 +38,25 @@ Function Save-EvergreenApp {
             $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
         }
         
+        # Test $Path and attempt to create it if it doesn't exist
+        If (Test-Path -Path $Path -PathType "Container") {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $Path."
+        } 
+        Else {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Path does not exist: $Path."
+            try {
+                $params = @{
+                    Path        = $Path
+                    PathType    = "Container"
+                    ErrorAction = "SilentlyContinue"
+                }
+                New-Item @params
+            }
+            catch {
+                Throw $_
+            }
+        }
+
         # Enable TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Output paths cannot be customised."
