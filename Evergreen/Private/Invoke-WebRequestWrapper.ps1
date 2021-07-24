@@ -55,7 +55,7 @@ Function Invoke-WebRequestWrapper {
 
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    If ($SkipCertificateCheck.IsPresent -and -not(Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and -not(Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
@@ -72,7 +72,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Use TLS for connections
-    If ($SslProtocol.IsPresent -and -not(Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SslProtocol") -and -not(Test-PSCore)) {
         If ($SslProtocol -eq "Tls13") {
             $SslProtocol = "Tls12"
             Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
@@ -91,23 +91,23 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Set additional parameters
-    If ($ContentType.IsPresent) {
+    If ($PSBoundParameters.ContainsKey("ContentType")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding ContentType."
         $iwrParams.ContentType = $ContentType
     }
-    If ($Headers.IsPresent) {
+    If ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $iwrParams.Headers = $Headers
     }
-    If ($SkipCertificateCheck.IsPresent -and (Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $iwrParams.SkipCertificateCheck = $True
     }
-    If ($SslProtocol.IsPresent -and (Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $iwrParams.SslProtocol = $SslProtocol
     }
-    If ($Raw.IsPresent) {
+    If ($PSBoundParameters.ContainsKey("Raw")) {
         $tempFile = New-TemporaryFile
         $iwrParams.OutFile = $tempFile
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
@@ -150,7 +150,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
             Break
         }
         "Content" {
-            If ($Raw.IsPresent) {
+            If ($PSBoundParameters.ContainsKey("Raw")) {
                 $Content = Get-Content -Path $TempFile
             }
             Else {
@@ -161,7 +161,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
             Break
         }
         Default {
-            If ($Raw.IsPresent) {
+            If ($PSBoundParameters.ContainsKey("Raw")) {
                 $Content = Get-Content -Path $TempFile
             }
             Else {

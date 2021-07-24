@@ -54,6 +54,7 @@ Function Invoke-RestMethodWrapper {
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
     If (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
@@ -65,6 +66,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
@@ -82,24 +84,24 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Uri                = $Uri
         ContentType        = $ContentType
         DisableKeepAlive   = $true
-        MaximumRedirection = 0
+        MaximumRedirection = 1
         Method             = $Method
         UseBasicParsing    = $true
         UserAgent          = $UserAgent
     }
-    If ($Headers.IsPresent) {
+    If ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $irmParams.Headers = $Headers
     }
-    If ($Body.IsPresent) {
+    If ($PSBoundParameters.ContainsKey("Body")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
         $irmParams.Body = $Body
     }
-    If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $irmParams.SkipCertificateCheck = $True
     }
-    If (($SslProtocol.IsPresent) -and (Test-PSCore)) {
+    If ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $irmParams.SslProtocol = $SslProtocol
     }
