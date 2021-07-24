@@ -112,7 +112,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $iwrParams.OutFile = $tempFile
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
     }
-
     ForEach ($item in $iwrParams.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
     }

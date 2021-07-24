@@ -78,40 +78,42 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Call Invoke-RestMethod
+    $irmParams = @{
+        Uri                = $Uri
+        ContentType        = $ContentType
+        DisableKeepAlive   = $true
+        MaximumRedirection = 0
+        Method             = $Method
+        UseBasicParsing    = $true
+        UserAgent          = $UserAgent
+    }
+    If ($Headers.IsPresent) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
+        $irmParams.Headers = $Headers
+    }
+    If ($Body.IsPresent) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
+        $irmParams.Body = $Body
+    }
+    If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
+        $irmParams.SkipCertificateCheck = $True
+    }
+    If (($SslProtocol.IsPresent) -and (Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
+        $irmParams.SslProtocol = $SslProtocol
+    }
+    ForEach ($item in $irmParams.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+    }
     try {
-        $irmParams = @{
-            ContentType        = $ContentType
-            DisableKeepAlive   = $true
-            MaximumRedirection = 0
-            Uri                = $Uri
-            UseBasicParsing    = $true
-            UserAgent          = $UserAgent
-        }
-        If ($PSBoundParameters.ContainsKey("Headers")) {
-            $irmParams.Headers = $Headers
-        }
-        If ($PSBoundParameters.ContainsKey("Body")) {
-            $irmParams.$Body = $Body
-        }
-        If ($PSBoundParameters.ContainsKey("Method")) {
-            $irmParams.Method = $Method
-        }
-        If (($PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
-            $irmParams.SkipCertificateCheck = $True
-        }
-        If (($PSBoundParameters.ContainsKey("SslProtocol")) -and (Test-PSCore)) {
-            $irmParams.SslProtocol = $SslProtocol
-        }
-
-        ForEach ($item in $irmParams.GetEnumerator()) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
-        }
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
+        Break
         #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
