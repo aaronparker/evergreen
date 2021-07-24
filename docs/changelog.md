@@ -6,7 +6,7 @@
 * Adds `FoxitPDFEditor`
 * Updates the process used to determine updates in `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates `AdobeReaderDC` with internal function `Invoke-RestMethodWrapper`
-* Updates `MicrosoftWvdBootloader`, `MicrosoftWvdInfraAgent`, `MicrosoftWvdRemoteDesktop`, `MicrosoftWvdRtcService` to use internal function `Invoke-WebRequestWrapper`
+* Updates `MicrosoftWvdBootloader`, `MicrosoftWvdInfraAgent`, `MicrosoftWvdRemoteDesktop`, `MicrosoftWvdRtcService`, `OracleVirtualBox`, and `LibreOffice` to use internal function `Invoke-WebRequestWrapper` replacing direct use of `Invoke-WebRequest`
 * Updates internal function `Invoke-WebRequestWrapper` with parameter `-ReturnObject` to enable application functions to return Headers, Content, RawContent etc.
 * Updates internal function `Invoke-WebRequestWrapper` with parameter `-Method` that allows, `Default`, `Head`, `Post`, etc., required by various application functions
 

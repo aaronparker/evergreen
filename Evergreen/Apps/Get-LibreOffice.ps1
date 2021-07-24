@@ -41,10 +41,9 @@ Function Get-LibreOffice {
         ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
             $iwrParams = @{
                 Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/"
-                UseBasicParsing = $True
-                ErrorAction     = "Continue"
+                ReturnObject    = "All"
             }
-            $response = Invoke-WebRequest @iwrParams
+            $response = Invoke-WebRequestWrapper @iwrParams
             $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchArchitectures }).href -replace "/", ""
     
             ForEach ($arch in $Architectures) {
@@ -52,10 +51,9 @@ Function Get-LibreOffice {
                 # Get downloads for each architecture for the latest version/platform
                 $iwrParams = @{
                     Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/$arch/"
-                    UseBasicParsing = $True
-                    ErrorAction     = "Continue"
+                    ReturnObject    = "All"
                 }
-                $response = Invoke-WebRequest @iwrParams
+                $response = Invoke-WebRequestWrapper @iwrParams
                 $Files = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchExtensions }).href -replace "/", ""
     
                 ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {

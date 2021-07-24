@@ -30,11 +30,9 @@ Function Get-OracleVirtualBox {
         # Get the content from the latest downloads folder
         $iwrParams = @{
             Uri             = "$($res.Get.Download.Uri)$Version/"
-            UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
-            UseBasicParsing = $True
-            ErrorAction     = "Continue"
+            ReturnObject    = "All"
         }
-        $Downloads = Invoke-WebRequest @iwrParams
+        $Downloads = Invoke-WebRequestWrapper @iwrParams
 
         If ($Null -ne $Downloads) {
             # Filter downloads with the version string and the file types we want
