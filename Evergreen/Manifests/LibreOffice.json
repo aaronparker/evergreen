@@ -1,28 +1,32 @@
 {
-	"Name": "LibreOffice",
-	"Source": "https://www.libreoffice.org/",
-	"Get": {
-		"Uri": "https://update.libreoffice.org/check.php",
-		"UserAgent": "LibreOffice 6.3.2.1 (db810050ff08fd4774137f693d5a01d22f324dfd; Windows; X86_64; )",
-		"DownloadUri": "https://download.documentfoundation.org/libreoffice/stable",
-		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"Platforms": {
-			"win": "Windows"
-		},
-		"MatchArchitectures": "x86|64",
-		"MatchExtensions": "\\.msi$",
-		"MatchLanguage": "_([^_?!86|64]*)(\\.msi)$",
-		"NoLanguage": "Neutral"
-	},
-	"Install": {
-		"Setup": "LibreOffice*.msi",
-		"Physical": {
-			"Arguments": "/quiet /norestart",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "/quiet /norestart",
-			"PostInstall": []
-		}
-	}
+    "Name": "LibreOffice",
+    "Source": "https://www.libreoffice.org/",
+    "Get": {
+        "Update": {
+            "Uri": "https://update.libreoffice.org/check.php",
+            "UserAgent": "LibreOffice 6.3.2.1 (db810050ff08fd4774137f693d5a01d22f324dfd; Windows; X86_64; )"
+        },
+        "Download": {
+            "Uri": "https://download.documentfoundation.org/libreoffice/stable",
+            "MatchVersion": "(\\d+(\\.\\d+){1,3})",
+            "Platforms": {
+                "win": "Windows"
+            },
+            "MatchArchitectures": "x86|64",
+            "MatchExtensions": "\\.msi$",
+            "MatchLanguage": "_([^_?!86|64]*)(\\.msi)$",
+            "NoLanguage": "Neutral"
+        }
+    },
+    "Install": {
+        "Setup": "LibreOffice*.msi",
+        "Physical": {
+            "Arguments": "/quiet /norestart",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/quiet /norestart",
+            "PostInstall": []
+        }
+    }
 }

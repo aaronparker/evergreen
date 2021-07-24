@@ -27,7 +27,6 @@ Function Get-AdobeAcrobatReaderDC {
     ForEach ($language in $res.Get.Download.Languages) {
 
         try {
-            #TODO: update Invoke-RestMethodWrapper to support this query correctly
             Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
             $Uri = $res.Get.Download.Uri -replace "#Language", $language
             $params = @{

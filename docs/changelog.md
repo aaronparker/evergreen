@@ -4,6 +4,8 @@
 
 * Adds `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText`, `MestrelabMnova`, `jrsoftwareInnoSetup`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates the process used to determine updates in `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates `AdobeReaderDC` with internal function `Invoke-RestMethodWrapper`
+* Updates manifest structure for `LibreOffice`
 
 ## 2107.431
 
