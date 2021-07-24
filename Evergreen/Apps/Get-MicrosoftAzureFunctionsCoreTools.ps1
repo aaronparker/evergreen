@@ -21,7 +21,6 @@ Function Get-MicrosoftAzureFunctionsCoreTools {
         [System.String] $Filter
     )
 
-    #TODO: Update to include links to msi files: https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local
     # Pass the repo releases API URL and return a formatted object
     $params = @{
         Uri               = $res.Get.Update.Uri

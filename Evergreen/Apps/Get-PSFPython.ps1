@@ -19,15 +19,13 @@ Function Get-PSFPython {
         [ValidateNotNull()]
         [System.String] $Filter
     )
-      
+
     # Query the python API to get the list of versions
     $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-    
     If ($Null -ne $updateFeed) {
              
         # Get latest versions from update feed (PSF typically maintain a version of Python2 and a version of Python 3)
-        $LatestVersions = $updateFeed |  Where-Object { $_.is_latest -eq "True" }
-
+        $LatestVersions = $updateFeed | Where-Object { $_.is_latest -eq "True" }
         If ($Null -ne $LatestVersions) {
 
             ForEach ($PythonVersion in $LatestVersions) {
@@ -44,25 +42,23 @@ Function Get-PSFPython {
                 # Query the python API to get the list of download uris
                 $iwcParams = @{
                     Uri  = $res.Get.Download.Uri
-                    Body = @{ 
+                    Body = @{
                         os      = "1"
-                        release = $releaseToQuery 
+                        release = $releaseToQuery
                     }
                 }
-
                 $downloadFeed = Invoke-RestMethodWrapper @iwcParams
 
                 # Filter the download feed to obtain the installers
-                Try {
+                try {
                     $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Download.MatchFileTypes }
                 }
-                Catch {
+                catch {
                     Throw "$($MyInvocation.MyCommand): could not filter download feed for executable filetypes."
                 }
 
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Processing $($PythonVersion.name)"
-
                 # Match this release with entries from the download feed
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Processing $($PythonVersion.name)"
                 $WindowsRelease = $windowsDownloadFeed | Where-Object { $_.release -eq $PythonVersion.resource_uri }
 
                 If ($Null -ne $WindowsRelease) {
@@ -94,7 +90,7 @@ Function Get-PSFPython {
                         }
                         Write-Output -InputObject $PSObject
                     }
-     
+
                 }
                 Else {
                     Throw "$($MyInvocation.MyCommand): Failed to lookup download URI based on release $($PythonVersion.resource_uri)."      

@@ -1,22 +1,22 @@
 {
-	"Name": "Microsoft Windows Virtual Desktop Agent Bootloader",
-	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell",
-	"Get": {
-		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH",
-		"MatchFilename": "(Microsoft.*msi)",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
-	},
-	"Install": {
-		"Setup": "Microsoft.*.msi",
-		"Physical": {
-			"Arguments": "/install /passive /norestart",
-			"PostInstall": [
-			]
-		},
-		"Virtual": {
-			"Arguments": "/install /passive /norestart",
-			"PostInstall": [
-			]
-		}
-	}
+    "Name": "Microsoft Windows Virtual Desktop Agent Bootloader",
+    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell",
+    "Get": {
+        "Download": {
+            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH",
+            "MatchFilename": "(Microsoft.*msi)",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+        }
+    },
+    "Install": {
+        "Setup": "Microsoft.*.msi",
+        "Physical": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        }
+    }
 }

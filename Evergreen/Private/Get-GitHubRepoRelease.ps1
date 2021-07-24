@@ -4,7 +4,6 @@ Function Get-GitHubRepoRelease {
             Calls the GitHub Releases API passed via $Uri, validates the response and returns a formatted object
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
 
-            TODO: update to optionally return just the version number
             TODO: support Basic or OAuth authentication to GitHub
     #>
     [OutputType([System.Management.Automation.PSObject])]

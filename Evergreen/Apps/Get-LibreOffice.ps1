@@ -28,54 +28,52 @@ Function Get-LibreOffice {
 
     # Query the LibreOffice update API
     $iwcParams = @{
-        Uri                  = $res.Get.Uri
-        UserAgent            = $res.Get.UserAgent
+        Uri                  = $res.Get.Update.Uri
+        UserAgent            = $res.Get.Update.UserAgent
         SkipCertificateCheck = $True
     }
     $Content = Invoke-RestMethodWrapper @iwcParams
 
     If ($Null -ne $Content) {
+        Write-Verbose "$($MyInvocation.MyCommand): $($res.Get.Update.Uri) returned version: $($Content.description.version)."
 
         # Get downloads for each platform for the latest version
-        ForEach ($platform in $res.Get.Platforms.GetEnumerator()) {
+        ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
             $iwrParams = @{
-                Uri             = "$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/"
-                UseBasicParsing = $True
-                ErrorAction     = "Continue"
+                Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/"
+                ReturnObject    = "All"
             }
-            $response = Invoke-WebRequest @iwrParams
-            $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.MatchArchitectures }).href -replace "/", ""
+            $response = Invoke-WebRequestWrapper @iwrParams
+            $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchArchitectures }).href -replace "/", ""
     
             ForEach ($arch in $Architectures) {
 
                 # Get downloads for each architecture for the latest version/platform
                 $iwrParams = @{
-                    Uri             = "$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/$arch/"
-                    UseBasicParsing = $True
-                    ErrorAction     = "Continue"
+                    Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/$arch/"
+                    ReturnObject    = "All"
                 }
-                $response = Invoke-WebRequest @iwrParams
-                $Files = ($response.Links | Where-Object { $_.href -match $res.Get.MatchExtensions }).href -replace "/", ""
+                $response = Invoke-WebRequestWrapper @iwrParams
+                $Files = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchExtensions }).href -replace "/", ""
     
                 ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
     
                     # Match language string
                     Remove-Variable -Name "Language", "match" -ErrorAction "SilentlyContinue"
-                    $match = $file | Select-String -Pattern $res.Get.MatchLanguage
+                    $match = $file | Select-String -Pattern $res.Get.Download.MatchLanguage
                     If ($Null -ne $match) {
                         $Language = $match.Matches.Groups[1].Value
                     }
                     Else {
-                        $Language = $res.Get.NoLanguage
+                        $Language = $res.Get.Download.NoLanguage
                     }
     
                     # Construct the output; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
                         Version      = $($Content.description.version)
-                        Platform     = $res.Get.Platforms[$platform.Key]
                         Architecture = $arch
                         Language     = $Language
-                        URI          = $("$($res.Get.DownloadUri)/$($Content.description.version)/$($platform.Name)/$arch/$file")
+                        URI          = $("$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/$arch/$file")
                     }
                     Write-Output -InputObject $PSObject
                 }

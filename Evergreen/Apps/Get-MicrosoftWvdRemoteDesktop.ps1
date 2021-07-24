@@ -28,38 +28,33 @@ Function Get-MicrosoftWvdRemoteDesktop {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for architecture: $architecture."
 
             # Grab the download link headers to find the file name
-            try {
-                #TODO: Update Invoke-WebRequestWrapper to optionally return Headers instead of Content
-                $params = @{
-                    Uri             = $res.Get.Download.Uri.$channel[$architecture]
-                    Method          = "Head"
-                    UseBasicParsing = $True
-                    ErrorAction     = "Continue"
-                }
-                $Headers = (Invoke-WebRequest @params).Headers
+            $params = @{
+                Uri          = $res.Get.Download.Uri.$channel[$architecture]
+                Method       = "Head"
+                ReturnObject = "Headers"
             }
-            catch {
-                Throw "$($MyInvocation.MyCommand): Error at: $($res.Get.Download.Uri.$channel[$architecture]) with: $($_.Exception.Response.StatusCode)"
-            }
+            $Headers = Invoke-WebRequestWrapper @params
 
             # Match filename
-            $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+            If ($Null -ne $Headers) {
+                $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
 
-            # Build the download URL from the headers returned from the API
-            # TODO: Update this to better handle changes in the URL structure
-            $Url = "$($res.Get.Download.ApiUri)/$($Headers.($res.Get.Download.ApiHeader1))/$($Headers.($res.Get.Download.ApiHeader2))/$($Headers.($res.Get.Download.ApiHeader3))"
+                # Build the download URL from the headers returned from the API
+                # TODO: Update this to better handle changes in the URL structure
+                $Url = "$($res.Get.Download.ApiUri)/$($Headers.($res.Get.Download.ApiHeader1))/$($Headers.($res.Get.Download.ApiHeader2))/$($Headers.($res.Get.Download.ApiHeader3))"
 
-            # Construct the output; Return the custom object to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Version      = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchVersion).Captures.Value
-                Architecture = $architecture
-                Channel      = $channel
-                Date         = ConvertTo-DateTime -DateTime $($Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
-                Size         = $Headers['Content-Length'] | Select-Object -First 1
-                Filename     = $Filename
-                URI          = $Url
+                # Construct the output; Return the custom object to the pipeline
+                $PSObject = [PSCustomObject] @{
+                    Version      = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchVersion).Captures.Value
+                    Architecture = $architecture
+                    Channel      = $channel
+                    Date         = ConvertTo-DateTime -DateTime $($Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
+                    Size         = $Headers['Content-Length'] | Select-Object -First 1
+                    Filename     = $Filename
+                    URI          = $Url
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
     }
 }

@@ -27,16 +27,15 @@ Function Get-AdobeAcrobatReaderDC {
     ForEach ($language in $res.Get.Download.Languages) {
 
         try {
-            #TODO: update Invoke-RestMethodWrapper to support this query correctly
             Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
             $Uri = $res.Get.Download.Uri -replace "#Language", $language
             $params = @{
                 Uri             = $Uri
                 Headers         = $res.Get.Download.Headers
-                UseBasicParsing = $True
-                ErrorAction     = "Continue"
+                #UseBasicParsing = $True
+                #ErrorAction     = "Continue"
             }
-            $Content = Invoke-RestMethod @params
+            $Content = Invoke-RestMethodWrapper @params
         }
         catch {
             Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."

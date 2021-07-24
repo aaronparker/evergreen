@@ -17,6 +17,7 @@ Function ConvertTo-DateTime {
 
     # Convert the date/time passed to the function. If conversion fails, pass the same string back
     try {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Converting: [$DateTime]."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to convert date format to: $([System.Globalization.CultureInfo]::CurrentUICulture.Name)."
         $ConvertedDateTime = [System.DateTime]::ParseExact($DateTime, $Pattern, [System.Globalization.CultureInfo]::CurrentUICulture.DateTimeFormat)
         $Output = $ConvertedDateTime.ToShortDateString()

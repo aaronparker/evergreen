@@ -1,5 +1,16 @@
 # Change log
 
+## VERSION
+
+* Adds `FoxitPDFEditor`
+* Adds `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText`, `MestrelabMnova`, `jrsoftwareInnoSetup`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates the process used to determine updates in `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Updates `DatePattern` in `PSFPython` to return the correct localised date
+* Updates `AdobeReaderDC` with internal function `Invoke-RestMethodWrapper` replacing direct use of `Invoke-RestMethod`
+* Updates `MicrosoftWvdBootloader`, `MicrosoftWvdInfraAgent`, `MicrosoftWvdRemoteDesktop`, `MicrosoftWvdRtcService`, `OracleVirtualBox`, and `LibreOffice` to use internal function `Invoke-WebRequestWrapper` replacing direct use of `Invoke-WebRequest`
+* Updates internal function `Invoke-WebRequestWrapper` with parameter `-ReturnObject` to enable application functions to return Headers, Content, RawContent etc.
+* Updates internal function `Invoke-WebRequestWrapper` with parameter `-Method` that allows, `Default`, `Head`, `Post`, etc., required by various application functions
+
 ## 2107.431
 
 * Adds `SignalDesktop`

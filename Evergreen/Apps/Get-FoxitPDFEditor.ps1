@@ -1,7 +1,7 @@
-Function Get-FoxitReader {
+Function Get-FoxitPDFEditor {
     <#
         .SYNOPSIS
-            Get the current version and download URL for Foxit Reader.
+            Get the current version and download URL for Foxit Foxit PDF Editor.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -21,7 +21,7 @@ Function Get-FoxitReader {
         [System.String] $Filter
     )
 
-    # Query the Foxit Reader package download form to get the JSON
+    # Query the Foxit PDF Editor package download form to get the JSON
     # TODO: Fix issue with Invoke-RestMethodWrapper that produces "Operation is not valid due to the current state of the object."
     $updateFeed = Invoke-RestMethod -Uri $res.Get.Update.Uri -UseBasicParsing
 
@@ -56,6 +56,6 @@ Function Get-FoxitReader {
         }
     }
     Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Uri)."
     }
 }

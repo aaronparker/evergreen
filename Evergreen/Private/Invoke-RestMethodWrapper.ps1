@@ -43,9 +43,18 @@ Function Invoke-RestMethodWrapper {
         [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
+    # Set ErrorAction value
+    If ($PSBoundParameters.ContainsKey("ErrorAction")) {
+        $ErrorActionPreference = $ErrorAction
+    }
+    Else {
+        $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Continue
+    }
+
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
     If (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
@@ -57,6 +66,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
@@ -70,41 +80,42 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Call Invoke-RestMethod
+    $irmParams = @{
+        Uri                = $Uri
+        ContentType        = $ContentType
+        DisableKeepAlive   = $true
+        MaximumRedirection = 1
+        Method             = $Method
+        UseBasicParsing    = $true
+        UserAgent          = $UserAgent
+    }
+    If ($PSBoundParameters.ContainsKey("Headers")) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
+        $irmParams.Headers = $Headers
+    }
+    If ($PSBoundParameters.ContainsKey("Body")) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
+        $irmParams.Body = $Body
+    }
+    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
+        $irmParams.SkipCertificateCheck = $True
+    }
+    If ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
+        $irmParams.SslProtocol = $SslProtocol
+    }
+    ForEach ($item in $irmParams.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+    }
     try {
-        $irmParams = @{
-            ContentType        = $ContentType
-            DisableKeepAlive   = $true
-            ErrorAction        = "Continue"
-            MaximumRedirection = 0
-            Uri                = $Uri
-            UseBasicParsing    = $true
-            UserAgent          = $UserAgent
-        }
-        If ($Headers.IsPresent) {
-            $irmParams.Headers = $Headers
-        }
-        If ($Body.IsPresent) {
-            $irmParams.$Body = $Body
-        }
-        If ($Method.IsPresent) {
-            $irmParams.Method = $Method
-        }
-        If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
-            $irmParams.SkipCertificateCheck = $True
-        }
-        If (($SslProtocol.IsPresent) -and (Test-PSCore)) {
-            $irmParams.SslProtocol = $SslProtocol
-        }
-
-        ForEach ($item in $irmParams.GetEnumerator()) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
-        }
         $Response = Invoke-RestMethod @irmParams
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
+        Break
         #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
