@@ -1,22 +1,22 @@
 {
-	"Name": "Microsoft Remote Desktop WebRTC Redirector Service",
-	"Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd",
-	"Get": {
-		"Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt",
-		"MatchFilename": "(MsRdcWebRTCSvc.*msi)",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4})"
-	},
-	"Install": {
-		"Setup": "MsRdcWebRTCSvc.*.msi",
-		"Physical": {
-			"Arguments": "/install /passive /norestart",
-			"PostInstall": [
-			]
-		},
-		"Virtual": {
-			"Arguments": "/install /passive /norestart",
-			"PostInstall": [
-			]
-		}
-	}
+    "Name": "Microsoft Remote Desktop WebRTC Redirector Service",
+    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd",
+    "Get": {
+        "Download": {
+            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt",
+            "MatchFilename": "(MsRdcWebRTCSvc.*msi)",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+        }
+    },
+    "Install": {
+        "Setup": "MsRdcWebRTCSvc.*.msi",
+        "Physical": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        }
+    }
 }
