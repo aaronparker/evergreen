@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2107.441
 
 * Adds `FoxitPDFEditor`
 * Adds `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText`, `MestrelabMnova`, `jrsoftwareInnoSetup`. Thanks to [@adotcoop](https://github.com/adotcoop)
