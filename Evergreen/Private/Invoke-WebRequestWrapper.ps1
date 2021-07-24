@@ -129,48 +129,47 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Break
         #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    finally {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
 
-        # Output content from the response
-        Switch ($ReturnObject) {
-            "All" {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
-                Write-Output -InputObject $Response
-                Break
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
+
+    # Output content from the response
+    Switch ($ReturnObject) {
+        "All" {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
+            Write-Output -InputObject $Response
+            Break
+        }
+        "Headers" {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
+            Write-Output -InputObject $Response.Headers
+            Break
+        }
+        "RawContent" {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
+            Write-Output -InputObject $Response.RawContent
+            Break
+        }
+        "Content" {
+            If ($Raw.IsPresent) {
+                $Content = Get-Content -Path $TempFile
             }
-            "Headers" {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
-                Write-Output -InputObject $Response.Headers
-                Break
+            Else {
+                $Content = $Response.Content 
             }
-            "RawContent" {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
-                Write-Output -InputObject $Response.RawContent
-                Break
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+            Write-Output -InputObject $Content
+            Break
+        }
+        Default {
+            If ($Raw.IsPresent) {
+                $Content = Get-Content -Path $TempFile
             }
-            "Content" {
-                If ($Raw.IsPresent) {
-                    $Content = Get-Content -Path $TempFile
-                }
-                Else {
-                    $Content = $Response.Content 
-                }
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
-                Write-Output -InputObject $Content
-                Break
+            Else {
+                $Content = $Response.Content 
             }
-            Default {
-                If ($Raw.IsPresent) {
-                    $Content = Get-Content -Path $TempFile
-                }
-                Else {
-                    $Content = $Response.Content 
-                }
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
-                Write-Output -InputObject $Content
-            }
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+            Write-Output -InputObject $Content
         }
     }
 }
