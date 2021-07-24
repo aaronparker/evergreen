@@ -53,7 +53,7 @@ Function Save-EvergreenApp {
                 New-Item @params
             }
             catch {
-                Throw $_
+                Throw "Failed to create $Path with: $($_)"
             }
         }
 

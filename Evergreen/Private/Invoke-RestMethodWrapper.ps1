@@ -43,6 +43,14 @@ Function Invoke-RestMethodWrapper {
         [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
+    # Set ErrorAction value
+    If ($PSBoundParameters.ContainsKey("ErrorAction")) {
+        $ErrorActionPreference = $ErrorAction
+    }
+    Else {
+        $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Continue
+    }
+
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
     If (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
@@ -74,25 +82,24 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $irmParams = @{
             ContentType        = $ContentType
             DisableKeepAlive   = $true
-            ErrorAction        = "Continue"
             MaximumRedirection = 0
             Uri                = $Uri
             UseBasicParsing    = $true
             UserAgent          = $UserAgent
         }
-        If ($Headers.IsPresent) {
+        If ($PSBoundParameters.ContainsKey("Headers")) {
             $irmParams.Headers = $Headers
         }
-        If ($Body.IsPresent) {
+        If ($PSBoundParameters.ContainsKey("Body")) {
             $irmParams.$Body = $Body
         }
-        If ($Method.IsPresent) {
+        If ($PSBoundParameters.ContainsKey("Method")) {
             $irmParams.Method = $Method
         }
-        If (($SkipCertificateCheck.IsPresent) -and (Test-PSCore)) {
+        If (($PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
             $irmParams.SkipCertificateCheck = $True
         }
-        If (($SslProtocol.IsPresent) -and (Test-PSCore)) {
+        If (($PSBoundParameters.ContainsKey("SslProtocol")) -and (Test-PSCore)) {
             $irmParams.SslProtocol = $SslProtocol
         }
 

@@ -33,10 +33,10 @@ Function Get-AdobeAcrobatReaderDC {
             $params = @{
                 Uri             = $Uri
                 Headers         = $res.Get.Download.Headers
-                UseBasicParsing = $True
-                ErrorAction     = "Continue"
+                #UseBasicParsing = $True
+                #ErrorAction     = "Continue"
             }
-            $Content = Invoke-RestMethod @params
+            $Content = Invoke-RestMethodWrapper @params
         }
         catch {
             Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
