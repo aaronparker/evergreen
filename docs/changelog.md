@@ -3,9 +3,13 @@
 ## VERSION
 
 * Adds `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText`, `MestrelabMnova`, `jrsoftwareInnoSetup`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Adds `FoxitPDFEditor`
 * Updates the process used to determine updates in `TableauDesktop`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates `AdobeReaderDC` with internal function `Invoke-RestMethodWrapper`
+* Updates `MicrosoftWvdBootloader`, `MicrosoftWvdInfraAgent`, `MicrosoftWvdRemoteDesktop`, `MicrosoftWvdRtcService` to use internal function `Invoke-WebRequestWrapper`
 * Updates manifest structure for `LibreOffice`
+* Updates internal function `Invoke-WebRequestWrapper` with parameter `-ReturnObject` to enable application functions to return headers, content, rawcontent etc.
+* Updates internal function `Invoke-WebRequestWrapper` with parameter `-Method` that allows, `Default, `Head`, `Post`, etc., required by various application functions
 
 ## 2107.431
 
