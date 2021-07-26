@@ -26,15 +26,19 @@ Function Get-deviceTRUST {
         Uri = $res.Get.Update.Uri
     }
     $Updates = Invoke-RestMethodWrapper @params
-    ForEach ($item in $Updates) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): build object for: $($item.Name)."
-        $PSObject = [PSCustomObject] @{
-            Version  = $item.Version
-            Platform = $item.Platform
-            Type     = $item.Type
-            Name     = $item.Name
-            URI      = $item.URL
+
+    # Build the output object
+    If ($Null -ne $Updates) {
+        ForEach ($item in $Updates) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): build object for: $($item.Name)."
+            $PSObject = [PSCustomObject] @{
+                Version  = $item.Version
+                Platform = $item.Platform
+                Type     = $item.Type
+                Name     = $item.Name
+                URI      = $item.URL
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

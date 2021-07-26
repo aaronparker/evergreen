@@ -4,8 +4,7 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://storage.devicetrust.com/download/evergreen.json",
-			"ContentType": "application/json; charset=utf-8",
-			"DatePattern": "yyyy-MM-dd HH:mm:ss"
+			"ContentType": "application/json; charset=utf-8"
 		}
 	},
 	"Install": {
