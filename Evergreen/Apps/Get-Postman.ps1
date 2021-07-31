@@ -21,30 +21,30 @@ Function Get-Postman {
     )
 
     # Query the Postman update API
-    $params = @{
-        Uri         = $res.Get.Uri
-        ContentType = "application/octet-stream"
-    }
-
-    $Content = Invoke-RestMethodWrapper @params
-
-    If ($Null -ne $Content) {
-
-        # Work out latest version
-        $LatestVersion = $Content.changelog | `
-            Sort-Object -Property @{ Expression = { [System.Version]$_.name }; Descending = $true } | `
-            Select-Object -First 1
-
-        # Construct the output; Return the custom object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version  = $LatestVersion.name
-            Size     = $LatestVersion.assets.size
-            Hash     = $LatestVersion.assets.hash
-            Date     = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.DatePattern 
-            Filename = $LatestVersion.assets.name
-            URI      = $LatestVersion.assets.url
+    ForEach ($item in $res.Get.Update.Uri.GetEnumerator()) {
+        $params = @{
+            Uri         = $res.Get.Update.Uri[$item.Key]
+            ContentType = $res.Get.Update.ContentType
         }
-        Write-Output -InputObject $PSObject
-        
+        $Content = Invoke-RestMethodWrapper @params
+        If ($Null -ne $Content) {
+
+            # Work out latest version
+            $LatestVersion = $Content.changelog | `
+                Sort-Object -Property @{ Expression = { [System.Version]$_.name }; Descending = $true } | `
+                Select-Object -First 1
+
+            # Construct the output; Return the custom object to the pipeline
+            $PSObject = [PSCustomObject] @{
+                Version      = $LatestVersion.name
+                Size         = $LatestVersion.assets.size
+                Hash         = $LatestVersion.assets.hash
+                Date         = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.Update.DatePattern 
+                Architecture = $item.Name
+                Filename     = $LatestVersion.assets.name
+                URI          = $LatestVersion.assets.url
+            }
+            Write-Output -InputObject $PSObject
+        }
     }
 }
