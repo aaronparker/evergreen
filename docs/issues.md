@@ -49,7 +49,9 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 
 ### LibreOffice
 
-`LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links. The only recourse is to wait until the TDF tells the update host to return the latest version.
+`LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links.
+
+The only recourse at this time is to wait until the TDF tells the update host to return the latest version. Also see [LibreOffice version](https://github.com/aaronparker/evergreen/issues/218)
 
 ### MicrosoftFSLogixApps
 

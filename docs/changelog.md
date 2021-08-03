@@ -4,7 +4,7 @@
 
 * Adds `deviceTRUST`
 * Fixes an issue in `Save-EvergreenApp` when the path specified in the `-Path` parameter does not exist
-* Updates `LibreOffice` to gracefully handle download a scenario where the The Document Foundation pulls the download links for a published version
+* Updates `LibreOffice` to gracefully handle download a scenario where the The Document Foundation pulls the download links for a published version [#218](https://github.com/aaronparker/evergreen/issues/218)
 * BREAKING CHANGES:
 
     * Updates `Postman` with `x86` and `x64` architecture
