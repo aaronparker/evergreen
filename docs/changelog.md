@@ -2,7 +2,8 @@
 
 ## VERSION
 
-* Fixes an issue in `Save-EvergreenApp` when `Path` does not exist
+* Adds `deviceTRUST`
+* Fixes an issue in `Save-EvergreenApp` when the path specified in the `-Path` parameter does not exist
 * Updates `LibreOffice` to gracefully handle download a scenario where the The Document Foundation pulls the download links for a published version
 * BREAKING CHANGES:
 
