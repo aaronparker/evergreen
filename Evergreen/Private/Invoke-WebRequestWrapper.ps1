@@ -87,7 +87,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Method          = $Method
         UserAgent       = $UserAgent
         UseBasicParsing = $True
-        PassThru        = $True
         ErrorAction     = "Continue"
     }
 
@@ -111,6 +110,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     If ($PSBoundParameters.ContainsKey("Raw")) {
         $tempFile = New-TemporaryFile
         $iwrParams.OutFile = $tempFile
+        $iwrParams.PassThru = $True
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
     }
     ForEach ($item in $iwrParams.GetEnumerator()) {
