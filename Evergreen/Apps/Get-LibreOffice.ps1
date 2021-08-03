@@ -9,6 +9,8 @@ Function Get-LibreOffice {
 
             This functions scrapes the vendor web page to find versions and downloads.
             TODO: find a better method to find version and URLs
+
+            Uses: https://cgit.freedesktop.org/libreoffice/website/tree/check.php?h=update
         
         .LINK
             https://github.com/aaronparker/Evergreen
@@ -27,55 +29,77 @@ Function Get-LibreOffice {
     )
 
     # Query the LibreOffice update API
-    $iwcParams = @{
-        Uri                  = $res.Get.Update.Uri
-        UserAgent            = $res.Get.Update.UserAgent
-        SkipCertificateCheck = $True
-    }
-    $Content = Invoke-RestMethodWrapper @iwcParams
+    ForEach ($item in $res.Get.Update.UserAgent.GetEnumerator()) {
+        $params = @{
+            Uri                  = $res.Get.Update.Uri
+            UserAgent            = $res.Get.Update.UserAgent[$item.Key]
+            ContentType          = $res.Get.Update.ContentType
+            SkipCertificateCheck = $True
+        }
+        $Update = Invoke-RestMethodWrapper @params
+        If ($Null -ne $Update) {
 
-    If ($Null -ne $Content) {
-        Write-Verbose "$($MyInvocation.MyCommand): $($res.Get.Update.Uri) returned version: $($Content.description.version)."
-
-        # Get downloads for each platform for the latest version
-        ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
-            $iwrParams = @{
-                Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/"
-                ReturnObject    = "All"
+            If ($Null -eq $Update.description.version) {
+                Write-Warning "$($MyInvocation.MyCommand): failed to return a version number for release $($item.Name) from: $($res.Get.Update.Uri)."
             }
-            $response = Invoke-WebRequestWrapper @iwrParams
-            $Architectures = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchArchitectures }).href -replace "/", ""
-    
-            ForEach ($arch in $Architectures) {
+            Else {
+                Write-Verbose "$($MyInvocation.MyCommand): $($res.Get.Update.Uri) returned version: $($Update.description.version)."
 
-                # Get downloads for each architecture for the latest version/platform
-                $iwrParams = @{
-                    Uri             = "$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/$arch/"
-                    ReturnObject    = "All"
-                }
-                $response = Invoke-WebRequestWrapper @iwrParams
-                $Files = ($response.Links | Where-Object { $_.href -match $res.Get.Download.MatchExtensions }).href -replace "/", ""
-    
-                ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
-    
-                    # Match language string
-                    Remove-Variable -Name "Language", "match" -ErrorAction "SilentlyContinue"
-                    $match = $file | Select-String -Pattern $res.Get.Download.MatchLanguage
-                    If ($Null -ne $match) {
-                        $Language = $match.Matches.Groups[1].Value
+                # Get downloads for each platform for the latest version
+                ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
+
+                    Write-Verbose "$($MyInvocation.MyCommand): parsing: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/."
+                    $params = @{
+                        Uri          = "$($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/"
+                        ReturnObject = "All"
+                    }
+                    $PlatformList = Invoke-WebRequestWrapper @params
+                    #Write-Verbose "PlatformList is type: $($PlatformList.GetType())"
+                    If ($Null -eq $PlatformList) {
+                        Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/."
                     }
                     Else {
-                        $Language = $res.Get.Download.NoLanguage
+                        $Architectures = ($PlatformList.Links | Where-Object { $_.href -match $res.Get.Download.MatchArchitectures }).href -replace "/", ""
+                        ForEach ($arch in $Architectures) {
+
+                            # Get downloads for each architecture for the latest version/platform
+                            Write-Verbose "$($MyInvocation.MyCommand): parsing: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/."
+                            $params = @{
+                                Uri          = "$($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/"
+                                ReturnObject = "All"
+                            }
+                            $ArchitectureList = Invoke-WebRequestWrapper @params
+                            #Write-Verbose "ArchitectureList is type: $($ArchitectureList.GetType())"
+                            If ($Null -eq $ArchitectureList) {
+                                Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/."
+                            }
+                            Else {
+                                $Files = ($ArchitectureList.Links | Where-Object { $_.href -match $res.Get.Download.MatchExtensions }).href -replace "/", ""
+                                ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
+
+                                    # Match language string
+                                    Remove-Variable -Name "Language", "match" -ErrorAction "SilentlyContinue"
+                                    $match = $file | Select-String -Pattern $res.Get.Download.MatchLanguage
+                                    If ($Null -ne $match) {
+                                        $Language = $match.Matches.Groups[1].Value
+                                    }
+                                    Else {
+                                        $Language = $res.Get.Download.NoLanguage
+                                    }
+
+                                    # Construct the output; Return the custom object to the pipeline
+                                    $PSObject = [PSCustomObject] @{
+                                        Version      = $($Update.description.version)
+                                        Architecture = $arch
+                                        Release      = $item.Name
+                                        Language     = $Language
+                                        URI          = $("$($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/$file")
+                                    }
+                                    Write-Output -InputObject $PSObject
+                                }
+                            }
+                        }
                     }
-    
-                    # Construct the output; Return the custom object to the pipeline
-                    $PSObject = [PSCustomObject] @{
-                        Version      = $($Content.description.version)
-                        Architecture = $arch
-                        Language     = $Language
-                        URI          = $("$($res.Get.Download.Uri)/$($Content.description.version)/$($platform.Name)/$arch/$file")
-                    }
-                    Write-Output -InputObject $PSObject
                 }
             }
         }

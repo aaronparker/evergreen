@@ -70,6 +70,7 @@ Describe -Name "Get-GitHubRepoRelease" {
             }
         }
 
+        <#
         It "Returns the expected properties" {
             InModuleScope Evergreen {
 
@@ -89,6 +90,7 @@ Describe -Name "Get-GitHubRepoRelease" {
                 $result.URI.Length | Should -BeGreaterThan 0
             }
         }
+        #>
     }
 }
 
@@ -103,7 +105,7 @@ Describe -Name "ConvertTo-DateTime" {
 }
 
 Describe -Name "ConvertTo-Hashtable" {
-    Context "Test converstion to hashtable" {
+    Context "Test conversion to hashtable" {
         It "Converts a PSObject into a hashtable" {
             InModuleScope Evergreen {
                 $ps = [PSCustomObject]@{ Name = "Name1"; Address = "Address1" }

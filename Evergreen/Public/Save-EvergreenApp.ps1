@@ -47,7 +47,7 @@ Function Save-EvergreenApp {
             try {
                 $params = @{
                     Path        = $Path
-                    PathType    = "Container"
+                    ItemType    = "Container"
                     ErrorAction = "SilentlyContinue"
                 }
                 New-Item @params

@@ -47,6 +47,10 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 !!! info "Note"
     `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
 
+### LibreOffice
+
+`LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links. The only recourse is to wait until the TDF tells the update host to return the latest version.
+
 ### MicrosoftFSLogixApps
 
 Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApps -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.

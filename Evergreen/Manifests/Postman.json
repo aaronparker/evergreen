@@ -1,19 +1,25 @@
 {
-	"Name": "Postman",
-	"Source": "https://www.getpostman.com/",
-	"Get": {
-		"Uri": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
-		"DatePattern": "yyyy-MM-ddTHH:mm:ss.fffK"
-	},
-	"Install": {
-		"Setup": "Postman*.exe",
-		"Physical": {
-			"Arguments": "",
-			"PostInstall": []
-		},
-		"Virtual": {
-			"Arguments": "",
-			"PostInstall": []
-		}
-	}
+    "Name": "Postman",
+    "Source": "https://www.getpostman.com/",
+    "Get": {
+        "Update": {
+            "Uri": {
+                "x64": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+                "x86": "https://dl.pstmn.io/changelog?channel=stable&platform=win32"
+            },
+			"ContentType": "application/json",
+            "DatePattern": "yyyy-MM-ddTHH:mm:ss.fffK"
+        }
+    },
+    "Install": {
+        "Setup": "Postman*.exe",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
 }
