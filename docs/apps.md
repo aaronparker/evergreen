@@ -1,6 +1,6 @@
-# Supported applications
+﻿# Supported applications
 
-Evergreen `2107.441` supports the following applications:
+Evergreen `2108.450` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -41,6 +41,7 @@ Evergreen `2107.441` supports the following applications:
 | ControlUpAgent                          | ControlUp Agent                                    | https://www.controlup.com/products/controlup/agent/                                        |
 | ControlUpConsole                        | ControlUp Console                                  | https://www.controlup.com/products/controlup/management/                                   |
 | Cyberduck                               | iterate GmbH Cyberduck                             | https://cyberduck.io/                                                                      |
+| deviceTRUST                             | deviceTRUST                                        | https://devicetrust.com/                                                                   |
 | dnGrep                                  | dnGrep                                             | https://dngrep.github.io/                                                                  |
 | FileZilla                               | FileZilla                                          | https://filezilla-project.org/                                                             |
 | Fork                                    | Dan Pristupov Fork                                 | https://www.fork.dev                                                                       |

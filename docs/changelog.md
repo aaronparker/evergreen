@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2108.450
 
 * Adds `deviceTRUST`
 * Fixes an issue in `Save-EvergreenApp` when the path specified in the `-Path` parameter does not exist
