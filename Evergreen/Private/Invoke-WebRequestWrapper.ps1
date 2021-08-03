@@ -125,50 +125,51 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-        Break
-        #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Output -InputObject $Null
     }
 
-    Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
-    Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
+    If ($Null -ne $Response) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
 
-    # Output content from the response
-    Switch ($ReturnObject) {
-        "All" {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
-            Write-Output -InputObject $Response
-            Break
-        }
-        "Headers" {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
-            Write-Output -InputObject $Response.Headers
-            Break
-        }
-        "RawContent" {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
-            Write-Output -InputObject $Response.RawContent
-            Break
-        }
-        "Content" {
-            If ($PSBoundParameters.ContainsKey("Raw")) {
-                $Content = Get-Content -Path $TempFile
+        # Output content from the response
+        Switch ($ReturnObject) {
+            "All" {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
+                Write-Output -InputObject $Response
+                Break
             }
-            Else {
-                $Content = $Response.Content 
+            "Headers" {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
+                Write-Output -InputObject $Response.Headers
+                Break
             }
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
-            Write-Output -InputObject $Content
-            Break
-        }
-        Default {
-            If ($PSBoundParameters.ContainsKey("Raw")) {
-                $Content = Get-Content -Path $TempFile
+            "RawContent" {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
+                Write-Output -InputObject $Response.RawContent
+                Break
             }
-            Else {
-                $Content = $Response.Content 
+            "Content" {
+                If ($PSBoundParameters.ContainsKey("Raw")) {
+                    $Content = Get-Content -Path $TempFile
+                }
+                Else {
+                    $Content = $Response.Content 
+                }
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+                Write-Output -InputObject $Content
+                Break
             }
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
-            Write-Output -InputObject $Content
+            Default {
+                If ($PSBoundParameters.ContainsKey("Raw")) {
+                    $Content = Get-Content -Path $TempFile
+                }
+                Else {
+                    $Content = $Response.Content 
+                }
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+                Write-Output -InputObject $Content
+            }
         }
     }
 }

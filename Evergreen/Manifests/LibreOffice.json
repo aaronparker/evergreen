@@ -4,7 +4,11 @@
     "Get": {
         "Update": {
             "Uri": "https://update.libreoffice.org/check.php",
-            "UserAgent": "LibreOffice 6.3.2.1 (db810050ff08fd4774137f693d5a01d22f324dfd; Windows; X86_64; )"
+            "UserAgent": {
+                "Still": "LibreOffice 0 (3215f89-f603614-ab984f2-7348103-1225a5b; Windows; x86; )",
+                "Fresh": "LibreOffice 6.3.2 (98b30e735bda24bc04ab42594c85f7fd8be07b9c; Windows; x86;)"
+            },
+            "ContentType": "text/xml"
         },
         "Download": {
             "Uri": "https://download.documentfoundation.org/libreoffice/stable",
