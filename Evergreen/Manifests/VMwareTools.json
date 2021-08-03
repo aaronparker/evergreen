@@ -4,6 +4,7 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://packages.vmware.com/tools/versions",
+			"ContentType": "text/plain",
 			"CsvHeaders": [
 				"Client",
 				"Server",

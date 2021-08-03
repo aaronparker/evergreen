@@ -22,9 +22,16 @@
     )
 
     # Read the VMware version-mapping file
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri -Raw
-
-    If ($Null -ne $Content) {
+    $params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
+        Raw         = $True
+    }
+    $Content = Invoke-WebRequestWrapper @params
+    If ($Null -eq $Content) {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return usable content from $($res.Get.Update.Uri)."
+    }
+    Else {
         # Format the results returns and convert into an array that we can sort and use
         $Lines = $Content | Where-Object { $_ –notmatch "^#" }
         $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }

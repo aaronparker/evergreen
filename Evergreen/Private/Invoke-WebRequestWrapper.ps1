@@ -85,8 +85,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     $iwrParams = @{
         Uri             = $Uri
         Method          = $Method
-        UseBasicParsing = $True
         UserAgent       = $UserAgent
+        UseBasicParsing = $True
+        PassThru        = $True
         ErrorAction     = "Continue"
     }
 
