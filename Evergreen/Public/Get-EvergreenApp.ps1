@@ -13,7 +13,13 @@ Function Get-EvergreenApp {
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify an application name. Use Find-EvergreenApp to list supported applications.")]
         [ValidateNotNull()]
-        [System.String] $Name
+        [System.String] $Name,
+
+        [Parameter(
+        Mandatory = $False,
+        Position = 1,
+        HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
+        [System.Collections.Hashtable] $AppParams
     )
 
     Begin {}
@@ -47,8 +53,20 @@ Function Get-EvergreenApp {
             try {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
                 # Application manifests are located under Evergreen/Manifests 
+                If ($PSBoundParameters.ContainsKey("AppParams")) {
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Adding AppParams."
+                    $params = @{
+                        res = (Get-FunctionResource -AppName $Name)
+                    }
+                    $params += $AppParams
+                }
+                Else {
+                    $params = @{
+                        res = (Get-FunctionResource -AppName $Name)
+                    }
+                }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Calling: Get-$Name."
-                $Output = & Get-$Name -res (Get-FunctionResource -AppName $Name)
+                $Output = & Get-$Name @params
             }
             catch {
                 Throw "$($MyInvocation.MyCommand): Internal application function: $Function, failed with: $($_.Exception.Message)"
