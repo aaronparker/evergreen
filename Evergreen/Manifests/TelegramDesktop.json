@@ -2,9 +2,15 @@
 	"Name": "Telegram Desktop",
 	"Source": "https://desktop.telegram.org/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$"
+        "Update": {
+            "Uri": "https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+            "MatchFileTypes": "\\.exe$|\\.msi$"
+        },
+        "Download": {
+            "Uri": "https://updates.tdesktop.com/tsetup/tsetup.#version.exe",
+            "ReplaceText": "#version"
+        }
 	},
 	"Install": {
 		"Setup": "tsetup*.exe",
