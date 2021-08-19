@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `Naps2`, `SmartBearSoapUI`, `NevcairielLAVFilters`, `MicrosoftBotFrameworkEmulator`
+* Adds `MicrosoftEdgeWebView2Runtime`, `MicrosoftBotFrameworkEmulator`, `Naps2`, `SmartBearSoapUI`, `NevcairielLAVFilters`
 * Adds the parameter `-AppParams` to `Get-EvergreenApp` that takes a hashtable of parameters to be passed to the internal application functions. Right now, this will only work with `GitHubRelease` - enabling Evergreen to return the releases for any GitHub repository with Windows releases that you pass via `-AppParams`
 * Updates the approach used for `TelegramDesktop`, because Telegram posts a release to GitHub that doesn't match the latest Windows release
 * BREAKING CHANGES:
