@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2108.450` supports the following applications:
+Evergreen `2108.458` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -25,7 +25,6 @@ Evergreen `2108.450` supports the following applications:
 | BlenderLauncher                         | Blender Launcher                                   | https://dotbow.github.io/Blender-Launcher/                                                 |
 | BlueJ                                   | BlueJ                                              | https://www.bluej.org/                                                                     |
 | CendioThinLinc                          | Cendio ThinLinc                                    | https://www.cendio.com/                                                                    |
-| CiscoWebex                              | Cisco Webex                                        | https://www.webex.com/                                                                     |
 | CitrixAppLayeringFeed                   | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
 | CitrixApplicationDeliveryManagementFeed | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
 | CitrixEndpointManagementFeed            | Citrix Product Release Feeds                       | https://www.citrix.com/downloads                                                           |
@@ -84,7 +83,9 @@ Evergreen `2108.450` supports the following applications:
 | MicrosoftAzureFunctionsCoreTools        | Azure Functions Core Tools                         | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                 |
 | MicrosoftAzureStorageExplorer           | Microsoft Azure Storage Explorer                   | https://azure.microsoft.com/en-au/features/storage-explorer/                               |
 | MicrosoftBicep                          | Microsoft Bicep                                    | https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview               |
+| MicrosoftBotFrameworkEmulator           | Microsoft Bot Framework Emulator                   | https://github.com/microsoft/BotFramework-Emulator/                                        |
 | MicrosoftEdge                           | Microsoft Edge                                     | https://www.microsoft.com/edge                                                             |
+| MicrosoftEdgeWebView2Runtime            | Microsoft Edge WebView2 Runtime                    | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                             |
 | MicrosoftFSLogixApps                    | Microsoft FSLogix Apps                             | https://docs.microsoft.com/fslogix/                                                        |
 | MicrosoftOneDrive                       | Microsoft OneDrive                                 | https://onedrive.live.com/                                                                 |
 | MicrosoftPowerShell                     | Microsoft PowerShell                               | https://docs.microsoft.com/powershell/                                                     |
@@ -104,7 +105,9 @@ Evergreen `2108.450` supports the following applications:
 | MozillaThunderbird                      | Mozilla Firefox                                    | https://www.mozilla.org/                                                                   |
 | mRemoteNG                               | mRemoteNG                                          | https://mremoteng.org/                                                                     |
 | MuseScore                               | MuseScore                                          | https://musescore.org/                                                                     |
+| Naps2                                   | Ben Olden-Cooligan NAPS2                           | https://www.naps2.com/                                                                     |
 | NETworkManager                          | NETworkManager                                     | https://github.com/BornToBeRoot/NETworkManager                                             |
+| NevcairielLAVFilters                    | Nevcairiel LAV Filters                             | https://github.com/Nevcairiel/LAVFilters                                                   |
 | Nomacs                                  | nomacs Image Lounge                                | https://nomacs.org/                                                                        |
 | Notable                                 | Notable                                            | https://notable.app/                                                                       |
 | NotepadPlusPlus                         | Notepad++                                          | https://notepad-plus-plus.org/                                                             |
@@ -134,6 +137,7 @@ Evergreen `2108.450` supports the following applications:
 | ShareX                                  | ShareX                                             | https://getsharex.com/                                                                     |
 | SignalDesktop                           | Signal for Windows                                 | https://www.signal.org/                                                                    |
 | Slack                                   | Slack                                              | https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer  |
+| SmartBearSoapUI                         | SmartBear SoapUI                                   | https://www.soapui.org/                                                                    |
 | StefansToolsgregpWin                    | Stefans Tools gregpWin                             | https://tools.stefankueng.com/grepWin.html                                                 |
 | SumatraPDFReader                        | Sumatra PDF Reader                                 | https://www.sumatrapdfreader.org/                                                          |
 | TableauDesktop                          | Tableau Desktop                                    | https://www.tableau.com/                                                                   |
