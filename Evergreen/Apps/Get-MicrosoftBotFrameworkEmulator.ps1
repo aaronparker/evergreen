@@ -1,7 +1,7 @@
-Function Get-TelegramDesktop {
+Function Get-MicrosoftBotFrameworkEmulator {
     <#
         .SYNOPSIS
-            Returns the latest Telegram Desktop version number and download.
+            Returns the available Microsoft Bot Framework Emulator versions.
 
         .NOTES
             Author: Aaron Parker
@@ -22,19 +22,10 @@ Function Get-TelegramDesktop {
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri               = $res.Get.Update.Uri
-        MatchVersion      = $res.Get.Update.MatchVersion
-        Filter            = $res.Get.Update.MatchFileTypes
-        ReturnVersionOnly = $True
+        Uri          = $res.Get.Uri
+        MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-
-    # Build the output object
-    If ($Null -ne $object) {
-        $PSObject = [PSCustomObject] @{
-            Version = $object.Version
-            URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $object.Version
-        }
-        Write-Output -InputObject $PSObject
-    }
+    Write-Output -InputObject $object
 }

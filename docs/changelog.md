@@ -1,5 +1,15 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftEdgeWebView2Runtime`, `MicrosoftBotFrameworkEmulator`, `Naps2`, `SmartBearSoapUI`, `NevcairielLAVFilters`
+* Adds the parameter `-AppParams` to `Get-EvergreenApp` that takes a hashtable of parameters to be passed to the internal application functions. Right now, this will only work with `GitHubRelease` - enabling Evergreen to return the releases for any GitHub repository with Windows releases that you pass via `-AppParams`
+* Updates the approach used for `TelegramDesktop`, because Telegram posts a release to GitHub that doesn't match the latest Windows release
+* BREAKING CHANGES:
+
+    * Updates the channel names, and adds additional channels, in `Microsoft365Apps` - this release adds all available Microsoft 365 Apps channels - `FirstReleaseCurrent`, `Insiders`, `Monthly`, `Current`, `MonthlyEnterprise`, `Deferred`, `Broad`, `Targeted`, `FirstReleaseDeferred`, `Perpetual2019`, `PerpetualVL2019`
+    * Disables `CiscoWebEx` - function is unable to return the current WebEx version using the existing method and no working method has been found
+
 ## 2108.450
 
 * Adds `deviceTRUST`

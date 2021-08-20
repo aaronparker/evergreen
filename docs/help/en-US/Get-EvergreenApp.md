@@ -91,6 +91,15 @@ Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams
 Description:
 `Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.
 
+### EXAMPLE 7
+
+```powershell
+Get-EvergreenApp -Name "GitHubRelease" -AppParams @{ Uri = "https://api.github.com/repos/atom/atom/releases/latest" }
+```
+
+Description:
+Passes a custom repository to the internal application function for `GetHubRelease` rather than using the repository embedded into the manifest, allowing `Get-EvergreenApp` to find the releases for an application hosted on GitHub that isn't already supported by Evergreen.
+
 ## PARAMETERS
 
 ### -Name
@@ -107,6 +116,23 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -AppParams
+
+A hashtable of parameters to pass to the internal application function.
+Accepts a hashtable of keys and values that will be passed to the internal application function to enable additional functionality (application function dependent).
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -6,13 +6,21 @@ Function Save-EvergreenApp {
     [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save/")]
     [Alias("sea")]
     param (
-        [Parameter(Mandatory = $True, Position = 0, ValueFromPipeline)]
+        [Parameter(
+            Mandatory = $True,
+            Position = 0,
+            ValueFromPipeline,
+            HelpMessage = "Pass an application object from Get-EvergreenApp.")]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject] $InputObject,
 
-        [Parameter(Mandatory = $False, Position = 1)]
+        [Parameter(
+            Mandatory = $False,
+            Position = 1,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "Specify a directory where the application installers will be saved into.")]
         [ValidateNotNull()]
-        [System.String] $Path = (Resolve-Path -Path $PWD),
+        [System.IO.FileInfo] $Path = (Resolve-Path -Path $PWD),
 
         [Parameter(Mandatory = $False, Position = 2)]
         [System.String] $Proxy,

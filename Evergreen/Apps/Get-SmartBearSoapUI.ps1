@@ -1,13 +1,14 @@
-Function Get-TelegramDesktop {
+Function Get-SmartBearSoapUI {
     <#
         .SYNOPSIS
-            Returns the latest Telegram Desktop version number and download.
+            Returns the latest SmartBear SoapUI version number and download.
 
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
