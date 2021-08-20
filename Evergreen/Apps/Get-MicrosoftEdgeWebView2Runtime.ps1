@@ -55,7 +55,7 @@ Function Get-MicrosoftEdgeWebView2Runtime {
                             $PSObject = [PSCustomObject] @{
                                 Version      = $release.ProductVersion
                                 Architecture = $item.Name
-                                URI          = (Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri[$item.Key]).ResponseUri
+                                URI          = (Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri[$item.Key]).ResponseUri.AbsoluteUri
                             }
                             Write-Output -InputObject $PSObject
                         }
