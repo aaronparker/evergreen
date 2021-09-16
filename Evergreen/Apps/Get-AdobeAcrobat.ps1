@@ -35,7 +35,7 @@ Function Get-AdobeAcrobat {
             If ($Null -ne $Content) {
 
                 # Format version string
-                $versionString = $Content.Replace(".", "")
+                $versionString = $Content.Replace(".", "").Trim()
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Update found: [$($Content)] and converted to version string: [$($versionString)]."
 
                 # Build the output object
@@ -63,7 +63,7 @@ Function Get-AdobeAcrobat {
 
                             # Build the object
                             $PSObject = [PSCustomObject] @{
-                                Version      = $Content
+                                Version      = $Content.Trim()
                                 Type         = $res.Get.Download.Type
                                 Product      = $Product.Name
                                 Track        = $item.Name

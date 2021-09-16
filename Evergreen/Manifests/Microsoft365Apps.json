@@ -5,6 +5,7 @@
         "Update": {
             "Uri": "https://mrodevicemgr.officeapps.live.com/mrodevicemgrsvc/api/v2/C2RReleaseData?audienceFFN=",
             "Channels": {
+                "Beta": "5440fd1f-7ecb-4221-8110-145efaa6372f",
                 "FirstReleaseCurrent": "64256afe-f5d9-4f86-8936-8840a6a4f5be",
                 "Current": "492350f6-3a01-4f97-b9c0-c7c6ddf67d60",
                 "FirstReleaseDeferred": "b8f9b850-328d-4355-9145-c59439a0c4cf",
