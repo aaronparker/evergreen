@@ -1,19 +1,21 @@
 {
-	"Name": "JASP",
-	"Source": "https://jasp-stats.org/",
+	"Name": "voidtools Everything",
+	"Source": "https://www.voidtools.com/",
 	"Get": {
 		"Update": {
-			"Uri": "https://api.github.com/repos/jasp-stats/jasp-desktop/releases/latest",
+			"Uri": "http://www.voidtools.com/everything/update.ini",
 			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
 			"MatchFileTypes": "\\.msi$"
 		},
 		"Download": {
-			"Uri": "https://static.jasp-stats.org/JASP-#version-64bit.msi",
-			"ReplaceText": "#version"
+			"Uri": {
+                "x64": "https://www.voidtools.com/Everything.x64.msi",
+                "x86": "https://www.voidtools.com/Everything.x86.msi"
+            }
 		}
 	},
 	"Install": {
-		"Setup": "JASP-*.msi",
+		"Setup": "",
 		"Physical": {
 			"Arguments": "/install /passive /norestart",
 			"PostInstall": []
