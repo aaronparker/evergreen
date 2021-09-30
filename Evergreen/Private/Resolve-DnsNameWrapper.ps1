@@ -16,7 +16,7 @@ Function Resolve-DnsNameWrapper {
     )
 
     # Resolve-DnsName only exists on Windows
-    If ($PSVersionTable.OS -match "Microsoft Windows") {
+    If (($Null -eq $PSVersionTable.OS) -or ($PSVersionTable.OS -match "Microsoft Windows*")) {
 
         # Wrap Resolve-DnsName
         Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Name, with type: $Type."
