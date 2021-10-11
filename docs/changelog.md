@@ -6,7 +6,7 @@
 * Adds `GhislerTotalCommander` [#229](https://github.com/aaronparker/evergreen/issues/229), `PaintDotNetOfflineInstaller` [#235](https://github.com/aaronparker/evergreen/issues/235), `TelerikFiddlerClassic`, `voidtoolsEverything` [#230](https://github.com/aaronparker/evergreen/issues/230)
 * Adds `USBPcap`. Thanks to [Dan Gough](https://github.com/DanGough)
 * Updates method used to determine version and download for `JSAP`
-* Adds private function `Resolve-DnsNameWrapper` to resolve DNS TXT records. Used by `GhislerTotalCommander`. Currently supports Windows PowerShell only
+* Adds private function `Resolve-DnsNameWrapper` to resolve DNS TXT records. Used by `GhislerTotalCommander`. Currently supports Windows only
 * BREAKING CHANGES:
 
     * Disables `LibreOffice` - the update method keeps changing requiring a significant amount of work to fix each time. [#218](https://github.com/aaronparker/evergreen/issues/218)

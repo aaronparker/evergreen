@@ -17,12 +17,11 @@ The folder structure created by `Save-EvergreenApp` uses a static set of propert
 !!! attention "Attention"
     `Save-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
 
-
 ## Private Functions
 
 ### Resolve-DnsNameWrapper
 
-Supports Windows PowerShell only - this function wraps `Resolve-DnsName` which is not available under PowerShell 6+.
+Supports Windows platforms only - this function wraps `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux. Application functions that use this private function will return an error on non-Windows platforms.
 
 ## Application Functions
 
@@ -56,7 +55,7 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 
 ### `GhislerTotalCommander`
 
-Supports Windows PowerShell only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+.
+Supports Windows platforms only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux.
 
 ### LibreOffice
 
