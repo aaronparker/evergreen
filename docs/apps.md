@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2108.458` supports the following applications:
+Evergreen `2110.467` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -51,6 +51,7 @@ Evergreen `2108.458` supports the following applications:
 | FreedomScientificZoomText               | Freedom Scientific ZoomText                        | https://www.freedomscientific.com/products/software/zoomtext/                              |
 | FreeFem                                 | FreeFem                                            | https://freefem.org/                                                                       |
 | Gephi                                   | Gephi                                              | https://gephi.org/                                                                         |
+| GhislerTotalCommander                   | Ghisler TotalCommander                             | https://www.ghisler.com/                                                                   |
 | Gimp                                    | GIMP                                               | https://www.gimp.org/                                                                      |
 | GitForWindows                           | Git for Windows                                    | https://gitforwindows.org/                                                                 |
 | GitHubAtom                              | GitHub Atom                                        | https://atom.io/                                                                           |
@@ -70,7 +71,6 @@ Evergreen `2108.458` supports the following applications:
 | KarakunOpenWebStart                     | Karakun OpenWebStart                               | https://openwebstart.com/ows/                                                              |
 | KeePass                                 | KeePass                                            | https://keepass.net/                                                                       |
 | KeePassXCTeamKeePassXC                  | KeePassXC Team KeePassXC                           | https://keepassxc.org/                                                                     |
-| LibreOffice                             | LibreOffice                                        | https://www.libreoffice.org/                                                               |
 | LogMeInGoToMeeting                      | LogMeIn GoToMeeting                                | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                       | LogMeIn GoToOpener                                 | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
 | MasterPackager                          | Master Packager                                    | https://www.masterpackager.com/                                                            |
@@ -117,6 +117,7 @@ Evergreen `2108.458` supports the following applications:
 | OracleJava8                             | Oracle Java 8                                      | https://www.java.com                                                                       |
 | OracleVirtualBox                        | Oracle VirtualBox                                  | https://www.virtualbox.org/                                                                |
 | PaintDotNet                             | dotPDN LLC Paint.NET                               | https://getpaint.net                                                                       |
+| PaintDotNetOfflineInstaller             | dotPDN LLC Paint.NET                               | https://getpaint.net/                                                                      |
 | Pandoc                                  | Pandoc                                             | https://pandoc.org/                                                                        |
 | PDFForgePDFCreator                      | pdfforge PDFCreator                                | https://www.pdfforge.org/pdfcreator                                                        |
 | PeaZipPeaZip                            | PeaZip PeaZip                                      | https://peazip.github.io/                                                                  |
@@ -147,15 +148,18 @@ Evergreen `2108.458` supports the following applications:
 | TechSmithCamtasia                       | TechSmith Camtasia                                 | https://www.techsmith.com/                                                                 |
 | TechSmithSnagIt                         | TechSmith SnagIt                                   | https://www.techsmith.com/                                                                 |
 | TelegramDesktop                         | Telegram Desktop                                   | https://desktop.telegram.org/                                                              |
+| TelerikFiddlerClassic                   | Telerik Fiddler Classic                            | https://www.telerik.com/fiddler/fiddler-classic                                            |
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                         | https://www.telerik.com/fiddler                                                            |
 | Terminals                               | Terminals                                          | https://github.com/terminals-Origin/Terminals/                                             |
 | TeXstudio                               | TeXstudio                                          | https://www.texstudio.org/                                                                 |
+| USBPcap                                 | USBPcap                                            | https://github.com/desowin/usbpcap/                                                        |
 | VastLimitsUberAgent                     | vast limits uberAgent                              | https://uberagent.com/                                                                     |
 | VeraCrypt                               | VeraCrypt                                          | https://www.veracrypt.fr/en/Home.html                                                      |
 | VercelHyper                             | Vercel Hyper                                       | https://hyper.js/                                                                          |
 | VideoLanVlcPlayer                       | VideoLan VLC Player                                | https://www.videolan.org/vlc/                                                              |
 | VMwareHorizonClient                     | VMware Horizon Client                              | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                |
 | VMwareTools                             | VMware Tools                                       | https://www.vmware.com                                                                     |
+| voidtoolsEverything                     | voidtools Everything                               | https://www.voidtools.com/                                                                 |
 | Win32OpenSSH                            | Win32-OpenSSH                                      | https://github.com/PowerShell/Win32-OpenSSH/                                               |
 | WinMerge                                | WinMerge                                           | https://winmerge.org/                                                                      |
 | WinSCP                                  | WinSCP                                             | https://winscp.net/                                                                        |

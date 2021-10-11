@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2110.467
 
 * Fixes an issue with `AdobeAcrobat` where the string returned from the Adobe update API added a new line after the version number [#233](https://github.com/aaronparker/evergreen/issues/233)
 * Adds `GhislerTotalCommander` [#229](https://github.com/aaronparker/evergreen/issues/229), `PaintDotNetOfflineInstaller` [#235](https://github.com/aaronparker/evergreen/issues/235), `TelerikFiddlerClassic`, `voidtoolsEverything` [#230](https://github.com/aaronparker/evergreen/issues/230)
