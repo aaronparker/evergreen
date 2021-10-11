@@ -17,6 +17,13 @@ The folder structure created by `Save-EvergreenApp` uses a static set of propert
 !!! attention "Attention"
     `Save-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
 
+
+## Private Functions
+
+### Resolve-DnsNameWrapper
+
+Supports Windows PowerShell only - this function wraps `Resolve-DnsName` which is not available under PowerShell 6+.
+
 ## Application Functions
 
 ### 7zip
@@ -46,6 +53,10 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 
 !!! info "Note"
     `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
+
+### `GhislerTotalCommander`
+
+Supports Windows PowerShell only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+.
 
 ### LibreOffice
 

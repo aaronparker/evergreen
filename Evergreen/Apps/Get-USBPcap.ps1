@@ -1,11 +1,11 @@
-Function Get-JASP {
+Function Get-USBPcap {
     <#
         .SYNOPSIS
-            Returns the available JASP versions.
+            Returns the latest USBPcap version number and download.
 
         .NOTES
-            Author: Andrew Cooper 
-            Twitter: @adotcoop
+            Author: Dan Gough
+            Twitter: @packageologist
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
@@ -23,19 +23,10 @@ Function Get-JASP {
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri               = $res.Get.Update.Uri
-        MatchVersion      = $res.Get.Update.MatchVersion
-        Filter            = $res.Get.Update.MatchFileTypes
-        ReturnVersionOnly = $True
+        Uri          = $res.Get.Uri
+        MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-
-    # Build the output object
-    If ($Null -ne $object) {
-        $PSObject = [PSCustomObject] @{
-            Version = $object.Version
-            URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $object.Version
-        }
-        Write-Output -InputObject $PSObject
-    }
+    Write-Output -InputObject $object
 }
