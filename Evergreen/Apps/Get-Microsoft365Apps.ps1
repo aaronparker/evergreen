@@ -25,22 +25,29 @@ Function Get-Microsoft365Apps {
     ForEach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
 
         # Get latest version Microsoft Office versions from the Office API
-        try {
-            $Uri = "$($res.Get.Update.Uri)$($res.Get.Update.Channels[$channel.Key])"
-            $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Select channel: $($res.Get.Update.Channels[$channel.Key])."
+        $params = @{
+            Uri = "$($res.Get.Update.Uri)$($res.Get.Update.Channels[$channel.Key])"
         }
-        catch {
-            Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
-        }
-
+        $updateFeed = Invoke-RestMethodWrapper @params
         If ($Null -ne $updateFeed) {
-            
+
+            # If LkgBuild less than AvailableBuild, then it's the current version
+            If ([System.Version]$updateFeed.LkgBuild -lt [System.Version]$updateFeed.AvailableBuild) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Fallback to LkgBuild version: $($updateFeed.LkgBuild)."
+                $Version = $updateFeed.LkgBuild
+            }
+            Else {
+                $Version = $updateFeed.AvailableBuild
+            }
+
             # Build and array of the latest release and download URLs
             $PSObject = [PSCustomObject] @{
-                Version = $updateFeed.AvailableBuild
-                Date    = ConvertTo-DateTime -DateTime $updateFeed.TimestampUtc -Pattern $res.Get.Update.DateTime
-                Channel = $channel.Name
-                URI     = $res.Get.Download.Uri
+                Version    = $Version
+                Channel    = $channel.Name
+                Name       = $res.Get.Update.ChannelNames.$($channel.Name)
+                Date       = ConvertTo-DateTime -DateTime $updateFeed.TimestampUtc -Pattern $res.Get.Update.DateTime
+                URI        = $res.Get.Download.Uri
             }
             Write-Output -InputObject $PSObject
         }
