@@ -1,5 +1,17 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with `AdobeAcrobat` where the string returned from the Adobe update API added a new line after the version number [#233](https://github.com/aaronparker/evergreen/issues/233)
+* Adds `GhislerTotalCommander` [#229](https://github.com/aaronparker/evergreen/issues/229), `PaintDotNetOfflineInstaller` [#235](https://github.com/aaronparker/evergreen/issues/235), `TelerikFiddlerClassic`, `voidtoolsEverything` [#230](https://github.com/aaronparker/evergreen/issues/230)
+* Adds `USBPcap`. Thanks to [Dan Gough](https://github.com/DanGough)
+* Updates method used to determine version and download for `JSAP`
+* Adds private function `Resolve-DnsNameWrapper` to resolve DNS TXT records. Used by `GhislerTotalCommander`. Currently supports Windows PowerShell only
+* BREAKING CHANGES:
+
+    * Updates Microsoft365Apps to fix incorrect version number returned and updates channel names in `Channel` property (uses the names listed in the `Channel` property in the configuration.xml) and adds the `Name` property with the channel names listed here: [Update history for Microsoft 365 Apps](https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date)
+    * Disables `LibreOffice` - the update method keeps changing requiring a significant amount of work to fix each time. [#218](https://github.com/aaronparker/evergreen/issues/218)
+
 ## 2108.458
 
 * Adds `MicrosoftEdgeWebView2Runtime`, `MicrosoftBotFrameworkEmulator`, `Naps2`, `SmartBearSoapUI`, `NevcairielLAVFilters`
