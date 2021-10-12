@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `OctopusDeployServer`, `OctopusTentacle`
+
 ## 2110.467
 
 * Fixes an issue with `AdobeAcrobat` where the string returned from the Adobe update API added a new line after the version number [#233](https://github.com/aaronparker/evergreen/issues/233)
