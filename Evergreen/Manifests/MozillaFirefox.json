@@ -6,7 +6,8 @@
             "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
             "Channels": [
                 "LATEST_FIREFOX_VERSION",
-                "FIREFOX_ESR"
+                "FIREFOX_ESR",
+                "FIREFOX_ESR_NEXT"
             ]
         },
         "Download": {
@@ -18,6 +19,10 @@
                 "FIREFOX_ESR": {
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"
+                },
+                "FIREFOX_ESR_NEXT": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-esr-next-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-esr-next-msi-latest-ssl&os=#platform&lang=#language"
                 }
             },
             "Platforms": [
