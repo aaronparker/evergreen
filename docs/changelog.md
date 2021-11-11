@@ -3,6 +3,12 @@
 ## VERSION
 
 * Adds `OctopusDeployServer`, `OctopusTentacle`
+* Adds `dbeaver`, `MattermostDesktop`. Thanks to [@BornToBeRoot](https://github.com/BornToBeRoot)
+* Adds MSIX file type and ARM64 architecture to `MozillaFirefox`
+* BREAKING CHANGES:
+
+    * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
+    * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
 
 ## 2110.467
 

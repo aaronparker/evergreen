@@ -6,7 +6,9 @@
             "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
             "Channels": [
                 "LATEST_FIREFOX_VERSION",
-                "FIREFOX_ESR",
+                "FIREFOX_ESR"
+            ],
+            "Preview": [
                 "FIREFOX_ESR_NEXT"
             ]
         },
@@ -14,11 +16,13 @@
             "Uri": {
                 "LATEST_FIREFOX_VERSION": {
                     "Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
-                    "Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"
+                    "Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-msix-latest-ssl&os=#platform&lang=#language"
                 },
                 "FIREFOX_ESR": {
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
-                    "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"
+                    "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-esr-msix-latest-ssl&os=#platform&lang=#language"
                 },
                 "FIREFOX_ESR_NEXT": {						 
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-next-latest-ssl&os=#platform&lang=#language",
@@ -27,7 +31,8 @@
             },
             "Platforms": [
                 "win64",
-                "win"
+                "win",
+                "win64-aarch64"
             ],
             "Languages": [
                 "en-US",
