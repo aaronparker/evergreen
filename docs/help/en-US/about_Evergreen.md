@@ -2,11 +2,11 @@
 
 ## about_Evergreen
 
-# SHORT DESCRIPTION
+### SHORT DESCRIPTION
 
 Return the latest version and download URLs for a set of common Windows applications.
 
-# LONG DESCRIPTION
+### LONG DESCRIPTION
 
 Evergreen is a PowerShell module that returns the latest version and download URLs for a set of common Windows applications. The module consists of simple functions to use in scripts when performing several tasks including:
 

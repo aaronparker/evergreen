@@ -30,7 +30,7 @@ Find-EvergreenApp
 ```
 
 Description:
-Returns a table with the all of the currently supported applications.
+Returns a table with the all of the applications currently supported by Evergreen.
 
 ### EXAMPLE 2
 
