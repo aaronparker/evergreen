@@ -1,7 +1,7 @@
-Function Get-MicrosoftEdge {
+Function Get-MicrosoftEdgeDriver {
     <#
         .SYNOPSIS
-            Returns the available Microsoft Edge versions and channels by querying the official Microsoft version JSON.
+            Returns the available Microsoft Edge Driver versions and downloads.
 
         .NOTES
             Author: Aaron Parker
@@ -44,25 +44,24 @@ Function Get-MicrosoftEdge {
                 # Expand the Releases property for that product version
                 $releases = $updateFeed | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.Update.ReleaseProperty | `
-                    Where-Object { ($_.ProductVersion -eq $latestRelease.ProductVersion) -and ($_.Platform -in $res.Get.Update.Platform) -and ($_.Architecture -in $res.Get.Update.Architectures) }
+                    Where-Object { ($_.ProductVersion -eq $latestRelease.ProductVersion) -and ($_.Platform -in $res.Get.Update.Platform) -and ($_.Architecture -in $res.Get.Update.Architectures) } | `
+                    Select-Object -First 1
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
                 # Create the output objects
                 ForEach ($release in $releases) {
                     If ($release.Artifacts.Count -gt 0) {
-                        $PSObject = [PSCustomObject] @{
-                            Version      = $release.ProductVersion
-                            Platform     = $release.Platform
-                            Channel      = $product
-                            Release      = $view.Name
-                            Architecture = $release.Architecture
-                            Date         = ConvertTo-DateTime -DateTime $release.PublishedTime -Pattern $res.Get.Update.DatePattern
-                            Hash         = $(If ($release.Artifacts.Hash.Count -gt 1) { $release.Artifacts.Hash[0] } Else { $release.Artifacts.Hash })
-                            URI          = $(If ($release.Artifacts.Location.Count -gt 1) { $release.Artifacts.Location[0] } Else { $release.Artifacts.Location })
-                        }
 
                         # Output object to the pipeline
-                        Write-Output -InputObject $PSObject
+                        ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
+                            $PSObject = [PSCustomObject] @{
+                                Version      = $release.ProductVersion
+                                Channel      = $product
+                                Architecture = $item.Name
+                                URI          = $($res.Get.Download.Uri[$item.Key] -replace "#version", $release.ProductVersion)
+                            }
+                            Write-Output -InputObject $PSObject
+                        }
                     }
                 }
             }

@@ -5,47 +5,45 @@
         "Update": {
             "Uri": "https://edgeupdates.microsoft.com/api/products",
             "Views": {
-                "Consumer": "",
-                "Enterprise": "?view=enterprise"
+                "Consumer": ""
             },
             "Platform": [
-                "Windows",
-                "Any"
+                "Windows"
             ],
             "Channels": [
                 "Canary",
                 "Dev",
                 "Beta",
-                "Stable",
-                "EdgeUpdate",
-                "Policy"
+                "Stable"
             ],
             "Architectures": [
                 "x64",
                 "x86",
-                "arm64",
-                "any"
+                "ARM64"
             ],
             "ReleaseProperty": "Releases",
             "SortProperty": "ProductVersion",
             "ContentType": "application/json; charset=utf-8",
             "DatePattern": "MM/dd/yyyy HH:mm:ss",
             "FileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+        },
+        "Download": {
+            "Uri": {
+                "ARM64": "https://msedgedriver.azureedge.net/#version/edgedriver_arm64.zip",
+                "x64": "https://msedgedriver.azureedge.net/#version/edgedriver_win64.zip",
+                "x86": "https://msedgedriver.azureedge.net/#version/edgedriver_win32.zip"
+            }
         }
     },
     "Install": {
-        "Setup": "MicrosoftEdge*.msi",
+        "Setup": "",
         "Physical": {
-            "Arguments": "/passive /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE",
-            "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Edge.lnk\" -Force -ErrorAction SilentlyContinue"
-            ]
+            "Arguments": "",
+            "PostInstall": []
         },
         "Virtual": {
-            "Arguments": "/passive /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE",
-            "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Edge.lnk\" -Force -ErrorAction SilentlyContinue"
-            ]
+            "Arguments": "",
+            "PostInstall": []
         }
     }
 }
