@@ -1,0 +1,18 @@
+{
+	"Name": "PuTTY",
+	"Source": "https://www.pdf24.org/",
+	"Get": {
+		"Uri": "https://stx.pdf24.org/products/pdf-creator/download/"
+	},
+	"Install": {
+		"Setup": "pdf24-creator-*.msi",
+		"Physical": {
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
+		}
+	}
+}
