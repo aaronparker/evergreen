@@ -1,0 +1,9 @@
+{
+	"Name": "PuTTY",
+	"Source": "https://www.chiark.greenend.org.uk/~sgtatham/putty/",
+	"Get": {
+		"Uri": "https://the.earth.li/~sgtatham/putty/latest/",
+		"MatchVersion": "(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)",
+		"MatchFileTypes": "^putty.exe$|\\.msi$"
+	}
+}
