@@ -5,5 +5,16 @@
 		"Uri": "https://the.earth.li/~sgtatham/putty/latest/",
 		"MatchVersion": "(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)",
 		"MatchFileTypes": "^putty.exe$|\\.msi$"
+	},
+	"Install": {
+		"Setup": "putty*.msi",
+		"Physical": {
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet /noreboot",
+			"PostInstall": []
+		}
 	}
 }
