@@ -21,41 +21,28 @@ Function Get-PuTTY {
     )
 
     # Get latest download url (https://the.earth.li/~sgtatham/putty/latest/ --> https://the.earth.li/~sgtatham/putty/0.xx/)
-    $LatestUrl = (Invoke-WebRequest $res.Get.Uri -Method Head).BaseResponse.ResponseUri.AbsoluteUri
+    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri
+    If ($Null -ne $Response) {
 
-    # Extract the version from the redirect url
-    $Version = [regex]::Match($LatestUrl, $res.Get.MatchVersion).Value
+        # Extract the version from the redirect url
+        $Version = [RegEx]::Match($Response.ResponseUri, $res.Get.Update.MatchVersion).Value
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
 
-    # Go through each subfolder
-    foreach ($Arch in "x86", "x64") {
-        
-        $ArchUrl = $LatestUrl
+        ForEach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
 
-        switch ($Arch) {
-            "x86" { $ArchUrl += "w32/"; break }             
-            "x64" { $ArchUrl += "w64/"; break }
-        }
+            # Construct the URI
+            $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceText, $Version
 
-        # Get the download links for each subfolder
-        foreach ($Link in (Invoke-WebRequest $ArchUrl -UseBasicParsing).Links.href) {
-            # Match putty.exe and *.msi
-            if ([regex]::IsMatch($Link, $res.Get.MatchFileTypes)) {
-
-                $DownloadUri = $($ArchUrl + $Link)
-
-                # Get the headers (size, date, etc.)
-                $FileHeaders = (Invoke-WebRequest $DownloadUri -Method Head).Headers
-
-                [pscustomobject]@{
-                    Version      = $Version
-                    Platform     = "Windows"
-                    Architecture = $Arch                    
-                    Type         = [System.IO.Path]::GetExtension($Link).TrimStart(".")
-                    Date         = [DateTime]$FileHeaders.Date
-                    Size         = $FileHeaders.'Content-Length'
-                    URI          = $DownloadUri
-                }
+            # Output the Version and URI object
+            $PSObject = [PSCustomObject] @{
+                Version      = $Version
+                Architecture = $Architecture.Name
+                Type         = [System.IO.Path]::GetExtension($Uri).TrimStart(".")
+                Date         = [System.DateTime]$Response.LastModified
+                URI          = $Uri
             }
+            Write-Output -InputObject $PSObject
+
         }
     }
 }
