@@ -4,7 +4,9 @@
     "Get": {
         "Download": {
             "Uri": {
-                "Production": "https://aka.ms/fslogix_download",
+                "Production": "https://aka.ms/fslogix/download"
+            },
+            "Uri2": {
                 "Preview": "https://aka.ms/fslogix/downloadpreview"
             },
             "MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",

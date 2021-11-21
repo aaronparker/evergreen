@@ -1,12 +1,12 @@
 [
   {
-    "Version": "6.1.22",
+    "Version": "6.1.28",
     "Type": "iso",
-    "URI": "https://download.virtualbox.org/virtualbox/6.1.22/VBoxGuestAdditions_6.1.22.iso"
+    "URI": "https://download.virtualbox.org/virtualbox/6.1.28/VBoxGuestAdditions_6.1.28.iso"
   },
   {
-    "Version": "6.1.22",
+    "Version": "6.1.28",
     "Type": "exe",
-    "URI": "https://download.virtualbox.org/virtualbox/6.1.22/VirtualBox-6.1.22-144080-Win.exe"
+    "URI": "https://download.virtualbox.org/virtualbox/6.1.28/VirtualBox-6.1.28-147628-Win.exe"
   }
 ]

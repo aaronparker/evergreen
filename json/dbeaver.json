@@ -1,0 +1,9 @@
+{
+  "Version": "21.2.5",
+  "Platform": "Windows",
+  "Architecture": "x64",
+  "Type": "exe",
+  "Date": "10/11/2021",
+  "Size": 105593208,
+  "URI": "https://github.com/dbeaver/dbeaver/releases/download/21.2.5/dbeaver-ce-21.2.5-x86_64-setup.exe"
+}

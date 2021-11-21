@@ -7,42 +7,32 @@
             "Channels": [
                 "LATEST_FIREFOX_VERSION",
                 "FIREFOX_ESR"
+            ],
+            "Preview": [
+                "FIREFOX_ESR_NEXT"
             ]
         },
         "Download": {
             "Uri": {
                 "LATEST_FIREFOX_VERSION": {
                     "Exe": "https://download.mozilla.org/?product=firefox-latest-ssl&os=#platform&lang=#language",
-                    "Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language"
+                    "Msi": "https://download.mozilla.org/?product=firefox-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-msix-latest-ssl&os=#platform&lang=#language"
                 },
                 "FIREFOX_ESR": {
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=#platform&lang=#language",
-                    "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language"
+                    "Msi": "https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-esr-msix-latest-ssl&os=#platform&lang=#language"
+                },
+                "FIREFOX_ESR_NEXT": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-esr-next-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-esr-next-msi-latest-ssl&os=#platform&lang=#language"
                 }
             },
             "Platforms": [
                 "win64",
-                "win"
-            ],
-            "Languages": [
-                "en-US",
-                "en-GB",
-                "en-CA",
-                "es-ES",
-                "sv-SE",
-                "pt-BR",
-                "pt-PT",
-                "de",
-                "fr",
-                "it",
-                "ja",
-                "nb-NO",
-                "nl",
-                "zh-CN",
-                "zh-TW",
-                "ar",
-                "hi-IN",
-                "ru"
+                "win",
+                "win64-aarch64"
             ],
             "FullLanguageList": [
                 "en-US",

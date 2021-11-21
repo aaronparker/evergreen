@@ -157,7 +157,7 @@
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Find-EvergreenApp</dev:code>
         <dev:remarks>
-          <maml:para>Description: Returns a table with the all of the currently supported applications.</maml:para>
+          <maml:para>Description: Returns a table with the all of the applications currently supported by Evergreen.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -326,11 +326,18 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 6 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams"</dev:code>
         <dev:remarks>
-          <maml:para>Description: `Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.</maml:para>
+          <maml:para>Description: `Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a directory structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the directory structure.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 7 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{ Language = "en-GB", "es-ES" }</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Passes en-GB an es-ES languages to MozillaFirefox to return downloads for these languages rather than the default en-US.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 8 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "GitHubRelease" -AppParams @{ Uri = "https://api.github.com/repos/atom/atom/releases/latest" }</dev:code>
         <dev:remarks>
           <maml:para>Description: Passes a custom repository to the internal application function for `GetHubRelease` rather than using the repository embedded into the manifest, allowing `Get-EvergreenApp` to find the releases for an application hosted on GitHub that isn't already supported by Evergreen.</maml:para>
@@ -350,13 +357,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <command:verb>Save</command:verb>
       <command:noun>EvergreenApp</command:noun>
       <maml:description>
-        <maml:para>Downloads target URIs passed to this function from `Get-EvergreenApp` into a folder structure.</maml:para>
+        <maml:para>Downloads target URIs passed to this function from `Get-EvergreenApp` into a directory structure.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Saves target URLs passed to this function from `Get-EvergreenApp` output to into a folder structure below -Path using the properties from the object passed to the function.</maml:para>
+      <maml:para>Saves target URLs passed to this function from `Get-EvergreenApp` output to into a directory structure below -Path using the properties from the object passed to the function.</maml:para>
       <maml:para>`Get-EvergreenApp` will return an object that may include application properties including (in the following order) - Product, Track, Channel, Release, Ring, Version, Language, and (processor) Architecture. Only properties that exist on the target object will be used.</maml:para>
-      <maml:para>This simplifies saving the target application installers or updaters into a consistent folder structure without having to build the target folder structure yourself or deal with other functions to download the file.</maml:para>
+      <maml:para>This simplifies saving the target application installers or updaters into a consistent directory structure without having to build the target directory structure yourself or deal with other functions to download the file.</maml:para>
+      <maml:para>To override the default behaviour that creates the directory structure based on the properties of the object passed to the function, use the `-CustomPath` parameter to specify an exact path to save files into. Note that this method download the first file and then will skip files from an object passed from `Get-EvergreenApp` that includes files with the same name.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -376,16 +384,16 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
-            <maml:para>The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
+            <maml:para>The target directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>System.IO.FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Proxy</maml:name>
           <maml:description>
             <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
@@ -397,12 +405,109 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ProxyCredential</maml:name>
           <maml:description>
             <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
-            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential cmdlet`.</maml:para>
-            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxies.</maml:para>
+            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>[System.Management.Automation.PSCredential]::Empty</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NoProgress</maml:name>
+          <maml:description>
+            <maml:para>`Save-EvergreenApp` uses `Invoke-WebRequest` to download target application installers. Download progress is suppressed by default for faster downloads; however, when `-Verbose` is used, download progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces this function to download the target application installers from the URI property even if they already exist in the target directory.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Save-EvergreenApp</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>`Save-EvergreenApp` accepts the PSObject from `Get-EvergreenApp`. `Save-EvergreenApp` will test for the existence of at least these properties - Version and URI.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+          <dev:type>
+            <maml:name>PSObject</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+          <maml:name>CustomPath</maml:name>
+          <maml:description>
+            <maml:para>Specify a single directory path where all application installers will be saved into. No sub-directories will be created.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+          <dev:type>
+            <maml:name>System.IO.FileInfo</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Proxy</maml:name>
+          <maml:description>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ProxyCredential</maml:name>
+          <maml:description>
+            <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
           <dev:type>
@@ -473,16 +578,28 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
-          <maml:para>The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
+          <maml:para>The target directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>System.IO.FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
+        <maml:name>CustomPath</maml:name>
+        <maml:description>
+          <maml:para>Specify a single directory path where all application installers will be saved into. No sub-directories will be created.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+        <dev:type>
+          <maml:name>System.IO.FileInfo</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Proxy</maml:name>
         <maml:description>
           <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
@@ -494,12 +611,12 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ProxyCredential</maml:name>
         <maml:description>
           <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
-          <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential cmdlet`.</maml:para>
-          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxies.</maml:para>
+          <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
@@ -587,7 +704,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -Path "C:\Temp\Adobe"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Downloads all of the URIs returned by `Get-AdobeAcrobat` to a folder structure below C:\Temp\Adobe&lt;version&gt;.</maml:para>
+          <maml:para>Description: Downloads each file specified in the URIs returned by `Get-EvergreenApp -Name "AdobeAcrobat"` to a directory structure below C:\Temp\Adobe, resulting in a directory structure per file like: C:\Temp\Adobe\&lt;Product&gt;\&lt;Track&gt;\&lt;Version&gt;\&lt;Language&gt;\&lt;Architecture&gt;.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-EvergreenApp -Name "AdobeAcrobat" | Save-EvergreenApp -CustomPath "C:\Temp\Adobe"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Downloads all of the URIs returned by `Get-EvergreenApp -Name "AdobeAcrobat"` to a directory named C:\Temp\Adobe. All files specified in the URI property will be saved into this directory.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

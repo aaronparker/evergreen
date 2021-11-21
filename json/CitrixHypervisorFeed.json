@@ -63,20 +63,6 @@
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/hypervisor-80-standard-edition.html"
   },
   {
-    "Version": "7.1",
-    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 2",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "12/12/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU2-standard-edition.html"
-  },
-  {
-    "Version": "7.1",
-    "Title": "XenServer 7.1 LTSR Enterprise Edition with Cumulative Update 2",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "12/12/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU2-enterprise-edition.html"
-  },
-  {
     "Version": "7.6",
     "Title": "XenServer 7.6 Enterprise Edition",
     "Description": "New downloads are available for Citrix Hypervisor",
@@ -99,17 +85,17 @@
   },
   {
     "Version": "7.5",
-    "Title": "XenServer 7.5 Free Edition",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "30/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-75-free-edition.html"
-  },
-  {
-    "Version": "7.5",
     "Title": "XenServer 7.5 Standard Edition",
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "30/5/2018",
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-75-standard-edition.html"
+  },
+  {
+    "Version": "7.5",
+    "Title": "XenServer 7.5 Free Edition",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "30/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-75-free-edition.html"
   },
   {
     "Version": "7.5",
@@ -154,20 +140,6 @@
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-73-enterprise-edition.html"
   },
   {
-    "Version": "7.1",
-    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 1",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "11/9/2017",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-standard-edition.html"
-  },
-  {
-    "Version": "7.1",
-    "Title": "XenServer 7.1 LTSR Enterprise Edition with Cumulative Update 1",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "11/9/2017",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-enterprise-edition.html"
-  },
-  {
     "Version": "7.2",
     "Title": "XenServer 7.2 Enterprise Edition ",
     "Description": "New downloads are available for Citrix Hypervisor",
@@ -187,6 +159,34 @@
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "23/2/2017",
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-enterprise-edition.html"
+  },
+  {
+    "Version": "7.1",
+    "Title": "XenServer 7.1 LTSR Enterprise Edition with Cumulative Update 2",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "12/12/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU2-enterprise-edition.html"
+  },
+  {
+    "Version": "7.1",
+    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 2",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "12/12/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU2-standard-edition.html"
+  },
+  {
+    "Version": "7.1",
+    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 1",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "11/9/2017",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-standard-edition.html"
+  },
+  {
+    "Version": "7.1",
+    "Title": "XenServer 7.1 LTSR Enterprise Edition with Cumulative Update 1",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "11/9/2017",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-enterprise-edition.html"
   },
   {
     "Version": "7.0",
@@ -224,17 +224,17 @@
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-62.html"
   },
   {
-    "Version": "6.0.2",
-    "Title": "XenServer 6.0.2 Common Criteria Version",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "12/10/2012",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-602-common-criteria-version.html"
-  },
-  {
     "Version": "6.1",
     "Title": "XenServer 6.1",
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "28/9/2012",
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-6-1.html"
+  },
+  {
+    "Version": "6.0.2",
+    "Title": "XenServer 6.0.2 Common Criteria Version",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "12/10/2012",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-602-common-criteria-version.html"
   }
 ]

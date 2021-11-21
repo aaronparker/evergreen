@@ -1,5 +1,68 @@
 [
   {
+    "Version": "13.10",
+    "Title": "Receiver 13.10 for Linux",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "20/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html"
+  },
+  {
+    "Version": "13.9.1",
+    "Title": "Receiver 13.9.1 for Linux",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "23/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-1391.html"
+  },
+  {
+    "Version": "12.9.1",
+    "Title": "Receiver 12.9.1 for Mac",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "2/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/mac/receiver-for-mac-latest.html"
+  },
+  {
+    "Version": "12.8.1",
+    "Title": "Receiver 12.8.1 for Mac",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "17/1/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-mac/receiver-for-mac-1281.html"
+  },
+  {
+    "Version": "7.5.6",
+    "Title": "Receiver 7.5.6 for iOS",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "1/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/ios/receiver-for-ios.html"
+  },
+  {
+    "Version": "4.12",
+    "Title": "Receiver 4.12 Desktop Lock",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "4/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/receiver-desktop-lock-412.html"
+  },
+  {
+    "Version": "4.12",
+    "Title": "Receiver 4.12 for Windows",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "4/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/windows/receiver-for-windows-latest.html"
+  },
+  {
+    "Version": "4.11",
+    "Title": "Receiver 4.11 for Windows",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "26/2/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-windows/receiver-for-windows-4111.html"
+  },
+  {
+    "Version": "4.11",
+    "Title": "Receiver 4.11 Desktop Lock",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "26/2/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/receiver-desktop-lock-411.html"
+  },
+  {
     "Version": "4.9.9002",
     "Title": "Receiver 4.9.9002 for Windows, LTSR Cumulative Update 9",
     "Description": "New downloads are available for Citrix Receiver",
@@ -42,6 +105,13 @@
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-windows-ltsr/receiver-for-windows-ltsr-_4_9_4000_.html"
   },
   {
+    "Version": "4.9.2000",
+    "Title": "Receiver 4.9.2000 for Windows, LTSR Cumulative Update 2",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "2/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-windows-ltsr/receiver-for-windows-ltsr_4_9_2000.html"
+  },
+  {
     "Version": "3.13.9",
     "Title": "Receiver 3.13.9 for Android",
     "Description": "New downloads are available for Citrix Receiver",
@@ -49,102 +119,11 @@
     "URI": "https://www.citrix.com/downloads/citrix-receiver/android/receiver-for-android.html"
   },
   {
-    "Version": "13.10",
-    "Title": "Receiver 13.10 for Linux",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "20/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html"
-  },
-  {
-    "Version": "2.6.9",
-    "Title": "Receiver 2.6.9 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "20/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/html5/receiver-for-html5-latest.html"
-  },
-  {
-    "Version": "4.12",
-    "Title": "Receiver 4.12 for Windows",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "4/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/windows/receiver-for-windows-latest.html"
-  },
-  {
-    "Version": "4.12",
-    "Title": "Receiver 4.12 Desktop Lock",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "4/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/receiver-desktop-lock-412.html"
-  },
-  {
-    "Version": "3.2",
-    "Title": "Fast Connect 3.2 API for Receiver 4.12, 4.11, 4.10, 4.9, 4.8,  4.7, 4.6 and 4.5 for Windows",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "4/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/fast-connect-sdks/fast-connect-api-412_411_410_49_48_47_46_45.html"
-  },
-  {
-    "Version": "7.5.6",
-    "Title": "Receiver 7.5.6 for iOS",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "1/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/ios/receiver-for-ios.html"
-  },
-  {
-    "Version": "2.6.8",
-    "Title": "Receiver 2.6.8 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "31/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-268.html"
-  },
-  {
-    "Version": "2.6.8",
-    "Title": "Receiver 2.6.8 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "31/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-268.html"
-  },
-  {
     "Version": "3.13.7",
     "Title": "Receiver 3.13.7 for Android",
     "Description": "New downloads are available for Citrix Receiver",
     "Date": "4/5/2018",
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android-3137.html"
-  },
-  {
-    "Version": "2.6.7",
-    "Title": "Receiver 2.6.7 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "3/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-267.html"
-  },
-  {
-    "Version": "2.6.7",
-    "Title": "Receiver 2.6.7 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "3/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-267.html"
-  },
-  {
-    "Version": "12.9.1",
-    "Title": "Receiver 12.9.1 for Mac",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "2/5/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/mac/receiver-for-mac-latest.html"
-  },
-  {
-    "Version": "2.6.6",
-    "Title": "Receiver 2.6.6 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "18/4/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-266.html"
-  },
-  {
-    "Version": "2.6.6",
-    "Title": "Receiver 2.6.6 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "18/4/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-266.html"
   },
   {
     "Version": "3.13.6",
@@ -161,81 +140,11 @@
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android-3135.html"
   },
   {
-    "Version": "2.6.5",
-    "Title": "Receiver 2.6.5 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "28/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-265.html"
-  },
-  {
-    "Version": "2.6.5",
-    "Title": "Receiver 2.6.5 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "28/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-265.html"
-  },
-  {
-    "Version": "13.9.1",
-    "Title": "Receiver 13.9.1 for Linux",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "23/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-1391.html"
-  },
-  {
     "Version": "3.13.4",
     "Title": "Receiver 3.13.4 for Android",
     "Description": "New downloads are available for Citrix Receiver",
     "Date": "7/3/2018",
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android-3134.html"
-  },
-  {
-    "Version": "2.6.4",
-    "Title": "Receiver 2.6.4 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "7/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-2641.html"
-  },
-  {
-    "Version": "4.9.2000",
-    "Title": "Receiver 4.9.2000 for Windows, LTSR Cumulative Update 2",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "2/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-windows-ltsr/receiver-for-windows-ltsr_4_9_2000.html"
-  },
-  {
-    "Version": "4.11",
-    "Title": "Receiver 4.11 for Windows",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "26/2/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-windows/receiver-for-windows-4111.html"
-  },
-  {
-    "Version": "4.11",
-    "Title": "Receiver 4.11 Desktop Lock",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "26/2/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/receiver-desktop-lock-411.html"
-  },
-  {
-    "Version": "3.2",
-    "Title": "Fast Connect 3.2 API for Receiver 4.11, Receiver 4.10, Receiver 4.9, Receiver 4.8,  Receiver 4.7, Receiver 4.6 and Receiver 4.5 for Windows",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "26/2/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/fast-connect-sdks/fast-connect-api-411_410_49_48_47_46_45.html"
-  },
-  {
-    "Version": "2.6.3",
-    "Title": "Receiver 2.6.3 for HTML5",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "14/2/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-263.html"
-  },
-  {
-    "Version": "2.6.3",
-    "Title": "Receiver 2.6.3 for Chrome",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "14/2/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-263.html"
   },
   {
     "Version": "3.13.3",
@@ -252,6 +161,111 @@
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android3132.html"
   },
   {
+    "Version": "3.13.1",
+    "Title": "Receiver 3.13.1 for Android",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "11/1/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android-3131.html"
+  },
+  {
+    "Version": "3.2",
+    "Title": "Fast Connect 3.2 API for Receiver 4.11, Receiver 4.10, Receiver 4.9, Receiver 4.8,  Receiver 4.7, Receiver 4.6 and Receiver 4.5 for Windows",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "26/2/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/fast-connect-sdks/fast-connect-api-411_410_49_48_47_46_45.html"
+  },
+  {
+    "Version": "3.2",
+    "Title": "Fast Connect 3.2 API for Receiver 4.12, 4.11, 4.10, 4.9, 4.8,  4.7, 4.6 and 4.5 for Windows",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "4/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/fast-connect-sdks/fast-connect-api-412_411_410_49_48_47_46_45.html"
+  },
+  {
+    "Version": "2.6.9",
+    "Title": "Receiver 2.6.9 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "20/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/html5/receiver-for-html5-latest.html"
+  },
+  {
+    "Version": "2.6.8",
+    "Title": "Receiver 2.6.8 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "31/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-268.html"
+  },
+  {
+    "Version": "2.6.8",
+    "Title": "Receiver 2.6.8 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "31/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-268.html"
+  },
+  {
+    "Version": "2.6.7",
+    "Title": "Receiver 2.6.7 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "3/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-267.html"
+  },
+  {
+    "Version": "2.6.7",
+    "Title": "Receiver 2.6.7 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "3/5/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-267.html"
+  },
+  {
+    "Version": "2.6.6",
+    "Title": "Receiver 2.6.6 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "18/4/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-266.html"
+  },
+  {
+    "Version": "2.6.6",
+    "Title": "Receiver 2.6.6 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "18/4/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-266.html"
+  },
+  {
+    "Version": "2.6.5",
+    "Title": "Receiver 2.6.5 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "28/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-265.html"
+  },
+  {
+    "Version": "2.6.5",
+    "Title": "Receiver 2.6.5 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "28/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-265.html"
+  },
+  {
+    "Version": "2.6.4",
+    "Title": "Receiver 2.6.4 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "7/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-2641.html"
+  },
+  {
+    "Version": "2.6.3",
+    "Title": "Receiver 2.6.3 for HTML5",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "14/2/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-html5/receiver-for-html5-263.html"
+  },
+  {
+    "Version": "2.6.3",
+    "Title": "Receiver 2.6.3 for Chrome",
+    "Description": "New downloads are available for Citrix Receiver",
+    "Date": "14/2/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-263.html"
+  },
+  {
     "Version": "2.6.2",
     "Title": "Receiver 2.6.2 for HTML5",
     "Description": "New downloads are available for Citrix Receiver",
@@ -264,26 +278,5 @@
     "Description": "New downloads are available for Citrix Receiver",
     "Date": "23/1/2018",
     "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-chrome/receiver-for-chrome-262.html"
-  },
-  {
-    "Version": "12.8.1",
-    "Title": "Receiver 12.8.1 for Mac",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "17/1/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-mac/receiver-for-mac-1281.html"
-  },
-  {
-    "Version": "3.13.1",
-    "Title": "Receiver 3.13.1 for Android",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "11/1/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-android/receiver-for-android-3131.html"
-  },
-  {
-    "Version": "4.10.1",
-    "Title": "Receiver 4.10.1 Desktop Lock",
-    "Description": "New downloads are available for Citrix Receiver",
-    "Date": "4/1/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-receiver/additional-client-software/receiver-desktop-lock-41011.html"
   }
 ]

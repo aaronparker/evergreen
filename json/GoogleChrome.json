@@ -1,14 +1,50 @@
 [
   {
-    "Version": "91.0.4472.124",
+    "Version": "98.0.4710.4",
     "Architecture": "x64",
-    "Date": "24/6/2021",
+    "Channel": "dev",
+    "Date": "19/11/2021",
+    "Type": "msi",
+    "URI": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi"
+  },
+  {
+    "Version": "98.0.4710.4",
+    "Architecture": "x86",
+    "Channel": "dev",
+    "Date": "19/11/2021",
+    "Type": "msi",
+    "URI": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise.msi"
+  },
+  {
+    "Version": "97.0.4692.20",
+    "Architecture": "x64",
+    "Channel": "beta",
+    "Date": "18/11/2021",
+    "Type": "msi",
+    "URI": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi"
+  },
+  {
+    "Version": "97.0.4692.20",
+    "Architecture": "x86",
+    "Channel": "beta",
+    "Date": "18/11/2021",
+    "Type": "msi",
+    "URI": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi"
+  },
+  {
+    "Version": "96.0.4664.45",
+    "Architecture": "x64",
+    "Channel": "stable",
+    "Date": "15/11/2021",
+    "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
   },
   {
-    "Version": "91.0.4472.124",
+    "Version": "96.0.4664.45",
     "Architecture": "x86",
-    "Date": "24/6/2021",
+    "Channel": "stable",
+    "Date": "15/11/2021",
+    "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise.msi"
   }
 ]

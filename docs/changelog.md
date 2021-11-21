@@ -1,5 +1,22 @@
 # Change log
 
+## VERSION
+
+* Adds `-CustomPath` parameter to `Save-EvergreenApp` - allows for specifying a specific target directory for downloads instead of building the directory structure automatically from the input object [#260](https://github.com/aaronparker/evergreen/issues/260)
+* Adds `OctopusDeployServer` [#238](https://github.com/aaronparker/evergreen/issues/238), `OctopusTentacle` [#239](https://github.com/aaronparker/evergreen/issues/239), `7ZipZS` [#232](https://github.com/aaronparker/evergreen/issues/232), `PDF24Creator` [#258](https://github.com/aaronparker/evergreen/issues/258), `MicrosoftEdgeDriver` [#262](https://github.com/aaronparker/evergreen/issues/262), `MirantisLens` [#248](https://github.com/aaronparker/evergreen/issues/248), `GeekSoftwarePDF24Creator` [#256](https://github.com/aaronparker/evergreen/issues/256)
+* Adds `dbeaver`, `MattermostDesktop`, `PuTTY` [#255](https://github.com/aaronparker/evergreen/issues/255). Thanks to [@BornToBeRoot](https://github.com/BornToBeRoot)
+* Adds `VisualCppRedistAIO` [#250](https://github.com/aaronparker/evergreen/issues/250), `OpenWebStart` [#263](https://github.com/aaronparker/evergreen/issues/263). Thanks to [@JonathanPitre](https://github.com/JonathanPitre)
+* Updates `MozillaFirefox` to output MSIX file type and ARM64 architecture
+* Updates `AmazonCorretto` to include version 17 [#249](https://github.com/aaronparker/evergreen/issues/249)
+* Updates `GoogleChrome` to include channels `Dev` and `Beta` [#243](https://github.com/aaronparker/evergreen/issues/243)
+* Updates source URI for `MicrosoftFSLogixApps` due to changes in source [#259](https://github.com/aaronparker/evergreen/issues/259)
+* Fixes URI values for `SumatraPDFViewer` due to changes in source [#211](https://github.com/aaronparker/evergreen/issues/211)
+* Fixes URI values for `FoxitReader` due to changes in source [#261](https://github.com/aaronparker/evergreen/issues/261)
+* BREAKING CHANGES:
+
+    * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
+    * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
+
 ## 2110.467
 
 * Fixes an issue with `AdobeAcrobat` where the string returned from the Adobe update API added a new line after the version number [#233](https://github.com/aaronparker/evergreen/issues/233)

@@ -1,20 +1,4 @@
-[
-  {
-    "Version": "0.14.1.0",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "6/1/2021",
-    "Size": 323870720,
-    "URI": "https://github.com/jasp-stats/jasp-desktop/releases/download/v0.14.1.0/JASP-0.14.1-32bit.msi"
-  },
-  {
-    "Version": "0.14.1.0",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "6/1/2021",
-    "Size": 332992512,
-    "URI": "https://github.com/jasp-stats/jasp-desktop/releases/download/v0.14.1.0/JASP-0.14.1-64bit.msi"
-  }
-]
+{
+  "Version": "0.16.0",
+  "URI": "https://static.jasp-stats.org/JASP-0.16.0-64bit.msi"
+}

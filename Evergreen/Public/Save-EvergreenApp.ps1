@@ -3,7 +3,7 @@ Function Save-EvergreenApp {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save/")]
+    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save/", DefaultParameterSetName = "Path")]
     [Alias("sea")]
     param (
         [Parameter(
@@ -18,9 +18,19 @@ Function Save-EvergreenApp {
             Mandatory = $False,
             Position = 1,
             ValueFromPipelineByPropertyName,
-            HelpMessage = "Specify a directory where the application installers will be saved into.")]
-        [ValidateNotNull()]
-        [System.IO.FileInfo] $Path = (Resolve-Path -Path $PWD),
+            HelpMessage = "Specify a top-level directory path where the application installers will be saved into.",
+            ParameterSetName = "Path")]
+        #[ValidateNotNull()]
+        [System.IO.FileInfo] $Path,
+
+        [Parameter(
+            Mandatory = $False,
+            Position = 1,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "Specify a single directory path where all application installers will be saved into.",
+            ParameterSetName = "CustomPath")]
+        #[ValidateNotNull()]
+        [System.IO.FileInfo] $CustomPath,
 
         [Parameter(Mandatory = $False, Position = 2)]
         [System.String] $Proxy,
@@ -45,29 +55,42 @@ Function Save-EvergreenApp {
         Else {
             $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
         }
+
+        # Path variable from parameters set via -Path or -CustomPath
+        Switch ($PSCmdlet.ParameterSetName) {
+            "Path" {
+                If ([System.String]::IsNullOrEmpty($Path)) { Throw "Cannot bind argument to parameter 'Path' because it is null."}
+                $NewPath = $Path
+            }
+            "CustomPath" {
+                If ([System.String]::IsNullOrEmpty($CustomPath)) { Throw "Cannot bind argument to parameter 'CustomPath' because it is null."}
+                $NewPath = $CustomPath
+            }
+        }
         
-        # Test $Path and attempt to create it if it doesn't exist
-        If (Test-Path -Path $Path -PathType "Container") {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $Path."
+        #region Test $Path and attempt to create it if it doesn't exist
+        If (Test-Path -Path $NewPath -PathType "Container") {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $NewPath."
         } 
         Else {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Path does not exist: $Path."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Path does not exist: $NewPath."
             try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Create: $NewPath."
                 $params = @{
-                    Path        = $Path
+                    Path        = $NewPath
                     ItemType    = "Container"
                     ErrorAction = "SilentlyContinue"
                 }
-                New-Item @params
+                New-Item @params | Out-Null
             }
             catch {
-                Throw "Failed to create $Path with: $($_)"
+                Throw "$($MyInvocation.MyCommand): Failed to create $NewPath with: $($_.Exception.Message)"
             }
         }
+        #endregion
 
         # Enable TLS 1.2
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Write-Warning -Message "$($MyInvocation.MyCommand): This function is currently in preview. Output paths cannot be customised."
     }
 
     Process {
@@ -90,24 +113,32 @@ Function Save-EvergreenApp {
             }
             #endregion
 
-            # Resolve $Path to build the initial value of $OutPath
-            $OutPath = Resolve-Path -Path $Path -ErrorAction "SilentlyContinue"
-            If ($Null -ne $OutPath) {
+            # Handle the output path depending on whether -Path or -CustomPath are used
+            Switch ($PSCmdlet.ParameterSetName) {
+                "Path" {
+                    # Resolve $Path to build the initial value of $OutPath
+                    $OutPath = Resolve-Path -Path $Path -ErrorAction "SilentlyContinue"
+                    If ($Null -ne $OutPath) {
 
-                #region Validate the Version property
-                If ([System.Boolean]($Object.Version)) {
+                        #region Validate the Version property
+                        If ([System.Boolean]($Object.Version)) {
 
-                    # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
-                    $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
+                            # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
+                            $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
+                        }
+                        Else {
+                            Throw "$($MyInvocation.MyCommand): Object does not have valid Version property."
+                        }
+                        #endregion
+                    }
+                    Else {
+                        Throw "$($MyInvocation.MyCommand): Failed validating $OutPath."
+                    }
                 }
-                Else {
-                    Throw "$($MyInvocation.MyCommand): Object does not have valid Version property."
+                "CustomPath" {
+                    $OutPath = Resolve-Path -Path $CustomPath -ErrorAction "Stop"
                 }
-                #endregion
-            }
-            Else {
-                Throw "$($MyInvocation.MyCommand): Failed validating $Path."
             }
 
             # Download the file
@@ -130,24 +161,31 @@ Function Save-EvergreenApp {
                         }
                         Invoke-WebRequest @params
                         #endregion
+
+                        #region Write the downloaded file path to the pipeline
+                        If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
+                            Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
+                        }
+                        #endregion
                     }
                     catch [System.Exception] {
                         Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
                     }
                 }
-
-                #region Write the downloaded file path to the pipeline
-                If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
-                    Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
+                Else {
+                    #region Write the downloaded file path to the pipeline
+                    If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): File exists: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
+                        Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
+                    }
+                    #endregion
                 }
-                #endregion
             }
         }
     }
 
     End {
-
         Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
         If ($PSCmdlet.ShouldProcess("Remove variables")) {
             If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" -ErrorAction "SilentlyContinue" }

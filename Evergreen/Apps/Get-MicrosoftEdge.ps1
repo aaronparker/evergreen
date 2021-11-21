@@ -33,6 +33,7 @@ Function Get-MicrosoftEdge {
             ForEach ($product in $res.Get.Update.Channels) {
 
                 # Find the latest version
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Filter product: $product."
                 $latestRelease = $updateFeed | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.Update.ReleaseProperty | `
                     Where-Object { $_.Platform -in $res.Get.Update.Platform } | `
@@ -46,6 +47,7 @@ Function Get-MicrosoftEdge {
                     Where-Object { ($_.ProductVersion -eq $latestRelease.ProductVersion) -and ($_.Platform -in $res.Get.Update.Platform) -and ($_.Architecture -in $res.Get.Update.Architectures) }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
+                # Create the output objects
                 ForEach ($release in $releases) {
                     If ($release.Artifacts.Count -gt 0) {
                         $PSObject = [PSCustomObject] @{

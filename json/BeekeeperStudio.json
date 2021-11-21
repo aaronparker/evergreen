@@ -1,20 +1,20 @@
 [
   {
-    "Version": "1.12.0",
+    "Version": "2.1.5",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "7/6/2021",
-    "Size": 64918632,
-    "URI": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.12.0/Beekeeper-Studio-1.12.0-portable.exe"
+    "Date": "3/11/2021",
+    "Size": 66322176,
+    "URI": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v2.1.5/Beekeeper-Studio-2.1.5-portable.exe"
   },
   {
-    "Version": "1.12.0",
+    "Version": "2.1.5",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "7/6/2021",
-    "Size": 65080648,
-    "URI": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.12.0/Beekeeper-Studio-Setup-1.12.0.exe"
+    "Date": "3/11/2021",
+    "Size": 66484176,
+    "URI": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v2.1.5/Beekeeper-Studio-Setup-2.1.5.exe"
   }
 ]

@@ -89,9 +89,18 @@ Get-EvergreenApp -Name "MicrosoftTeams" | Save-EvergreenApp -Path "C:\Apps\Teams
 ```
 
 Description:
-`Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a folder structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the folder structure.
+`Get-EvergreenApp` returns the details for the latest version of Microsoft Teams which is passed via the pipeline to `Save-EvergreenApp`. The output is used to save the target URLs to C:\Apps\Teams using a directory structure based on the returned object. In this case, the Ring and Architecture properties of the returned object will be used in the directory structure.
 
 ### EXAMPLE 7
+
+```powershell
+Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{ Language = "en-GB", "es-ES" }
+```
+
+Description:
+Passes en-GB an es-ES languages to MozillaFirefox to return downloads for these languages rather than the default en-US.
+
+### EXAMPLE 8
 
 ```powershell
 Get-EvergreenApp -Name "GitHubRelease" -AppParams @{ Uri = "https://api.github.com/repos/atom/atom/releases/latest" }

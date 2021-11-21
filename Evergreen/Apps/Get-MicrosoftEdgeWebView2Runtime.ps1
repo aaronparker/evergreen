@@ -33,6 +33,7 @@ Function Get-MicrosoftEdgeWebView2Runtime {
             ForEach ($product in $res.Get.Update.Channels) {
 
                 # Find the latest version
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Filter product: $product."
                 $latestRelease = $updateFeed | Where-Object { $_.Product -eq $product } | `
                     Select-Object -ExpandProperty $res.Get.Update.ReleaseProperty | `
                     Where-Object { $_.Platform -in $res.Get.Update.Platform } | `
@@ -47,9 +48,10 @@ Function Get-MicrosoftEdgeWebView2Runtime {
                     Select-Object -First 1
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($releases.count) objects for: $product, with $($releases.Artifacts.count) artifacts."
 
+                # Create the output objects
                 ForEach ($release in $releases) {
                     If ($release.Artifacts.Count -gt 0) {
-                        
+
                         # Output object to the pipeline
                         ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
                             $PSObject = [PSCustomObject] @{

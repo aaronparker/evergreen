@@ -13,6 +13,7 @@
                 "Any"
             ],
             "Channels": [
+                "Canary",
                 "Dev",
                 "Beta",
                 "Stable",
