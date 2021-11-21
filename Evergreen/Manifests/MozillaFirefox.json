@@ -34,26 +34,6 @@
                 "win",
                 "win64-aarch64"
             ],
-            "Languages": [
-                "en-US",
-                "en-GB",
-                "en-CA",
-                "es-ES",
-                "sv-SE",
-                "pt-BR",
-                "pt-PT",
-                "de",
-                "fr",
-                "it",
-                "ja",
-                "nb-NO",
-                "nl",
-                "zh-CN",
-                "zh-TW",
-                "ar",
-                "hi-IN",
-                "ru"
-            ],
             "FullLanguageList": [
                 "en-US",
                 "en-GB",

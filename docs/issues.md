@@ -10,13 +10,6 @@ Where an application source is unavailable the value of the `URI` property retur
 
 `Get-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
 
-### Save-EvergreenApp
-
-The folder structure created by `Save-EvergreenApp` uses a static set of properties from the input object. This path cannot currently by customised by the user.
-
-!!! attention "Attention"
-    `Save-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
-
 ## Private Functions
 
 ### Resolve-DnsNameWrapper
@@ -63,6 +56,9 @@ Supports Windows platforms only - this application relies on `Resolve-DnsName` w
 
 The only recourse at this time is to wait until the TDF tells the update host to return the latest version. Also see [LibreOffice version](https://github.com/aaronparker/evergreen/issues/218)
 
+!!! attention "Attention"
+    `LibreOffice` has been removed from Evergreen due to on-going changes that TDF makes to the update mechanism.
+
 ### Microsoft365Apps
 
 `Microsoft365Apps` returns publicly documented channels only. Additional channels may be available from the Microsoft 365 Apps update API; however, these may not align to channels documented at microsoft.com, so are not included in this function.
@@ -82,6 +78,20 @@ The product release feed used by the Microsoft SQL Server Management Studio (e.g
 ### Microsoft Teams
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).
+
+### Mozilla Firefox
+
+`MozillaFirefox` will only return the English US installer by default. This has been done due to the lengthy amount of time that the function takes to query the Mozilla site to find the installers for each channel, architecture and file type. This could be up to 12 objects for each language - if the supported languages are included by default, then the function will take several minutes to return an object.
+
+Any supported language can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}` will return the English (UK) and Spanish language installers for Firefox.
+
+Most [supported languages](https://www.mozilla.org/en-US/firefox/all/#product-desktop-release) can be passed to the function as the language short code. The list of languages can be found in the [MozillaFirefox](https://github.com/aaronparker/evergreen/blob/main/Evergreen/Manifests/MozillaFirefox.json) manifest.
+
+Also note that `MozillaFirefox` will include the following warning which is normal - not all channels or installer types may return an object from the Mozilla site that can be used to find an installer download URL.
+
+```powershell
+WARNING: Resolve-SystemNetWebRequest: Error at URI: https://download.mozilla.org/?product=firefox-msix-latest-ssl&os=win64-aarch64&lang=en-US.
+```
 
 ### OBS Studio
 
