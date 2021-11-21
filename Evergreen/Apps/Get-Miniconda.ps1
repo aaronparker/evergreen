@@ -1,11 +1,11 @@
-Function Get-Anaconda {
+Function Get-Miniconda {
     <#
         .SYNOPSIS
-            Get the current version and download URL for Anaconda.
+            Get the current version and download URL for Miniconda.
 
         .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
+            Author: Aaron Parker
+            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -20,8 +20,9 @@ Function Get-Anaconda {
         [System.String] $Filter
     )
 
-    # Construct the Anaconda repo uri
+    # Construct the Miniconda repo uri
     $Uri = $res.Get.Update.Uri -replace "#replace", $res.Get.Update.ReplaceFileList
+
     # Query the repo to get the full list of files
     $updateFeed = Invoke-RestMethodWrapper -Uri $Uri 
 
@@ -31,10 +32,10 @@ Function Get-Anaconda {
         $FileNames = $updateFeed.PSObject.Properties.name -match $res.Get.MatchFileTypes 
 
         # Grab all the version numbers
-        Try {
-            $AllVersions = [RegEx]::Matches($FileNames, $res.Get.MatchVersion) | Select-Object -ExpandProperty Value -Unique
+        try {
+            $AllVersions = [RegEx]::Matches($FileNames, $res.Get.MatchVersion) | Select-Object -ExpandProperty "Value" -Unique
         }
-        Catch {
+        catch {
             Throw "$($MyInvocation.MyCommand): Failed to extract version numbers from $uri"
         }
 
