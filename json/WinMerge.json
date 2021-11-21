@@ -1,26 +1,26 @@
 [
   {
-    "Version": "2.16.12",
+    "Version": "2.16.16",
+    "Architecture": "x64",
+    "Type": "exe",
+    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.16/WinMerge-2.16.16-x64-Setup.exe"
+  },
+  {
+    "Version": "2.16.16",
     "Architecture": "x86",
     "Type": "exe",
-    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.12/WinMerge-2.16.12-Setup.exe"
+    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.16/WinMerge-2.16.16-Setup.exe"
   },
   {
-    "Version": "2.16.12",
+    "Version": "2.16.16",
     "Architecture": "ARM64",
     "Type": "exe",
-    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.12/WinMerge-2.16.12-ARM64-Setup.exe"
+    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.16/WinMerge-2.16.16-ARM64-Setup.exe"
   },
   {
-    "Version": "2.16.12",
+    "Version": "2.16.16",
     "Architecture": "x64",
     "Type": "exe",
-    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.12/WinMerge-2.16.12-x64-PerUser-Setup.exe"
-  },
-  {
-    "Version": "2.16.12",
-    "Architecture": "x64",
-    "Type": "exe",
-    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.12/WinMerge-2.16.12-x64-Setup.exe"
+    "URI": "https://nchc.dl.sourceforge.net/project/winmerge/stable/2.16.16/WinMerge-2.16.16-x64-PerUser-Setup.exe"
   }
 ]

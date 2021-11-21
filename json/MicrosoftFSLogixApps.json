@@ -1,14 +1,6 @@
-[
-  {
-    "Version": "2.9.7654.46150",
-    "Date": "9/1/2021",
-    "Channel": "Production",
-    "URI": "https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-cce0f54ce04c/FSLogix_Apps_2.9.7654.46150.zip"
-  },
-  {
-    "Version": "2.9.7802.10873",
-    "Date": "21/5/2021",
-    "Channel": "Preview",
-    "URI": "https://download.microsoft.com/download/d/b/e/dbeeff02-b137-4971-a70b-83c22f82380f/FSLogix_Apps_2.9.7802.10873.zip"
-  }
-]
+{
+  "Version": "2.9.7979.62170",
+  "Date": "9/11/2021",
+  "Channel": "Production",
+  "URI": "https://download.microsoft.com/download/3/f/7/3f755dbd-debe-46d4-811c-3e7c87bc4408/FSLogix_Apps_2.9.7979.62170.zip"
+}

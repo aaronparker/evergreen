@@ -1,0 +1,12 @@
+[
+  {
+    "Version": "1.4.1.1005",
+    "Architecture": "x64",
+    "URI": "https://www.voidtools.com/Everything.x64.msi"
+  },
+  {
+    "Version": "1.4.1.1005",
+    "Architecture": "x86",
+    "URI": "https://www.voidtools.com/Everything.x86.msi"
+  }
+]

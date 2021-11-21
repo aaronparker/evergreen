@@ -1,12 +1,14 @@
 [
   {
-    "Version": "3.2",
+    "Version": "3.3.3",
     "Architecture": "x86",
-    "URI": "https://www.sumatrapdfreader.org/dl2/SumatraPDF-3.2-install.exe"
+    "Type": "exe",
+    "URI": "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-3.3.3-install.exe"
   },
   {
-    "Version": "3.2",
+    "Version": "3.3.3",
     "Architecture": "x64",
-    "URI": "https://www.sumatrapdfreader.org/dl2/SumatraPDF-3.2-64-install.exe"
+    "Type": "exe",
+    "URI": "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-3.3.3-64-install.exe"
   }
 ]

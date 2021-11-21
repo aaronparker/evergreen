@@ -1,77 +1,77 @@
 [
   {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Chinese (Traditional)",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-CHT.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "German",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-DEU.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Italian",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ITA.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Portuguese (Brazil)",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-PTB.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "English",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ENU.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Japanese",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-JPN.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
-    "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Chinese (Simplified)",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-CHS.exe"
-  },
-  {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
     "Title": "Microsoft SQL Server Management Studio",
     "Language": "Russian",
     "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-RUS.exe"
   },
   {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
     "Title": "Microsoft SQL Server Management Studio",
-    "Language": "Spanish",
-    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ESN.exe"
+    "Language": "Italian",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ITA.exe"
   },
   {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "Japanese",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-JPN.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
     "Title": "Microsoft SQL Server Management Studio",
     "Language": "Korean",
     "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-KOR.exe"
   },
   {
-    "Version": "15.0.18384.0",
-    "Date": "17/4/2021",
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "Chinese (Simplified)",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-CHS.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "Spanish",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ESN.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "English",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-ENU.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "Portuguese (Brazil)",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-PTB.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "Chinese (Traditional)",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-CHT.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
+    "Title": "Microsoft SQL Server Management Studio",
+    "Language": "German",
+    "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-DEU.exe"
+  },
+  {
+    "Version": "15.0.18386.0",
+    "Date": "7/7/2021",
     "Title": "Microsoft SQL Server Management Studio",
     "Language": "French",
     "URI": "https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS-Setup-FRA.exe"

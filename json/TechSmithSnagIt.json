@@ -1,0 +1,23 @@
+[
+  {
+    "Version": "21.4.4",
+    "Date": "09/21/2021 00:00:00",
+    "Type": "exe",
+    "Architecture": "x64",
+    "URI": "http://download.techsmith.com/snagit/releases/2144/snagit.exe"
+  },
+  {
+    "Version": "21.4.4",
+    "Date": "09/21/2021 00:00:00",
+    "Type": "msi",
+    "Architecture": "x64",
+    "URI": "http://download.techsmith.com/snagit/releases/2144/snagit.msi"
+  },
+  {
+    "Version": "21.4.4",
+    "Date": "09/21/2021 00:00:00",
+    "Type": "msi",
+    "Architecture": "x86",
+    "URI": "http://download.techsmith.com/snagit/releases/2144/32bit/snagit.msi"
+  }
+]

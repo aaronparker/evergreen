@@ -1,0 +1,38 @@
+[
+  {
+    "Version": "21.03",
+    "Platform": "Windows",
+    "Architecture": "ARM32",
+    "Type": "exe",
+    "Date": "5/10/2021",
+    "Size": 2739321,
+    "URI": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/7z21.03-zstd-arm.exe"
+  },
+  {
+    "Version": "21.03",
+    "Platform": "Windows",
+    "Architecture": "ARM64",
+    "Type": "exe",
+    "Date": "5/10/2021",
+    "Size": 2641899,
+    "URI": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/7z21.03-zstd-arm64.exe"
+  },
+  {
+    "Version": "21.03",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "5/10/2021",
+    "Size": 2551448,
+    "URI": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/7z21.03-zstd-x32.exe"
+  },
+  {
+    "Version": "21.03",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "exe",
+    "Date": "5/10/2021",
+    "Size": 2814535,
+    "URI": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/7z21.03-zstd-x64.exe"
+  }
+]

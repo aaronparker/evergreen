@@ -1,20 +1,20 @@
 [
   {
-    "Version": "1.26.5",
+    "Version": "1.29.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "31/5/2021",
-    "Size": 711008,
-    "URI": "https://github.com/bitwarden/desktop/releases/download/v1.26.5/Bitwarden-Installer-1.26.5.exe"
+    "Date": "29/10/2021",
+    "Size": 711264,
+    "URI": "https://github.com/bitwarden/desktop/releases/download/v1.29.1/Bitwarden-Installer-1.29.1.exe"
   },
   {
-    "Version": "1.26.5",
+    "Version": "1.29.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "31/5/2021",
-    "Size": 163563968,
-    "URI": "https://github.com/bitwarden/desktop/releases/download/v1.26.5/Bitwarden-Portable-1.26.5.exe"
+    "Date": "29/10/2021",
+    "Size": 173555184,
+    "URI": "https://github.com/bitwarden/desktop/releases/download/v1.29.1/Bitwarden-Portable-1.29.1.exe"
   }
 ]

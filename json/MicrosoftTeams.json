@@ -1,38 +1,38 @@
 [
   {
-    "Version": "1.4.00.16575",
+    "Version": "1.4.00.31569",
     "Ring": "Preview",
     "Architecture": "x64",
-    "URI": "https://statics.teams.cdn.office.net/production-windows-x64/1.4.00.16575/Teams_windows_x64.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows-x64/1.4.00.31569/Teams_windows_x64.msi"
   },
   {
-    "Version": "1.4.00.16575",
+    "Version": "1.4.00.31569",
     "Ring": "Preview",
     "Architecture": "arm64",
-    "URI": "https://statics.teams.cdn.office.net/production-windows-arm64/1.4.00.16575/Teams_windows_arm64.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows-arm64/1.4.00.31569/Teams_windows_arm64.msi"
   },
   {
-    "Version": "1.4.00.16575",
+    "Version": "1.4.00.31569",
     "Ring": "Preview",
     "Architecture": "x86",
-    "URI": "https://statics.teams.cdn.office.net/production-windows/1.4.00.16575/Teams_windows.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows/1.4.00.31569/Teams_windows.msi"
   },
   {
-    "Version": "1.4.00.11161",
+    "Version": "1.4.00.29469",
     "Ring": "General",
     "Architecture": "x64",
-    "URI": "https://statics.teams.cdn.office.net/production-windows-x64/1.4.00.11161/Teams_windows_x64.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows-x64/1.4.00.29469/Teams_windows_x64.msi"
   },
   {
-    "Version": "1.4.00.11161",
+    "Version": "1.4.00.29469",
     "Ring": "General",
     "Architecture": "arm64",
-    "URI": "https://statics.teams.cdn.office.net/production-windows-arm64/1.4.00.11161/Teams_windows_arm64.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows-arm64/1.4.00.29469/Teams_windows_arm64.msi"
   },
   {
-    "Version": "1.4.00.11161",
+    "Version": "1.4.00.29469",
     "Ring": "General",
     "Architecture": "x86",
-    "URI": "https://statics.teams.cdn.office.net/production-windows/1.4.00.11161/Teams_windows.msi"
+    "URI": "https://statics.teams.cdn.office.net/production-windows/1.4.00.29469/Teams_windows.msi"
   }
 ]

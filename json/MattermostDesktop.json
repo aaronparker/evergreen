@@ -1,0 +1,29 @@
+[
+  {
+    "Version": "5.0.2",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "15/11/2021",
+    "Size": 76886016,
+    "URI": "https://github.com/mattermost/desktop/releases/download/v5.0.2/mattermost-desktop-5.0.2-x64.msi"
+  },
+  {
+    "Version": "5.0.2",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "15/11/2021",
+    "Size": 73547776,
+    "URI": "https://github.com/mattermost/desktop/releases/download/v5.0.2/mattermost-desktop-5.0.2-x86.msi"
+  },
+  {
+    "Version": "5.0.2",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "15/11/2021",
+    "Size": 131249552,
+    "URI": "https://github.com/mattermost/desktop/releases/download/v5.0.2/mattermost-desktop-setup-5.0.2-win.exe"
+  }
+]
