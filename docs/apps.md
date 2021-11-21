@@ -1,11 +1,12 @@
 ﻿# Supported applications
 
-Evergreen `2110.467` supports the following applications:
+Evergreen `2111.488` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | 1Password                               | 1Password                                          | https://1password.com/                                                                     |
 | 7zip                                    | 7zip                                               | https://www.7-zip.org/                                                                     |
+| 7ZipZS                                  | 7-Zip ZS                                           | https://mcmilk.de/projects/7-Zip-zstd/                                                     |
 | AdobeAcrobat                            | Adobe Acrobat                                      | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                         |
 | AdobeAcrobatReaderDC                    | Adobe Acrobat Reader DC                            | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
 | AdobeBrackets                           | Adobe Brackets                                     | http://brackets.io/                                                                        |
@@ -40,6 +41,7 @@ Evergreen `2110.467` supports the following applications:
 | ControlUpAgent                          | ControlUp Agent                                    | https://www.controlup.com/products/controlup/agent/                                        |
 | ControlUpConsole                        | ControlUp Console                                  | https://www.controlup.com/products/controlup/management/                                   |
 | Cyberduck                               | iterate GmbH Cyberduck                             | https://cyberduck.io/                                                                      |
+| dbeaver                                 | dbeaver                                            | https://github.com/dbeaver/dbeaver                                                         |
 | deviceTRUST                             | deviceTRUST                                        | https://devicetrust.com/                                                                   |
 | dnGrep                                  | dnGrep                                             | https://dngrep.github.io/                                                                  |
 | FileZilla                               | FileZilla                                          | https://filezilla-project.org/                                                             |
@@ -50,6 +52,7 @@ Evergreen `2110.467` supports the following applications:
 | FreedomScientificJAWS                   | Freedom Scientific JAWS                            | https://www.freedomscientific.com/products/software/jaws/                                  |
 | FreedomScientificZoomText               | Freedom Scientific ZoomText                        | https://www.freedomscientific.com/products/software/zoomtext/                              |
 | FreeFem                                 | FreeFem                                            | https://freefem.org/                                                                       |
+| GeekSoftwarePDF24Creator                | Geek Software PDF24 Creator                        | https://tools.pdf24.org/en/creator/                                                        |
 | Gephi                                   | Gephi                                              | https://gephi.org/                                                                         |
 | GhislerTotalCommander                   | Ghisler TotalCommander                             | https://www.ghisler.com/                                                                   |
 | Gimp                                    | GIMP                                               | https://www.gimp.org/                                                                      |
@@ -74,6 +77,7 @@ Evergreen `2110.467` supports the following applications:
 | LogMeInGoToMeeting                      | LogMeIn GoToMeeting                                | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                       | LogMeIn GoToOpener                                 | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
 | MasterPackager                          | Master Packager                                    | https://www.masterpackager.com/                                                            |
+| MattermostDesktop                       | Mattermost Desktop                                 | https://github.com/mattermost/desktop                                                      |
 | McNeelRhino                             | McNeel Rhino                                       | https://www.rhino3d.com/                                                                   |
 | MendeleyDesktop                         | Mendeley Desktop                                   | https://www.mendeley.com/                                                                  |
 | MestrelabMnova                          | Mestrelab Mnova                                    | https://mestrelab.com/software/mnova/                                                      |
@@ -85,6 +89,7 @@ Evergreen `2110.467` supports the following applications:
 | MicrosoftBicep                          | Microsoft Bicep                                    | https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview               |
 | MicrosoftBotFrameworkEmulator           | Microsoft Bot Framework Emulator                   | https://github.com/microsoft/BotFramework-Emulator/                                        |
 | MicrosoftEdge                           | Microsoft Edge                                     | https://www.microsoft.com/edge                                                             |
+| MicrosoftEdgeDriver                     | Microsoft Edge                                     | https://www.microsoft.com/edge                                                             |
 | MicrosoftEdgeWebView2Runtime            | Microsoft Edge WebView2 Runtime                    | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                             |
 | MicrosoftFSLogixApps                    | Microsoft FSLogix Apps                             | https://docs.microsoft.com/fslogix/                                                        |
 | MicrosoftOneDrive                       | Microsoft OneDrive                                 | https://onedrive.live.com/                                                                 |
@@ -101,6 +106,7 @@ Evergreen `2110.467` supports the following applications:
 | MicrosoftWvdRtcService                  | Microsoft Remote Desktop WebRTC Redirector Service | https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd                        |
 | Minitab                                 | Minitab                                            | https://www.minitab.com/                                                                   |
 | MiniZincIDE                             | MiniZinc IDE                                       | https://www.minizinc.org/                                                                  |
+| MirantisLens                            | MirantisLens                                       | https://k8slens.dev/                                                                       |
 | MozillaFirefox                          | Mozilla Firefox                                    | https://www.mozilla.org/                                                                   |
 | MozillaThunderbird                      | Mozilla Firefox                                    | https://www.mozilla.org/                                                                   |
 | mRemoteNG                               | mRemoteNG                                          | https://mremoteng.org/                                                                     |
@@ -112,8 +118,11 @@ Evergreen `2110.467` supports the following applications:
 | Notable                                 | Notable                                            | https://notable.app/                                                                       |
 | NotepadPlusPlus                         | Notepad++                                          | https://notepad-plus-plus.org/                                                             |
 | OBSStudio                               | OBS Studio                                         | https://obsproject.com/                                                                    |
+| OctopusDeployServer                     | Octopus Deploy Server                              | https://octopus.com/                                                                       |
+| OctopusTentacle                         | Octopus Tentacle                                   | https://octopus.com/                                                                       |
 | OpenJDK                                 | OpenJDK                                            | https://openjdk.java.net/                                                                  |
 | OpenShellMenu                           | Open-Shell-Menu                                    | https://open-shell.github.io/Open-Shell-Menu/                                              |
+| OpenWebStart                            | OpenWebStart                                       | https://openwebstart.com/                                                                  |
 | OracleJava8                             | Oracle Java 8                                      | https://www.java.com                                                                       |
 | OracleVirtualBox                        | Oracle VirtualBox                                  | https://www.virtualbox.org/                                                                |
 | PaintDotNet                             | dotPDN LLC Paint.NET                               | https://getpaint.net                                                                       |
@@ -127,6 +136,7 @@ Evergreen `2110.467` supports the following applications:
 | Protege                                 | Protege                                            | https://protege.stanford.edu/                                                              |
 | PSAppDeployToolkit                      | PSAppDeployToolkit                                 | https://psappdeploytoolkit.com/                                                            |
 | PSFPython                               | PSF Python                                         | https://www.python.org/                                                                    |
+| PuTTY                                   | PuTTY                                              | https://www.chiark.greenend.org.uk/~sgtatham/putty/                                        |
 | RCoreTeamRforWindows                    | R Core Team R for Windows                          | https://cran.r-project.org/bin/windows/base/                                               |
 | RDAnalyzer                              | Remote Desktop Analyzer                            | https://rdanalyzer.com/                                                                    |
 | RingCentral                             | RingCentral                                        | https://www.ringcentral.com                                                                |
@@ -157,6 +167,7 @@ Evergreen `2110.467` supports the following applications:
 | VeraCrypt                               | VeraCrypt                                          | https://www.veracrypt.fr/en/Home.html                                                      |
 | VercelHyper                             | Vercel Hyper                                       | https://hyper.js/                                                                          |
 | VideoLanVlcPlayer                       | VideoLan VLC Player                                | https://www.videolan.org/vlc/                                                              |
+| VisualCppRedistAIO                      | VisualCppRedistAIO                                 | https://github.com/abbodi1406/vcredist                                                     |
 | VMwareHorizonClient                     | VMware Horizon Client                              | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                |
 | VMwareTools                             | VMware Tools                                       | https://www.vmware.com                                                                     |
 | voidtoolsEverything                     | voidtools Everything                               | https://www.voidtools.com/                                                                 |
