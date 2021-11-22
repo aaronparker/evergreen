@@ -1,6 +1,6 @@
 {
-	"Name": "Anaconda",
-	"Source": "https://www.anaconda.com/",
+	"Name": "Miniconda",
+	"Source": "https://docs.conda.io/en/latest/miniconda.html",
 	"Get": {
 		"Update": {
 			"Uri": "https://repo.anaconda.com/miniconda/#replace",
@@ -10,7 +10,7 @@
 		"MatchFileTypes": "\\.exe$"
 	},
 	"Install": {
-		"Setup": "Anaconda*.exe",
+		"Setup": "Miniconda*.exe",
 		"Physical": {
 			"Arguments": "/S /installationtype=AllUsers /AddToPath=1 /RegisterPython=1",
 			"PostInstall": []
