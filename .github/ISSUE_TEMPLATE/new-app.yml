@@ -29,6 +29,6 @@ body:
       label: Have you reviewed the list of supported applications?
       description: "Please confirm that you've reviewed the list of currently supported before making this application request." 
       options:
-        - label: "Support apps at: https://stealthpuppy.com/evergreen/apps/"
+        - label: "Supported apps at: https://stealthpuppy.com/evergreen/apps/"
     validations:
       required: true
