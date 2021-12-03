@@ -23,10 +23,10 @@ Function Get-AdoptiumTemurin16 {
             -and $_.image_type -match $res.Get.Update.MatchImage }
     ForEach ($Release in $Targets) {
         $PSObject = [PSCustomObject]@{
-            Version      = $Release.scm_ref
-            Date         = [System.DateTime] $item.updated_at
+            Version      = ($Release.scm_ref -split "_")[0]
             Type         = $Release.image_type
-            Architecture = $Release.architecture
+            Date         = ConvertTo-DateTime -DateTime $(($item.updated_at -split " ")[0])
+            Architecture = Get-Architecture -String $Release.architecture
             Checksum     = $Release.installer.checksum
             Size         = $Release.installer.size
             URI          = $Release.installer.link
