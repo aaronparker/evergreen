@@ -18,11 +18,19 @@ Function Get-AdoptiumTemurin17 {
     )   
 
     # Pass the repo releases API URL and return a formatted object
-    $params = @{
-        Uri          = $res.Get.Uri
-        MatchVersion = $res.Get.MatchVersion
-        Filter       = $res.Get.MatchFileTypes
+    $Releases = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Targets = $Releases.binary | Where-Object { $_.os -eq $res.Get.Update.MatchOS `
+            -and $_.image_type -match $res.Get.Update.MatchImage }
+    ForEach ($Release in $Targets) {
+        $PSObject = [PSCustomObject]@{
+            Version      = $Release.scm_ref
+            Date         = [System.DateTime] $item.updated_at
+            Type         = $Release.image_type
+            Architecture = $Release.architecture
+            Checksum     = $Release.installer.checksum
+            Size         = $Release.installer.size
+            URI          = $Release.installer.link
+        }
+        Write-Output -InputObject $PSObject
     }
-    $object = Get-GitHubRepoRelease @params
-    Write-Output -InputObject $object
 }
