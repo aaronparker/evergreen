@@ -1,15 +1,27 @@
 [
   {
-    "Version": "5.8.4.1736",
-    "Platform": "Windows",
-    "Type": "Exe",
-    "URI": "https://cdn.zoom.us/prod/5.8.4.1736/ZoomInstaller.exe"
-  },
-  {
-    "Version": "5.8.4.1736",
+    "Version": "5.8.6.2048",
     "Platform": "Windows",
     "Type": "Msi",
-    "URI": "https://cdn.zoom.us/prod/5.8.4.1736/ZoomInstallerFull.msi"
+    "URI": "https://cdn.zoom.us/prod/5.8.6.2048/ZoomInstallerFull.msi"
+  },
+  {
+    "Version": "5.8.6.2048",
+    "Platform": "Windows",
+    "Type": "Exe",
+    "URI": "https://cdn.zoom.us/prod/5.8.6.2048/ZoomInstaller.exe"
+  },
+  {
+    "Version": "5.8.6.171",
+    "Platform": "Windows",
+    "Type": "Notes",
+    "URI": "https://cdn.zoom.us/prod/5.8.6.171/ZoomNotesPluginSetup.msi"
+  },
+  {
+    "Version": "5.8.6.170",
+    "Platform": "Windows",
+    "Type": "Outlook",
+    "URI": "https://cdn.zoom.us/prod/5.8.6.170/ZoomOutlookPluginSetup.msi"
   },
   {
     "Version": "5.8.3.636",
@@ -18,22 +30,16 @@
     "URI": "https://cdn.zoom.us/prod/5.8.3.636/zoomrooms-5.8.3.636-x86.exe"
   },
   {
-    "Version": "5.8.3.136",
-    "Platform": "Windows",
-    "Type": "Outlook",
-    "URI": "https://cdn.zoom.us/prod/5.8.3.136/ZoomOutlookPluginSetup.msi"
-  },
-  {
-    "Version": "5.8.3.135",
-    "Platform": "Windows",
-    "Type": "Notes",
-    "URI": "https://cdn.zoom.us/prod/5.8.3.135/ZoomNotesPluginSetup.msi"
-  },
-  {
     "Version": "5.8.0.109",
     "Platform": "Windows",
     "Type": "Lync",
     "URI": "https://cdn.zoom.us/prod/5.8.0.109/ZoomLyncPluginSetup.msi"
+  },
+  {
+    "Version": "Latest",
+    "Platform": "VMware",
+    "Type": "Client",
+    "URI": "https://cdn.zoom.us/prod/vdi/ZoomVmwareMediaPlugin.msi"
   },
   {
     "Version": "Latest",
@@ -46,11 +52,5 @@
     "Platform": "Citrix",
     "Type": "Client",
     "URI": "https://cdn.zoom.us/prod/vdi/ZoomCitrixHDXMediaPlugin.msi"
-  },
-  {
-    "Version": "Latest",
-    "Platform": "VMware",
-    "Type": "Client",
-    "URI": "https://cdn.zoom.us/prod/vdi/ZoomVmwareMediaPlugin.msi"
   }
 ]

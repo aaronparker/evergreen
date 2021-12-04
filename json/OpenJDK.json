@@ -1,75 +1,21 @@
 [
   {
-    "Version": "1.8.0.292-1.b10",
+    "Version": "1.8.0.312-1.b07",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "msi",
-    "Date": "1/5/2021",
-    "Size": 219636188,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.292-1.b10/java-1.8.0-openjdk-1.8.0.292-1.b10.ojdkbuild.windows.x86_64.msi"
+    "Date": "7/11/2021",
+    "Size": 220279260,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.312-1.b07/java-1.8.0-openjdk-1.8.0.312-1.b07.ojdkbuild.windows.x86_64.msi"
   },
   {
-    "Version": "1.8.0.292-1.b10-x86",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "1/5/2021",
-    "Size": 146050786,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.292-1.b10-x86/java-1.8.0-openjdk-1.8.0.292-1.b10.ojdkbuild.windows.x86.msi"
-  },
-  {
-    "Version": "11.0.11.9-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "1/5/2021",
-    "Size": 253892113,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.11.9-1/java-11-openjdk-11.0.11.9-1.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "11.0.11.9-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "1/5/2021",
-    "Size": 50757822,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.11.9-1/java-11-openjdk-jre-11.0.11.9-1.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.282-1.b08",
+    "Version": "11.0.10.9-1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "msi",
     "Date": "24/1/2021",
-    "Size": 219062748,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.282-1.b08/java-1.8.0-openjdk-1.8.0.282-1.b08.ojdkbuild.windows.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.282-1.b08-x86",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "24/1/2021",
-    "Size": 145706720,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.282-1.b08-x86/java-1.8.0-openjdk-1.8.0.282-1.b08.ojdkbuild.windows.x86.msi"
-  },
-  {
-    "Version": "15.0.2.7-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "24/1/2021",
-    "Size": 262122885,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.2.7-1/java-15-openjdk-15.0.2.7-1.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "15.0.2.7-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "24/1/2021",
-    "Size": 64308315,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.2.7-1/java-15-openjdk-jre-15.0.2.7-1.windows.ojdkbuild.x86_64.msi"
+    "Size": 50741438,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.10.9-1/java-11-openjdk-jre-11.0.10.9-1.windows.ojdkbuild.x86_64.msi"
   },
   {
     "Version": "11.0.10.9-1",
@@ -81,13 +27,157 @@
     "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.10.9-1/java-11-openjdk-11.0.10.9-1.windows.ojdkbuild.x86_64.msi"
   },
   {
-    "Version": "11.0.10.9-1",
+    "Version": "15.0.2.7-1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "msi",
     "Date": "24/1/2021",
-    "Size": 50741438,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.10.9-1/java-11-openjdk-jre-11.0.10.9-1.windows.ojdkbuild.x86_64.msi"
+    "Size": 64308315,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.2.7-1/java-15-openjdk-jre-15.0.2.7-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "15.0.2.7-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "24/1/2021",
+    "Size": 262122885,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.2.7-1/java-15-openjdk-15.0.2.7-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "1.8.0.282-1.b08-x86",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "24/1/2021",
+    "Size": 145706720,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.282-1.b08-x86/java-1.8.0-openjdk-1.8.0.282-1.b08.ojdkbuild.windows.x86.msi"
+  },
+  {
+    "Version": "1.8.0.282-1.b08",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "24/1/2021",
+    "Size": 219062748,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.282-1.b08/java-1.8.0-openjdk-1.8.0.282-1.b08.ojdkbuild.windows.x86_64.msi"
+  },
+  {
+    "Version": "11.0.11.9-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "1/5/2021",
+    "Size": 50757822,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.11.9-1/java-11-openjdk-jre-11.0.11.9-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "11.0.11.9-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "1/5/2021",
+    "Size": 253892113,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.11.9-1/java-11-openjdk-11.0.11.9-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "1.8.0.292-1.b10-x86",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "1/5/2021",
+    "Size": 146050786,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.292-1.b10-x86/java-1.8.0-openjdk-1.8.0.292-1.b10.ojdkbuild.windows.x86.msi"
+  },
+  {
+    "Version": "1.8.0.292-1.b10",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "1/5/2021",
+    "Size": 219636188,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.292-1.b10/java-1.8.0-openjdk-1.8.0.292-1.b10.ojdkbuild.windows.x86_64.msi"
+  },
+  {
+    "Version": "11.0.12.7-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "24/7/2021",
+    "Size": 50815166,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.12.7-1/java-11-openjdk-jre-11.0.12.7-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "11.0.12.7-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "24/7/2021",
+    "Size": 254006801,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.12.7-1/java-11-openjdk-11.0.12.7-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "1.8.0.302-1.b08-x86",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "24/7/2021",
+    "Size": 146079456,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.302-1.b08-x86/java-1.8.0-openjdk-1.8.0.302-1.b08.ojdkbuild.windows.x86.msi"
+  },
+  {
+    "Version": "1.8.0.302-1.b08",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "24/7/2021",
+    "Size": 219668956,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.302-1.b08/java-1.8.0-openjdk-1.8.0.302-1.b08.ojdkbuild.windows.x86_64.msi"
+  },
+  {
+    "Version": "11.0.13.8-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "7/11/2021",
+    "Size": 50806850,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.13.8-1/java-11-openjdk-jre-11.0.13.8-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "11.0.13.8-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "7/11/2021",
+    "Size": 253990292,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.13.8-1/java-11-openjdk-11.0.13.8-1.windows.ojdkbuild.x86_64.msi"
+  },
+  {
+    "Version": "17.0.1.0.12-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "7/11/2021",
+    "Size": 257778624,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-17-openjdk-17.0.1.0.12-1/java-17-openjdk-17.0.1.0.12-1.win.x86_64.msi"
+  },
+  {
+    "Version": "17.0.1.0.12-1",
+    "Platform": "Windows",
+    "Architecture": "x64",
+    "Type": "msi",
+    "Date": "7/11/2021",
+    "Size": 51765483,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-17-openjdk-17.0.1.0.12-1/java-17-openjdk-17.0.1.0.12-1.jre.win.x86_64.msi"
+  },
+  {
+    "Version": "1.8.0.312-1.b07-x86",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "7/11/2021",
+    "Size": 146550496,
+    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.312-1.b07-x86/java-1.8.0-openjdk-1.8.0.312-1.b07.ojdkbuild.windows.x86.msi"
   },
   {
     "Version": "11.0.9.11-2",
@@ -106,68 +196,5 @@
     "Date": "15/11/2020",
     "Size": 50687326,
     "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.9.11-2/java-11-openjdk-jre-11.0.9.11-2.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.275-1.b01",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "6/11/2020",
-    "Size": 219111900,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.275-1.b01/java-1.8.0-openjdk-1.8.0.275-1.b01.ojdkbuild.windows.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.275-1.b01-x86",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "6/11/2020",
-    "Size": 145743584,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.275-1.b01-x86/java-1.8.0-openjdk-1.8.0.275-1.b01.ojdkbuild.windows.x86.msi"
-  },
-  {
-    "Version": "1.8.0.272-1.b10-x86",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "31/10/2020",
-    "Size": 145751778,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.272-1.b10-x86/java-1.8.0-openjdk-1.8.0.272-1.b10.ojdkbuild.windows.x86.msi"
-  },
-  {
-    "Version": "15.0.1.9-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "31/10/2020",
-    "Size": 262064821,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.1.9-1/java-15-openjdk-15.0.1.9-1.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "15.0.1.9-1",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "31/10/2020",
-    "Size": 64389640,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.1.9-1/java-15-openjdk-jre-15.0.1.9-1.windows.ojdkbuild.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.272-1.b10",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "17/9/2020",
-    "Size": 219103708,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.272-1.b10/java-1.8.0-openjdk-1.8.0.272-1.b10.ojdkbuild.windows.x86_64.msi"
-  },
-  {
-    "Version": "1.8.0.265-1.b01",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "msi",
-    "Date": "30/8/2020",
-    "Size": 217993692,
-    "URI": "https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.265-1.b01/java-1.8.0-openjdk-1.8.0.265-1.b01.ojdkbuild.windows.x86_64.msi"
   }
 ]

@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "6.1.2",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "exe",
+    "Date": "27/7/2019",
+    "Size": 2376439,
+    "URI": "https://github.com/cyanfish/naps2/releases/download/v6.1.2/naps2-6.1.2-setup.exe"
+  },
+  {
+    "Version": "6.1.2",
+    "Platform": "Windows",
+    "Architecture": "x86",
+    "Type": "msi",
+    "Date": "27/7/2019",
+    "Size": 2650112,
+    "URI": "https://github.com/cyanfish/naps2/releases/download/v6.1.2/naps2-6.1.2-setup.msi"
+  }
+]

@@ -1,92 +1,92 @@
 [
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "15/11/2021",
-    "Size": 49153784,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/Git-2.34.0-32-bit.exe"
+    "Date": "25/11/2021",
+    "Size": 49178136,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-32-bit.exe"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "exe",
-    "Date": "15/11/2021",
-    "Size": 50351408,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/Git-2.34.0-64-bit.exe"
+    "Date": "25/11/2021",
+    "Size": 50403600,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/Git-2.34.1-64-bit.exe"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 25840414,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/MinGit-2.34.0-32-bit.zip"
+    "Date": "25/11/2021",
+    "Size": 25898544,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/MinGit-2.34.1-32-bit.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 25810573,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/MinGit-2.34.0-64-bit.zip"
+    "Date": "25/11/2021",
+    "Size": 25868575,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/MinGit-2.34.1-64-bit.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 19739314,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/MinGit-2.34.0-busybox-32-bit.zip"
+    "Date": "25/11/2021",
+    "Size": 19797466,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/MinGit-2.34.1-busybox-32-bit.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 19689382,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/MinGit-2.34.0-busybox-64-bit.zip"
+    "Date": "25/11/2021",
+    "Size": 19747412,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/MinGit-2.34.1-busybox-64-bit.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 12482193,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/pdbs-for-git-32-bit-2.34.0.1.7dad2af5e8-1.zip"
+    "Date": "25/11/2021",
+    "Size": 16424968,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/pdbs-for-git-32-bit-2.34.1.1.2ca94ab318-1.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "zip",
-    "Date": "15/11/2021",
-    "Size": 11262307,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/pdbs-for-git-64-bit-2.34.0.1.7dad2af5e8-1.zip"
+    "Date": "25/11/2021",
+    "Size": 14361573,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/pdbs-for-git-64-bit-2.34.1.1.2ca94ab318-1.zip"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "15/11/2021",
-    "Size": 45519152,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/PortableGit-2.34.0-32-bit.7z.exe"
+    "Date": "25/11/2021",
+    "Size": 45553024,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/PortableGit-2.34.1-32-bit.7z.exe"
   },
   {
-    "Version": "2.34.0",
+    "Version": "2.34.1",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "exe",
-    "Date": "15/11/2021",
-    "Size": 46123912,
-    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.0.windows.1/PortableGit-2.34.0-64-bit.7z.exe"
+    "Date": "25/11/2021",
+    "Size": 46160568,
+    "URI": "https://github.com/git-for-windows/git/releases/download/v2.34.1.windows.1/PortableGit-2.34.1-64-bit.7z.exe"
   }
 ]

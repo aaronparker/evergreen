@@ -1,12 +1,12 @@
 [
   {
-    "Version": "11.3.5",
+    "Version": "18828794",
     "Platform": "Windows",
     "Architecture": "x64",
     "URI": "https://packages.vmware.com/tools/releases/latest/windows/x64/VMware-tools-11.3.5-18557794-x86_64.exe"
   },
   {
-    "Version": "11.3.5",
+    "Version": "18828794",
     "Platform": "Windows",
     "Architecture": "x86",
     "URI": "https://packages.vmware.com/tools/releases/latest/windows/x86/VMware-tools-11.3.5-18557794-i386.exe"

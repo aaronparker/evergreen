@@ -3,92 +3,22 @@
     "Version": "13.1",
     "Title": "Components for Citrix Gateway 13.1",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "15/11/2021",
+    "Date": "23/11/2021",
     "URI": "https://www.citrix.com/downloads/citrix-gateway/components/components-for-citrix-gateway-13-1.html"
+  },
+  {
+    "Version": "13.1",
+    "Title": "Citrix Gateway (Feature Phase) 13.1 Build 9.60",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "23/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/citrix-gateway-13-1-build-9-60.html"
   },
   {
     "Version": "13.1",
     "Title": "Citrix Gateway (Feature Phase) 13.1 Build 4.43/4.44",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "15/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/citrix-gateway-13-1-build-4-43.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-64.35",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "4/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-64-35.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-52.24",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "25/3/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-52-24.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 52.24",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "25/3/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-52-24.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 58.32",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "7/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-58-32.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-58.32",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "7/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-58-32.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-47.24",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "23/1/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-47-24.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 47.24",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "23/1/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-47-24.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-61.48",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "28/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-61-48.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 61.48",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "28/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-61-48.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 64.35",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "4/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-64-35.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-67.39/67.43",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "21/11/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-67-39.html"
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-1-build-4-43.html"
   },
   {
     "Version": "13.0",
@@ -113,17 +43,73 @@
   },
   {
     "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 67.39/67.43",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 79.64",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "21/11/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-67-39.html"
+    "Date": "8/4/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-79-64.html"
   },
   {
     "Version": "13.0",
-    "Title": "Citrix Gateway (Maintenance Phase) 13.0 Build 83.27/83.29",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-64.35",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "16/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/citrix-gateway-13-0-build-83-27.html"
+    "Date": "4/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-64-35.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 64.35",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "4/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-64-35.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 61.48",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "28/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-61-48.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 52.24",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "25/3/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-52-24.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-67.39/67.43",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "21/11/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-67-39.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 82.41/82.45",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "20/7/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-82-41.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-61.48",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "28/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-61-48.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-47.24",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "23/1/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-47-24.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 58.32",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "7/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-58-32.html"
   },
   {
     "Version": "13.0",
@@ -134,17 +120,38 @@
   },
   {
     "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 79.64",
+    "Title": "Citrix Gateway (Maintenance Phase) 13.0 Build 83.27/83.29",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "8/4/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-79-64.html"
+    "Date": "16/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/citrix-gateway-13-0-build-83-27.html"
   },
   {
     "Version": "13.0",
-    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 82.41/82.45",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-58.32",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "20/7/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-82-41.html"
+    "Date": "7/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-58-32.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 47.24",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "23/1/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-47-24.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) Plug-ins and Clients for Build 13.0-52.24",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "25/3/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-plug-in-clients-v13-0-52-24.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix Gateway (Feature Phase) 13.0 Build 67.39/67.43",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "21/11/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/citrix-gateway-13-0-build-67-39.html"
   },
   {
     "Version": "12.1",
@@ -155,41 +162,6 @@
   },
   {
     "Version": "12.1",
-    "Title": "Components for Citrix Gateway 12.1",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "16/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/components/components-for-netscaler-gateway-121.html"
-  },
-  {
-    "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 56.22",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "31/3/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-5622.html"
-  },
-  {
-    "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-56.22",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "31/3/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5622.html"
-  },
-  {
-    "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 57.18",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "16/6/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-5718.html"
-  },
-  {
-    "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 63.22/63.23",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "16/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/netscaler-gateway-121-build-63221.html"
-  },
-  {
-    "Version": "12.1",
     "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 58.14/58.15",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "18/9/2020",
@@ -197,10 +169,10 @@
   },
   {
     "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-55.18",
+    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-58.14/58.15",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "23/1/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5513.html"
+    "Date": "18/9/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5814.html"
   },
   {
     "Version": "12.1",
@@ -218,17 +190,24 @@
   },
   {
     "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-59.16/59.17",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "30/10/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5916.html"
-  },
-  {
-    "Version": "12.1",
     "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 60.16/60.19",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "5/1/2021",
     "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-6016.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 57.18",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "16/6/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-5718.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-56.22",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "31/3/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5622.html"
   },
   {
     "Version": "12.1",
@@ -239,10 +218,10 @@
   },
   {
     "Version": "12.1",
-    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-58.14/58.15",
+    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 56.22",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "18/9/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5814.html"
+    "Date": "31/3/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-5622.html"
   },
   {
     "Version": "12.1",
@@ -250,6 +229,34 @@
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "7/3/2020",
     "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-121-build-5518.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-55.18",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "23/1/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5513.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix Gateway (Maintenance Phase) 12.1 Build 63.22/63.23",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "16/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/netscaler-gateway-121-build-63221.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Components for Citrix Gateway 12.1",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "16/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/components/components-for-netscaler-gateway-121.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix Gateway (Maintenance Phase) Plug-ins and Clients for Build 12.1-59.16/59.17",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "30/10/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v121-5916.html"
   },
   {
     "Version": "12.0",
@@ -260,73 +267,17 @@
   },
   {
     "Version": "12.0",
-    "Title": "Components for NetScaler Gateway 12.0",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "8/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/components/components-for-netscaler-gateway-120.html"
-  },
-  {
-    "Version": "12.0",
     "Title": "NetScaler Gateway (Maintenance Phase) 12.0 Build 63.13/63.21",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "8/7/2020",
     "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/netscaler-gateway-120-build-63-13.html"
   },
   {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-65.10/65.16",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "5/1/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/plug-ins/netscaler-gateway-plug-in-clients-v111-6510.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 65.22",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "20/7/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6522.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-65.22",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "20/7/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/plug-ins/netscaler-gateway-plug-in-clients-v111-6522.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-63.15",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "20/1/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v111-6315.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 65.23",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "10/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/netscaler-gateway-111-build-6523.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 64.14",
+    "Version": "12.0",
+    "Title": "Components for NetScaler Gateway 12.0",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "8/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6411.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-64.14",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "8/7/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v111-6411.html"
-  },
-  {
-    "Version": "11.1",
-    "Title": "NetScaler Gateway (Feature Phase) 11.1 Build 63.15",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "20/1/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6315.html"
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/components/components-for-netscaler-gateway-120.html"
   },
   {
     "Version": "11.1",
@@ -337,6 +288,62 @@
   },
   {
     "Version": "11.1",
+    "Title": "NetScaler Gateway (Feature Phase) 11.1 Build 63.15",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "20/1/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6315.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-63.15",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "20/1/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v111-6315.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-65.22",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "20/7/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/plug-ins/netscaler-gateway-plug-in-clients-v111-6522.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 65.22",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "20/7/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6522.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 65.23",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "10/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/product-software/netscaler-gateway-111-build-6523.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-65.10/65.16",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "5/1/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/plug-ins/netscaler-gateway-plug-in-clients-v111-6510.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) Plug-ins and Clients for Build 11.1-64.14",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "8/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-clients-v111-6411.html"
+  },
+  {
+    "Version": "11.1",
+    "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 64.14",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "8/7/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-111-build-6411.html"
+  },
+  {
+    "Version": "11.1",
     "Title": "NetScaler Gateway (Maintenance Phase) 11.1 Build 65.16/65.20",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "9/6/2021",
@@ -344,10 +351,10 @@
   },
   {
     "Version": "11.0",
-    "Title": "NetScaler Gateway (Maintenance Phase) 11.0 Build 72.16/72.17",
+    "Title": "Components for NetScaler Gateway 11.0",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "24/1/2019",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-110-build-7216.html"
+    "Date": "13/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/components-for-netscaler-gateway-110.html"
   },
   {
     "Version": "11.0",
@@ -358,10 +365,10 @@
   },
   {
     "Version": "11.0",
-    "Title": "Components for NetScaler Gateway 11.0",
+    "Title": "NetScaler Gateway (Maintenance Phase) 11.0 Build 72.16/72.17",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "13/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/components-for-netscaler-gateway-110.html"
+    "Date": "24/1/2019",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-110-build-7216.html"
   },
   {
     "Version": "10.5",
@@ -386,10 +393,10 @@
   },
   {
     "Version": "10.0",
-    "Title": "10.0 Enterprise Edition - Version 73.5002 Enhancement Appliance Software",
+    "Title": "10.0 Enterprise Edition – Virtual Appliance",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "13/3/2013",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-v100-735002-enhancement.html"
+    "Date": "17/9/2012",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-appliance-software-5.html"
   },
   {
     "Version": "10.0",
@@ -400,17 +407,17 @@
   },
   {
     "Version": "10.0",
+    "Title": "10.0 Enterprise Edition - Version 73.5002 Enhancement Appliance Software",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "13/3/2013",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-v100-735002-enhancement.html"
+  },
+  {
+    "Version": "10.0",
     "Title": "10.0 Enterprise Edition - Appliance Software",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "2/5/2015",
     "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-100-appliance-software.html"
-  },
-  {
-    "Version": "10.0",
-    "Title": "10.0 Enterprise Edition – Virtual Appliance",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "17/9/2012",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-appliance-software-5.html"
   },
   {
     "Version": "9.3",
@@ -420,32 +427,18 @@
     "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/enterprise-edition-93-appliance-software.html"
   },
   {
-    "Version": "5.0.4",
-    "Title": "Access Gateway 5.0.4",
+    "Version": "Unknown",
+    "Title": "For Partners Only - Access Gateway 90-day Evaluation License",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "22/12/2011",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/access-gateway-504.html"
+    "Date": "17/9/2012",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/evaluations-and-trial-software/for-partners-only-access-gateway-90-day-evaluation-license.html"
   },
   {
     "Version": "Unknown",
-    "Title": "NetScaler Gateway Plug-in v4.4.0 for Mac OS X ",
+    "Title": "For Partners Only - NetScaler Gateway 90 Day Evaluation License",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "2/1/2019",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-440-for-mac.html"
-  },
-  {
-    "Version": "Unknown",
-    "Title": "NetScaler Gateway Plug-in v4.2.3 for Mac OS X ",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "1/6/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-423-for-mac.html"
-  },
-  {
-    "Version": "Unknown",
-    "Title": "NetScaler Gateway Plug-in v3.9.9 for Mac OS X ",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "2/3/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-399-for-mac.html"
+    "Date": "28/6/2013",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/evaluations-and-trial-software/for-partners-only-netscaler-gateway-90-day-evaluation-license.html"
   },
   {
     "Version": "Unknown",
@@ -463,6 +456,27 @@
   },
   {
     "Version": "Unknown",
+    "Title": "NetScaler Gateway Plug-in v4.2.3 for Mac OS X ",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "1/6/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-423-for-mac.html"
+  },
+  {
+    "Version": "Unknown",
+    "Title": "NetScaler Gateway Plug-in v4.2.7 for Mac OS X ",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "2/1/2019",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-427-for-mac.html"
+  },
+  {
+    "Version": "Unknown",
+    "Title": "NetScaler Gateway Plug-in v4.4.0 for Mac OS X ",
+    "Description": "New downloads are available for Citrix Gateway",
+    "Date": "2/1/2019",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-440-for-mac.html"
+  },
+  {
+    "Version": "Unknown",
     "Title": "NetScaler Gateway Plug-in v4.4.8 for Mac OS X ",
     "Description": "New downloads are available for Citrix Gateway",
     "Date": "23/7/2019",
@@ -477,24 +491,10 @@
   },
   {
     "Version": "Unknown",
-    "Title": "For Partners Only - NetScaler Gateway 90 Day Evaluation License",
+    "Title": "Latest EPA Libraries",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "28/6/2013",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/evaluations-and-trial-software/for-partners-only-netscaler-gateway-90-day-evaluation-license.html"
-  },
-  {
-    "Version": "Unknown",
-    "Title": "Command Center Hardware Appliance",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "25/5/2012",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/command-center-hardware-appliance.html"
-  },
-  {
-    "Version": "Unknown",
-    "Title": "NetScaler Gateway Plug-in VPN and EPA Clients for Ubuntu 18",
-    "Description": "New downloads are available for Citrix Gateway",
-    "Date": "24/8/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-VPN_EPA_Clients_Ubuntu_18.html"
+    "Date": "17/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/epa-libraries/epa-libraries-for-netscaler-gateway.html"
   },
   {
     "Version": "Unknown",
@@ -505,23 +505,23 @@
   },
   {
     "Version": "Unknown",
-    "Title": "For Partners Only - Access Gateway 90-day Evaluation License",
+    "Title": "NetScaler Gateway Plug-in VPN and EPA Clients for Ubuntu 18",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "17/9/2012",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/evaluations-and-trial-software/for-partners-only-access-gateway-90-day-evaluation-license.html"
+    "Date": "24/8/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-VPN_EPA_Clients_Ubuntu_18.html"
   },
   {
     "Version": "Unknown",
-    "Title": "NetScaler Gateway Plug-in v4.2.7 for Mac OS X ",
+    "Title": "NetScaler Gateway Plug-in v3.9.9 for Mac OS X ",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "2/1/2019",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-427-for-mac.html"
+    "Date": "2/3/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/netscaler-gateway-plug-in-399-for-mac.html"
   },
   {
     "Version": "Unknown",
-    "Title": "Latest EPA Libraries",
+    "Title": "Command Center Hardware Appliance",
     "Description": "New downloads are available for Citrix Gateway",
-    "Date": "17/11/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-gateway/epa-libraries/epa-libraries-for-netscaler-gateway.html"
+    "Date": "25/5/2012",
+    "URI": "https://www.citrix.com/downloads/citrix-gateway/earlier-versions/command-center-hardware-appliance.html"
   }
 ]

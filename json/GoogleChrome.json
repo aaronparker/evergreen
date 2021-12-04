@@ -1,33 +1,33 @@
 [
   {
-    "Version": "98.0.4710.4",
+    "Version": "98.0.4736.0",
     "Architecture": "x64",
     "Channel": "dev",
-    "Date": "19/11/2021",
+    "Date": "1/12/2021",
     "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi"
   },
   {
-    "Version": "98.0.4710.4",
+    "Version": "98.0.4736.0",
     "Architecture": "x86",
     "Channel": "dev",
-    "Date": "19/11/2021",
+    "Date": "1/12/2021",
     "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise.msi"
   },
   {
-    "Version": "97.0.4692.20",
+    "Version": "97.0.4692.36",
     "Architecture": "x64",
     "Channel": "beta",
-    "Date": "18/11/2021",
+    "Date": "1/12/2021",
     "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi"
   },
   {
-    "Version": "97.0.4692.20",
+    "Version": "97.0.4692.36",
     "Architecture": "x86",
     "Channel": "beta",
-    "Date": "18/11/2021",
+    "Date": "1/12/2021",
     "Type": "msi",
     "URI": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi"
   },

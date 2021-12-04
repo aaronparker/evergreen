@@ -22,6 +22,13 @@
   },
   {
     "Version": "8.1",
+    "Title": "Citrix Hypervisor 8.1 Standard Edition",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "17/12/2019",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/hypervisor-81-standard-edition.html"
+  },
+  {
+    "Version": "8.1",
     "Title": "Citrix Hypervisor 8.1 Express Edition",
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "17/12/2019",
@@ -33,13 +40,6 @@
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "17/12/2019",
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/hypervisor-81-premium-edition.html"
-  },
-  {
-    "Version": "8.1",
-    "Title": "Citrix Hypervisor 8.1 Standard Edition",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "17/12/2019",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/hypervisor-81-standard-edition.html"
   },
   {
     "Version": "8.0",
@@ -176,17 +176,17 @@
   },
   {
     "Version": "7.1",
-    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 1",
-    "Description": "New downloads are available for Citrix Hypervisor",
-    "Date": "11/9/2017",
-    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-standard-edition.html"
-  },
-  {
-    "Version": "7.1",
     "Title": "XenServer 7.1 LTSR Enterprise Edition with Cumulative Update 1",
     "Description": "New downloads are available for Citrix Hypervisor",
     "Date": "11/9/2017",
     "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-enterprise-edition.html"
+  },
+  {
+    "Version": "7.1",
+    "Title": "XenServer 7.1 LTSR Standard Edition with Cumulative Update 1",
+    "Description": "New downloads are available for Citrix Hypervisor",
+    "Date": "11/9/2017",
+    "URI": "https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-71-CU1-standard-edition.html"
   },
   {
     "Version": "7.0",

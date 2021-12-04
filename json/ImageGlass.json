@@ -1,20 +1,20 @@
 [
   {
-    "Version": "8.2.6.6",
+    "Version": "8.3.11.21",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "msi",
-    "Date": "17/5/2021",
-    "Size": 17965568,
-    "URI": "https://github.com/d2phap/ImageGlass/releases/download/8.2.6.6/ImageGlass_8.2.6.6_x64.msi"
+    "Date": "21/11/2021",
+    "Size": 17842176,
+    "URI": "https://github.com/d2phap/ImageGlass/releases/download/8.3.11.21/ImageGlass_8.3.11.21_x64.msi"
   },
   {
-    "Version": "8.2.6.6",
+    "Version": "8.3.11.21",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "msi",
-    "Date": "17/5/2021",
-    "Size": 17351680,
-    "URI": "https://github.com/d2phap/ImageGlass/releases/download/8.2.6.6/ImageGlass_8.2.6.6_x86.msi"
+    "Date": "21/11/2021",
+    "Size": 16534528,
+    "URI": "https://github.com/d2phap/ImageGlass/releases/download/8.3.11.21/ImageGlass_8.3.11.21_x86.msi"
   }
 ]

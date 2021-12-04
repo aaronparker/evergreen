@@ -1,75 +1,66 @@
 [
   {
-    "Version": "94.0.1",
-    "Architecture": "x64",
-    "Channel": "LATEST_FIREFOX_VERSION",
-    "Language": "en-US",
-    "Type": "msix",
-    "Filename": "Firefox Setup 94.0.1.msix",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win64/multi/Firefox%20Setup%2094.0.1.msix"
-  },
-  {
-    "Version": "94.0.1",
-    "Architecture": "x64",
-    "Channel": "LATEST_FIREFOX_VERSION",
-    "Language": "en-US",
-    "Type": "exe",
-    "Filename": "Firefox Setup 94.0.1.exe",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win64/en-US/Firefox%20Setup%2094.0.1.exe"
-  },
-  {
-    "Version": "94.0.1",
+    "Version": "94.0.2",
     "Architecture": "x64",
     "Channel": "LATEST_FIREFOX_VERSION",
     "Language": "en-US",
     "Type": "msi",
-    "Filename": "Firefox Setup 94.0.1.msi",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win64/en-US/Firefox%20Setup%2094.0.1.msi"
+    "Filename": "Firefox Setup 94.0.2.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win64/en-US/Firefox%20Setup%2094.0.2.msi"
   },
   {
-    "Version": "94.0.1",
-    "Architecture": "x86",
+    "Version": "94.0.2",
+    "Architecture": "x64",
     "Channel": "LATEST_FIREFOX_VERSION",
     "Language": "en-US",
     "Type": "msix",
-    "Filename": "Firefox Setup 94.0.1.msix",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win32/multi/Firefox%20Setup%2094.0.1.msix"
+    "Filename": "Firefox Setup 94.0.2.msix",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win64/multi/Firefox%20Setup%2094.0.2.msix"
   },
   {
-    "Version": "94.0.1",
-    "Architecture": "x86",
+    "Version": "94.0.2",
+    "Architecture": "x64",
     "Channel": "LATEST_FIREFOX_VERSION",
     "Language": "en-US",
     "Type": "exe",
-    "Filename": "Firefox Setup 94.0.1.exe",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win32/en-US/Firefox%20Setup%2094.0.1.exe"
+    "Filename": "Firefox Setup 94.0.2.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win64/en-US/Firefox%20Setup%2094.0.2.exe"
   },
   {
-    "Version": "94.0.1",
+    "Version": "94.0.2",
     "Architecture": "x86",
     "Channel": "LATEST_FIREFOX_VERSION",
     "Language": "en-US",
     "Type": "msi",
-    "Filename": "Firefox Setup 94.0.1.msi",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win32/en-US/Firefox%20Setup%2094.0.1.msi"
+    "Filename": "Firefox Setup 94.0.2.msi",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win32/en-US/Firefox%20Setup%2094.0.2.msi"
   },
   {
-    "Version": "94.0.1",
+    "Version": "94.0.2",
+    "Architecture": "x86",
+    "Channel": "LATEST_FIREFOX_VERSION",
+    "Language": "en-US",
+    "Type": "msix",
+    "Filename": "Firefox Setup 94.0.2.msix",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win32/multi/Firefox%20Setup%2094.0.2.msix"
+  },
+  {
+    "Version": "94.0.2",
+    "Architecture": "x86",
+    "Channel": "LATEST_FIREFOX_VERSION",
+    "Language": "en-US",
+    "Type": "exe",
+    "Filename": "Firefox Setup 94.0.2.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win32/en-US/Firefox%20Setup%2094.0.2.exe"
+  },
+  {
+    "Version": "94.0.2",
     "Architecture": "ARM64",
     "Channel": "LATEST_FIREFOX_VERSION",
     "Language": "en-US",
     "Type": "exe",
-    "Filename": "Firefox Setup 94.0.1.exe",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.1/win64-aarch64/en-US/Firefox%20Setup%2094.0.1.exe"
-  },
-  {
-    "Version": "91.3.0",
-    "Architecture": "x64",
-    "Channel": "FIREFOX_ESR",
-    "Language": "en-US",
-    "Type": "exe",
-    "Filename": "Firefox Setup 91.3.0esr.exe",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/91.3.0esr/win64/en-US/Firefox%20Setup%2091.3.0esr.exe"
+    "Filename": "Firefox Setup 94.0.2.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/win64-aarch64/en-US/Firefox%20Setup%2094.0.2.exe"
   },
   {
     "Version": "91.3.0",
@@ -82,12 +73,12 @@
   },
   {
     "Version": "91.3.0",
-    "Architecture": "x86",
+    "Architecture": "x64",
     "Channel": "FIREFOX_ESR",
     "Language": "en-US",
     "Type": "exe",
     "Filename": "Firefox Setup 91.3.0esr.exe",
-    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/91.3.0esr/win32/en-US/Firefox%20Setup%2091.3.0esr.exe"
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/91.3.0esr/win64/en-US/Firefox%20Setup%2091.3.0esr.exe"
   },
   {
     "Version": "91.3.0",
@@ -97,6 +88,15 @@
     "Type": "msi",
     "Filename": "Firefox Setup 91.3.0esr.msi",
     "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/91.3.0esr/win32/en-US/Firefox%20Setup%2091.3.0esr.msi"
+  },
+  {
+    "Version": "91.3.0",
+    "Architecture": "x86",
+    "Channel": "FIREFOX_ESR",
+    "Language": "en-US",
+    "Type": "exe",
+    "Filename": "Firefox Setup 91.3.0esr.exe",
+    "URI": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/91.3.0esr/win32/en-US/Firefox%20Setup%2091.3.0esr.exe"
   },
   {
     "Version": "91.3.0",

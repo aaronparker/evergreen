@@ -25,7 +25,6 @@ Function Get-AdoptiumTemurin11 {
         $PSObject = [PSCustomObject]@{
             Version      = ($Release.scm_ref -split "_")[0]
             Type         = $Release.image_type
-            Date         = ConvertTo-DateTime -DateTime $(($item.updated_at -split " ")[0])
             Architecture = Get-Architecture -String $Release.architecture
             Checksum     = $Release.installer.checksum
             Size         = $Release.installer.size
