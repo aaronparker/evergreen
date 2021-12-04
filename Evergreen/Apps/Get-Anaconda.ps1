@@ -28,7 +28,7 @@ Function Get-Anaconda {
     If ($Null -ne $updateFeed) {
 
         # Grab the Windows files
-        $FileNames = $updateFeed.psobject.properties.name -match $res.Get.MatchFileTypes 
+        $FileNames = $updateFeed.PSObject.Properties.name -match $res.Get.MatchFileTypes 
 
         # Grab all the version numbers
         Try {
@@ -39,14 +39,14 @@ Function Get-Anaconda {
         }
 
         # Grab latest version number
-        $Version = ($AllVersions | Sort-Object { [Version]$_ } -Descending) | Select-Object -First 1
+        $Version = ($AllVersions | Sort-Object { [System.Version]$_ } -Descending) | Select-Object -First 1
         Write-Verbose -Message "$($MyInvocation.MyCommand): Latest version: $Version."
 
         # Grab latest Windows files
         $LatestReleases = $FileNames -match $Version
 
         # We need to rebase the timestamps from unix time, so need the Unix Epoch
-        $UnixEpoch = ([DateTime] '1970-01-01Z').ToUniversalTime()
+        $UnixEpoch = ([System.DateTime] '1970-01-01Z').ToUniversalTime()
 
         # Build the output object for each release
         ForEach ($Release in $LatestReleases) {

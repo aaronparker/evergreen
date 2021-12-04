@@ -125,7 +125,6 @@ Function Save-EvergreenApp {
 
                             # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
                             $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): Downloading to: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
                         }
                         Else {
                             Throw "$($MyInvocation.MyCommand): Object does not have valid Version property."
@@ -143,13 +142,15 @@ Function Save-EvergreenApp {
 
             # Download the file
             If ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
-                If ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile))) {
+
+                $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
+                If ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
 
                     try {                    
                         #region Download the file
                         $params = @{
                             Uri             = $Object.URI
-                            OutFile         = $(Join-Path -Path $OutPath -ChildPath $OutFile)
+                            OutFile         = $DownloadFile
                             UseBasicParsing = $True
                             ErrorAction     = "Continue"
                         }
@@ -163,9 +164,9 @@ Function Save-EvergreenApp {
                         #endregion
 
                         #region Write the downloaded file path to the pipeline
-                        If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
-                            Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
+                        If (Test-Path -Path $DownloadFile) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $DownloadFile."
+                            Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                         }
                         #endregion
                     }
@@ -175,9 +176,9 @@ Function Save-EvergreenApp {
                 }
                 Else {
                     #region Write the downloaded file path to the pipeline
-                    If (Test-Path -Path $(Join-Path -Path $OutPath -ChildPath $OutFile)) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): File exists: $(Join-Path -Path $OutPath -ChildPath $OutFile)."
-                        Write-Output -InputObject (Get-ChildItem -Path (Join-Path -Path $OutPath -ChildPath $OutFile))
+                    If (Test-Path -Path $DownloadFile) {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): File exists: $DownloadFile."
+                        Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                     }
                     #endregion
                 }

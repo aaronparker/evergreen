@@ -4,21 +4,21 @@
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "EXE",
-    "URI": "https://mirror.aarnet.edu.au/pub/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
+    "URI": "http://mirror.amaze.com.au/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
   },
   {
     "Version": "3.0.16",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "MSI",
-    "URI": "https://mirror.aarnet.edu.au/pub/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.msi"
+    "URI": "http://mirror.amaze.com.au/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.msi"
   },
   {
     "Version": "3.0.16",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "ZIP",
-    "URI": "https://mirror.aarnet.edu.au/pub/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.zip"
+    "URI": "http://mirror.amaze.com.au/videolan/vlc/3.0.16/win64/vlc-3.0.16-win64.zip"
   },
   {
     "Version": "3.0.16",

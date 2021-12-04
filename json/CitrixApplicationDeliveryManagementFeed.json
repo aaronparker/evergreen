@@ -1,17 +1,17 @@
 [
   {
     "Version": "13.1",
+    "Title": "Citrix ADM Release (Feature Phase) 13.1 Build 9.60",
+    "Description": "New downloads are available for Citrix Application Delivery Management",
+    "Date": "23/11/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/product-software/citrix-adm-13-1-build-9-60.html"
+  },
+  {
+    "Version": "13.1",
     "Title": "Citrix ADM Release (Feature Phase) 13.1 Build 4.43",
     "Description": "New downloads are available for Citrix Application Delivery Management",
     "Date": "19/9/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-application-management/product-software/citrix-adm-13-1-build-4-43.html"
-  },
-  {
-    "Version": "13.0",
-    "Title": "Citrix ADM Release (Maintenance Phase) 13.0 Build 83.27",
-    "Description": "New downloads are available for Citrix Application Delivery Management",
-    "Date": "30/9/2021",
-    "URI": "https://www.citrix.com/downloads/citrix-application-management/product-software/citrix-adm-13-0-build-83-27.html"
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/citrix-adm-13-1-build-4-43.html"
   },
   {
     "Version": "13.0",
@@ -64,13 +64,6 @@
   },
   {
     "Version": "13.0",
-    "Title": "Citrix ADM Release (Feature Phase) 13.0 Build 71.40",
-    "Description": "New downloads are available for Citrix Application Delivery Management",
-    "Date": "5/12/2020",
-    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/citrix-adm-13-0-build-71-40.html"
-  },
-  {
-    "Version": "13.0",
     "Title": "Citrix ADM Release (Feature Phase) 13.0 Build 76.29",
     "Description": "New downloads are available for Citrix Application Delivery Management",
     "Date": "23/2/2021",
@@ -91,11 +84,25 @@
     "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/citrix-adm-13-0-build-82-41.html"
   },
   {
-    "Version": "12.1",
-    "Title": "Citrix ADM Release (Feature Phase) 12.1 Build 50.28/50.30/50.33",
+    "Version": "13.0",
+    "Title": "Citrix ADM Release (Maintenance Phase) 13.0 Build 83.27",
     "Description": "New downloads are available for Citrix Application Delivery Management",
-    "Date": "12/3/2019",
-    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/netscaler-mas-121-build-50-28.html"
+    "Date": "30/9/2021",
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/product-software/citrix-adm-13-0-build-83-27.html"
+  },
+  {
+    "Version": "13.0",
+    "Title": "Citrix ADM Release (Feature Phase) 13.0 Build 71.40",
+    "Description": "New downloads are available for Citrix Application Delivery Management",
+    "Date": "5/12/2020",
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/citrix-adm-13-0-build-71-40.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "NetScaler MAS 12.1 Deployment Guide",
+    "Description": "New downloads are available for Citrix Application Delivery Management",
+    "Date": "30/11/2018",
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/adm-deployment-guide.html"
   },
   {
     "Version": "12.1",
@@ -103,6 +110,13 @@
     "Description": "New downloads are available for Citrix Application Delivery Management",
     "Date": "25/10/2018",
     "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/netscaler-mas-121-build-49-23.html"
+  },
+  {
+    "Version": "12.1",
+    "Title": "Citrix ADM Release (Feature Phase) 12.1 Build 50.28/50.30/50.33",
+    "Description": "New downloads are available for Citrix Application Delivery Management",
+    "Date": "12/3/2019",
+    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/netscaler-mas-121-build-50-28.html"
   },
   {
     "Version": "12.1",
@@ -124,13 +138,6 @@
     "Description": "New downloads are available for Citrix Application Delivery Management",
     "Date": "19/6/2018",
     "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/netscaler-mas-121-build-48-13.html"
-  },
-  {
-    "Version": "12.1",
-    "Title": "NetScaler MAS 12.1 Deployment Guide",
-    "Description": "New downloads are available for Citrix Application Delivery Management",
-    "Date": "30/11/2018",
-    "URI": "https://www.citrix.com/downloads/citrix-application-management/earlier-versions/adm-deployment-guide.html"
   },
   {
     "Version": "12.1",

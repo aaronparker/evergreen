@@ -1,20 +1,4 @@
-[
-  {
-    "Version": "2.7.4",
-    "Platform": "Windows",
-    "Architecture": "x64",
-    "Type": "exe",
-    "Date": "28/4/2021",
-    "Size": 29568512,
-    "URI": "https://github.com/telegramdesktop/tdesktop/releases/download/v2.7.4/tsetup-x64.2.7.4.exe"
-  },
-  {
-    "Version": "2.7.4",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "exe",
-    "Date": "28/4/2021",
-    "Size": 27004712,
-    "URI": "https://github.com/telegramdesktop/tdesktop/releases/download/v2.7.4/tsetup.2.7.4.exe"
-  }
-]
+{
+  "Version": "3.2.5",
+  "URI": "https://updates.tdesktop.com/tsetup/tsetup.3.2.5.exe"
+}

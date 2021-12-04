@@ -1,38 +1,29 @@
 [
   {
-    "Version": "8.0.0",
+    "Version": "8.3.0",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "exe",
-    "Date": "19/4/2021",
-    "Size": 9111875,
-    "URI": "https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.WIN64.exe"
+    "Date": "28/10/2021",
+    "Size": 9655501,
+    "URI": "https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.WIN64.exe"
   },
   {
-    "Version": "8.0.0",
+    "Version": "8.3.0",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "msi",
-    "Date": "19/4/2021",
-    "Size": 9314304,
-    "URI": "https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.WIN64.msi"
+    "Date": "28/10/2021",
+    "Size": 9859072,
+    "URI": "https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.WIN64.msi"
   },
   {
-    "Version": "8.0.0",
+    "Version": "8.3.0",
     "Platform": "Windows",
     "Architecture": "x86",
     "Type": "exe",
-    "Date": "19/4/2021",
-    "Size": 8259539,
-    "URI": "https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.WINDOWS.exe"
-  },
-  {
-    "Version": "8.0.0",
-    "Platform": "Windows",
-    "Architecture": "x86",
-    "Type": "msi",
-    "Date": "19/4/2021",
-    "Size": 8462336,
-    "URI": "https://github.com/peazip/PeaZip/releases/download/8.0.0/peazip-8.0.0.WINDOWS.msi"
+    "Date": "28/10/2021",
+    "Size": 8824172,
+    "URI": "https://github.com/peazip/PeaZip/releases/download/8.3.0/peazip-8.3.0.WINDOWS.exe"
   }
 ]

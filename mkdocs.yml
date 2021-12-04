@@ -51,7 +51,7 @@ theme:
   favicon: assets/favicon.png
   #icon:
     #logo: logo
-  logo: assets/images/EvergreenLeaf-256-White.png
+  logo: assets/images/evergreenbulb-grey.png
 
 # Table sort
 extra_javascript:

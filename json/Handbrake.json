@@ -47,7 +47,7 @@
   {
     "Version": "1.4.2",
     "Platform": "Windows",
-    "Architecture": "x64",
+    "Architecture": "x86",
     "Type": "zip",
     "Date": "3/10/2021",
     "Size": 19138712,

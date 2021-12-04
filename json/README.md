@@ -5,5 +5,5 @@ JSON files here list the output for all supported applications. These are listed
 Export all applications to JSON by running the following command:
 
 ```powershell
-Find-EvergreenApp | ForEach-Object { Get-EvergreenApp -Name $_.Name | ConvertTo-Json | Out-File -Path ".\$($_.Name).json" -Encoding "Utf8" }
+Find-EvergreenApp | Where-Object { $_.Name -notmatch "GhislerTotalCommander|McNeelRhino" } | Sort-Object { Get-Random } | ForEach-Object { Get-EvergreenApp -Name $_.Name | ConvertTo-Json | Out-File -Path ".\$($_.Name).json" -Encoding "Utf8" }
 ```

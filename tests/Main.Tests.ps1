@@ -32,7 +32,7 @@ Describe "General project validation" {
 
     It "Script <file.Name> should pass ScriptAnalyzer" -TestCases $testCase {
         param ($file)
-        $analysis = Invoke-ScriptAnalyzer -Path  $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
+        $analysis = Invoke-ScriptAnalyzer -Path $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
         
         ForEach ($rule in $scriptAnalyzerRules) {
             If ($analysis.RuleName -contains $rule) {

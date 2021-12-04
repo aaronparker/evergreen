@@ -1,5 +1,16 @@
 # Change log
 
+## VERSION
+
+* Adds `ImageMagickStudioImageMagick` [#242](https://github.com/aaronparker/evergreen/issues/242), `Miniconda` [#246](https://github.com/aaronparker/evergreen/issues/246), `TorProjectTorBrowser` [#246](https://github.com/aaronparker/evergreen/issues/246), `diagrams.net` [#276](https://github.com/aaronparker/evergreen/issues/276)
+* Adds `AdoptiumTemurin8`, `AdoptiumTemurin11`, `AdoptiumTemurin16`, `AdoptiumTemurin17` and addresses [#273](https://github.com/aaronparker/evergreen/issues/273) [#199](https://github.com/aaronparker/evergreen/issues/199),
+* Updates `MicrosoftOneDrive` with new update sources and adds more update channels. Now includes: `Production`, `Enterprise`, `Insider`, `InternalSlow`, `InternalFast` [#269](https://github.com/aaronparker/evergreen/issues/269)
+* Updates `MicrosoftTeams` with new approach for dynamically determining download URLs and adds `.exe` installers
+* Updates `Microsoft.NET` due to changes in source location for .NET 6. Dynamically finds installer source URLs and provides `windowsdesktop`, `runtime`, `sdk` installers. Includes .NET `6.0`, `5.0` and `3.1` [#278](https://github.com/aaronparker/evergreen/issues/278)
+* Updates `FoxitPDFEditor` to fix an issue with changes to language properties from the update source [#274](https://github.com/aaronparker/evergreen/issues/274)
+* Updates `GitHubRelease` with additional file types to return by default Thanks to [@JonathanPitre](https://github.com/JonathanPitre)
+
+
 ## 2111.488
 
 * Adds `-CustomPath` parameter to `Save-EvergreenApp` - allows for specifying a specific target directory for downloads instead of building the directory structure automatically from the input object [#260](https://github.com/aaronparker/evergreen/issues/260)

@@ -25,7 +25,7 @@ Function Get-ControlUpAgent {
     If ($Null -ne $Object) {
     
         # Build and array of the latest release and download URLs
-        ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name)) {
+        ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType "NoteProperty" | Select-Object -ExpandProperty "Name")) {
             $PSObject = [PSCustomObject] @{
                 Version      = $Object.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
                 Framework    = $item
