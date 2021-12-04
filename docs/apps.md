@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2111.488` supports the following applications:
+Evergreen `2112.504` supports the following applications:
 
 | Name                                    | Application                                        | Link                                                                                       |
 | --------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -10,6 +10,10 @@ Evergreen `2111.488` supports the following applications:
 | AdobeAcrobat                            | Adobe Acrobat                                      | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                         |
 | AdobeAcrobatReaderDC                    | Adobe Acrobat Reader DC                            | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
 | AdobeBrackets                           | Adobe Brackets                                     | http://brackets.io/                                                                        |
+| AdoptiumTemurin11                       | Adoptium Temurin 11                                | https://adoptium.net/about.html?variant=openjdk11                                          |
+| AdoptiumTemurin16                       | Adoptium Temurin 16                                | https://adoptium.net/about.html?variant=openjdk11                                          |
+| AdoptiumTemurin17                       | Adoptium Temurin 17                                | https://adoptium.net/about.html?variant=openjdk11                                          |
+| AdoptiumTemurin8                        | Adoptium Temurin 8                                 | https://adoptium.net/about.html?variant=openjdk11                                          |
 | AdoptOpenJDK11                          | AdoptOpenJDK OpenJDK Official Binaries (JDK 11u)   | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK16                          | AdoptOpenJDK OpenJDK Official Binaries (JDK 16u)   | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK8                           | AdoptOpenJDK OpenJDK Official Binaries (JDK 8u)    | https://adoptopenjdk.net/index.html                                                        |
@@ -43,6 +47,7 @@ Evergreen `2111.488` supports the following applications:
 | Cyberduck                               | iterate GmbH Cyberduck                             | https://cyberduck.io/                                                                      |
 | dbeaver                                 | dbeaver                                            | https://github.com/dbeaver/dbeaver                                                         |
 | deviceTRUST                             | deviceTRUST                                        | https://devicetrust.com/                                                                   |
+| diagrams.net                            | diagrams.net                                       | https://www.diagrams.net/                                                                  |
 | dnGrep                                  | dnGrep                                             | https://dngrep.github.io/                                                                  |
 | FileZilla                               | FileZilla                                          | https://filezilla-project.org/                                                             |
 | Fork                                    | Dan Pristupov Fork                                 | https://www.fork.dev                                                                       |
@@ -64,6 +69,7 @@ Evergreen `2111.488` supports the following applications:
 | gretl                                   | gretl                                              | http://gretl.sourceforge.net/                                                              |
 | Handbrake                               | Handbrake                                          | https://handbrake.fr/                                                                      |
 | ImageGlass                              | ImageGlass                                         | https://imageglass.org/                                                                    |
+| ImageMagickStudioImageMagick            | ImageMagick Studio ImageMagick                     | https://imagemagick.org/                                                                   |
 | JamTreeSizeFree                         | JAM Software TreeSize Free                         | https://www.jam-software.com/treesize_free/                                                |
 | JamTreeSizeProfessional                 | JAM Software TreeSize Professional                 | https://www.jam-software.com/treesize/                                                     |
 | JASP                                    | JASP                                               | https://jasp-stats.org/                                                                    |
@@ -104,6 +110,7 @@ Evergreen `2111.488` supports the following applications:
 | MicrosoftWvdInfraAgent                  | Microsoft Windows Virtual Desktop Agent            | https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell        |
 | MicrosoftWvdRemoteDesktop               | Microsoft Remote Desktop                           | https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10                |
 | MicrosoftWvdRtcService                  | Microsoft Remote Desktop WebRTC Redirector Service | https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd                        |
+| Miniconda                               | Miniconda                                          | https://docs.conda.io/en/latest/miniconda.html                                             |
 | Minitab                                 | Minitab                                            | https://www.minitab.com/                                                                   |
 | MiniZincIDE                             | MiniZinc IDE                                       | https://www.minizinc.org/                                                                  |
 | MirantisLens                            | MirantisLens                                       | https://k8slens.dev/                                                                       |
@@ -162,6 +169,7 @@ Evergreen `2111.488` supports the following applications:
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                         | https://www.telerik.com/fiddler                                                            |
 | Terminals                               | Terminals                                          | https://github.com/terminals-Origin/Terminals/                                             |
 | TeXstudio                               | TeXstudio                                          | https://www.texstudio.org/                                                                 |
+| TorProjectTorBrowser                    | Tor Project Tor Browser                            | https://www.torproject.org/                                                                |
 | USBPcap                                 | USBPcap                                            | https://github.com/desowin/usbpcap/                                                        |
 | VastLimitsUberAgent                     | vast limits uberAgent                              | https://uberagent.com/                                                                     |
 | VeraCrypt                               | VeraCrypt                                          | https://www.veracrypt.fr/en/Home.html                                                      |

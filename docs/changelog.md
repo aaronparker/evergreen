@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2112.504
 
 * Adds `ImageMagickStudioImageMagick` [#242](https://github.com/aaronparker/evergreen/issues/242), `Miniconda` [#246](https://github.com/aaronparker/evergreen/issues/246), `TorProjectTorBrowser` [#246](https://github.com/aaronparker/evergreen/issues/246), `diagrams.net` [#276](https://github.com/aaronparker/evergreen/issues/276)
 * Adds `AdoptiumTemurin8`, `AdoptiumTemurin11`, `AdoptiumTemurin16`, `AdoptiumTemurin17` and addresses [#273](https://github.com/aaronparker/evergreen/issues/273) [#199](https://github.com/aaronparker/evergreen/issues/199),
