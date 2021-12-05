@@ -1,0 +1,51 @@
+name: Validate Evergreen updates
+
+# Environment variables
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# Controls when the action will run. 
+on:
+  #push:
+  #  branches:
+  #    - main
+  #  paths:
+  #    - 'Evergreen/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    branches:
+        - main
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  validate:
+    runs-on: windows-2022
+    #runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Import GPG key
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPGKEY }}
+          passphrase: ${{ secrets.GPGPASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_config_global: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: false
+          git_committer_name: Aaron Parker
+          git_committer_email: aaron@stealthpuppy.com
+
+      # Run Pester tests
+      - name: Run Pester tests
+        shell: powershell
+        run: |
+          . .\ci\Install.ps1
+          . .\ci\Tests.ps1
