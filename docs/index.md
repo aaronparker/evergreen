@@ -31,4 +31,4 @@ There are several community and commercial products that manage application depl
 
 Evergreen's focus is on integration for PowerShell scripts to provide product version numbers and download URLs. Ideal for use with the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment, creating applications packages in Microsoft Intune, or with [Packer](https://www.packer.io/) to create evergreen machine images on-premises, in Azure, AWS, or other cloud platforms
 
-[Leaf icon by Icons8](https://icons8.com/icon/S6rvNbebKM9i/leaf)
+[Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)
