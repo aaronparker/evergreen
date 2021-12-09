@@ -58,7 +58,7 @@ WARNING: Invoke-RestMethodWrapper: For troubleshooting steps see: https://stealt
 
 This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
 
-### `GhislerTotalCommander`
+### GhislerTotalCommander
 
 Supports Windows platforms only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux.
 
