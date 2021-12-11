@@ -4,7 +4,7 @@ Function Get-mRemoteNG {
             Returns the available mRemoteNG versions.
 
         .NOTES
-            Author: Trond Eirik Haavarstein 
+            Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]
@@ -18,7 +18,7 @@ Function Get-mRemoteNG {
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNull()]
         [System.String] $Filter
-    )   
+    )
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{

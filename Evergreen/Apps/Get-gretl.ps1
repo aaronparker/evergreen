@@ -4,7 +4,7 @@ Function Get-gretl {
             Get the current version and download URL for gretl.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

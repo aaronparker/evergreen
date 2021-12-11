@@ -4,7 +4,7 @@ Function Get-Gephi {
             Returns the available Gephi versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

@@ -1,7 +1,7 @@
 <#
     .SYNOPSIS
         AppVeyor pre-deploy script.
-#> 
+#>
 [OutputType()]
 param ()
 
@@ -25,7 +25,7 @@ Else {
         $module = $env:Module
     }
     Else {
-        # Local Testing 
+        # Local Testing
         $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
         $module = Split-Path -Path $projectRoot -Leaf
     }

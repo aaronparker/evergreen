@@ -24,12 +24,12 @@ Function Get-Miniconda {
     $Uri = $res.Get.Update.Uri -replace "#replace", $res.Get.Update.ReplaceFileList
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethodWrapper -Uri $Uri 
+    $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
 
     If ($Null -ne $updateFeed) {
 
         # Grab the Windows files
-        $FileNames = $updateFeed.PSObject.Properties.name -match $res.Get.MatchFileTypes 
+        $FileNames = $updateFeed.PSObject.Properties.name -match $res.Get.MatchFileTypes
 
         # Grab all the version numbers
         try {

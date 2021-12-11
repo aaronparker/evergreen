@@ -27,7 +27,7 @@ Function Get-MozillaFirefox {
 
     # Get latest Firefox version
     $firefoxVersions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-    
+
     # Construct custom object with output details
     #ForEach ($currentLanguage in $res.Get.Download.Languages) {
     ForEach ($currentLanguage in $Language) {

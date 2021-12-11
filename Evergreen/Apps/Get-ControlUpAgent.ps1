@@ -21,9 +21,9 @@ Function Get-ControlUpAgent {
     )
 
     # Query the ControlUp Agent JSON
-    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri    
+    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     If ($Null -ne $Object) {
-    
+
         # Build and array of the latest release and download URLs
         ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType "NoteProperty" | Select-Object -ExpandProperty "Name")) {
             $PSObject = [PSCustomObject] @{

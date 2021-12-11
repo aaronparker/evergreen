@@ -4,7 +4,7 @@ Function Get-Pandoc {
             Returns the available Pandoc versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

@@ -4,7 +4,7 @@ Function Get-FreeFem {
             Returns the available FreeFem versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

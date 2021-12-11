@@ -10,7 +10,7 @@ Function Get-FunctionResource {
         [ValidateNotNull()]
         [System.String] $AppName
     )
-    
+
     # Setup path to the manifests folder and the app manifest
     $Path = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
     $AppManifest = Join-Path -Path $Path -ChildPath "$AppName.json"

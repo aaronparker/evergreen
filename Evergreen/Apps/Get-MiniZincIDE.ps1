@@ -4,7 +4,7 @@ Function Get-MiniZincIDE {
             Returns the available MiniZinc IDE versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

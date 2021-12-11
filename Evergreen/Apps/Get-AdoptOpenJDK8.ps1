@@ -15,7 +15,7 @@ Function Get-AdoptOpenJDK8 {
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNull()]
         [System.String] $Filter
-    )   
+    )
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{

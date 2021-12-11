@@ -33,13 +33,13 @@ Function Get-FoxitPDFEditor {
 
         # Build the output object for each language. Excludes languages with out-of-date versions
         ForEach ($language in ($updateFeed.package_info.language | Get-Member -MemberType "NoteProperty")) {
-            
+
             # Build the download URL; Follow the download link which will return a 301/302
             Write-Verbose -Message "$($MyInvocation.MyCommand): Return details for language: $($updateFeed.package_info.language.($language.Name))."
             $Uri = (($res.Get.Download.Uri -replace "#Version", $Version) -replace "#Language", $($updateFeed.package_info.language.($language.Name))) `
                 -replace "#Package", $updateFeed.package_info.type[0]
             $redirectUrl = Resolve-SystemNetWebRequest -Uri $Uri
-            
+
             # Construct the output; Return the custom object to the pipeline
             If ($Null -ne $redirectUrl) {
                 $PSObject = [PSCustomObject] @{

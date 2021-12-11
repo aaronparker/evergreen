@@ -2,7 +2,7 @@ Function Get-VastLimitsUberAgent {
     <#
             .SYNOPSIS
                 Get the current version and download URL for uberAgent.
-    
+
             .NOTES
                 Site: https://stealthpuppy.com
                 Author: Aaron Parker
@@ -20,14 +20,14 @@ Function Get-VastLimitsUberAgent {
         [ValidateNotNull()]
         [System.String] $Filter
     )
-    
+
     # Get latest version and download latest release via API
     $iwcParams = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
     $Content = Invoke-WebRequestWrapper @iwcParams
-    
+
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {
         $PSObject = [PSCustomObject] @{

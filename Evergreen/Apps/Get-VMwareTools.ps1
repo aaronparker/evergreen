@@ -47,7 +47,7 @@
                 $Uri = ("$($res.Get.Download.Uri)$platform/$architecture/index.html").ToLower()
                 $Content = Invoke-WebRequestWrapper -Uri $Uri
                 $filename = [RegEx]::Match($Content, $res.Get.Download.MatchFileName).Captures.Value
-            
+
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
                     Version      = $LatestVersion.Version

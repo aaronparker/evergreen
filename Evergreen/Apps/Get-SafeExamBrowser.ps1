@@ -4,7 +4,7 @@ Function Get-SafeExamBrowser {
             Returns the available Safe Exam Browser versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

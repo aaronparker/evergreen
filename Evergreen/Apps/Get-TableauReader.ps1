@@ -28,7 +28,7 @@ Function Get-TableauReader {
 
         # Extract the version information from the uri
         try {
-            $Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value 
+            $Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
         }
         catch {
             Throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."

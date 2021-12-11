@@ -39,7 +39,7 @@ Function Get-Postman {
                 Version      = $LatestVersion.name
                 Size         = $LatestVersion.assets.size
                 Hash         = $LatestVersion.assets.hash
-                Date         = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.Update.DatePattern 
+                Date         = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.Update.DatePattern
                 Architecture = $item.Name
                 Filename     = $LatestVersion.assets.name
                 URI          = $LatestVersion.assets.url

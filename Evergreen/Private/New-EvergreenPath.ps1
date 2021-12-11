@@ -5,7 +5,7 @@ Function New-EvergreenPath {
 
         .NOTES
             Author: Aaron Parker
-            Twitter: @stealthpuppy        
+            Twitter: @stealthpuppy
     #>
     [OutputType([System.String])]
     [CmdletBinding(SupportsShouldProcess = $True)]

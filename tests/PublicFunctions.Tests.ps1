@@ -137,7 +137,7 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     }
 
     Context "Validate Export-EvergreenManifest works with: <application>." {
-        
+
         # Test that Export-EvergreenManifest does not throw
         It "'Export-EvergreenManifest -Name <application>' should not Throw" {
             { Export-EvergreenManifest -Name $application } | Should -Not -Throw

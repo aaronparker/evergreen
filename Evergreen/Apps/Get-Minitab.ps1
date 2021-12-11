@@ -47,21 +47,21 @@
             Throw "$($MyInvocation.MyCommand): Failed to determine Version(s) from the URI(s)."
         }
 
-        # Grab latest version, sort by descending version number 
+        # Grab latest version, sort by descending version number
         $LatestVersion = $Versions | `
             Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1
-        
+
         [System.String]$LatestURI = $URIs | Select-String -Pattern $LatestVersion
 
-        # Build the output object        
+        # Build the output object
         $PSObject = [PSCustomObject] @{
             Version      = $LatestVersion
-            Architecture = Get-Architecture -String $LatestURI 
+            Architecture = Get-Architecture -String $LatestURI
             Release      = $Release
             URI          = $LatestURI
         }
         Write-Output -InputObject $PSObject
-            
+
     }
 }

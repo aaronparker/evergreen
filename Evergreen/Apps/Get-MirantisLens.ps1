@@ -35,5 +35,5 @@ Function Get-MirantisLens {
             }
             Write-Output -InputObject $PSObject
         }
-    }   
+    }
 }

@@ -21,10 +21,10 @@ Function Get-MestrelabMnova {
     )
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri 
+    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     If ($Null -ne $updateFeed) {
-       
+
         # Grab the Windows files
         Try {
             $windowsReleases = $updateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }

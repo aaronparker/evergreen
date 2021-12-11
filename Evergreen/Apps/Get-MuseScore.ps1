@@ -4,7 +4,7 @@ Function Get-MuseScore {
             Returns the available MuseScore versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

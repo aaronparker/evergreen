@@ -1,4 +1,4 @@
-Function Get-Zoom {    
+Function Get-Zoom {
     <#
         .SYNOPSIS
             Get the current version and download URL for Zoom.

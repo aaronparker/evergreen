@@ -23,7 +23,7 @@ Function Get-MozillaThunderbird {
 
     # Get latest Thunderbird version
     $thunderbirdVersions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-    
+
     # Construct custom object with output details
     ForEach ($language in $res.Get.Download.Languages) {
         ForEach ($channel in $res.Get.Update.Channels) {

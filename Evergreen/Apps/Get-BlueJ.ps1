@@ -31,7 +31,7 @@ Function Get-BlueJ {
     If ($Null -ne $Content) {
 
         # Convert response from UTF8
-        Try { 
+        Try {
             $Updates = [System.Text.Encoding]::UTF8.GetString($Content)
         }
         Catch {

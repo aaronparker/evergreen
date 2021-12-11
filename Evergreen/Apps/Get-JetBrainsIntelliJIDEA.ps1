@@ -27,7 +27,7 @@ Function Get-JetBrainsIntelliJIDEA {
 
         # Query the Jetbrains URI to get the JSON
         $updateFeed = Invoke-RestMethodWrapper -Uri $uri
-   
+
         If ($Null -ne $updateFeed) {
 
             # Construct the output; Return the custom object to the pipeline

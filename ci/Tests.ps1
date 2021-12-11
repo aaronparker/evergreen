@@ -11,7 +11,7 @@ If (Test-Path -Path "env:APPVEYOR_BUILD_FOLDER") {
     $module = $env:Module
 }
 Else {
-    # Local Testing 
+    # Local Testing
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }

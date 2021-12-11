@@ -9,7 +9,7 @@ Function Export-EvergreenManifest {
         [ValidateNotNull()]
         [System.String] $Name
     )
-    
+
     try {
         $Output = Get-FunctionResource -AppName $Name
     }

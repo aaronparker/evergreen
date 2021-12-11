@@ -1,7 +1,7 @@
 Function Get-CitrixVirtualAppsDesktopsFeed {
     <#
         .SYNOPSIS
-            Reads the public Citrix Virtual Apps and Desktops feed to return an array of versions and links to download pages.    
+            Reads the public Citrix Virtual Apps and Desktops feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker

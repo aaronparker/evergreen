@@ -4,7 +4,7 @@ Function Get-Protege {
             Returns the latest Protege version.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

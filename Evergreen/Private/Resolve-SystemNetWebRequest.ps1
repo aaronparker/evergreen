@@ -34,7 +34,7 @@ Function Resolve-SystemNetWebRequest {
         If ($webResponse) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($webResponse.StatusCode)]."
             Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
-            
+
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 LastModified  = $webResponse.LastModified

@@ -4,7 +4,7 @@ Function Get-BISF {
             Returns the available Base Image Script Framework versions.
 
         .NOTES
-            Author: Trond Eirik Haavarstein 
+            Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]

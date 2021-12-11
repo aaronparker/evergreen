@@ -8,7 +8,7 @@
     .NOTES
         Author: Aaron Parker
         Twitter: @stealthpuppy
-        
+
     .LINK
         https://github.com/aaronparker/Evergreen
 
@@ -102,7 +102,7 @@ If (Find-EvergreenApp -Name $Name) {
     #endregion
 
     # Write output for each architecture
-    Write-Output "Installers:" | Out-File -Path $WinGetManifestFile -Append     
+    Write-Output "Installers:" | Out-File -Path $WinGetManifestFile -Append
 
     # Walk through each package in output from the Evergreen function
     ForEach ($Package in $Packages) {

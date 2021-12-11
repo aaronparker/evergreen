@@ -43,7 +43,7 @@ Function Get-GitHubRepoRelease {
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Checking for how many requests to the GitHub API we have left."
     $GitHubRate = Invoke-RestMethodWrapper @params
-    
+
     If ($GitHubRate.rate.remaining -eq 0) {
         # We're rate limited, so output a special object
         Write-Warning -Message "$($MyInvocation.MyCommand): Requests to GitHub are being rate limited."
@@ -57,10 +57,10 @@ Function Get-GitHubRepoRelease {
     }
     Else {
 
-        # Retrieve the releases from the GitHub API 
+        # Retrieve the releases from the GitHub API
         Write-Verbose -Message "$($MyInvocation.MyCommand): We have $($GitHubRate.rate.remaining) requests left to the GitHub API in this window."
         try {
-        
+
             # Use TLS for connections
             $SslProtocol = "Tls12"
             Write-Verbose -Message "$($MyInvocation.MyCommand): Set TLS to $SslProtocol."

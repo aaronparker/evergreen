@@ -4,7 +4,7 @@ Function Get-GitForWindows {
             Returns the available Git for Windows versions.
 
         .NOTES
-            Author: Trond Eirik Haavarstein 
+            Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]

@@ -6,7 +6,7 @@ Function Get-AdobeAcrobatReaderDC {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
-        
+
         .LINK
             https://github.com/aaronparker/Evergreen
     #>

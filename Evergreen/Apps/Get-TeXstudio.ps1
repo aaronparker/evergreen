@@ -4,7 +4,7 @@ Function Get-TeXstudio {
             Returns the available TeXstudio versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
