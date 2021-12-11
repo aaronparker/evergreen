@@ -2,6 +2,7 @@
     .SYNOPSIS
         Main Pester function tests.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 

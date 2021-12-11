@@ -3,6 +3,7 @@
     .SYNOPSIS
         Output GitHub API request window
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 

@@ -2,6 +2,9 @@
     Downloads Pester tests saved for future use
     Causes excessive downloads and account lockouts in AppVeyor
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[OutputType()]
+param ()
 
 Describe -Tag "Download" -Name "Downloads" {
     ForEach ($application in $Applications) {

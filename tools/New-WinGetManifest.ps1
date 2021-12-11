@@ -18,6 +18,7 @@
         Description:
         Creates a Windows Package Manager manifest for Microsoft FSLogix Apps and outputs the manifest in C:\Manifests
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [CmdletBinding(SupportsShouldProcess = $False)]
 param (
     [Parameter(Mandatory, Position = 0)]

@@ -2,6 +2,7 @@
     .SYNOPSIS
         AppVeyor install script.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 
