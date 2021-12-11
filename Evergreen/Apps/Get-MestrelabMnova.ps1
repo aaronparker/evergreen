@@ -7,6 +7,7 @@ Function Get-MestrelabMnova {
             Author: Andrew Cooper
             Twitter: @adotcoop
     #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (

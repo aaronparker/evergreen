@@ -22,6 +22,7 @@ try {
     $GitHubRate = Invoke-RestMethod @params
 }
 catch {
+    Write-Error -Message $_.Exception.Message
 }
 Write-Host ""
 Write-Host "We have $($GitHubRate.rate.remaining) requests left to the GitHub API in this window."
