@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftWvdMultimediaRedirection`
+* Updates the source URL for `MicrosoftWvdRtcService` [#288](https://github.com/aaronparker/evergreen/issues/246)
+* Addresses code issues identified with [PSScriptAnalyzer](https://github.com/aaronparker/evergreen/actions/workflows/powershell-analysis.yml)
+
 ## 2112.504
 
 * Adds `ImageMagickStudioImageMagick` [#242](https://github.com/aaronparker/evergreen/issues/242), `Miniconda` [#246](https://github.com/aaronparker/evergreen/issues/246), `TorProjectTorBrowser` [#246](https://github.com/aaronparker/evergreen/issues/246), `diagrams.net` [#276](https://github.com/aaronparker/evergreen/issues/276)
