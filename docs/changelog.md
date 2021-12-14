@@ -3,7 +3,9 @@
 ## VERSION
 
 * Adds `MicrosoftWvdMultimediaRedirection`
-* Updates the source URL for `MicrosoftWvdRtcService` [#288](https://github.com/aaronparker/evergreen/issues/246)
+* Updates the source URL for `MicrosoftWvdRtcService` [#288](https://github.com/aaronparker/evergreen/issues/288)
+* Updates installer types for `NotepadPlusPlus` [#287](https://github.com/aaronparker/evergreen/issues/287)
+* Fixes an issue with `MicrosoftPowerShell` due to changes in the update source [#282](https://github.com/aaronparker/evergreen/issues/282)
 * Addresses code issues identified with [PSScriptAnalyzer](https://github.com/aaronparker/evergreen/actions/workflows/powershell-analysis.yml)
 
 ## 2112.504
