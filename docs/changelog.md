@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftWvdMultimediaRedirection` [https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection](https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection)
+* Updates the source URL for `MicrosoftWvdRtcService` [#288](https://github.com/aaronparker/evergreen/issues/288)
+* Updates installer types for `NotepadPlusPlus` [#287](https://github.com/aaronparker/evergreen/issues/287)
+* Fixes an issue with `MicrosoftPowerShell` due to changes in the update source [#282](https://github.com/aaronparker/evergreen/issues/282)
+* Addresses code issues identified with [PSScriptAnalyzer](https://github.com/aaronparker/evergreen/actions/workflows/powershell-analysis.yml)
+
 ## 2112.504
 
 * Adds `ImageMagickStudioImageMagick` [#242](https://github.com/aaronparker/evergreen/issues/242), `Miniconda` [#246](https://github.com/aaronparker/evergreen/issues/246), `TorProjectTorBrowser` [#246](https://github.com/aaronparker/evergreen/issues/246), `diagrams.net` [#276](https://github.com/aaronparker/evergreen/issues/276)

@@ -4,7 +4,7 @@ Function Get-SAGAGIS {
             Get the current version and download URL for SAGA-GIS.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

@@ -1,4 +1,4 @@
-Function Get-RingCentral {    
+Function Get-RingCentral {
     <#
         .SYNOPSIS
             Get the current version and download URL for RingCentral.

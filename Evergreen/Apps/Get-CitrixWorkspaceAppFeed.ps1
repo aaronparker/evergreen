@@ -1,7 +1,7 @@
 Function Get-CitrixWorkspaceAppFeed {
     <#
         .SYNOPSIS
-            Reads the public Citrix Workspace app feed to return an array of versions and links to download pages.    
+            Reads the public Citrix Workspace app feed to return an array of versions and links to download pages.
 
             Does not provide the version number for Receiver where a login is required (e.g. HTML5, Chrome).
 

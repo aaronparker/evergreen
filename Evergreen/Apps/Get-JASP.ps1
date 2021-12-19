@@ -4,7 +4,7 @@ Function Get-JASP {
             Returns the available JASP versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

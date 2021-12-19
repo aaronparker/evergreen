@@ -46,7 +46,7 @@ Function Save-EvergreenApp {
         [System.Management.Automation.SwitchParameter] $NoProgress
     )
 
-    Begin { 
+    Begin {
 
         # Disable the Invoke-WebRequest progress bar for faster downloads
         If ($PSBoundParameters.ContainsKey("Verbose") -and !($PSBoundParameters.ContainsKey("NoProgress"))) {
@@ -67,11 +67,11 @@ Function Save-EvergreenApp {
                 $NewPath = $CustomPath
             }
         }
-        
+
         #region Test $Path and attempt to create it if it doesn't exist
         If (Test-Path -Path $NewPath -PathType "Container") {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $NewPath."
-        } 
+        }
         Else {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Path does not exist: $NewPath."
             try {
@@ -146,7 +146,7 @@ Function Save-EvergreenApp {
                 $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
                 If ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
 
-                    try {                    
+                    try {
                         #region Download the file
                         $params = @{
                             Uri             = $Object.URI
@@ -190,7 +190,7 @@ Function Save-EvergreenApp {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
         If ($PSCmdlet.ShouldProcess("Remove variables")) {
             If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" -ErrorAction "SilentlyContinue" }
-            Remove-Variable -Name "OutPath", "OutFile" -ErrorAction "SilentlyContinue" 
+            Remove-Variable -Name "OutPath", "OutFile" -ErrorAction "SilentlyContinue"
         }
     }
 }

@@ -14,7 +14,7 @@ Function Invoke-SystemNetRequest {
         [ValidateNotNullOrEmpty()]
         [System.Int32] $MaximumRedirection = 3
     )
-    
+
     try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)

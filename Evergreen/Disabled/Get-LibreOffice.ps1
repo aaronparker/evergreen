@@ -11,7 +11,7 @@ Function Get-LibreOffice {
             TODO: find a better method to find version and URLs
 
             Uses: https://cgit.freedesktop.org/libreoffice/website/tree/check.php?h=update
-        
+
         .LINK
             https://github.com/aaronparker/Evergreen
     #>

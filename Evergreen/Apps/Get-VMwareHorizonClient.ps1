@@ -63,7 +63,7 @@
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to determine metadata property for the Horizon Client latest version."
     }
-    
+
     # Expand the downloaded Gzip file to get the XMl file
     $ExpandFile = Expand-GzipArchive -Path $GZipFile.FullName
 

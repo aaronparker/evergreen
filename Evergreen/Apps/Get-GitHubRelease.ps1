@@ -4,7 +4,7 @@ Function Get-GitHubRelease {
             Returns latest version and URI from a GitHub repository release list.
 
             The releases URI is expected in the following format: https://api.github.com/repos/<account>/<repository>/releases/latest.
-            
+
             More information on the GitHub releases API can be found here: https://developer.github.com/v3/repos/releases/.
 
         .NOTES

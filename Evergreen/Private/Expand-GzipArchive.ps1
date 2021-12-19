@@ -5,7 +5,7 @@ Function Expand-GzipArchive {
         [ValidateNotNullOrEmpty()]
         [ValidateScript( { If (Test-Path -Path $_ -PathType "Leaf") { $True } Else { Throw "Cannot find path $_." } })]
         [System.String] $Path,
-        
+
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNullOrEmpty()]
         [ValidateScript( { If (Test-Path -Path $(Split-Path -Path $_ -Parent) -PathType "Container") { $True } Else { Throw "Cannot find path $(Split-Path -Path $_ -Parent)." } })]
@@ -36,7 +36,7 @@ Function Expand-GzipArchive {
     catch {
         Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
-    
+
     # Expand the archive
     If ($Null -ne $GzipStream) {
         try {

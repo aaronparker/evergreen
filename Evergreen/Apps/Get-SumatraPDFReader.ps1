@@ -36,7 +36,7 @@ Function Get-SumatraPDFReader {
             $Version = "Latest"
             Write-Warning -Message "$($MyInvocation.MyCommand): Unable to determine version."
         }
-        
+
         # Construct the output for each architecture
         ForEach ($architecture in $res.Get.Download.Uri.GetEnumerator()) {
 

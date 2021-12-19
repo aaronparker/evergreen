@@ -34,7 +34,7 @@ Function Get-RCoreTeamRforWindows {
         $Version = "Latest"
     }
 
-    # Follow the download link 
+    # Follow the download link
     try {
         $params = @{
             Uri = $res.Get.Download.Uri

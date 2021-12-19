@@ -7,6 +7,7 @@ Function Get-MirantisLens {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
@@ -35,5 +36,5 @@ Function Get-MirantisLens {
             }
             Write-Output -InputObject $PSObject
         }
-    }   
+    }
 }

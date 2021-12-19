@@ -10,7 +10,7 @@
         [ValidateNotNull()]
         [System.String] $Uri
     )
-    
+
     # Create an OutFile to save the download to
     $OutFile = Join-Path -Path $([System.IO.Path]::GetTempPath()) -ChildPath (Split-Path -Path $Uri -Leaf)
     Write-Verbose -Message "$($MyInvocation.MyCommand): Using save path: $OutFile."

@@ -1,4 +1,4 @@
-Function Get-Slack {    
+Function Get-Slack {
     <#
         .SYNOPSIS
             Get the current version and download URL for Slack.

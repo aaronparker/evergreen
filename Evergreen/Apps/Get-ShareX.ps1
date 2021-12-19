@@ -4,7 +4,7 @@ Function Get-ShareX {
             Returns the available ShareX versions.
 
         .NOTES
-            Author: Trond Eirik Haavarstein 
+            Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]

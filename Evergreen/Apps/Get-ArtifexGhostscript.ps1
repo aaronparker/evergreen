@@ -4,7 +4,7 @@ Function Get-ArtifexGhostscript {
             Returns the available Ghostscript versions.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]

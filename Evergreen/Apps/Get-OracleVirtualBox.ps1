@@ -19,14 +19,14 @@ Function Get-OracleVirtualBox {
         [ValidateNotNull()]
         [System.String] $Filter
     )
-    
+
     # Get latest VirtualBox version
     $Version = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
 
     If ($Null -ne $Version) {
         $Version = [RegEx]::Match($Version, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
         Write-Verbose "$($res.Get.Download.Uri)$Version/"
-    
+
         # Get the content from the latest downloads folder
         $iwrParams = @{
             Uri             = "$($res.Get.Download.Uri)$Version/"

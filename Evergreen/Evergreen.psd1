@@ -108,7 +108,7 @@ PrivateData = @{
         ProjectUri = 'https://stealthpuppy.com/evergreen/'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://stealthpuppy.com/evergreen/assets/images/evergreenbulb.png'
+        IconUri = 'https://raw.githubusercontent.com/aaronparker/evergreen/main/img/evergreenbulb.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = 'https://stealthpuppy.com/evergreen/changelog/'

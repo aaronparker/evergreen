@@ -2,6 +2,7 @@
     .SYNOPSIS
         AppVeyor build script.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 

@@ -26,14 +26,14 @@ Function Get-CitrixVMTools {
 
     # Get details for each update URI
     ForEach ($update in $res.Get.Update.Uri.GetEnumerator()) {
-        
+
         # Get content
         $params = @{
             Uri         = $res.Get.Update.Uri[$update.Key]
             ContentType = $res.Get.Update.ContentType
         }
         $updateFeed = Invoke-RestMethodWrapper @params
-    
+
         # Convert the JSON to usable output
         ForEach ($architecture in $res.Get.Update.Architectures) {
             $PSObject = [PSCustomObject] @{

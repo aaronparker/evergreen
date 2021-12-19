@@ -25,7 +25,7 @@ Function Get-EvergreenApp {
     Begin {}
 
     Process {
-        
+
         try {
             # Build a path to the application function
             # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
@@ -52,7 +52,7 @@ Function Get-EvergreenApp {
 
             try {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
-                # Application manifests are located under Evergreen/Manifests 
+                # Application manifests are located under Evergreen/Manifests
                 If ($PSBoundParameters.ContainsKey("AppParams")) {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Adding AppParams."
                     $params = @{

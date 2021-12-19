@@ -34,7 +34,7 @@ Function Get-MicrosoftVisualStudio {
         finally {
             # Build the output object/s
             $items = $updateFeed.channelItems | Where-Object { $_.id -eq $res.Get.Update.MatchFilter }
-            ForEach ($item in $items) { 
+            ForEach ($item in $items) {
                 $PSObject = [PSCustomObject] @{
                     Version = $updateFeed.info.buildVersion
                     Sha256  = $item.payloads[0].Sha256

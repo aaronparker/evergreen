@@ -2,6 +2,9 @@
     Downloads Pester tests saved for future use
     Causes excessive downloads and account lockouts in AppVeyor
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[OutputType()]
+param ()
 
 Describe -Tag "Download" -Name "Downloads" {
     ForEach ($application in $Applications) {
@@ -11,7 +14,7 @@ Describe -Tag "Download" -Name "Downloads" {
             New-Variable -Name "tempOutput" -Value (Get-EvergreenApp -Name $application)
             $Output = (Get-Variable -Name "tempOutput").Value
             Remove-Variable -Name "tempOutput" -ErrorAction "SilentlyContinue"
-            
+
             # Test that the functions that have a URI property return something we can download
             # If URI is 'Unknown' there's probably a problem with the source
             If ([bool]($Output[0].PSObject.Properties.name -match "URI")) {

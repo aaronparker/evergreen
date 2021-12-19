@@ -36,7 +36,7 @@
             $Version = "$($Update.version_major).$($Update.version_minor).$($Update.version_patch)"
 
             # Build the output object
-            ForEach ($Architecture in $res.Get.Download.Architectures) {            
+            ForEach ($Architecture in $res.Get.Download.Architectures) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $Version
                     Architecture = $Architecture

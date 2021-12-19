@@ -23,7 +23,7 @@ Function Get-Microsoft.NET {
 
     # Read the version number from the version URI
     ForEach ($Channel in $res.Get.Update.Channels) {
-        
+
         # Determine the version for each channel
         $Content = Invoke-RestMethodWrapper -Uri $($res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $Channel)
         If ($Null -ne $Content) {

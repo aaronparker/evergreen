@@ -15,7 +15,7 @@ Function Get-AdoptiumTemurin8 {
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNull()]
         [System.String] $Filter
-    )   
+    )
 
     # Pass the repo releases API URL and return a formatted object
     $Releases = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri

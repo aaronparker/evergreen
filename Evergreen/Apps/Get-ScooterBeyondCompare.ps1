@@ -18,7 +18,7 @@
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNull()]
         [System.String] $Filter
-    )   
+    )
 
     ForEach ($language in $res.Get.Uri.GetEnumerator()) {
 

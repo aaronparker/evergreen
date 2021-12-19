@@ -4,7 +4,7 @@ Function Get-RDAnalyzer {
             Returns the latest RDAnalyzer version.
 
         .NOTES
-            Author: Andrew Cooper 
+            Author: Andrew Cooper
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
