@@ -10,12 +10,13 @@ Evergreen is a PowerShell module that returns the latest version and download UR
 ![PowerShell Gallery version](https://img.shields.io/powershellgallery/v/Evergreen.svg?style=flat&logo=powershell&logoColor=white&labelColor=009485)
 ![PowerShell Gallery downloads](https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat&logo=powershell&logoColor=white&labelColor=009485)
 
-Evergreen is intended for use in solutions used to automate software deployments. These solutions could be:
+Evergreen is intended for use with solutions used to automate software deployments. These solutions could be:
 
 * Image creation with Hashicorp Packer - images can be created with the latest version of a set of applications
 * Import applications into Microsoft Endpoint Manager - keep Configuration Manager or Microsoft Intune up to date with the latest versions of applications
 * Create a library of application installers - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
 * Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
+* Validating or auditing a desktop environment to ensure the current version of an application is installed
 
 ## Functions
 
@@ -24,11 +25,5 @@ Primary functions in Evergreen are:
 * `Get-EvergreenApp` - returns details of the latest release of an application including the version number and download URL
 * `Save-EvergreenApp` - simplifies downloading application URLs returned from `Get-EvergreenApp`
 * `Find-EvergreenApp` - lists applications supported by the module
-
-## Why
-
-There are several community and commercial products that manage application deployment and updates already. This module isn't intended to compete against those. In fact, they can be complementary - for example, Evergreen can be used with the [Chocolatey Automatic Package Updater Module](https://www.powershellgallery.com/packages/AU/) to find the latest version of an application and then creating and submitting a Chocolatey package, or it can be used to create a [Windows Package Manager](https://github.com/microsoft/winget-cli) manifest (see a sample script here: [New-WinGetManifest.ps1](https://github.com/aaronparker/Evergreen/blob/main/tools/New-WinGetManifest.ps1)).
-
-Evergreen's focus is on integration for PowerShell scripts to provide product version numbers and download URLs. Ideal for use with the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment, creating applications packages in Microsoft Intune, or with [Packer](https://www.packer.io/) to create evergreen machine images on-premises, in Azure, AWS, or other cloud platforms
 
 [Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)
