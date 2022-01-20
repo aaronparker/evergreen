@@ -41,7 +41,7 @@ The determine the current update version of `AdobeAcrobat`, the URL for macOS up
 
 The JSON data returned from the Adobe Acrobat Reader DC download URL (`https://get.adobe.com/reader/webservices/json/standalone/`) returns extraneous data for the following languages, thus they have not been included in the manifest: Portuguese, Chinese (Simplified), Chinese (Traditional).
 
-### Cisco WebEx
+### CiscoWebEx
 
 The versions returned for Cisco WebEx may be out of date. Refer to [Cisco WebEx - new app available, Evergreen returning legacy version only](https://github.com/aaronparker/evergreen/issues/197) until a fix is found.
 
@@ -54,9 +54,9 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 !!! info "Note"
     `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
 
-#### 403 Error
+#### 404 Error
 
-Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp` may fail with the following error:
+Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the following error:
 
 ```powershell
 WARNING: Invoke-RestMethodWrapper: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
@@ -68,7 +68,7 @@ This typically occurs right after the release of a new version of the Workspace 
 
 #### Out of Date Update Feed
 
-Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
+Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
 
 ### GhislerTotalCommander
 
@@ -76,12 +76,12 @@ Supports Windows platforms only - this application relies on `Resolve-DnsName` w
 
 ### LibreOffice
 
+!!! attention "Attention"
+    `LibreOffice` has been removed from Evergreen due to on-going changes that TDF makes to the update mechanism.
+
 `LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links.
 
 The only recourse at this time is to wait until the TDF tells the update host to return the latest version. Also see [LibreOffice version](https://github.com/aaronparker/evergreen/issues/218)
-
-!!! attention "Attention"
-    `LibreOffice` has been removed from Evergreen due to on-going changes that TDF makes to the update mechanism.
 
 ### Microsoft365Apps
 
@@ -99,11 +99,11 @@ Depending on release schedules, the preview version of the FSLogix Apps download
 
 The product release feed used by the Microsoft SQL Server Management Studio (e.g., [https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml](https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml)) includes the internal build number of the SQL Server Management Studio and not the display version, thus the version return will be similar to `15.0.18369.0` instead of the display version: `18.9.1`. See [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) for more info. Also see [SQL SSMS is reporting the wrong version](https://github.com/aaronparker/Evergreen/issues/82).
 
-### Microsoft Teams
+### MicrosoftTeams
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).
 
-### Mozilla Firefox
+### MozillaFirefox
 
 `MozillaFirefox` will only return the English US installer by default. This has been done due to the lengthy amount of time that the function takes to query the Mozilla site to find the installers for each channel, architecture and file type. This could be up to 12 objects for each language - if the supported languages are included by default, then the function will take several minutes to return an object.
 
@@ -117,13 +117,13 @@ Also note that `MozillaFirefox` will include the following warning which is norm
 WARNING: Resolve-SystemNetWebRequest: Error at URI: https://download.mozilla.org/?product=firefox-msix-latest-ssl&os=win64-aarch64&lang=en-US.
 ```
 
-### OBS Studio
+### OBSStudio
 
 Returning the latest version and download for OBS Studio may fail when the OBS Project modifies the availability of the update manifest at `https://obsproject.com/update_studio/manifest.json`. `Get-EvergreenApp -Name OBSStudio` will return a 404 error. The only recourse is to wait until the OBS Project makes the manifest available again.
 
 Evergreen could query versions from the GitHub repository; however, the the OBS Project does not consistently maintain releases in the repository. In some instances a specific release of OBS Studio may address an issue with the macOS version only and `OBSStudio` would then return no results.
 
-Also see [Get-evergreenapp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
+Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
 
 ### VMwareHorizonClient
 
