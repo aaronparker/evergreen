@@ -45,14 +45,16 @@ The JSON data returned from the Adobe Acrobat Reader DC download URL (`https://g
 
 The versions returned for Cisco WebEx may be out of date. Refer to [Cisco WebEx - new app available, Evergreen returning legacy version only](https://github.com/aaronparker/evergreen/issues/197) until a fix is found.
 
-### CitrixWorkspaceApp - HDX RealTime Media Engine
+### CitrixWorkspaceApp
+
+#### HDX RealTime Media Engine
 
 The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME.
 
 !!! info "Note"
     `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
 
-### CitrixWorkspaceApp - 403 error
+#### 403 Error
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp` may fail with the following error:
 
@@ -64,7 +66,7 @@ WARNING: Invoke-RestMethodWrapper: For troubleshooting steps see: https://stealt
 
 This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
 
-### CitrixWorkspaceApp - Out of Date
+#### Out of Date Update Feed
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
 
