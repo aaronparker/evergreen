@@ -1,7 +1,7 @@
 # How Evergreen works
 
 !!! attention "Attention"
-    Application version and download links are only pulled from official sources (vendor web site, application update API, vendor's official repositories on GitHub or SourceForge etc.) and never a third party.
+    Application version and download information is only pulled from official vendor sources (vendor web site, vendor maintained application update API, vendor's official repositories on GitHub or SourceForge etc.) and never a third party.
 
 Evergreen uses an approach that returns at least the version number and download URI for applications programmatically - thus for each run an Evergreen function it should return the latest version and download link.
 
@@ -14,8 +14,8 @@ Evergreen uses several strategies to return the latest version of software:
 
 ## What Evergreen Does Not Do
 
-Evergreen does not scape HTML - scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. Pull requests that use web page scraping will be closed.
+**Evergreen does not scape HTML** - scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. While the use of RegEx to determine application properties (particularly version numbers) is used for some applications, this approach is not preferred, if possible.
 
-While the use of RegEx to determine application properties (particularly version numbers) is used for some applications, this approach is not preferred, if possible.
+Pull requests to the Evergreen project that use web page scraping will be closed. For additional applications where the only recourse it to use web page scraping, see the [Nevergreen](https://github.com/DanGough/Nevergreen) project.
 
-For additional applications where the only recourse it to use web page scraping, see the [Nevergreen](https://github.com/DanGough/Nevergreen) project.
+**Evergreen does not query non-vendor sources** - the intention is to use the same update mechanisms that an application uses to find an update. Where this is not possible, Evergreen may use data sources (i.e. JSON or XML) used by a vendor's download web page (e.g., `AdobeAcrobatReaderDC`) or another vendor maintained source (e.g., an official GitHub repository).

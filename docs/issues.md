@@ -8,13 +8,19 @@ Where an application source is unavailable the value of the `URI` property retur
 
 ### Get-EvergreenApp
 
-`Get-EvergreenApp` does not fully support proxy servers. This will be fixed in a future release.
+`Get-EvergreenApp` may not fully support proxy servers. This will be fixed in a future release.
 
 ## Private Functions
 
 ### Resolve-DnsNameWrapper
 
 Supports Windows platforms only - this function wraps `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux. Application functions that use this private function will return an error on non-Windows platforms.
+
+### Get-GitHubRepoRelease
+
+`Get-GitHubRepoRelease` queries release information from a specified GitHub repository to return version and binaries or is used to source the version number for some applications. This function uses an unauthenticated session to the GitHub REST API, thus requests will be [rate limited]. Using the `-Verbose` parameter with `Get-EvergreenApp` for those applications that use GitHub as the source, will display the number of available requests to the API.
+
+Updating `Get-GitHubRepoRelease` to support authenticated requests is planned for a future release.
 
 ## Application Functions
 
@@ -58,6 +64,10 @@ WARNING: Invoke-RestMethodWrapper: For troubleshooting steps see: https://stealt
 
 This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
 
+### CitrixWorkspaceApp - Out of Date
+
+Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
+
 ### GhislerTotalCommander
 
 Supports Windows platforms only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux.
@@ -81,7 +91,7 @@ Full channel names are listed here: [Update history for Microsoft 365 Apps](http
 
 ### MicrosoftFSLogixApps
 
-Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApps -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.
+Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApp -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.
 
 ### MicrosoftSsms
 
