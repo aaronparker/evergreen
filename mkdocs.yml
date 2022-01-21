@@ -126,9 +126,9 @@ nav:
     - How Evergreen works: how.md
   - Getting started:
     - Installation: install.md
-    - Using Evergreen: use.md
     - Find supported apps: find.md
     - Download installers: save.md
+    - Using Evergreen: use.md
     - Example usage: examples.md
     - Under the hood: under.md
   - Resources:

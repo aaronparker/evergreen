@@ -1,6 +1,6 @@
 # Why
 
-Evergreen's focus is on integration with PowerShell as a simple solution to provide application version numbers and download URLs which has many use cases, including:
+Evergreen's focus is on integration with PowerShell as a simple solution to provide application version numbers and download URLs. This has many use cases, including:
 
 * Importing applications into the Microsoft Deployment Toolkit or Microsoft Endpoint Configuration Manager for operating system deployment
 * Creating applications packages in Microsoft Intune or another MDM solution

@@ -11,9 +11,10 @@ Get-EvergreenApp -Name "MicrosoftFSLogixApps"
 This will return output similar to the following that lists the version number and download URL for the application. This application output also includes the release date:
 
 ```powershell
-Version : 2.9.7654.46150
-Date    : 9/1/2021 12:54:48 am
-URI     : https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-cce0f54ce04c/FSLogix_Apps_2.9.7654.46150.zip
+Version : 2.9.7979.62170
+Date    : 9/11/2021
+Channel : Production
+URI     : https://download.microsoft.com/download/3/f/7/3f755dbd-debe-46d4-811c-3e7c87bc4408/FSLogix_Apps_2.9.7979.62170.zip
 ```
 
 All output properties are strings that can be acted on with other functions and cmdlets including filtering the output with `Where-Object`.
@@ -38,26 +39,27 @@ Several applications may include additional properties in their output, which wi
 Where an application returns more than one object to the pipeline, you will need to filter the output with `Where-Object` or `Sort-Object`. For example, `Get-EvergreenApp -Name MicrosoftTeams` returns both the 32-bit and 64-bit versions of the General and Preview release rings ot the Microsoft Teams installer. As most environments should be on 64-bit Windows these days, we can filter the 64-bit version of Teams with:
 
 ```powershell
-Get-EvergreenApp -Name "MicrosoftTeams" | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
+Get-EvergreenApp -Name "MicrosoftTeams" | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" -and $_.Type -eq "msi" }
 ```
 
 This will return details of the 64-bit Microsoft Teams installer that we can use in a script.
 
 ```powershell
-Version      : 1.3.00.34662
+Version      : 1.4.00.32771
+Ring         : General
 Architecture : x64
-URI          : https://statics.teams.cdn.office.net/production-windows-x64/1.3.00.34662/Teams_windows_x64.msi
+Type         : msi
+URI          : https://statics.teams.cdn.office.net/production-windows-x64/1.4.00.32771/Teams_windows_x64.msi
 ```
 
 ### Use Output
 
-With the filtered output we can download the latest version of Microsoft Teams before copying it to a target location or installing it directly to the current system. The following commands filters `Get-EvergreenApp -Name MicrosoftTeams` to get the latest version and download, then grabs the `Teams_windows_x64.msi` filename from the `URI` property with `Split-Path`, downloads the file locally with `Invoke-WebRequest` and finally uses `msiexec` to install Teams:
+With the filtered output we can download the latest version of Microsoft Teams before copying it to a target location or installing it directly to the current system. The following commands filters `Get-EvergreenApp -Name MicrosoftTeams` to get the latest version and download, then downloads the installer with `Save-EvergreenApp` and finally uses `msiexec` to install Teams in a VDI supported configuration:
 
 ```powershell
-$Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
-$TeamsInstaller = Split-Path -Path $Teams.Uri -Leaf
-Invoke-WebRequest -Uri $Teams.Uri -OutFile ".\$TeamsInstaller" -UseBasicParsing
-& "$env:SystemRoot\System32\msiexec.exe" "/package $TeamsInstaller ALLUSERS=1 /quiet"
+$Teams = Get-EvergreenApp -Name "MicrosoftTeams" | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" -and $_.Type -eq "msi" }
+$TeamsInstaller = $Teams | Save-EvergreenApp -Path "C:\Temp\Teams"
+& "$env:SystemRoot\System32\msiexec.exe" "/package $($TeamsInstaller.FullName) ALLUSER=1 ALLUSERS=1 /quiet"
 ```
 
 ## Parameters
