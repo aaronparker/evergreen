@@ -1,15 +1,15 @@
 {
-    "Name": "Opera Browser",
-    "Source": "https://www.opera.com/browsers/opera",
+    "Name": "Opera GX Browser",
+    "Source": "https://www.opera.com/gx",
     "Get": {
         "Update": {
-            "Uri": "https://autoupdate.geo.opera.com/api/verify?product=Opera&version=82.0.4254.19",
+            "Uri": "https://autoupdate.geo.opera.com/api/verify?product=Opera%20GX&version=81.0.4254.19",
             "Property": "current_version"
         },
         "Download": {
             "Uri": {
-                "x64": "https://get.geo.opera.com/pub/opera/desktop/#version/win/Opera_#version_Setup_x64.exe",
-                "x86": "https://get.geo.opera.com/pub/opera/desktop/#version/win/Opera_#version_Setup.exe"
+                "x64": "https://get.geo.opera.com/pub/opera_gx/#version/win/Opera_GX_#version_Setup_x64.exe",
+                "x86": "https://get.geo.opera.com/pub/opera_gx/#version/win/Opera_GX_#version_Setup.exe"
             },
             "ReplaceText": "#version"
         }
