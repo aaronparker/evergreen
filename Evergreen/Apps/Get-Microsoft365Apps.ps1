@@ -17,7 +17,30 @@ Function Get-Microsoft365Apps {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    $params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
+    }
+    $Updates = Invoke-RestMethodWrapper @params
+
+    ForEach ($Update in $Updates) {
+
+        $Date = ($Update.officeVersions | Where-Object { $_.legacyVersion -eq $Update.latestVersion }).availabilityDate
+
+        # Build and array of the latest release and download URLs
+        $PSObject = [PSCustomObject] @{
+            Version = $Update.latestVersion
+            Channel = $Update.channelId
+            Name    = $res.Get.Update.ChannelNames.$($Update.channelId)
+            #Date    = ConvertTo-DateTime -DateTime $Date #-Pattern $res.Get.Update.-DateTime
+            Date = [DateTime]$Date
+            URI     = $res.Get.Download.Uri
+        }
+        Write-Output -InputObject $PSObject
+    }
+
     # For each Office channel
+    <#
     ForEach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
 
         # Get latest version Microsoft Office versions from the Office API
@@ -39,13 +62,14 @@ Function Get-Microsoft365Apps {
 
             # Build and array of the latest release and download URLs
             $PSObject = [PSCustomObject] @{
-                Version    = $Version
-                Channel    = $channel.Name
-                Name       = $res.Get.Update.ChannelNames.$($channel.Name)
-                Date       = ConvertTo-DateTime -DateTime $updateFeed.TimestampUtc -Pattern $res.Get.Update.DateTime
-                URI        = $res.Get.Download.Uri
+                Version = $Version
+                Channel = $channel.Name
+                Name    = $res.Get.Update.ChannelNames.$($channel.Name)
+                Date    = ConvertTo-DateTime -DateTime $updateFeed.TimestampUtc -Pattern $res.Get.Update.DateTime
+                URI     = $res.Get.Download.Uri
             }
             Write-Output -InputObject $PSObject
         }
     }
+    #>
 }
