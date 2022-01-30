@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2112.512` supports the following applications:
+Evergreen `2201.519` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -131,6 +131,8 @@ Evergreen `2112.512` supports the following applications:
 | OpenJDK                                 | OpenJDK                                                           | https://openjdk.java.net/                                                                  |
 | OpenShellMenu                           | Open-Shell-Menu                                                   | https://open-shell.github.io/Open-Shell-Menu/                                              |
 | OpenWebStart                            | OpenWebStart                                                      | https://openwebstart.com/                                                                  |
+| OperaBrowser                            | Opera Browser                                                     | https://www.opera.com/browsers/opera                                                       |
+| OperaGXBrowser                          | Opera GX Browser                                                  | https://www.opera.com/gx                                                                   |
 | OracleJava8                             | Oracle Java 8                                                     | https://www.java.com                                                                       |
 | OracleVirtualBox                        | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                |
 | PaintDotNet                             | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                       |
@@ -170,6 +172,7 @@ Evergreen `2112.512` supports the following applications:
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                                        | https://www.telerik.com/fiddler                                                            |
 | Terminals                               | Terminals                                                         | https://github.com/terminals-Origin/Terminals/                                             |
 | TeXstudio                               | TeXstudio                                                         | https://www.texstudio.org/                                                                 |
+| TogglDesktop                            | Toggl Desktop                                                     | https://www.toggl.com/                                                                     |
 | TorProjectTorBrowser                    | Tor Project Tor Browser                                           | https://www.torproject.org/                                                                |
 | USBPcap                                 | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                        |
 | VastLimitsUberAgent                     | vast limits uberAgent                                             | https://uberagent.com/                                                                     |
@@ -186,4 +189,4 @@ Evergreen `2112.512` supports the following applications:
 | Wireshark                               | Wireshark                                                         | https://www.wireshark.org/#download                                                        |
 | WixToolset                              | WiX Toolset                                                       | https://wixtoolset.org/                                                                    |
 | Zoom                                    | Zoom                                                              | https://zoom.us/                                                                           |
-| Zotero                                  | Zotero                                                            | https://www.zotero.org/                                                                    |
+| Zotero                                  | Zotero                                                            | https://www.zotero.org/                                                                    |
