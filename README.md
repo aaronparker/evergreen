@@ -99,16 +99,8 @@ To install from the repository
 Once installation is complete, you can validate that the module exists by running `Get-Module -ListAvailable Evergreen`. To use the module, load it with:
 
 ```powershell
-Import-Module Evergreen
+Import-Module -Name Evergreen
 ```
-
-## Who
-
-This module is maintained by the following community members
-
-* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
-* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
-* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
