@@ -26,10 +26,6 @@ Function Get-GitHubRelease {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
         [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter,
-
-        [Parameter(Mandatory = $False, Position = 2)]
         [ValidateScript( {
                 If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
                     $True

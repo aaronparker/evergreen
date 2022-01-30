@@ -3,6 +3,21 @@
     "Source": "https://www.microsoft.com/office",
     "Get": {
         "Update": {
+            "Uri": "https://clients.config.office.net/releases/v1.0/OfficeReleases",
+            "ChannelNames": {
+                "BetaChannel": "Beta",
+                "CurrentPreview": "Current Channel (Preview)",
+                "Current": "Current Channel",
+                "MonthlyEnterprise": "Monthly Enterprise",
+                "SemiAnnualPreview": "Semi-Annual Channel Preview",
+                "SemiAnnual": "Semi-Annual Channel",
+                "PerpetualVL2021": "Office LTSC 2021 Perpetual Enterprise",
+                "PerpetualVL2019": "Office 2029 Perpetual Enterprise"
+            },
+            "ContentType": "application/json; charset=utf-8",
+            "DateTime": "MM/dd/yyyy HH:mm"
+        },
+        "Update2": {
             "Uri": "https://mrodevicemgr.officeapps.live.com/mrodevicemgrsvc/api/v2/C2RReleaseData?audienceFFN=",
             "Channels": {
                 "BetaChannel": "5440fd1f-7ecb-4221-8110-145efaa6372f",

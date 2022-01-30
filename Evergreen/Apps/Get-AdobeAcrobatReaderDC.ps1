@@ -16,11 +16,7 @@ Function Get-AdobeAcrobatReaderDC {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     #region Installer downloads

@@ -18,10 +18,6 @@ Function Get-MozillaFirefox {
 
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateNotNull()]
-        [System.String] $Filter,
-
-        [Parameter(Mandatory = $False, Position = 2)]
-        [ValidateNotNull()]
         [System.String[]] $Language = @("en-US")
     )
 

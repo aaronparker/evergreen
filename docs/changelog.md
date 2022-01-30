@@ -1,5 +1,11 @@
 # Change log
 
+## CHANGELOG
+
+* Adds `TogglDesktop` [#281](https://github.com/aaronparker/evergreen/discussions/281), `OperaBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299), `OperaGXBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299)
+* Adds Hindi language to `AdobeAcrobatReaderDC` to add the [MUI installer](https://helpx.adobe.com/reader/faq.html) to the list of returned installers [#297](https://github.com/aaronparker/evergreen/discussions/297)
+* Updates the approach used in `Microsoft365Apps` to find branch version details [#294](https://github.com/aaronparker/evergreen/discussions/294). The previous approach would occasionally list incorrect versions
+
 ## 2112.512
 
 * Adds `MicrosoftWvdMultimediaRedirection` [https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection](https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection)
