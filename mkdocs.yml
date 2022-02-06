@@ -32,6 +32,7 @@ theme:
     - navigation.sections
     - navigation.top
     #- navigation.tabs
+    - toc.integrate
   palette:
     - scheme: default
       primary: teal
@@ -51,7 +52,7 @@ theme:
   favicon: assets/favicon.png
   #icon:
     #logo: logo
-  logo: assets/images/evergreenbulb-grey.png
+  logo: assets/images/evergreenbulb.png
 
 # Table sort
 extra_javascript:
