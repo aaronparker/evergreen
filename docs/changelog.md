@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `HashicorpPacker`, `HashicorpBoundary`, `HashicorpVault`, `HashicorpWaypoint`, `HashicorpConsul`, `HashicorpTerraform`, `HashicorpNomad` [#241](https://github.com/aaronparker/evergreen/discussions/241)
+
 ## 2201.519
 
 * Adds `TogglDesktop` [#281](https://github.com/aaronparker/evergreen/discussions/281), `OperaBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299), `OperaGXBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299)
