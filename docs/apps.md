@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2201.519` supports the following applications:
+Evergreen `2202.521` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -68,6 +68,13 @@ Evergreen `2201.519` supports the following applications:
 | Greenshot                               | Greenshot                                                         | https://getgreenshot.org/                                                                  |
 | gretl                                   | gretl                                                             | http://gretl.sourceforge.net/                                                              |
 | Handbrake                               | Handbrake                                                         | https://handbrake.fr/                                                                      |
+| HashicorpBoundary                       | Hashicorp Boundary                                                | https://www.boundaryproject.io/                                                            |
+| HashicorpConsul                         | Hashicorp Consul                                                  | https://www.consul.io/                                                                     |
+| HashicorpNomad                          | Hashicorp Nomad                                                   | https://www.nomadproject.io/                                                               |
+| HashicorpPacker                         | Hashicorp Packer                                                  | https://packer.io/                                                                         |
+| HashicorpTerraform                      | Hashicorp Terraform                                               | https://www.terraform.io/                                                                  |
+| HashicorpVault                          | Hashicorp Vault                                                   | https://www.vaultproject.io/                                                               |
+| HashicorpWaypoint                       | Hashicorp Waypoint                                                | https://www.waypointproject.io/                                                            |
 | ImageGlass                              | ImageGlass                                                        | https://imageglass.org/                                                                    |
 | ImageMagickStudioImageMagick            | ImageMagick Studio ImageMagick                                    | https://imagemagick.org/                                                                   |
 | JamTreeSizeFree                         | JAM Software TreeSize Free                                        | https://www.jam-software.com/treesize_free/                                                |

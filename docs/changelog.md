@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2202.521
 
 * Adds `HashicorpPacker`, `HashicorpBoundary`, `HashicorpVault`, `HashicorpWaypoint`, `HashicorpConsul`, `HashicorpTerraform`, `HashicorpNomad` [#241](https://github.com/aaronparker/evergreen/discussions/241)
 
