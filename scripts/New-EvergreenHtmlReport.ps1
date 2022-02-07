@@ -2,6 +2,9 @@
     .SYNOPSIS
     Exports a HTML report of output from each function in the Evergreen module
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[OutputType()]
+param ()
 
 # Install modules
 Install-PackageProvider -Name "NuGet" -MinimumVersion 2.8.5.208 -ErrorAction "SilentlyContinue"

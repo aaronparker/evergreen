@@ -1,5 +1,8 @@
 # Installing Evergreen
 
+![PowerShell Gallery version](https://img.shields.io/powershellgallery/v/Evergreen.svg?style=flat&logo=powershell&logoColor=white&labelColor=009485){align = right }
+![PowerShell Gallery downloads](https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat&logo=powershell&logoColor=white&labelColor=009485){align = right }
+
 ## PowerShell Support
 
 Evergreen supports Windows PowerShell 5.1 and PowerShell 7.0+. Evergreen should work on PowerShell Core 6.x; however, we are not actively testing on that version of PowerShell, so support cannot be guaranteed.
