@@ -171,7 +171,8 @@ Function Save-EvergreenApp {
                         #endregion
                     }
                     catch [System.Exception] {
-                        Throw "$($MyInvocation.MyCommand): URL: [$($Object.URI)]. Download failed with: [$($_.Exception.Message)]"
+                        Write-Error -Message "Download failed: $($Object.URI)"
+                        Write-Error -Message "Error: $($_.Exception.Message)"
                     }
                 }
                 Else {
