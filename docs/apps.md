@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2202.521` supports the following applications:
+Evergreen `2202.525` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -46,7 +46,9 @@ Evergreen `2202.521` supports the following applications:
 | ControlUpConsole                        | ControlUp Console                                                 | https://www.controlup.com/products/controlup/management/                                   |
 | Cyberduck                               | iterate GmbH Cyberduck                                            | https://cyberduck.io/                                                                      |
 | dbeaver                                 | dbeaver                                                           | https://github.com/dbeaver/dbeaver                                                         |
+| DebaucheeBarrier                        | Debauchee Barrier                                                 | https://github.com/debauchee/barrier                                                       |
 | deviceTRUST                             | deviceTRUST                                                       | https://devicetrust.com/                                                                   |
+| DevToys                                 | DevToys                                                           | https://devtoys.app/                                                                       |
 | diagrams.net                            | diagrams.net                                                      | https://www.diagrams.net/                                                                  |
 | dnGrep                                  | dnGrep                                                            | https://dngrep.github.io/                                                                  |
 | FileZilla                               | FileZilla                                                         | https://filezilla-project.org/                                                             |
