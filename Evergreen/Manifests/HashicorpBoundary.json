@@ -10,8 +10,7 @@
 		"Download": {
 			"Uri": {
 				"x64": "https://releases.hashicorp.com/boundary/#version/boundary_#version_windows_amd64.zip",
-				"x86": "https://releases.hashicorp.com/boundary/#version/boundary_#version_windows_386.zip",
-				"AMD64": "https://releases.hashicorp.com/boundary-desktop/#version/boundary-desktop_#version_windows_amd64.zip"
+				"x86": "https://releases.hashicorp.com/boundary/#version/boundary_#version_windows_386.zip"
 			},
 			"ReplaceText": "#version"
 		}
