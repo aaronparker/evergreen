@@ -126,7 +126,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-        Write-Output -InputObject $Null
+        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     If ($Null -ne $Response) {

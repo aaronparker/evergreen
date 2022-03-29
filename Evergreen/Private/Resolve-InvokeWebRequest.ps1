@@ -50,7 +50,7 @@ Function Resolve-InvokeWebRequest {
             Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
             Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-            #Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
 

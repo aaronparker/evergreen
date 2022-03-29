@@ -35,10 +35,10 @@ Function Resolve-DnsNameWrapper {
             Write-Output -InputObject $Response
         }
         Else {
-            Throw "$($MyInvocation.MyCommand): failed to return a useable object from Resolve-DnsName."
+            throw "$($MyInvocation.MyCommand): failed to return a useable object from Resolve-DnsName."
         }
     }
     Else {
-        Throw "$($MyInvocation.MyCommand): this function requires Microsoft Windows."
+        throw "$($MyInvocation.MyCommand): this function requires Microsoft Windows."
     }
 }
