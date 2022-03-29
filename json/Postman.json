@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "9.3.1",
+    "Size": 149348200,
+    "Hash": "4C0A786E68295074DA23EC2DEC935E0DEAC88C41",
+    "Date": "12/02/2021 05:44:06",
+    "Architecture": "x64",
+    "Filename": "Postman-win64-9.3.1-Setup.exe",
+    "URI": "https://dl.pstmn.io/download/version/9.3.1/windows64"
+  },
+  {
+    "Version": "9.3.1",
+    "Size": 145165160,
+    "Hash": "1AA2EA19F7F3318F5F9C8EB3EC73F93727F0DAF1",
+    "Date": "12/02/2021 05:44:06",
+    "Architecture": "x86",
+    "Filename": "Postman-win32-9.3.1-Setup.exe",
+    "URI": "https://dl.pstmn.io/download/version/9.3.1/windows32"
+  }
+]

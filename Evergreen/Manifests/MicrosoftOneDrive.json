@@ -3,9 +3,11 @@
 	"Source": "https://onedrive.live.com/",
 	"Get": {
 		"Uri": {
-            "Enterprise": "https://g.live.com/1rewlive5skydrive/OneDriveEnterprise",
-			"Production": "https://g.live.com/1rewlive5skydrive/OneDriveProduction",
-            "Insider": "https://g.live.com/1rewlive5skydrive/OneDriveInsider"
+			"Production": "https://g.live.com/1rewlive5skydrive/OneDriveProductionV2",
+			"Enterprise": "https://g.live.com/1rewlive5skydrive/OneDriveEnterpriseV2",
+			"Insider": "https://g.live.com/1rewlive5skydrive/OneDriveInsiderV2",
+			"InternalSlow": "https://g.live.com/1rewlive5skydrive/MsitSlowV2",
+			"InternalFast": "https://g.live.com/1rewlive5skydrive/MsitFastV2"
         },
 		"ContentType": "application/xml; charset=utf-8",
 		"XmlNode": "//update"

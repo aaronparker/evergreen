@@ -15,18 +15,14 @@ Function Get-MicrosoftFSLogixApps {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
         # Follow the download link which will return a 301
         $response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri[$item.Key]
-            
+
         # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
         If ($Null -ne $response) {
 

@@ -17,23 +17,19 @@ Function Get-CitrixVMTools {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Get details for each update URI
     ForEach ($update in $res.Get.Update.Uri.GetEnumerator()) {
-        
+
         # Get content
         $params = @{
             Uri         = $res.Get.Update.Uri[$update.Key]
             ContentType = $res.Get.Update.ContentType
         }
         $updateFeed = Invoke-RestMethodWrapper @params
-    
+
         # Convert the JSON to usable output
         ForEach ($architecture in $res.Get.Update.Architectures) {
             $PSObject = [PSCustomObject] @{

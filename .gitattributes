@@ -11,7 +11,7 @@
 # Documentation
 *.ipynb           text
 *.markdown        text
-*.md              text
+*.md              text=auto
 *.mdwn            text
 *.mdown           text
 *.mkd             text

@@ -2,26 +2,28 @@
     .SYNOPSIS
         AppVeyor tests script.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 
-If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
+If (Test-Path -Path "env:APPVEYOR_BUILD_FOLDER") {
     # AppVeyor Testing
     $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
     $module = $env:Module
 }
 Else {
-    # Local Testing 
+    # Local Testing
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }
-$moduleParent = Join-Path -Path $projectRoot -ChildPath $source
-$manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-$modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
+
+# $moduleParent = Join-Path -Path $projectRoot -ChildPath $source
+# $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
+# $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
-If (Get-Variable -Name projectRoot -ErrorAction "SilentlyContinue") {
+If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
     # Configure the test environment
     $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"
@@ -48,7 +50,7 @@ If (Get-Variable -Name projectRoot -ErrorAction "SilentlyContinue") {
     # Upload test results to AppVeyor
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $testOutput))
+        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $testOutput))
     }
     Else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"

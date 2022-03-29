@@ -14,19 +14,16 @@ Function Get-MicrosoftTeams {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    # Step through each release ring
     ForEach ($ring in $res.Get.Update.Rings.GetEnumerator()) {
 
         # Read the JSON and convert to a PowerShell object. Return the release version of Teams
-        $Uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $res.Get.Update.Rings[$ring.Key]
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Query ring: $($ring.Name): $($res.Get.Update.Rings[$ring.Key])."
         $params = @{
-            Uri       = $Uri
+            Uri       = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $res.Get.Update.Rings[$ring.Key]
             UserAgent = $res.Get.Update.UserAgent
         }
         $updateFeed = Invoke-RestMethodWrapper @params
@@ -36,20 +33,34 @@ Function Get-MicrosoftTeams {
 
             # Match version number
             $Version = [RegEx]::Match($updateFeed.releasesPath, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
 
             # Step through each architecture
-            ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
+            ForEach ($Architecture in $res.Get.Download.Architecture) {
 
-                # Build the output object
-                $PSObject = [PSCustomObject] @{
-                    Version      = $Version
-                    Ring         = $ring.Name
-                    Architecture = $item.Name
-                    URI          = $res.Get.Download.Uri[$item.Key] -replace $res.Get.Download.ReplaceText, $Version
+                # Query for the installer
+                $params = @{
+                    Uri       = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText.architecture, $Architecture -replace $res.Get.Download.ReplaceText.ring, $res.Get.Update.Rings[$ring.Key]
+                    UserAgent = $res.Get.Update.UserAgent
                 }
+                $Uri = Invoke-RestMethodWrapper @params
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found installer: $Uri."
 
-                # Output object to the pipeline
-                Write-Output -InputObject $PSObject
+                # Build the output object and output object to the pipeline
+                If ($Null -ne $Uri) {
+
+                    ForEach ($extension in $res.Get.Download.Extensions) {
+                        $Uri = $Uri -replace ".exe$", $extension
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $Version
+                            Ring         = $ring.Name
+                            Architecture = Get-Architecture -String $Uri
+                            Type         = [System.IO.Path]::GetExtension($Uri).Split(".")[-1]
+                            URI          = $Uri
+                        }
+                        Write-Output -InputObject $PSObject
+                    }
+                }
             }
         }
     }

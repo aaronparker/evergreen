@@ -4,7 +4,7 @@ Function Get-ShareX {
             Returns the available ShareX versions.
 
         .NOTES
-            Author: Trond Eirik Haavarstein 
+            Author: Trond Eirik Haavarstein
             Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]
@@ -13,11 +13,7 @@ Function Get-ShareX {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Pass the repo releases API URL and return a formatted object

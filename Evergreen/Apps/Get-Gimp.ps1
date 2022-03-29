@@ -14,14 +14,10 @@ Function Get-Gimp {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    #region Get GIMP details        
+    #region Get GIMP details
     # Query the GIMP update URI to get the JSON
     try {
         $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
@@ -32,7 +28,7 @@ Function Get-Gimp {
     }
     If ($Null -ne $updateFeed) {
 
-        # Grab latest version, sort by descending version number 
+        # Grab latest version, sort by descending version number
         $Latest = $updateFeed.STABLE | `
             Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
             Select-Object -First 1
@@ -45,10 +41,10 @@ Function Get-Gimp {
                 Select-Object -First 1
 
             If ($Null -ne $LatestWin) {
-                
+
                 # Build the download URL
                 $Uri = ($res.Get.Download.Uri -replace $res.Get.Download.ReplaceFileName, $LatestWin.filename) -replace $res.Get.Download.ReplaceVersion, "$($MinorVersion.Major).$($MinorVersion.Minor)"
-            
+
                 # Follow the download link which will return a 301/302
                 try {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Uri."
@@ -57,7 +53,7 @@ Function Get-Gimp {
                 catch {
                     Throw "$($MyInvocation.MyCommand): Failed to resolve mirror from: $Uri."
                 }
-            
+
                 # Construct the output; Return the custom object to the pipeline
                 If ($Null -ne $redirectUrl) {
                     $PSObject = [PSCustomObject] @{
@@ -73,11 +69,11 @@ Function Get-Gimp {
                 }
             }
             Else {
-                Throw "$($MyInvocation.MyCommand): Failed to determine the latest Windows release."      
+                Throw "$($MyInvocation.MyCommand): Failed to determine the latest Windows release."
             }
         }
         Else {
-            Throw "$($MyInvocation.MyCommand): Failed to determine the latest Gimp release."      
+            Throw "$($MyInvocation.MyCommand): Failed to determine the latest Gimp release."
         }
     }
     Else {

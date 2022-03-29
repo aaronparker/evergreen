@@ -1,0 +1,23 @@
+{
+	"Name": "VisualCppRedistAIO",
+	"Source": "https://github.com/abbodi1406/vcredist",
+	"Get": {
+		"Uri": "https://api.github.com/repos/abbodi1406/vcredist/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4})",
+		"MatchFileTypes": "\\.zip$"
+	},
+	"Install": {
+		"Setup": "VisualCppRedist_AIO_x86_x64_*.zip",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/ai58X239",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/ai58X239",
+			"PostInstall": [
+			]
+		}
+	}
+}

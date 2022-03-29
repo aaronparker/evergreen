@@ -22,7 +22,7 @@ Function Invoke-RestMethodWrapper {
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Headers,
-        
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Body,

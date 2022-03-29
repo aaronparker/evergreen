@@ -13,11 +13,7 @@ Function Get-BlueJ {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the BlueJ update API
@@ -31,7 +27,7 @@ Function Get-BlueJ {
     If ($Null -ne $Content) {
 
         # Convert response from UTF8
-        Try { 
+        Try {
             $Updates = [System.Text.Encoding]::UTF8.GetString($Content)
         }
         Catch {

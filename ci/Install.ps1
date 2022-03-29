@@ -2,6 +2,7 @@
     .SYNOPSIS
         AppVeyor install script.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
 param ()
 
@@ -13,7 +14,7 @@ If (Test-Path 'env:APPVEYOR_BUILD_FOLDER') {
     $source = $env:Source
 }
 Else {
-    # Local Testing 
+    # Local Testing
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }

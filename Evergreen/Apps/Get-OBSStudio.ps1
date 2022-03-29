@@ -14,11 +14,7 @@
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the update feed
@@ -36,7 +32,7 @@
             $Version = "$($Update.version_major).$($Update.version_minor).$($Update.version_patch)"
 
             # Build the output object
-            ForEach ($Architecture in $res.Get.Download.Architectures) {            
+            ForEach ($Architecture in $res.Get.Download.Architectures) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $Version
                     Architecture = $Architecture

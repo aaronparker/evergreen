@@ -1,5 +1,5 @@
 {
-    "Name": "Microsoft Windows Virtual Desktop Agent",
+    "Name": "Microsoft Azure Virtual Desktop Agent",
     "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell",
     "Get": {
         "Download": {

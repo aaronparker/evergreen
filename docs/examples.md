@@ -1,26 +1,26 @@
 # Example usage
 
-Here's a few examples of using `Evergreen` functions to return application versions and downloads.
+Here's a few examples of using Evergreen functions to return application versions and downloads.
 
 ## Microsoft Edge
 
 `Get-EvergreenApp -Name MicrosoftEdge` will return the latest versions and downloads for Microsoft Edge, including Group Policy administrative templates. To return the latest version of Microsoft Edge and the download URI for 64-bit Windows, use the following syntax:
 
 ```powershell
-Get-EvergreenApp -Name MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" }
+Get-EvergreenApp -Name MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
 ```
 
 This will return output similar to the following:
 
 ```powershell
-Version      : 88.0.705.63
+Version      : 97.0.1072.69
 Platform     : Windows
 Channel      : Stable
 Release      : Enterprise
 Architecture : x64
-Date         : 5/2/2021 6:39:00 pm
-Hash         : B6616258484997E8AB77EFCE5C313EDEFD1F056159ACA70156122414C0BD2E60
-URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/e2d06b69-9e44-45e1-bdf5-b3b827fe06b2/MicrosoftEdgeEnterpriseX64.msi
+Date         : 20/1/2022
+Hash         : AB27CC051E07ADF4EDD807699541A7516E18C32794272482B7F24ECE18917BE3
+URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/9f730c98-d191-4607-aa1e-e28bd4d9f67e/MicrosoftEdgeEnterpriseX64.msi
 ```
 
 ## Microsoft FSLogix Apps
@@ -40,7 +40,7 @@ URI     : https://download.microsoft.com/download/4/8/2/4828e1c7-176a-45bf-bc6b-
 Most Windows desktop environments are going to be on 64-bit Windows, so to get the 64-bit version of Microsoft Teams use the following syntax:
 
 ```powershell
-Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" }
+Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" -and $_.Type -eq "msi" }
 ```
 
 ## Microsoft OneDrive
@@ -92,38 +92,29 @@ To ensure that we return only the very latest `Production` version, we need to f
     Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
 ```
 
-## Adobe Acrobat Reader
+## Adobe Acrobat Reader DC
 
-Getting the version number and downloads for Acrobat Reader requires some more complex filtering. Adobe provides not only an executable installer but also a Windows Installer patch which you may need to apply to ensure the latest version is installed. The following command will return both the en-US installer and the latest update:
+Adobe Acrobat Reader DC returns a large number of languages as well as `x86` and `x64` installers, thus filtering the output is required to return a single installer that might be used in creating a gold image:
 
 ```powershell
-Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
+Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -and $_.Architecture -eq "x64" }
 ```
 
 Output should then look similar to the following:
 
 ```powershell
-Version  : 20.013.20074
-Type     : Installer
-Language : English
-URI      : http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDC2001320074_en_US.exe
-
-Version  : 20.013.20074
-Type     : Updater
-Language : Neutral
-URI      : http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDCUpd2001320074.msp
+Version      : 21.011.20039
+Language     : English
+Architecture : x64
+Name         : Reader DC 2021.011.20039 English Windows(64Bit)
+URI          : http://ardownload.adobe.com/pub/adobe/acrobat/win/AcrobatDC/2101120039/AcroRdrDCx642101120039_en_US.exe
 ```
 
-When downloading the Adobe Acrobat Reader, this could be taken a step further to unnecessarily downloading the Windows Installer patch if the executable installer is already up to date.
+The installer can then be downloaded with `Save-EvergreenApp`:
 
 ```powershell
-$Reader = Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -or $_.Language -eq "Neutral" }
-$Installer = ($Reader | Where-Object { $_.Type -eq "Installer" | Sort-Object -Property "Version" -Descending })[-1]
-$Updater = ($Reader | Where-Object { $_.Type -eq "Updater" | Sort-Object -Property "Version" -Descending })[-1]
-Invoke-WebRequest -Uri $Installer.URI -OutFile (Split-Path -Path $Installer.URI -Leaf) -UseBasicParsing
-If ($Updater.Version -gt $Installer.Version) {
-    Invoke-WebRequest -Uri $Updater.URI -OutFile (Split-Path -Path $Updater.URI -Leaf) -UseBasicParsing
-}
+$Reader = Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" -and $_.Architecture -eq "x64" }
+$Reader | Save-EvergreenApp -Path "C:\Temp\Reader"
 ```
 
 ## Mozilla Firefox
@@ -131,6 +122,14 @@ If ($Updater.Version -gt $Installer.Version) {
 `Get-EvergreenApp -Name MozillaFirefox` returns both the current version and extended support release, along with installers in several languages. This means that to return a single version of the Firefox installer, we have a fairly complex query. The example below will return the 64-bit current release of Firefox in the US language and a Windows Installer package. To be doubly sure that we get a single installer, `Sort-Object` is also used to sort the `Version` property and return the most recent:
 
 ```powershell
-(Get-EvergreenApp -Name MozillaFirefox | Where-Object { $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Architecture -eq "x64" -and $_.type -eq "msi" -and $_.Language -eq "en-US" }) | `
+Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB"} | Where-Object { $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Architecture -eq "x64" -and $_.type -eq "msi" } | `
     Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1
+
+Version      : 96.0.2
+Architecture : x64
+Channel      : LATEST_FIREFOX_VERSION
+Language     : en-GB
+Type         : msi
+Filename     : Firefox Setup 96.0.2.msi
+URI          : https://download-installer.cdn.mozilla.net/pub/firefox/releases/96.0.2/win64/en-GB/Firefox%20Setup%2096.0.2.msi
 ```

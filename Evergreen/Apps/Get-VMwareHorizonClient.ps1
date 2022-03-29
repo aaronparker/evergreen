@@ -10,11 +10,7 @@
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the Horizon Client update feed
@@ -63,7 +59,7 @@
     Else {
         Throw "$($MyInvocation.MyCommand): Failed to determine metadata property for the Horizon Client latest version."
     }
-    
+
     # Expand the downloaded Gzip file to get the XMl file
     $ExpandFile = Expand-GzipArchive -Path $GZipFile.FullName
 

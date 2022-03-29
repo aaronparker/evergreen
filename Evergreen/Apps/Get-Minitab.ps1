@@ -13,11 +13,7 @@
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     ForEach ($Release in $res.Get.Download.Releases) {
@@ -47,21 +43,21 @@
             Throw "$($MyInvocation.MyCommand): Failed to determine Version(s) from the URI(s)."
         }
 
-        # Grab latest version, sort by descending version number 
+        # Grab latest version, sort by descending version number
         $LatestVersion = $Versions | `
             Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1
-        
+
         [System.String]$LatestURI = $URIs | Select-String -Pattern $LatestVersion
 
-        # Build the output object        
+        # Build the output object
         $PSObject = [PSCustomObject] @{
             Version      = $LatestVersion
-            Architecture = Get-Architecture -String $LatestURI 
+            Architecture = Get-Architecture -String $LatestURI
             Release      = $Release
             URI          = $LatestURI
         }
         Write-Output -InputObject $PSObject
-            
+
     }
 }

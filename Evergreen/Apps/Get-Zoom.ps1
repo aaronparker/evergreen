@@ -1,4 +1,4 @@
-Function Get-Zoom {    
+Function Get-Zoom {
     <#
         .SYNOPSIS
             Get the current version and download URL for Zoom.
@@ -13,11 +13,7 @@ Function Get-Zoom {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     ForEach ($platform in $res.Get.Download.Keys) {

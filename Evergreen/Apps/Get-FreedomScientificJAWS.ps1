@@ -13,13 +13,9 @@ Function Get-FreedomScientificJAWS {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
-    
+
     # The URI feeds require a unix timestamp as a parameter
     $UnixTimestamp = [int64](([DateTime]::UtcNow) - ([DateTime]'1970-01-01Z')).TotalSeconds
 
@@ -33,20 +29,20 @@ Function Get-FreedomScientificJAWS {
 
     # Query the API to get the list of releases
     $DownloadFeedURI = ($res.Get.Download.Uri -replace $res.Get.Download.ReplaceMajorVersion, $LatestVersion.MajorVersion ) -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
-    $downloadFeed = Invoke-RestMethodWrapper $DownloadFeedURI 
+    $downloadFeed = Invoke-RestMethodWrapper $DownloadFeedURI
 
     If ($Null -ne $downloadFeed) {
-                
+
         ForEach ($Release in $downloadFeed) {
 
-            # Extract the version information 
+            # Extract the version information
             try {
-                $Version = [RegEx]::Match($Release.FileName, $res.Get.Download.MatchVersion).Captures.Groups[1].Value 
+                $Version = [RegEx]::Match($Release.FileName, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
             }
             catch {
                 Throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
             }
-  
+
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
@@ -56,8 +52,8 @@ Function Get-FreedomScientificJAWS {
             }
             Write-Output -InputObject $PSObject
         }
-    }       
+    }
     Else {
-        Throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."      
+        Throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."
     }
 }

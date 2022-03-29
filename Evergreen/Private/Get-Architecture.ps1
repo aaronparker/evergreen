@@ -3,17 +3,21 @@ Function Get-Architecture {
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $True, Position = 0)]
-        [ValidateNotNullOrEmpty()]
+        #[ValidateNotNullOrEmpty()]
         [System.String] $String
     )
 
     Switch -Regex ($String.ToLower()) {
+        "aarch64" { $architecture = "ARM64"; Break }
         "amd64" { $architecture = "AMD64"; Break }
         "arm64" { $architecture = "ARM64"; Break }
         "arm32" { $architecture = "ARM32"; Break }
         "arm" { $architecture = "ARM32"; Break }
         "win64" { $architecture = "x64"; Break }
         "win32" { $architecture = "x86"; Break }
+        "win-arm64" { $architecture = "ARM64"; Break }
+        "win-x64" { $architecture = "x64"; Break }
+        "win-x86" { $architecture = "x86"; Break }
         "x86_64" { $architecture = "x64"; Break }
         "x64" { $architecture = "x64"; Break }
         "w64" { $architecture = "x64"; Break }

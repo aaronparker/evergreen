@@ -26,7 +26,7 @@ Function ConvertTo-DateTime {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to convert to short date."
         $Output = $DateTime
     }
-    
+
     # Write the output to the pipeline
     Write-Verbose -Message "$($MyInvocation.MyCommand): Returning date: [$Output]."
     Write-Output -InputObject $Output

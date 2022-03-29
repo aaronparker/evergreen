@@ -1,40 +1,48 @@
 {
-	"Name": "Microsoft Teams",
-	"Source": "https://www.microsoft.com/teams",
-	"Get": {
-		"Update": {
-			"Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=#ring",
-			"ContentType": "application/json; charset=utf-8",
-			"UserAgent": "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5",
-			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-			"Rings": {
-				"General": "general",
-				"Preview": "ring3_6"
-			},
-			"ReplaceText": "#ring"
-		},
-		"Download": {
-			"Uri": {
-				"x64": "https://statics.teams.cdn.office.net/production-windows-x64/#Version/Teams_windows_x64.msi",
-				"x86": "https://statics.teams.cdn.office.net/production-windows/#Version/Teams_windows.msi",
-				"arm64": "https://statics.teams.cdn.office.net/production-windows-arm64/#Version/Teams_windows_arm64.msi"
-			},
-			"ReplaceText": "#Version"
-		}
-	},
-	"Install": {
-		"Setup": "Teams*.msi",
-		"Physical": {
-			"Arguments": "",
-			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
-			]
-		},
-		"Virtual": {
-			"Arguments": "ALLUSER=1 ALLUSERS=1",
-			"PostInstall": [
-				"Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
-			]
-		}
-	}
+    "Name": "Microsoft Teams",
+    "Source": "https://www.microsoft.com/teams",
+    "Get": {
+        "Update": {
+            "Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=#ring",
+            "ContentType": "application/json; charset=utf-8",
+            "UserAgent": "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+            "Rings": {
+                "General": "general",
+                "Preview": "ring3_6"
+            },
+            "ReplaceText": "#ring"
+        },
+        "Download": {
+            "Uri": "https://teams.microsoft.com/desktopclient/installer/windows/#architecture?ring=#ring",
+            "Architecture": [
+                "x64",
+                "x32",
+                "arm64"
+            ],
+            "ReplaceText": {
+                "architecture": "#architecture",
+                "ring": "#ring"
+            },
+            "Extensions": [
+                ".exe",
+                ".msi"
+            ]
+        }
+    },
+    "Install": {
+        "Setup": "Teams*.msi",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": [
+                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
+            ]
+        },
+        "Virtual": {
+            "Arguments": "ALLUSER=1 ALLUSERS=1",
+            "PostInstall": [
+                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
+            ]
+        }
+    }
 }

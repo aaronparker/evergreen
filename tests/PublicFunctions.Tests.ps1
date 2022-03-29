@@ -2,13 +2,17 @@
     .SYNOPSIS
         Public Pester function tests.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
 [OutputType()]
 param ()
 
 BeforeDiscovery {
     # Get the supported applications
     # Sort randomly so that we get test various GitHub applications when we have API request limits
-    $Applications = Find-EvergreenApp | Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
+    $Applications = Find-EvergreenApp | `
+        Where-Object { $_.Name -notmatch "FileZilla|Tableau" } | `
+        Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 
     # Get details for Microsoft Edge
     $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
@@ -135,7 +139,7 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     }
 
     Context "Validate Export-EvergreenManifest works with: <application>." {
-        
+
         # Test that Export-EvergreenManifest does not throw
         It "'Export-EvergreenManifest -Name <application>' should not Throw" {
             { Export-EvergreenManifest -Name $application } | Should -Not -Throw

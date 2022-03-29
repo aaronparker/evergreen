@@ -1,0 +1,22 @@
+{
+    "Name": "Microsoft Azure Virtual Desktop Multimedia Redirection Extensions",
+    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection",
+    "Get": {
+        "Download": {
+            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk",
+            "MatchFilename": "(MsMMRHostInstaller.*msi)",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+        }
+    },
+    "Install": {
+        "Setup": "MsMMRHostInstaller.*.msi",
+        "Physical": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "/install /passive /norestart",
+            "PostInstall": []
+        }
+    }
+}

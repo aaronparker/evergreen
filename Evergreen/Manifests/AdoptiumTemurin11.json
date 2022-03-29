@@ -1,0 +1,22 @@
+{
+    "Name": "Adoptium Temurin 11",
+    "Source": "https://adoptium.net/about.html?variant=openjdk11",
+    "Get": {
+        "Update": {
+            "Uri": "https://api.adoptium.net/v3/assets/latest/11/hotspot?release=latest&jvm_impl=hotspot&vendor=adoptium",
+            "MatchOS": "windows",
+            "MatchImage": "jdk|jre"
+        }
+    },
+    "Install": {
+        "Setup": "OpenJDK*.msi",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}

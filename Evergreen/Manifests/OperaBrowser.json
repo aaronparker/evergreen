@@ -1,0 +1,28 @@
+{
+    "Name": "Opera Browser",
+    "Source": "https://www.opera.com/browsers/opera",
+    "Get": {
+        "Update": {
+            "Uri": "https://autoupdate.geo.opera.com/api/verify?product=Opera&version=82.0.4254.19",
+            "Property": "current_version"
+        },
+        "Download": {
+            "Uri": {
+                "x64": "https://get.geo.opera.com/pub/opera/desktop/#version/win/Opera_#version_Setup_x64.exe",
+                "x86": "https://get.geo.opera.com/pub/opera/desktop/#version/win/Opera_#version_Setup.exe"
+            },
+            "ReplaceText": "#version"
+        }
+    },
+    "Install": {
+        "Setup": "Opera*.exe",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}

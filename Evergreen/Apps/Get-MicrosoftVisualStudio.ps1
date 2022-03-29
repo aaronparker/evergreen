@@ -14,11 +14,7 @@ Function Get-MicrosoftVisualStudio {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Resolve the update feed from the initial URI
@@ -34,7 +30,7 @@ Function Get-MicrosoftVisualStudio {
         finally {
             # Build the output object/s
             $items = $updateFeed.channelItems | Where-Object { $_.id -eq $res.Get.Update.MatchFilter }
-            ForEach ($item in $items) { 
+            ForEach ($item in $items) {
                 $PSObject = [PSCustomObject] @{
                     Version = $updateFeed.info.buildVersion
                     Sha256  = $item.payloads[0].Sha256

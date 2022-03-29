@@ -155,7 +155,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                     $Content = Get-Content -Path $TempFile
                 }
                 Else {
-                    $Content = $Response.Content 
+                    $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
                 Write-Output -InputObject $Content
@@ -166,7 +166,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                     $Content = Get-Content -Path $TempFile
                 }
                 Else {
-                    $Content = $Response.Content 
+                    $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
                 Write-Output -InputObject $Content

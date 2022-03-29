@@ -11,7 +11,7 @@ repo_url: https://github.com/aaronparker/evergreen
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2021 Aaron Parker
+copyright: Copyright &copy; 2022 Aaron Parker
 
 # Configuration
 theme:
@@ -32,6 +32,7 @@ theme:
     - navigation.sections
     - navigation.top
     #- navigation.tabs
+    - toc.integrate
   palette:
     - scheme: default
       primary: teal
@@ -51,7 +52,7 @@ theme:
   favicon: assets/favicon.png
   #icon:
     #logo: logo
-  logo: assets/images/EvergreenLeaf-256-White.png
+  logo: assets/images/evergreenbulb.png
 
 # Table sort
 extra_javascript:
@@ -116,18 +117,19 @@ extra:
       link: https://twitter.com/stealthpuppy
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/aaronedwardparker/
-  generator: false
+  generator: true
 
 # Page tree
 nav:
   - Home:
     - Introduction: index.md
+    - Why Evergreen: why.md
     - How Evergreen works: how.md
   - Getting started:
     - Installation: install.md
-    - Using Evergreen: use.md
     - Find supported apps: find.md
     - Download installers: save.md
+    - Using Evergreen: use.md
     - Example usage: examples.md
     - Under the hood: under.md
   - Resources:

@@ -1,7 +1,7 @@
 Function Get-CitrixVirtualAppsDesktopsFeed {
     <#
         .SYNOPSIS
-            Reads the public Citrix Virtual Apps and Desktops feed to return an array of versions and links to download pages.    
+            Reads the public Citrix Virtual Apps and Desktops feed to return an array of versions and links to download pages.
 
         .NOTES
             Author: Aaron Parker
@@ -13,11 +13,7 @@ Function Get-CitrixVirtualAppsDesktopsFeed {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Read the feed and filter for include and exclude strings and return output to the pipeline

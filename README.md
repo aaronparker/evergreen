@@ -6,12 +6,12 @@
 [![main build status][appveyor-badge]][appveyor-build]
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/767d96dec7bd40b69eb4665919d20f55)](https://www.codacy.com/manual/aaronparker/Evergreen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aaronparker/Evergreen&amp;utm_campaign=Badge_Grade)
 
+![Evergreen icon](/img/evergreenbulb.png)
+
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise Windows applications. The module consists of a number of simple functions to use in scripts when performing several tasks including:
 
 * Retrieve the latest version of an application when compare against a version already installed or downloaded
 * Return the URL for the latest version of the application if you need to download it locally for installation or deployment
-
-![leaf by The Icon Z from the Noun Project](/img/EvergreenLeaf.png)
 
 Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
 
@@ -99,16 +99,8 @@ To install from the repository
 Once installation is complete, you can validate that the module exists by running `Get-Module -ListAvailable Evergreen`. To use the module, load it with:
 
 ```powershell
-Import-Module Evergreen
+Import-Module -Name Evergreen
 ```
-
-## Who
-
-This module is maintained by the following community members
-
-* Aaron Parker, [@stealthpuppy](https://twitter.com/stealthpuppy)
-* Bronson Magnan, [@CIT_Bronson](https://twitter.com/CIT_Bronson)
-* Trond Eric Haarvarstein, [@xenappblog](https://twitter.com/xenappblog)
 
 [appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
 [appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
@@ -122,4 +114,4 @@ This module is maintained by the following community members
 [license]: /LICENSE
 
 ---
-leaf by The Icon Z from the Noun Project
+[Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)

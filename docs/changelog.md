@@ -1,5 +1,56 @@
 # Change log
 
+## 2202.525
+
+* Adds `DevToys`, `DebaucheeBarrier`
+* Update `Save-EvergreenApp` to return error code on download failure instead of Throw. This allows the function to continue when multiple objects are passed into the function
+
+## 2202.521
+
+* Adds `HashicorpPacker`, `HashicorpBoundary`, `HashicorpVault`, `HashicorpWaypoint`, `HashicorpConsul`, `HashicorpTerraform`, `HashicorpNomad` [#241](https://github.com/aaronparker/evergreen/discussions/241)
+
+## 2201.519
+
+* Adds `TogglDesktop` [#281](https://github.com/aaronparker/evergreen/discussions/281), `OperaBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299), `OperaGXBrowser` [#299](https://github.com/aaronparker/evergreen/discussions/299)
+* Adds Hindi language to `AdobeAcrobatReaderDC` to add the [MUI installer](https://helpx.adobe.com/reader/faq.html) to the list of returned installers [#297](https://github.com/aaronparker/evergreen/discussions/297)
+* Updates the approach used in `Microsoft365Apps` to find branch version details [#294](https://github.com/aaronparker/evergreen/discussions/294). The previous approach would occasionally list incorrect versions
+
+## 2112.512
+
+* Adds `MicrosoftWvdMultimediaRedirection` [https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection](https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection)
+* Updates the source URL for `MicrosoftWvdRtcService` [#288](https://github.com/aaronparker/evergreen/issues/288)
+* Updates installer types for `NotepadPlusPlus` [#287](https://github.com/aaronparker/evergreen/issues/287)
+* Fixes an issue with `MicrosoftPowerShell` due to changes in the update source [#282](https://github.com/aaronparker/evergreen/issues/282)
+* Addresses code issues identified with [PSScriptAnalyzer](https://github.com/aaronparker/evergreen/actions/workflows/powershell-analysis.yml)
+
+## 2112.504
+
+* Adds `ImageMagickStudioImageMagick` [#242](https://github.com/aaronparker/evergreen/issues/242), `Miniconda` [#246](https://github.com/aaronparker/evergreen/issues/246), `TorProjectTorBrowser` [#246](https://github.com/aaronparker/evergreen/issues/246), `diagrams.net` [#276](https://github.com/aaronparker/evergreen/issues/276)
+* Adds `AdoptiumTemurin8`, `AdoptiumTemurin11`, `AdoptiumTemurin16`, `AdoptiumTemurin17` and addresses [#273](https://github.com/aaronparker/evergreen/issues/273) [#199](https://github.com/aaronparker/evergreen/issues/199),
+* Updates `MicrosoftOneDrive` with new update sources and adds more update channels. Now includes: `Production`, `Enterprise`, `Insider`, `InternalSlow`, `InternalFast` [#269](https://github.com/aaronparker/evergreen/issues/269)
+* Updates `MicrosoftTeams` with new approach for dynamically determining download URLs and adds `.exe` installers
+* Updates `Microsoft.NET` due to changes in source location for .NET 6. Dynamically finds installer source URLs and provides `windowsdesktop`, `runtime`, `sdk` installers. Includes .NET `6.0`, `5.0` and `3.1` [#278](https://github.com/aaronparker/evergreen/issues/278)
+* Updates `FoxitPDFEditor` to fix an issue with changes to language properties from the update source [#274](https://github.com/aaronparker/evergreen/issues/274)
+* Updates `GitHubRelease` with additional file types to return by default Thanks to [@JonathanPitre](https://github.com/JonathanPitre)
+
+
+## 2111.488
+
+* Adds `-CustomPath` parameter to `Save-EvergreenApp` - allows for specifying a specific target directory for downloads instead of building the directory structure automatically from the input object [#260](https://github.com/aaronparker/evergreen/issues/260)
+* Adds `OctopusDeployServer` [#238](https://github.com/aaronparker/evergreen/issues/238), `OctopusTentacle` [#239](https://github.com/aaronparker/evergreen/issues/239), `7ZipZS` [#232](https://github.com/aaronparker/evergreen/issues/232), `PDF24Creator` [#258](https://github.com/aaronparker/evergreen/issues/258), `MicrosoftEdgeDriver` [#262](https://github.com/aaronparker/evergreen/issues/262), `MirantisLens` [#248](https://github.com/aaronparker/evergreen/issues/248), `GeekSoftwarePDF24Creator` [#256](https://github.com/aaronparker/evergreen/issues/256)
+* Adds `dbeaver`, `MattermostDesktop`, `PuTTY` [#255](https://github.com/aaronparker/evergreen/issues/255). Thanks to [@BornToBeRoot](https://github.com/BornToBeRoot)
+* Adds `VisualCppRedistAIO` [#250](https://github.com/aaronparker/evergreen/issues/250), `OpenWebStart` [#263](https://github.com/aaronparker/evergreen/issues/263). Thanks to [@JonathanPitre](https://github.com/JonathanPitre)
+* Updates `MozillaFirefox` to output MSIX file type and ARM64 architecture
+* Updates `AmazonCorretto` to include version 17 [#249](https://github.com/aaronparker/evergreen/issues/249)
+* Updates `GoogleChrome` to include channels `Dev` and `Beta` [#243](https://github.com/aaronparker/evergreen/issues/243)
+* Updates source URI for `MicrosoftFSLogixApps` due to changes in source [#259](https://github.com/aaronparker/evergreen/issues/259)
+* Fixes URI values for `SumatraPDFViewer` due to changes in source [#211](https://github.com/aaronparker/evergreen/issues/211)
+* Fixes URI values for `FoxitReader` due to changes in source [#261](https://github.com/aaronparker/evergreen/issues/261)
+* BREAKING CHANGES:
+
+    * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
+    * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
+
 ## 2110.467
 
 * Fixes an issue with `AdobeAcrobat` where the string returned from the Adobe update API added a new line after the version number [#233](https://github.com/aaronparker/evergreen/issues/233)

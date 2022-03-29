@@ -14,11 +14,7 @@ Function Get-RCoreTeamRforWindows {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Read the RCoreTeamRforWindows version from the YML source
@@ -34,7 +30,7 @@ Function Get-RCoreTeamRforWindows {
         $Version = "Latest"
     }
 
-    # Follow the download link 
+    # Follow the download link
     try {
         $params = @{
             Uri = $res.Get.Download.Uri

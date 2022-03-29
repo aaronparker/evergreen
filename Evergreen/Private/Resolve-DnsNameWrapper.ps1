@@ -1,7 +1,7 @@
 Function Resolve-DnsNameWrapper {
     <#
         .SYNOPSIS
-            Wrap Resolve-DnsName to filter what's returned 
+            Wrap Resolve-DnsName to filter what's returned
     #>
     [OutputType([Microsoft.DnsClient.Commands.DnsRecord])]
     [CmdletBinding(SupportsShouldProcess = $False)]

@@ -14,16 +14,12 @@ Function Get-MozillaThunderbird {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Get latest Thunderbird version
     $thunderbirdVersions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-    
+
     # Construct custom object with output details
     ForEach ($language in $res.Get.Download.Languages) {
         ForEach ($channel in $res.Get.Update.Channels) {

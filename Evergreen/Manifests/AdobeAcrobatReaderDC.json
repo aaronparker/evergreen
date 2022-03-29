@@ -33,7 +33,8 @@
                 "Slovakian",
                 "Slovenian",
                 "Turkish",
-                "Ukrainian"
+                "Ukrainian",
+                "Hindi"
             ],
             "Headers": {
                 "Sec-Fetch-Dest": "empty",

@@ -1,9 +1,9 @@
 {
-  "Version": "0.37.2",
+  "Version": "0.51.1",
   "Platform": "Windows",
   "Architecture": "x64",
   "Type": "exe",
-  "Date": "10/5/2021",
-  "Size": 45513592,
-  "URI": "https://github.com/microsoft/PowerToys/releases/download/v0.37.2/PowerToysSetup-0.37.2-x64.exe"
+  "Date": "3/12/2021",
+  "Size": 48814504,
+  "URI": "https://github.com/microsoft/PowerToys/releases/download/v0.51.1/PowerToysSetup-0.51.1-x64.exe"
 }

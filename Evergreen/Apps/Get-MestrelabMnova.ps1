@@ -7,24 +7,21 @@ Function Get-MestrelabMnova {
             Author: Andrew Cooper
             Twitter: @adotcoop
     #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri 
+    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     If ($Null -ne $updateFeed) {
-       
+
         # Grab the Windows files
         Try {
             $windowsReleases = $updateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }

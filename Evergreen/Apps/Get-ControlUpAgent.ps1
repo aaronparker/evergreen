@@ -13,19 +13,15 @@ Function Get-ControlUpAgent {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the ControlUp Agent JSON
-    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri    
+    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     If ($Null -ne $Object) {
-    
+
         # Build and array of the latest release and download URLs
-        ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name)) {
+        ForEach ($item in ($Object.($res.Get.Update.Properties.Agent) | Get-Member -MemberType "NoteProperty" | Select-Object -ExpandProperty "Name")) {
             $PSObject = [PSCustomObject] @{
                 Version      = $Object.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
                 Framework    = $item

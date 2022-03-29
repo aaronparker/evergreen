@@ -1,38 +1,58 @@
 [
   {
-    "Version": "16.0.13127.21668",
-    "Date": "21/6/2021",
-    "Channel": "Semi-Annual Channel",
+    "Version": "16.0.14718.20000",
+    "Channel": "BetaChannel",
+    "Name": "Beta",
+    "Date": "1/12/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   },
   {
-    "Version": "16.0.13801.20738",
-    "Date": "12/6/2021",
-    "Channel": "Semi-Annual Channel (Targeted)",
+    "Version": "16.0.14701.20210",
+    "Channel": "CurrentPreview",
+    "Name": "Current Channel (Preview)",
+    "Date": "3/12/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   },
   {
-    "Version": "16.0.14026.20308",
-    "Date": "22/6/2021",
-    "Channel": "Monthly",
+    "Version": "16.0.14527.20276",
+    "Channel": "Current",
+    "Name": "Current Channel",
+    "Date": "3/12/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   },
   {
-    "Version": "16.0.14131.20250",
-    "Date": "25/6/2021",
-    "Channel": "Monthly (Targeted)",
+    "Version": "16.0.14430.20342",
+    "Channel": "MonthlyEnterprise",
+    "Name": "Monthly Enterprise",
+    "Date": "14/11/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   },
   {
-    "Version": "16.0.13929.20408",
-    "Date": "12/6/2021",
-    "Channel": "Monthly Enterprise",
+    "Version": "16.0.14332.20176",
+    "Channel": "PerpetualVL2021",
+    "Name": "Office LTSC 2021 Perpetual Enterprise",
+    "Date": "16/11/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   },
   {
-    "Version": "16.0.10375.20036",
-    "Date": "15/6/2021",
-    "Channel": "Office 2019 Enterprise",
+    "Version": "16.0.14326.20600",
+    "Channel": "SemiAnnualPreview",
+    "Name": "Semi-Annual Channel Preview",
+    "Date": "15/11/2021",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.13801.21050",
+    "Channel": "SemiAnnual",
+    "Name": "Semi-Annual Channel",
+    "Date": "22/11/2021",
+    "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
+  },
+  {
+    "Version": "16.0.10380.20037",
+    "Channel": "PerpetualVL2019",
+    "Name": "Office 2029 Perpetual Enterprise",
+    "Date": "16/11/2021",
     "URI": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
   }
 ]

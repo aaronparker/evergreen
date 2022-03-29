@@ -8,7 +8,7 @@
     .NOTES
         Author: Aaron Parker
         Twitter: @stealthpuppy
-        
+
     .LINK
         https://github.com/aaronparker/Evergreen
 
@@ -18,6 +18,7 @@
         Description:
         Creates a Windows Package Manager manifest for Microsoft FSLogix Apps and outputs the manifest in C:\Manifests
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [CmdletBinding(SupportsShouldProcess = $False)]
 param (
     [Parameter(Mandatory, Position = 0)]
@@ -102,7 +103,7 @@ If (Find-EvergreenApp -Name $Name) {
     #endregion
 
     # Write output for each architecture
-    Write-Output "Installers:" | Out-File -Path $WinGetManifestFile -Append     
+    Write-Output "Installers:" | Out-File -Path $WinGetManifestFile -Append
 
     # Walk through each package in output from the Evergreen function
     ForEach ($Package in $Packages) {

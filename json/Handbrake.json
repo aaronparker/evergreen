@@ -1,38 +1,56 @@
 [
   {
-    "Version": "1.3.3",
+    "Version": "1.4.2",
+    "Platform": "Windows",
+    "Architecture": "ARM64",
+    "Type": "exe",
+    "Date": "3/10/2021",
+    "Size": 11923360,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrake-1.4.2-arm64-Win_GUI.exe"
+  },
+  {
+    "Version": "1.4.2",
+    "Platform": "Windows",
+    "Architecture": "ARM64",
+    "Type": "zip",
+    "Date": "3/10/2021",
+    "Size": 17059919,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrake-1.4.2-arm64-Win_GUI.zip"
+  },
+  {
+    "Version": "1.4.2",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "exe",
-    "Date": "13/6/2020",
-    "Size": 13534240,
-    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-x86_64-Win_GUI.exe"
+    "Date": "3/10/2021",
+    "Size": 16289688,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrake-1.4.2-x86_64-Win_GUI.exe"
   },
   {
-    "Version": "1.3.3",
+    "Version": "1.4.2",
     "Platform": "Windows",
     "Architecture": "x64",
     "Type": "zip",
-    "Date": "13/6/2020",
-    "Size": 18138515,
-    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-x86_64-Win_GUI.zip"
+    "Date": "3/10/2021",
+    "Size": 22445164,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrake-1.4.2-x86_64-Win_GUI.zip"
   },
   {
-    "Version": "1.3.3",
+    "Version": "1.4.2",
     "Platform": "Windows",
-    "Architecture": "x64",
+    "Architecture": "ARM64",
     "Type": "zip",
-    "Date": "13/6/2020",
-    "Size": 16801754,
-    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrakeCLI-1.3.3-win-x86_64.zip"
+    "Date": "3/10/2021",
+    "Size": 15292911,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrakeCLI-1.4.2-win-aarch64.zip"
   },
   {
-    "Version": "1.3.3",
+    "Version": "1.4.2",
     "Platform": "Windows",
-    "Architecture": "x64",
+    "Architecture": "x86",
     "Type": "zip",
-    "Date": "13/6/2020",
-    "Size": 17247161,
-    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.3.3/LibHB-1.3.3-win-x86_64.zip"
+    "Date": "3/10/2021",
+    "Size": 19138712,
+    "URI": "https://github.com/HandBrake/HandBrake/releases/download/1.4.2/HandBrakeCLI-1.4.2-win-x86_64.zip"
   }
 ]

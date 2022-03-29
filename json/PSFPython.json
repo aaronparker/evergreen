@@ -1,0 +1,42 @@
+[
+  {
+    "Version": "3.10.0",
+    "Python": 3,
+    "md5": "133aa48145032e341ad2a000cd3bff50",
+    "Size": 27194856,
+    "Date": "4/10/2021",
+    "Type": "exe",
+    "Architecture": "x86",
+    "URI": "https://www.python.org/ftp/python/3.10.0/python-3.10.0.exe"
+  },
+  {
+    "Version": "3.10.0",
+    "Python": 3,
+    "md5": "c3917c08a7fe85db7203da6dcaa99a70",
+    "Size": 28315928,
+    "Date": "4/10/2021",
+    "Type": "exe",
+    "Architecture": "x64",
+    "URI": "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe"
+  },
+  {
+    "Version": "2.7.18",
+    "Python": 2,
+    "md5": "a425c758d38f8e28b56f4724b499239a",
+    "Size": 20598784,
+    "Date": "20/4/2020",
+    "Type": "msi",
+    "Architecture": "x64",
+    "URI": "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+  },
+  {
+    "Version": "2.7.18",
+    "Python": 2,
+    "md5": "db6ad9195b3086c6b4cefb9493d738d2",
+    "Size": 19632128,
+    "Date": "20/4/2020",
+    "Type": "msi",
+    "Architecture": "x86",
+    "URI": "https://www.python.org/ftp/python/2.7.18/python-2.7.18.msi"
+  }
+]

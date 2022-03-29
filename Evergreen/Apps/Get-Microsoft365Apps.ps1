@@ -14,42 +14,28 @@ Function Get-Microsoft365Apps {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # For each Office channel
-    ForEach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
+    $params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
+    }
+    $Updates = Invoke-RestMethodWrapper @params
 
-        # Get latest version Microsoft Office versions from the Office API
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Select channel: $($res.Get.Update.Channels[$channel.Key])."
-        $params = @{
-            Uri = "$($res.Get.Update.Uri)$($res.Get.Update.Channels[$channel.Key])"
+    ForEach ($Update in $Updates) {
+
+        # Find the release date for this version
+        $Date = ($Update.officeVersions | Where-Object { $_.legacyVersion -eq $Update.latestVersion }).availabilityDate
+
+        # Build and array of the latest release and download URLs
+        $PSObject = [PSCustomObject] @{
+            Version = $Update.latestVersion
+            Channel = $Update.channelId
+            Name    = $res.Get.Update.ChannelNames.$($Update.channelId)
+            Date    = [System.DateTime]$Date
+            URI     = $res.Get.Download.Uri
         }
-        $updateFeed = Invoke-RestMethodWrapper @params
-        If ($Null -ne $updateFeed) {
-
-            # If LkgBuild less than AvailableBuild, then it's the current version
-            If ([System.Version]$updateFeed.LkgBuild -lt [System.Version]$updateFeed.AvailableBuild) {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Fallback to LkgBuild version: $($updateFeed.LkgBuild)."
-                $Version = $updateFeed.LkgBuild
-            }
-            Else {
-                $Version = $updateFeed.AvailableBuild
-            }
-
-            # Build and array of the latest release and download URLs
-            $PSObject = [PSCustomObject] @{
-                Version    = $Version
-                Channel    = $channel.Name
-                Name       = $res.Get.Update.ChannelNames.$($channel.Name)
-                Date       = ConvertTo-DateTime -DateTime $updateFeed.TimestampUtc -Pattern $res.Get.Update.DateTime
-                URI        = $res.Get.Download.Uri
-            }
-            Write-Output -InputObject $PSObject
-        }
+        Write-Output -InputObject $PSObject
     }
 }

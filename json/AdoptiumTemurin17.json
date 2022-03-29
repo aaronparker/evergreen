@@ -1,0 +1,18 @@
+[
+  {
+    "Version": "jdk-17.0.1+12",
+    "Type": "jdk",
+    "Architecture": "x64",
+    "Checksum": "f5241bb43b589e45b6c3133fae6cc8cbffec4cae2504c3b99c3fac0c50cbf11e",
+    "Size": 168541696,
+    "URI": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_windows_hotspot_17.0.1_12.msi"
+  },
+  {
+    "Version": "jdk-17.0.1+12",
+    "Type": "jdk",
+    "Architecture": "x86",
+    "Checksum": "eeaa82a79ae7a488efe152df121f11ab9d2b9554deb2afe8b4a4110297205367",
+    "Size": 165223936,
+    "URI": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x86-32_windows_hotspot_17.0.1_12.msi"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "21.0.14",
+    "Date": "11/29/2021 00:00:00",
+    "Type": "msi",
+    "URI": "http://download.techsmith.com/camtasiastudio/releases/21014/camtasia.msi"
+  },
+  {
+    "Version": "21.0.14",
+    "Date": "11/29/2021 00:00:00",
+    "Type": "exe",
+    "URI": "http://download.techsmith.com/camtasiastudio/releases/21014/camtasia.exe"
+  }
+]

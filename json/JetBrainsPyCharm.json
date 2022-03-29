@@ -1,29 +1,29 @@
 [
   {
-    "Version": "2021.1.2",
-    "Build": "211.7628.16",
+    "Version": "2021.3",
+    "Build": "213.5744.272",
     "Edition": "PyCharm Edu",
-    "Date": "24/6/2021",
-    "Size": 346202424,
-    "Sha256": "https://download.jetbrains.com/python/pycharm-edu-2021.1.2.exe.sha256",
-    "URI": "https://download.jetbrains.com/python/pycharm-edu-2021.1.2.exe"
+    "Date": "2/12/2021",
+    "Size": 374777552,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-edu-2021.3.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-edu-2021.3.exe"
   },
   {
-    "Version": "2021.1.2",
-    "Build": "211.7442.45",
-    "Edition": "PyCharm Community",
-    "Date": "2/6/2021",
-    "Size": 380900896,
-    "Sha256": "https://download.jetbrains.com/python/pycharm-community-2021.1.2.exe.sha256",
-    "URI": "https://download.jetbrains.com/python/pycharm-community-2021.1.2.exe"
-  },
-  {
-    "Version": "2021.1.2",
-    "Build": "211.7442.45",
+    "Version": "2021.3",
+    "Build": "213.5744.248",
     "Edition": "PyCharm Professional",
-    "Date": "2/6/2021",
-    "Size": 467615400,
-    "Sha256": "https://download.jetbrains.com/python/pycharm-professional-2021.1.2.exe.sha256",
-    "URI": "https://download.jetbrains.com/python/pycharm-professional-2021.1.2.exe"
+    "Date": "1/12/2021",
+    "Size": 462391616,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-professional-2021.3.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-professional-2021.3.exe"
+  },
+  {
+    "Version": "2021.3",
+    "Build": "213.5744.248",
+    "Edition": "PyCharm Community",
+    "Date": "1/12/2021",
+    "Size": 372497160,
+    "Sha256": "https://download.jetbrains.com/python/pycharm-community-2021.3.exe.sha256",
+    "URI": "https://download.jetbrains.com/python/pycharm-community-2021.3.exe"
   }
 ]

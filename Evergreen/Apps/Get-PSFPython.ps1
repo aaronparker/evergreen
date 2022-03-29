@@ -13,17 +13,13 @@ Function Get-PSFPython {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the python API to get the list of versions
     $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     If ($Null -ne $updateFeed) {
-             
+
         # Get latest versions from update feed (PSF typically maintain a version of Python2 and a version of Python 3)
         $LatestVersions = $updateFeed | Where-Object { $_.is_latest -eq "True" }
         If ($Null -ne $LatestVersions) {
@@ -74,7 +70,7 @@ Function Get-PSFPython {
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$FileVersion]."
                         }
                         Catch {
-                            Throw "$($MyInvocation.MyCommand): Failed to find exact version from: $($UniqueFile.url)" 
+                            Throw "$($MyInvocation.MyCommand): Failed to find exact version from: $($UniqueFile.url)"
                         }
 
                         # Construct the output; Return the custom object to the pipeline
@@ -93,7 +89,7 @@ Function Get-PSFPython {
 
                 }
                 Else {
-                    Throw "$($MyInvocation.MyCommand): Failed to lookup download URI based on release $($PythonVersion.resource_uri)."      
+                    Throw "$($MyInvocation.MyCommand): Failed to lookup download URI based on release $($PythonVersion.resource_uri)."
                 }
             }
         }
@@ -102,6 +98,6 @@ Function Get-PSFPython {
         }
     }
     Else {
-        Throw "$($MyInvocation.MyCommand): Failed to obtain release information from json release feed."      
+        Throw "$($MyInvocation.MyCommand): Failed to obtain release information from json release feed."
     }
 }

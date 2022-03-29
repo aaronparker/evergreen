@@ -1,7 +1,7 @@
 Function Get-MicrosoftSsms {
     <#
         .SYNOPSIS
-            Returns the latest SQL Server Management Studio 
+            Returns the latest SQL Server Management Studio
 
         .NOTES
             Author: Aaron Parker
@@ -14,11 +14,7 @@ Function Get-MicrosoftSsms {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Resolve the SSMS update feed
@@ -39,7 +35,7 @@ Function Get-MicrosoftSsms {
                 # Follow the download link which will return a 301
                 $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
                 $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
-            
+
                 # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
                 If ($Null -ne $ResponseUri) {
 

@@ -1,0 +1,20 @@
+[
+  {
+    "Version": "5.3.2-latest.20211201.1",
+    "Architecture": "x64",
+    "Release": "Stable",
+    "Date": "2021-12-01T22:18:33.126Z",
+    "Size": 260279744,
+    "Sha512": "nUZ857Sbvl9PZ85tF9fHO8NpqwFYZAjV2C7Cn3khbGTleizvVfo8dcRqRHTGHS0UPEf9xkTFaGx1vrVvY45utw==",
+    "URI": "https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/Lens%20Setup%205.3.2-latest.20211201.1.exe"
+  },
+  {
+    "Version": "5.3.2-latest.20211201.1",
+    "Architecture": "x64",
+    "Release": "Alpha",
+    "Date": "2021-12-01T22:18:33.126Z",
+    "Size": 260279744,
+    "Sha512": "nUZ857Sbvl9PZ85tF9fHO8NpqwFYZAjV2C7Cn3khbGTleizvVfo8dcRqRHTGHS0UPEf9xkTFaGx1vrVvY45utw==",
+    "URI": "https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/Lens%20Setup%205.3.2-latest.20211201.1.exe"
+  }
+]

@@ -13,11 +13,7 @@ Function Get-MicrosoftPowerShell {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Get the latest release from the PowerShell metadata
@@ -34,19 +30,21 @@ Function Get-MicrosoftPowerShell {
     ForEach ($release in $res.Get.Download.Tags.GetEnumerator()) {
 
         # Determine the tag
-        $Tag = $updateFeed.($res.Get.Download.Tags[$release.key])
+        $Tags = $updateFeed.($res.Get.Download.Tags[$release.key])
         Write-Verbose -Message "$($MyInvocation.MyCommand): Query release for tag: $Tag."
 
         # Pass the repo releases API URL and return a formatted object
-        $params = @{
-            Uri          = "$($res.Get.Download.Uri)$($Tag)"
-            MatchVersion = $res.Get.Download.MatchVersion
-            Filter       = $res.Get.Download.MatchFileTypes
-        }
-        $object = Get-GitHubRepoRelease @params
+        ForEach ($Tag in $Tags) {
+            $params = @{
+                Uri          = "$($res.Get.Download.Uri)$($Tag)"
+                MatchVersion = $res.Get.Download.MatchVersion
+                Filter       = $res.Get.Download.MatchFileTypes
+            }
+            $object = Get-GitHubRepoRelease @params
 
-        # Add the Release property to the object returned from Get-GitHubRepoRelease
-        $object | Add-Member -MemberType "NoteProperty" -Name "Release" -value $release.Name
-        Write-Output -InputObject $object
+            # Add the Release property to the object returned from Get-GitHubRepoRelease
+            $object | Add-Member -MemberType "NoteProperty" -Name "Release" -Value $release.Name
+            Write-Output -InputObject $object
+        }
     }
 }

@@ -13,11 +13,7 @@ Function Get-Postman {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the Postman update API
@@ -39,7 +35,7 @@ Function Get-Postman {
                 Version      = $LatestVersion.name
                 Size         = $LatestVersion.assets.size
                 Hash         = $LatestVersion.assets.hash
-                Date         = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.Update.DatePattern 
+                Date         = ConvertTo-DateTime -DateTime ($LatestVersion.createdAt) -Pattern $res.Get.Update.DatePattern
                 Architecture = $item.Name
                 Filename     = $LatestVersion.assets.name
                 URI          = $LatestVersion.assets.url

@@ -2,6 +2,8 @@
     .SYNOPSIS
         Main Pester function tests.
 #>
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
 [OutputType()]
 param ()
 
@@ -18,7 +20,7 @@ BeforeDiscovery {
     $testCase = $scripts | ForEach-Object { @{file = $_ } }
 }
 
-Describe "General project validation" {    
+Describe "General project validation" {
     It "Script <file.Name> should be valid PowerShell" -TestCases $testCase {
         param ($file)
 
@@ -32,8 +34,8 @@ Describe "General project validation" {
 
     It "Script <file.Name> should pass ScriptAnalyzer" -TestCases $testCase {
         param ($file)
-        $analysis = Invoke-ScriptAnalyzer -Path  $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')   
-        
+        $analysis = Invoke-ScriptAnalyzer -Path $file.FullName -ExcludeRule @('PSAvoidGlobalVars', 'PSAvoidUsingWMICmdlet') -Severity @('Warning', 'Error')
+
         ForEach ($rule in $scriptAnalyzerRules) {
             If ($analysis.RuleName -contains $rule) {
                 $analysis |
@@ -47,11 +49,11 @@ Describe "General project validation" {
 
 Describe "Module Function validation" {
     It "Script <file.Name> should only contain one function" -TestCases $testCase {
-        param ($file)   
+        param ($file)
         $file.FullName | Should -Exist
         $contents = Get-Content -Path $file.FullName -ErrorAction Stop
         $describes = [Management.Automation.Language.Parser]::ParseInput($contents, [ref]$null, [ref]$null)
-        $test = $describes.FindAll( { $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true) 
+        $test = $describes.FindAll( { $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true)
         $test.Count | Should -Be 1
     }
 
@@ -60,7 +62,7 @@ Describe "Module Function validation" {
         $file.FullName | Should -Exist
         $contents = Get-Content -Path $file.FullName -ErrorAction Stop
         $describes = [Management.Automation.Language.Parser]::ParseInput($contents, [ref]$null, [ref]$null)
-        $test = $describes.FindAll( { $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true) 
+        $test = $describes.FindAll( { $args[0] -is [System.Management.Automation.Language.FunctionDefinitionAst] }, $true)
         $test[0].name | Should -Be $file.basename
     }
 }

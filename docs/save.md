@@ -4,7 +4,7 @@ Evergreen includes the function `Save-EvergreenApp` that simplifies downloading 
 
 All applications will return at least a `Version` and `URI` property with many returning additional properties including `Architecture`, `Language`, `Type`, `Ring`, `Channel` and `Release`, dependent on the target application. Additionally, the installer file name is typically determined dynamically  with the `URI` property.
 
-So to retrieve and download an application installer, we need to use code similar to the following that the filters for the required download and determines the file name before using `Invoke-WebRequest` to download the file.
+To retrieve and download an application installer, we need to use code similar to the following that the filters for the required download and determines the file name before using `Invoke-WebRequest` to download the file.
 
 ```powershell
 $Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
@@ -46,7 +46,18 @@ C:\Apps\OneDrive\Production\21.052.0314.0001\OneDriveSetup.exe
 C:\Apps\OneDrive\Insider\21.056.0318.0001\OneDriveSetup.exe
 ```
 
-Right now, the output path that `Save-EvergreenApp` builds cannot be customised.
+To download application installers into a single directory, the `-CustomPath` parameter can be used. Note that an application object can return multiple versions or channels of an application with the same installer name - when using `-CustomPath`, the first installer will be saved and subsequent installers with the same file name will be skipped.
+
+!!! attention "Attention"
+    `Save-EvergreenApp -CustomPath` will only download the first installer passed to the function where the object includes multiple installers with the same file name.
+
+Therefore, when using `-CustomPath`, it would best to filter the output from `Get-EvergreenApp` before passing it to `Save-EvergreenApp`. For example:
+
+```powershell
+Get-EvergreenApp -Name MicrosoftOneDrive | `
+    | Where-Object { $_.Ring -eq "Enterprise" -and $_.Architecture -eq "AMD64" -and $_.Type -eq "exe" } | `
+    Save-EvergreenApp -Path "C:\Apps\OneDrive"
+```
 
 ## Parameters
 
@@ -56,7 +67,11 @@ The `-Name` parameter is used to specify the application name to return details 
 
 ### Path
 
-The target directory under which a folder structure will be created and application installers saved into. Typically the target path used will be a path per application.
+The parent directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.
+
+### CustomPath
+
+The target directory into which the application installers will be directly saved into. Typically the target path used will be a path per application.
 
 ### Verbose
 

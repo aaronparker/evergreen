@@ -14,11 +14,7 @@
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Read the VMware version-mapping file
@@ -47,7 +43,7 @@
                 $Uri = ("$($res.Get.Download.Uri)$platform/$architecture/index.html").ToLower()
                 $Content = Invoke-WebRequestWrapper -Uri $Uri
                 $filename = [RegEx]::Match($Content, $res.Get.Download.MatchFileName).Captures.Value
-            
+
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
                     Version      = $LatestVersion.Version

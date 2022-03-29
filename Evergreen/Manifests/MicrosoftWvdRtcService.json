@@ -3,7 +3,7 @@
     "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd",
     "Get": {
         "Download": {
-            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt",
+            "Uri": "https://aka.ms/msrdcwebrtcsvc/msi",
             "MatchFilename": "(MsRdcWebRTCSvc.*msi)",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})"
         }

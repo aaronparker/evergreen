@@ -14,16 +14,12 @@
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
-
-        [Parameter(Mandatory = $False, Position = 1)]
-        [ValidateNotNull()]
-        [System.String] $Filter
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Walk through each update URI (Stable, Beta and Nightly)
     ForEach ($release in $res.Get.Update.Uri.GetEnumerator()) {
-        
+
         # Query the update feed
         $params = @{
             Uri         = $res.Get.Update.Uri[$release.key]
@@ -32,7 +28,7 @@
         $Content = Invoke-RestMethodWrapper @params
 
         If ($Null -ne $Content) {
-    
+
             # Capture the URL without https:// & replace // with /
             # Then put the URL back together
             try {
