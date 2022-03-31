@@ -83,7 +83,7 @@ Function Get-GitHubRepoRelease {
             $release = Invoke-RestMethod @params
         }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): request to Invoke-RestMethodWrapper failed."
+            Write-Error -Message "$($MyInvocation.MyCommand): request to Invoke-RestMethodWrapper failed."
             $response = $False
         }
 

@@ -22,17 +22,17 @@
             UseBasicParsing = $True
             UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
         }
-        If (Test-PSCore) {
+        if (Test-PSCore) {
             $params.SslProtocol = "Tls12"
         }
-        Else {
+        else {
             $SslProtocol = "Tls12"
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
         }
         Invoke-WebRequest @params
     }
     catch {
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     # Write the OutFile properties to the pipeline

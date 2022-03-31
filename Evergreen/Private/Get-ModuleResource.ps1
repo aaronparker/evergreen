@@ -23,7 +23,7 @@ Function Get-ModuleResource {
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $Path."
-        Throw $_.Exception.Message
+        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     try {
@@ -36,7 +36,7 @@ Function Get-ModuleResource {
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required object."
-        Throw $_.Exception.Message
+        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         If ($Null -ne $script:resourceStringsTable) {

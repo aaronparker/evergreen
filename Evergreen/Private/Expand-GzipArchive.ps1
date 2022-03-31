@@ -49,7 +49,7 @@ Function Expand-GzipArchive {
             }
         }
         catch {
-            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
         finally {
             # Close the streams

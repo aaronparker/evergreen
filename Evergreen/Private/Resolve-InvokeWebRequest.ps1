@@ -29,7 +29,7 @@ Function Resolve-InvokeWebRequest {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
     }
 
-    If (Test-PSCore) {
+    if (Test-PSCore) {
         try {
             # If running PowerShell Core, request URL and catch the response
             Invoke-WebRequest @iwrParams
@@ -39,7 +39,7 @@ Function Resolve-InvokeWebRequest {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
         }
     }
-    Else {
+    else {
         try {
             # If running Windows PowerShell, request the URL and return the response
             $response = Invoke-WebRequest @iwrParams
@@ -50,20 +50,20 @@ Function Resolve-InvokeWebRequest {
             Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
             Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
 
     # Validate and return the resolved URL to the pipeline
-    If ($Null -ne $redirectUrl) {
-        If ($redirectUrl.GetType() -eq [System.String]) {
+    if ($Null -ne $redirectUrl) {
+        if ($redirectUrl.GetType() -eq [System.String]) {
             Write-Output -InputObject $redirectUrl
         }
-        Else {
+        else {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to resolve correct output type (String)."
         }
     }
-    Else {
+    else {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to resolve a redirect at: $Uri."
     }
 }

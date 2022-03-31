@@ -31,7 +31,7 @@ Function Invoke-SystemNetRequest {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($_)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
         $webResponse.Dispose()
