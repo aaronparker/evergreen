@@ -66,7 +66,6 @@ Function Get-EvergreenApp {
                 $Output = & Get-$Name @params
             }
             catch {
-                #throw "$($MyInvocation.MyCommand): Internal application function: $Function, failed with: $($_.Exception.Message)"
                 Write-Error -Message "$($MyInvocation.MyCommand): Internal application function: $Function, failed with: $($_.Exception.Message)"
             }
 
