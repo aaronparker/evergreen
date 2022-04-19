@@ -63,7 +63,7 @@ Get-EvergreenApp -Name MicrosoftOneDrive | `
 
 ### InputObject
 
-The `-Name` parameter is used to specify the application name to return details for. This is a required parameter. The list of supported applications can be found with `Find-EvergreenApp`.
+An object returned from `Get-EvergreenApp` with at least the `Version` and `URI` properties.
 
 ### Path
 
