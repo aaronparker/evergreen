@@ -75,8 +75,8 @@ Function Test-EvergreenApp {
                 $Result = $False
             }
             $PSObject = [PSCustomObject] @{
-                URI    = $Object.URI
                 Result = $Result
+                URI    = $Object.URI
             }
             Write-Output -InputObject $PSObject
         }
