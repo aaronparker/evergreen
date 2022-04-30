@@ -9,7 +9,7 @@
 * Updates various functions to use `Write-Error` instead of `throw` to ensure that functions continue where a specific query for an installer fails [#306](https://github.com/aaronparker/evergreen/issues/306)
 * BREAKING CHANGES:
 
-  * Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. [#312](https://github.com/aaronparker/evergreen/discussions/312)
+  * Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
 
 ## 2202.525
 
