@@ -1,5 +1,16 @@
 # Change log
 
+## VERSION
+
+* Adds `Test-EvergreenApp` that enables testing of installers returned by `Save-EvergreenApp` to determine whether the URI is valid
+* Adds `AdobeAcrobatDC` that uses an alternative method to `AdobeAcrobat` to determine the current version of Adobe Acrobat Standard/Pro DC and Adobe Acrobat Reader DC. `AdobeAcrobat` has been left as-is to avoid a breaking change and to continue to provide updates for version of Acrobat / Reader updates
+* Adds `Obsidian` [#310](https://github.com/aaronparker/evergreen/discussions/310), `ScreenToGif`
+* Updates `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` to ensure that the correct version is installed for the `Enterprise` view for Edge installers [#311](https://github.com/aaronparker/evergreen/discussions/311)
+* Updates various functions to use `Write-Error` instead of `throw` to ensure that functions continue where a specific query for an installer fails [#306](https://github.com/aaronparker/evergreen/issues/306)
+* BREAKING CHANGES:
+
+  * Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. [#312](https://github.com/aaronparker/evergreen/discussions/312)
+
 ## 2202.525
 
 * Adds `DevToys`, `DebaucheeBarrier`
@@ -33,7 +44,6 @@
 * Updates `FoxitPDFEditor` to fix an issue with changes to language properties from the update source [#274](https://github.com/aaronparker/evergreen/issues/274)
 * Updates `GitHubRelease` with additional file types to return by default Thanks to [@JonathanPitre](https://github.com/JonathanPitre)
 
-
 ## 2111.488
 
 * Adds `-CustomPath` parameter to `Save-EvergreenApp` - allows for specifying a specific target directory for downloads instead of building the directory structure automatically from the input object [#260](https://github.com/aaronparker/evergreen/issues/260)
@@ -48,8 +58,8 @@
 * Fixes URI values for `FoxitReader` due to changes in source [#261](https://github.com/aaronparker/evergreen/issues/261)
 * BREAKING CHANGES:
 
-    * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
-    * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
+  * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
+  * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
 
 ## 2110.467
 

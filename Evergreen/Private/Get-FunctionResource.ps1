@@ -16,36 +16,36 @@ Function Get-FunctionResource {
     $AppManifest = Join-Path -Path $Path -ChildPath "$AppName.json"
 
     # Read the content from the manifest file
-    If (Test-Path -Path $AppManifest) {
+    if (Test-Path -Path $AppManifest) {
         try {
             Write-Verbose -Message "$($MyInvocation.MyCommand): read application resource strings from [$AppManifest]"
-            $content = Get-Content -Path $AppManifest -Raw -ErrorAction "Stop"
+            $content = Get-Content -Path $AppManifest -Raw
         }
         catch {
             Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $AppManifest."
-            Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
-    Else {
-        Throw "$($MyInvocation.MyCommand): manifest does not exist: $AppManifest."
+    else {
+        throw "$($MyInvocation.MyCommand): manifest does not exist: $AppManifest."
     }
 
     # Convert the content from JSON into a hashtable
     try {
-        If (Test-PSCore) {
-            $hashTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "Stop"
+        if (Test-PSCore) {
+            $hashTable = $content | ConvertFrom-Json -AsHashtable
         }
-        Else {
-            $hashTable = $content | ConvertFrom-Json -ErrorAction "Stop" | ConvertTo-Hashtable
+        else {
+            $hashTable = $content | ConvertFrom-Json | ConvertTo-Hashtable
         }
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required hashtable object."
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     # If we got a hashtable, return it to the pipeline
-    If ($Null -ne $hashTable) {
+    if ($Null -ne $hashTable) {
         Write-Output -InputObject $hashTable
     }
 }

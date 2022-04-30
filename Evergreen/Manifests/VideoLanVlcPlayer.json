@@ -10,7 +10,7 @@
                 }
             },
             "ContentType": "application/octet-stream",
-            "UserAgent": "VLC/3.0.7 LibVLC/3.0.7"
+            "UserAgent": "VLC/3.0.16 LibVLC/3.0.16"
         },
         "Download": {
 			"VersionLine": 0,

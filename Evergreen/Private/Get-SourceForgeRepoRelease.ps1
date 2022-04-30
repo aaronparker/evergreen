@@ -25,7 +25,7 @@
         $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
     }
     catch {
-        Throw "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
+        Write-Error -Message "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
     }
 
     # Validate that $bestRelease has the expected properties
@@ -58,7 +58,7 @@
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$Version]."
     }
     catch {
-        Throw "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($bestRelease.platform_releases.windows.filename)."
+        Write-Error -Message "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($bestRelease.platform_releases.windows.filename)."
     }
 
     # Get the downloads XML feed and select the latest item via the $Version value

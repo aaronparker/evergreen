@@ -22,21 +22,18 @@ Function Get-EvergreenApp {
         [System.Collections.Hashtable] $AppParams
     )
 
-    Begin {}
-
-    Process {
-
+    process {
         try {
             # Build a path to the application function
             # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
             $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
         }
         catch {
-            Throw "$($MyInvocation.MyCommand): Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
+            throw "$($MyInvocation.MyCommand): Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
         }
 
         #region Test that the function exists and run it to return output
-        If (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
+        if (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Function exists: $Function."
 
             try {
@@ -47,20 +44,20 @@ Function Get-EvergreenApp {
                 . $Function
             }
             catch {
-                Throw "$($MyInvocation.MyCommand): Failed to load function: $Function."
+                throw "$($MyInvocation.MyCommand): Failed to load function: $Function."
             }
 
             try {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
                 # Application manifests are located under Evergreen/Manifests
-                If ($PSBoundParameters.ContainsKey("AppParams")) {
+                if ($PSBoundParameters.ContainsKey("AppParams")) {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Adding AppParams."
                     $params = @{
                         res = (Get-FunctionResource -AppName $Name)
                     }
                     $params += $AppParams
                 }
-                Else {
+                else {
                     $params = @{
                         res = (Get-FunctionResource -AppName $Name)
                     }
@@ -69,28 +66,28 @@ Function Get-EvergreenApp {
                 $Output = & Get-$Name @params
             }
             catch {
-                Throw "$($MyInvocation.MyCommand): Internal application function: $Function, failed with: $($_.Exception.Message)"
+                Write-Error -Message "$($MyInvocation.MyCommand): Internal application function: $Function, failed with: $($_.Exception.Message)"
             }
 
-            # If we get an object, return it to the pipeline
+            # if we get an object, return it to the pipeline
             # Sort object on the Version property
-            If ($Output) {
+            if ($Output) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Output result from: $Function."
                 Write-Output -InputObject ($Output | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
             }
-            Else {
-                Throw "$($MyInvocation.MyCommand): Failed to capture output from: Get-$Name."
+            else {
+                throw "$($MyInvocation.MyCommand): Failed to capture output from: Get-$Name."
             }
         }
-        Else {
+        else {
             Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
-            Throw "$($MyInvocation.MyCommand): Cannot find application script at: $Function."
+            throw "$($MyInvocation.MyCommand): Cannot find application script at: $Function."
         }
         #endregion
     }
 
-    End {
+    end {
         # Remove these variables for next run
         Remove-Variable -Name "Output", "Function" -ErrorAction "SilentlyContinue"
     }
