@@ -3,13 +3,14 @@
 ## 2204.534
 
 * Adds `Test-EvergreenApp` that enables testing of installers returned by `Save-EvergreenApp` to determine whether the URI is valid
-* Adds `AdobeAcrobatDC` that uses an alternative method to `AdobeAcrobat` to determine the current version of Adobe Acrobat Standard/Pro DC and Adobe Acrobat Reader DC. `AdobeAcrobat` has been left as-is to avoid a breaking change and to continue to provide updates for version of Acrobat / Reader updates
+* Adds `AdobeAcrobatDC` that uses an alternative method to `AdobeAcrobat` to determine the current version of Adobe Acrobat Standard/Pro DC and Adobe Acrobat Reader DC. `AdobeAcrobat` has been left as-is to avoid a breaking change and to continue to provide updates for earlier versions of Acrobat / Reader updates
 * Adds `Obsidian` [#310](https://github.com/aaronparker/evergreen/discussions/310), `ScreenToGif`
 * Updates `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` to ensure that the correct version is installed for the `Enterprise` view for Edge installers [#311](https://github.com/aaronparker/evergreen/discussions/311)
 * Updates various functions to use `Write-Error` instead of `throw` to ensure that functions continue where a specific query for an installer fails [#306](https://github.com/aaronparker/evergreen/issues/306)
-* BREAKING CHANGES:
 
-  * Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
+BREAKING CHANGES:
+
+* Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
 
 ## 2202.525
 
@@ -56,10 +57,11 @@
 * Updates source URI for `MicrosoftFSLogixApps` due to changes in source [#259](https://github.com/aaronparker/evergreen/issues/259)
 * Fixes URI values for `SumatraPDFViewer` due to changes in source [#211](https://github.com/aaronparker/evergreen/issues/211)
 * Fixes URI values for `FoxitReader` due to changes in source [#261](https://github.com/aaronparker/evergreen/issues/261)
-* BREAKING CHANGES:
 
-  * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
-  * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
+BREAKING CHANGES:
+
+* Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
+* Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
 
 ## 2110.467
 
@@ -68,33 +70,35 @@
 * Adds `USBPcap`. Thanks to [Dan Gough](https://github.com/DanGough)
 * Updates method used to determine version and download for `JSAP`
 * Adds private function `Resolve-DnsNameWrapper` to resolve DNS TXT records. Used by `GhislerTotalCommander`. Currently supports Windows only
-* BREAKING CHANGES:
 
-    * Disables `LibreOffice` - the update method keeps changing requiring a significant amount of work to fix each time. [#218](https://github.com/aaronparker/evergreen/issues/218)
-    * Updates `Microsoft365Apps` to fix some instances where the incorrect version number returned, and updates channel names in `Channel` property using the names listed in the `Channel` property in the configuration.xml. A `Name` property has been added with the full channel names to ensure readability. This reflects the same channel names used when creating a configuration in the [Microsoft 365 Apps admin center]((https://config.office.com/))
+BREAKING CHANGES:
 
-        * Channel properties are listed in the following articles: [Configuration options for the Office Deployment Tool](https://docs.microsoft.com/en-us/deployoffice/office-deployment-tool-configuration-options#channel-attribute-part-of-add-element), [Update channel for Office LTSC 2021](https://docs.microsoft.com/en-us/deployoffice/ltsc2021/update#update-channel-for-office-ltsc-2021), [Update channel for Office 2019](https://docs.microsoft.com/en-us/deployoffice/office2019/update#update-channel-for-office-2019)
-        * Full channel names are listed here: [Update history for Microsoft 365 Apps](https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date)
+* Disables `LibreOffice` - the update method keeps changing requiring a significant amount of work to fix each time. [#218](https://github.com/aaronparker/evergreen/issues/218)
+* Updates `Microsoft365Apps` to fix some instances where the incorrect version number returned, and updates channel names in `Channel` property using the names listed in the `Channel` property in the configuration.xml. A `Name` property has been added with the full channel names to ensure readability. This reflects the same channel names used when creating a configuration in the [Microsoft 365 Apps admin center]((https://config.office.com/))
+  * Channel properties are listed in the following articles: [Configuration options for the Office Deployment Tool](https://docs.microsoft.com/en-us/deployoffice/office-deployment-tool-configuration-options#channel-attribute-part-of-add-element), [Update channel for Office LTSC 2021](https://docs.microsoft.com/en-us/deployoffice/ltsc2021/update#update-channel-for-office-ltsc-2021), [Update channel for Office 2019](https://docs.microsoft.com/en-us/deployoffice/office2019/update#update-channel-for-office-2019)
+  * Full channel names are listed here: [Update history for Microsoft 365 Apps](https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date)
 
 ## 2108.458
 
 * Adds `MicrosoftEdgeWebView2Runtime`, `MicrosoftBotFrameworkEmulator`, `Naps2`, `SmartBearSoapUI`, `NevcairielLAVFilters`
 * Adds the parameter `-AppParams` to `Get-EvergreenApp` that takes a hashtable of parameters to be passed to the internal application functions. Right now, this will only work with `GitHubRelease` - enabling Evergreen to return the releases for any GitHub repository with Windows releases that you pass via `-AppParams`
 * Updates the approach used for `TelegramDesktop`, because Telegram posts a release to GitHub that doesn't match the latest Windows release
-* BREAKING CHANGES:
 
-    * Updates the channel names, and adds additional channels, in `Microsoft365Apps` - this release adds all available Microsoft 365 Apps channels - `FirstReleaseCurrent`, `Insiders`, `Monthly`, `Current`, `MonthlyEnterprise`, `Deferred`, `Broad`, `Targeted`, `FirstReleaseDeferred`, `Perpetual2019`, `PerpetualVL2019`
-    * Disables `CiscoWebEx` - function is unable to return the current WebEx version using the existing method and no working method has been found
+BREAKING CHANGES:
+
+* Updates the channel names, and adds additional channels, in `Microsoft365Apps` - this release adds all available Microsoft 365 Apps channels - `FirstReleaseCurrent`, `Insiders`, `Monthly`, `Current`, `MonthlyEnterprise`, `Deferred`, `Broad`, `Targeted`, `FirstReleaseDeferred`, `Perpetual2019`, `PerpetualVL2019`
+* Disables `CiscoWebEx` - function is unable to return the current WebEx version using the existing method and no working method has been found
 
 ## 2108.450
 
 * Adds `deviceTRUST`
 * Fixes an issue in `Save-EvergreenApp` when the path specified in the `-Path` parameter does not exist
 * Updates `LibreOffice` to gracefully handle download a scenario where the The Document Foundation pulls the download links for a published version [#218](https://github.com/aaronparker/evergreen/issues/218)
-* BREAKING CHANGES:
 
-    * Updates `Postman` with `x86` and `x64` architecture
-    * Updates `LibreOffice` with `Release` property with a value of `Still` or `Fresh`
+BREAKING CHANGES:
+
+* Updates `Postman` with `x86` and `x64` architecture
+* Updates `LibreOffice` with `Release` property with a value of `Still` or `Fresh`
 
 ## 2107.441
 
@@ -113,9 +117,10 @@
 * Updates `MicrosoftAzureCoreFunctionTools` to return MSI installers [#213](https://github.com/aaronparker/evergreen/issues/213)
 * Updates `CitrixWorkspaceApp` to return a `Stream` property that includes a value of `Current` or `LTSR`
 * Updates `LibreOffice` [#171](https://github.com/aaronparker/evergreen/issues/171), `CitrixWorkspaceApp`, `OracleJava8`, `MicrosoftSsms` to use `Invoke-RestMethodWrapper` to avoid needing to convert update feed into XML simplifying the code
-* BREAKING CHANGES:
 
-    * Renames `AtlassianBitbucket` to `AtlassianSourcetree` [#177](https://github.com/aaronparker/evergreen/issues/177)
+BREAKING CHANGES:
+
+* Renames `AtlassianBitbucket` to `AtlassianSourcetree` [#177](https://github.com/aaronparker/evergreen/issues/177)
 
 ## 2107.425
 
@@ -142,18 +147,20 @@
 * Adds `AmazonCorretto`, `ArtifexGhostscript`, `FreeFem`, `Gephi`, `Praat`, `SAGAGIS`, `Scratch`, `TeXstudio`, `gretl`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates private function `Get-Architecture` with additional processor architecture detections
 * Updates private function `Get-GitHubRepoRelease` to return a custom object if the GitHub API is rate limited
-* BREAKING CHANGES:
 
-    * Remove portable installers and `.zip` file types from `Notepad++`
+BREAKING CHANGES:
+
+* Remove portable installers and `.zip` file types from `Notepad++`
 
 ## 2106.395
 
 * Adds `AkeoRufus` [#179](https://github.com/aaronparker/evergreen/issues/179), `BlenderLauncher` [#178](https://github.com/aaronparker/evergreen/issues/178)
 * Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
 * Updates `Veracrypt` to return the complete version number (e.g. `1.24-Update7`) [#166](https://github.com/aaronparker/evergreen/issues/166)
-* BREAKING CHANGES:
 
-    * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
+BREAKING CHANGES:
+
+* Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 
 ## 2105.388
 
@@ -175,9 +182,10 @@
 * Adds `Audacity`, `Wireshark` ([#153](https://github.com/aaronparker/Evergreen/issues/153)), `LogMeInGoToMeeting` ([#152](https://github.com/aaronparker/Evergreen/issues/152)), `LogMeInGoToOpener`
 * Updates `AdobeAcrobat` to include Reader updates for `2015`, `2017`, `2020`
 * Updates `AdobeAcrobat` to include 64-bit updates for Reader and Acrobat DC
-* BREAKING CHANGES
 
-    * Adds the `Architecture` property to `AdobeAcrobat`
+BREAKING CHANGES
+
+* Adds the `Architecture` property to `AdobeAcrobat`
 
 ## 2105.366
 
@@ -230,7 +238,7 @@
 
 * Adds `Get-NETworkManager`, `Get-Anki`
 * Updates `Get-AdobeAcrobat` to include updates for Adobe Acrobat Reader DC. This function now returns updates for both Acrobat Pro and Reader
-    * Retrieve the installers for Adobe Acrobat Reader DC with `Get-AdobeAcrobatReaderDC` and any available updates with `Get-AdobeAcrobat`
+  * Retrieve the installers for Adobe Acrobat Reader DC with `Get-AdobeAcrobatReaderDC` and any available updates with `Get-AdobeAcrobat`
 * Temporarily disables `Get-ControlUpAgent` and `Get-ControlUpConsole`
 
 ## 2103.298
@@ -238,29 +246,31 @@
 * Adds `Get-MicrosoftAzureDataStudio`, `Get-ControlUpConsole`
 * Updates `Get-ControlUpAgent` to use the published JSON at [https://www.controlup.com/latest-agent-console/](https://www.controlup.com/latest-agent-console/) - the last vestiges of any screen scraping code have been swept away
 * Updates `Get-AdobeAcrobatReaderDC` to account for the new 64-bit version of Reader to add [#121](https://github.com/aaronparker/Evergreen/issues/121). Filter with `Where-Object` to return the required version, language and architecture
-* BREAKING CHANGES
 
-    * Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
-    * Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
-    * Changes the output of `Get-ControlUpAgent` - the values in the `Framework` property have changed and the function only returns the most recent agent version
+BREAKING CHANGES
+
+* Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
+* Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
+* Changes the output of `Get-ControlUpAgent` - the values in the `Framework` property have changed and the function only returns the most recent agent version
 
 ## 2102.291
 
 * Renames function `Get-AdobeAcrobatProDC` to `Get-AdobeAcrobat` and includes support for returning updates for Adobe Acrobat Pro/Standard DC, 2020, 2017, and 2015. Addresses [#114](https://github.com/aaronparker/Evergreen/issues/114)
-    * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
+  * Alias `Get-AdobeAcrobatProDC` included for backward compatibility
 * Adds `Preview` ring to `Get-MicrosoftTeams`
 * Updates function comment-based help and corrects spelling across several functions
-* BREAKING CHANGES
 
-    * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
-    * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
+BREAKING CHANGES
+
+* Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
+* Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
 
 ## 2102.286
 
 * Adds the `ARM` architecture to `Get-MicrosoftVisualStudioCode`
 * Updates `Get-MicrosoftWvdRemoteDesktop` to output the `URI` property value in the format `https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4MntQ` instead of the original `fwlink` source URL (e.g. `https://go.microsoft.com/fwlink/?linkid=2068602`)
 * Updates the following functions to use `Invoke-RestMethod` (via `Invoke-RestMethodWrapper`) instead of `Invoke-WebRequest` to simplify code and fix an issue where some functions where returning `Version` as a PSObject instead of System.String ([#109](https://github.com/aaronparker/Evergreen/issues/109))
-    * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
+  * `Get-AtlassianBitbucket`, `Get-Cyberduck`, `Get-FileZilla`, `Get-Fork`, `Get-RingCentral`, `Get-ScooterBeyondCompare`, `Get-SumatraPDFReader`, `Get-VideoLanVlcPlayer`
 * Updates module `ReleaseNotes` location to: [https://stealthpuppy.com/evergreen/changelog.html](https://stealthpuppy.com/evergreen/changelog.html)
 
 ## 2101.281
@@ -268,30 +278,32 @@
 * Renames `Get-MicrosoftOffice`, to `Get-Microsoft365Apps` to align with product name. The alias `Get-MicrosoftOffice` is included for backward compatibility
 * Adds the `Monthly Enterprise` channel to `Get-Microsoft365Apps` output. See [#107](https://github.com/aaronparker/Evergreen/issues/107)
 * Adds private function `Invoke-RestMethodWrapper` to enable normalisation across public functions and PowerShell/Windows PowerShell that use `Invoke-RestMethod`
-    * Updates private function `Get-GitHubRepoRelease` to use `Invoke-RestMethodWrapper`
-    * Updates several public functions to use `Invoke-RestMethodWrapper` instead of the previous method of `Invoke-WebRequest | ConvertTo-Json` - `Get-1Password`, `Get-CitrixVMTools`, `Get-FoxitReader`, `Get-GoogleChrome`, `Get-Microsoft365Apps`, `Get-MicrosoftEdge`, `Get-MicrosoftTeams`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-MozillaThunderbird`
-    * Updates public functions that used `Invoke-RestMethod` to use `Invoke-RestMethodWrapper` instead - `Get-Gimp`, `Get-MicrosoftPowerShell`, `Get-MicrosoftVisualStudio`
+  * Updates private function `Get-GitHubRepoRelease` to use `Invoke-RestMethodWrapper`
+  * Updates several public functions to use `Invoke-RestMethodWrapper` instead of the previous method of `Invoke-WebRequest | ConvertTo-Json` - `Get-1Password`, `Get-CitrixVMTools`, `Get-FoxitReader`, `Get-GoogleChrome`, `Get-Microsoft365Apps`, `Get-MicrosoftEdge`, `Get-MicrosoftTeams`, `Get-MicrosoftVisualStudioCode`, `Get-MozillaFirefox`, `Get-MozillaThunderbird`
+* Updates public functions that used `Invoke-RestMethod` to use `Invoke-RestMethodWrapper` instead - `Get-Gimp`, `Get-MicrosoftPowerShell`, `Get-MicrosoftVisualStudio`
 * Renames private function `Invoke-WebContent` to `Invoke-WebRequestWrapper` and makes general improvements to the handling of `Invoke-WebRequest`
 * Renames private function `ConvertFrom-SourceForgeReleasesJson` to `Get-SourceForgeRepoRelease`
-    * Updates and optimises this function to make use of `Invoke-RestMethodWrapper` so that it can query a SourceForge repository and return the required output in a single function
-    * Simplifies code in public functions that return SourceForge releases - `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator`, `Get-ProjectLibre`, `Get-WinMerge`, `Get-WinSCP`
+  * Updates and optimises this function to make use of `Invoke-RestMethodWrapper` so that it can query a SourceForge repository and return the required output in a single function
+* Simplifies code in public functions that return SourceForge releases - `Get-7zip`, `Get-KeePass`, `Get-PDFForgePDFCreator`, `Get-ProjectLibre`, `Get-WinMerge`, `Get-WinSCP`
 * Renames private functions for more descriptive function names (these resolve HTTP 301/302 return codes):
-    * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
-    * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
-* BREAKING CHANGES
+  * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
+  * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 
-    * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
-    * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
-    * Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
+BREAKING CHANGES
+
+* Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
+* Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
+* Removes the `-Language` parameter from `Get-MozillaFirefox` and `Get-MozillaThunderbird`. Filter output using `Where-Object { $_.Language -eq "en-US" }` or similar. These functions will return the following languages (for additional languages, please open an issue on the project): `en-US`, `en-GB`, `en-CA`, `es-ES`, `sv-SE`, `pt-BR`, `pt-PT`, `de`, `fr`, `it`, `ja`, `nl`, `zh-CN`, `zh-TW`, `ar`, `hi-IN`, `ru`
 
 ## 2101.275
 
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
 * Updates `Get-MicrosoftPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
-* BREAKING CHANGES
 
-    * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
-    * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
+BREAKING CHANGES
+
+* Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
+* Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
 
 ## 2101.263
 
@@ -316,18 +328,19 @@
 * Refactors `Get-Zoom` to simplify function code and improve output
 * Updates version output for `Get-MicrosoftWvdRtcService` and `Get-MicrosoftWvdInfraAgent`
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
-* BREAKING CHANGES:
 
-    * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
-    * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
-    * Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
+BREAKING CHANGES:
+
+* Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
+* Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
+* Output of `Get-Zoom` has changed - filter output with the `Platform` and `Type` properties
 
 ## 2012.242
 
 * Adds `Get-AdobeAcrobatProDC`, `Get-TelerikFiddlerEverywhere`, `Get-1Password`
 * Adds Windows Installer downloads output to `Get-FoxitReader`
 * Updates `Get-MicrosoftSsms` to query an evergreen update URL to gather new versions from the product releases feed
-    * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
+  * NOTE: the version of SSMS in the releases feed is not the actual current release version - we can only work with what the feed returns; See [#82](https://github.com/aaronparker/Evergreen/issues/82)
 * Updates `Get-MicrosoftSsms` to output all supported languages for downloads - filter output on the `Language` property
 * Updates `Get-MozillaFirefox` to return both Exe and Msi versions of the Firefox installer
 * Adds SHA256 hash property to output from `Get-MicrosoftVisualStudioCode`
@@ -336,22 +349,23 @@
 * Updates the following functions to use `Get-GitHubRepoRelease` - `Get-Atom`, `Get-AdoptOpenJdk`, `Get-BISF`, `Get-dnGrep`, `Get-GitForWindows`, `Get-GitHubRelease`, `Get-Greenshot`, `Get-Handbrake`, `Get-MicrosoftPowerShellCore`, `Get-MicrosoftPowerToys`, `Get-mRemoteNG`, `Get-NotepadPlusPlus`, `Get-OpenJDK`, `Get-OpenShellMenu`, `Get-ShareX`, `Get-Win32OpenSSH`, `Get-WixToolSet`
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
-* BREAKING CHANGES:
 
-    * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
-    * Removes Beta and Snapshots releases from `Get-Cyberduck`
-    * Removes Debug releases from `Get-Greenshot`
-    * Removes SafeMode releases from `Get-Handbrake`
-    * Removes Beta channel and ARM64 releases from `Get-MicrosoftEdge`
-    * Removes Zip format releases from `Get-MicrosoftPowerShellCore`
-    * Removes Symbols releases from `Get-Win32OpenSSH`
+BREAKING CHANGES:
+
+* Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
+* Removes Beta and Snapshots releases from `Get-Cyberduck`
+* Removes Debug releases from `Get-Greenshot`
+* Removes SafeMode releases from `Get-Handbrake`
+* Removes Beta channel and ARM64 releases from `Get-MicrosoftEdge`
+* Removes Zip format releases from `Get-MicrosoftPowerShellCore`
+* Removes Symbols releases from `Get-Win32OpenSSH`
 
 ## 2012.225
 
 * Adds `Get-Microsoft.NET` (.NET 5.0 and .NET Core), `Get-Win32OpenSSH`, `Get-MicrosoftPowerToys`
 * Updates `Get-OpenJDK` to return all releases. Further filtering will be added in the future per [#76](https://github.com/aaronparker/Evergreen/issues/76)
 * Updates `Get-MozillaFirefox` to resolve download URIs for both EXE and MSI Firefox installers and updates output with additional properties (`Architecture`, `Channel` and `Type`). See [#83](https://github.com/aaronparker/Evergreen/issues/83).
-    * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
+  * Note: this introduces a breaking change - the `-Platform` switch has been removed, you will need to filter the output on the `Architecture` property
 * Updates `Get-AdobeAcrobatReader` to return additional languages [#84](https://github.com/aaronparker/Evergreen/issues/84). Note that Reader DC does not provide the latest version for all languages - it may be a better approach to use the [MUI version of the Reader installer](https://helpx.adobe.com/au/reader/faq.html#Enterprisedeployment) if your language is supported
 
 ## 2010.219
@@ -422,11 +436,11 @@
 ## 2004.161
 
 * Updates `Get-MicrosoftEdge` with the following:
-    * Returns Edge for Windows only
-    * Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
-    * Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
-    * Filters and returns only the latest version of each of the above channels and downloads
-    * Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
+  * Returns Edge for Windows only
+  * Removes `-Channels` and `-Platforms` parameters. Filter output with `Where-Object` instead
+  * Returns these channels and downloads only `Stable`, `Beta`, `EdgeUpdate`, and `Policy` (administrative templates)
+  * Filters and returns only the latest version of each of the above channels and downloads
+  * Output includes `Channel` (Stable, Beta etc.) and `Release` (Enterprise, Consumer) to enable filtering
 
 ## 2004.157
 
