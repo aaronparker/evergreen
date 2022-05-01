@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes `MicrosoftSsms` to address returning the latest version and binaries [#305](https://github.com/aaronparker/evergreen/discussions/305)
+
 ## 2205.537
 
 * Adds `AdobeAcrobatProStdDC` to return the current version number and the trial installer for Adobe Acrobat DC Standard and Pro

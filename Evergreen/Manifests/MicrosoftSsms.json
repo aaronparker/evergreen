@@ -3,12 +3,11 @@
 	"Source": "https://go.microsoft.com/fwlink/?LinkId=531355",
 	"Get": {
 		"Update": {
-			"Uri": "https://go.microsoft.com/fwlink/?linkid=2168064",
+			"Uri": "https://go.microsoft.com/fwlink/?linkid=2188980",
 			"DatePattern": "yyyy-MM-ddTHH:mm:ss"
 		},
 		"Download": {
-			"Uri": "https://go.microsoft.com/fwlink/?linkid=2151644&clcid=#lang",
-			"Uri2": "https://aka.ms/ssmsfullsetup",
+			"Uri": "https://aka.ms/ssmsfullsetup?clcid=#lang",
 			"ReplaceText": "#lang",
 			"Language": {
 				"English": "0x409",
