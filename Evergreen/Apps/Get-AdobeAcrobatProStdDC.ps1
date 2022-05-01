@@ -1,4 +1,4 @@
-Function Get-AdobeAcrobatProStd {
+Function Get-AdobeAcrobatProStdDC {
     <#
         .SYNOPSIS
             Gets the download URLs for Adobe Acrobat Standard and Pro DC Continuous track updates.

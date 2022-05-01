@@ -1,4 +1,4 @@
-Function Get-AdobeAcrobatReader {
+Function Get-AdobeAcrobatReaderDC {
     <#
         .SYNOPSIS
             Gets the download URLs for Adobe Acrobat Reader DC Continuous track installers.
