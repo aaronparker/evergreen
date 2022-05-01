@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Adds `AdobeAcrobatProStdDC` to return the current version number and the trial installer for Adobe Acrobat DC Standard and Pro
+* Fixes a regression introduced in version `2204.534` where `AdobeAcrobatReaderDC` was renamed to `AdobeAcrobatReader`
+
 ## 2204.534
 
 * Adds `Test-EvergreenApp` that enables testing of installers returned by `Save-EvergreenApp` to determine whether the URI is valid
@@ -10,7 +15,7 @@
 
 BREAKING CHANGES:
 
-* Updates `AdobeAcrobatReader` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
+* Updates `AdobeAcrobatReaderDC` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
 
 ## 2202.525
 
