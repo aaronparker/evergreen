@@ -1,0 +1,28 @@
+{
+    "Name": "Adobe Acrobat DC Pro and Standard",
+    "Source": "https://helpx.adobe.com/acrobat/kb/acrobat-dc-downloads.html",
+    "Get": {
+        "Update": {
+            "Uri": "https://rdc.adobe.io/reader/products?lang=mui&os=Windows%2011&api_key=dc-get-adobereader-cdn"
+        },
+        "Download": {
+            "Uri": "https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_WWMUI.zip",
+            "Types": [
+                "Pro",
+                "Standard"
+            ]
+        }
+    },
+    "Install": {
+        "Preinstall": "",
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
