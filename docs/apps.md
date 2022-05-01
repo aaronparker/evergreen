@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2204.534` supports the following applications:
+Evergreen `2205.537` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -9,7 +9,8 @@ Evergreen `2204.534` supports the following applications:
 | 7ZipZS                                  | 7-Zip ZS                                                          | https://mcmilk.de/projects/7-Zip-zstd/                                                     |
 | AdobeAcrobat                            | Adobe Acrobat updates                                             | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                         |
 | AdobeAcrobatDC                          | Adobe Acrobat DC updates                                          | https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html               |
-| AdobeAcrobatReader                      | Adobe Acrobat Reader DC                                           | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
+| AdobeAcrobatProStdDC                    | Adobe Acrobat DC Pro and Standard                                 | https://helpx.adobe.com/acrobat/kb/acrobat-dc-downloads.html                               |
+| AdobeAcrobatReaderDC                    | Adobe Acrobat Reader DC                                           | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
 | AdobeBrackets                           | Adobe Brackets                                                    | http://brackets.io/                                                                        |
 | AdoptiumTemurin11                       | Adoptium Temurin 11                                               | https://adoptium.net/about.html?variant=openjdk11                                          |
 | AdoptiumTemurin16                       | Adoptium Temurin 16                                               | https://adoptium.net/about.html?variant=openjdk11                                          |

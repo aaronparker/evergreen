@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2205.537
 
 * Adds `AdobeAcrobatProStdDC` to return the current version number and the trial installer for Adobe Acrobat DC Standard and Pro
 * Fixes a regression introduced in version `2204.534` where `AdobeAcrobatReaderDC` was renamed to `AdobeAcrobatReader`
