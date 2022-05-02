@@ -14,12 +14,12 @@
 * Adds `Test-EvergreenApp` that enables testing of installers returned by `Save-EvergreenApp` to determine whether the URI is valid
 * Adds `AdobeAcrobatDC` that uses an alternative method to `AdobeAcrobat` to determine the current version of Adobe Acrobat Standard/Pro DC and Adobe Acrobat Reader DC. `AdobeAcrobat` has been left as-is to avoid a breaking change and to continue to provide updates for earlier versions of Acrobat / Reader updates
 * Adds `Obsidian` [#310](https://github.com/aaronparker/evergreen/discussions/310), `ScreenToGif`
-* Updates `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` to ensure that the correct version is installed for the `Enterprise` view for Edge installers [#311](https://github.com/aaronparker/evergreen/discussions/311)
+* Updates `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` to ensure that the correct versions are returned for the `Enterprise` view for Edge installers [#311](https://github.com/aaronparker/evergreen/discussions/311)
 * Updates various functions to use `Write-Error` instead of `throw` to ensure that functions continue where a specific query for an installer fails [#306](https://github.com/aaronparker/evergreen/issues/306)
 
 BREAKING CHANGES:
 
-* Updates `AdobeAcrobatReaderDC` the approach to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
+* Updates the approach used in `AdobeAcrobatReaderDC` to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
 
 ## 2202.525
 
