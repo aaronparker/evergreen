@@ -1,9 +1,0 @@
-{
-  "Version": "4.10",
-  "Platform": "Windows",
-  "Architecture": "x64",
-  "Type": "exe",
-  "Date": "13/11/2021",
-  "Size": 208655345,
-  "URI": "https://github.com/FreeFem/FreeFem-sources/releases/download/v4.10/FreeFEM-4.10-win64.exe"
-}

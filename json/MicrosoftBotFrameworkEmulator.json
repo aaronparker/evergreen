@@ -1,9 +1,0 @@
-{
-  "Version": "4.14.1",
-  "Platform": "Windows",
-  "Architecture": "x86",
-  "Type": "exe",
-  "Date": "11/11/2021",
-  "Size": 164630672,
-  "URI": "https://github.com/microsoft/BotFramework-Emulator/releases/download/v4.14.1/BotFramework-Emulator-4.14.1-windows-setup.exe"
-}

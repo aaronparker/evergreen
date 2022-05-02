@@ -1,9 +1,0 @@
-{
-  "Version": "0.55.0",
-  "Platform": "Windows",
-  "Architecture": "x64",
-  "Type": "zip",
-  "Date": "8/11/2021",
-  "Size": 28828232,
-  "URI": "https://github.com/abbodi1406/vcredist/releases/download/v0.55.0/VisualCppRedist_AIO_x86_x64_55.zip"
-}
