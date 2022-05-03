@@ -1,9 +1,0 @@
-{
-  "Version": "1.1.12653",
-  "Platform": "Windows",
-  "Architecture": "x86",
-  "Type": "msixbundle",
-  "Date": "23/9/2021",
-  "Size": 24070814,
-  "URI": "https://github.com/microsoft/winget-cli/releases/download/v1.1.12653/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-}

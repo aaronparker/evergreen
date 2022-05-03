@@ -1,9 +1,0 @@
-{
-  "Version": "2.16.2",
-  "Platform": "Windows",
-  "Architecture": "x64",
-  "Type": "msi",
-  "Date": "21/11/2021",
-  "Size": 23928832,
-  "URI": "https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-windows-x86_64.msi"
-}

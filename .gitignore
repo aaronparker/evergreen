@@ -39,4 +39,4 @@ Thumbs.db
 # Visual Studio files
 ######################
 .vs/**
-json/MicrosoftPowerShell.json
+json/**

@@ -8,7 +8,7 @@
                 "Consumer": "",
                 "Enterprise": "?view=enterprise"
             },
-            "Platform": [
+            "Platforms": [
                 "Windows",
                 "Any"
             ],

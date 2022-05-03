@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Fixes `MicrosoftSsms` to address returning the latest version and binaries [#305](https://github.com/aaronparker/evergreen/discussions/305)
+* Fixes an issue in `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` where versions were sorted differently between PowerShell Core and Windows PowerShell to ensure the correct versions are returned [#311](https://github.com/aaronparker/evergreen/discussions/311)
+* Fixes an issue in `VeraCrypt` where the version string returned was not correct
+
 ## 2205.537
 
 * Adds `AdobeAcrobatProStdDC` to return the current version number and the trial installer for Adobe Acrobat DC Standard and Pro

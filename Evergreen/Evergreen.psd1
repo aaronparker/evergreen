@@ -21,13 +21,13 @@ ModuleVersion = '2205.537'
 GUID = '15379d5d-c395-4e22-bcf3-6b10156a13bc'
 
 # Author of this module
-Author = 'Aaron Parker; Bronson Magnan; Trond Eric Haarvarstein'
+Author = 'Aaron Parker'
 
 # Company or vendor of this module
-CompanyName = 'stealthpuppy, Bronson Magnan, xenappblog'
+CompanyName = 'stealthpuppy'
 
 # Copyright statement for this module
-Copyright = '(c) 2021 stealthpuppy, Bronson Magnan, xenappblog. All rights reserved.'
+Copyright = '(c) 2022 stealthpuppy. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Create evergreen Windows image builds with the latest versions of applications. Evergreen is a simple PowerShell module that retrieves the latest version numbers and download URLs for various software products directly from the vendor source.'

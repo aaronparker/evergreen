@@ -43,7 +43,6 @@ Function Get-MicrosoftSsms {
                     $PSObject = [PSCustomObject] @{
                         Version  = $entry.version
                         Date     = ConvertTo-DateTime -DateTime ($Content.updated.Split(".")[0]) -Pattern $res.Get.Update.DatePattern
-                        Title    = $Content.Title
                         Language = $language.key
                         URI      = $ResponseUri.ResponseUri.AbsoluteUri
                     }

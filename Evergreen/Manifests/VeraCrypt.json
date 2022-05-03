@@ -18,7 +18,7 @@
             "ContentType": "application/rss+xml; charset=utf-8",
             "Uri": "https://nchc.dl.sourceforge.net/project/veracrypt"
         },
-        "MatchVersion": "(\\d+(\\.\\d.+([^/]+)){1,3})",
+        "MatchVersion": "(\\d+(\\.\\d+){1,3})",
         "DatePattern": "yyyy-MM-dd HH:mm:ss"
     },
     "Install": {
