@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with installers returned by `MicrosoftEdgeDriver` and `MicrosoftEdgeWebView2Runtime`
+
 ## 2205.541
 
 * Fixes `MicrosoftSsms` to address returning the latest version and binaries [#305](https://github.com/aaronparker/evergreen/discussions/305)
