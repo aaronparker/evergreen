@@ -28,6 +28,7 @@
         "Hashicorp",
         "iainbrighton",
         "Karakun",
+        "latestversion",
         "linkid",
         "MAML",
         "Mestrelab",
@@ -63,6 +64,7 @@
         "voidtools",
         "windowsdesktop",
         "Winget",
-        "Wireshark"
+        "Wireshark",
+        "xcopy"
     ]
 }
