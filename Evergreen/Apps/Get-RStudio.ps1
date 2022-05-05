@@ -19,36 +19,39 @@ Function Get-RStudio {
     )
 
     # Read the update URI
-    $params = @{
-        Uri = $res.Get.Update.Uri
-    }
-    $Content = Invoke-RestMethodWrapper @params
+    foreach ($branch in $res.Get.Update.Uri.GetEnumerator()) {
+        $params = @{
+            Uri = $res.Get.Update.Uri[$branch.Key]
+        }
+        $Content = Invoke-RestMethodWrapper @params
 
-    # Read the JSON and build an array of platform, channel, version
-    If ($Null -ne $Content) {
+        # Read the JSON and build an array of platform, channel, version
+        If ($Null -ne $Content) {
 
-        # Step through each installer type
-        foreach ($product in $res.Get.Update.Products) {
-            foreach ($platform in $res.Get.Update.Platforms) {
-                foreach ($item in $Content.$product.platforms.$platform) {
+            # Step through each installer type
+            foreach ($product in $res.Get.Update.Products) {
+                foreach ($platform in $res.Get.Update.Platforms) {
+                    foreach ($item in $Content.$product.platforms.$platform) {
 
-                    # Build the output object; Output object to the pipeline
-                    $PSObject = [PSCustomObject] @{
-                        Version       = $item.version
-                        Sha256        = $item.sha256
-                        Size          = $item.size
-                        Channel       = $item.channel
-                        ProductName   = $Content.$product.name
-                        InstallerName = $item.name
-                        Type          = Get-FileType -File $item.link
-                        URI           = $item.link
+                        # Build the output object; Output object to the pipeline
+                        $PSObject = [PSCustomObject] @{
+                            Version       = $item.version
+                            Sha256        = $item.sha256
+                            Size          = $item.size
+                            Branch        = $branch.Name
+                            Channel       = $item.channel
+                            ProductName   = $Content.$product.name
+                            InstallerName = $item.name
+                            Type          = Get-FileType -File $item.link
+                            URI           = $item.link
+                        }
+                        Write-Output -InputObject $PSObject
                     }
-                    Write-Output -InputObject $PSObject
                 }
             }
         }
-    }
-    else {
-        Write-Error -Message "$($MyInvocation.MyCommand): Unable to return usable content from: $($res.Get.Update.Uri)."
+        else {
+            Write-Error -Message "$($MyInvocation.MyCommand): Unable to return usable content from: $($res.Get.Update.Uri[$branch.Key])."
+        }
     }
 }

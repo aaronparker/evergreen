@@ -1,9 +1,14 @@
 {
-	"Name": "RStudio",
+	"Name": "RStudio Desktop",
 	"Source": "https://www.rstudio.com/",
 	"Get": {
 		"Update": {
-            "Uri": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
+            "Uri": {
+				"Spotted Wakerobin": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
+				"Prairie Trillium": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
+				"Ghost Orchid": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
+				"Juliet Rose": "https://dailies.rstudio.com/rstudio/juliet-rose/index.json"
+			},
 			"Products": [
 				"desktop",
 				"desktop-pro"
