@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2205.541` supports the following applications:
+Evergreen `2205.546` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -162,7 +162,7 @@ Evergreen `2205.541` supports the following applications:
 | RCoreTeamRforWindows                    | R Core Team R for Windows                                         | https://cran.r-project.org/bin/windows/base/                                               |
 | RDAnalyzer                              | Remote Desktop Analyzer                                           | https://rdanalyzer.com/                                                                    |
 | RingCentral                             | RingCentral                                                       | https://www.ringcentral.com                                                                |
-| RStudio                                 | RStudio                                                           | https://www.rstudio.com/                                                                   |
+| RStudio                                 | RStudio Desktop                                                   | https://www.rstudio.com/                                                                   |
 | SafeExamBrowser                         | Safe Exam Browser                                                 | https://safeexambrowser.org/                                                               |
 | SAGAGIS                                 | SAGA-GIS                                                          | http://www.saga-gis.org/                                                                   |
 | ScooterBeyondCompare                    | Scooter Beyond Compare                                            | https://scootersoftware.com/                                                               |

@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2205.546
 
 * Updates `RStudio` with new update sources for all curren branches and now returns Free and Pro editions [#318](https://github.com/aaronparker/evergreen/discussions/318)
 * Fixes an issue with installers returned by `MicrosoftEdgeDriver` and `MicrosoftEdgeWebView2Runtime`
