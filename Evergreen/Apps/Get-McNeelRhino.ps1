@@ -19,9 +19,9 @@ Function Get-McNeelRhino {
     foreach ($Release in $res.Get.Update.GetEnumerator()) {
 
         # Query the Rhino update API
-
         # This requires redirection so Invoke-RestMethodWrapper produces "Operation is not valid due to the current state of the object."
-        $UpdateFeed = Invoke-RestMethod -Uri $Release.Value
+        $Uri = Resolve-InvokeWebRequest -Uri $Release.Value
+        $UpdateFeed = Invoke-RestMethod -Uri $Uri
 
         If ($Null -ne $UpdateFeed) {
 
@@ -32,7 +32,6 @@ Function Get-McNeelRhino {
                 URI     = $updateFeed.ProductVersionDescription.DownloadUrl
             }
             Write-Output -InputObject $PSObject
-
         }
     }
 }

@@ -19,33 +19,39 @@ Function Get-RStudio {
     )
 
     # Read the update URI
-    $params = @{
-        Uri = $res.Get.Update.Uri
-    }
-    $Content = Invoke-RestMethodWrapper @params
-
-    # Read the JSON and build an array of platform, channel, version
-    If ($Null -ne $Content) {
-
-        # Match version number
-        try {
-            $Lines = $Content -split "\n"
-            $Version = [RegEx]::Match($Lines[0], $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+    foreach ($branch in $res.Get.Update.Uri.GetEnumerator()) {
+        $params = @{
+            Uri = $res.Get.Update.Uri[$branch.Key]
         }
-        catch {
-            $Version = "Unknown"
-        }
+        $Content = Invoke-RestMethodWrapper @params
 
-        # Step through each installer type
-        ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
+        # Read the JSON and build an array of platform, channel, version
+        If ($Null -ne $Content) {
 
-            # Build the output object; Output object to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Version = $Version
-                Type    = $item.Name
-                URI     = $res.Get.Download.Uri[$item.Key] -replace $res.Get.Download.ReplaceText, $Version
+            # Step through each installer type
+            foreach ($product in $res.Get.Update.Products) {
+                foreach ($platform in $res.Get.Update.Platforms) {
+                    foreach ($item in $Content.$product.platforms.$platform) {
+
+                        # Build the output object; Output object to the pipeline
+                        $PSObject = [PSCustomObject] @{
+                            Version       = $item.version
+                            Sha256        = $item.sha256
+                            Size          = $item.size
+                            Branch        = $branch.Name
+                            Channel       = $item.channel
+                            ProductName   = $Content.$product.name
+                            InstallerName = $item.name
+                            Type          = Get-FileType -File $item.link
+                            URI           = $item.link
+                        }
+                        Write-Output -InputObject $PSObject
+                    }
+                }
             }
-            Write-Output -InputObject $PSObject
+        }
+        else {
+            Write-Error -Message "$($MyInvocation.MyCommand): Unable to return usable content from: $($res.Get.Update.Uri[$branch.Key])."
         }
     }
 }

@@ -28,6 +28,7 @@
         "Hashicorp",
         "iainbrighton",
         "Karakun",
+        "latestversion",
         "linkid",
         "MAML",
         "Mestrelab",
@@ -61,8 +62,10 @@
         "Veracrypt",
         "Vercel",
         "voidtools",
+        "Wakerobin",
         "windowsdesktop",
         "Winget",
-        "Wireshark"
+        "Wireshark",
+        "xcopy"
     ]
 }

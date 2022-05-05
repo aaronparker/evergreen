@@ -1,5 +1,15 @@
 # Change log
 
+## VERSION
+
+* Updates `RStudio` with new update sources for all curren branches and now returns Free and Pro editions [#318](https://github.com/aaronparker/evergreen/discussions/318)
+* Fixes an issue with installers returned by `MicrosoftEdgeDriver` and `MicrosoftEdgeWebView2Runtime`
+* Updates `McNeelRhino` to work under PowerShell 6/7 - resolves an issue when using `Invoke-RestMethod` which does not follow a HTTP 302 response
+
+BREAKING CHANGES
+
+* `RStudio` returns new properties that will require filtering the output. Properties include: `Branch`, `Channel`, `ProductName`, and `InstallerName`
+
 ## 2205.541
 
 * Fixes `MicrosoftSsms` to address returning the latest version and binaries [#305](https://github.com/aaronparker/evergreen/discussions/305)

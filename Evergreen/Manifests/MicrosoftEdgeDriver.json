@@ -4,14 +4,10 @@
     "Get": {
         "Update": {
             "Uri": "https://edgeupdates.microsoft.com/api/products",
-            "Views": {
-                "Consumer": ""
-            },
             "Platforms": [
                 "Windows"
             ],
             "Channels": [
-                "Canary",
                 "Dev",
                 "Beta",
                 "Stable"
