@@ -21,6 +21,7 @@ Function Resolve-DnsNameWrapper {
         # Wrap Resolve-DnsName
         Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Name, with type: $Type."
         try {
+            Import-Module -Name "DnsClient" -ErrorAction "SilentlyContinue"
             $params = @{
                 Name        = $Name
                 Type        = $Type
