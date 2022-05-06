@@ -1,4 +1,4 @@
-name: test-output
+name: update-versions
 
 # Environment variables
 env:
@@ -6,6 +6,13 @@ env:
 
 # Controls when the action will run. 
 on:
+  #push:
+  #  branches:
+  #    - main
+  #  paths:
+  #    - 'Evergreen/**'
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -43,33 +50,14 @@ jobs:
       - name: Update versions
         shell: pwsh
         run: |
-          . "${{ github.workspace }}/Update-Versions.ps1" -Path "${{ github.workspace }}/json"
-
-      # Format the date number for the commit message
-      - name: Get date
-        id: get-date
-        run: |
-            DATEF=`date +%Y.%m.%d`
-            echo "::set-output name=date::$DATEF"
-
-      - name: Commit changes
-        id: commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Update json ${{ steps.get-date.outputs.date }}.${{ github.run_number }}"
-          commit_user_name: ${{ secrets.COMMIT_NAME }}
-          commit_user_email: ${{ secrets.COMMIT_EMAIL }}
-
-      - name: "Run if changes have been detected"
-        if: steps.commit.outputs.changes_detected == 'true'
-        run: echo "Changes committed."
-
-      - name: "Run if no changes have been detected"
-        if: steps.commit.outputs.changes_detected == 'false'
-        run: echo "No changes detected."
+          Find-EvergreenApp | Select-Object -ExpandProperty "Name" | `
+            ForEach-Object { Get-EvergreenApp -Name $_ -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue" | `
+                Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true }, "Architecture", "Channel", "Release", "Language", "Platform", "Branch", "Title", "Edition", "Type" -ErrorAction "SilentlyContinue" | `
+                ConvertTo-Json | `
+                Out-File -FilePath $([System.IO.Path]::Combine("${{ github.workspace }}/json", "$_.json")) -NoNewline -Encoding "utf8" -Verbose
+          }
 
   update-powershell:
-      needs: update-pwsh
       runs-on: windows-latest
 
       # Steps represent a sequence of tasks that will be executed as part of the job
@@ -93,45 +81,13 @@ jobs:
             modules-to-cache: Evergreen
             shell: powershell
 
-        # Import GPG key
-        - name: Import GPG key
-          id: import_gpg
-          uses: crazy-max/ghaction-import-gpg@v4
-          with:
-            gpg_private_key: ${{ secrets.GPGKEY }}
-            passphrase: ${{ secrets.GPGPASSPHRASE }}
-            git_user_signingkey: true
-            git_commit_gpgsign: true
-            git_config_global: true
-            git_tag_gpgsign: true
-            git_push_gpgsign: false
-            git_committer_name: ${{ secrets.COMMIT_NAME }}
-            git_committer_email: ${{ secrets.COMMIT_EMAIL }}
-
         # Run Pester tests
         - name: Update versions
           shell: powershell
           run: |
-            . "${{ github.workspace }}/Update-Versions.ps1" -Path "${{ github.workspace }}/json"
-
-        # Format the date number for the commit message
-        - name: Get date
-          id: get-date
-          run: |
-            echo "::set-output name=date::$(Get-Date -Format "yyyy.MM.dd")"
-
-        - name: Commit changes
-          id: commit
-          uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            commit_message: "Update json ${{ steps.get-date.outputs.date }}.${{ github.run_number }}"
-            commit_user_name: ${{ secrets.COMMIT_NAME }}
-            commit_user_email: ${{ secrets.COMMIT_EMAIL }}
-
-        - name: "Run if changes have been detected"
-          if: steps.commit.outputs.changes_detected == 'true'
-          run: echo "Changes committed."
-
-        - name: "Run if no changes have been detected"
-          if: steps.commit.outputs.changes_detected == 'false'
-          run: echo "No changes detected."
+              Find-EvergreenApp | Select-Object -ExpandProperty "Name" | `
+                ForEach-Object { Get-EvergreenApp -Name $_ -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue" | `
+                    Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true }, "Architecture", "Channel", "Release", "Language", "Platform", "Branch", "Title", "Edition", "Type" -ErrorAction "SilentlyContinue" | `
+                    ConvertTo-Json | `
+                    Out-File -FilePath $([System.IO.Path]::Combine("${{ github.workspace }}/json", "$_.json")) -NoNewline -Encoding "utf8" -Verbose
+              }
