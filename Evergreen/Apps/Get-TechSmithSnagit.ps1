@@ -1,7 +1,7 @@
-Function Get-TechSmithSnagIt {
+Function Get-TechSmithSnagit {
     <#
         .SYNOPSIS
-            Get the current version and download URL for SnagIt.
+            Get the current version and download URL for Snagit.
 
         .NOTES
             Author: Andrew Cooper
