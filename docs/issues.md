@@ -32,14 +32,12 @@ The 32-bit installers returned by `7Zip` link to a SourceForge download page ins
 
 Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
 
-The determine the current update version of `AdobeAcrobat`, the URL for macOS updates is used: `https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt`. This provides a simple text lookup of the latest version number.
+The determine the current update version of `AdobeAcrobat`, the [URL for macOS updates](https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt) is used. This provides a simple text lookup of the latest version number.
 
 !!! info "Note"
-    The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Doing so may modify the host, so it will not be implemented.
+    The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Sample code to query the MSI database has been posted here: [AdobeReader download links not valid](https://github.com/aaronparker/evergreen/issues/312#issuecomment-1103712904); however, this approach will only work on a Windows hosts and will not support macOS or Linux.
 
-### AdobeAcrobatReaderDC
-
-The JSON data returned from the Adobe Acrobat Reader DC download URL (`https://get.adobe.com/reader/webservices/json/standalone/`) returns extraneous data for the following languages, thus they have not been included in the manifest: Portuguese, Chinese (Simplified), Chinese (Traditional).
+An alternative application - `AdobeAcrobatDC` uses a web API lookup to determine the current version of Adobe Acrobat Reader DC, Acrobat Standard DC, and Acrobat Pro DC. Earlier version of Acrobat are still affected by this issue.
 
 ### CiscoWebEx
 
@@ -97,7 +95,7 @@ Depending on release schedules, the preview version of the FSLogix Apps download
 
 ### MicrosoftSsms
 
-The product release feed used by the Microsoft SQL Server Management Studio (e.g., [https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml](https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml)) includes the internal build number of the SQL Server Management Studio and not the display version, thus the version return will be similar to `15.0.18369.0` instead of the display version: `18.9.1`. See [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) for more info. Also see [SQL SSMS is reporting the wrong version](https://github.com/aaronparker/Evergreen/issues/82).
+The product release feed used by the Microsoft SQL Server Management Studio (e.g., [SSMS_PRODUCTRELEASESFEED.xml](https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml)) includes the internal build number of the SQL Server Management Studio and not the display version, thus the version return will be similar to `15.0.18369.0` instead of the display version: `18.9.1`. See [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) for more info. Also see [SQL SSMS is reporting the wrong version](https://github.com/aaronparker/Evergreen/issues/82).
 
 ### MicrosoftTeams
 
@@ -124,6 +122,12 @@ Returning the latest version and download for OBS Studio may fail when the OBS P
 Evergreen could query versions from the GitHub repository; however, the the OBS Project does not consistently maintain releases in the repository. In some instances a specific release of OBS Studio may address an issue with the macOS version only and `OBSStudio` would then return no results.
 
 Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
+
+## VideoLanVlcPlayer
+
+`VideoLanVlcPlayer` may not always return the latest available release - the release returned by the update feed used by the VLC media player may not be the same as the current version available for download from the [videolan.org](https://www.videolan.org/vlc/) site, due to the version returned in the update feed.
+
+The source code for the update site can be found here: [VideoLAN organization > update.videolan.org > Repository](https://code.videolan.org/VideoLAN.org/update.videolan.org/-/tree/master/vlc).
 
 ### VMwareHorizonClient
 
