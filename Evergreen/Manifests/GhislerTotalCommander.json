@@ -5,7 +5,7 @@
         "Update": {
             "Uri": "releaseversion.ghisler.com",
             "DnsType": "TXT",
-            "MatchVersion": "(?<=^...).*(?=;)'"
+            "MatchVersion": "(?<=^).*(?=;)"
         },
         "Download": {
             "Uri": {
