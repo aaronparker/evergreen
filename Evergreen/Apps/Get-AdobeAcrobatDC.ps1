@@ -46,7 +46,7 @@ Function Get-AdobeAcrobatDC {
                 $Version = $Content.products.reader.version
             }
             Write-Verbose -Message "$($MyInvocation.MyCommand): Update found: $($versionString)."
-        
+
             # Build the output object
             ForEach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
                 ForEach ($Url in $res.Get.Download.Uri.($Architecture.Name).GetEnumerator()) {
@@ -54,7 +54,7 @@ Function Get-AdobeAcrobatDC {
                     # Construct the URI property
                     $Uri = ($res.Get.Download.Uri.($Architecture.Name)[$Url.key] `
                             -replace $res.Get.Download.ReplaceText.Version, $versionString)
-        
+
                     # Build the object
                     $PSObject = [PSCustomObject] @{
                         Version      = $Version

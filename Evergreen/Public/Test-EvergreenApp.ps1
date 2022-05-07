@@ -74,6 +74,10 @@ Function Test-EvergreenApp {
             catch [System.Exception] {
                 $Result = $False
             }
+            finally {
+                $r | Out-Null
+                Remove-Variable -Name "r" -ErrorAction "SilentlyContinue"
+            }
             $PSObject = [PSCustomObject] @{
                 Result = $Result
                 URI    = $Object.URI
