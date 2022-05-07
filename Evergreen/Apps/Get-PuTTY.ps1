@@ -34,7 +34,6 @@ Function Get-PuTTY {
                 Version      = $Version
                 Architecture = $Architecture.Name
                 Type         = [System.IO.Path]::GetExtension($Uri).TrimStart(".")
-                Date         = [System.DateTime]$Response.LastModified
                 URI          = $Uri
             }
             Write-Output -InputObject $PSObject
