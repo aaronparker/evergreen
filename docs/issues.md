@@ -123,7 +123,7 @@ Evergreen could query versions from the GitHub repository; however, the the OBS 
 
 Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
 
-## VideoLanVlcPlayer
+### VideoLanVlcPlayer
 
 `VideoLanVlcPlayer` may not always return the latest available release - the release returned by the update feed used by the VLC media player may not be the same as the current version available for download from the [videolan.org](https://www.videolan.org/vlc/) site, due to the version returned in the update feed.
 
