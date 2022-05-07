@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue in `TechSmithSnagit` and `GitForWindows` under Linux where filename case was preventing `Get-EvergreenApp` from sourcing application functions
+* Updates `Resolve-DnsNameWrapper` with `Import-Module -Name "DnsClient"` to ensure the `Resolve-DnsName` command is available
+* Removes `Date` property from `PuTTY` as the value is updated on each query, rather than when the version was released
+
 ## 2205.546
 
 * Updates `RStudio` with new update sources for all curren branches and now returns Free and Pro editions [#318](https://github.com/aaronparker/evergreen/discussions/318)
@@ -146,7 +152,7 @@ BREAKING CHANGES:
 ## 2107.425
 
 * Adds `jq`, `PSAppDeployToolkit`
-* Adds `Anaconda`, `McNeelRhino`, `PSFPython`, `TableauPrep`, `TableauReader`, `TechSmithCamtasia`, `TechSmithSnagIt`. Thanks to [@adotcoop](https://github.com/adotcoop)
+* Adds `Anaconda`, `McNeelRhino`, `PSFPython`, `TableauPrep`, `TableauReader`, `TechSmithCamtasia`, `TechSmithSnagit`. Thanks to [@adotcoop](https://github.com/adotcoop)
 * Updates `Get-GitHubRepoRelease` to actively query the GitHub API for available requests to avoid issues when [rate limited](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)
 * Updates `Get-GitHubRepoRelease` with a new parameter - `-ReturnVersionOnly` that enables returning only the version property of the latest release. This enables finding the version number and using alternative download sources, where the vendor does not include binary releases on the GitHub repository
 

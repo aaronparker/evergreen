@@ -179,7 +179,7 @@ Evergreen `2205.546` supports the following applications:
 | TableauReader                           | Tableau Reader                                                    | https://www.tableau.com/                                                                   |
 | TeamViewer                              | TeamViewer                                                        | https://www.teamviewer.com/                                                                |
 | TechSmithCamtasia                       | TechSmith Camtasia                                                | https://www.techsmith.com/                                                                 |
-| TechSmithSnagIt                         | TechSmith SnagIt                                                  | https://www.techsmith.com/                                                                 |
+| TechSmithSnagit                         | TechSmith Snagit                                                  | https://www.techsmith.com/                                                                 |
 | TelegramDesktop                         | Telegram Desktop                                                  | https://desktop.telegram.org/                                                              |
 | TelerikFiddlerClassic                   | Telerik Fiddler Classic                                           | https://www.telerik.com/fiddler/fiddler-classic                                            |
 | TelerikFiddlerEverywhere                | Telerik Fiddler Everywhere                                        | https://www.telerik.com/fiddler                                                            |
@@ -202,4 +202,5 @@ Evergreen `2205.546` supports the following applications:
 | Wireshark                               | Wireshark                                                         | https://www.wireshark.org/#download                                                        |
 | WixToolset                              | WiX Toolset                                                       | https://wixtoolset.org/                                                                    |
 | Zoom                                    | Zoom                                                              | https://zoom.us/                                                                           |
-| Zotero                                  | Zotero                                                            | https://www.zotero.org/                                                                    |
+| Zotero                                  | Zotero                                                            | https://www.zotero.org/                                                                    |
+
