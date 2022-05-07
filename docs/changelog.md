@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue in `TechSmithSnagit` and `GitForWindows` under Linux where filename case was preventing `Get-EvergreenApp` from sourcing application functions
+* Updates `Resolve-DnsNameWrapper` with `Import-Module -Name "DnsClient"` to ensure the `Resolve-DnsName` command is available
+* Removes `Date` property from `PuTTY` as the value is updated on each query, rather than when the version was released
+
 ## 2205.546
 
 * Updates `RStudio` with new update sources for all curren branches and now returns Free and Pro editions [#318](https://github.com/aaronparker/evergreen/discussions/318)

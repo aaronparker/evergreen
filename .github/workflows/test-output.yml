@@ -1,4 +1,4 @@
-name: update-versions
+name: test-output
 
 # Environment variables
 env:
@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-pwsh:
+  output-pwsh:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -57,7 +57,7 @@ jobs:
                 Out-File -FilePath $([System.IO.Path]::Combine("${{ github.workspace }}/json", "$_.json")) -NoNewline -Encoding "utf8" -Verbose
           }
 
-  update-powershell:
+  output-powershell:
       runs-on: windows-latest
 
       # Steps represent a sequence of tasks that will be executed as part of the job
