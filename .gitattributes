@@ -11,6 +11,7 @@
 # Documentation
 *.ipynb           text
 *.markdown        text
+docs/apps.md      text eol=crlf
 *.md              text=auto
 *.mdwn            text
 *.mdown           text

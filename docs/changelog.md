@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `AdoptiumTemurin18`
+
 ## 2205.549
 
 * Fixes an issue in `TechSmithSnagit` and `GitForWindows` under Linux where filename case was preventing `Get-EvergreenApp` from sourcing application functions

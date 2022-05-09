@@ -1,6 +1,6 @@
 {
 	"Name": "Adoptium Temurin 18",
-	"Source": "https://adoptium.net/about.html?variant=openjdk11",
+	"Source": "https://adoptium.net/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/adoptium/temurin18-binaries/releases/latest",
 		"MatchVersion": ".*[-](\\d+(\\.\\d+){1,4}.*$)",
