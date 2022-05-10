@@ -103,16 +103,33 @@ The version number returned by the Microsoft Teams update API may be slightly di
 
 ### MozillaFirefox
 
+#### Language Support
+
 `MozillaFirefox` will only return the English US installer by default. This has been done due to the lengthy amount of time that the function takes to query the Mozilla site to find the installers for each channel, architecture and file type. This could be up to 12 objects for each language - if the supported languages are included by default, then the function will take several minutes to return an object.
 
 Any supported language can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}` will return the English (UK) and Spanish language installers for Firefox.
 
 Most [supported languages](https://www.mozilla.org/en-US/firefox/all/#product-desktop-release) can be passed to the function as the language short code. The list of languages can be found in the [MozillaFirefox](https://github.com/aaronparker/evergreen/blob/main/Evergreen/Manifests/MozillaFirefox.json) manifest.
 
-Also note that `MozillaFirefox` will include the following warning which is normal - not all channels or installer types may return an object from the Mozilla site that can be used to find an installer download URL.
+#### Errors and Warnings
+
+`MozillaFirefox` will warnings and an error similar to the following which is normal - not all channels or installer types may return an object from the Mozilla site that is used to find an installer download URL. In the example below, a call is being made for the ARM64, MSI version of the Extended Support Release which doesn't exist.
 
 ```powershell
-WARNING: Resolve-SystemNetWebRequest: Error at URI: https://download.mozilla.org/?product=firefox-msix-latest-ssl&os=win64-aarch64&lang=en-US.
+WARNING: Resolve-SystemNetWebRequest: Error at URI: https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=win64-aarch64&lang=en-US.
+WARNING: Resolve-SystemNetWebRequest: Response: Exception calling "GetResponse" with "0" argument(s): "The remote server returned an error: (404) Not Found.".
+WARNING: Resolve-SystemNetWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MozillaFirefox.ps1:38
+Line |
+  38 |                      $response = Resolve-SystemNetWebRequest @params
+     |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Resolve-SystemNetWebRequest: Exception calling "GetResponse" with "0" argument(s): "The remote server returned an error: (404) Not Found.".
+```
+
+You can suppress this output with the following syntax:
+
+```powershell
+Get-EvergreenApp -Name "MozillaFirefox" -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
 ```
 
 ### OBSStudio
