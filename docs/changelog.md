@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `AdoptiumTemurin18`
+* Adds `AdoptiumTemurin18`, `Tower`
 
 ## 2205.549
 
