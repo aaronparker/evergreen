@@ -1,6 +1,6 @@
 ﻿# Supported applications
 
-Evergreen `2205.549` supports the following applications:
+Evergreen `2205.555` supports the following applications:
 
 | Name                                    | Application                                                       | Link                                                                                       |
 | --------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -12,10 +12,11 @@ Evergreen `2205.549` supports the following applications:
 | AdobeAcrobatProStdDC                    | Adobe Acrobat DC Pro and Standard                                 | https://helpx.adobe.com/acrobat/kb/acrobat-dc-downloads.html                               |
 | AdobeAcrobatReaderDC                    | Adobe Acrobat Reader DC                                           | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
 | AdobeBrackets                           | Adobe Brackets                                                    | http://brackets.io/                                                                        |
-| AdoptiumTemurin11                       | Adoptium Temurin 11                                               | https://adoptium.net/about.html?variant=openjdk11                                          |
-| AdoptiumTemurin16                       | Adoptium Temurin 16                                               | https://adoptium.net/about.html?variant=openjdk11                                          |
-| AdoptiumTemurin17                       | Adoptium Temurin 17                                               | https://adoptium.net/about.html?variant=openjdk11                                          |
-| AdoptiumTemurin8                        | Adoptium Temurin 8                                                | https://adoptium.net/about.html?variant=openjdk11                                          |
+| AdoptiumTemurin11                       | Adoptium Temurin 11                                               | https://adoptium.net/                                                                      |
+| AdoptiumTemurin16                       | Adoptium Temurin 16                                               | https://adoptium.net/                                                                      |
+| AdoptiumTemurin17                       | Adoptium Temurin 17                                               | https://adoptium.net/                                                                      |
+| AdoptiumTemurin18                       | Adoptium Temurin 18                                               | https://adoptium.net/                                                                      |
+| AdoptiumTemurin8                        | Adoptium Temurin 8                                                | https://adoptium.net/                                                                      |
 | AdoptOpenJDK11                          | AdoptOpenJDK OpenJDK Official Binaries (JDK 11u)                  | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK16                          | AdoptOpenJDK OpenJDK Official Binaries (JDK 16u)                  | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK8                           | AdoptOpenJDK OpenJDK Official Binaries (JDK 8u)                   | https://adoptopenjdk.net/index.html                                                        |
@@ -187,6 +188,7 @@ Evergreen `2205.549` supports the following applications:
 | TeXstudio                               | TeXstudio                                                         | https://www.texstudio.org/                                                                 |
 | TogglDesktop                            | Toggl Desktop                                                     | https://www.toggl.com/                                                                     |
 | TorProjectTorBrowser                    | Tor Project Tor Browser                                           | https://www.torproject.org/                                                                |
+| Tower                                   | Tower                                                             | https://www.git-tower.com/windows/                                                         |
 | USBPcap                                 | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                        |
 | VastLimitsUberAgent                     | vast limits uberAgent                                             | https://uberagent.com/                                                                     |
 | VeraCrypt                               | VeraCrypt                                                         | https://www.veracrypt.fr/en/Home.html                                                      |
@@ -194,7 +196,9 @@ Evergreen `2205.549` supports the following applications:
 | VideoLanVlcPlayer                       | VideoLan VLC Player                                               | https://www.videolan.org/vlc/                                                              |
 | VisualCppRedistAIO                      | VisualCppRedistAIO                                                | https://github.com/abbodi1406/vcredist                                                     |
 | VMwareHorizonClient                     | VMware Horizon Client                                             | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                |
-| VMwareTools                             | VMware Tools                                                      | https://www.vmware.com                                                                     |
+| VMwareTools                             | VMware Tools                                                      | https://docs.vmware.com/en/VMware-Tools/index.html                                         |
+| VMwareWorkstationPlayer                 | VMware Workstation Player                                         | https://www.vmware.com/products/workstation-player.html                                    |
+| VMwareWorkstationPro                    | VMware Workstation Pro                                            | https://www.vmware.com/products/workstation-pro.html                                       |
 | voidtoolsEverything                     | voidtools Everything                                              | https://www.voidtools.com/                                                                 |
 | Win32OpenSSH                            | Win32-OpenSSH                                                     | https://github.com/PowerShell/Win32-OpenSSH/                                               |
 | WinMerge                                | WinMerge                                                          | https://winmerge.org/                                                                      |
