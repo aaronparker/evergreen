@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `AdoptiumTemurin18`, `Tower`
+* Adds `VMwareWorkstationPlayer`, `VMwareWorkstationPro` [#275](https://github.com/aaronparker/evergreen/discussions/275)
 
 ## 2205.549
 

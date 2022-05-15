@@ -1,0 +1,28 @@
+{
+	"Name": "VMware Workstation Player",
+	"Source": "https://www.vmware.com/products/workstation-player.html",
+	"Get": {
+		"Update": {
+			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=WKST-PLAYER-1621&productId=1039",
+			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=WKST-PLAYER-1621&productId=1039&rPId=77292"
+		},
+		"Download": {
+			"Uri": "https://download3.vmware.com/software/player/file/#filename"
+		}
+	},
+	"Install": {
+		"Setup": "VMware-player*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		}
+	}
+}

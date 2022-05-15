@@ -1,6 +1,6 @@
 {
 	"Name": "VMware Tools",
-	"Source": "https://www.vmware.com",
+	"Source": "https://docs.vmware.com/en/VMware-Tools/index.html",
 	"Get": {
 		"Update": {
 			"Uri": "https://packages.vmware.com/tools/versions",
