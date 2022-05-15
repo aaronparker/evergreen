@@ -1,10 +1,16 @@
 # Change log
 
+## VERSION
+
+* Adds `AdoptiumTemurin18`, `Tower`
+* Adds `VMwareWorkstationPlayer`, `VMwareWorkstationPro` [#275](https://github.com/aaronparker/evergreen/discussions/275)
+* Updates `Resolve-DnsNameWrapper` (and `GhislerTotalCommander`) to work under PowerShell Core using [DnsClient-PS](https://github.com/rmbolger/DnsClient-PS). Manual installation of DnsClient-PS on macOS or Linux is required
+
 ## 2205.549
 
 * Fixes an issue in `TechSmithSnagit` and `GitForWindows` under Linux where filename case was preventing `Get-EvergreenApp` from sourcing application functions
-* Updates `Resolve-DnsNameWrapper` with `Import-Module -Name "DnsClient"` to ensure the `Resolve-DnsName` command is available
 * Removes `Date` property from `PuTTY` as the value is updated on each query, rather than when the version was released
+* Updates `Resolve-DnsNameWrapper` with `Import-Module -Name "DnsClient"` to ensure the `Resolve-DnsName` command is available
 
 ## 2205.546
 

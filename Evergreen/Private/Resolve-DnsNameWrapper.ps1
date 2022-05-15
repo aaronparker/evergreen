@@ -3,7 +3,7 @@ Function Resolve-DnsNameWrapper {
         .SYNOPSIS
             Wrap Resolve-DnsName to filter what's returned
     #>
-    [OutputType([Microsoft.DnsClient.Commands.DnsRecord])]
+    #[OutputType([Microsoft.DnsClient.Commands.DnsRecord])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $True, Position = 0)]
@@ -16,9 +16,10 @@ Function Resolve-DnsNameWrapper {
     )
 
     # Resolve-DnsName only exists on Windows
-    If (($Null -eq $PSVersionTable.OS) -or ($PSVersionTable.OS -match "Microsoft Windows*")) {
+    if (($PSVersionTable.PSEdition -eq "Desktop") -or ($PSVersionTable.Platform -eq "Win32NT")) {
 
         # Wrap Resolve-DnsName
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Running on Windows PowerShell."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Name, with type: $Type."
         try {
             Import-Module -Name "DnsClient" -ErrorAction "SilentlyContinue"
@@ -33,13 +34,38 @@ Function Resolve-DnsNameWrapper {
             Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
         if ($Null -ne $Response) {
-            Write-Output -InputObject $Response
+            Write-Output -InputObject $Response.Strings
         }
         else {
             Write-Error -Message "$($MyInvocation.MyCommand): failed to return a useable object from Resolve-DnsName."
         }
     }
     else {
-        throw "$($MyInvocation.MyCommand): this function requires Microsoft Windows."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Running on PowerShell Core."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Name, with type: $Type."
+        if (Get-Module -Name "DnsClient-PS" -ListAvailable) {
+            try {
+                Import-Module -Name "DnsClient-PS" -ErrorAction "SilentlyContinue"
+                $params = @{
+                    Query       = $Name
+                    QueryType   = $Type
+                    ErrorAction = "SilentlyContinue"
+                }
+                $Response = Resolve-Dns @params | Where-Object { $_.Answers.RecordType -eq $Type }
+            }
+            catch {
+                Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            }
+            if ($Null -ne $Response) {
+                Write-Output -InputObject $Response.Answers.Text
+            }
+            else {
+                Write-Error -Message "$($MyInvocation.MyCommand): failed to return a useable object from Resolve-Dns."
+            }
+        }
+        else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): This function requires the DnsClient module on Microsoft Windows."
+            Write-Warning -Message "$($MyInvocation.MyCommand): To use this module on macOS or Linux, install the DnsClient-PS module."
+        }
     }
 }

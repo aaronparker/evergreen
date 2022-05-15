@@ -8,7 +8,7 @@ Function Get-GhislerTotalCommander {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+    #[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -23,17 +23,17 @@ Function Get-GhislerTotalCommander {
         Type = $res.Get.Update.DnsType
     }
     $Response = Resolve-DnsNameWrapper @params
-    If ($Null -ne $Response) {
+    if ($Null -ne $Response) {
 
         try {
-            $Version = ([RegEx]$res.Get.Update.MatchVersion).Match($Response.Strings).Groups.Value
+            $Version = ([RegEx]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
             $VersionString = $Version.ToString() -replace "\.", ""
         }
         catch {
             $Version = "Unknown"
         }
 
-        ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
+        foreach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
             $PSObject = [PSCustomObject] @{
                 Version      = $Version

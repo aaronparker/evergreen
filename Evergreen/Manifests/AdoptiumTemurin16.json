@@ -1,6 +1,6 @@
 {
     "Name": "Adoptium Temurin 16",
-    "Source": "https://adoptium.net/about.html?variant=openjdk11",
+    "Source": "https://adoptium.net/",
     "Get": {
         "Update": {
             "Uri": "https://api.adoptium.net/v3/assets/latest/16/hotspot?release=latest&jvm_impl=hotspot&vendor=adoptium",
