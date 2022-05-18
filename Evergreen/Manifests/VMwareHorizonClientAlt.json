@@ -1,0 +1,28 @@
+{
+	"Name": "VMware Horizon Client (alternate method)",
+	"Source": "https://docs.vmware.com/en/VMware-Horizon-Client/index.html",
+	"Get": {
+		"Update": {
+			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=CART23FQ1_WIN_2203&productId=1027",
+			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=CART23FQ1_WIN_2203&productId=1027&rPId=#releasePackageId"
+		},
+		"Download": {
+			"Uri": "https://download3.vmware.com/software/#container/#filename"
+		}
+	},
+	"Install": {
+		"Setup": "VMware-Horizon-Client*.exe",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+
+			]
+		}
+	}
+}
