@@ -6,6 +6,10 @@
 * Adds `VMwareHorizonClientAlt` (an alternative method for retrieving details for the VMware Horizon Client.)
 * Fix an issue with `VMwareTools` due to changes in source data
 
+BREAKING CHANGES
+
+* The following applications have been removed from Evergreen as they provide only links to downloads rather than direct links to installers - `CitrixAppLayeringFeed`, `CitrixApplicationDeliveryManagementFeed`, `CitrixEndpointManagementFeed`, `CitrixGatewayFeed`, `CitrixHypervisorFeed`, `CitrixLicensingFeed`, `CitrixReceiverFeed`, `CitrixSdwanFeed`, `CitrixVirtualAppsDesktopsFeed`, `CitrixWorkspaceAppFeed`
+
 ## 2205.555
 
 * Adds `AdoptiumTemurin18`, `Tower`
