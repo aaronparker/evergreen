@@ -29,30 +29,32 @@
     }
     Else {
         # Format the results returns and convert into an array that we can sort and use
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Filtering version table with $($Content.Count) lines."
         $Lines = $Content | Where-Object { $_ –notmatch "^#" }
+        $Lines = $Lines | Where-Object { $_ –notmatch "esx/0.0" }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Filtered to $($Lines.Count) lines."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Selecting first 20 lines."
+        $Lines = $Lines | Select-Object -First 20
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Convert to table."
         $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }
         $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.Update.CsvHeaders | `
-            Sort-Object -Property { [Int] $_.Client } -Descending
+            Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true }
         $LatestVersion = $VersionTable | Select-Object -First 1
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($LatestVersion.Version)-$($LatestVersion.ClientBuild)"
 
         # Build the output object for each platform and architecture
-        ForEach ($platform in $res.Get.Download.Platforms) {
-            ForEach ($architecture in $res.Get.Download.Architecture) {
+        ForEach ($architecture in $res.Get.Download.Architecture.GetEnumerator()) {
 
-                # Query the download page for the download file name
-                $Uri = ("$($res.Get.Download.Uri)$platform/$architecture/index.html").ToLower()
-                $Content = Invoke-WebRequestWrapper -Uri $Uri
-                $filename = [RegEx]::Match($Content, $res.Get.Download.MatchFileName).Captures.Value
-
-                # Build the output object
-                $PSObject = [PSCustomObject] @{
-                    Version      = $LatestVersion.Version
-                    Platform     = $platform
-                    Architecture = $architecture
-                    URI          = "$($res.Get.Download.Uri)$($platform.ToLower())/$architecture/$filename"
-                }
-                Write-Output -InputObject $PSObject
+            # Build the output object
+            $PSObject = [PSCustomObject] @{
+                Version      = $LatestVersion.Version
+                Architecture = $architecture.Key
+                URI          = $res.Get.Download.Uri -replace "#architecture", $architecture.Key `
+                    -replace "#version", $LatestVersion.Version `
+                    -replace "#build", $LatestVersion.ClientBuild `
+                    -replace "#type", $res.Get.Download.Architecture[$architecture.Key]
             }
+            Write-Output -InputObject $PSObject
         }
     }
 }

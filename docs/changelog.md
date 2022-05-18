@@ -4,6 +4,7 @@
 
 * Adds `VMwareOSOptimizationTool`
 * Adds `VMwareHorizonClientAlt` (an alternative method for retrieving details for the VMware Horizon Client.)
+* Fix an issue with `VMwareTools` due to changes in source data
 
 ## 2205.555
 
