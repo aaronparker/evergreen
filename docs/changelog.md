@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Adds `VMwareOSOptimizationTool`
+* Adds `VMwareHorizonClientAlt` (an alternative method for retrieving details for the VMware Horizon Client.)
+
 ## 2205.555
 
 * Adds `AdoptiumTemurin18`, `Tower`
