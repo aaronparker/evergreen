@@ -5,6 +5,7 @@
 * Adds `VMwareOSOptimizationTool`
 * Adds `VMwareHorizonClientAlt` (an alternative method for retrieving details for the VMware Horizon Client.)
 * Fix an issue with `VMwareTools` due to changes in source data
+* Fix an issue with `MattermostDesktop` due to changes in releases on the [GitHub repository](https://github.com/mattermost/desktop)
 
 BREAKING CHANGES
 
