@@ -8,7 +8,6 @@
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -17,13 +16,13 @@
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Update = Invoke-RestMethodWrapper $res.Get.Update.Uri
+    $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
     if ($Null -eq $Update) {
         Write-Error -Message "$($MyInvocation.MyCommand): Failed to return usable content from $($res.Get.Update.Uri)."
     }
     else {
 
-        $File = Invoke-RestMethodWrapper $res.Get.Update.File
+        $File = Invoke-RestMethodWrapper -Uri $res.Get.Update.File
         if ($Null -eq $File) {
             Write-Error -Message "$($MyInvocation.MyCommand): Failed to return usable content from $($res.Get.Update.File)."
         }

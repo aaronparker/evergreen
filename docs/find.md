@@ -26,6 +26,12 @@ Alternatively, we can pass the output from `Find-EvergreenApp` directly to `Get-
 Find-EvergreenApp -Name "FSLogix" | Get-EvergreenApp
 ```
 
+Output from `Find-EvergreenApp` can be paged to review the entire supported application list with the following command:
+
+```powershell
+Find-EvergreenApp | Out-Host -Paging
+```
+
 ## Output
 
 `Find-EvergreenApp` outputs three properties:

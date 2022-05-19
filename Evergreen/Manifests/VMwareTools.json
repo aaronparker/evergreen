@@ -8,20 +8,17 @@
 			"CsvHeaders": [
 				"Client",
 				"Server",
+				"ESXiBuild",
 				"Version",
-				"Build"
+				"ClientBuild"
 			]
 		},
 		"Download": {
-			"Uri": "https://packages.vmware.com/tools/releases/latest/",
-			"Platforms": [
-				"Windows"
-			],
-			"Architecture": [
-				"x64",
-				"x86"
-			],
-			"MatchFileName": "(VMware-tools-)([0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+\\-)(i386|x86_64)(\\.exe)"
+			"Uri": "https://packages.vmware.com/tools/releases/latest/windows/#architecture/VMware-tools-#version-#build-#type.exe",
+			"Architecture": {
+				"x64": "x86_64",
+				"x86": "i386"
+			}
 		}
 	},
 	"Install": {
