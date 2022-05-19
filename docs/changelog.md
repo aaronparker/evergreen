@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2205.561
 
 * Adds `VMwareOSOptimizationTool`
 * Adds `VMwareHorizonClientAlt` (an alternative method for retrieving details for the VMware Horizon Client.)
