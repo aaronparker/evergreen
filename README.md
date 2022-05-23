@@ -9,8 +9,11 @@
 
 Evergreen is a simple PowerShell module to return the latest version and download URLs for a set of common enterprise Windows applications. The module consists of a number of simple functions to use in scripts when performing several tasks including:
 
-* Retrieve the latest version of an application when compare against a version already installed or downloaded
-* Return the URL for the latest version of the application if you need to download it locally for installation or deployment
+* [Image creation with Hashicorp Packer](https://github.com/aaronparker/packer) - images can be created with the latest version of a set of applications
+* Import applications into Microsoft Endpoint Manager - keep Configuration Manager or [Microsoft Intune](https://github.com/aaronparker/packagefactory) up to date with the latest versions of applications
+* Validating or [auditing a desktop image](https://github.com/aaronparker/w365) to ensure the current version of an application is installed
+* Create a [library of application installers](https://github.com/aaronparker/apptracker) - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
+* Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
 
 Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
 

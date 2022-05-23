@@ -7,11 +7,11 @@ Evergreen is a PowerShell module that returns the latest version and download UR
 
 Evergreen is intended for use with solutions used to automate software deployments. These solutions could be:
 
-* Image creation with Hashicorp Packer - images can be created with the latest version of a set of applications
-* Import applications into Microsoft Endpoint Manager - keep Configuration Manager or Microsoft Intune up to date with the latest versions of applications
-* Create a library of application installers - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
+* [Image creation with Hashicorp Packer](https://github.com/aaronparker/packer) - images can be created with the latest version of a set of applications
+* Import applications into Microsoft Endpoint Manager - keep Configuration Manager or [Microsoft Intune](https://github.com/aaronparker/packagefactory) up to date with the latest versions of applications
+* Validating or [auditing a desktop image](https://github.com/aaronparker/w365) to ensure the current version of an application is installed
+* Create a [library of application installers](https://github.com/aaronparker/apptracker) - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
 * Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
-* Validating or auditing a desktop environment to ensure the current version of an application is installed
 
 ## Functions
 
@@ -20,5 +20,6 @@ Primary functions in Evergreen are:
 * `Get-EvergreenApp` - returns details of the latest release of an application including the version number and download URL
 * `Save-EvergreenApp` - simplifies downloading application URLs returned from `Get-EvergreenApp`
 * `Find-EvergreenApp` - lists applications supported by the module
+* `Test-EvergreenApp` - tests that the URIs returned by `Get-EvergreenApp` are valid
 
 [Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)
