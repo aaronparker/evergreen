@@ -140,6 +140,21 @@ Evergreen could query versions from the GitHub repository; however, the the OBS 
 
 Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
 
+### PaintDotNet
+
+`Get-EvergreenApp -Name PaintDotNet` produces the following error under PowerShell on Linux. As a workaround, use `Get-EvergreenApp -Name PaintDotNetOfflineInstaller` instead.
+
+```powershell
+WARNING: Invoke-WebRequestWrapper: Error at URI: https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt.
+WARNING: Invoke-WebRequestWrapper: Error encountered: The SSL connection could not be established, see inner exception..
+WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+Write-Error: /home/aaron/.local/share/powershell/Modules/Evergreen/2205.561/Apps/Get-PaintDotNet.ps1:20
+Line |
+  20 |      $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
+     |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Invoke-WebRequestWrapper: The SSL connection could not be established, see inner exception.
+```
+
 ### VideoLanVlcPlayer
 
 `VideoLanVlcPlayer` may not always return the latest available release - the release returned by the update feed used by the VLC media player may not be the same as the current version available for download from the [videolan.org](https://www.videolan.org/vlc/) site, due to the version returned in the update feed.
