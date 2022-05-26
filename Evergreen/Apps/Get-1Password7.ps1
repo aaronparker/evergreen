@@ -1,7 +1,7 @@
-Function Get-1Password {
+Function Get-1Password7 {
     <#
         .SYNOPSIS
-            Get the current version and download URL for 1Password 8 and later.
+            Get the current version and download URL for 1Password 7.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -24,20 +24,18 @@ Function Get-1Password {
     }
     $updateFeed = Invoke-RestMethodWrapper @params
     if ($Null -ne $updateFeed) {
-        if ($updateFeed.available -eq 1) {
 
-            # Output the object to the pipeline
-            foreach ($item in $updateFeed) {
-                $PSObject = [PSCustomObject] @{
-                    Version = $item.version
-                    URI     = $($item.sources | Select-Object -Index (Get-Random -Minimum 0 -Maximum 2)).url
-                }
-                Write-Output -InputObject $PSObject
-            }
+        # Filter for the latest version
+        $item = $updateFeed.($res.Get.Update.Property) | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_.before }; Descending = $true } | `
+            Select-Object -First 1
+
+        # Output the object to the pipeline
+        $PSObject = [PSCustomObject] @{
+            Version = $item.before
+            URI     = $item.url
         }
-        else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to find an available from: $($res.Get.Update.Uri)."
-        }
+        Write-Output -InputObject $PSObject
     }
     else {
         Write-Error -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
