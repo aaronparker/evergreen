@@ -6,9 +6,6 @@
             "Uri": {
                 "Production": "https://aka.ms/fslogix/download"
             },
-            "Uri2": {
-                "Preview": "https://aka.ms/fslogix/preview"
-            },
             "MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
             "MatchFile": ".*msi$|.*exe$|.*zip$",
             "MatchVersion": "(\\d+\\.){3}\\d+",
