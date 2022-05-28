@@ -18,35 +18,35 @@ Function Get-RCoreTeamRforWindows {
     )
 
     # Read the RCoreTeamRforWindows version from the YML source
-    try {
-        $params = @{
-            Uri = $res.Get.Update.Uri
-            Raw = $true
-        }
-        $Content = Invoke-WebRequestWrapper @params
-        $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
+    $params = @{
+        Uri = $res.Get.Update.Uri
+        Raw = $true
     }
-    catch {
-        $Version = "Latest"
-    }
+    $Content = Invoke-WebRequestWrapper @params
 
-    # Follow the download link
-    try {
-        $params = @{
-            Uri = $res.Get.Download.Uri
+    if ($Null -ne $Content) {
+        try {
+            $Version = [RegEx]::Match($Content, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
         }
-        $Content = Invoke-WebRequestWrapper @params
-        $File = [RegEx]::Match($Content, $res.Get.Download.MatchFile).Captures.Groups[1].Value
-        $Url = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $File
-    }
-    catch {
-        $Url = $res.Get.Download.Uri
-    }
+        catch {
+            $Version = "Latest"
+        }
 
-    # Construct the output; Return the custom object to the pipeline
-    $PSObject = [PSCustomObject] @{
-        Version = $Version
-        URI     = $Url
+        # Follow the download link
+        try {
+            $Content = Invoke-WebRequestWrapper $res.Get.Download.Uri
+            $File = [RegEx]::Match($Content, $res.Get.Download.MatchFile).Captures.Groups[1].Value
+            $Url = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $File
+        }
+        catch {
+            $Url = $res.Get.Download.Uri
+        }
+
+        # Construct the output; Return the custom object to the pipeline
+        $PSObject = [PSCustomObject] @{
+            Version = $Version
+            URI     = $Url
+        }
+        Write-Output -InputObject $PSObject
     }
-    Write-Output -InputObject $PSObject
 }

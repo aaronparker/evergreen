@@ -1,0 +1,20 @@
+{
+    "Name": "Docker Desktop",
+    "Source": "https://www.docker.com/products/docker-desktop/",
+    "Get": {
+        "Update": {
+            "Uri": "https://desktop.docker.com/win/main/amd64/appcast.xml"
+        }
+    },
+    "Install": {
+        "Setup": "Docker*.exe",
+        "Physical": {
+            "Arguments": "install --quiet --accept-license",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}

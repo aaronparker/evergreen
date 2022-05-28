@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `DockerDesktop` [#332](https://github.com/aaronparker/evergreen/discussions/332)
+* Updates `1Password` to return 1Password 8.x update; `1Password7` will now continue to return updates for 1Password 7.x [#330](https://github.com/aaronparker/evergreen/discussions/330)
+* Addresses an issue in `RCoreTeamRforWindows` to better handle when the source site is down
+* Updates the source used for `MicrosoftFSLogixApps` - this is a workaround because Microsoft has changed the aka.ms link to the FSLogix Apps agent download, again. I really wish they would stop doing that.
+
 ## 2205.561
 
 * Adds `VMwareOSOptimizationTool`
