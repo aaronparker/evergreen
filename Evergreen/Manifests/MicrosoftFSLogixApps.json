@@ -4,7 +4,7 @@
     "Get": {
         "Download": {
             "Uri": {
-                "Production": "https://aka.ms/fslogix/download"
+                "Production": "https://download.microsoft.com/download/e/a/1/ea1bcf0a-e66d-48d2-ac9f-e385e5a7456e/FSLogix_Apps_2.9.8171.14983.zip"
             },
             "MatchFwlink": "go.microsoft.com/fwlink/\\?linkid",
             "MatchFile": ".*msi$|.*exe$|.*zip$",
