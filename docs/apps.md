@@ -1,10 +1,11 @@
 ﻿# Supported applications
 
-Evergreen `2205.561` supports the following applications:
+Evergreen `2205.567` supports the following applications:
 
 | Name                                 | Application                                                       | Link                                                                                       |
 | ------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | 1Password                            | 1Password                                                         | https://1password.com/                                                                     |
+| 1Password7                           | 1Password 7                                                       | https://1password.com/                                                                     |
 | 7zip                                 | 7zip                                                              | https://www.7-zip.org/                                                                     |
 | 7ZipZS                               | 7-Zip ZS                                                          | https://mcmilk.de/projects/7-Zip-zstd/                                                     |
 | AdobeAcrobat                         | Adobe Acrobat updates                                             | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                         |
@@ -44,6 +45,7 @@ Evergreen `2205.561` supports the following applications:
 | DevToys                              | DevToys                                                           | https://devtoys.app/                                                                       |
 | diagrams.net                         | diagrams.net                                                      | https://www.diagrams.net/                                                                  |
 | dnGrep                               | dnGrep                                                            | https://dngrep.github.io/                                                                  |
+| DockerDesktop                        | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                            |
 | FileZilla                            | FileZilla                                                         | https://filezilla-project.org/                                                             |
 | Fork                                 | Dan Pristupov Fork                                                | https://www.fork.dev                                                                       |
 | FoxitPDFEditor                       | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                          |
