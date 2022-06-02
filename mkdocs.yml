@@ -31,7 +31,7 @@ theme:
     - navigation.instant
     - navigation.sections
     - navigation.top
-    #- navigation.tabs
+    - navigation.tabs
     - toc.integrate
   palette:
     - scheme: default
@@ -146,3 +146,4 @@ nav:
       - Save-EvergreenApp: help/en-US/Save-EvergreenApp.md
       - Test-EvergreenApp: help/en-US/Test-EvergreenApp.md
       - Export-EvergreenManifest: help/en-US/Export-EvergreenManifest.md
+  - App Tracker: https://stealthpuppy.com/apptracker
