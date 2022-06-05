@@ -125,6 +125,7 @@ nav:
     - Introduction: index.md
     - Why Evergreen: why.md
     - How Evergreen works: how.md
+    - Supported apps: apps.md
   - Getting started:
     - Installation: install.md
     - Find supported apps: find.md
@@ -137,7 +138,6 @@ nav:
     - Troubleshooting: troubleshoot.md
     - Known issues: issues.md
     - Changelog: changelog.md
-    - Supported apps: apps.md
   - Module help:
     - en-US:
       - about_Evergreen: help/en-US/about_Evergreen.md
