@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes `SumatraPDFReader` due to changes in download URLs [#338](https://github.com/aaronparker/evergreen/discussions/338)
+
 ## 2205.567
 
 * Adds `DockerDesktop` [#332](https://github.com/aaronparker/evergreen/discussions/332)
