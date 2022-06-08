@@ -1,0 +1,23 @@
+{
+	"Name": "stealthpuppy Windows Customised Defaults",
+	"Source": "https://stealthpuppy.com/image-customise/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/aaronparker/image-customise/releases/latest",
+		"MatchVersion": "(?!\\v)(\\d+(\\.\\d+){1,4}.*)",
+		"MatchFileTypes": "\\.intunewin$|\\.zip$"
+	},
+	"Install": {
+		"Setup": "",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		}
+	}
+}
