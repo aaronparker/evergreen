@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Adds `AutoDarkMode` [#335](https://github.com/aaronparker/evergreen/discussions/335), `CodelerityApacheNetBeans` [#339](https://github.com/aaronparker/evergreen/discussions/339), `JeremyMainGPUProfiler` [#337](https://github.com/aaronparker/evergreen/discussions/337),`EgnyteDesktopApp` [#340](https://github.com/aaronparker/evergreen/discussions/340)
+* Fixes `SumatraPDFReader` due to changes in download URLs [#338](https://github.com/aaronparker/evergreen/discussions/338)
+
 ## 2205.567
 
 * Adds `DockerDesktop` [#332](https://github.com/aaronparker/evergreen/discussions/332)

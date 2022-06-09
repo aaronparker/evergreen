@@ -84,7 +84,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Uri                = $Uri
         ContentType        = $ContentType
         DisableKeepAlive   = $true
-        MaximumRedirection = 1
+        MaximumRedirection = 2
         Method             = $Method
         UseBasicParsing    = $true
         UserAgent          = $UserAgent

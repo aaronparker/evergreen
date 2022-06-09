@@ -8,12 +8,8 @@
 		},
 		"Download": {
 			"Uri": {
-				"x86": "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-#version-install.exe",
-				"x64": "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-#version-64-install.exe"
-			},
-			"Uri2": {
-				"x86": "https://kjkpub.nyc3.digitaloceanspaces.com/software/sumatrapdf/rel//SumatraPDF-#version-install.exe",
-				"x64": "https://kjkpub.nyc3.digitaloceanspaces.com/software/sumatrapdf/rel//SumatraPDF-#version-64-install.exe"
+				"x86": "https://www.sumatrapdfreader.org/dl/rel/#version/SumatraPDF-#version-install.exe",
+				"x64": "https://www.sumatrapdfreader.org/dl/rel/#version/SumatraPDF-#version-64-install.exe"
 			},
 			"ReplaceText": "#version"
 		}

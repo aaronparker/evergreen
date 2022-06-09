@@ -147,6 +147,7 @@ Function Get-GitHubRepoRelease {
                         ForEach ($asset in $item.assets) {
 
                             # Filter downloads by matching the RegEx in the manifest. The the RegEx may perform includes and excludes
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Match $Filter to $($asset.browser_download_url)."
                             If ($asset.browser_download_url -match $Filter) {
                                 Write-Verbose -Message "$($MyInvocation.MyCommand): Building Windows release output object with: $($asset.browser_download_url)."
 

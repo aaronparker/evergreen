@@ -17,11 +17,8 @@ Function Invoke-EvergreenApp {
     )
 
     process {
-        Write-Warning -Message "$($MyInvocation.MyCommand) is experimental and functionality may change."
-        $params = @{
-            Uri = "https://stealthpuppy.com/apptracker/json/$Name.json"
-        }
-        Invoke-RestMethodWrapper @params
+        Write-Warning -Message "$($MyInvocation.MyCommand) is experimental and functionality may change. Do not use in production."
+        Invoke-RestMethodWrapper -Uri "https://evergreen-api.stealthpuppy.com/app/$Name"
     }
 
     end {
