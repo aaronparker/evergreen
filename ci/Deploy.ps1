@@ -76,7 +76,7 @@ Else {
 
             # Update the list of supported apps in APPS.md
             $OutFile = [System.IO.Path]::Combine($env:APPVEYOR_BUILD_FOLDER, "docs", "apps.md")
-            $markdown = New-MDHeader -Text "Supported applications" -Level 1
+            $markdown = New-MDHeader -Text "$((Find-EvergreenApp).Count) Supported applications" -Level 1
             $markdown += "`n"
             $line = "Evergreen " + '`' + $newVersion + '`' + " supports the following applications:"
             $markdown += $line
