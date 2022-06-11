@@ -1,6 +1,6 @@
 {
-	"Name": "Mozilla Firefox",
-	"Source": "https://www.mozilla.org/",
+	"Name": "Mozilla Thunderbird",
+	"Source": "https://www.thunderbird.net/",
 	"Get": {
 		"Update": {
 			"Uri": "https://product-details.mozilla.org/1.0/thunderbird_versions.json",
