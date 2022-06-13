@@ -13,12 +13,16 @@ Function Resolve-InvokeWebRequest {
 
         [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+
+        [Parameter(Position = 2)]
+        [ValidateNotNullOrEmpty()]
+        [System.Int32] $MaximumRedirection = 0
     )
 
     # Build the Invoke-WebRequest parameters; Use ErrorAction:SilentlyContinue to enable the try/catch to work
     $iwrParams = @{
-        MaximumRedirection = 0
+        MaximumRedirection = $MaximumRedirection
         Uri                = $Uri
         UseBasicParsing    = $True
         UserAgent          = $UserAgent
