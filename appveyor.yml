@@ -1,6 +1,15 @@
 version: 2206.{build}
 pull_requests:
   do_not_increment_build_number: true
+skip_commits:
+  message: /AppVeyor validate.*|Merge branch 'main' of.*|Update docs.*|Skip AppVeyor.*/
+only_commits:
+  files:
+    - Evergreen/**/*
+branches:
+  only:
+    - main
+    - development
 skip_tags: true
 image: Visual Studio 2019
 environment:
@@ -21,9 +30,3 @@ test_script:
 deploy_script:
 - ps: . .\ci\Deploy.ps1
 
-skip_commits:
-  message: /AppVeyor validate.*|Merge branch 'main' of.*|Update docs.*/
-
-only_commits:
-  files:
-    - Evergreen/**/*
