@@ -38,15 +38,22 @@ Function Get-GitHubRepoRelease {
 
     begin {
 
-        # If GITHUB_TOKEN exists, let's add that to the API requests
-        if (Test-Path -Path "env:GITHUB_TOKEN") { $Token = $True }
+        # If GITHUB_TOKEN or GH_TOKEN exists, let's add that to the API requests
+        if (Test-Path -Path "env:GITHUB_TOKEN") {
+            $Token = $True
+            $TokenValue = $env:GITHUB_TOKEN
+        }
+        elseif (Test-Path -Path "env:GH_TOKEN") {
+            $Token = $True
+            $TokenValue = $env:GH_TOKEN
+        }
 
         # Check that we aren't rate limited
         # https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
         $params = @{
             Uri = "https://api.github.com/rate_limit"
         }
-        If ($Token) { $params.Headers = @{ Authorization = "token $($env:GITHUB_TOKEN)" } }
+        If ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Checking for how many requests to the GitHub API we have left."
         $GitHubRate = Invoke-RestMethodWrapper @params
     }
@@ -86,7 +93,7 @@ Function Get-GitHubRepoRelease {
                     UserAgent          = "github-aaronparker-evergreen" #[Microsoft.PowerShell.Commands.PSUserAgent]::Chrome 
                     Uri                = $Uri
                 }
-                If ($Token) { $params.Headers = @{ Authorization = "token $($env:GITHUB_TOKEN)" } }
+                If ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
                 $response = $True
                 $release = Invoke-RestMethod @params
