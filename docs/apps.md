@@ -1,6 +1,6 @@
-﻿# 202 Supported applications
+﻿# 203 Supported applications
 
-Evergreen `2206.574` supports the following applications:
+Evergreen `2206.581` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -25,6 +25,7 @@ Evergreen `2206.574` supports the following applications:
 | AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                           |
 | Anaconda                              | Anaconda                                                          | https://www.anaconda.com/                                                                  |
 | Anki                                  | Anki                                                              | https://github.com/ankitects/anki/                                                         |
+| AppVentix                             | AppVentix                                                         | https://appventix.com/                                                                     |
 | ArtifexGhostscript                    | Artifex Ghostscript                                               | https://www.ghostscript.com/                                                               |
 | AtlassianSourcetree                   | Atlassian Sourcetree                                              | https://www.sourcetreeapp.com/                                                             |
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                              |
@@ -123,8 +124,8 @@ Evergreen `2206.574` supports the following applications:
 | Minitab                               | Minitab                                                           | https://www.minitab.com/                                                                   |
 | MiniZincIDE                           | MiniZinc IDE                                                      | https://www.minizinc.org/                                                                  |
 | MirantisLens                          | MirantisLens                                                      | https://k8slens.dev/                                                                       |
-| MozillaFirefox                        | Mozilla Firefox                                                   | https://www.mozilla.org/                                                                   |
-| MozillaThunderbird                    | Mozilla Firefox                                                   | https://www.mozilla.org/                                                                   |
+| MozillaFirefox                        | Mozilla Firefox                                                   | https://www.mozilla.org/en-US/firefox/new/                                                 |
+| MozillaThunderbird                    | Mozilla Thunderbird                                               | https://www.thunderbird.net/                                                               |
 | mRemoteNG                             | mRemoteNG                                                         | https://mremoteng.org/                                                                     |
 | MuseScore                             | MuseScore                                                         | https://musescore.org/                                                                     |
 | Naps2                                 | Ben Olden-Cooligan NAPS2                                          | https://www.naps2.com/                                                                     |
@@ -205,5 +206,4 @@ Evergreen `2206.574` supports the following applications:
 | Wireshark                             | Wireshark                                                         | https://www.wireshark.org/#download                                                        |
 | WixToolset                            | WiX Toolset                                                       | https://wixtoolset.org/                                                                    |
 | Zoom                                  | Zoom                                                              | https://zoom.us/                                                                           |
-| Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                    |
-
+| Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                    |

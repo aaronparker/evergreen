@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2206.581
 
 * Adds `AppVentiX`
 * Updates `MozillaThunderbird` to align with `MozillaFirefox` - this function will return `en-US` as the default language. Additional languages can be passed to `MozillaThunderbird` via `Get-EvergreenApp -AppParams`
