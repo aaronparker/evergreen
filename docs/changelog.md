@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `AppVentiX`
+* Updates `MozillaThunderbird` to align with `MozillaFirefox` - this function will return `en-US` as the default language. Additional languages can be passed to `MozillaThunderbird` via `Get-EvergreenApp -AppParams`
+* Updates private function `Get-GitHubRepoRelease` to support authentication to the GitHub API with a personal access token. The function will look for the `GITHUB_TOKEN` or `GH_TOKEN` environment variables and use the value of that variable in the authentication request, if the variable exists
+
 ## 2206.574
 
 * Adds `AutoDarkMode` [#335](https://github.com/aaronparker/evergreen/discussions/335), `CodelerityApacheNetBeans` [#339](https://github.com/aaronparker/evergreen/discussions/339), `JeremyMainGPUProfiler` [#337](https://github.com/aaronparker/evergreen/discussions/337),`EgnyteDesktopApp` [#340](https://github.com/aaronparker/evergreen/discussions/340)

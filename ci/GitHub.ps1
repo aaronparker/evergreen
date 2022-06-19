@@ -13,6 +13,7 @@ try {
     $params = @{
         ContentType        = "application/vnd.github.v3+json"
         ErrorAction        = "SilentlyContinue"
+        Headers            = @{ Authorization = "token $($env:GITHUB_TOKEN)" }
         MaximumRedirection = 0
         DisableKeepAlive   = $true
         UseBasicParsing    = $true

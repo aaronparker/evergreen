@@ -1,6 +1,6 @@
 {
     "Name": "Mozilla Firefox",
-    "Source": "https://www.mozilla.org/",
+    "Source": "https://www.mozilla.org/en-US/firefox/new/",
     "Get": {
         "Update": {
             "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
