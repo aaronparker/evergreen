@@ -22,10 +22,9 @@ Function Get-MozillaFirefox {
     )
 
     # Get latest Firefox version
-    $firefoxVersions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Versions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     # Construct custom object with output details
-    #ForEach ($currentLanguage in $res.Get.Download.Languages) {
     ForEach ($currentLanguage in $Language) {
         ForEach ($channel in $res.Get.Update.Channels) {
             ForEach ($platform in $res.Get.Download.Platforms) {
@@ -40,7 +39,7 @@ Function Get-MozillaFirefox {
                     If ($Null -ne $response) {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
-                            Version      = $firefoxVersions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
+                            Version      = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
                             Architecture = Get-Architecture -String $platform
                             Channel      = $channel
                             Language     = $currentLanguage
