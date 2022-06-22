@@ -19,24 +19,6 @@
 				"win64",
 				"win"
 			],
-            "Languages": [
-                "en-US",
-                "en-GB",
-                "en-CA",
-                "es-ES",
-                "sv-SE",
-                "pt-BR",
-                "pt-PT",
-                "de",
-                "fr",
-                "it",
-                "ja",
-                "nl",
-                "zh-CN",
-				"zh-TW",
-				"ar",
-				"ru"
-            ],
             "FullLanguageList": [
                 "en-US",
                 "en-GB",
@@ -131,7 +113,8 @@
                 "cy",
                 "xh"
             ],
-			"Text": {
+			"ReplaceText": {
+                "Version": "esr",
 				"Platform": "#platform",
 				"Language": "#language"
 			}

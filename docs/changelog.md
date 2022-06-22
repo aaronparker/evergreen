@@ -1,10 +1,14 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with `MozillaThunderbird` when attempting to return downloads for the full language list [#350](https://github.com/aaronparker/evergreen/discussions/350)
+
 ## 2206.581
 
-* Adds `AppVentiX`
+* Adds `AppVentiX` [#205](https://github.com/aaronparker/evergreen/discussions/205)
 * Updates `MozillaThunderbird` to align with `MozillaFirefox` - this function will return `en-US` as the default language. Additional languages can be passed to `MozillaThunderbird` via `Get-EvergreenApp -AppParams`
-* Updates private function `Get-GitHubRepoRelease` to support authentication to the GitHub API with a personal access token. The function will look for the `GITHUB_TOKEN` or `GH_TOKEN` environment variables and use the value of that variable in the authentication request, if the variable exists
+* Updates private function `Get-GitHubRepoRelease` to support authentication to the GitHub API with a personal access token. The function will look for the `GITHUB_TOKEN` or `GH_TOKEN` environment variables and use the value of that variable in the authentication request, if the variable exists [#195](https://github.com/aaronparker/evergreen/discussions/195)
 
 ## 2206.574
 
