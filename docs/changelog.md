@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2206.583
 
 * Fixes an issue with `MozillaThunderbird` when attempting to return downloads for the full language list [#350](https://github.com/aaronparker/evergreen/discussions/350)
 
