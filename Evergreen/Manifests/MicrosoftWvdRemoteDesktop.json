@@ -5,9 +5,9 @@
         "Download": {
             "Uri": {
                 "Public": {
-                    "x64": "https://go.microsoft.com/fwlink/?linkid=2139369",
-                    "x86": "https://go.microsoft.com/fwlink/?linkid=2139144",
-                    "ARM64": "https://go.microsoft.com/fwlink/?linkid=2139368"
+                    "x64": "https://go.microsoft.com/fwlink/?linkid=2068602",
+                    "x86": "https://go.microsoft.com/fwlink/?linkid=2098960",
+                    "ARM64": "https://go.microsoft.com/fwlink/?linkid=2098961"
                 },
                 "Insider": {
                     "x64": "https://go.microsoft.com/fwlink/?linkid=2139233",
