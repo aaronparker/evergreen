@@ -1,7 +1,7 @@
 Function Get-MicrosoftWvdRemoteDesktop {
     <#
         .SYNOPSIS
-            Get the current version and download URL for the Microsoft Remote Desktop client for Windows Virtual Desktop.
+            Get the current version and download URL for the Microsoft Remote Desktop client for Azure Virtual Desktop.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -17,37 +17,43 @@ Function Get-MicrosoftWvdRemoteDesktop {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    ForEach ($channel in $res.Get.Download.Uri.Keys) {
+    foreach ($channel in $res.Get.Update.Uri.Keys) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for channel: $channel."
 
-        ForEach ($architecture in $res.Get.Download.Uri.$channel.Keys) {
+        foreach ($architecture in $res.Get.Update.Uri.$channel.Keys) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for architecture: $architecture."
 
-            # Grab the download link headers to find the file name
-            $params = @{
-                Uri          = $res.Get.Download.Uri.$channel[$architecture]
-                Method       = "Head"
-                ReturnObject = "Headers"
-            }
-            $Headers = Invoke-WebRequestWrapper @params
+            $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri.$channel[$architecture]
+            if ($Null -ne $Update) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($Update.version)"
 
-            # Match filename
-            If ($Null -ne $Headers) {
-                $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+                # Grab the download link headers to find the file name
+                $params = @{
+                    Uri          = $Update.url
+                    Method       = "Head"
+                    ReturnObject = "Headers"
+                }
+                $Headers = Invoke-WebRequestWrapper @params
+                if ($Null -ne $Headers) {
+                    $Date = ConvertTo-DateTime -DateTime $($Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
+                    $FileName = $($Headers['Content-Disposition'] -split $res.Get.Download.SplitText)[-1]
+                }
+                else {
+                    Write-Warning -Message "$($MyInvocation.MyCommand): Unable to resolve target file details."
+                    $Date = "Unknown"
+                    $FileName = "RemoteDesktop_$($Update.version)_$architecture.msi"
+                }
 
-                # Build the download URL from the headers returned from the API
-                # TODO: Update this to better handle changes in the URL structure
-                $Url = "$($res.Get.Download.ApiUri)/$($Headers.($res.Get.Download.ApiHeader1))/$($Headers.($res.Get.Download.ApiHeader2))/$($Headers.($res.Get.Download.ApiHeader3))"
-
-                # Construct the output; Return the custom object to the pipeline
+                # Output the version object
                 $PSObject = [PSCustomObject] @{
-                    Version      = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchVersion).Captures.Value
+                    Version      = $Update.version
                     Architecture = $architecture
                     Channel      = $channel
-                    Date         = ConvertTo-DateTime -DateTime $($Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
-                    Size         = $Headers['Content-Length'] | Select-Object -First 1
-                    Filename     = $Filename
-                    URI          = $Url
+                    Date         = $Date
+                    MD5          = $Update.md5
+                    #SHA2         = $Update.sha2
+                    Filename     = $FileName
+                    URI          = $Update.url
                 }
                 Write-Output -InputObject $PSObject
             }

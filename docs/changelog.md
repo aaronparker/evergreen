@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Updates the approach to detecting new versions in `MicrosoftWvdRemoteDesktop`. Uses update details available in JSON format and addresses issue [#352](https://github.com/aaronparker/evergreen/discussions/352)
+
 ## 2206.583
 
 * Fixes an issue with `MozillaThunderbird` when attempting to return downloads for the full language list [#350](https://github.com/aaronparker/evergreen/discussions/350)
