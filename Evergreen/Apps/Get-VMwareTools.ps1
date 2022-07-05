@@ -60,7 +60,7 @@
                 URI          = $res.Get.Download.Uri -replace "#architecture", $architecture.Key `
                     -replace "#version", $LatestVersion.Version `
                     -replace "#build", $LatestVersion.ClientBuild `
-                    -replace "#architecture", $res.Get.Download.Architecture[$architecture.Key]
+                    -replace "#processor", $res.Get.Download.Architecture[$architecture.Key]
             }
             Write-Output -InputObject $PSObject
         }

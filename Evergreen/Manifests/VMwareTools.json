@@ -14,7 +14,7 @@
 			]
 		},
 		"Download": {
-			"Uri": "https://packages.vmware.com/tools/releases/latest/windows/#architecture/VMware-tools-#version-#build-#architecture.exe",
+			"Uri": "https://packages.vmware.com/tools/releases/#version/windows/#architecture/VMware-tools-#version-#build-#processor.exe",
 			"Architecture": {
 				"x64": "x86_64",
 				"x86": "i386"
