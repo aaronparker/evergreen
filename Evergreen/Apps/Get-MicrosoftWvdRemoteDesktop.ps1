@@ -32,6 +32,7 @@ Function Get-MicrosoftWvdRemoteDesktop {
                     Uri          = $Update.url
                     Method       = "Head"
                     ReturnObject = "Headers"
+                    ErrorAction  = "SilentlyContinue"
                 }
                 $Headers = Invoke-WebRequestWrapper @params
                 if ($Null -ne $Headers) {
@@ -39,7 +40,7 @@ Function Get-MicrosoftWvdRemoteDesktop {
                     $FileName = $($Headers['Content-Disposition'] -split $res.Get.Download.SplitText)[-1]
                 }
                 else {
-                    Write-Warning -Message "$($MyInvocation.MyCommand): Unable to resolve target file details."
+                    Write-Warning -Message "$($MyInvocation.MyCommand): Unable to retrieve headers from $($Update.url)."
                     $Date = "Unknown"
                     $FileName = "RemoteDesktop_$($Update.version)_$architecture.msi"
                 }

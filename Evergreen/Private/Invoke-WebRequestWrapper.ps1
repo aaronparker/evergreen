@@ -87,7 +87,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Method          = $Method
         UserAgent       = $UserAgent
         UseBasicParsing = $True
-        ErrorAction     = "Continue"
     }
 
     # Set additional parameters

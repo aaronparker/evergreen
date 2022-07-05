@@ -3,6 +3,8 @@
 ## VERSION
 
 * Updates the approach to detecting new versions in `MicrosoftWvdRemoteDesktop`. Uses update details available in JSON format and addresses issue [#352](https://github.com/aaronparker/evergreen/discussions/352)
+* Fixes and issue in `VMwareTools` where the download URL returned doesn't match the latest version available [#336](https://github.com/aaronparker/evergreen/discussions/336)
+* Removes hard-coded `ErrorAction = Continue` in private function `Invoke-WebRequestWrapper` to enable setting `ErrorAction` preference when calling this function from an application function
 
 ## 2206.583
 

@@ -101,6 +101,21 @@ The product release feed used by the Microsoft SQL Server Management Studio (e.g
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).
 
+### MicrosoftWvdRemoteDesktop
+
+`MicrosoftWvdRemoteDesktop` may report an HTTP 503 error from some URLs (see an example below). This is intermittent behavior, but the function should still usable data. Suppress this warning with `-WarningAction "SilentlyContinue".
+
+```powershell
+WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
+WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
+WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
+WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
+```
+
 ### MozillaFirefox
 
 #### Language Support
