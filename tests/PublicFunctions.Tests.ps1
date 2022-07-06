@@ -10,8 +10,9 @@ param ()
 BeforeDiscovery {
     # Get the supported applications
     # Sort randomly so that we get test various GitHub applications when we have API request limits
+    $AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|PaintDotNet"
     $Applications = Find-EvergreenApp | `
-        Where-Object { $_.Name -notmatch "FileZilla|Tableau|MicrosoftWvdRtcService" } | `
+        Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 
     # Get details for Microsoft Edge

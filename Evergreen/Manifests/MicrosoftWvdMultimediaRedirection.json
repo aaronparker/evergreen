@@ -3,7 +3,7 @@
     "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection",
     "Get": {
         "Download": {
-            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk",
+            "Uri": "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF",
             "MatchFilename": "(MsMMRHostInstaller.*msi)",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})"
         }
