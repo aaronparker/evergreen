@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2207.592
 
 * Updates the approach to detecting new versions in `MicrosoftWvdRemoteDesktop`. Uses update details available in JSON format and addresses issue [#352](https://github.com/aaronparker/evergreen/discussions/352)
 * Fixes and issue in `VMwareTools` where the download URL returned doesn't match the latest version available [#336](https://github.com/aaronparker/evergreen/discussions/336)
