@@ -29,7 +29,6 @@ Function Test-EvergreenApp {
     )
 
     begin {
-
         # Disable the Invoke-WebRequest progress bar for faster downloads
         if ($PSBoundParameters.ContainsKey("Verbose") -and !($PSBoundParameters.ContainsKey("NoProgress"))) {
             $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
@@ -43,7 +42,6 @@ Function Test-EvergreenApp {
     }
 
     process {
-
         # Loop through each object and download to the target path
         foreach ($Object in $InputObject) {
 
@@ -51,7 +49,7 @@ Function Test-EvergreenApp {
             if ([System.Boolean]($Object.URI)) {
             }
             else {
-                throw "$($MyInvocation.MyCommand): Object does not have valid URI property."
+                throw "Object does not have valid URI property."
             }
             #endregion
 
@@ -68,15 +66,11 @@ Function Test-EvergreenApp {
                 if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
                     $params.ProxyCredential = $ProxyCredential
                 }
-                $r = Invoke-WebRequest @params
                 $Result = $True
+                Invoke-WebRequest @params | Out-Null
             }
             catch [System.Exception] {
                 $Result = $False
-            }
-            finally {
-                $r | Out-Null
-                Remove-Variable -Name "r" -ErrorAction "SilentlyContinue"
             }
             $PSObject = [PSCustomObject] @{
                 Result = $Result

@@ -13,7 +13,7 @@ Validates target URIs passed to this function from `Get-EvergreenApp`.
 
 ## SYNTAX
 
-```
+```powershell
 Test-EvergreenApp [-InputObject] <PSObject> [[-Proxy] <String>] [[-ProxyCredential] <PSCredential>]
  [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
