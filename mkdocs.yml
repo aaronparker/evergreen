@@ -131,6 +131,7 @@ nav:
     - Find supported apps: find.md
     - Download installers: save.md
     - Test installer URLs: test.md
+    - Export version information: export.md
     - Using Evergreen: use.md
     - Example usage: examples.md
     - Under the hood: under.md

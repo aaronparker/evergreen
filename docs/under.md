@@ -20,6 +20,8 @@ The `Public` folder includes all functions exported from Evergreen:
 * `Get-EvergreenApp`
 * `Find-EvergreenApp`
 * `Save-EvergreenApp`
+* `Test-EvergreenApp`
+* `Export-EvergreenApp`
 * `Export-EvergreenManifest`
 
 ### Apps
