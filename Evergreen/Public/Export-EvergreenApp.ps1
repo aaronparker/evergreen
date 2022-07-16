@@ -13,11 +13,12 @@ function Export-EvergreenApp {
         [System.Management.Automation.PSObject] $InputObject,
 
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $True,
             Position = 1,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the JSON file.",
             ParameterSetName = "Path")]
+        [ValidateNotNull()]
         [System.IO.FileInfo] $Path
     )
 

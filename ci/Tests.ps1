@@ -25,32 +25,23 @@ $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyCo
 
 If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
-    # Configure the test environment
-    $testsPath = Join-Path -Path $projectRoot -ChildPath "tests"
-    $testOutput = Join-Path -Path $projectRoot -ChildPath "TestsResults.xml"
-    $testConfig = [PesterConfiguration]@{
-        Run        = @{
-            Path     = $testsPath
-            PassThru = $True
-        }
-        TestResult = @{
-            OutputFormat = "NUnitXml"
-            OutputFile   = $testOutput
-        }
-        Output     = @{
-            Verbosity = "Detailed"
-        }
-    }
-    Write-Host "Tests path:      $testsPath."
-    Write-Host "Output path:     $testOutput."
-
     # Invoke Pester tests
-    $res = Invoke-Pester -Configuration $testConfig
+    $Config = [PesterConfiguration]::Default
+    $Config.Run.Path = "$projectRoot\tests"
+    $Config.Run.PassThru = $True
+    $Config.CodeCoverage.Enabled = $True
+    $Config.CodeCoverage.Path = "$projectRoot\Evergreen"
+    $Config.CodeCoverage.OutputFormat = "JaCoCo"
+    $Config.CodeCoverage.OutputPath = "$projectRoot\tests\CodeCoverage.xml"
+    $Config.TestResult.Enabled = $True
+    $Config.TestResult.OutputFormat = "NUnitXml"
+    $Config.TestResult.OutputPath = "$projectRoot\test\TestResults.xml"
+    $res = Invoke-Pester -Configuration $Config
 
     # Upload test results to AppVeyor
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $testOutput))
+        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path "$projectRoot\test\TestResults.xml"))
     }
     Else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"
