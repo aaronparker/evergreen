@@ -13,7 +13,7 @@ Returns the latest version and download URL/s for an application supported by th
 
 ## SYNTAX
 
-```
+```powershell
 Get-EvergreenApp [-Name] <String> [<CommonParameters>]
 ```
 

@@ -18,7 +18,7 @@ param (
         Mandatory = $False,
         Position = 1,
         ValueFromPipelineByPropertyName,
-        HelpMessage = "Specify a top-level directory path where the application installers will be saved into.",
+        HelpMessage = "Specify a top-level directory path where the application JSON file will be saved into.",
         ParameterSetName = "Path")]
     [System.IO.FileInfo] $Path = $PWD.Path
 )

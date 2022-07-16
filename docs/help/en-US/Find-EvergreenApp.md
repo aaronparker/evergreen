@@ -13,7 +13,7 @@ Outputs a table with the applications that Evergreen supports.
 
 ## SYNTAX
 
-```
+```powershell
 Find-EvergreenApp [[-Name] <String>] [<CommonParameters>]
 ```
 

@@ -15,54 +15,52 @@
         [System.String] $Name
     )
 
-    Begin {
-
+    begin {
         #region Get the per-application manifests from the Evergreen/Manifests folder
         try {
             $params = @{
                 Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
                 Filter      = "*.json"
-                ErrorAction = "Continue"
+                ErrorAction = "SilentlyContinue"
             }
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Search path for application manifests: $($params.Path)."
+            Write-Verbose -Message "Search path for application manifests: $($params.Path)."
             $Manifests = Get-ChildItem @params
         }
         catch {
-            Throw $_
+            throw $_
         }
         #endregion
     }
 
-    Process {
-
-        If ($PSBoundParameters.ContainsKey('Name')) {
+    process {
+        if ($PSBoundParameters.ContainsKey('Name')) {
             try {
                 # If the -Name parameter is specified, filter the included manifests for that application
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Filter for: $Name."
+                Write-Verbose -Message "Filter for: $Name."
                 $Manifests = $Manifests | Where-Object { $_.Name -match $Name }
             }
             catch {
-                Throw $_
+                throw $_
             }
-            If ($Null -eq $Manifests) {
+            if ($Null -eq $Manifests) {
                 Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
                 Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
-                Throw "Cannot find application: $Name."
+                throw "Cannot find application: $Name."
             }
         }
 
         #region Output details from the manifest/s
-        If ($Manifests.Count -gt 0) {
-            ForEach ($manifest in $Manifests) {
+        if ($Manifests.Count -gt 0) {
+            foreach ($manifest in $Manifests) {
                 try {
                     # Read the JSON manifest and convert to an object
                     $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
                 }
                 catch {
-                    Throw $_
+                    throw $_
                 }
 
-                If ($Null -ne $Json) {
+                if ($Null -ne $Json) {
                     # Build an object from the manifest details and file name and output to the pipeline
                     $PSObject = [PSCustomObject] @{
                         Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
@@ -73,15 +71,15 @@
                 }
             }
         }
-        Else {
+        else {
             Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
-            Throw "Failed to return application manifests."
+            throw "Failed to return application manifests."
         }
         #endregion
     }
 
-    End {
+    end {
         # Remove these variables for next run
         Remove-Variable -Name "PSObject", "Json", "Manifests" -ErrorAction "SilentlyContinue"
     }

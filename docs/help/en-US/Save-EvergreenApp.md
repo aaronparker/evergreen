@@ -15,14 +15,14 @@ Downloads target URIs passed to this function from `Get-EvergreenApp` into a dir
 
 ### Path (Default)
 
-```
+```powershell
 Save-EvergreenApp [-InputObject] <PSObject> [[-Path] <FileInfo>] [[-Proxy] <String>]
  [[-ProxyCredential] <PSCredential>] [-Force] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomPath
 
-```
+```powershell
 Save-EvergreenApp [-InputObject] <PSObject> [-CustomPath <FileInfo>] [[-Proxy] <String>]
  [[-ProxyCredential] <PSCredential>] [-Force] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

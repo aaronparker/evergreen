@@ -20,7 +20,6 @@ Function Save-EvergreenApp {
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify a top-level directory path where the application installers will be saved into.",
             ParameterSetName = "Path")]
-        #[ValidateNotNull()]
         [System.IO.FileInfo] $Path,
 
         [Parameter(
@@ -29,7 +28,6 @@ Function Save-EvergreenApp {
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify a single directory path where all application installers will be saved into.",
             ParameterSetName = "CustomPath")]
-        #[ValidateNotNull()]
         [System.IO.FileInfo] $CustomPath,
 
         [Parameter(Mandatory = $False, Position = 2)]
@@ -46,36 +44,35 @@ Function Save-EvergreenApp {
         [System.Management.Automation.SwitchParameter] $NoProgress
     )
 
-    Begin {
-
+    begin {
         # Disable the Invoke-WebRequest progress bar for faster downloads
-        If ($PSBoundParameters.ContainsKey("Verbose") -and !($PSBoundParameters.ContainsKey("NoProgress"))) {
+        if ($PSBoundParameters.ContainsKey("Verbose") -and !($PSBoundParameters.ContainsKey("NoProgress"))) {
             $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
         }
-        Else {
+        else {
             $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
         }
 
         # Path variable from parameters set via -Path or -CustomPath
-        Switch ($PSCmdlet.ParameterSetName) {
+        switch ($PSCmdlet.ParameterSetName) {
             "Path" {
-                If ([System.String]::IsNullOrEmpty($Path)) { Throw "Cannot bind argument to parameter 'Path' because it is null."}
+                if ([System.String]::IsNullOrEmpty($Path)) { throw "Cannot bind argument to parameter 'Path' because it is null." }
                 $NewPath = $Path
             }
             "CustomPath" {
-                If ([System.String]::IsNullOrEmpty($CustomPath)) { Throw "Cannot bind argument to parameter 'CustomPath' because it is null."}
+                if ([System.String]::IsNullOrEmpty($CustomPath)) { throw "Cannot bind argument to parameter 'CustomPath' because it is null." }
                 $NewPath = $CustomPath
             }
         }
 
         #region Test $Path and attempt to create it if it doesn't exist
-        If (Test-Path -Path $NewPath -PathType "Container") {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Path exists: $NewPath."
+        if (Test-Path -Path $NewPath -PathType "Container") {
+            Write-Verbose -Message "Path exists: $NewPath."
         }
-        Else {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Path does not exist: $NewPath."
+        else {
+            Write-Verbose -Message "Path does not exist: $NewPath."
             try {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Create: $NewPath."
+                Write-Verbose -Message "Create: $NewPath."
                 $params = @{
                     Path        = $NewPath
                     ItemType    = "Container"
@@ -84,7 +81,7 @@ Function Save-EvergreenApp {
                 New-Item @params | Out-Null
             }
             catch {
-                Throw "$($MyInvocation.MyCommand): Failed to create $NewPath with: $($_.Exception.Message)"
+                throw "Failed to create $NewPath with: $($_.Exception.Message)"
             }
         }
         #endregion
@@ -93,46 +90,45 @@ Function Save-EvergreenApp {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     }
 
-    Process {
-
+    process {
         # Loop through each object and download to the target path
-        ForEach ($Object in $InputObject) {
+        foreach ($Object in $InputObject) {
 
             #region Validate the URI property and find the output filename
-            If ([System.Boolean]($Object.URI)) {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): URL: $($Object.URI)."
-                If ([System.Boolean]($Object.FileName)) {
+            if ([System.Boolean]($Object.URI)) {
+                Write-Verbose -Message "URL: $($Object.URI)."
+                if ([System.Boolean]($Object.FileName)) {
                     $OutFile = $Object.FileName
                 }
-                ElseIf ([System.Boolean]($Object.URI)) {
+                Elseif ([System.Boolean]($Object.URI)) {
                     $OutFile = Split-Path -Path $Object.URI -Leaf
                 }
             }
-            Else {
-                Throw "$($MyInvocation.MyCommand): Object does not have valid URI property."
+            else {
+                throw "Object does not have valid URI property."
             }
             #endregion
 
             # Handle the output path depending on whether -Path or -CustomPath are used
-            Switch ($PSCmdlet.ParameterSetName) {
+            switch ($PSCmdlet.ParameterSetName) {
                 "Path" {
                     # Resolve $Path to build the initial value of $OutPath
                     $OutPath = Resolve-Path -Path $Path -ErrorAction "SilentlyContinue"
-                    If ($Null -ne $OutPath) {
+                    if ($Null -ne $OutPath) {
 
                         #region Validate the Version property
-                        If ([System.Boolean]($Object.Version)) {
+                        if ([System.Boolean]($Object.Version)) {
 
                             # Build $OutPath with the "Channel", "Release", "Language", "Architecture" properties
                             $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
                         }
-                        Else {
-                            Throw "$($MyInvocation.MyCommand): Object does not have valid Version property."
+                        else {
+                            throw "Object does not have valid Version property."
                         }
                         #endregion
                     }
-                    Else {
-                        Throw "$($MyInvocation.MyCommand): Failed validating $OutPath."
+                    else {
+                        throw "Failed validating $OutPath."
                     }
                 }
                 "CustomPath" {
@@ -141,10 +137,10 @@ Function Save-EvergreenApp {
             }
 
             # Download the file
-            If ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
+            if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
 
                 $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-                If ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
+                if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
 
                     try {
                         #region Download the file
@@ -154,18 +150,18 @@ Function Save-EvergreenApp {
                             UseBasicParsing = $True
                             ErrorAction     = "Continue"
                         }
-                        If ($PSBoundParameters.ContainsKey("Proxy")) {
+                        if ($PSBoundParameters.ContainsKey("Proxy")) {
                             $params.Proxy = $Proxy
                         }
-                        If ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
                             $params.ProxyCredential = $ProxyCredential
                         }
                         Invoke-WebRequest @params
                         #endregion
 
                         #region Write the downloaded file path to the pipeline
-                        If (Test-Path -Path $DownloadFile) {
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): Successfully downloaded: $DownloadFile."
+                        if (Test-Path -Path $DownloadFile) {
+                            Write-Verbose -Message "Successfully downloaded: $DownloadFile."
                             Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                         }
                         #endregion
@@ -175,10 +171,10 @@ Function Save-EvergreenApp {
                         Write-Error -Message "Error: $($_.Exception.Message)"
                     }
                 }
-                Else {
+                else {
                     #region Write the downloaded file path to the pipeline
-                    If (Test-Path -Path $DownloadFile) {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): File exists: $DownloadFile."
+                    if (Test-Path -Path $DownloadFile) {
+                        Write-Verbose -Message "File exists: $DownloadFile."
                         Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                     }
                     #endregion
@@ -187,10 +183,10 @@ Function Save-EvergreenApp {
         }
     }
 
-    End {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Complete."
-        If ($PSCmdlet.ShouldProcess("Remove variables")) {
-            If (Test-Path -Path Variable:params) { Remove-Variable -Name "params" -ErrorAction "SilentlyContinue" }
+    end {
+        Write-Verbose -Message "Complete."
+        if ($PSCmdlet.ShouldProcess("Remove variables")) {
+            if (Test-Path -Path Variable:params) { Remove-Variable -Name "params" -ErrorAction "SilentlyContinue" }
             Remove-Variable -Name "OutPath", "OutFile" -ErrorAction "SilentlyContinue"
         }
     }
