@@ -1,7 +1,7 @@
 <#
     .SYNOPSIS
     Export application details gathered by Get-EvergreenApp to an external JSON file.
-    Reads any existing JSON for that application, adds the new version content, sorts for unique versions, 
+    Reads any existing JSON for that application, adds the new version content, sorts for unique versions,
     then outputs the new content back to the target JSON file.
 #>
 [CmdletBinding(SupportsShouldProcess = $False)]
