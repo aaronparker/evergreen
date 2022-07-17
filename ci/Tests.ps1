@@ -25,6 +25,9 @@ $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyCo
 
 If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
+    $CodeCoverage = "$projectRoot\tests\CodeCoverage.xml"
+    $TestResults = "$projectRoot\tests\TestResults.xml"
+
     # Invoke Pester tests
     $Config = [PesterConfiguration]::Default
     $Config.Run.Path = "$projectRoot\tests"
@@ -32,16 +35,21 @@ If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
     $Config.CodeCoverage.Enabled = $True
     $Config.CodeCoverage.Path = "$projectRoot\Evergreen"
     $Config.CodeCoverage.OutputFormat = "JaCoCo"
-    $Config.CodeCoverage.OutputPath = "$projectRoot\tests\CodeCoverage.xml"
+    $Config.CodeCoverage.OutputPath = $CodeCoverage
     $Config.TestResult.Enabled = $True
     $Config.TestResult.OutputFormat = "NUnitXml"
-    $Config.TestResult.OutputPath = "$projectRoot\tests\TestResults.xml"
+    $Config.TestResult.OutputPath = $TestResults
     $res = Invoke-Pester -Configuration $Config
 
     # Upload test results to AppVeyor
     If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
     If (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path "$projectRoot\test\TestResults.xml"))
+        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $TestResults))
+
+        $ProgressPreference = 'SilentlyContinue'
+        Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -Outfile "$projectRoot\tests\codecov.exe"
+        . "$projectRoot\tests\codecov.exe" -t $env:CODECOV_TOKEN -f $CodeCoverage
+        Remove-Item -Path "$projectRoot\tests\codecov.exe" -Force
     }
     Else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"

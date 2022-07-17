@@ -4,6 +4,7 @@
 [![PowerShell Gallery Version][psgallery-version-badge]][psgallery]
 [![PowerShell Gallery][psgallery-badge]][psgallery]
 [![main build status][appveyor-badge]][appveyor-build]
+[![codecov](https://codecov.io/gh/aaronparker/evergreen/branch/main/graph/badge.svg?token=QK2YKUgCBX)](https://codecov.io/gh/aaronparker/evergreen)
 
 ![Evergreen icon](/img/evergreenbulb.png)
 
