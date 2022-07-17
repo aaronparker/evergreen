@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2207.596
 
 * Adds function `Export-EvergreenApp` - exports application details gathered by `Get-EvergreenApp` to an external JSON file. This function reads any existing JSON for that application, adds the new version content, sorts for unique versions, then outputs the new content back to the target JSON file.
 
