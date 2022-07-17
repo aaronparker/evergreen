@@ -40,3 +40,4 @@ Thumbs.db
 ######################
 .vs/**
 json/**
+tests/codecov
