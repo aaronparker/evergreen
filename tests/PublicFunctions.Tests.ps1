@@ -2,9 +2,9 @@
     .SYNOPSIS
         Public Pester function tests.
 #>
+[OutputType()]
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
-[OutputType()]
 param ()
 
 BeforeDiscovery {
@@ -41,33 +41,33 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
 
         # Test that the output has a Version property and that property is a string
         It "<application>: should have a Version property that is a string" {
-            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
+            if ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
                 ForEach ($object in $Output) {
                     $object.Version | Should -BeOfType [System.String]
                 }
             }
-            Else {
+            else {
                 Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
             }
         }
 
         # Test that output with Version property is valid
         It "<application>: should have a valid version number" {
-            If ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
-                ForEach ($object in $Output) {
-                    If ($object.Version.Length -gt 0) {
+            if ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
+                foreach ($object in $Output) {
+                    if ($object.Version.Length -gt 0) {
                         $object.Version | Should -Match $MatchVersions
                     }
                 }
             }
-            Else {
+            else {
                 Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
             }
         }
 
         # Test that the output has a URI property and that property is a string
         It "<application>: should have a URI property that is a string" {
-            ForEach ($object in $Output) {
+            foreach ($object in $Output) {
                 $object.URI | Should -BeOfType [System.String]
             }
         }
@@ -110,7 +110,7 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
         $installer = $_
 
         # Create download path
-        If ($env:Temp) {
+        if ($env:Temp) {
             $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
         }
         else {
@@ -165,4 +165,51 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest fail tests" {
     }
 }
 
-Write-Host ""
+Describe -Tag "Export" -Name "Export-EvergreenApp" {
+    BeforeAll {
+        $App = Get-EvergreenApp -Name "MicrosoftOneDrive"
+
+        # Create download path
+        if ($env:Temp) {
+            $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
+        }
+        else {
+            $Path = Join-Path -Path $env:TMPDIR -ChildPath "Downloads"
+        }
+        New-Item -Path $Path -ItemType "Directory" -Force -ErrorAction "SilentlyContinue" > $Null
+        $File = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
+
+        $InvalidFile = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
+        "xxbbccss" | Out-File -Path $InvalidFile
+    }
+
+    Context "Validate Export-EvergreenApp functionality" {
+        It "Should not throw with correct input" {
+            { Export-EvergreenApp -InputObject $App -Path $File } | Should -Not -Throw
+        }
+
+        It "Should throw if the input file is invalid" {
+            { Export-EvergreenApp -InputObject $App -Path $InvalidFile } | Should -Throw
+        }
+
+        It "Should write the output file OK" {
+            (Get-Content -Path $File | ConvertFrom-Json).Count | Should -Match $App.Count
+        }
+    }
+}
+
+Describe -Tag "Test" -Name "Test-EvergreenApp" {
+    BeforeAll {
+        $App = Get-EvergreenApp -Name "MicrosoftOneDrive"
+        $Result = Test-EvergreenApp -InputObject $App
+    }
+
+    It "Should not throw with valid input" {
+        Test-EvergreenApp -InputObject $App | Should -Not -Throw
+    }
+
+    It "Should return an object with valid properties" {
+        $Result[0].Result | Should -BeOfType [System.Boolean]
+        $Result[0].URI | Should -BeOfType [System.String]
+    }
+}

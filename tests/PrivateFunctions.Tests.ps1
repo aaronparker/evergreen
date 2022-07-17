@@ -2,8 +2,8 @@
     .SYNOPSIS
         Private Pester function tests.
 #>
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [OutputType()]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 param ()
 
 BeforeDiscovery {
