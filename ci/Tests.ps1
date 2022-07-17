@@ -35,7 +35,7 @@ If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
     $Config.CodeCoverage.OutputPath = "$projectRoot\tests\CodeCoverage.xml"
     $Config.TestResult.Enabled = $True
     $Config.TestResult.OutputFormat = "NUnitXml"
-    $Config.TestResult.OutputPath = "$projectRoot\test\TestResults.xml"
+    $Config.TestResult.OutputPath = "$projectRoot\tests\TestResults.xml"
     $res = Invoke-Pester -Configuration $Config
 
     # Upload test results to AppVeyor
