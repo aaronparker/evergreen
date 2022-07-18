@@ -27,7 +27,7 @@ function Invoke-EvergreenLibraryUpdate {
                     $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
                 }
                 catch {
-                    throw "Encountered an reading library $LibraryFile with: $($_.Exception.Message)"
+                    throw "Encountered an error reading library $LibraryFile with: $($_.Exception.Message)"
                 }
 
                 foreach ($Application in $Library.Applications) {
