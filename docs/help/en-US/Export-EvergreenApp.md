@@ -88,4 +88,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Use Evergreen:](https://stealthpuppy.com/evergreen/use.html)
+[Export application version information:](https://stealthpuppy.com/evergreen/export.html)
