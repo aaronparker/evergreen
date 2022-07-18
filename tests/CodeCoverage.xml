@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (07/17/2022 00:05:24)">
-  <sessioninfo id="this" start="1658015584055" dump="1658016324998" />
+<report name="Pester (07/18/2022 04:15:13)">
+  <sessioninfo id="this" start="1658116926256" dump="1658117713171" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -6877,14 +6877,14 @@
   <package name="Evergreen/Public">
     <class name="Evergreen/Public/Export-EvergreenApp" sourcefilename="Public/Export-EvergreenApp.ps1">
       <method name="Export-EvergreenApp" desc="()" line="28">
-        <counter type="INSTRUCTION" missed="20" covered="0" />
-        <counter type="LINE" missed="11" covered="0" />
-        <counter type="METHOD" missed="1" covered="0" />
+        <counter type="INSTRUCTION" missed="1" covered="19" />
+        <counter type="LINE" missed="1" covered="10" />
+        <counter type="METHOD" missed="0" covered="1" />
       </method>
-      <counter type="INSTRUCTION" missed="20" covered="0" />
-      <counter type="LINE" missed="11" covered="0" />
-      <counter type="METHOD" missed="1" covered="0" />
-      <counter type="CLASS" missed="1" covered="0" />
+      <counter type="INSTRUCTION" missed="1" covered="19" />
+      <counter type="LINE" missed="1" covered="10" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
     </class>
     <class name="Evergreen/Public/Export-EvergreenManifest" sourcefilename="Public/Export-EvergreenManifest.ps1">
       <method name="Export-EvergreenManifest" desc="()" line="14">
@@ -6930,6 +6930,28 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
+    <class name="Evergreen/Public/Invoke-EvergreenLibraryUpdate" sourcefilename="Public/Invoke-EvergreenLibraryUpdate.ps1">
+      <method name="Invoke-EvergreenLibraryUpdate" desc="()" line="21">
+        <counter type="INSTRUCTION" missed="35" covered="0" />
+        <counter type="LINE" missed="21" covered="0" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="35" covered="0" />
+      <counter type="LINE" missed="21" covered="0" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Public/New-EvergreenLibrary" sourcefilename="Public/New-EvergreenLibrary.ps1">
+      <method name="New-EvergreenLibrary" desc="()" line="27">
+        <counter type="INSTRUCTION" missed="26" covered="0" />
+        <counter type="LINE" missed="20" covered="0" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="26" covered="0" />
+      <counter type="LINE" missed="20" covered="0" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
     <class name="Evergreen/Public/Save-EvergreenApp" sourcefilename="Public/Save-EvergreenApp.ps1">
       <method name="Save-EvergreenApp" desc="()" line="49">
         <counter type="INSTRUCTION" missed="30" covered="47" />
@@ -6943,31 +6965,31 @@
     </class>
     <class name="Evergreen/Public/Test-EvergreenApp" sourcefilename="Public/Test-EvergreenApp.ps1">
       <method name="Test-EvergreenApp" desc="()" line="33">
-        <counter type="INSTRUCTION" missed="30" covered="0" />
-        <counter type="LINE" missed="26" covered="0" />
-        <counter type="METHOD" missed="1" covered="0" />
+        <counter type="INSTRUCTION" missed="5" covered="25" />
+        <counter type="LINE" missed="5" covered="21" />
+        <counter type="METHOD" missed="0" covered="1" />
       </method>
-      <counter type="INSTRUCTION" missed="30" covered="0" />
-      <counter type="LINE" missed="26" covered="0" />
-      <counter type="METHOD" missed="1" covered="0" />
-      <counter type="CLASS" missed="1" covered="0" />
+      <counter type="INSTRUCTION" missed="5" covered="25" />
+      <counter type="LINE" missed="5" covered="21" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
     </class>
     <sourcefile name="Public/Export-EvergreenApp.ps1">
-      <line nr="28" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="31" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="2" mb="0" cb="0" />
       <line nr="32" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="35" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="40" mi="2" ci="0" mb="0" cb="0" />
-      <line nr="41" mi="3" ci="0" mb="0" cb="0" />
-      <line nr="42" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="43" mi="2" ci="0" mb="0" cb="0" />
-      <line nr="46" mi="5" ci="0" mb="0" cb="0" />
-      <line nr="47" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="48" mi="1" ci="0" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="20" covered="0" />
-      <counter type="LINE" missed="11" covered="0" />
-      <counter type="METHOD" missed="1" covered="0" />
-      <counter type="CLASS" missed="1" covered="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="40" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="41" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="42" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="43" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="46" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="47" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="48" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="1" covered="19" />
+      <counter type="LINE" missed="1" covered="10" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
     <sourcefile name="Public/Export-EvergreenManifest.ps1">
       <line nr="14" mi="0" ci="1" mb="0" cb="0" />
@@ -7055,6 +7077,59 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Public/Invoke-EvergreenLibraryUpdate.ps1">
+      <line nr="21" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="22" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="24" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="25" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="27" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="30" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="33" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="36" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="37" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="38" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="41" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="42" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="45" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="48" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="49" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="52" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="55" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="56" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="59" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="64" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="68" mi="1" ci="0" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="35" covered="0" />
+      <counter type="LINE" missed="21" covered="0" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Public/New-EvergreenLibrary.ps1">
+      <line nr="27" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="28" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="31" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="37" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="38" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="42" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="43" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="44" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="45" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="46" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="48" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="49" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="50" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="53" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="58" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="59" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="60" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="63" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="66" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="69" mi="1" ci="0" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="26" covered="0" />
+      <counter type="LINE" missed="20" covered="0" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Public/Save-EvergreenApp.ps1">
       <line nr="49" mi="0" ci="2" mb="0" cb="0" />
       <line nr="50" mi="1" ci="0" mb="0" cb="0" />
@@ -7122,41 +7197,41 @@
       <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
     <sourcefile name="Public/Test-EvergreenApp.ps1">
-      <line nr="33" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="2" mb="0" cb="0" />
       <line nr="34" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="37" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="41" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="46" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="49" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="41" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="46" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="49" mi="0" ci="2" mb="0" cb="0" />
       <line nr="52" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="57" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="58" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="59" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="60" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="61" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="63" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="57" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="58" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="59" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="60" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="61" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="63" mi="0" ci="1" mb="0" cb="0" />
       <line nr="64" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="66" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="66" mi="0" ci="1" mb="0" cb="0" />
       <line nr="67" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="69" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="70" mi="2" ci="0" mb="0" cb="0" />
+      <line nr="69" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="70" mi="0" ci="2" mb="0" cb="0" />
       <line nr="73" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="75" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="76" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="77" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="79" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="84" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="85" mi="2" ci="0" mb="0" cb="0" />
-      <line nr="86" mi="1" ci="0" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="30" covered="0" />
-      <counter type="LINE" missed="26" covered="0" />
-      <counter type="METHOD" missed="1" covered="0" />
-      <counter type="CLASS" missed="1" covered="0" />
+      <line nr="75" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="76" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="77" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="79" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="84" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="85" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="86" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="5" covered="25" />
+      <counter type="LINE" missed="5" covered="21" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="100" covered="106" />
-    <counter type="LINE" missed="76" covered="83" />
-    <counter type="METHOD" missed="3" covered="4" />
-    <counter type="CLASS" missed="3" covered="4" />
+    <counter type="INSTRUCTION" missed="117" covered="150" />
+    <counter type="LINE" missed="86" covered="114" />
+    <counter type="METHOD" missed="3" covered="6" />
+    <counter type="CLASS" missed="3" covered="6" />
   </package>
   <package name="Evergreen">
     <class name="Evergreen/Evergreen" sourcefilename="Evergreen.psm1">
@@ -7190,8 +7265,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1439" covered="3187" />
-  <counter type="LINE" missed="712" covered="2508" />
-  <counter type="METHOD" missed="209" covered="23" />
-  <counter type="CLASS" missed="209" covered="23" />
+  <counter type="INSTRUCTION" missed="1456" covered="3231" />
+  <counter type="LINE" missed="722" covered="2539" />
+  <counter type="METHOD" missed="209" covered="25" />
+  <counter type="CLASS" missed="209" covered="25" />
 </report>
