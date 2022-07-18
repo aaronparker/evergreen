@@ -1,15 +1,15 @@
-[
-    {
-        "Name": "EvergreenLibrary",
-        "Applications": [
-            {
-                "Name": "MicrosoftOneDrive",
-                "Filter": "$_.Architecture -eq \"AMD64\" -and $_.Ring -eq \"Production\""
-            },
-            {
-                "Name": "MicrosoftEdge",
-                "Filter": "$_.Platform -eq \"Windows\" -and $_.Channel -eq \"Stable\" -and $_.Release -eq \"Enterprise\" -and $_.Architecture -eq \"x64\""
-            }
-        ]
-    }
-]
+{
+    "Name": "Evergreen",
+    "Applications": [
+        {
+            "Name": "MicrosoftOneDrive",
+            "EvergreenApp": "MicrosoftOneDrive",
+            "Filter": "$_.Architecture -eq \"AMD64\" -and $_.Ring -eq \"Production\""
+        },
+        {
+            "Name": "MicrosoftEdge",
+            "EvergreenApp": "MicrosoftEdge",
+            "Filter": "$_.Platform -eq \"Windows\" -and $_.Channel -eq \"Stable\" -and $_.Release -eq \"Enterprise\" -and $_.Architecture -eq \"x64\""
+        }
+    ]
+}

@@ -10,7 +10,7 @@ function Export-EvergreenApp {
             ValueFromPipeline,
             HelpMessage = "Pass an application object from Get-EvergreenApp.")]
         [ValidateNotNull()]
-        [System.Management.Automation.PSObject] $InputObject,
+        [System.Array] $InputObject,
 
         [Parameter(
             Mandatory = $True,

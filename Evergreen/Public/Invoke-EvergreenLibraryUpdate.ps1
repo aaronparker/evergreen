@@ -24,11 +24,10 @@ function Invoke-EvergreenLibraryUpdate {
             if (Test-Path -Path $LibraryFile) {
                 Write-Verbose -Message "Library exists: $LibraryFile."
                 try {
-                    $Library = Get-Content -Path $LibraryFile | `
-                        ConvertFrom-Json
+                    $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
                 }
                 catch {
-                    throw $_
+                    throw "Encountered an reading library $LibraryFile with: $($_.Exception.Message)"
                 }
 
                 foreach ($Application in $Library.Applications) {
@@ -43,11 +42,11 @@ function Invoke-EvergreenLibraryUpdate {
                         $WhereBlock = [ScriptBlock]::Create($Application.Filter)
                     }
                     catch {
-                        throw $_
+                        throw "Encountered an error creating script block with: $($_.Exception.Message)"
                     }
 
-                    $App = Get-EvergreenApp -Name $Application.Name | Where-Object $WhereBlock
-                    Write-Verbose -Message "No. downloads for $($Application.Name): $($App.Count)."
+                    $App = Get-EvergreenApp -Name $Application.EvergreenApp | Where-Object $WhereBlock
+                    Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
 
                     # If something returned, add to the library
                     if ($Null -ne $App) {
@@ -62,7 +61,7 @@ function Invoke-EvergreenLibraryUpdate {
                 }
             }
             else {
-                throw "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json."
+                throw "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
             }
         }
         else {
