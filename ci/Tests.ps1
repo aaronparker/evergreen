@@ -41,10 +41,21 @@ if (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
     # Upload test results to AppVeyor
     if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed." }
+
+    Write-Host ""
     if (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $TestResults))
+
+        if (Test-Path -Path $TestResults) {
+            Write-Host "Found: $TestResults."
+            $WebClient = New-Object -TypeName "System.Net.WebClient"
+            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $TestResults))
+        }
+        else {
+            Write-Host "Can't find: $TestResults."
+        }
 
         if (Test-Path -Path $CodeCoverage) {
+            Write-Host "Found: $CodeCoverage."
             Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -OutFile $CodeCov -UseBasicParsing
             . $CodeCov -t $env:CODECOV_TOKEN -f $CodeCoverage
             Remove-Item -Path $CodeCov -Force
