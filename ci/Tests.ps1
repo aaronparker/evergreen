@@ -23,6 +23,7 @@ $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyCo
 if (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
     $CodeCoverage = "$projectRoot\tests\CodeCoverage.xml"
+    Remove-Item -Path $CodeCoverage -Force
     $TestResults = "$projectRoot\tests\TestResults.xml"
     $CodeCov = "$projectRoot\tests\codecov.exe"
 
