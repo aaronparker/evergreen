@@ -76,7 +76,7 @@ process {
             # Export the data to file
             $App | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $false } | `
                 ConvertTo-Json | `
-                Out-File -Path $FilePath -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
+                Out-File -FilePath $FilePath -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
         }
     }
 }

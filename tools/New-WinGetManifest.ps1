@@ -63,47 +63,47 @@ If (Find-EvergreenApp -Name $Name) {
 
     #region Write metadata
     $string = "Id: $id"
-    Write-Output $string | Out-File -Path $WinGetManifestFile
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile
 
     $string = "Version: $($Packages[0].Version)"
-    Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
     $string = "Name: $AppName"
-    Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
     $string = "Publisher: $Publisher"
-    Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
     $string = "Homepage: $($Manifest.Source)"
-    Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
     $string = "License: $License"
-    Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+    Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
     if (!($LicenseUrl.length -eq 0)) {
         $string = "LicenseUrl: $LicenseUrl"
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
     }
     if (!($AppMoniker.length -eq 0)) {
         $string = "AppMoniker: $AppMoniker"
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
     }
     if (!($Commands.length -eq 0)) {
         $string = "Commands: $Commands"
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
     }
     if (!($Tags.length -eq 0)) {
         $string = "Tags: $Tags"
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
     }
     if (!($Description.length -eq 0)) {
         $string = "Description: $Description"
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
     }
     #endregion
 
     # Write output for each architecture
-    Write-Output "Installers:" | Out-File -Path $WinGetManifestFile -Append
+    Write-Output "Installers:" | Out-File -FilePath $WinGetManifestFile -Append
 
     # Walk through each package in output from the Evergreen function
     ForEach ($Package in $Packages) {
@@ -129,16 +129,16 @@ If (Find-EvergreenApp -Name $Name) {
 
         #region Write metadata
         $string = "  - Arch: " + $Package.Architecture
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
         $string = "    Url: " + $Package.URI
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
         $string = "    Sha256: " + $Hash.Hash
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
 
         $string = "    InstallerType: " + $InstallerType
-        Write-Output $string | Out-File -Path $WinGetManifestFile -Append
+        Write-Output $string | Out-File -FilePath $WinGetManifestFile -Append
         #endregion
     }
 

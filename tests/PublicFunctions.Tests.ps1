@@ -180,7 +180,7 @@ Describe -Tag "Export" -Name "Export-EvergreenApp" {
         $File = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
 
         $InvalidFile = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
-        "xxbbccss" | Out-File -Path $InvalidFile
+        "xxbbccss" | Out-File -FilePath $InvalidFile
     }
 
     Context "Validate Export-EvergreenApp functionality" {
@@ -205,7 +205,7 @@ Describe -Tag "Test" -Name "Test-EvergreenApp" {
     }
 
     It "Should not throw with valid input" {
-        Test-EvergreenApp -InputObject $App | Should -Not -Throw
+        { Test-EvergreenApp -InputObject $App } | Should -Not -Throw
     }
 
     It "Should return an object with valid properties" {

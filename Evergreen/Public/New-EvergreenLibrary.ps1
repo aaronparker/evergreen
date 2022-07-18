@@ -63,7 +63,7 @@ function New-EvergreenLibrary {
             $Library.Name = $Name
 
             try {
-                $Library | ConvertTo-Json -Depth 10 | Out-File -Path $LibraryFile -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
+                $Library | ConvertTo-Json -Depth 10 | Out-File -FilePath $LibraryFile -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
             }
             catch {
                 throw $_
