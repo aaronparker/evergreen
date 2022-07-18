@@ -179,7 +179,7 @@ Describe -Tag "Export" -Name "Export-EvergreenApp" {
         New-Item -Path $Path -ItemType "Directory" -Force -ErrorAction "SilentlyContinue" > $Null
         $File = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
 
-        $InvalidFile = Join-Path -Path $Path -ChildPath "MicrosoftOneDrive.json"
+        $InvalidFile = Join-Path -Path $Path -ChildPath "JsonTest.json"
         "xxbbccss" | Out-File -FilePath $InvalidFile
     }
 
