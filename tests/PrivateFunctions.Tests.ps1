@@ -230,7 +230,7 @@ Describe -Name "Invoke-RestMethodWrapper" {
                     UserAgent            = [Microsoft.PowerShell.Commands.PSUserAgent]::Safari
                     Uri                  = "https://api.github.com/rate_limit"
                 }
-                Invoke-RestMethodWrapper -Uri @params | Should -BeOfType [System.Object]
+                Invoke-RestMethodWrapper @params | Should -BeOfType [System.Object]
             }
         }
     }
@@ -258,7 +258,7 @@ Describe -Name "Resolve-SystemNetWebRequest" {
                     Uri                = "https://github.com"
                     MaximumRedirection = 1
                 }
-                (Resolve-SystemNetWebRequest @params).ResponseUri | Should -BeOfType [System.String]
+                (Resolve-SystemNetWebRequest @params).ResponseUri | Should -BeOfType [System.Uri]
             }
         }
     }
@@ -300,7 +300,7 @@ Describe -Name "New-EvergreenPath" {
                     "Language"     = "English"
                     "Architecture" = "x64"
                 }
-                New-EvergreenPath -InputObject $Object -Path "$Env:Temp" | Should -Not -Throw
+                { New-EvergreenPath -InputObject $Object -Path "$Env:Temp" } | Should -Not -Throw
             }
         }
 
@@ -327,7 +327,7 @@ Describe -Name "Resolve-DnsNameWrapper" {
         It "Returns DNS records OK" {
             InModuleScope Evergreen {
                 $params = @{
-                    Uri  = "github.com"
+                    Name = "github.com"
                     Type = "TXT"
                 }
                 Resolve-DnsNameWrapper @params | Should -BeOfType [System.Array]
