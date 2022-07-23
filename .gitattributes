@@ -2,10 +2,10 @@
 *           text=auto
 
 # Custom for PowerShell
-*.ps1       text eol=crlf
-*.psm1      text eol=crlf
-*.psd1      text eol=crlf
-*.json      text
+# *.ps1       text eol=crlf
+# *.psm1      text eol=crlf
+# *.psd1      text eol=crlf
+#*.json      text
 *.xml       text
 
 # Documentation
