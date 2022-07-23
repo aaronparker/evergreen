@@ -330,7 +330,7 @@ Describe -Name "Resolve-DnsNameWrapper" {
                     Name = "github.com"
                     Type = "TXT"
                 }
-                Resolve-DnsNameWrapper @params | Should -BeOfType [System.Array]
+                Resolve-DnsNameWrapper @params | Should -BeOfType [System.String]
             }
         }
     }
