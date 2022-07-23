@@ -135,6 +135,10 @@ nav:
     - Using Evergreen: use.md
     - Example usage: examples.md
     - Under the hood: under.md
+  - Evergreen Libraries:
+    - Create a library: newlibrary.md
+    - Update a library: updatelibrary.md
+    - Retrieve details from a library: getlibrary.md
   - Resources:
     - Troubleshooting: troubleshoot.md
     - Known issues: issues.md
