@@ -17,10 +17,7 @@ Function Invoke-EvergreenApp {
     )
 
     process {
-        Write-Warning -Message "is experimental and functionality may change. Do not use in production."
+        Write-Warning -Message "Invoke-EvergreenApp is experimental and functionality may change. Do not use in production."
         Invoke-RestMethodWrapper -Uri "https://evergreen-api.stealthpuppy.com/app/$Name"
-    }
-
-    end {
     }
 }

@@ -90,7 +90,7 @@ Function Get-GitHubRepoRelease {
                     MaximumRedirection = 0
                     DisableKeepAlive   = $true
                     UseBasicParsing    = $true
-                    UserAgent          = "github-aaronparker-evergreen" #[Microsoft.PowerShell.Commands.PSUserAgent]::Chrome 
+                    UserAgent          = "github-aaronparker-evergreen"
                     Uri                = $Uri
                 }
                 If ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }

@@ -18,14 +18,19 @@ Function Get-AdoptiumTemurin17 {
     $Targets = $Releases.binary | Where-Object { $_.os -eq $res.Get.Update.MatchOS `
             -and $_.image_type -match $res.Get.Update.MatchImage }
     ForEach ($Release in $Targets) {
-        $PSObject = [PSCustomObject]@{
-            Version      = ($Release.scm_ref -split "_")[0]
-            Type         = $Release.image_type
-            Architecture = Get-Architecture -String $Release.architecture
-            Checksum     = $Release.installer.checksum
-            Size         = $Release.installer.size
-            URI          = $Release.installer.link
+        if ($Null -ne $Release.installer) {
+            $PSObject = [PSCustomObject]@{
+                Version      = ($Release.scm_ref -split "_")[0]
+                Type         = $Release.image_type
+                Architecture = Get-Architecture -String $Release.architecture
+                Checksum     = $Release.installer.checksum
+                Size         = $Release.installer.size
+                URI          = $Release.installer.link
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
+        else {
+            Write-Warning -Message ""
+        }
     }
 }

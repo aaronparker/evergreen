@@ -10,7 +10,7 @@ function Export-EvergreenApp {
             ValueFromPipeline,
             HelpMessage = "Pass an application object from Get-EvergreenApp.")]
         [ValidateNotNull()]
-        [System.Management.Automation.PSObject] $InputObject,
+        [System.Array] $InputObject,
 
         [Parameter(
             Mandatory = $True,
@@ -45,7 +45,7 @@ function Export-EvergreenApp {
         # Export the data to file
         $InputObject | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $false } | `
             ConvertTo-Json | `
-            Out-File -Path $Path -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
+            Out-File -FilePath $Path -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
     }
 
     end {}

@@ -2,9 +2,9 @@
     .SYNOPSIS
         Main Pester function tests.
 #>
+[OutputType()]
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
-[OutputType()]
 param ()
 
 BeforeDiscovery {

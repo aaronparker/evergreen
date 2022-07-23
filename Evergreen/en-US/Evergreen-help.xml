@@ -96,12 +96,8 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
+        <maml:linkText>Export application version information:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/evergreen/export.html</maml:uri>
-      </maml:navigationLink>
-      <maml:navigationLink>
-        <maml:linkText>Use Evergreen:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -453,6 +449,318 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <maml:navigationLink>
         <maml:linkText>Use Evergreen:</maml:linkText>
         <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-EvergreenLibrary</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>EvergreenLibrary</command:noun>
+      <maml:description>
+        <maml:para>Returns details about an Evergreen library.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Returns details about an Evergreen library at a specified path. This will include details of the library stored in `EvergreenLibrary.json` and application version information stored for each application in the library. Application downloads and application version information must first be downloaded via `Invoke-EvergreenLibraryUpdate`.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-EvergreenLibrary</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Specify the path to the library.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
+          <dev:type>
+            <maml:name>FileInfo</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Specify the path to the library.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
+        <dev:type>
+          <maml:name>FileInfo</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.IO.FileInfo</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:remarks>
+          <maml:para>Returns details about the Evergreen library at E:\EvergreenLibrary, including application version information stored for each application.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Create an Evergreen library:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/getlibrary.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Invoke-EvergreenLibraryUpdate</command:name>
+      <command:verb>Invoke</command:verb>
+      <command:noun>EvergreenLibraryUpdate</command:noun>
+      <maml:description>
+        <maml:para>Invokes the update and download of application installers in an Evergreen library. `Invoke-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>An Evergreen library can be used to maintain multiple versions of application installers, rather than always using the latest installer. An Evergreen library allows you to install the version of an application required for a specific environment including rolling back to a previous version of an application. An Evergreen library also enables you to build an image build without requiring internet access, by downloading the application installers to the library and then using those installers during the image build process.</maml:para>
+      <maml:para>`Invoke-EvergreenLibraryUpdate` invokes the update and download of application installers in an Evergreen library. `Invoke-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-EvergreenLibraryUpdate</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path to the Evergreen library. The path must include EvergreenLibrary.json, in the expected structure, which defines the applications to be stored in the library.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path to the Evergreen library. The path must include EvergreenLibrary.json, in the expected structure, which defines the applications to be stored in the library.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Invoke-EvergreenLibraryUpdate accepts a string parameter.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Invoke-EvergreenLibraryUpdate -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: `Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in E:\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Update an Evergreen library:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/updatelibrary.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-EvergreenLibrary</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>EvergreenLibrary</command:noun>
+      <maml:description>
+        <maml:para>Creates an Evergreen library at the specified path.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates an Evergreen library at the specified path. An Evergreen library is a directory with a manifest file that defines the application installers to be stored in the library (`EvergreenLibrary.json`). `New-EvergreenLibrary` will create a default library in the specified path, after which the manifest file can be manually updated to define the application list for the library.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-EvergreenLibrary</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path to the Evergreen library. It is expected that the target location is empty. If the path includes EvergreenLibrary.json, `New-EvergreenLibrary` will not make changes to the manifest.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Path</command:parameterValue>
+          <dev:type>
+            <maml:name>Path</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specify a name for the library.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path to the Evergreen library. It is expected that the target location is empty. If the path includes EvergreenLibrary.json, `New-EvergreenLibrary` will not make changes to the manifest.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Path</command:parameterValue>
+        <dev:type>
+          <maml:name>Path</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specify a name for the library.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>New-EvergreenLibrary accepts string parameters.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>New-EvergreenLibrary -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Creates a new Evergreen library in the path E:\EvergreenLibrary.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>New-EvergreenLibrary -Path "E:\EvergreenLibrary" -Name "AzureVirtualDesktopProd"</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Creates a new Evergreen library in the path E:\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Create an Evergreen library:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/newlibrary.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>

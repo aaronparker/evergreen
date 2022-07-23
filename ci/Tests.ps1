@@ -6,27 +6,26 @@
 [OutputType()]
 param ()
 
-If (Test-Path -Path "env:APPVEYOR_BUILD_FOLDER") {
+if (Test-Path -Path "env:APPVEYOR_BUILD_FOLDER") {
     # AppVeyor Testing
     $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER
     $module = $env:Module
 }
-Else {
+else {
     # Local Testing
     $projectRoot = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
     $module = Split-Path -Path $projectRoot -Leaf
 }
 
-# $moduleParent = Join-Path -Path $projectRoot -ChildPath $source
-# $manifestPath = Join-Path -Path $moduleParent -ChildPath "$module.psd1"
-# $modulePath = Join-Path -Path $moduleParent -ChildPath "$module.psm1"
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 $WarningPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
 
-If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
+if (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
 
     $CodeCoverage = "$projectRoot\tests\CodeCoverage.xml"
+    Remove-Item -Path $CodeCoverage -Force
     $TestResults = "$projectRoot\tests\TestResults.xml"
+    $CodeCov = "$projectRoot\tests\codecov.exe"
 
     # Invoke Pester tests
     $Config = [PesterConfiguration]::Default
@@ -42,20 +41,35 @@ If (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
     $res = Invoke-Pester -Configuration $Config
 
     # Upload test results to AppVeyor
-    If ($res.FailedCount -gt 0) { Throw "$($res.FailedCount) tests failed." }
-    If (Test-Path -Path env:APPVEYOR_JOB_ID) {
-        (New-Object -TypeName "System.Net.WebClient").UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $TestResults))
+    if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed." }
 
-        $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -Outfile "$projectRoot\tests\codecov.exe"
-        . "$projectRoot\tests\codecov.exe" -t $env:CODECOV_TOKEN -f $CodeCoverage
-        Remove-Item -Path "$projectRoot\tests\codecov.exe" -Force
+    Write-Host ""
+    if (Test-Path -Path env:APPVEYOR_JOB_ID) {
+
+        if (Test-Path -Path $TestResults) {
+            Write-Host "Found: $TestResults."
+            $WebClient = New-Object -TypeName "System.Net.WebClient"
+            $WebClient.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path -Path $TestResults))
+        }
+        else {
+            Write-Host "Can't find: $TestResults."
+        }
+
+        # if (Test-Path -Path $CodeCoverage) {
+        #     Write-Host "Found: $CodeCoverage."
+        #     Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -OutFile $CodeCov -UseBasicParsing
+        #     . $CodeCov -t $env:CODECOV_TOKEN -f $CodeCoverage
+        #     Remove-Item -Path $CodeCov -Force
+        # }
+        # else {
+        #     Write-Host "Can't find: $CodeCoverage."
+        # }
     }
-    Else {
+    else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"
     }
 }
-Else {
+else {
     Write-Warning -Message "Required variable does not exist: projectRoot."
 }
 
