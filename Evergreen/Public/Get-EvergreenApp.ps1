@@ -27,6 +27,7 @@ Function Get-EvergreenApp {
             # Build a path to the application function
             # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
             $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
+            Write-Verbose -Message "Function path: $Function"
         }
         catch {
             throw "Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
@@ -80,9 +81,17 @@ Function Get-EvergreenApp {
             }
         }
         else {
-            Write-Warning -Message "Please list valid application names with Find-EvergreenApp."
-            Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
-            throw "Cannot find application script at: $Function."
+            Write-Information -MessageData "" -InformationAction "Continue"
+            Write-Information -MessageData "Please list supported application names with Find-EvergreenApp." -InformationAction "Continue"
+            Write-Information -MessageData "Find out how to contribute a new application to the Evergreen project here: $($script:resourceStrings.Uri.Docs)." -InformationAction "Continue"
+            $List = Find-EvergreenApp -Name $Name -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
+            if ($Null -ne $List) {
+                Write-Information -MessageData "" -InformationAction "Continue"
+                Write-Information -MessageData "'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
+                $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
+                Write-Information -MessageData "" -InformationAction "Continue"
+            }
+            throw "'$Name' is not a supported application."
         }
         #endregion
     }

@@ -4,6 +4,7 @@
 
 * Adds functions to create an Evergreen library - a library is a directory that contains application installers and allows you to keep multiple versions. Functions are `New-EvergreenLibrary`, `Invoke-EvergreenLibraryUpdate`, and `Get-EvergreenLibrary` [#357](https://github.com/aaronparker/evergreen/discussions/357)
 * Updates `MicrosoftFSLogixApps` to revert the source URL to `https://aka.ms/fslogix/download`. Hey, Microsoft, any chance you could stop changing the source URL please!? [#359](https://github.com/aaronparker/evergreen/issues/359)
+* Updates output from `Get-EvergreenApp` where a an unsupported value for `-Name` is specified. `Get-EvergreenApp` will attempt to output supported similar applications
 
 ## 2207.596
 
