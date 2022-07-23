@@ -356,7 +356,7 @@ Describe -Name "Save-File" {
         It "Returns a string if the file is downloaded" {
             InModuleScope Evergreen {
                 $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
-                (Save-File -Uri $Uri) | Should -BeOfType [System.String]
+                (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
             }
         }
     }
