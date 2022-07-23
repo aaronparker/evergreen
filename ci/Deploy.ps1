@@ -34,11 +34,11 @@ if ($env:APPVEYOR_REPO_BRANCH -ne 'main') {
             git config --global core.safecrlf false
     
             # Push changes to GitHub
-            Invoke-Process -FilePath "git" -ArgumentList "checkout main"
+            Invoke-Process -FilePath "git" -ArgumentList "checkout $env:APPVEYOR_REPO_BRANCH"
             git add --all
             git status
             git commit -s -m "Upload test results. AppVeyor build: $($env:APPVEYOR_BUILD_NUMBER)"
-            Invoke-Process -FilePath "git" -ArgumentList "push origin main"
+            Invoke-Process -FilePath "git" -ArgumentList "push origin $env:APPVEYOR_REPO_BRANCH"
             Write-Host "Changes pushed to GitHub." -ForegroundColor "Cyan"
         }
         catch {
@@ -52,7 +52,6 @@ elseif ($env:APPVEYOR_PULL_REQUEST_NUMBER -gt 0) {
     Write-Warning -Message "Skipping version increment and push for pull request #$env:APPVEYOR_PULL_REQUEST_NUMBER"
 }
 else {
-
     if (Test-Path -Path "env:APPVEYOR_BUILD_FOLDER") {
         # AppVeyor Testing
         $projectRoot = Resolve-Path -Path $env:APPVEYOR_BUILD_FOLDER

@@ -71,7 +71,6 @@ Describe -Name "Get-GitHubRepoRelease" {
             }
         }
 
-        <#
         It "Returns the expected properties" {
             InModuleScope Evergreen {
 
@@ -91,7 +90,6 @@ Describe -Name "Get-GitHubRepoRelease" {
                 $result.URI.Length | Should -BeGreaterThan 0
             }
         }
-        #>
     }
 }
 
@@ -160,4 +158,3 @@ Describe -Name "Get-SourceForgeRepoRelease" {
         }
     }
 }
-
