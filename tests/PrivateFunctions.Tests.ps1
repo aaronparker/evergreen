@@ -131,6 +131,22 @@ Describe -Name "Get-Platform" {
     }
 }
 
+Describe -Name "Get-FileType" {
+    Context "Ensure file type is returned" {
+        It "Given a file path string it returns the right file type" {
+            InModuleScope Evergreen {
+                Get-FileType -File "test.txt" | Should -Be "txt"
+            }
+        }
+
+        It "Given an file path string without an extension it returns null" {
+            InModuleScope Evergreen {
+                Get-FileType -File "testtxt" | Should -BeNullOrEmpty
+            }
+        }
+    }
+}
+
 Describe -Name "Get-SourceForgeRepoRelease" {
     Context "Validate function returns expected object" {
         It "Returns an object with expected properties" {
@@ -155,6 +171,191 @@ Describe -Name "Get-SourceForgeRepoRelease" {
                 $object.Type.Length | Should -BeGreaterThan 0
                 $object.URI.Length | Should -BeGreaterThan 0
             }
+        }
+    }
+}
+
+Describe -Name "Get-FunctionResource" {
+    Context "Ensure function resources are returned" {
+        It "Given a valid app it returns valid data" {
+            InModuleScope Evergreen {
+                Get-FunctionResource -AppName "MicrosoftEdge" | Should -BeOfType [System.Object]
+            }
+        }
+
+        It "Given an invalid application, it throws" {
+            InModuleScope Evergreen {
+                { Get-FunctionResource -AppName "DoesNotExist" } | Should -Throw
+            }
+        }
+    }
+}
+
+Describe -Name "Get-ModuleResource" {
+    Context "Ensure module resources are returned" {
+        It "Returns the module resource" {
+            InModuleScope Evergreen {
+                Get-ModuleResource | Should -BeOfType [System.Object]
+            }
+        }
+
+        It "Given an invalid path, it throws" {
+            InModuleScope Evergreen {
+                { Get-ModuleResource -Path "C:\Temp\test.txt" } | Should -Throw
+            }
+        }
+
+        It "Returns an object with the expected properties" {
+            InModuleScope Evergreen {
+                (Get-ModuleResource).Uri.Project | Should -Not -BeNullOrEmpty
+                (Get-ModuleResource).Uri.Docs | Should -Not -BeNullOrEmpty
+                (Get-ModuleResource).Uri.Issues | Should -Not -BeNullOrEmpty
+                (Get-ModuleResource).Uri.Info | Should -Not -BeNullOrEmpty
+            }
+        }
+    }
+}
+
+# Add tests for these functions:
+Describe -Name "Invoke-RestMethodWrapper" {
+    Context "Ensure Invoke-RestMethodWrapper works as expected" {
+        It "Returns data from a proper URL" {
+            InModuleScope Evergreen {
+                $params = @{
+                    ContentType          = "application/vnd.github.v3+json"
+                    ErrorAction          = "SilentlyContinue"
+                    Method               = "Default"
+                    SkipCertificateCheck = $True
+                    SslProtocol          = "Tls12"
+                    UserAgent            = [Microsoft.PowerShell.Commands.PSUserAgent]::Safari
+                    Uri                  = "https://api.github.com/rate_limit"
+                }
+                Invoke-RestMethodWrapper -Uri @params | Should -BeOfType [System.Object]
+            }
+        }
+    }
+}
+
+Describe -Name "Invoke-SystemNetRequest" {
+    Context "Ensure Invoke-SystemNetRequest works as expected" {
+        It "Returns data from a URL" {
+            InModuleScope Evergreen {
+                $params = @{
+                    Uri                = "https://github.com"
+                    MaximumRedirection = 1
+                }
+                Invoke-SystemNetRequest @params | Should -BeOfType [System.String]
+            }
+        }
+    }
+}
+
+Describe -Name "Resolve-SystemNetWebRequest" {
+    Context "Ensure Resolve-SystemNetWebRequest works as expected" {
+        It "Returns data from a URL" {
+            InModuleScope Evergreen {
+                $params = @{
+                    Uri                = "https://github.com"
+                    MaximumRedirection = 1
+                }
+                (Resolve-SystemNetWebRequest @params).ResponseUri | Should -BeOfType [System.String]
+            }
+        }
+    }
+}
+
+Describe -Name "Invoke-WebRequestWrapper" {
+    Context "Ensure Invoke-WebRequestWrapper works as expected" {
+        It "Returns data from a URL" {
+            InModuleScope Evergreen {
+                $params = @{
+                    ContentType          = "text/html"
+                    ErrorAction          = "SilentlyContinue"
+                    #Headers
+                    #Raw
+                    #ReturnObject = "Content"
+                    Method               = "Default"
+                    SkipCertificateCheck = $True
+                    SslProtocol          = "Tls12"
+                    UserAgent            = [Microsoft.PowerShell.Commands.PSUserAgent]::Safari
+                    Uri                  = "https://github.com"
+                }
+                Invoke-WebRequestWrapper @params | Should -BeOfType [System.String]
+            }
+        }
+    }
+}
+
+Describe -Name "New-EvergreenPath" {
+    Context "Ensure New-EvergreenPath works as expected" {
+        It "Does not throw when creating a directory" {
+            InModuleScope Evergreen {
+                $Object = [PSCustomObject] @{
+                    "Product"      = "App"
+                    "Track"        = "Current"
+                    "Channel"      = "Stable"
+                    "Release"      = "Prod"
+                    "Ring"         = "Prod"
+                    "Version"      = "1.0.0"
+                    "Language"     = "English"
+                    "Architecture" = "x64"
+                }
+                New-EvergreenPath -InputObject $Object -Path "$Env:Temp" | Should -Not -Throw
+            }
+        }
+
+        It "Returns a string when creating a directory" {
+            InModuleScope Evergreen {
+                $Object = [PSCustomObject] @{
+                    "Product"      = "App"
+                    "Track"        = "Current"
+                    "Channel"      = "Stable"
+                    "Release"      = "Prod"
+                    "Ring"         = "Prod"
+                    "Version"      = "1.0.0"
+                    "Language"     = "English"
+                    "Architecture" = "x64"
+                }
+                (New-EvergreenPath -InputObject $Object -Path "$Env:Temp") | Should -BeOfType [System.String]
+            }
+        }
+    }
+}
+
+Describe -Name "Resolve-DnsNameWrapper" {
+    Context "Ensure Resolve-DnsNameWrapper works as expected" {
+        It "Returns DNS records OK" {
+            InModuleScope Evergreen {
+                $params = @{
+                    Uri  = "github.com"
+                    Type = "TXT"
+                }
+                Resolve-DnsNameWrapper @params | Should -BeOfType [System.Array]
+            }
+        }
+    }
+}
+
+Describe -Name "Resolve-InvokeWebRequest" {
+    Context "Ensure Resolve-InvokeWebRequest works as expected" {
+        It "Returns data from a URL" {
+            InModuleScope Evergreen {
+                $params = @{
+                    Uri                = "https://aka.ms"
+                    UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
+                    MaximumRedirection = 0
+                }
+                Resolve-InvokeWebRequest @params | Should -BeOfType [System.String]
+            }
+        }
+    }
+}
+
+Describe -Name "Save-File" {
+    Context "Ensure Save-File works as expected" {
+        It "Returns a string if the file is downloaded" {
+            $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
+            (Save-File -Uri $Uri) | Should -BeOfType [System.String]
         }
     }
 }
