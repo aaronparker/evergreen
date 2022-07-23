@@ -1,6 +1,6 @@
-﻿# 203 Supported applications
+﻿# 204 Supported applications
 
-Evergreen `2207.596` supports the following applications:
+Evergreen `2207.609` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -66,6 +66,7 @@ Evergreen `2207.596` supports the following applications:
 | GitHubAtom                            | GitHub Atom                                                       | https://atom.io/                                                                           |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                        |
 | GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                               |
+| Gpg4win                               | Gpg4win                                                           | https://www.gpg4win.org/                                                                   |
 | Greenshot                             | Greenshot                                                         | https://getgreenshot.org/                                                                  |
 | gretl                                 | gretl                                                             | http://gretl.sourceforge.net/                                                              |
 | Handbrake                             | Handbrake                                                         | https://handbrake.fr/                                                                      |
