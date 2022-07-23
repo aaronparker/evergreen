@@ -27,7 +27,7 @@ Function Get-Gpg4win {
 
         # Create download uri https://files.gpg4win.org/#version -> https://files.gpg4win.org/gpg4win-4.0.3.exe
         $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $LatestVersion
-    
+
         # Output the Version and URI object
         [PSCustomObject] @{
             Version      = $Version
@@ -35,5 +35,5 @@ Function Get-Gpg4win {
             Type         = [System.IO.Path]::GetExtension($Uri).TrimStart(".")
             URI          = $Uri
         }
-    }   
+    }
 }

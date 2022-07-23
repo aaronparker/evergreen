@@ -21,10 +21,10 @@ if ($env:APPVEYOR_REPO_BRANCH -ne 'main') {
             # Set up a path to the git.exe cmd, import posh-git to give us control over git
             $env:Path += ";$env:ProgramFiles\Git\cmd"
             Import-Module posh-git -ErrorAction "Stop"
-    
+
             # Dot source Invoke-Process.ps1. Prevent 'RemoteException' error when running specific git commands
             . $projectRoot\ci\Invoke-Process.ps1
-    
+
             # Configure the git environment
             git config --global credential.helper store
             Add-Content -Path (Join-Path -Path $env:USERPROFILE -ChildPath ".git-credentials") -Value "https://$($env:GitHubKey):x-oauth-basic@github.com`n"
@@ -32,7 +32,7 @@ if ($env:APPVEYOR_REPO_BRANCH -ne 'main') {
             git config --global user.name "$($env:APPVEYOR_REPO_COMMIT_AUTHOR)"
             git config --global core.autocrlf true
             git config --global core.safecrlf false
-    
+
             # Push changes to GitHub
             Invoke-Process -FilePath "git" -ArgumentList "checkout $env:APPVEYOR_REPO_BRANCH"
             git add --all
