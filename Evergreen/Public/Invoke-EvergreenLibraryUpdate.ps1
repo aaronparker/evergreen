@@ -53,7 +53,17 @@ function Invoke-EvergreenLibraryUpdate {
 
                         # Save the installers to the library
                         $Saved = $App | Save-EvergreenApp -Path $AppPath
-                        $Saved | Out-Null
+
+                        # Add the saved installer path to the application version information
+                        if ($Saved.Count -gt 1) {
+                            for ($i = 0; $i -lt $App.Count; $i++) {
+                                $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version }
+                                $App[$i] | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Item.FullName
+                            }
+                        }
+                        else {
+                            $App | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Saved.FullName
+                        }
 
                         # Write the application version information to the library
                         Export-EvergreenApp -InputObject $App -Path $(Join-Path -Path $AppPath -ChildPath "$($Application.Name).json")
