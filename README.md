@@ -13,7 +13,8 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 * [Image creation with Hashicorp Packer](https://github.com/aaronparker/packer) - images can be created with the latest version of a set of applications
 * Import applications into Microsoft Endpoint Manager - keep Configuration Manager or [Microsoft Intune](https://github.com/aaronparker/packagefactory) up to date with the latest versions of applications
 * Validating or [auditing a desktop image](https://github.com/aaronparker/w365) to ensure the current version of an application is installed
-* Create a [library of application installers](https://github.com/aaronparker/apptracker) - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
+* Create a [library of application installers](https://stealthpuppy.com/evergreen/newlibrary/) - by regularly running Evergreen functions, you can retrieve and download the current version of an application and store it in an application directory structure for later use
+* [Track application updates](https://github.com/aaronparker/apptracker) to stay on top of new releases
 * Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
 
 Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
@@ -30,7 +31,7 @@ Evergreen uses an approach that returns at least the version number and download
 Evergreen uses several strategies to return the latest version of software:
 
 1. Application update APIs - by using the same approach as the application itself, Evergreen can consistently return the latest version number and download URI - e.g., [Microsoft Edge](/Evergreen/Public/Get-MicrosoftEdge.ps1), [Mozilla Firefox](/Evergreen/Apps/Get-MozillaFirefox.ps1) or [Microsoft OneDrive](/Evergreen/Apps/Get-MicrosoftOneDrive.ps1). [Fiddler](https://www.telerik.com/fiddler) can often be used to find where an application queries for updates
-2. Repository APIs - repo hosts including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g., [Atom](/Evergreen/Apps/Get-Atom.ps1), [Notepad++](/Evergreen/Apps/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Apps/Get-WinMerge.ps1)
+2. Repository APIs - repo hosts including GitHub and SourceForge have APIs that can be queried to return application version and download links - e.g., [Audacity](/Evergreen/Apps/Get-Audacity.ps1), [Notepad++](/Evergreen/Apps/Get-NotepadPlusPlus.ps1) or [WinMerge](/Evergreen/Apps/Get-WinMerge.ps1)
 3. Web page queries - often a vendor download pages will include a query that returns JSON when listing versions and download links - this avoids page scraping. Evergreen can mimic this approach to return application download URLs; however, this approach is likely to fail if the vendor changes how their pages work - e.g., [Adobe Acrobat Reader DC](/Evergreen/Apps/Get-AdobeAcrobatReaderDC.ps1)
 4. Static URLs - some vendors provide static or evergreen URLs to their application installers. These URLs often provide additional information in the URL that can be used to determine the application version and can be resolved to the actual target URL - e.g., [Microsoft FSLogix Apps](/Evergreen/Apps/Get-MicrosoftFSLogixApps.ps1) or [Zoom](/Evergreen/Apps/Get-Zoom.ps1)
 

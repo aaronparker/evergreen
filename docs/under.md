@@ -17,12 +17,16 @@ Evergreen includes the following directory structure:
 
 The `Public` folder includes all functions exported from Evergreen:
 
-* `Get-EvergreenApp`
-* `Find-EvergreenApp`
-* `Save-EvergreenApp`
-* `Test-EvergreenApp`
-* `Export-EvergreenApp`
-* `Export-EvergreenManifest`
+* `Export-EvergreenApp.ps1`
+* `Export-EvergreenManifest.ps1`
+* `Find-EvergreenApp.ps1`
+* `Get-EvergreenApp.ps1`
+* `Get-EvergreenLibrary.ps1`
+* `Invoke-EvergreenApp.ps1`
+* `Invoke-EvergreenLibraryUpdate.ps1`
+* `New-EvergreenLibrary.ps1`
+* `Save-EvergreenApp.ps1`
+* `Test-EvergreenApp.ps1`
 
 ### Apps
 

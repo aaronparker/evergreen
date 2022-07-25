@@ -21,5 +21,8 @@ Primary functions in Evergreen are:
 * `Save-EvergreenApp` - simplifies downloading application URLs returned from `Get-EvergreenApp`
 * `Find-EvergreenApp` - lists applications supported by the module
 * `Test-EvergreenApp` - tests that the URIs returned by `Get-EvergreenApp` are valid
+* `New-EvergreenLibrary` - creates a new Evergreen library for downloading and maintaining multiple versions of application installers
+* `Invoke-EvergreenLibraryUpdate` - updates the application installers stored in an Evergreen library
+* `Export-EvergreenApp.ps1` - exports the application version information returned from `Get-EvergreenApp` to a JSON file
 
 [Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)
