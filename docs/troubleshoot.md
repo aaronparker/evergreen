@@ -1,5 +1,11 @@
 ﻿# Troubleshooting
 
+## Wait and Try Again
+
+The most common issues we see are transient - because Evergreen sources updates at the time you run the `Get-EvergreenApp`, the results can be affected by anything between you and the application vendor data source. An issue could be caused by network or DNS issues, of often by a vendor making changes on their end.
+
+If you experience an issue, wait an hour and try again.
+
 ## Function Errors
 
 If you encounter an error when returning details for an existing application, re-run the `Get-EvergreenApp` with the `-Verbose` parameter. This will display additional details and should provide some indication as to where the request is failing.
