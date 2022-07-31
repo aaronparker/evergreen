@@ -1,18 +1,17 @@
 # Auto detect text files and perform LF normalization
-*           text=auto
+#*           text=auto
 
 # Custom for PowerShell
-*.ps1       text eol=crlf
-*.psm1      text eol=crlf
-*.psd1      text eol=crlf
+*.ps1       text
+*.psm1      text
+*.psd1      text
 *.json      text
 *.xml       text
 
 # Documentation
 *.ipynb           text
 *.markdown        text
-docs/apps.md      text eol=crlf
-*.md              text=auto
+*.md              text
 *.mdwn            text
 *.mdown           text
 *.mkd             text
