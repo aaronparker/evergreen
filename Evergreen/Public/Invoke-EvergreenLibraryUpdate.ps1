@@ -45,11 +45,12 @@ function Invoke-EvergreenLibraryUpdate {
                         throw "Encountered an error creating script block with: $($_.Exception.Message)"
                     }
 
+                    # Gather the application version information from Get-EvergreenApp
                     $App = Get-EvergreenApp -Name $Application.EvergreenApp | Where-Object $WhereBlock
-                    Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
 
                     # If something returned, add to the library
                     if ($Null -ne $App) {
+                        Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
 
                         # Save the installers to the library
                         $Saved = $App | Save-EvergreenApp -Path $AppPath
@@ -58,10 +59,12 @@ function Invoke-EvergreenLibraryUpdate {
                         if ($Saved.Count -gt 1) {
                             for ($i = 0; $i -lt $App.Count; $i++) {
                                 $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version }
+                                Write-Verbose -Message "Add path to object: $($Item.FullName)"
                                 $App[$i] | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Item.FullName
                             }
                         }
                         else {
+                            Write-Verbose -Message "Add path to object: $($Saved.FullName)"
                             $App | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Saved.FullName
                         }
 
@@ -75,7 +78,7 @@ function Invoke-EvergreenLibraryUpdate {
             }
         }
         else {
-            throw "Cannot find path $Path because it does not exist."
+            throw "Cannot use path $Path because it does not exist or is not a directory."
         }
     }
 
