@@ -46,10 +46,11 @@ Function Get-Zoom {
 
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version  = $Version
-                Platform = $platform
-                Type     = $installer
-                URI      = $Url
+                Version      = $Version
+                Platform     = $platform
+                Type         = Get-FileType -File $Url
+                Architecture = Get-Architecture -String $Url
+                URI          = $Url
             }
             Write-Output -InputObject $PSObject
         }

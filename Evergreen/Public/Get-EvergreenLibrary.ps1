@@ -42,7 +42,7 @@ function Get-EvergreenLibrary {
                     }
 
                     foreach ($Application in $Library.Applications) {
-                        
+
                         # Add details for the application to the output object
                         $AppPath = $(Join-Path -Path $Path -ChildPath $Application.Name)
                         if (Test-Path -Path $AppPath) {

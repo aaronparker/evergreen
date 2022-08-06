@@ -25,7 +25,6 @@ if (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
     $CodeCoverage = "$projectRoot\tests\CodeCoverage.xml"
     Remove-Item -Path $CodeCoverage -Force
     $TestResults = "$projectRoot\tests\TestResults.xml"
-    $CodeCov = "$projectRoot\tests\codecov.exe"
 
     # Invoke Pester tests
     $Config = [PesterConfiguration]::Default
@@ -54,16 +53,6 @@ if (Get-Variable -Name "projectRoot" -ErrorAction "SilentlyContinue") {
         else {
             Write-Host "Can't find: $TestResults."
         }
-
-        # if (Test-Path -Path $CodeCoverage) {
-        #     Write-Host "Found: $CodeCoverage."
-        #     Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe -OutFile $CodeCov -UseBasicParsing
-        #     . $CodeCov -t $env:CODECOV_TOKEN -f $CodeCoverage
-        #     Remove-Item -Path $CodeCov -Force
-        # }
-        # else {
-        #     Write-Host "Can't find: $CodeCoverage."
-        # }
     }
     else {
         Write-Warning -Message "Cannot find: APPVEYOR_JOB_ID"

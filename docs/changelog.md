@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Updates `Zoom` to add `x64` and `ARM64` support for meetings clients. Updates `Platform` property to better identify application installer
+* Updates `Invoke-EvergreenLibraryUpdate` to add installer path to application version information JSON file
+
 ## 2207.609
 
 * Adds functions to create an Evergreen library - a library is a directory that contains application installers and allows you to keep multiple versions. Functions are `New-EvergreenLibrary`, `Invoke-EvergreenLibraryUpdate`, and `Get-EvergreenLibrary` [#357](https://github.com/aaronparker/evergreen/discussions/357)

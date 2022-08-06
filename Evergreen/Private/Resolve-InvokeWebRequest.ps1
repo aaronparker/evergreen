@@ -36,7 +36,7 @@ Function Resolve-InvokeWebRequest {
     if (Test-PSCore) {
         try {
             # If running PowerShell Core, request URL and catch the response
-            Invoke-WebRequest @iwrParams
+            Invoke-WebRequest @iwrParams | Out-Null
         }
         catch [System.Exception] {
             $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
