@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version:
+online version: https://stealthpuppy.com/evergreen/getlibrary.html
 schema: 2.0.0
 ---
 

@@ -2,7 +2,7 @@ version: 2207.{build}
 pull_requests:
   do_not_increment_build_number: true
 skip_commits:
-  message: /AppVeyor validate.*|Merge branch 'main' of.*|Update docs.*|Skip AppVeyor.*/
+  message: /AppVeyor validate.*|Merge branch 'main' of.*|Update docs.*|Skip AppVeyor.*|Upload test results.*/
 only_commits:
   files:
     - Evergreen/**/*
