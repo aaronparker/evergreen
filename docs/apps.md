@@ -207,4 +207,4 @@ Evergreen `2207.609` supports the following applications:
 | Wireshark                             | Wireshark                                                         | https://www.wireshark.org/#download                                                        |
 | WixToolset                            | WiX Toolset                                                       | https://wixtoolset.org/                                                                    |
 | Zoom                                  | Zoom                                                              | https://zoom.us/                                                                           |
-| Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                    |
+| Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                    |
