@@ -1,4 +1,4 @@
-version: 2207.{build}
+version: 2208.{build}
 pull_requests:
   do_not_increment_build_number: true
 skip_commits:
