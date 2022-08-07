@@ -2,9 +2,14 @@
 	"Name": "Bitwarden Desktop",
 	"Source": "https://bitwarden.com/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/bitwarden/clients/releases",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$"
+		"Update": {
+			"Uri": "https://artifacts.bitwarden.com/desktop/latest.yml",
+			"MatchVersion": "version:\\s(\\d+(\\.\\d+){1,4})"
+		},
+		"Download": {
+			"Uri": "https://artifacts.bitwarden.com/desktop/Bitwarden-Installer-#version.exe",
+			"ReplaceText": "#version"
+		}
 	},
 	"Install": {
 		"Setup": "Bitwarden*.exe",
