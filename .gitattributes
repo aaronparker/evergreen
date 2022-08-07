@@ -1,6 +1,9 @@
 # Auto detect text files and perform LF normalization
 #*           text=auto
 
+docs/apps.md      text eof=lf
+#docs/apps.md      text eol=crlf
+
 # Custom for PowerShell
 *.ps1       text
 *.psm1      text
@@ -35,23 +38,8 @@ readme            text
 TODO              text
 
 # Configs
-*.cnf             text
-*.conf            text
-*.config          text
-.editorconfig     text
-.env              text
 .gitattributes    text
 .gitconfig        text
-.htaccess         text
-*.lock            text -diff
-package-lock.json text -diff
-*.toml            text
-*.yaml            text
-*.yml             text
-browserslist      text
-Makefile          text
-makefile          text
-*.*ignore         text
 
 # Graphics
 *.ai              binary
