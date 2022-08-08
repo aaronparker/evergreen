@@ -49,17 +49,9 @@ Each application includes a manifest file in JSON format that includes details t
             "Uri": "https://update.vendorwebsite.com/api/product"
         }
     },
-    "Install": {
-        "Setup": "AppSetup*.exe",
-        "Physical": {
-            "Arguments": "",
-            "PostInstall": []
-        },
-        "Virtual": {
-            "Arguments": "",
-            "PostInstall": []
-        }
-    }
+    "Download": {
+            "Uri": "https://download.vendorwebsite.com/files"
+    },
 }
 ```
 

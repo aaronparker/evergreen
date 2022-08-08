@@ -3,7 +3,11 @@
 ## 2208.618
 
 * Updates `Zoom` to add `x64` and `ARM64` support for meetings clients. Updates `Platform` property to better identify application installer
-* Updates `Invoke-EvergreenLibraryUpdate` to add installer path to application version information JSON file
+* Updates `Invoke-EvergreenLibraryUpdate` to add installer path to application version information JSON file [#362](https://github.com/aaronparker/evergreen/discussions/362)
+
+BREAKING CHANGES
+
+* The values of the `Property` property in `Zoom` have changed. The values are `Meetings`, `Rooms`, `Plugin`, `VDI`, `Citrix`, `VMware`
 
 ## 2207.609
 

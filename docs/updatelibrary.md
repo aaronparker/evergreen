@@ -24,6 +24,7 @@ The Microsoft Teams installer will be downloaded in this example to the followin
   "URI": "https://statics.teams.cdn.office.net/production-windows-x64/1.5.00.17656/Teams_windows_x64.msi",
   "Type": "msi",
   "Ring": "General",
+  "Path": "/Users/aaron/Temp/Evergreen/MicrosoftTeams/General/1.5.00.17656/x64/Teams_windows_x64.msi",
   "Architecture": "x64"
 }
 ```
