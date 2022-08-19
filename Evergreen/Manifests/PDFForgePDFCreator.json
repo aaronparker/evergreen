@@ -3,7 +3,7 @@
 	"Source": "https://www.pdfforge.org/pdfcreator",
 	"Get": {
 		"Update": {
-			"Uri": "https://sourceforge.net/projects/pdfcreator/best_release.json",
+			"Uri": "https://update.pdfforge.org/pdfcreator/updates",
 			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download" : {
