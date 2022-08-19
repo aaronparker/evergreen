@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (08/06/2022 23:54:00)">
-  <sessioninfo id="this" start="1659829294080" dump="1659830040774" />
+<report name="Pester (08/19/2022 15:42:57)">
+  <sessioninfo id="this" start="1660922998731" dump="1660923777641" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -1203,7 +1203,7 @@
       <counter type="CLASS" missed="1" covered="0" />
     </class>
     <class name="Evergreen/Apps/Get-MicrosoftTeams" sourcefilename="Apps/Get-MicrosoftTeams.ps1">
-      <method name="Get-MicrosoftTeams" desc="()" line="17">
+      <method name="Get-MicrosoftTeams" desc="()" line="21">
         <counter type="INSTRUCTION" missed="3" covered="30" />
         <counter type="LINE" missed="1" covered="25" />
         <counter type="METHOD" missed="1" covered="0" />
@@ -1611,12 +1611,12 @@
     </class>
     <class name="Evergreen/Apps/Get-PDFForgePDFCreator" sourcefilename="Apps/Get-PDFForgePDFCreator.ps1">
       <method name="Get-PDFForgePDFCreator" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="3" covered="6" />
-        <counter type="LINE" missed="1" covered="6" />
+        <counter type="INSTRUCTION" missed="3" covered="21" />
+        <counter type="LINE" missed="1" covered="16" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="6" />
-      <counter type="LINE" missed="1" covered="6" />
+      <counter type="INSTRUCTION" missed="3" covered="21" />
+      <counter type="LINE" missed="1" covered="16" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -4261,32 +4261,32 @@
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
     <sourcefile name="Apps/Get-MicrosoftTeams.ps1">
-      <line nr="17" mi="3" ci="0" mb="0" cb="0" />
-      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="24" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="21" mi="3" ci="0" mb="0" cb="0" />
       <line nr="25" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="4" mb="0" cb="0" />
       <line nr="29" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="36" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
       <line nr="39" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="42" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="40" mi="0" ci="2" mb="0" cb="0" />
       <line nr="43" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="44" mi="0" ci="1" mb="0" cb="0" />
       <line nr="46" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="47" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="47" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="48" mi="0" ci="1" mb="0" cb="0" />
       <line nr="50" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="52" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="53" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="51" mi="0" ci="2" mb="0" cb="0" />
       <line nr="54" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="55" mi="0" ci="1" mb="0" cb="0" />
       <line nr="56" mi="0" ci="1" mb="0" cb="0" />
       <line nr="57" mi="0" ci="1" mb="0" cb="0" />
       <line nr="58" mi="0" ci="1" mb="0" cb="0" />
       <line nr="59" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="60" mi="0" ci="1" mb="0" cb="0" />
       <line nr="61" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="62" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="63" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="65" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="30" />
       <counter type="LINE" missed="1" covered="25" />
       <counter type="METHOD" missed="1" covered="0" />
@@ -4954,14 +4954,24 @@
     </sourcefile>
     <sourcefile name="Apps/Get-PDFForgePDFCreator.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
       <line nr="22" mi="0" ci="1" mb="0" cb="0" />
       <line nr="23" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
       <line nr="25" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="6" />
-      <counter type="LINE" missed="1" covered="6" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="38" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="39" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="41" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="21" />
+      <counter type="LINE" missed="1" covered="16" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -6067,8 +6077,8 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1074" covered="2616" />
-    <counter type="LINE" missed="491" covered="2088" />
+    <counter type="INSTRUCTION" missed="1074" covered="2631" />
+    <counter type="LINE" missed="491" covered="2098" />
     <counter type="METHOD" missed="205" covered="0" />
     <counter type="CLASS" missed="205" covered="0" />
   </package>
@@ -7326,8 +7336,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1392" covered="3361" />
-  <counter type="LINE" missed="673" covered="2632" />
+  <counter type="INSTRUCTION" missed="1392" covered="3376" />
+  <counter type="LINE" missed="673" covered="2642" />
   <counter type="METHOD" missed="206" covered="29" />
   <counter type="CLASS" missed="206" covered="29" />
 </report>
