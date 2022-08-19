@@ -89,5 +89,8 @@
         "Winget",
         "Wireshark",
         "xcopy"
-    ]
+    ],
+    "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1",
+    "powershell.scriptAnalysis.enable": true,
+    "pester.autoRunOnSave": false,
 }

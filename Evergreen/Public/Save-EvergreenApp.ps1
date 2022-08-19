@@ -100,7 +100,7 @@ Function Save-EvergreenApp {
                 if ([System.Boolean]($Object.FileName)) {
                     $OutFile = $Object.FileName
                 }
-                Elseif ([System.Boolean]($Object.URI)) {
+                elseif ([System.Boolean]($Object.URI)) {
                     $OutFile = Split-Path -Path $Object.URI -Leaf
                 }
             }
