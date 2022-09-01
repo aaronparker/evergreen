@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2209.622
 
 * Updates `BitwardenDesktop` to fix an issue with a change in GitHub repositories [#365](https://github.com/aaronparker/evergreen/issues/365)
 * Updates `VMwareTools` to address returning the latest Tools version where that version is not yet bundled with ESXi. [#336](https://github.com/aaronparker/evergreen/issues/336)
