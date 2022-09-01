@@ -1,7 +1,9 @@
 # Auto detect text files and perform LF normalization
 #*           text=auto
+* -text
+* whitespace=cr-at-eol
 
-docs/apps.md      text eof=lf
+#docs/apps.md      text eof=auto
 #docs/apps.md      text eol=crlf
 
 # Custom for PowerShell
