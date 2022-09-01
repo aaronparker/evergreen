@@ -9,7 +9,13 @@
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
             "Rings": {
                 "General": "general",
-                "Preview": "ring3_6"
+                "ITAdmins": "ring1_5",
+                "DeveloperPartners": "ring1_6",
+                "Dogfood": "ring2",
+                "TAP": "ring3",
+                "Preview": "ring3_6",
+                "OuterRing": "ring3_9",
+                "Public": "ring4"
             },
             "ReplaceText": "#ring"
         },
