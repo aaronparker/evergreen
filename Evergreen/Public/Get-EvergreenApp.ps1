@@ -74,7 +74,7 @@ Function Get-EvergreenApp {
             # Sort object on the Version property
             if ($Output) {
                 Write-Verbose -Message "Output result from: $Function."
-                Write-Output -InputObject ($Output | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
+                Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
             }
             else {
                 throw "Failed to capture output from: Get-$Name."

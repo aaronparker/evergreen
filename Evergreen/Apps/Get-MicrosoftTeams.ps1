@@ -6,6 +6,10 @@ Function Get-MicrosoftTeams {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
+
+            https://teams.microsoft.com/desktopclient/installer/windows/x64
+            https://teams.microsoft.com/desktopclient/installer/windows/x86
+            https://teams.microsoft.com/desktopclient/installer/windows/arm64
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]

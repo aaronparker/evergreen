@@ -31,7 +31,6 @@
         # Format the results returns and convert into an array that we can sort and use
         Write-Verbose -Message "$($MyInvocation.MyCommand): Filtering version table with $($Content.Count) lines."
         $Lines = $Content | Where-Object { $_ -notmatch "^#" }
-        $Lines = $Lines | Where-Object { $_ -notmatch "esx/0.0" }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Filtered to $($Lines.Count) lines."
 
         Write-Verbose -Message "$($MyInvocation.MyCommand): Selecting first 20 lines."
@@ -39,6 +38,9 @@
 
         Write-Verbose -Message "$($MyInvocation.MyCommand): Convert to table."
         try {
+            # Lines with ESXi server version 'esx/0.0' are missing column 3: ESXi server build number, so set this to '0' to not break table creation.
+            # The ESXi server build number, even if set to 0, will not be used further in the process.
+            $Lines = $Lines | ForEach-Object { $_ -replace 'esx/0.0', 'esx/0.0 0' }
             $Lines = $Lines | ForEach-Object { $_ -replace '\s+', ',' }
             $VersionTable = $Lines | ConvertFrom-Csv -Delimiter "," -Header $res.Get.Update.CsvHeaders | `
                 Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true }
