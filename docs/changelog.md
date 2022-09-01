@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Updates `BitwardenDesktop` to fix an issue with a change in GitHub repositories [#365](https://github.com/aaronparker/evergreen/issues/365)
+* Updates `VMwareTools` to address returning the latest Tools version where that version is not yet bundled with ESXi. [#336](https://github.com/aaronparker/evergreen/issues/336)
+* Updates `PDFForgePDFCreator` to change the source location for updates and ensure it returns the current version [#368](https://github.com/aaronparker/evergreen/issues/368)
+
 ## 2208.618
 
 * Updates `Zoom` to add `x64` and `ARM64` support for meetings clients. Updates `Platform` property to better identify application installer
