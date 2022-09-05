@@ -2,6 +2,7 @@
 
 ## VERSION
 
+* Adds `TrackerSoftwarePDFXChangeEditor` [#371](https://github.com/aaronparker/evergreen/issues/371)
 * Updates `MicrosoftOneDrive` to better handle the update source that returns BOM characters without having to perform a find/replace
 
 ## 2209.622
