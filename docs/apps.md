@@ -1,6 +1,6 @@
-﻿# 204 Supported applications
+﻿# 206 Supported applications
 
-Evergreen `2209.622` supports the following applications:
+Evergreen `2209.629` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -126,6 +126,7 @@ Evergreen `2209.622` supports the following applications:
 | MiniZincIDE                           | MiniZinc IDE                                                      | https://www.minizinc.org/                                                                  |
 | MirantisLens                          | MirantisLens                                                      | https://k8slens.dev/                                                                       |
 | MozillaFirefox                        | Mozilla Firefox                                                   | https://www.mozilla.org/en-US/firefox/new/                                                 |
+| MozillaGeckoDriver                    | Mozilla Gecko Driver                                              | https://developer.mozilla.org/en-US/docs/Web/WebDriver                                     |
 | MozillaThunderbird                    | Mozilla Thunderbird                                               | https://www.thunderbird.net/                                                               |
 | mRemoteNG                             | mRemoteNG                                                         | https://mremoteng.org/                                                                     |
 | MuseScore                             | MuseScore                                                         | https://musescore.org/                                                                     |
@@ -188,6 +189,7 @@ Evergreen `2209.622` supports the following applications:
 | TogglDesktop                          | Toggl Desktop                                                     | https://www.toggl.com/                                                                     |
 | TorProjectTorBrowser                  | Tor Project Tor Browser                                           | https://www.torproject.org/                                                                |
 | Tower                                 | Tower                                                             | https://www.git-tower.com/windows/                                                         |
+| TrackerSoftwarePDFXChangeEditor       | Tracker Software PDF X-Change Editor                              | https://pdf-xchange.eu/pdf-xchange-editor/index.htm                                        |
 | USBPcap                               | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                        |
 | VastLimitsUberAgent                   | vast limits uberAgent                                             | https://uberagent.com/                                                                     |
 | VeraCrypt                             | VeraCrypt                                                         | https://www.veracrypt.fr/en/Home.html                                                      |

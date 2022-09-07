@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2209.629
 
 * Adds `TrackerSoftwarePDFXChangeEditor` [#371](https://github.com/aaronparker/evergreen/issues/371), `MozillaGeckoDriver` [#375](https://github.com/aaronparker/evergreen/issues/375)
 * Adds additional release rings for `MicrosoftTeams`
