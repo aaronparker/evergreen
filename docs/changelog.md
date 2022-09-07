@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `TrackerSoftwarePDFXChangeEditor` [#371](https://github.com/aaronparker/evergreen/issues/371), `MozillaGeckoDriver` [#375](https://github.com/aaronparker/evergreen/issues/375)
+* Adds additional release rings for `MicrosoftTeams`
+* Updates `MicrosoftOneDrive` to better handle the update source that returns BOM characters without having to perform a find/replace
+* Updates public functions for better support for `-WhatIf` [#372](https://github.com/aaronparker/evergreen/issues/372)
+
 ## 2209.622
 
 * Updates `BitwardenDesktop` to fix an issue with a change in GitHub repositories [#365](https://github.com/aaronparker/evergreen/issues/365)
