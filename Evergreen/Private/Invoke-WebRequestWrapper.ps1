@@ -8,7 +8,7 @@ Function Invoke-WebRequestWrapper {
             TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $True)]
     param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
@@ -107,7 +107,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $iwrParams.SslProtocol = $SslProtocol
     }
     If ($PSBoundParameters.ContainsKey("Raw")) {
-        $tempFile = New-TemporaryFile
+        $tempFile = New-TemporaryFile -WhatIf:$WhatIfPreference
         $iwrParams.OutFile = $tempFile
         $iwrParams.PassThru = $True
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
@@ -119,7 +119,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
     # Call Invoke-WebRequest
     try {
-        $Response = Invoke-WebRequest @iwrParams
+        if ($PSCmdlet.ShouldProcess($Uri, "Invoke-WebRequest")) {
+            $Response = Invoke-WebRequest @iwrParams
+        }
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."

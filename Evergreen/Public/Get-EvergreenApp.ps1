@@ -3,7 +3,7 @@ Function Get-EvergreenApp {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/use/")]
+    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/use/")]
     [Alias("gea")]
     param (
         [Parameter(
@@ -16,9 +16,9 @@ Function Get-EvergreenApp {
         [System.String] $Name,
 
         [Parameter(
-        Mandatory = $False,
-        Position = 1,
-        HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
+            Mandatory = $False,
+            Position = 1,
+            HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
         [System.Collections.Hashtable] $AppParams
     )
 
@@ -72,12 +72,14 @@ Function Get-EvergreenApp {
 
             # if we get an object, return it to the pipeline
             # Sort object on the Version property
-            if ($Output) {
-                Write-Verbose -Message "Output result from: $Function."
-                Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
-            }
-            else {
-                throw "Failed to capture output from: Get-$Name."
+            if ($PSCmdlet.ShouldProcess($Function, "Return output")) {
+                if ($Output) {
+                    Write-Verbose -Message "Output result from: $Function."
+                    Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
+                }
+                else {
+                    throw "Failed to capture output from: Get-$Name."
+                }
             }
         }
         else {

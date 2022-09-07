@@ -136,49 +136,50 @@ Function Save-EvergreenApp {
                 }
             }
 
-            # Download the file
-            if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
+            $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
+            if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
 
-                $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-                if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
-
-                    try {
-                        #region Download the file
-                        $params = @{
-                            Uri             = $Object.URI
-                            OutFile         = $DownloadFile
-                            UseBasicParsing = $True
-                            ErrorAction     = "Continue"
-                        }
-                        if ($PSBoundParameters.ContainsKey("Proxy")) {
-                            $params.Proxy = $Proxy
-                        }
-                        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
-                            $params.ProxyCredential = $ProxyCredential
-                        }
+                try {
+                    #region Download the file
+                    $params = @{
+                        Uri             = $Object.URI
+                        OutFile         = $DownloadFile
+                        UseBasicParsing = $True
+                        ErrorAction     = "Continue"
+                    }
+                    if ($PSBoundParameters.ContainsKey("Proxy")) {
+                        $params.Proxy = $Proxy
+                    }
+                    if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                        $params.ProxyCredential = $ProxyCredential
+                    }
+                    # Download the file
+                    if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
                         Invoke-WebRequest @params
-                        #endregion
+                    }
+                    #endregion
 
-                        #region Write the downloaded file path to the pipeline
+                    #region Write the downloaded file path to the pipeline
+                    if ($PSCmdlet.ShouldProcess($DownloadFile, "Output to pipeline")) {
                         if (Test-Path -Path $DownloadFile) {
                             Write-Verbose -Message "Successfully downloaded: $DownloadFile."
                             Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                         }
-                        #endregion
-                    }
-                    catch [System.Exception] {
-                        Write-Error -Message "Download failed: $($Object.URI)"
-                        Write-Error -Message "Error: $($_.Exception.Message)"
-                    }
-                }
-                else {
-                    #region Write the downloaded file path to the pipeline
-                    if (Test-Path -Path $DownloadFile) {
-                        Write-Verbose -Message "File exists: $DownloadFile."
-                        Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                     }
                     #endregion
                 }
+                catch [System.Exception] {
+                    Write-Error -Message "Download failed: $($Object.URI)"
+                    Write-Error -Message "Error: $($_.Exception.Message)"
+                }
+            }
+            else {
+                #region Write the downloaded file path to the pipeline
+                if (Test-Path -Path $DownloadFile) {
+                    Write-Verbose -Message "File exists: $DownloadFile."
+                    Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
+                }
+                #endregion
             }
         }
     }
