@@ -1,7 +1,7 @@
-Function Get-Notepad3 {
+Function Get-RizonesoftNotepad3 {
     <#
         .SYNOPSIS
-            Returns the latest Notepad3 version.
+            Returns the latest Rizonesoft Notepad3 version.
 
         .NOTES
             Author: Aaron Parker

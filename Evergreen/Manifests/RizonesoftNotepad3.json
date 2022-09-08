@@ -1,6 +1,6 @@
 {
-	"Name": "Notepad3",
-	"Source": "https://github.com/rizonesoft/Notepad3",
+	"Name": "Rizonesoft Notepad3",
+	"Source": "https://www.rizonesoft.com/downloads/notepad3",
 	"Get": {
 		"Uri": "https://api.github.com/repos/rizonesoft/Notepad3/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4})",
