@@ -37,7 +37,7 @@ body:
       description: "If the vendor requires a sign-in to download installers, this application probably won't be a good candidate for Evergreen."
       multiple: false
       options:
-        - label: Yes
-        - label: No
+        - Yes
+        - No
     validations:
       required: true
