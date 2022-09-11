@@ -10,34 +10,34 @@ body:
   - type: textarea
     id: feature
     attributes:
-      label: What is the new application?
-      description: Provide clear details about the new application you want to see added to Evergreen.
+      label: "What is the new application?"
+      description: "Provide clear details about the new application you want to see added to Evergreen."
       placeholder: "Provide details of the new application that could be added to Evergreen. If known, please add details of an update source/API etc., where current versions of this application can be queried."
     validations:
       required: true
   - type: input
     id: site
     attributes:
-      label: Vendor site
-      description: Add a link to the official site for this application
+      label: "Vendor site"
+      description: "Add a link to the official site for this application"
       placeholder: https://www.vendor.com
     validations:
       required: true
   - type: checkboxes
     id: documentation
     attributes:
-      label: Have you reviewed the list of supported applications?
+      label: "Have you reviewed the list of supported applications?"
       description: "Please confirm that you've reviewed the list of currently supported before making this application request." 
       options:
         - label: "Supported apps at: https://stealthpuppy.com/evergreen/apps/"
           required: true
   - type: dropdown
     attributes:
-      label: Does the vendor require a sign-in?
+      label: "Does the vendor require a sign-in?"
       description: "If the vendor requires a sign-in to download installers, this application probably won't be a good candidate for Evergreen."
       multiple: false
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
     validations:
       required: true
