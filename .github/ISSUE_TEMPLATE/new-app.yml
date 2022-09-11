@@ -30,5 +30,14 @@ body:
       description: "Please confirm that you've reviewed the list of currently supported before making this application request." 
       options:
         - label: "Supported apps at: https://stealthpuppy.com/evergreen/apps/"
+          required: true
+  - type: dropdown
+    attributes:
+      label: Does the vendor require a sign-in?
+      description: "If the vendor requires a sign-in to download installers, this application probably won't be a good candidate for Evergreen."
+      multiple: false
+      options:
+        - label: Yes
+        - label: No
     validations:
       required: true
