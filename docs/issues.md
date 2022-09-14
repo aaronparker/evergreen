@@ -30,14 +30,20 @@ The 32-bit installers returned by `7Zip` link to a SourceForge download page ins
 
 ### AdobeAcrobat
 
-Where Adobe releases an update for Acrobat/Reader for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
+Where Adobe releases an update for Acrobat/Reader DC for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
 
 The determine the current update version of `AdobeAcrobat`, the [URL for macOS updates](https://armmf.adobe.com/arm-manifests/win/AcrobatDC/acrobat/current_version.txt) is used. This provides a simple text lookup of the latest version number.
 
 !!! info "Note"
     The Windows version of Adobe Acrobat and Reader uses an update URL like: `https://armmf.adobe.com/arm-manifests/win/AcrobatDCManifest3.msi`, which would require unpacking and parsing the MSI file. Sample code to query the MSI database has been posted here: [AdobeReader download links not valid](https://github.com/aaronparker/evergreen/issues/312#issuecomment-1103712904); however, this approach will only work on a Windows hosts and will not support macOS or Linux.
 
-An alternative application - `AdobeAcrobatDC` uses a web API lookup to determine the current version of Adobe Acrobat Reader DC, Acrobat Standard DC, and Acrobat Pro DC. Earlier version of Acrobat are still affected by this issue.
+Alternative application - `AdobeAcrobatDC` and `AdobeAcrobatReaderDC` use a web API lookup to determine the current version of Adobe Acrobat Reader DC, Acrobat Standard DC, and Acrobat Pro DC. Earlier version of Acrobat are still affected by this issue.
+
+### AdobeAcrobatReaderDC
+
+`AdobeAcrobatReaderDC` may not return an installer with the [latest update](https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html). This application determines the available installers from the [Adobe Acrobat Reader download page](https://get.adobe.com/reader/) - Adobe does not always immediately make the latest update available in the current downloadable installer version.
+
+Validate whether `AdobeAcrobat` returns the latest update version.
 
 ### CiscoWebEx
 
