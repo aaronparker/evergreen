@@ -35,7 +35,8 @@
                         "Multi": "https://ardownload2.adobe.com/pub/adobe/reader/win/Acrobat#track/#version/AcroRdr#trackUpd#version_MUI.msp"
                     },
                     "x64": {
-                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/AcroRdr#trackx64Upd#version.msp"
+                        "Neutral": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/AcroRdr#trackx64Upd#version.msp",
+                        "Multi": "https://ardownload2.adobe.com/pub/adobe/acrobat/win/Acrobat#track/#version/AcroRdr#trackx64Upd#version_MUI.msp"
                     }
                 }
             },
