@@ -2,7 +2,6 @@ Function Get-ZorgmailVeiligVerzendenAddin {
     <#
         .NOTES
             Author: Rico Roodenburg
-
     #>
 
     [OutputType([System.Management.Automation.PSObject])]
@@ -14,23 +13,19 @@ Function Get-ZorgmailVeiligVerzendenAddin {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Query the Horizon Client update feed
     $params = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
     $UpdateFeed = Invoke-RestMethodWrapper @params
 
-    # Convert content to XML document
-    If ($Null -ne $UpdateFeed) {
-
-        $res.Get.Download.Editions | Foreach {
-
+    if ($Null -ne $UpdateFeed) {
+        $res.Get.Download.Editions | ForEach-Object {
             $uri = $res.Get.Download.Uri
-                        
-            If ($_ -eq "Default"){
+            if ($_ -eq "Default") {
                 $uri = $uri -replace "#edition", ""
-            }Else{
+            }
+            else {
                 $uri = $uri -replace "#edition", "-$($_)"
             }
 
@@ -39,11 +34,7 @@ Function Get-ZorgmailVeiligVerzendenAddin {
                 Edition = $_
                 URI     = $uri
             }
-
             Write-Output -InputObject $PSObject
-
         }
-
     }
-
 }
