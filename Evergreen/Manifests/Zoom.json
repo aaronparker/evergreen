@@ -4,20 +4,28 @@
     "Get": {
         "Download": {
             "Meetings": {
-                "Exex86": "https://zoom.us/client/latest/ZoomInstaller.exe",
+                "Exex86": "https://zoom.us/client/latest/ZoomInstallerFull.exe",
                 "Exex64": "https://zoom.us/client/latest/ZoomInstallerFull.exe?archType=x64",
                 "ExeArm64": "https://zoom.us/client/latest/ZoomInstallerFull.exe?archType=winarm64",
                 "Msix86": "https://zoom.us/client/latest/ZoomInstallerFull.msi",
                 "Msix64": "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64",
                 "MsiArm64": "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=winarm64"
             },
-            "Plugin": {
-                "Outlook": "https://zoom.us/client/latest/ZoomOutlookPluginSetup.msi",
-                "Notes": "https://zoom.us/client/latest/ZoomNotesPluginSetup.msi",
-                "Lync": "https://zoom.us/client/latest/ZoomLyncPluginSetup.msi"
-            },
             "Rooms": {
-                "Rooms": "https://zoom.us/client/latest/ZoomRooms.exe"
+                "Exex86": "https://zoom.us/client/latest/ZoomRooms.exe",
+                "Exex64": "https://zoom.us/client/latest/ZoomRooms.exe?archType=x64",
+                "Msix86": "https://zoom.us/client/latest/ZoomRoomsInstaller.msi",
+                "Msix64": "https://zoom.us/client/latest/ZoomRoomsInstaller.msi?archType=x64"
+            },
+            "Outlook": {
+                "Msix86": "https://zoom.us/client/latest/ZoomOutlookPluginSetup.msi"
+            },
+            "Lync": {
+                "Msix86": "https://zoom.us/client/latest/ZoomLyncPluginSetup.msi"
+            },
+            "Notes": {
+                "Notes": "https://zoom.us/client/latest/ZoomNotesPluginSetup.msi",
+                "Admin": "https://zoom.us/client/latest/ZoomNotesPluginAdminTool.msi"
             },
             "VDI": {
                 "Host": "https://zoom.us/download/vdi/ZoomInstallerVDI.msi"
