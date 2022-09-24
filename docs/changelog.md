@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2209.641
 
 * Adds `PiriformCCleanerFree` [#291](https://github.com/aaronparker/evergreen/issues/291), `RizonesoftNotepad3`, `ZorgmailVeiligVerzendenAddin`, `SoberLemurPDFSamBasic` [#390](https://github.com/aaronparker/evergreen/issues/390)
 * Updates `Zoom` with additional installers [#377](https://github.com/aaronparker/evergreen/issues/377)

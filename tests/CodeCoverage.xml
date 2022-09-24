@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (09/15/2022 05:18:51)">
-  <sessioninfo id="this" start="1663218312372" dump="1663219131474" />
+<report name="Pester (09/24/2022 23:45:58)">
+  <sessioninfo id="this" start="1664062389699" dump="1664063158777" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -1884,6 +1884,17 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
+    <class name="Evergreen/Apps/Get-SoberLemurPDFSamBasic" sourcefilename="Apps/Get-SoberLemurPDFSamBasic.ps1">
+      <method name="Get-SoberLemurPDFSamBasic" desc="()" line="17">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
     <class name="Evergreen/Apps/Get-stealthpuppyWindowsCustomisedDefaults" sourcefilename="Apps/Get-stealthpuppyWindowsCustomisedDefaults.ps1">
       <method name="Get-stealthpuppyWindowsCustomisedDefaults" desc="()" line="17">
         <counter type="INSTRUCTION" missed="3" covered="6" />
@@ -2288,6 +2299,17 @@
       </method>
       <counter type="INSTRUCTION" missed="7" covered="15" />
       <counter type="LINE" missed="3" covered="15" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-ZorgmailVeiligVerzendenAddin" sourcefilename="Apps/Get-ZorgmailVeiligVerzendenAddin.ps1">
+      <method name="Get-ZorgmailVeiligVerzendenAddin" desc="()" line="13">
+        <counter type="INSTRUCTION" missed="3" covered="17" />
+        <counter type="LINE" missed="1" covered="15" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="17" />
+      <counter type="LINE" missed="1" covered="15" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -5459,6 +5481,19 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-SoberLemurPDFSamBasic.ps1">
+      <line nr="17" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-stealthpuppyWindowsCustomisedDefaults.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
@@ -6186,6 +6221,28 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-ZorgmailVeiligVerzendenAddin.ps1">
+      <line nr="13" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="16" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="17" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="18" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="17" />
+      <counter type="LINE" missed="1" covered="15" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-Zotero.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
@@ -6199,10 +6256,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1108" covered="2670" />
-    <counter type="LINE" missed="513" covered="2130" />
-    <counter type="METHOD" missed="209" covered="0" />
-    <counter type="CLASS" missed="209" covered="0" />
+    <counter type="INSTRUCTION" missed="1114" covered="2693" />
+    <counter type="LINE" missed="515" covered="2151" />
+    <counter type="METHOD" missed="211" covered="0" />
+    <counter type="CLASS" missed="211" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -7465,8 +7522,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1422" covered="3426" />
-  <counter type="LINE" missed="693" covered="2683" />
-  <counter type="METHOD" missed="210" covered="29" />
-  <counter type="CLASS" missed="210" covered="29" />
+  <counter type="INSTRUCTION" missed="1428" covered="3449" />
+  <counter type="LINE" missed="695" covered="2704" />
+  <counter type="METHOD" missed="212" covered="29" />
+  <counter type="CLASS" missed="212" covered="29" />
 </report>
