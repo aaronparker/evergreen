@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds `PiriformCCleanerFree` [#291](https://github.com/aaronparker/evergreen/issues/291), `RizonesoftNotepad3`, `ZorgmailVeiligVerzendenAddin`, `SoberLemurPDFSamBasic` [#390](https://github.com/aaronparker/evergreen/issues/390)
+* Updates `Zoom` with additional installers [#377](https://github.com/aaronparker/evergreen/issues/377)
+* Updates `AdobeAcrobat` with the 64-bit MUI update
+* Fixes missing manifest for `ConnectionExperienceIndicator`
+* Updates `MozillaFirefox` with the `FIREFOX_ESR_NEXT` channel [#383](https://github.com/aaronparker/evergreen/issues/383)
+
 ## 2209.629
 
 * Adds `TrackerSoftwarePDFXChangeEditor` [#371](https://github.com/aaronparker/evergreen/issues/371), `MozillaGeckoDriver` [#375](https://github.com/aaronparker/evergreen/issues/375)
