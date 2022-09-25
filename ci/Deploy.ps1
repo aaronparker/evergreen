@@ -114,7 +114,7 @@ else {
             $markdown += $line
             $markdown += "`n`n"
             $markdown += Find-EvergreenApp | New-MDTable
-            Out-File -FilePath $OutFile -NoNewline -Force -Encoding "Utf8"
+            $markdown | Out-File -FilePath $OutFile -NoNewline -Force -Encoding "Utf8"
         }
         catch {
             throw $_
