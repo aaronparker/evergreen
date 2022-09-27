@@ -1,0 +1,31 @@
+name: mkdocs-build
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: |
+          pip install mkdocs-material
+          pip install pillow cairosvg
+          git pull origin main
+          pip install -r requirements.txt
+          mkdocs gh-deploy --force

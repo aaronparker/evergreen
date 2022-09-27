@@ -1,9 +1,9 @@
 # Project information
-site_name: Evergreen docs
+site_name: Evergreen
 site_url: https://stealthpuppy.com/evergreen
 site_author: Aaron Parker
 site_description: >-
-  Documentation for the Evergreen PowerShell module
+  Enterprise automation for Windows applications and image management
 
 # Repository
 repo_name: aaronparker/evergreen
@@ -62,11 +62,15 @@ extra_javascript:
 # Plugins
 plugins:
   - search
-  - redirects:
-      redirect_maps:
   - minify:
       minify_html: true
       minify_js: true
+  - social:
+      cards: true
+      cards_color:
+        fill: "#009485"
+        text: "#FFFFFF"
+      cards_font: Roboto
 
 # Extensions
 markdown_extensions:

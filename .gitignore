@@ -41,3 +41,4 @@ Thumbs.db
 .vs/**
 json/**
 tests/codecov
+.cache
