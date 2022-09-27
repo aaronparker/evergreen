@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `OnlyOfficeDesktopEditors`
+
 ## 2209.641
 
 * Adds `PiriformCCleanerFree` [#291](https://github.com/aaronparker/evergreen/issues/291), `RizonesoftNotepad3`, `ZorgmailVeiligVerzendenAddin`, `SoberLemurPDFSamBasic` [#390](https://github.com/aaronparker/evergreen/issues/390)
