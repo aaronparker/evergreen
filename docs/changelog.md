@@ -2,9 +2,9 @@
 
 ## VERSION
 
-* Adds `OnlyOfficeDesktopEditors`, `OperaCryptoBrowser`
-* Updates channels for `OperaBrowser` [[#299](https://github.com/aaronparker/evergreen/issues/299)]
-* Updates property output for `OperaBrowser` and `OperaGXBrowser` [[#299](https://github.com/aaronparker/evergreen/issues/299)]
+* Adds `OnlyOfficeDesktopEditors`, `OperaCryptoBrowser`. `AdobeConnect` [#382](https://github.com/aaronparker/evergreen/issues/382)
+* Updates channels for `OperaBrowser` [#299](https://github.com/aaronparker/evergreen/issues/299)
+* Updates property output for `OperaBrowser` and `OperaGXBrowser` [#299](https://github.com/aaronparker/evergreen/issues/299)
 
 ## 2209.641
 
