@@ -1,7 +1,7 @@
-function Get-OperaGXBrowser {
+function Get-OperaCryptoBrowser {
     <#
         .SYNOPSIS
-            Returns the available Opera GX Browser versions and download URIs.
+            Returns the available OperaCryptoBrowser versions and download URIs.
 
         .NOTES
             Author: Aaron Parker
