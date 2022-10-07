@@ -36,3 +36,4 @@ mkdocs-material-extensions
 mkdocs-redirects
 mkdocs-minify-plugin
 mkdocs-material
+requests>=2.26
