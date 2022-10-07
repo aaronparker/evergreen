@@ -1,6 +1,6 @@
-# 211 Supported applications
+﻿# 214 Supported applications
 
-Evergreen `` supports the following applications:
+Evergreen `2210.645` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -13,6 +13,7 @@ Evergreen `` supports the following applications:
 | AdobeAcrobatProStdDC                  | Adobe Acrobat DC Pro and Standard                                 | https://helpx.adobe.com/acrobat/kb/acrobat-dc-downloads.html                               |
 | AdobeAcrobatReaderDC                  | Adobe Acrobat Reader DC                                           | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                    |
 | AdobeBrackets                         | Adobe Brackets                                                    | http://brackets.io/                                                                        |
+| AdobeConnect                          | Adobe Connect meeting application                                 | https://www.adobe.com/products/adobeconnect.html                                           |
 | AdoptiumTemurin11                     | Adoptium Temurin 11                                               | https://adoptium.net/                                                                      |
 | AdoptiumTemurin16                     | Adoptium Temurin 16                                               | https://adoptium.net/                                                                      |
 | AdoptiumTemurin17                     | Adoptium Temurin 17                                               | https://adoptium.net/                                                                      |
@@ -141,10 +142,12 @@ Evergreen `` supports the following applications:
 | OBSStudio                             | OBS Studio                                                        | https://obsproject.com/                                                                    |
 | OctopusDeployServer                   | Octopus Deploy Server                                             | https://octopus.com/                                                                       |
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                       |
+| OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                    |
 | OpenJDK                               | OpenJDK                                                           | https://openjdk.java.net/                                                                  |
 | OpenShellMenu                         | Open-Shell-Menu                                                   | https://open-shell.github.io/Open-Shell-Menu/                                              |
 | OpenWebStart                          | OpenWebStart                                                      | https://openwebstart.com/                                                                  |
 | OperaBrowser                          | Opera Browser                                                     | https://www.opera.com/browsers/opera                                                       |
+| OperaCryptoBrowser                    | Opera Crypto Browser                                              | https://www.opera.com/crypto/next                                                          |
 | OperaGXBrowser                        | Opera GX Browser                                                  | https://www.opera.com/gx                                                                   |
 | OracleJava8                           | Oracle Java 8                                                     | https://www.java.com                                                                       |
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                |
