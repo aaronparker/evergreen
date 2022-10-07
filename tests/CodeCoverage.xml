@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (10/07/2022 08:15:34)">
-  <sessioninfo id="this" start="1665129671152" dump="1665130534178" />
+<report name="Pester (10/07/2022 08:36:08)">
+  <sessioninfo id="this" start="1665130953834" dump="1665131768773" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -1534,6 +1534,17 @@
     </class>
     <class name="Evergreen/Apps/Get-OpenJDK" sourcefilename="Apps/Get-OpenJDK.ps1">
       <method name="Get-OpenJDK" desc="()" line="16">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-OpenLens" sourcefilename="Apps/Get-OpenLens.ps1">
+      <method name="Get-OpenLens" desc="()" line="16">
         <counter type="INSTRUCTION" missed="3" covered="6" />
         <counter type="LINE" missed="1" covered="6" />
         <counter type="METHOD" missed="1" covered="0" />
@@ -4948,6 +4959,19 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-OpenLens.ps1">
+      <line nr="16" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-OpenShellMenu.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="20" mi="0" ci="1" mb="0" cb="0" />
@@ -6350,10 +6374,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1124" covered="2749" />
-    <counter type="LINE" missed="519" covered="2190" />
-    <counter type="METHOD" missed="214" covered="0" />
-    <counter type="CLASS" missed="214" covered="0" />
+    <counter type="INSTRUCTION" missed="1127" covered="2755" />
+    <counter type="LINE" missed="520" covered="2196" />
+    <counter type="METHOD" missed="215" covered="0" />
+    <counter type="CLASS" missed="215" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -7616,8 +7640,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1438" covered="3505" />
-  <counter type="LINE" missed="699" covered="2743" />
-  <counter type="METHOD" missed="215" covered="29" />
-  <counter type="CLASS" missed="215" covered="29" />
+  <counter type="INSTRUCTION" missed="1441" covered="3511" />
+  <counter type="LINE" missed="700" covered="2749" />
+  <counter type="METHOD" missed="216" covered="29" />
+  <counter type="CLASS" missed="216" covered="29" />
 </report>
