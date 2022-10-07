@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `OnlyOfficeDesktopEditors`, `OperaCryptoBrowser`. `AdobeConnect` [#382](https://github.com/aaronparker/evergreen/issues/382)
+* Updates channels for `OperaBrowser` [#299](https://github.com/aaronparker/evergreen/issues/299)
+* Updates property output for `OperaBrowser` and `OperaGXBrowser` [#299](https://github.com/aaronparker/evergreen/issues/299)
+
 ## 2209.641
 
 * Adds `PiriformCCleanerFree` [#291](https://github.com/aaronparker/evergreen/issues/291), `RizonesoftNotepad3`, `ZorgmailVeiligVerzendenAddin`, `SoberLemurPDFSamBasic` [#390](https://github.com/aaronparker/evergreen/issues/390)

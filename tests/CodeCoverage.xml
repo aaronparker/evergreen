@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (09/24/2022 23:45:58)">
-  <sessioninfo id="this" start="1664062389699" dump="1664063158777" />
+<report name="Pester (10/01/2022 07:51:37)">
+  <sessioninfo id="this" start="1664609892637" dump="1664610697502" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -99,6 +99,17 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="6" />
       <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-AdobeConnect" sourcefilename="Apps/Get-AdobeConnect.ps1">
+      <method name="Get-AdobeConnect" desc="()" line="13">
+        <counter type="INSTRUCTION" missed="4" covered="20" />
+        <counter type="LINE" missed="2" covered="13" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="4" covered="20" />
+      <counter type="LINE" missed="2" covered="13" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -1510,6 +1521,17 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
+    <class name="Evergreen/Apps/Get-OnlyOfficeDesktopEditors" sourcefilename="Apps/Get-OnlyOfficeDesktopEditors.ps1">
+      <method name="Get-OnlyOfficeDesktopEditors" desc="()" line="17">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
     <class name="Evergreen/Apps/Get-OpenJDK" sourcefilename="Apps/Get-OpenJDK.ps1">
       <method name="Get-OpenJDK" desc="()" line="16">
         <counter type="INSTRUCTION" missed="3" covered="6" />
@@ -1545,23 +1567,34 @@
     </class>
     <class name="Evergreen/Apps/Get-OperaBrowser" sourcefilename="Apps/Get-OperaBrowser.ps1">
       <method name="Get-OperaBrowser" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="3" covered="18" />
-        <counter type="LINE" missed="1" covered="11" />
+        <counter type="INSTRUCTION" missed="3" covered="22" />
+        <counter type="LINE" missed="1" covered="14" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="18" />
-      <counter type="LINE" missed="1" covered="11" />
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-OperaCryptoBrowser" sourcefilename="Apps/Get-OperaCryptoBrowser.ps1">
+      <method name="Get-OperaCryptoBrowser" desc="()" line="17">
+        <counter type="INSTRUCTION" missed="3" covered="22" />
+        <counter type="LINE" missed="1" covered="14" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
     <class name="Evergreen/Apps/Get-OperaGXBrowser" sourcefilename="Apps/Get-OperaGXBrowser.ps1">
       <method name="Get-OperaGXBrowser" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="3" covered="18" />
-        <counter type="LINE" missed="1" covered="11" />
+        <counter type="INSTRUCTION" missed="3" covered="22" />
+        <counter type="LINE" missed="1" covered="14" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="18" />
-      <counter type="LINE" missed="1" covered="11" />
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -2517,6 +2550,27 @@
       <line nr="27" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="6" />
       <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-AdobeConnect.ps1">
+      <line nr="13" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="16" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="17" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="29" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="38" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="4" covered="20" />
+      <counter type="LINE" missed="2" covered="13" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -4868,6 +4922,19 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-OnlyOfficeDesktopEditors.ps1">
+      <line nr="17" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-OpenJDK.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="20" mi="0" ci="1" mb="0" cb="0" />
@@ -4910,36 +4977,63 @@
     <sourcefile name="Apps/Get-OperaBrowser.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="20" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="21" mi="0" ci="3" mb="0" cb="0" />
-      <line nr="22" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
       <line nr="23" mi="0" ci="2" mb="0" cb="0" />
-      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="30" mi="0" ci="2" mb="0" cb="0" />
-      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="33" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="2" mb="0" cb="0" />
       <line nr="35" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="18" />
-      <counter type="LINE" missed="1" covered="11" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="38" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="40" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-OperaCryptoBrowser.ps1">
+      <line nr="17" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="38" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="40" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
     <sourcefile name="Apps/Get-OperaGXBrowser.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="20" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="21" mi="0" ci="3" mb="0" cb="0" />
-      <line nr="22" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
       <line nr="23" mi="0" ci="2" mb="0" cb="0" />
-      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="30" mi="0" ci="2" mb="0" cb="0" />
-      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="33" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="2" mb="0" cb="0" />
       <line nr="35" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="18" />
-      <counter type="LINE" missed="1" covered="11" />
+      <line nr="36" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="38" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="40" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="22" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -6256,10 +6350,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1114" covered="2693" />
-    <counter type="LINE" missed="515" covered="2151" />
-    <counter type="METHOD" missed="211" covered="0" />
-    <counter type="CLASS" missed="211" covered="0" />
+    <counter type="INSTRUCTION" missed="1124" covered="2749" />
+    <counter type="LINE" missed="519" covered="2190" />
+    <counter type="METHOD" missed="214" covered="0" />
+    <counter type="CLASS" missed="214" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -7522,8 +7616,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1428" covered="3449" />
-  <counter type="LINE" missed="695" covered="2704" />
-  <counter type="METHOD" missed="212" covered="29" />
-  <counter type="CLASS" missed="212" covered="29" />
+  <counter type="INSTRUCTION" missed="1438" covered="3505" />
+  <counter type="LINE" missed="699" covered="2743" />
+  <counter type="METHOD" missed="215" covered="29" />
+  <counter type="CLASS" missed="215" covered="29" />
 </report>
