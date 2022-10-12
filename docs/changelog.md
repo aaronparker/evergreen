@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `OpenLens`
+
 ## 2210.645
 
 * Adds `OnlyOfficeDesktopEditors`, `OperaCryptoBrowser`. `AdobeConnect` [#382](https://github.com/aaronparker/evergreen/issues/382)

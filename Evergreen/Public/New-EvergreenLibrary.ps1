@@ -25,7 +25,7 @@ function New-EvergreenLibrary {
     begin {
         try {
             $LibraryJsonTemplate = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "EvergreenLibraryTemplate.json")
-            $Library = Get-Content -Path $LibraryJsonTemplate -Verbose:$VerbosePreference | ConvertFrom-Json
+            $Library = Get-Content -Path $LibraryJsonTemplate -Verbose:$VerbosePreference | ConvertFrom-Json -Depth 20
         }
         catch {
             throw $_
@@ -60,9 +60,8 @@ function New-EvergreenLibrary {
             Write-Verbose -Message "Library exists: $Path."
         }
         else {
-            $Library.Name = $Name
-
             try {
+                $Library.Name = $Name
                 $Library | ConvertTo-Json -Depth 10 | Out-File -FilePath $LibraryFile -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
             }
             catch {

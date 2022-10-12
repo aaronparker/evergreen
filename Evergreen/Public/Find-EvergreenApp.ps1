@@ -74,7 +74,7 @@
         else {
             Write-Warning -Message "Omit the -Name parameter to return the full list of supported applications."
             Write-Warning -Message "Documentation on how to contribute a new application to the Evergreen project can be found at: $($script:resourceStrings.Uri.Docs)."
-            throw "Failed to return application manifests."
+            throw "Failed to return application manifest."
         }
         #endregion
     }
