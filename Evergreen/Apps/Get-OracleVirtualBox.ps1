@@ -2,10 +2,6 @@ Function Get-OracleVirtualBox {
     <#
         .SYNOPSIS
             Get the current version and download URL for the XenServer tools.
-
-        .NOTES
-            Author: Trond Eirik Haavarstein
-            Twitter: @xenappblog
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -16,37 +12,47 @@ Function Get-OracleVirtualBox {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get latest VirtualBox version
-    $Version = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri
+    foreach ($Channel in $res.Get.Update.Uri.GetEnumerator()) {
 
-    If ($Null -ne $Version) {
-        $Version = [RegEx]::Match($Version, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
-        Write-Verbose "$($res.Get.Download.Uri)$Version/"
+        # Get latest VirtualBox version
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Check channel: $($Channel.Name)"
+        $Version = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri[$Channel.Key]
 
-        # Get the content from the latest downloads folder
-        $iwrParams = @{
-            Uri             = "$($res.Get.Download.Uri)$Version/"
-            ReturnObject    = "All"
-        }
-        $Downloads = Invoke-WebRequestWrapper @iwrParams
+        if ($Null -ne $Version) {
 
-        If ($Null -ne $Downloads) {
-            # Filter downloads with the version string and the file types we want
-            $RegExVersion = $Version -replace ("\.", "\.")
-            $MatchExtensions = $res.Get.Download.MatchExtensions -replace "Version", $RegExVersion
-            $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
+            $Version = $Version.Trim()
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Version: $Version"
+            #$Version = [RegEx]::Match($Version, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            #Write-Verbose -Message "$($MyInvocation.MyCommand): RegEx version: $Version"
+            Write-Verbose -Message "$($MyInvocation.MyCommand): $($res.Get.Download.Uri)$Version/"
 
-            # Construct an array with the version number and each download
-            ForEach ($link in $Links) {
-                $link -match $res.Get.Download.MatchDownloadFile | Out-Null
-                $Uri = "$($res.Get.Download.Uri)$Version/$($Matches[1])"
+            # Get the content from the latest downloads folder
+            $iwrParams = @{
+                Uri          = "$($res.Get.Download.Uri)$Version/"
+                ReturnObject = "All"
+            }
+            $Downloads = Invoke-WebRequestWrapper @iwrParams
+            if ($Null -ne $Downloads) {
 
-                $PSObject = [PSCustomObject] @{
-                    Version = $Version
-                    Type    = [System.IO.Path]::GetExtension($Uri).Split(".")[-1]
-                    URI     = $Uri
+                # Filter downloads with the version string and the file types we want
+                $RegExVersion = $Version -replace ("\.", "\.")
+                $MatchExtensions = $res.Get.Download.MatchExtensions -replace "Version", $RegExVersion
+                $Links = $Downloads.Links.outerHTML | Select-String -Pattern $MatchExtensions
+
+                # Construct an array with the version number and each download
+                foreach ($link in $Links) {
+                    $link -match $res.Get.Download.MatchDownloadFile | Out-Null
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Link: $link"
+                    $Uri = "$($res.Get.Download.Uri)$Version/$($Matches[1])"
+
+                    $PSObject = [PSCustomObject] @{
+                        Version = $Version
+                        Channel = $Channel.Name
+                        Type    = [System.IO.Path]::GetExtension($Uri).Split(".")[-1]
+                        URI     = $Uri
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
             }
         }
     }
