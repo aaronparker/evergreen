@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `OpenLens`
+* Adds `OpenLens`, `MicrosoftOutlook`
 * Updates `OracleVirtualBox` with release channels - `STABLE`, `LATEST`, `BETA`
 
 ## 2210.645
