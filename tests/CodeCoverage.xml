@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (10/15/2022 12:24:35)">
-  <sessioninfo id="this" start="1665835823622" dump="1665836675256" />
+<report name="Pester (10/15/2022 22:13:40)">
+  <sessioninfo id="this" start="1665871140103" dump="1665872020751" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -528,6 +528,17 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="16" />
       <counter type="LINE" missed="1" covered="9" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-DoubleCommander" sourcefilename="Apps/Get-DoubleCommander.ps1">
+      <method name="Get-DoubleCommander" desc="()" line="16">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -3221,6 +3232,19 @@
       <line nr="29" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="16" />
       <counter type="LINE" missed="1" covered="9" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-DoubleCommander.ps1">
+      <line nr="16" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -6433,10 +6457,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1127" covered="2786" />
-    <counter type="LINE" missed="520" covered="2221" />
-    <counter type="METHOD" missed="217" covered="0" />
-    <counter type="CLASS" missed="217" covered="0" />
+    <counter type="INSTRUCTION" missed="1130" covered="2792" />
+    <counter type="LINE" missed="521" covered="2227" />
+    <counter type="METHOD" missed="218" covered="0" />
+    <counter type="CLASS" missed="218" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -7705,8 +7729,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1446" covered="3545" />
-  <counter type="LINE" missed="704" covered="2776" />
-  <counter type="METHOD" missed="218" covered="29" />
-  <counter type="CLASS" missed="218" covered="29" />
+  <counter type="INSTRUCTION" missed="1449" covered="3551" />
+  <counter type="LINE" missed="705" covered="2782" />
+  <counter type="METHOD" missed="219" covered="29" />
+  <counter type="CLASS" missed="219" covered="29" />
 </report>
