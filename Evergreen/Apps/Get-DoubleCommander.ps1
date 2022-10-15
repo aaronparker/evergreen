@@ -1,4 +1,4 @@
-Function Get-doublecmd {
+Function Get-DoubleCommander {
     <#
         .SYNOPSIS
             Returns the latest Double Commander version number and download.
