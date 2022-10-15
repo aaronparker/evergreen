@@ -3,11 +3,14 @@
     "Source": "https://helpx.adobe.com/acrobat/kb/acrobat-dc-downloads.html",
     "Get": {
         "Update": {
-            "Uri": "https://rdc.adobe.io/reader/products?lang=mui&os=Windows%2011&api_key=dc-get-adobereader-cdn"
+            "Uri": "https://rdc.adobe.io/reader/products?lang=mui&site=enterprise&os=Windows%2010&preInstalled=&country=AU&api_key=dc-get-adobereader-cdn"
         },
         "Download": {
-            "Uri": "https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_WWMUI.zip",
-            "Types": [
+            "Uri": {
+                "x64": "https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_x64_WWMUI.zip",
+                "x86": "https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_WWMUI.zip"
+            },
+            "Skus": [
                 "Pro",
                 "Standard"
             ]

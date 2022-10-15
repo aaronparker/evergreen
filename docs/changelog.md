@@ -2,8 +2,9 @@
 
 ## VERSION
 
-* Adds `OpenLens`, `MicrosoftOutlook`
+* Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`
 * Updates `OracleVirtualBox` with release channels - `STABLE`, `LATEST`, `BETA`
+* Updates `AdobeAcrobatProStdDC` to address an issue with the source query, and adds download URIs for `x86`
 
 ## 2210.645
 
