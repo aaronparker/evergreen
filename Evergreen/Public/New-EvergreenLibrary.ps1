@@ -25,7 +25,7 @@ function New-EvergreenLibrary {
     begin {
         try {
             $LibraryJsonTemplate = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "EvergreenLibraryTemplate.json")
-            $Library = Get-Content -Path $LibraryJsonTemplate -Verbose:$VerbosePreference | ConvertFrom-Json -Depth 20
+            $Library = Get-Content -Path $LibraryJsonTemplate -Verbose:$VerbosePreference | ConvertFrom-Json
         }
         catch {
             throw $_
