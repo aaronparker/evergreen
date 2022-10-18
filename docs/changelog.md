@@ -2,9 +2,10 @@
 
 ## VERSION
 
-* Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`
+* Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`, `ChromiumChromeDriver` [#375](https://github.com/aaronparker/evergreen/issues/375), `GitExtensions`, `KeeWeb`
 * Updates `OracleVirtualBox` with release channels - `STABLE`, `LATEST`, `BETA`
 * Updates `AdobeAcrobatProStdDC` to address an issue with the source query, and adds download URIs for `x86`
+* Fixes `MicrosoftWvdMultimediaRedirection` where the source URL has changed [#401](https://github.com/aaronparker/evergreen/issues/401)
 
 ## 2210.645
 

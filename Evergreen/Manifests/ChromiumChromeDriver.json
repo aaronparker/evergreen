@@ -1,0 +1,33 @@
+{
+    "Name": "Chromium ChromeDriver",
+    "Source": "https://chromedriver.chromium.org/home",
+    "Get": {
+        "Update": {
+            "Uri": {
+                "Chrome": "https://omahaproxy.appspot.com/json",
+                "Driver": "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_#version"
+            },
+            "Channels": [
+                "stable",
+                "beta"
+            ],
+            "Platforms": [
+                "win64"
+            ]
+        },
+        "Download": {
+            "Uri": "https://chromedriver.storage.googleapis.com/#version/chromedriver_win32.zip"
+        }
+    },
+    "Install": {
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
