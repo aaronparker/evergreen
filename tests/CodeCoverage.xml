@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (10/15/2022 22:13:40)">
-  <sessioninfo id="this" start="1665871140103" dump="1665872020751" />
+<report name="Pester (10/18/2022 21:55:37)">
+  <sessioninfo id="this" start="1666129257225" dump="1666130137037" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -685,6 +685,17 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
+    <class name="Evergreen/Apps/Get-GitExtensions" sourcefilename="Apps/Get-GitExtensions.ps1">
+      <method name="Get-GitExtensions" desc="()" line="16">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
     <class name="Evergreen/Apps/Get-GitForWindows" sourcefilename="Apps/Get-GitForWindows.ps1">
       <method name="Get-GitForWindows" desc="()" line="17">
         <counter type="INSTRUCTION" missed="3" covered="6" />
@@ -984,6 +995,17 @@
     </class>
     <class name="Evergreen/Apps/Get-KeePassXCTeamKeePassXC" sourcefilename="Apps/Get-KeePassXCTeamKeePassXC.ps1">
       <method name="Get-KeePassXCTeamKeePassXC" desc="()" line="16">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-KeeWeb" sourcefilename="Apps/Get-KeeWeb.ps1">
+      <method name="Get-KeeWeb" desc="()" line="16">
         <counter type="INSTRUCTION" missed="3" covered="6" />
         <counter type="LINE" missed="1" covered="6" />
         <counter type="METHOD" missed="1" covered="0" />
@@ -3528,6 +3550,19 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-GitExtensions.ps1">
+      <line nr="16" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-GitForWindows.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
@@ -3996,6 +4031,19 @@
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
     <sourcefile name="Apps/Get-KeePassXCTeamKeePassXC.ps1">
+      <line nr="16" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-KeeWeb.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="20" mi="0" ci="1" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
@@ -6457,10 +6505,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1130" covered="2792" />
-    <counter type="LINE" missed="521" covered="2227" />
-    <counter type="METHOD" missed="218" covered="0" />
-    <counter type="CLASS" missed="218" covered="0" />
+    <counter type="INSTRUCTION" missed="1136" covered="2804" />
+    <counter type="LINE" missed="523" covered="2239" />
+    <counter type="METHOD" missed="220" covered="0" />
+    <counter type="CLASS" missed="220" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -6553,12 +6601,12 @@
     </class>
     <class name="Evergreen/Private/Get-Platform" sourcefilename="Private/Get-Platform.ps1">
       <method name="Get-Platform" desc="()" line="10">
-        <counter type="INSTRUCTION" missed="7" covered="7" />
-        <counter type="LINE" missed="7" covered="6" />
+        <counter type="INSTRUCTION" missed="6" covered="8" />
+        <counter type="LINE" missed="6" covered="7" />
         <counter type="METHOD" missed="0" covered="1" />
       </method>
-      <counter type="INSTRUCTION" missed="7" covered="7" />
-      <counter type="LINE" missed="7" covered="6" />
+      <counter type="INSTRUCTION" missed="6" covered="8" />
+      <counter type="LINE" missed="6" covered="7" />
       <counter type="METHOD" missed="0" covered="1" />
       <counter type="CLASS" missed="0" covered="1" />
     </class>
@@ -6923,7 +6971,7 @@
       <line nr="10" mi="0" ci="1" mb="0" cb="0" />
       <line nr="11" mi="1" ci="0" mb="0" cb="0" />
       <line nr="12" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="13" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="13" mi="0" ci="1" mb="0" cb="0" />
       <line nr="14" mi="1" ci="0" mb="0" cb="0" />
       <line nr="15" mi="0" ci="1" mb="0" cb="0" />
       <line nr="16" mi="1" ci="0" mb="0" cb="0" />
@@ -6933,8 +6981,8 @@
       <line nr="21" mi="0" ci="2" mb="0" cb="0" />
       <line nr="22" mi="0" ci="1" mb="0" cb="0" />
       <line nr="25" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="7" covered="7" />
-      <counter type="LINE" missed="7" covered="6" />
+      <counter type="INSTRUCTION" missed="6" covered="8" />
+      <counter type="LINE" missed="6" covered="7" />
       <counter type="METHOD" missed="0" covered="1" />
       <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
@@ -7261,8 +7309,8 @@
       <counter type="METHOD" missed="0" covered="1" />
       <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="223" covered="495" />
-    <counter type="LINE" missed="115" covered="360" />
+    <counter type="INSTRUCTION" missed="222" covered="496" />
+    <counter type="LINE" missed="114" covered="361" />
     <counter type="METHOD" missed="0" covered="19" />
     <counter type="CLASS" missed="0" covered="19" />
   </package>
@@ -7729,8 +7777,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1449" covered="3551" />
-  <counter type="LINE" missed="705" covered="2782" />
-  <counter type="METHOD" missed="219" covered="29" />
-  <counter type="CLASS" missed="219" covered="29" />
+  <counter type="INSTRUCTION" missed="1454" covered="3564" />
+  <counter type="LINE" missed="706" covered="2795" />
+  <counter type="METHOD" missed="221" covered="29" />
+  <counter type="CLASS" missed="221" covered="29" />
 </report>
