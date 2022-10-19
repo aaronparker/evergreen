@@ -1,4 +1,4 @@
-Function Get-ConEmu {
+Function Get-Maximus5ConEmu {
     <#
         .SYNOPSIS
             Returns the latest available ConEmu version.
