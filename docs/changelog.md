@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2210.661
 
 * Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`, `ChromiumChromeDriver` [#375](https://github.com/aaronparker/evergreen/issues/375), `GitExtensions`, `KeeWeb`, `Maximus5ConEmu`
 * Updates `OracleVirtualBox` with release channels - `STABLE`, `LATEST`, `BETA`

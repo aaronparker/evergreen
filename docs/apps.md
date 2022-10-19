@@ -1,6 +1,6 @@
-﻿# 214 Supported applications
+﻿# 222 Supported applications
 
-Evergreen `2210.645` supports the following applications:
+Evergreen `2210.661` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -31,12 +31,14 @@ Evergreen `2210.645` supports the following applications:
 | AtlassianSourcetree                   | Atlassian Sourcetree                                              | https://www.sourcetreeapp.com/                                                             |
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                              |
 | AutoDarkMode                          | Windows Auto Dark Mode                                            | https://github.com/AutoDarkMode/Windows-Auto-Night-Mode                                    |
+| AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                        |
 | BeekeeperStudio                       | Beekeeper Studio                                                  | https://www.beekeeperstudio.io/                                                            |
 | BISF                                  | Base Image Script Framework                                       | https://eucweb.com/                                                                        |
 | BitwardenDesktop                      | Bitwarden Desktop                                                 | https://bitwarden.com/                                                                     |
 | BlenderLauncher                       | Blender Launcher                                                  | https://dotbow.github.io/Blender-Launcher/                                                 |
 | BlueJ                                 | BlueJ                                                             | https://www.bluej.org/                                                                     |
 | CendioThinLinc                        | Cendio ThinLinc                                                   | https://www.cendio.com/                                                                    |
+| ChromiumChromeDriver                  | Chromium ChromeDriver                                             | https://chromedriver.chromium.org/home                                                     |
 | CitrixVMTools                         | Citrix VM Tools                                                   | https://www.citrix.com/downloads/citrix-hypervisor/                                        |
 | CitrixWorkspaceApp                    | Citrix Workspace app                                              | https://www.citrix.com/downloads/workspace-app/                                            |
 | CodelerityApacheNetBeans              | Codelerity Apache NetBeans                                        | https://www.codelerity.com/netbeans/                                                       |
@@ -51,6 +53,7 @@ Evergreen `2210.645` supports the following applications:
 | diagrams.net                          | diagrams.net                                                      | https://www.diagrams.net/                                                                  |
 | dnGrep                                | dnGrep                                                            | https://dngrep.github.io/                                                                  |
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                            |
+| DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                    |
 | EgnyteDesktopApp                      | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                     |
 | FileZilla                             | FileZilla                                                         | https://filezilla-project.org/                                                             |
 | Fork                                  | Dan Pristupov Fork                                                | https://www.fork.dev                                                                       |
@@ -64,6 +67,7 @@ Evergreen `2210.645` supports the following applications:
 | Gephi                                 | Gephi                                                             | https://gephi.org/                                                                         |
 | GhislerTotalCommander                 | Ghisler TotalCommander                                            | https://www.ghisler.com/                                                                   |
 | Gimp                                  | GIMP                                                              | https://www.gimp.org/                                                                      |
+| GitExtensions                         | Git Extensions                                                    | https://github.com/gitextensions/gitextensions                                             |
 | GitForWindows                         | Git for Windows                                                   | https://gitforwindows.org/                                                                 |
 | GitHubAtom                            | GitHub Atom                                                       | https://atom.io/                                                                           |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                        |
@@ -92,10 +96,12 @@ Evergreen `2210.645` supports the following applications:
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                              |
 | KeePass                               | KeePass                                                           | https://keepass.net/                                                                       |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                     |
+| KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                           |
 | LogMeInGoToMeeting                    | LogMeIn GoToMeeting                                               | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
 | LogMeInGoToOpener                     | LogMeIn GoToOpener                                                | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002 |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                            |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                      |
+| Maximus5ConEmu                        | Maximus5 ConEmu                                                   | https://github.com/Maximus5/ConEmu                                                         |
 | McNeelRhino                           | McNeel Rhino                                                      | https://www.rhino3d.com/                                                                   |
 | MendeleyDesktop                       | Mendeley Desktop                                                  | https://www.mendeley.com/                                                                  |
 | MestrelabMnova                        | Mestrelab Mnova                                                   | https://mestrelab.com/software/mnova/                                                      |
@@ -111,6 +117,7 @@ Evergreen `2210.645` supports the following applications:
 | MicrosoftEdgeWebView2Runtime          | Microsoft Edge WebView2 Runtime                                   | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                             |
 | MicrosoftFSLogixApps                  | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                        |
 | MicrosoftOneDrive                     | Microsoft OneDrive                                                | https://onedrive.live.com/                                                                 |
+| MicrosoftOutlook                      | Microsoft Teams                                                   | https://www.microsoft.com/teams                                                            |
 | MicrosoftPowerShell                   | Microsoft PowerShell                                              | https://docs.microsoft.com/powershell/                                                     |
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                    |
 | MicrosoftSsms                         | Microsoft SQL Server Management Studio                            | https://go.microsoft.com/fwlink/?LinkId=531355                                             |
@@ -144,6 +151,7 @@ Evergreen `2210.645` supports the following applications:
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                       |
 | OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                    |
 | OpenJDK                               | OpenJDK                                                           | https://openjdk.java.net/                                                                  |
+| OpenLens                              | OpenLens                                                          | https://github.com/MuhammedKalkan/OpenLens/                                                |
 | OpenShellMenu                         | Open-Shell-Menu                                                   | https://open-shell.github.io/Open-Shell-Menu/                                              |
 | OpenWebStart                          | OpenWebStart                                                      | https://openwebstart.com/                                                                  |
 | OperaBrowser                          | Opera Browser                                                     | https://www.opera.com/browsers/opera                                                       |
