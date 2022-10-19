@@ -8,7 +8,6 @@ Function Get-DockerDesktop {
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]

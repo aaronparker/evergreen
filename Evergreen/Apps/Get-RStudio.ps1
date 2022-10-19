@@ -9,7 +9,6 @@ Function Get-RStudio {
             Based on Get-AtlassianBitbucket.ps1
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]

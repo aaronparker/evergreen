@@ -20,32 +20,26 @@ Function Get-AdobeAcrobatProStdDC {
     )
 
     #region Installer downloads
-    try {
-        $params = @{
-            Uri = $res.Get.Update.Uri
-        }
-        $Content = Invoke-RestMethodWrapper @params
+    $params = @{
+        Uri = $res.Get.Update.Uri
     }
-    catch {
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-    }
+    $Content = Invoke-RestMethodWrapper @params
 
     # Construct update download list
     if ($Null -ne $Content) {
 
-        foreach ($Type in $res.Get.Download.Types) {
-            # Build the object
-            $PSObject = [PSCustomObject] @{
-                Version      = $Content.products.dcPro.version
-                Architecture = "x64"
-                Type         = $Type
-                URI          = $res.Get.Download.Uri
+        # Build the object
+        foreach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
+            foreach ($Sku in $res.Get.Download.Skus) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Content.products.reader[0].version
+                    Architecture = $Architecture.Name
+                    Sku          = $Sku
+                    URI          = $res.Get.Download.Uri[$Architecture.Key]
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
-    }
-    else {
-        throw "$($MyInvocation.MyCommand): unable to retrieve content from: $($res.Get.Update.Uri)."
     }
     #endregion
 }

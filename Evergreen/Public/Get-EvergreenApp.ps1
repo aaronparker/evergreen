@@ -23,15 +23,10 @@ Function Get-EvergreenApp {
     )
 
     process {
-        try {
-            # Build a path to the application function
-            # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
-            $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
-            Write-Verbose -Message "Function path: $Function"
-        }
-        catch {
-            throw "Failed to combine: $($MyInvocation.MyCommand.Module.ModuleBase), Apps, Get-$Name.ps1"
-        }
+        # Build a path to the application function
+        # This will build a path like: Evergreen/Apps/Get-TeamViewer.ps1
+        $Function = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "Apps", "Get-$Name.ps1")
+        Write-Verbose -Message "Function path: $Function"
 
         #region Test that the function exists and run it to return output
         if (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
@@ -45,7 +40,7 @@ Function Get-EvergreenApp {
                 . $Function
             }
             catch {
-                throw "Failed to load function: $Function."
+                throw "Failed to load function: $Function. With error: $($_.Exception.Message)"
             }
 
             try {
@@ -67,7 +62,7 @@ Function Get-EvergreenApp {
                 $Output = & Get-$Name @params
             }
             catch {
-                Write-Error -Message "Internal application function: $Function, failed with: $($_.Exception.Message)"
+                Write-Error -Message "Internal application function: $Function, failed with error: $($_.Exception.Message)"
             }
 
             # if we get an object, return it to the pipeline
@@ -78,7 +73,7 @@ Function Get-EvergreenApp {
                     Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
                 }
                 else {
-                    throw "Failed to capture output from: Get-$Name."
+                    throw "Application function Get-$Name ran, but we failed to capture any output. Run 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
                 }
             }
         }

@@ -7,7 +7,7 @@ Function Get-Nomacs {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
