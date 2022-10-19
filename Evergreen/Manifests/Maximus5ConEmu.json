@@ -1,5 +1,5 @@
 {
-	"Name": "ConEmu",
+	"Name": "Maximus5 ConEmu",
 	"Source": "https://github.com/Maximus5/ConEmu",
 	"Get": {
 		"Uri": "https://api.github.com/repos/Maximus5/ConEmu/releases/latest",
