@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (10/18/2022 23:58:48)">
-  <sessioninfo id="this" start="1666136680860" dump="1666137528136" />
+<report name="Pester (10/19/2022 07:04:36)">
+  <sessioninfo id="this" start="1666162164673" dump="1666163076835" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -1067,6 +1067,17 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="27" />
       <counter type="LINE" missed="1" covered="18" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-Maximus5ConEmu" sourcefilename="Apps/Get-Maximus5ConEmu.ps1">
+      <method name="Get-Maximus5ConEmu" desc="()" line="15">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -4168,6 +4179,19 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-Maximus5ConEmu.ps1">
+      <line nr="15" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-McNeelRhino.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="19" mi="0" ci="1" mb="0" cb="0" />
@@ -6544,10 +6568,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1139" covered="2837" />
-    <counter type="LINE" missed="524" covered="2260" />
-    <counter type="METHOD" missed="221" covered="0" />
-    <counter type="CLASS" missed="221" covered="0" />
+    <counter type="INSTRUCTION" missed="1142" covered="2843" />
+    <counter type="LINE" missed="525" covered="2266" />
+    <counter type="METHOD" missed="222" covered="0" />
+    <counter type="CLASS" missed="222" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -7816,8 +7840,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1457" covered="3597" />
-  <counter type="LINE" missed="707" covered="2816" />
-  <counter type="METHOD" missed="222" covered="29" />
-  <counter type="CLASS" missed="222" covered="29" />
+  <counter type="INSTRUCTION" missed="1460" covered="3603" />
+  <counter type="LINE" missed="708" covered="2822" />
+  <counter type="METHOD" missed="223" covered="29" />
+  <counter type="CLASS" missed="223" covered="29" />
 </report>
