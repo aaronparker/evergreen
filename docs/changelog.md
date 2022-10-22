@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `ProgressChefInfraClient`
+
 ## 2210.661
 
 * Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`, `ChromiumChromeDriver` [#375](https://github.com/aaronparker/evergreen/issues/375), `GitExtensions`, `KeeWeb`, `Maximus5ConEmu`
