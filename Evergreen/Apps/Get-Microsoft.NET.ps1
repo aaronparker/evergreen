@@ -25,7 +25,12 @@ Function Get-Microsoft.NET {
 
             # Read last line of the returned content to retrieve the version number
             Write-Verbose -Message "$($MyInvocation.MyCommand): Returned: $Content."
-            $Version = [System.Version] $Content
+            if ($Content -match "-") {
+                $Version = [System.Version] (($Content -split "-")[0])
+            }
+            else {
+                $Version = [System.Version] $Content
+            }
             $MajorMinor = "$($Version.Major).$($Version.Minor)"
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $MajorMinor."
 

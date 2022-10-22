@@ -73,7 +73,7 @@ Function Get-EvergreenApp {
                     Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
                 }
                 else {
-                    throw "Application function Get-$Name ran, but we failed to capture any output. Run 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
+                    throw "Application function Get-$Name ran, but we failed to capture any output.`nRun 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
                 }
             }
         }
