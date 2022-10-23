@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `ProgressChefInfraClient`
+* Adds `ProgressChefInfraClient`, `ProgressChefInSpec`, `ProgressChefWorkstation`
 
 ## 2210.661
 

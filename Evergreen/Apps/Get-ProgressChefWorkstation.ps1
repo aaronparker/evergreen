@@ -1,4 +1,4 @@
-Function Get-ProgressChefInfraClient {
+Function Get-ProgressChefWorkstation {
     <#
         .NOTES
             Author: Aaron Parker
