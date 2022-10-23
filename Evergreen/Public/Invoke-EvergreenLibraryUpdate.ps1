@@ -53,7 +53,9 @@ function Invoke-EvergreenLibraryUpdate {
                         Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
 
                         # Save the installers to the library
-                        $Saved = $App | Save-EvergreenApp -Path $AppPath
+                        if ($PSCmdlet.ShouldProcess("Downloading $($App.Count) application installers.", "Save-EvergreenApp")) {
+                            $Saved = $App | Save-EvergreenApp -Path $AppPath
+                        }
 
                         # Add the saved installer path to the application version information
                         if ($Saved.Count -gt 1) {

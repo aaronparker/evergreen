@@ -3,6 +3,8 @@ Function Get-ProgressChefInfraClient {
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
+
+            https://docs.chef.io/api_omnitruck/
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
