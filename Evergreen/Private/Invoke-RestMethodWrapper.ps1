@@ -106,10 +106,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         $irmParams.SslProtocol = $SslProtocol
     }
     if (Test-ProxyEnv) {
-        $iwrParams.Proxy = $script:EvergreenProxy
+        $irmParams.Proxy = $script:EvergreenProxy
     }
     if (Test-ProxyEnv -Creds) {
-        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
+        $irmParams.ProxyCredential = $script:EvergreenProxyCreds
     }
     foreach ($item in $irmParams.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
