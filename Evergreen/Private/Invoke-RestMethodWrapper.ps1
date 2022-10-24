@@ -1,4 +1,4 @@
-Function Invoke-RestMethodWrapper {
+function Invoke-RestMethodWrapper {
     <#
         .SYNOPSIS
             Validate and return content from Invoke-RestMethod for reading update APIs (typically JSON)
@@ -44,16 +44,16 @@ Function Invoke-RestMethodWrapper {
     )
 
     # Set ErrorAction value
-    If ($PSBoundParameters.ContainsKey("ErrorAction")) {
+    if ($PSBoundParameters.ContainsKey("ErrorAction")) {
         $ErrorActionPreference = $ErrorAction
     }
-    Else {
+    else {
         $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Continue
     }
 
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    If (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
+    if (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
@@ -71,8 +71,8 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Use TLS for connections
-    If (($SslProtocol.IsPresent) -and -not(Test-PSCore)) {
-        If ($SslProtocol -eq "Tls13") {
+    if (($SslProtocol.IsPresent) -and -not(Test-PSCore)) {
+        if ($SslProtocol -eq "Tls13") {
             $SslProtocol = "Tls12"
             Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
         }
@@ -89,23 +89,29 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         UseBasicParsing    = $true
         UserAgent          = $UserAgent
     }
-    If ($PSBoundParameters.ContainsKey("Headers")) {
+    if ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $irmParams.Headers = $Headers
     }
-    If ($PSBoundParameters.ContainsKey("Body")) {
+    if ($PSBoundParameters.ContainsKey("Body")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
         $irmParams.Body = $Body
     }
-    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $irmParams.SkipCertificateCheck = $True
     }
-    If ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $irmParams.SslProtocol = $SslProtocol
     }
-    ForEach ($item in $irmParams.GetEnumerator()) {
+    if (Test-ProxyEnv) {
+        $iwrParams.Proxy = $script:EvergreenProxy
+    }
+    if (Test-ProxyEnv -Creds) {
+        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
+    }
+    foreach ($item in $irmParams.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
     }
     try {

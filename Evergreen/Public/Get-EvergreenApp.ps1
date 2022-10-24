@@ -19,8 +19,24 @@ Function Get-EvergreenApp {
             Mandatory = $False,
             Position = 1,
             HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
-        [System.Collections.Hashtable] $AppParams
+        [System.Collections.Hashtable] $AppParams,
+
+        [Parameter(Mandatory = $False, Position = 2)]
+        [System.String] $Proxy,
+
+        [Parameter(Mandatory = $False, Position = 3)]
+        [System.Management.Automation.PSCredential]
+        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty
     )
+
+    begin {
+        if ($PSBoundParameters.ContainsKey("Proxy")) {
+            Set-ProxyEnv -Proxy $Proxy
+        }
+        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+            Set-ProxyEnv -ProxyCredential $ProxyCredential
+        }
+    }
 
     process {
         # Build a path to the application function

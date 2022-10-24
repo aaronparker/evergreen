@@ -11,10 +11,24 @@ function Invoke-EvergreenLibraryUpdate {
             HelpMessage = "Specify the path to the library.",
             ParameterSetName = "Path")]
         [ValidateNotNull()]
-        [System.IO.FileInfo] $Path
+        [System.IO.FileInfo] $Path,
+
+        [Parameter(Mandatory = $False, Position = 1)]
+        [System.String] $Proxy,
+
+        [Parameter(Mandatory = $False, Position = 2)]
+        [System.Management.Automation.PSCredential]
+        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty
     )
 
-    begin {}
+    begin {
+        if ($PSBoundParameters.ContainsKey("Proxy")) {
+            Set-ProxyEnv -Proxy $Proxy
+        }
+        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+            Set-ProxyEnv -ProxyCredential $ProxyCredential
+        }
+    }
 
     process {
 
