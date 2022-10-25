@@ -32,9 +32,10 @@ Function Get-EvergreenApp {
     begin {
         if ($PSBoundParameters.ContainsKey("Proxy")) {
             Set-ProxyEnv -Proxy $Proxy
-        }
-        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
-            Set-ProxyEnv -ProxyCredential $ProxyCredential
+
+            if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                Set-ProxyEnv -ProxyCredential $ProxyCredential
+            }
         }
     }
 
