@@ -1,25 +1,11 @@
 {
 	"Name": "WinMerge",
 	"Source": "https://winmerge.org/",
+        
 	"Get": {
-		"Update": {
-			"Uri": "https://sourceforge.net/projects/winmerge/best_release.json",
-			"ContentType": "application/json; charset=utf-8"
-		},
-		"Download" : {
-			"Folder": "stable",
-			"Feed": "https://sourceforge.net/projects/winmerge/rss?path=",
-			"FilterProperty": "link",
-            "ReplaceText": {
-                "Link": "/download"
-            },
-            "MatchFileTypes": "\\.exe$|\\.msi$",
-            "FileProperty": "description.'#cdata-section'",
-			"ContentType": "application/rss+xml; charset=utf-8",
-			"Uri": "https://nchc.dl.sourceforge.net/project/winmerge"
-		},
-		"MatchVersion": "(\\d+(\\.\\d+){1,3})",
-		"DatePattern": "yyyy-MM-dd HH:mm:ss"
+		"Uri": "https://api.github.com/repos/WinMerge/winmerge/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.msi$|\\.exe$"
 	},
 	"Install": {
 		"Setup": "WinMerge*.exe",
