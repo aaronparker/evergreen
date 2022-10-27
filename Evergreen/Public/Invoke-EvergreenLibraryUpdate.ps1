@@ -22,12 +22,12 @@ function Invoke-EvergreenLibraryUpdate {
     )
 
     begin {
+        $params = @{}
         if ($PSBoundParameters.ContainsKey("Proxy")) {
-            Set-ProxyEnv -Proxy $Proxy
-
-            if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
-                Set-ProxyEnv -ProxyCredential $ProxyCredential
-            }
+            $params.Proxy = $Proxy
+        }
+        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+            $params.ProxyCredential = $ProxyCredential
         }
     }
 
@@ -61,7 +61,7 @@ function Invoke-EvergreenLibraryUpdate {
                     }
 
                     # Gather the application version information from Get-EvergreenApp
-                    $App = Get-EvergreenApp -Name $Application.EvergreenApp | Where-Object $WhereBlock
+                    $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
 
                     # If something returned, add to the library
                     if ($Null -ne $App) {
@@ -69,7 +69,7 @@ function Invoke-EvergreenLibraryUpdate {
 
                         # Save the installers to the library
                         if ($PSCmdlet.ShouldProcess("Downloading $($App.Count) application installers.", "Save-EvergreenApp")) {
-                            $Saved = $App | Save-EvergreenApp -Path $AppPath
+                            $Saved = $App | Save-EvergreenApp -Path $AppPath @params
                         }
 
                         # Add the saved installer path to the application version information
