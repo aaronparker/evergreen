@@ -28,9 +28,15 @@ Function Resolve-InvokeWebRequest {
         UserAgent          = $UserAgent
         ErrorAction        = "SilentlyContinue"
     }
+    if (Test-ProxyEnv) {
+        $iwrParams.Proxy = $script:EvergreenProxy
+    }
+    if (Test-ProxyEnv -Creds) {
+        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
+    }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
-    ForEach ($item in $iwrParams.GetEnumerator()) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+    foreach ($item in $iwrParams.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
     }
 
     if (Test-PSCore) {

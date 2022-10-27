@@ -19,8 +19,25 @@ Function Get-EvergreenApp {
             Mandatory = $False,
             Position = 1,
             HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
-        [System.Collections.Hashtable] $AppParams
+        [System.Collections.Hashtable] $AppParams,
+
+        [Parameter(Mandatory = $False, Position = 2)]
+        [System.String] $Proxy,
+
+        [Parameter(Mandatory = $False, Position = 3)]
+        [System.Management.Automation.PSCredential]
+        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty
     )
+
+    begin {
+        if ($PSBoundParameters.ContainsKey("Proxy")) {
+            Set-ProxyEnv -Proxy $Proxy
+
+            if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                Set-ProxyEnv -ProxyCredential $ProxyCredential
+            }
+        }
+    }
 
     process {
         # Build a path to the application function
@@ -46,23 +63,23 @@ Function Get-EvergreenApp {
             try {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
                 # Application manifests are located under Evergreen/Manifests
+                $params = @{
+                    res = (Get-FunctionResource -AppName $Name)
+                }
                 if ($PSBoundParameters.ContainsKey("AppParams")) {
                     Write-Verbose -Message "Adding AppParams."
-                    $params = @{
-                        res = (Get-FunctionResource -AppName $Name)
-                    }
                     $params += $AppParams
-                }
-                else {
-                    $params = @{
-                        res = (Get-FunctionResource -AppName $Name)
-                    }
                 }
                 Write-Verbose -Message "Calling: Get-$Name."
                 $Output = & Get-$Name @params
             }
             catch {
                 Write-Error -Message "Internal application function: $Function, failed with error: $($_.Exception.Message)"
+            }
+            finally {
+                if ($PSBoundParameters.ContainsKey("Proxy")) {
+                    Remove-ProxyEnv
+                }
             }
 
             # if we get an object, return it to the pipeline
