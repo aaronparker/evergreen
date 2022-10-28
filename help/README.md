@@ -7,3 +7,7 @@ To generate the external help use `New-ExternalHelp`:
 ```powershell
 New-ExternalHelp -Path "docs/help/en-US" -OutputPath "Evergreen/en-US" -Encoding ([System.Text.Encoding]::UTF8) -Force
 ```
+
+```powershell
+Update-MarkdownHelpModule -Path "docs/help/en-US"
+```

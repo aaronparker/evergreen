@@ -20,24 +20,46 @@
           <maml:description>
             <maml:para>`Export-EvergreenApp` accepts the PSObject from `Get-EvergreenApp`.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
           <dev:type>
-            <maml:name>PSObject</maml:name>
+            <maml:name>Array</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
             <maml:para>Specifies a path to the JSON file where version information will be stored. If the file does not exist, the parent directory must already exist.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -47,24 +69,48 @@
         <maml:description>
           <maml:para>`Export-EvergreenApp` accepts the PSObject from `Get-EvergreenApp`.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
         <dev:type>
-          <maml:name>PSObject</maml:name>
+          <maml:name>Array</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
           <maml:para>Specifies a path to the JSON file where version information will be stored. If the file does not exist, the parent directory must already exist.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -324,6 +370,54 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Proxy</maml:name>
+          <maml:description>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ProxyCredential</maml:name>
+          <maml:description>
+            <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -350,6 +444,56 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Proxy</maml:name>
+        <maml:description>
+          <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ProxyCredential</maml:name>
+        <maml:description>
+          <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+          <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -538,6 +682,106 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Invoke-EvergreenApp</command:name>
+      <command:verb>Invoke</command:verb>
+      <command:noun>EvergreenApp</command:noun>
+      <maml:description>
+        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours. This function is experimental and functionality may change - do not use in production.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-EvergreenApp</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Invoke-EvergreenApp -Name "MicrosoftEdge"
+
+Version      : 89.0.774.76
+Platform     : Windows
+Channel      : Stable
+Release      : Enterprise
+Architecture : x64
+Date         : 12/4/2021
+Hash         : 9E7A29B4BE6E1CD707F80B4B79008F19D2D5DD5C774D317A493EC6DE5BE0B7D7
+URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/4d12f620-174c-4259-85e6-8a80ea45ff10/MicrosoftEdgeEnterpriseX64.msi</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URLs for Microsoft Edge using the official Microsoft Edge update API at https://edgeupdates.microsoft.com/api/products (https://edgeupdates.microsoft.com/api/products).</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Invoke-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the current version and download URL for the Stable channel of the 64-bit Enterprise ring of Microsoft Edge.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://stealthpuppy.com/evergreen/invoke/</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/invoke/</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Invoke-EvergreenLibraryUpdate</command:name>
       <command:verb>Invoke</command:verb>
       <command:noun>EvergreenLibraryUpdate</command:noun>
@@ -552,14 +796,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Invoke-EvergreenLibraryUpdate</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
             <maml:para>Specifies the path to the Evergreen library. The path must include EvergreenLibrary.json, in the expected structure, which defines the applications to be stored in the library.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>String</maml:name>
+            <maml:name>FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -575,17 +819,54 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Proxy</maml:name>
+          <maml:description>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ProxyCredential</maml:name>
+          <maml:description>
+            <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+            <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+          <dev:type>
+            <maml:name>PSCredential</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
           <maml:para>Specifies the path to the Evergreen library. The path must include EvergreenLibrary.json, in the expected structure, which defines the applications to be stored in the library.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -601,6 +882,44 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Proxy</maml:name>
+        <maml:description>
+          <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ProxyCredential</maml:name>
+        <maml:description>
+          <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
+          <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
+          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -650,14 +969,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-EvergreenLibrary</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
             <maml:para>Specifies the path to the Evergreen library. It is expected that the target location is empty. If the path includes EvergreenLibrary.json, `New-EvergreenLibrary` will not make changes to the manifest.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Path</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>Path</maml:name>
+            <maml:name>FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -685,17 +1004,28 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
           <maml:para>Specifies the path to the Evergreen library. It is expected that the target location is empty. If the path includes EvergreenLibrary.json, `New-EvergreenLibrary` will not make changes to the manifest.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Path</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>Path</maml:name>
+          <maml:name>FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -716,6 +1046,18 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:name>WhatIf</maml:name>
         <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -794,14 +1136,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
             <maml:para>The target directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>System.IO.FileInfo</maml:name>
+            <maml:name>FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
@@ -809,7 +1151,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Proxy</maml:name>
           <maml:description>
-            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -823,7 +1165,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           <maml:description>
             <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
             <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
-            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
           <dev:type>
@@ -896,9 +1238,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           <maml:description>
             <maml:para>Specify a single directory path where all application installers will be saved into. No sub-directories will be created.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
-            <maml:name>System.IO.FileInfo</maml:name>
+            <maml:name>FileInfo</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -906,7 +1248,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Proxy</maml:name>
           <maml:description>
-            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+            <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -920,7 +1262,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           <maml:description>
             <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
             <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
-            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
+            <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
           <dev:type>
@@ -988,14 +1330,14 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
           <maml:para>The target directory under which a directory structure will be created and application installers saved into. Typically the target path used will be a path per application.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>System.IO.FileInfo</maml:name>
+          <maml:name>FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>(Resolve-Path -Path $PWD)</dev:defaultValue>
@@ -1005,9 +1347,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:description>
           <maml:para>Specify a single directory path where all application installers will be saved into. No sub-directories will be created.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.IO.FileInfo</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
-          <maml:name>System.IO.FileInfo</maml:name>
+          <maml:name>FileInfo</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -1015,7 +1357,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Proxy</maml:name>
         <maml:description>
-          <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server. Note - this is experimental support for proxies.</maml:para>
+          <maml:para>Specifies a proxy server for the request, rather than connecting directly to the internet resource. Enter the URI of a network proxy server</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1029,7 +1371,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:description>
           <maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.</maml:para>
           <maml:para>Type a user name, such as User01 or Domain01\User01, User@Domain.Com, or enter a `PSCredential` object, such as one generated by the `Get-Credential` cmdlet.</maml:para>
-          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command. Note - this is experimental support for proxy servers and has not been extensively tested.</maml:para>
+          <maml:para>This parameter is valid only when the Proxy parameter is also used in the command.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
@@ -1199,6 +1541,39 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Force Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NoProgress</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill NoProgress Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -1244,6 +1619,42 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:name>WhatIf</maml:name>
         <maml:description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Force Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NoProgress</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill NoProgress Description }}</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
