@@ -1,4 +1,4 @@
-function Get-ESETSecureAuthentication {
+function Get-ESETInspectConnector {
     <#
         .NOTES
             Site: https://stealthpuppy.com

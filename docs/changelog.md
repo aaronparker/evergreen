@@ -3,7 +3,7 @@
 ## VERSION
 
 * Adds `ProgressChefInfraClient`, `ProgressChefInSpec`, `ProgressChefWorkstation`
-* Adds `ESETSecureAuthentication` [#347](https://github.com/aaronparker/evergreen/issues/347)
+* Adds `ESETSecureAuthentication`, `ESETEndpointAntivirus`, `ESETEndpointSecurity`, `ESETFullDiskEncryption`, `ESETInspectConnector`, `ESETPROTECTServer`, `ESETSecureAuthentication`, `ESETServerSecurity` [#347](https://github.com/aaronparker/evergreen/issues/347)
 * Updates `WinMerge` to pull updates from GitHub
 * Adds proxy server support for the following functions - `Get-EvergreenApp`, `Save-EvergreenApp`, `Invoke-EvergreenLibraryUpdate`
 

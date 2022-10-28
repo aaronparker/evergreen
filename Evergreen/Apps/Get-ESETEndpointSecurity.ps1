@@ -1,4 +1,4 @@
-function Get-ESETSecureAuthentication {
+function Get-ESETEndpointSecurity {
     <#
         .NOTES
             Site: https://stealthpuppy.com

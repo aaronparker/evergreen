@@ -1,4 +1,4 @@
-function Get-ESETSecureAuthentication {
+function Get-ESETFullDiskEncryption {
     <#
         .NOTES
             Site: https://stealthpuppy.com

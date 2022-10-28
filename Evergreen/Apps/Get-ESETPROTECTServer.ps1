@@ -1,4 +1,4 @@
-function Get-ESETSecureAuthentication {
+function Get-ESETPROTECTServer {
     <#
         .NOTES
             Site: https://stealthpuppy.com
