@@ -12,7 +12,7 @@
                 "SemiAnnualPreview": "Semi-Annual Channel Preview",
                 "SemiAnnual": "Semi-Annual Channel",
                 "PerpetualVL2021": "Office LTSC 2021 Perpetual Enterprise",
-                "PerpetualVL2019": "Office 2029 Perpetual Enterprise"
+                "PerpetualVL2019": "Office 2019 Perpetual Enterprise"
             },
             "ContentType": "application/json; charset=utf-8",
             "DateTime": "MM/dd/yyyy HH:mm"
@@ -37,7 +37,7 @@
                 "SemiAnnualPreview": "Semi-Annual Channel Preview",
                 "SemiAnnual": "Semi-Annual Channel",
                 "PerpetualVL2021": "Office LTSC 2021 Perpetual Enterprise",
-                "PerpetualVL2019": "Office 2029 Perpetual Enterprise"
+                "PerpetualVL2019": "Office 2019 Perpetual Enterprise"
             },
             "ContentType": "application/json; charset=utf-8",
             "DateTime": "MM/dd/yyyy HH:mm"

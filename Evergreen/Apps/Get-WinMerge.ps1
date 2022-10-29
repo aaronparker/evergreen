@@ -17,13 +17,12 @@ Function Get-WinMerge {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get latest version and download latest release via SourceForge API
-    # Convert the returned release data into a useable object with Version, URI etc.
+    # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri          = $res.Get.Update.Uri
-        Download     = $res.Get.Download
+        Uri          = $res.Get.Uri
         MatchVersion = $res.Get.MatchVersion
+        Filter       = $res.Get.MatchFileTypes
     }
-    $object = Get-SourceForgeRepoRelease @params
+    $object = Get-GitHubRepoRelease @params
     Write-Output -InputObject $object
 }

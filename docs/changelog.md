@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds `ProgressChefInfraClient`, `ProgressChefInSpec`, `ProgressChefWorkstation`
+* Adds `ESETSecureAuthentication`, `ESETEndpointAntivirus`, `ESETEndpointSecurity`, `ESETFullDiskEncryption`, `ESETInspectConnector`, `ESETPROTECTServer`, `ESETSecureAuthentication`, `ESETServerSecurity` [#347](https://github.com/aaronparker/evergreen/issues/347)
+* Updates `WinMerge` to query application updates from GitHub [#404](https://github.com/aaronparker/evergreen/issues/404)
+* Adds proxy server support for the following functions - `Get-EvergreenApp`, `Save-EvergreenApp`, `Invoke-EvergreenLibraryUpdate`. Adds `-Proxy` and `-ProxyCredential` arguments. `Get-EvergreenApp` sets an environment variable for the proxy server address and credential for use by internal app and private functions. `Save-EvergreenApp` and `Invoke-EvergreenLibraryUpdate` either use these parameters directly or pass the parameters to other functions
+* Fix spelling on `Microsoft365Apps` channels [#406](https://github.com/aaronparker/evergreen/issues/406)
+
 ## 2210.661
 
 * Adds `OpenLens`, `MicrosoftOutlook`, `AWSSAMCLI`, `ChromiumChromeDriver` [#375](https://github.com/aaronparker/evergreen/issues/375), `GitExtensions`, `KeeWeb`, `Maximus5ConEmu`

@@ -1,4 +1,4 @@
-Function Get-GitHubRepoRelease {
+function Get-GitHubRepoRelease {
     <#
         .SYNOPSIS
             Calls the GitHub Releases API passed via $Uri, validates the response and returns a formatted object
@@ -53,7 +53,7 @@ Function Get-GitHubRepoRelease {
         $params = @{
             Uri = "https://api.github.com/rate_limit"
         }
-        If ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
+        if ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Checking for how many requests to the GitHub API we have left."
         $GitHubRate = Invoke-RestMethodWrapper @params
     }
@@ -93,7 +93,13 @@ Function Get-GitHubRepoRelease {
                     UserAgent          = "github-aaronparker-evergreen"
                     Uri                = $Uri
                 }
-                If ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
+                if (Test-ProxyEnv) {
+                    $params.Proxy = $script:EvergreenProxy
+                }
+                if (Test-ProxyEnv -Creds) {
+                    $params.ProxyCredential = $script:EvergreenProxyCreds
+                }
+                if ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
                 $response = $True
                 $release = Invoke-RestMethod @params
@@ -132,7 +138,7 @@ Function Get-GitHubRepoRelease {
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Validation failed."
                             $validate = $False
                             $missingProperties | ForEach-Object {
-                                Throw [System.Management.Automation.ValidationMetadataException] "$($MyInvocation.MyCommand): Property: '$_' missing"
+                                throw [System.Management.Automation.ValidationMetadataException] "$($MyInvocation.MyCommand): Property: '$_' missing"
                             }
                         }
                     }

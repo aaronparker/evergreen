@@ -16,13 +16,33 @@ Function Invoke-SystemNetRequest {
     )
 
     try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
         $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
-        $httpWebRequest.UseDefaultCredentials = $true
+
+        if (Test-ProxyEnv) {
+            $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
+            $ProxyObj.Address = $script:EvergreenProxy
+            $ProxyObj.UseDefaultCredentials = $true
+            $httpWebRequest.Proxy = $ProxyObj
+
+            if (Test-ProxyEnv -Creds) {
+                $ProxyObj.UseDefaultCredentials = $false
+                $ProxyObj.Credentials = $script:EvergreenProxyCreds
+
+                $httpWebRequest.UseDefaultCredentials = $false
+                $httpWebRequest.Proxy = $ProxyObj
+                $httpWebRequest.Credentials = $script:EvergreenProxyCreds
+            }
+        }
+        else {
+            $httpWebRequest.UseDefaultCredentials = $true
+        }
+
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $webResponse = $httpWebRequest.GetResponse()
         $responseStream = $webResponse.GetResponseStream()
+
         $streamReader = New-Object -TypeName "System.IO.StreamReader" $responseStream
         $result = $streamReader.ReadToEnd()
         Write-Output -InputObject $result

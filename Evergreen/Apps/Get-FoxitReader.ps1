@@ -19,7 +19,17 @@ Function Get-FoxitReader {
 
     # Query the Foxit Reader package download form to get the JSON
     # TODO: Fix issue with Invoke-RestMethodWrapper that produces "Operation is not valid due to the current state of the object."
-    $updateFeed = Invoke-RestMethod -Uri $res.Get.Update.Uri -UseBasicParsing
+    $params = @{
+        Uri             = $res.Get.Update.Uri
+        UseBasicParsing = $true
+    }
+    if (Test-ProxyEnv) {
+        $params.Proxy = $script:EvergreenProxy
+    }
+    if (Test-ProxyEnv -Creds) {
+        $params.ProxyCredential = $script:EvergreenProxyCreds
+    }
+    $updateFeed = Invoke-RestMethod @params
 
     If ($Null -ne $updateFeed) {
 

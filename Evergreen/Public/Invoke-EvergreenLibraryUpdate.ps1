@@ -11,10 +11,25 @@ function Invoke-EvergreenLibraryUpdate {
             HelpMessage = "Specify the path to the library.",
             ParameterSetName = "Path")]
         [ValidateNotNull()]
-        [System.IO.FileInfo] $Path
+        [System.IO.FileInfo] $Path,
+
+        [Parameter(Mandatory = $False, Position = 1)]
+        [System.String] $Proxy,
+
+        [Parameter(Mandatory = $False, Position = 2)]
+        [System.Management.Automation.PSCredential]
+        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty
     )
 
-    begin {}
+    begin {
+        $params = @{}
+        if ($PSBoundParameters.ContainsKey("Proxy")) {
+            $params.Proxy = $Proxy
+        }
+        if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+            $params.ProxyCredential = $ProxyCredential
+        }
+    }
 
     process {
 
@@ -46,14 +61,16 @@ function Invoke-EvergreenLibraryUpdate {
                     }
 
                     # Gather the application version information from Get-EvergreenApp
-                    $App = Get-EvergreenApp -Name $Application.EvergreenApp | Where-Object $WhereBlock
+                    $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
 
                     # If something returned, add to the library
                     if ($Null -ne $App) {
                         Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
 
                         # Save the installers to the library
-                        $Saved = $App | Save-EvergreenApp -Path $AppPath
+                        if ($PSCmdlet.ShouldProcess("Downloading $($App.Count) application installers.", "Save-EvergreenApp")) {
+                            $Saved = $App | Save-EvergreenApp -Path $AppPath @params
+                        }
 
                         # Add the saved installer path to the application version information
                         if ($Saved.Count -gt 1) {

@@ -1,4 +1,4 @@
-Function Invoke-WebRequestWrapper {
+function Invoke-WebRequestWrapper {
     <#
         .SYNOPSIS
             Validates and return responses from Invoke-WebRequest
@@ -46,16 +46,16 @@ Function Invoke-WebRequestWrapper {
     )
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
-    If ($PSBoundParameters.ContainsKey('Verbose')) {
+    if ($PSBoundParameters.ContainsKey('Verbose')) {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
     }
-    Else {
+    else {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
     }
 
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and -not(Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and -not(Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
@@ -72,8 +72,8 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Use TLS for connections
-    If ($PSBoundParameters.ContainsKey("SslProtocol") -and -not(Test-PSCore)) {
-        If ($SslProtocol -eq "Tls13") {
+    if ($PSBoundParameters.ContainsKey("SslProtocol") -and -not(Test-PSCore)) {
+        if ($SslProtocol -eq "Tls13") {
             $SslProtocol = "Tls12"
             Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
         }
@@ -90,29 +90,35 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Set additional parameters
-    If ($PSBoundParameters.ContainsKey("ContentType")) {
+    if ($PSBoundParameters.ContainsKey("ContentType")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding ContentType."
         $iwrParams.ContentType = $ContentType
     }
-    If ($PSBoundParameters.ContainsKey("Headers")) {
+    if ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $iwrParams.Headers = $Headers
     }
-    If ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $iwrParams.SkipCertificateCheck = $True
     }
-    If ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $iwrParams.SslProtocol = $SslProtocol
     }
-    If ($PSBoundParameters.ContainsKey("Raw")) {
+    if ($PSBoundParameters.ContainsKey("Raw")) {
         $tempFile = New-TemporaryFile -WhatIf:$WhatIfPreference
         $iwrParams.OutFile = $tempFile
         $iwrParams.PassThru = $True
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
     }
-    ForEach ($item in $iwrParams.GetEnumerator()) {
+    if (Test-ProxyEnv) {
+        $iwrParams.Proxy = $script:EvergreenProxy
+    }
+    if (Test-ProxyEnv -Creds) {
+        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
+    }
+    foreach ($item in $iwrParams.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
     }
     #endregion
@@ -130,43 +136,43 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
-    If ($Null -ne $Response) {
+    if ($Null -ne $Response) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
 
         # Output content from the response
-        Switch ($ReturnObject) {
+        switch ($ReturnObject) {
             "All" {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
                 Write-Output -InputObject $Response
-                Break
+                break
             }
             "Headers" {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
                 Write-Output -InputObject $Response.Headers
-                Break
+                break
             }
             "RawContent" {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
                 Write-Output -InputObject $Response.RawContent
-                Break
+                break
             }
             "Content" {
-                If ($PSBoundParameters.ContainsKey("Raw")) {
+                if ($PSBoundParameters.ContainsKey("Raw")) {
                     $Content = Get-Content -Path $TempFile
                 }
-                Else {
+                else {
                     $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
                 Write-Output -InputObject $Content
-                Break
+                break
             }
-            Default {
-                If ($PSBoundParameters.ContainsKey("Raw")) {
+            default {
+                if ($PSBoundParameters.ContainsKey("Raw")) {
                     $Content = Get-Content -Path $TempFile
                 }
-                Else {
+                else {
                     $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
