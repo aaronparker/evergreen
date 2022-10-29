@@ -1,6 +1,6 @@
-﻿# 222 Supported applications
+﻿# 232 Supported applications
 
-Evergreen `2210.661` supports the following applications:
+Evergreen `2210.674` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -55,6 +55,13 @@ Evergreen `2210.661` supports the following applications:
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                            |
 | DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                    |
 | EgnyteDesktopApp                      | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                     |
+| ESETEndpointAntivirus                 | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                            |
+| ESETEndpointSecurity                  | ESET Endpoint Security                                            | https://www.eset.com/au/business/solutions/endpoint-protection/                            |
+| ESETFullDiskEncryption                | ESET Full Disk Encryption                                         | https://www.eset.com/int/business/extended-protection-with-full-disk-encryption/           |
+| ESETInspectConnector                  | ESET Inspect Connector                                            | https://www.eset.com/int/business/download/inspect/                                        |
+| ESETPROTECTServer                     | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                            |
+| ESETSecureAuthentication              | ESET Secure Authentication                                        | https://www.eset.com/au/business/download/secure-authentication/                           |
+| ESETServerSecurity                    | ESET Server Security                                              | https://www.eset.com/int/business/solutions/file-server-security/                          |
 | FileZilla                             | FileZilla                                                         | https://filezilla-project.org/                                                             |
 | Fork                                  | Dan Pristupov Fork                                                | https://www.fork.dev                                                                       |
 | FoxitPDFEditor                        | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                          |
@@ -167,6 +174,9 @@ Evergreen `2210.661` supports the following applications:
 | PiriformCCleanerFree                  | Piriform CCleaner Free                                            | https://www.ccleaner.com/ccleaner                                                          |
 | Postman                               | Postman                                                           | https://www.getpostman.com/                                                                |
 | Praat                                 | Praat                                                             | https://www.fon.hum.uva.nl/praat/                                                          |
+| ProgressChefInfraClient               | Progress Chef Infra Client                                        | https://www.chef.io/products/chef-infra                                                    |
+| ProgressChefInSpec                    | Progress Chef InSpec                                              | https://www.chef.io/products/chef-inspec                                                   |
+| ProgressChefWorkstation               | Progress Chef Workstation                                         | https://www.chef.io/products/chef-workstation                                              |
 | ProjectLibre                          | ProjectLibre                                                      | https://www.projectlibre.com/                                                              |
 | Protege                               | Protege                                                           | https://protege.stanford.edu/                                                              |
 | PSAppDeployToolkit                    | PSAppDeployToolkit                                                | https://psappdeploytoolkit.com/                                                            |

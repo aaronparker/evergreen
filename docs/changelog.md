@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2210.674
 
 * Adds `ProgressChefInfraClient`, `ProgressChefInSpec`, `ProgressChefWorkstation`
 * Adds `ESETSecureAuthentication`, `ESETEndpointAntivirus`, `ESETEndpointSecurity`, `ESETFullDiskEncryption`, `ESETInspectConnector`, `ESETPROTECTServer`, `ESETSecureAuthentication`, `ESETServerSecurity` [#347](https://github.com/aaronparker/evergreen/issues/347)
