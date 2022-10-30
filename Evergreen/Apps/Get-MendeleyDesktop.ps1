@@ -1,4 +1,4 @@
-Function Get-MendeleyDesktop {
+function Get-MendeleyDesktop {
     <#
         .SYNOPSIS
             Get the current version and download URL for Mendeley Desktop.
@@ -18,13 +18,13 @@ Function Get-MendeleyDesktop {
     )
 
     # Get the latest download
-    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
+    $Url = Resolve-InvokeWebRequest -Uri $res.Get.Download.Uri
 
     # Construct the output; Return the custom object to the pipeline
-    If ($Null -ne $Response) {
+    if ($Null -ne $Url) {
         $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
-            URI     = $Response.ResponseUri.AbsoluteUri
+            Version = [RegEx]::Match($Url, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            URI     = $Url
         }
         Write-Output -InputObject $PSObject
     }

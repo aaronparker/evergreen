@@ -1,4 +1,4 @@
-Function Resolve-InvokeWebRequest {
+function Resolve-InvokeWebRequest {
     <#
         .SYNOPSIS
             Resolve a URL that returns a 301/302 response and returns the redirected URL
@@ -45,35 +45,28 @@ Function Resolve-InvokeWebRequest {
             Invoke-WebRequest @iwrParams | Out-Null
         }
         catch [System.Exception] {
-            $redirectUrl = $_.Exception.Response.Headers.Location.AbsoluteUri
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
+            if ($null -ne $_.Exception.Response.Headers.Location.AbsoluteUri) {
+                Write-Output -InputObject $_.Exception.Response.Headers.Location.AbsoluteUri
+            }
+            else {
+                Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
+                Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
+                Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            }
         }
     }
     else {
         try {
             # If running Windows PowerShell, request the URL and return the response
             $response = Invoke-WebRequest @iwrParams
-            $redirectUrl = $response.Headers.Location
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
+            Write-Output -InputObject $response.Headers.Location
         }
         catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
             Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
             Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
-    }
-
-    # Validate and return the resolved URL to the pipeline
-    if ($Null -ne $redirectUrl) {
-        if ($redirectUrl.GetType() -eq [System.String]) {
-            Write-Output -InputObject $redirectUrl
-        }
-        else {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to resolve correct output type (String)."
-        }
-    }
-    else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to resolve a redirect at: $Uri."
     }
 }

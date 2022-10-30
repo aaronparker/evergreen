@@ -1,4 +1,4 @@
-Function Get-MozillaThunderbird {
+function Get-MozillaThunderbird {
     <#
         .SYNOPSIS
             Returns downloads for the latest Mozilla Thunderbird releases.
@@ -25,27 +25,27 @@ Function Get-MozillaThunderbird {
     $Versions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     # Construct custom object with output details
-    ForEach ($currentLanguage in $Language) {
-        ForEach ($channel in $res.Get.Update.Channels) {
-            ForEach ($platform in $res.Get.Download.Platforms) {
+    foreach ($currentLanguage in $Language) {
+        foreach ($channel in $res.Get.Update.Channels) {
+            foreach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                ForEach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
+                foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
                     $params = @{
                         Uri = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
                     }
-                    $response = Resolve-SystemNetWebRequest @params
+                    $Url = Resolve-InvokeWebRequest @params
 
-                    If ($Null -ne $response) {
+                    if ($Null -ne $Url) {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
                             Architecture = Get-Architecture -String $platform
                             Channel      = $channel
                             Language     = $currentLanguage
-                            Type         = [System.IO.Path]::GetExtension($response.ResponseUri.AbsoluteUri).Split(".")[-1]
-                            Filename     = (Split-Path -Path $response.ResponseUri.AbsoluteUri -Leaf).Replace('%20', ' ')
-                            URI          = $response.ResponseUri.AbsoluteUri
+                            Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                            Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
+                            URI          = $Url
                         }
                         Write-Output -InputObject $PSObject
                     }
