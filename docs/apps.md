@@ -1,6 +1,6 @@
 ﻿# 232 Supported applications
 
-Evergreen `2210.674` supports the following applications:
+Evergreen `2210.676` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
