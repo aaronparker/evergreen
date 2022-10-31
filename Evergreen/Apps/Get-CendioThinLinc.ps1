@@ -17,13 +17,13 @@ Function Get-CendioThinLinc {
     )
 
     # Get the latest download
-    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
+    $Url = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
 
     # Construct the output; Return the custom object to the pipeline
-    If ($Null -ne $Response) {
+    if ($Null -ne $Url) {
         $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
-            URI     = $Response.ResponseUri.AbsoluteUri
+            Version = [RegEx]::Match($Url.ResponseUri.AbsoluteUri, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            URI     = $Url.ResponseUri.AbsoluteUri
         }
         Write-Output -InputObject $PSObject
     }

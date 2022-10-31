@@ -1,4 +1,4 @@
-Function Resolve-SystemNetWebRequest {
+function Resolve-SystemNetWebRequest {
     <#
         .SYNOPSIS
             Resolve a URL that returns a 301/302 response and returns the redirected URL
@@ -30,7 +30,6 @@ Function Resolve-SystemNetWebRequest {
             if (Test-ProxyEnv -Creds) {
                 $ProxyObj.UseDefaultCredentials = $false
                 $ProxyObj.Credentials = $script:EvergreenProxyCreds
-
                 $httpWebRequest.UseDefaultCredentials = $false
                 $httpWebRequest.Proxy = $ProxyObj
                 $httpWebRequest.Credentials = $script:EvergreenProxyCreds
@@ -42,28 +41,24 @@ Function Resolve-SystemNetWebRequest {
 
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $webResponse = $httpWebRequest.GetResponse()
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
+
+        # Construct the output; Return the custom object to the pipeline
+        $PSObject = [PSCustomObject] @{
+            LastModified  = $webResponse.LastModified
+            ContentLength = $webResponse.ContentLength
+            Headers       = $webResponse.Headers
+            ResponseUri   = $webResponse.ResponseUri
+            StatusCode    = $webResponse.StatusCode
+        }
+        Write-Output -InputObject $PSObject
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
-        Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($_)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
     finally {
-        if ($webResponse) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($webResponse.StatusCode)]."
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
-
-            # Construct the output; Return the custom object to the pipeline
-            $PSObject = [PSCustomObject] @{
-                LastModified  = $webResponse.LastModified
-                ContentLength = $webResponse.ContentLength
-                Headers       = $webResponse.Headers
-                ResponseUri   = $webResponse.ResponseUri
-                StatusCode    = $webResponse.StatusCode
-            }
-            Write-Output -InputObject $PSObject
-            $webResponse.Dispose()
-        }
+        $webResponse.Dispose()
     }
 }

@@ -34,18 +34,18 @@ Function Get-MozillaFirefox {
                     $params = @{
                         Uri = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
                     }
-                    $response = Resolve-SystemNetWebRequest @params
+                    $Url = Resolve-InvokeWebRequest @params
 
-                    If ($Null -ne $response) {
+                    If ($Null -ne $Url) {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
                             Architecture = Get-Architecture -String $platform
                             Channel      = $channel
                             Language     = $currentLanguage
-                            Type         = [System.IO.Path]::GetExtension($response.ResponseUri.AbsoluteUri).Split(".")[-1]
-                            Filename     = (Split-Path -Path $response.ResponseUri.AbsoluteUri -Leaf).Replace('%20', ' ')
-                            URI          = $response.ResponseUri.AbsoluteUri
+                            Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                            Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
+                            URI          = $Url
                         }
                         Write-Output -InputObject $PSObject
                     }

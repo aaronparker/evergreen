@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Updates `FoxitPDFEditor`, `FoxitReader`, `MozillaFirefox`, `MozillaThunderbird`, `CendioThinLinc`, `MendeleyDesktop`, `OctopusTentacle` to improve performance. Execution time has been improved by 30% or more
+* Remove `Unstable` channel from `ProgressChefWorkstation` (which isn't supported by the update API anyway)
+
 ## 2210.674
 
 * Adds `ProgressChefInfraClient`, `ProgressChefInSpec`, `ProgressChefWorkstation`

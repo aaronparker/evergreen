@@ -13,8 +13,7 @@
             ],
             "Channels": [
                 "current",
-                "stable",
-                "unstable"
+                "stable"
             ],
             "PlatformVersions": [
                 "2012r2",
