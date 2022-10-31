@@ -1,0 +1,45 @@
+﻿{
+    "Name": "IrfanView",
+    "Source": "https://www.irfanview.com/",
+    "Get": {
+        "Uri": "https://www.irfanview.com/",
+        "MatchVersion": "<strong>version (\\d+(\\.\\d+){1,4})</strong>"
+    },
+    "Update": {
+        "Uri": "https://www.fosshub.com/IrfanView.html?dwl=iview#version#architecture_setup.exe",
+        "UriMapping": {
+            "Architectures": [{
+                "x64": "_x64",
+                "x86": ""
+            }]
+        },
+        "UriReplace": {
+            "#version": "version.Replace('.','')",
+            "#architecture": "architecture.key"
+        },
+        "Architectures": {
+            "x64": {
+                "Formats": [
+                    "exe"
+                ]
+            },
+            "x86": {
+                "Formats": [
+                    "exe"
+                ]
+            }
+        }
+    },
+    "Install": {
+        "Preinstall": "",
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
