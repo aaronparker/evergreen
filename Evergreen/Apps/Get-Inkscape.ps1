@@ -23,7 +23,6 @@
     $req = Invoke-WebRequestWrapper @params
     $version = ([regex]$res.Get.MatchVersion).Matches($req).Groups[1].Value
     Write-Verbose "found version: $($version)"
-    Write-Verbose $res.Update.Architectures.GetEnumerator()
 
     foreach ($architecture in $res.Update.Architectures.GetEnumerator()) {
         Write-Verbose "architecture: $($architecture.Key)"
@@ -32,7 +31,13 @@
             # build uri
             $uri = $res.Update.Uri
             foreach ($search in $res.Update.UriReplace.GetEnumerator() ) {
+                Write-Verbose "Key: $($search.Key) - Value: $($search.Value)"
                 $replaceValue = Invoke-Expression "`$$($res.Update.UriReplace.($search.Name))"
+                Write-Verbose "replaceValue: $($replaceValue)"
+                if($res.Update.UriMapping.Architectures.($replaceValue)){
+                    Write-Verbose "found UriMapping for $($replaceValue)"
+                    $replaceValue = $res.Update.UriMapping.Architectures.($replaceValue)
+                }
                 $uri = $uri.Replace($search.Key, $replaceValue)
             }
             Write-Verbose "builded URI: $($uri)"
