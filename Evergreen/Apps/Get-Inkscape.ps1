@@ -37,6 +37,7 @@
                 if($res.Update.UriMapping.Architectures.($replaceValue)){
                     Write-Verbose "found UriMapping for $($replaceValue)"
                     $replaceValue = $res.Update.UriMapping.Architectures.($replaceValue)
+                    Write-Verbose "new replaceValue: $($replaceValue)"
                 }
                 $uri = $uri.Replace($search.Key, $replaceValue)
             }
