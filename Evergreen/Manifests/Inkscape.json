@@ -1,0 +1,51 @@
+﻿{
+    "Name": "Inkscape",
+    "Source": "https://getgreenshot.org/",
+    "Get": {
+        "Uri": "https://inkscape.org/release",
+        "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
+    },
+    "Update": {
+        "Uri": "https://inkscape.org/release/inkscape-#version/windows/#architecture/#format/dl/",
+        "UriMapping": {
+            "Architectures": {
+                "x64": "64-bit",
+                "x86": "32-bit"
+            }
+        },
+        "UriReplace": {
+            "#version": "version",
+            "#architecture": "architecture.key",
+            "#format": "format"
+        },
+        "Architectures": {
+            "x64": {
+                "Formats": [
+                    "exe",
+                    "msi",
+                    "7z"
+                ]
+            },
+            "x86": {
+                "Formats": [
+                    "exe",
+                    "portable-app",
+                    "msi",
+                    "7z"
+                ]
+            }
+        }
+    },
+    "Install": {
+        "Preinstall": "",
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
