@@ -1,6 +1,6 @@
 ﻿{
     "Name": "Inkscape",
-    "Source": "https://getgreenshot.org/",
+    "Source": "https://inkscape.org/",
     "Get": {
         "Uri": "https://inkscape.org/release",
         "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
