@@ -2,8 +2,7 @@
 
 ## VERSION
 
-* Adds `SafingPortmaster`
-
+* Adds `SafingPortmaster`, `VMPlexWorkstation`
 
 ## 2210.676
 
