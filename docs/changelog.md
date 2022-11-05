@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `SafingPortmaster`, `VMPlexWorkstation`
+* Adds `SafingPortmaster`, `VMPlexWorkstation`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru8`
 
 ## 2210.676
 
