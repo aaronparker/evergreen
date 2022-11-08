@@ -1,4 +1,4 @@
-﻿Function Get-Wireshark {
+﻿function Get-Wireshark {
     <#
         .SYNOPSIS
             Returns the available Wireshark versions and download URIs.
@@ -17,15 +17,17 @@
     )
 
     # Resolve the URL to the target location
-    ForEach ($item in $res.Get.Update.Uri.GetEnumerator()) {
+    foreach ($item in $res.Get.Update.Uri.GetEnumerator()) {
         $params = @{
             Uri       = $res.Get.Update.Uri[$item.Key]
             UserAgent = $res.Get.Update.UserAgent
         }
         $Update = Invoke-RestMethodWrapper @params
 
-        If ($Null -ne $Update) {
-            ForEach ($enclosure in $Update.enclosure) {
+        if ($Null -ne $Update) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($Update.enclosure.count) releases."
+            foreach ($enclosure in $Update.enclosure) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version $($enclosure.version) for this release."
 
                 # Build the output object; Output object to the pipeline
                 $PSObject = [PSCustomObject] @{
