@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/05/2022 03:32:58)">
-  <sessioninfo id="this" start="1667618039117" dump="1667619178053" />
+<report name="Pester (11/08/2022 20:41:01)">
+  <sessioninfo id="this" start="1667939021627" dump="1667940061884" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -256,6 +256,17 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
+    <class name="Evergreen/Apps/Get-AirtameApp" sourcefilename="Apps/Get-AirtameApp.ps1">
+      <method name="Get-AirtameApp" desc="()" line="13">
+        <counter type="INSTRUCTION" missed="3" covered="9" />
+        <counter type="LINE" missed="1" covered="9" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="9" />
+      <counter type="LINE" missed="1" covered="9" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
     <class name="Evergreen/Apps/Get-AkeoRufus" sourcefilename="Apps/Get-AkeoRufus.ps1">
       <method name="Get-AkeoRufus" desc="()" line="17">
         <counter type="INSTRUCTION" missed="3" covered="6" />
@@ -445,12 +456,12 @@
     </class>
     <class name="Evergreen/Apps/Get-CitrixVMTools" sourcefilename="Apps/Get-CitrixVMTools.ps1">
       <method name="Get-CitrixVMTools" desc="()" line="20">
-        <counter type="INSTRUCTION" missed="3" covered="13" />
-        <counter type="LINE" missed="1" covered="13" />
+        <counter type="INSTRUCTION" missed="3" covered="14" />
+        <counter type="LINE" missed="1" covered="14" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="13" />
-      <counter type="LINE" missed="1" covered="13" />
+      <counter type="INSTRUCTION" missed="3" covered="14" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -1292,6 +1303,17 @@
     </class>
     <class name="Evergreen/Apps/Get-MicrosoftAzureStorageExplorer" sourcefilename="Apps/Get-MicrosoftAzureStorageExplorer.ps1">
       <method name="Get-MicrosoftAzureStorageExplorer" desc="()" line="16">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-MicrosoftAzureWindowsVMAgent" sourcefilename="Apps/Get-MicrosoftAzureWindowsVMAgent.ps1">
+      <method name="Get-MicrosoftAzureWindowsVMAgent" desc="()" line="14">
         <counter type="INSTRUCTION" missed="3" covered="6" />
         <counter type="LINE" missed="1" covered="6" />
         <counter type="METHOD" missed="1" covered="0" />
@@ -2579,12 +2601,12 @@
     </class>
     <class name="Evergreen/Apps/Get-Wireshark" sourcefilename="Apps/Get-Wireshark.ps1">
       <method name="Get-Wireshark" desc="()" line="16">
-        <counter type="INSTRUCTION" missed="3" covered="22" />
-        <counter type="LINE" missed="1" covered="19" />
+        <counter type="INSTRUCTION" missed="3" covered="28" />
+        <counter type="LINE" missed="1" covered="21" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="22" />
-      <counter type="LINE" missed="1" covered="19" />
+      <counter type="INSTRUCTION" missed="3" covered="28" />
+      <counter type="LINE" missed="1" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -3047,6 +3069,22 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-AirtameApp.ps1">
+      <line nr="13" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="17" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="18" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="9" />
+      <counter type="LINE" missed="1" covered="9" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-AkeoRufus.ps1">
       <line nr="17" mi="3" ci="0" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
@@ -3342,16 +3380,17 @@
       <line nr="28" mi="0" ci="1" mb="0" cb="0" />
       <line nr="29" mi="0" ci="1" mb="0" cb="0" />
       <line nr="31" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
       <line nr="35" mi="0" ci="1" mb="0" cb="0" />
       <line nr="36" mi="0" ci="1" mb="0" cb="0" />
       <line nr="37" mi="0" ci="1" mb="0" cb="0" />
       <line nr="38" mi="0" ci="1" mb="0" cb="0" />
       <line nr="39" mi="0" ci="1" mb="0" cb="0" />
       <line nr="40" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="42" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="13" />
-      <counter type="LINE" missed="1" covered="13" />
+      <line nr="41" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="43" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="14" />
+      <counter type="LINE" missed="1" covered="14" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -4845,6 +4884,19 @@
       <line nr="23" mi="0" ci="1" mb="0" cb="0" />
       <line nr="25" mi="0" ci="1" mb="0" cb="0" />
       <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-MicrosoftAzureWindowsVMAgent.ps1">
+      <line nr="14" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="18" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="6" />
       <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
@@ -7095,21 +7147,23 @@
       <line nr="23" mi="0" ci="1" mb="0" cb="0" />
       <line nr="25" mi="0" ci="1" mb="0" cb="0" />
       <line nr="27" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="3" mb="0" cb="0" />
       <line nr="33" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="34" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
       <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="2" mb="0" cb="0" />
       <line nr="37" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="40" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="41" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="39" mi="0" ci="1" mb="0" cb="0" />
       <line nr="42" mi="0" ci="1" mb="0" cb="0" />
       <line nr="43" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="44" mi="0" ci="3" mb="0" cb="0" />
-      <line nr="46" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="22" />
-      <counter type="LINE" missed="1" covered="19" />
+      <line nr="44" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="45" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="46" mi="0" ci="3" mb="0" cb="0" />
+      <line nr="48" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="28" />
+      <counter type="LINE" missed="1" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -7186,10 +7240,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1220" covered="3359" />
-    <counter type="LINE" missed="553" covered="2567" />
-    <counter type="METHOD" missed="239" covered="0" />
-    <counter type="CLASS" missed="239" covered="0" />
+    <counter type="INSTRUCTION" missed="1226" covered="3381" />
+    <counter type="LINE" missed="555" covered="2585" />
+    <counter type="METHOD" missed="241" covered="0" />
+    <counter type="CLASS" missed="241" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
@@ -8577,8 +8631,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1593" covered="4134" />
-  <counter type="LINE" missed="788" covered="3139" />
-  <counter type="METHOD" missed="242" covered="30" />
-  <counter type="CLASS" missed="242" covered="30" />
+  <counter type="INSTRUCTION" missed="1599" covered="4156" />
+  <counter type="LINE" missed="790" covered="3157" />
+  <counter type="METHOD" missed="244" covered="30" />
+  <counter type="CLASS" missed="244" covered="30" />
 </report>
