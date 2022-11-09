@@ -4,11 +4,11 @@
 
 * Adds `SafingPortmaster`, `VMPlexWorkstation`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru8`, `AirtameApp`, `MicrosoftAzureWindowsVMAgent` [#413](https://github.com/aaronparker/evergreen/issues/413)
 * Adds `-SkipCertificateCheck` parameter to `Get-EvergreenApp` - allows for ignoring certificate errors when checking for application updates. Useful for when a vendor forgets to renew a certificate [#412](https://github.com/aaronparker/evergreen/issues/412); however, data returned should be validated
-* Fixes an issue with `FoxitReader` when resolving the installer URI
+* Fixes an issue with `FoxitReader` and `FoxitPDFEditor` when resolving the installer URI
 
 ## 2210.676
 
-* Updates `FoxitPDFEditor`, `FoxitReader`, `MozillaFirefox`, `MozillaThunderbird`, `CendioThinLinc`, `MendeleyDesktop`, `OctopusTentacle` to improve performance. Execution time has been improved by 30% or more
+* Updates `MozillaFirefox`, `MozillaThunderbird`, `CendioThinLinc`, `MendeleyDesktop`, `OctopusTentacle` to improve performance. Execution time has been improved by 30% or more
 * Remove `Unstable` channel from `ProgressChefWorkstation` (which isn't supported by the update API anyway)
 
 ## 2210.674
