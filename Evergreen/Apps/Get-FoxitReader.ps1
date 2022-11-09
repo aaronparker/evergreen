@@ -30,38 +30,33 @@ function Get-FoxitReader {
         $params.ProxyCredential = $script:EvergreenProxyCreds
     }
     $updateFeed = Invoke-RestMethod @params
-
-    if ($Null -ne $updateFeed) {
+    if ($null -ne $updateFeed) {
 
         # Grab latest version
         $Version = ($updateFeed.package_info.version | Sort-Object { [System.Version]$_ } -Descending) | Select-Object -First 1
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
+        if ($null -ne $Version) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
 
-        # Build the output object for each language. Excludes languages with out-of-date versions
-        foreach ($language in ($updateFeed.package_info.language | Get-Member -MemberType "NoteProperty")) {
+            # Build the output object for each language. Excludes languages with out-of-date versions
+            foreach ($language in ($updateFeed.package_info.language | Get-Member -MemberType "NoteProperty")) {
 
-            # Build the download URL; Follow the download link which will return a 301/302
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Return details for language: $($updateFeed.package_info.language.($language.Name))."
-            $Uri = (($res.Get.Download.Uri -replace "#Version", $Version) -replace "#Language", $($updateFeed.package_info.language.($language.Name))) `
-                -replace "#Package", $updateFeed.package_info.type[0]
-            $Url = Resolve-InvokeWebRequest -Uri $Uri
+                # Build the download URL; Follow the download link which will return a 301/302
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Return details for language: $($updateFeed.package_info.language.($language.Name))."
+                $Uri = (($res.Get.Download.Uri -replace "#Version", $Version) -replace "#Language", $($updateFeed.package_info.language.($language.Name))) `
+                    -replace "#Package", $updateFeed.package_info.type[0]
+                $Url = $(Resolve-SystemNetWebRequest -Uri $Uri).ResponseUri.AbsoluteUri
 
-            # Construct the output; Return the custom object to the pipeline
-            If ($Null -ne $Url) {
-                $PSObject = [PSCustomObject] @{
-                    Version  = $Version
-                    Date     = ConvertTo-DateTime -DateTime $updateFeed.package_info.release -Pattern $res.Get.Update.DateTimePattern
-                    Language = $($updateFeed.package_info.language.($language.Name))
-                    URI      = $Url
+                # Construct the output; Return the custom object to the pipeline
+                if ($null -ne $Url) {
+                    $PSObject = [PSCustomObject] @{
+                        Version  = $Version
+                        Date     = ConvertTo-DateTime -DateTime $updateFeed.package_info.release -Pattern $res.Get.Update.DateTimePattern
+                        Language = $($updateFeed.package_info.language.($language.Name))
+                        URI      = $Url
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
-            }
-            else {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a useable URL from $Uri."
             }
         }
-    }
-    else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
 }
