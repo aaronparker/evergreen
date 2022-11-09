@@ -1,6 +1,6 @@
-﻿# 232 Supported applications
+﻿# 241 Supported applications
 
-Evergreen `2210.676` supports the following applications:
+Evergreen `2211.686` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -22,6 +22,12 @@ Evergreen `2210.676` supports the following applications:
 | AdoptOpenJDK11                        | AdoptOpenJDK OpenJDK Official Binaries (JDK 11u)                  | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK16                        | AdoptOpenJDK OpenJDK Official Binaries (JDK 16u)                  | https://adoptopenjdk.net/index.html                                                        |
 | AdoptOpenJDK8                         | AdoptOpenJDK OpenJDK Official Binaries (JDK 8u)                   | https://adoptopenjdk.net/index.html                                                        |
+| AdoptOpenJDKIcedTeaWeb                | AdoptOpenJDK IcedTeaWeb                                           | https://adoptopenjdk.net/icedtea-web.html                                                  |
+| AdoptOpenJDKSemuru11                  | AdoptOpenJDK Semuru 11                                            | https://adoptopenjdk.net/index.html                                                        |
+| AdoptOpenJDKSemuru17                  | AdoptOpenJDK Semuru 17                                            | https://adoptopenjdk.net/index.html                                                        |
+| AdoptOpenJDKSemuru18                  | AdoptOpenJDK Semuru 18                                            | https://adoptopenjdk.net/index.html                                                        |
+| AdoptOpenJDKSemuru8                   | AdoptOpenJDK Semuru 8                                             | https://adoptopenjdk.net/index.html                                                        |
+| AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                       |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                          |
 | AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                           |
 | Anaconda                              | Anaconda                                                          | https://www.anaconda.com/                                                                  |
@@ -117,6 +123,7 @@ Evergreen `2210.676` supports the following applications:
 | MicrosoftAzureDataStudio              | Microsoft Azure Data Studio                                       | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                    |
 | MicrosoftAzureFunctionsCoreTools      | Azure Functions Core Tools                                        | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                 |
 | MicrosoftAzureStorageExplorer         | Microsoft Azure Storage Explorer                                  | https://azure.microsoft.com/en-au/features/storage-explorer/                               |
+| MicrosoftAzureWindowsVMAgent          | MicrosoftAzureWindowsVMAgent                                      | https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows          |
 | MicrosoftBicep                        | Microsoft Bicep                                                   | https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview               |
 | MicrosoftBotFrameworkEmulator         | Microsoft Bot Framework Emulator                                  | https://github.com/microsoft/BotFramework-Emulator/                                        |
 | MicrosoftEdge                         | Microsoft Edge                                                    | https://www.microsoft.com/edge                                                             |
@@ -188,6 +195,7 @@ Evergreen `2210.676` supports the following applications:
 | RizonesoftNotepad3                    | Rizonesoft Notepad3                                               | https://www.rizonesoft.com/downloads/notepad3                                              |
 | RStudio                               | RStudio Desktop                                                   | https://www.rstudio.com/                                                                   |
 | SafeExamBrowser                       | Safe Exam Browser                                                 | https://safeexambrowser.org/                                                               |
+| SafingPortmaster                      | Safing Portmaster                                                 | https://safing.io/                                                                         |
 | SAGAGIS                               | SAGA-GIS                                                          | http://www.saga-gis.org/                                                                   |
 | ScooterBeyondCompare                  | Scooter Beyond Compare                                            | https://scootersoftware.com/                                                               |
 | Scratch                               | Scratch                                                           | https://scratch.mit.edu/                                                                   |
@@ -221,6 +229,7 @@ Evergreen `2210.676` supports the following applications:
 | VercelHyper                           | Vercel Hyper                                                      | https://hyper.js/                                                                          |
 | VideoLanVlcPlayer                     | VideoLan VLC Player                                               | https://www.videolan.org/vlc/                                                              |
 | VisualCppRedistAIO                    | VisualCppRedistAIO                                                | https://github.com/abbodi1406/vcredist                                                     |
+| VMPlexWorkstation                     | VMPlex Workstation                                                | https://github.com/0xf005ba11/vmplex-ws                                                    |
 | VMwareHorizonClient                   | VMware Horizon Client                                             | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                |
 | VMwareHorizonClientAlt                | VMware Horizon Client (alternate method)                          | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                |
 | VMwareOSOptimizationTool              | VMware OS Optimization Tool                                       | https://techzone.vmware.com/resource/windows-os-optimization-tool-vmware-horizon-guide     |

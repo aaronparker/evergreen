@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/09/2022 00:25:16)">
-  <sessioninfo id="this" start="1667952538964" dump="1667953516935" />
+<report name="Pester (11/09/2022 09:38:11)">
+  <sessioninfo id="this" start="1667985632303" dump="1667986691994" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -731,23 +731,23 @@
     </class>
     <class name="Evergreen/Apps/Get-FoxitPDFEditor" sourcefilename="Apps/Get-FoxitPDFEditor.ps1">
       <method name="Get-FoxitPDFEditor" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="10" covered="36" />
-        <counter type="LINE" missed="5" covered="20" />
+        <counter type="INSTRUCTION" missed="5" covered="38" />
+        <counter type="LINE" missed="3" covered="21" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="10" covered="36" />
-      <counter type="LINE" missed="5" covered="20" />
+      <counter type="INSTRUCTION" missed="5" covered="38" />
+      <counter type="LINE" missed="3" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
     <class name="Evergreen/Apps/Get-FoxitReader" sourcefilename="Apps/Get-FoxitReader.ps1">
       <method name="Get-FoxitReader" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="10" covered="36" />
-        <counter type="LINE" missed="5" covered="20" />
+        <counter type="INSTRUCTION" missed="5" covered="38" />
+        <counter type="LINE" missed="3" covered="21" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="10" covered="36" />
-      <counter type="LINE" missed="5" covered="20" />
+      <counter type="INSTRUCTION" missed="5" covered="38" />
+      <counter type="LINE" missed="3" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -3916,13 +3916,14 @@
       <line nr="29" mi="0" ci="1" mb="0" cb="0" />
       <line nr="30" mi="1" ci="0" mb="0" cb="0" />
       <line nr="32" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="37" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
       <line nr="38" mi="0" ci="2" mb="0" cb="0" />
       <line nr="41" mi="0" ci="3" mb="0" cb="0" />
       <line nr="44" mi="0" ci="4" mb="0" cb="0" />
       <line nr="45" mi="0" ci="5" mb="0" cb="0" />
-      <line nr="47" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="47" mi="0" ci="2" mb="0" cb="0" />
       <line nr="50" mi="0" ci="1" mb="0" cb="0" />
       <line nr="51" mi="0" ci="1" mb="0" cb="0" />
       <line nr="52" mi="0" ci="1" mb="0" cb="0" />
@@ -3930,10 +3931,8 @@
       <line nr="54" mi="0" ci="3" mb="0" cb="0" />
       <line nr="55" mi="0" ci="1" mb="0" cb="0" />
       <line nr="57" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="60" mi="2" ci="0" mb="0" cb="0" />
-      <line nr="65" mi="3" ci="0" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="10" covered="36" />
-      <counter type="LINE" missed="5" covered="20" />
+      <counter type="INSTRUCTION" missed="5" covered="38" />
+      <counter type="LINE" missed="3" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -3947,13 +3946,14 @@
       <line nr="29" mi="0" ci="1" mb="0" cb="0" />
       <line nr="30" mi="1" ci="0" mb="0" cb="0" />
       <line nr="32" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="34" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="37" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="36" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="37" mi="0" ci="1" mb="0" cb="0" />
       <line nr="38" mi="0" ci="2" mb="0" cb="0" />
       <line nr="41" mi="0" ci="3" mb="0" cb="0" />
       <line nr="44" mi="0" ci="4" mb="0" cb="0" />
       <line nr="45" mi="0" ci="5" mb="0" cb="0" />
-      <line nr="47" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="47" mi="0" ci="2" mb="0" cb="0" />
       <line nr="50" mi="0" ci="1" mb="0" cb="0" />
       <line nr="51" mi="0" ci="1" mb="0" cb="0" />
       <line nr="52" mi="0" ci="1" mb="0" cb="0" />
@@ -3961,10 +3961,8 @@
       <line nr="54" mi="0" ci="3" mb="0" cb="0" />
       <line nr="55" mi="0" ci="1" mb="0" cb="0" />
       <line nr="57" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="60" mi="2" ci="0" mb="0" cb="0" />
-      <line nr="65" mi="3" ci="0" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="10" covered="36" />
-      <counter type="LINE" missed="5" covered="20" />
+      <counter type="INSTRUCTION" missed="5" covered="38" />
+      <counter type="LINE" missed="3" covered="21" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -7240,8 +7238,8 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1226" covered="3381" />
-    <counter type="LINE" missed="555" covered="2585" />
+    <counter type="INSTRUCTION" missed="1216" covered="3385" />
+    <counter type="LINE" missed="551" covered="2587" />
     <counter type="METHOD" missed="241" covered="0" />
     <counter type="CLASS" missed="241" covered="0" />
   </package>
@@ -8635,8 +8633,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1601" covered="4161" />
-  <counter type="LINE" missed="792" covered="3159" />
+  <counter type="INSTRUCTION" missed="1591" covered="4165" />
+  <counter type="LINE" missed="788" covered="3161" />
   <counter type="METHOD" missed="244" covered="30" />
   <counter type="CLASS" missed="244" covered="30" />
 </report>
