@@ -53,7 +53,7 @@ function Invoke-RestMethodWrapper {
 
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    if (($SkipCertificateCheck.IsPresent) -and -not(Test-PSCore)) {
+    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and -not(Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
         Add-Type @"
 using System.Net;
@@ -97,7 +97,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
         $irmParams.Body = $Body
     }
-    if ($PSBoundParameters.ContainsKey("SkipCertificateCheck") -and (Test-PSCore)) {
+    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $irmParams.SkipCertificateCheck = $True
     }

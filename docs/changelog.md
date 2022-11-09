@@ -2,7 +2,8 @@
 
 ## VERSION
 
-* Adds `SafingPortmaster`, `VMPlexWorkstation`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru8`, `AirtameApp`
+* Adds `SafingPortmaster`, `VMPlexWorkstation`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru8`, `AirtameApp`, `MicrosoftAzureWindowsVMAgent`
+* Adds `-SkipCertificateCheck` parameter to `Get-EvergreenApp` - allows for ignoring certificate errors when checking for application updates. Useful for when a vendor forgets to renew a certificate [#412](https://github.com/aaronparker/evergreen/issues/412); however, data returned should be validated
 
 ## 2210.676
 
