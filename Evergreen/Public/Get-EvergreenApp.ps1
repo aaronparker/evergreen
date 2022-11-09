@@ -26,7 +26,10 @@ Function Get-EvergreenApp {
 
         [Parameter(Mandatory = $False, Position = 3)]
         [System.Management.Automation.PSCredential]
-        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty
+        $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
     )
 
     begin {
@@ -36,6 +39,11 @@ Function Get-EvergreenApp {
             if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
                 Set-ProxyEnv -ProxyCredential $ProxyCredential
             }
+        }
+
+        # Force Invoke-RestMethodWrapper and Invoke-WebRequestWrapper to ignore certificate errors
+        if ($PSBoundParameters.ContainsKey("SkipCertificateCheck")) {
+            $script:SkipCertificateCheck = $true
         }
     }
 
@@ -113,5 +121,8 @@ Function Get-EvergreenApp {
     end {
         # Remove these variables for next run
         Remove-Variable -Name "Output", "Function" -ErrorAction "SilentlyContinue"
+        if ($PSBoundParameters.ContainsKey("SkipCertificateCheck")) {
+            $script:SkipCertificateCheck = $false
+        }
     }
 }

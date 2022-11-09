@@ -29,8 +29,5 @@ Function Get-AdoptiumTemurin17 {
             }
             Write-Output -InputObject $PSObject
         }
-        else {
-            Write-Warning -Message ""
-        }
     }
 }

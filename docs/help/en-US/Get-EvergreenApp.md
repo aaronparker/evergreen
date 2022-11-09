@@ -15,7 +15,7 @@ Returns the latest version and download URL/s for an application supported by th
 
 ```powershell
 Get-EvergreenApp [-Name] <String> [[-AppParams] <Hashtable>] [-Proxy <String>]
- [-ProxyCredential <PSCredential>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProxyCredential <PSCredential>] [-SkipCertificateCheck] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,6 +206,24 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipCertificateCheck
+
+Skips certificate validation checks. This includes all validations such as expiration, revocation, trusted root authority, etc.
+
+Warning: Using this parameter isn't secure and isn't recommended. This switch is only intended to be used where a vendor has a temporary certificate issue and should only be used for testing purposes. Use at your own risk.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

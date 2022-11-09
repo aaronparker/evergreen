@@ -1,4 +1,4 @@
-Function Get-CitrixVMTools {
+function Get-CitrixVMTools {
     <#
         .SYNOPSIS
             Returns the current version and download URL for the Citrix VM Tools.
@@ -11,7 +11,7 @@ Function Get-CitrixVMTools {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -21,7 +21,7 @@ Function Get-CitrixVMTools {
     )
 
     # Get details for each update URI
-    ForEach ($update in $res.Get.Update.Uri.GetEnumerator()) {
+    foreach ($update in $res.Get.Update.Uri.GetEnumerator()) {
 
         # Get content
         $params = @{
@@ -30,16 +30,18 @@ Function Get-CitrixVMTools {
         }
         $updateFeed = Invoke-RestMethodWrapper @params
 
-        # Convert the JSON to usable output
-        ForEach ($architecture in $res.Get.Update.Architectures) {
-            $PSObject = [PSCustomObject] @{
-                Version      = $updateFeed.version
-                Architecture = $architecture
-                Size         = $updateFeed.$architecture.size
-                Checksum     = $updateFeed.$architecture.checksum
-                URI          = $updateFeed.$architecture.url
+        if ($null -ne $updateFeed) {
+            # Convert the JSON to usable output
+            foreach ($architecture in $res.Get.Update.Architectures) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $updateFeed.version
+                    Architecture = $architecture
+                    Size         = $updateFeed.$architecture.size
+                    Checksum     = $updateFeed.$architecture.checksum
+                    URI          = $updateFeed.$architecture.url
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
     }
 }
