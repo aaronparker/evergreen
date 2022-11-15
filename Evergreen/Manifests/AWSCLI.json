@@ -3,28 +3,23 @@
 	"Source": "https://github.com/aws/aws-cli/",
 	"Get": {
 		"Update": {
-			"Uri": ""
+			"Uri": "https://api.github.com/repos/aws/aws-cli/tags",
+            "ContentType": "application/json; charset=utf-8",
+			"MatchVersion": "(\\d+(\\.\\d+){1,3}).*"
 		},
 		"Download": {
-			"CLI": {
-				"2": {
-					"x64msi" :"https://awscli.amazonaws.com/AWSCLIV2.msi"
-				},
-				"1": {
-					"x64msi" :"https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi",
-					"x86msi" :"https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi"
-				}
-			}
+			"Uri" :"https://awscli.amazonaws.com/AWSCLIV2-#version.msi",
+			"ReplaceText": "#version"
 		}
 	},
 	"Install": {
-		"Setup": "AWSCLI*.msi",
+		"Setup": "AWSCLIV2-*.msi",
 		"Physical": {
-			"Arguments": "/install /passive /norestart",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "/install /passive /norestart",
+			"Arguments": "/quiet /norestart",
 			"PostInstall": []
 		}
 	}

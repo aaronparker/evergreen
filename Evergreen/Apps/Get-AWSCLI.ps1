@@ -15,27 +15,21 @@ Function Get-AWSCLI {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get the latest download
-    ForEach ($CLIversion in $res.Get.Download.CLI.GetEnumerator()) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Looking for CLI version $($CLIversion.Name)."
+    # Get latest version and download latest release via GitHub API
+    $Params = @{
+        Uri         = $res.Get.Update.Uri
+        ContentType = $res.Get.Update.ContentType
+    }
+    $Content = Invoke-WebRequestWrapper @Params | ConvertFrom-Json
 
-        ForEach ($CLIType in $res.Get.Download.CLI.($CLIversion.Name).GetEnumerator()) {
-
-            $Url = $CLIType.Value
-            $Response = Resolve-SystemNetWebRequest -Uri $Url
-
-            # Construct the output; Return the custom object to the pipeline
-            #NOTE: Version can now be returned with `Get-GitHubRepoRelease -ReturnVersionOnly`
-            If ($Null -ne $Response) {
-                $PSObject = [PSCustomObject] @{
-                    Version      = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
-                    Architecture = Get-Architecture -String $Url
-                    CLI          = $CLIversion.Name
-                    Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
-                    URI          = $Response.ResponseUri.AbsoluteUri
-                }
-                Write-Output -InputObject $PSObject
+    If ($Null -ne $Content) {
+        $Content | Sort-Object name | Select-Object -last 10 | ForEach-Object {
+            $PSObject = [PSCustomObject] @{
+                Version = $_.name
+                URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $_.name
             }
+            Write-Output -InputObject $PSObject
         }
     }
+
 }
