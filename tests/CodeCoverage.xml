@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/11/2022 23:04:31)">
-  <sessioninfo id="this" start="1668206675615" dump="1668207871786" />
+<report name="Pester (11/15/2022 22:04:35)">
+  <sessioninfo id="this" start="1668548847246" dump="1668549875044" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -2629,6 +2629,28 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="7" />
       <counter type="LINE" missed="1" covered="7" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-XnSoftXnConvert" sourcefilename="Apps/Get-XnSoftXnConvert.ps1">
+      <method name="Get-XnSoftXnConvert" desc="()" line="14">
+        <counter type="INSTRUCTION" missed="3" covered="16" />
+        <counter type="LINE" missed="1" covered="15" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="16" />
+      <counter type="LINE" missed="1" covered="15" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-XnSoftXnViewMP" sourcefilename="Apps/Get-XnSoftXnViewMP.ps1">
+      <method name="Get-XnSoftXnViewMP" desc="()" line="14">
+        <counter type="INSTRUCTION" missed="3" covered="16" />
+        <counter type="LINE" missed="1" covered="15" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="16" />
+      <counter type="LINE" missed="1" covered="15" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -7203,6 +7225,50 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
+    <sourcefile name="Apps/Get-XnSoftXnConvert.ps1">
+      <line nr="14" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="18" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="16" />
+      <counter type="LINE" missed="1" covered="15" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-XnSoftXnViewMP.ps1">
+      <line nr="14" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="18" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="32" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="33" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="16" />
+      <counter type="LINE" missed="1" covered="15" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
     <sourcefile name="Apps/Get-Zoom.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="19" mi="0" ci="1" mb="0" cb="0" />
@@ -7262,12 +7328,23 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1219" covered="3391" />
-    <counter type="LINE" missed="552" covered="2593" />
-    <counter type="METHOD" missed="242" covered="0" />
-    <counter type="CLASS" missed="242" covered="0" />
+    <counter type="INSTRUCTION" missed="1225" covered="3423" />
+    <counter type="LINE" missed="554" covered="2623" />
+    <counter type="METHOD" missed="244" covered="0" />
+    <counter type="CLASS" missed="244" covered="0" />
   </package>
   <package name="Evergreen/Private">
+    <class name="Evergreen/Private/ConvertFrom-IniFile" sourcefilename="Private/ConvertFrom-IniFile.ps1">
+      <method name="ConvertFrom-IniFile" desc="()" line="15">
+        <counter type="INSTRUCTION" missed="6" covered="17" />
+        <counter type="LINE" missed="6" covered="14" />
+        <counter type="METHOD" missed="0" covered="1" />
+      </method>
+      <counter type="INSTRUCTION" missed="6" covered="17" />
+      <counter type="LINE" missed="6" covered="14" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
+    </class>
     <class name="Evergreen/Private/ConvertTo-DateTime" sourcefilename="Private/ConvertTo-DateTime.ps1">
       <method name="ConvertTo-DateTime" desc="()" line="20">
         <counter type="INSTRUCTION" missed="0" covered="13" />
@@ -7510,6 +7587,32 @@
       <counter type="METHOD" missed="0" covered="1" />
       <counter type="CLASS" missed="0" covered="1" />
     </class>
+    <sourcefile name="Private/ConvertFrom-IniFile.ps1">
+      <line nr="15" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="16" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="17" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="20" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="35" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="36" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="37" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="38" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="42" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="43" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="46" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="49" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="52" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="53" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="6" covered="17" />
+      <counter type="LINE" missed="6" covered="14" />
+      <counter type="METHOD" missed="0" covered="1" />
+      <counter type="CLASS" missed="0" covered="1" />
+    </sourcefile>
     <sourcefile name="Private/ConvertTo-DateTime.ps1">
       <line nr="20" mi="0" ci="2" mb="0" cb="0" />
       <line nr="21" mi="0" ci="3" mb="0" cb="0" />
@@ -8175,10 +8278,10 @@
       <counter type="METHOD" missed="0" covered="1" />
       <counter type="CLASS" missed="0" covered="1" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="274" covered="507" />
-    <counter type="LINE" missed="162" covered="371" />
-    <counter type="METHOD" missed="2" covered="20" />
-    <counter type="CLASS" missed="2" covered="20" />
+    <counter type="INSTRUCTION" missed="280" covered="524" />
+    <counter type="LINE" missed="168" covered="385" />
+    <counter type="METHOD" missed="2" covered="21" />
+    <counter type="CLASS" missed="2" covered="21" />
   </package>
   <package name="Evergreen/Public">
     <class name="Evergreen/Public/Export-EvergreenApp" sourcefilename="Public/Export-EvergreenApp.ps1">
@@ -8657,8 +8760,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1594" covered="4171" />
-  <counter type="LINE" missed="789" covered="3167" />
-  <counter type="METHOD" missed="245" covered="30" />
-  <counter type="CLASS" missed="245" covered="30" />
+  <counter type="INSTRUCTION" missed="1606" covered="4220" />
+  <counter type="LINE" missed="797" covered="3211" />
+  <counter type="METHOD" missed="247" covered="31" />
+  <counter type="CLASS" missed="247" covered="31" />
 </report>
