@@ -1,0 +1,31 @@
+{
+	"Name": "AWS CLI",
+	"Source": "https://github.com/aws/aws-cli/",
+	"Get": {
+		"Update": {
+			"Uri": ""
+		},
+		"Download": {
+			"CLI": {
+				"2": {
+					"x64msi" :"https://awscli.amazonaws.com/AWSCLIV2.msi"
+				},
+				"1": {
+					"x64msi" :"https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi",
+					"x86msi" :"https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi"
+				}
+			}
+		}
+	},
+	"Install": {
+		"Setup": "AWSCLI*.msi",
+		"Physical": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/install /passive /norestart",
+			"PostInstall": []
+		}
+	}
+}
