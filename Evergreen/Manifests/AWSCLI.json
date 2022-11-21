@@ -1,0 +1,26 @@
+{
+	"Name": "AWS CLI",
+	"Source": "https://github.com/aws/aws-cli/",
+	"Get": {
+		"Update": {
+			"Uri": "https://api.github.com/repos/aws/aws-cli/tags",
+            "ContentType": "application/json; charset=utf-8",
+			"MatchVersion": "(\\d+(\\.\\d+){1,3}).*"
+		},
+		"Download": {
+			"Uri" :"https://awscli.amazonaws.com/AWSCLIV2-#version.msi",
+			"ReplaceText": "#version"
+		}
+	},
+	"Install": {
+		"Setup": "AWSCLIV2-*.msi",
+		"Physical": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "/quiet /norestart",
+			"PostInstall": []
+		}
+	}
+}
