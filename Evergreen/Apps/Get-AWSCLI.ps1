@@ -23,7 +23,7 @@ Function Get-AWSCLI {
     $Content = Invoke-WebRequestWrapper @Params | ConvertFrom-Json
 
     If ($Null -ne $Content) {
-        $Content | Sort-Object name | Select-Object -last 10 | ForEach-Object {
+        $Content | Sort-Object name | Select-Object -Last 1 | ForEach-Object {
             $PSObject = [PSCustomObject] @{
                 Version = $_.name
                 URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $_.name
