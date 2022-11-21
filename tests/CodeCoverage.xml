@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/15/2022 22:04:35)">
-  <sessioninfo id="this" start="1668548847246" dump="1668549875044" />
+<report name="Pester (11/21/2022 09:27:00)">
+  <sessioninfo id="this" start="1669021772045" dump="1669022820098" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -363,6 +363,17 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="6" />
       <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-AWSCLI" sourcefilename="Apps/Get-AWSCLI.ps1">
+      <method name="Get-AWSCLI" desc="()" line="15">
+        <counter type="INSTRUCTION" missed="3" covered="14" />
+        <counter type="LINE" missed="1" covered="10" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="14" />
+      <counter type="LINE" missed="1" covered="10" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -1463,6 +1474,17 @@
       </method>
       <counter type="INSTRUCTION" missed="3" covered="30" />
       <counter type="LINE" missed="1" covered="25" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </class>
+    <class name="Evergreen/Apps/Get-MicrosoftTerminal" sourcefilename="Apps/Get-MicrosoftTerminal.ps1">
+      <method name="Get-MicrosoftTerminal" desc="()" line="15">
+        <counter type="INSTRUCTION" missed="3" covered="6" />
+        <counter type="LINE" missed="1" covered="6" />
+        <counter type="METHOD" missed="1" covered="0" />
+      </method>
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -3267,6 +3289,23 @@
       <line nr="26" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="6" />
       <counter type="LINE" missed="1" covered="6" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-AWSCLI.ps1">
+      <line nr="15" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="23" mi="0" ci="2" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="29" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="31" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="14" />
+      <counter type="LINE" missed="1" covered="10" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -5217,6 +5256,19 @@
       <line nr="65" mi="0" ci="1" mb="0" cb="0" />
       <counter type="INSTRUCTION" missed="3" covered="30" />
       <counter type="LINE" missed="1" covered="25" />
+      <counter type="METHOD" missed="1" covered="0" />
+      <counter type="CLASS" missed="1" covered="0" />
+    </sourcefile>
+    <sourcefile name="Apps/Get-MicrosoftTerminal.ps1">
+      <line nr="15" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="19" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="21" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="22" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="24" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="6" />
+      <counter type="LINE" missed="1" covered="6" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -7328,10 +7380,10 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1225" covered="3423" />
-    <counter type="LINE" missed="554" covered="2623" />
-    <counter type="METHOD" missed="244" covered="0" />
-    <counter type="CLASS" missed="244" covered="0" />
+    <counter type="INSTRUCTION" missed="1231" covered="3443" />
+    <counter type="LINE" missed="556" covered="2639" />
+    <counter type="METHOD" missed="246" covered="0" />
+    <counter type="CLASS" missed="246" covered="0" />
   </package>
   <package name="Evergreen/Private">
     <class name="Evergreen/Private/ConvertFrom-IniFile" sourcefilename="Private/ConvertFrom-IniFile.ps1">
@@ -8760,8 +8812,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1606" covered="4220" />
-  <counter type="LINE" missed="797" covered="3211" />
-  <counter type="METHOD" missed="247" covered="31" />
-  <counter type="CLASS" missed="247" covered="31" />
+  <counter type="INSTRUCTION" missed="1612" covered="4240" />
+  <counter type="LINE" missed="799" covered="3227" />
+  <counter type="METHOD" missed="249" covered="31" />
+  <counter type="CLASS" missed="249" covered="31" />
 </report>
