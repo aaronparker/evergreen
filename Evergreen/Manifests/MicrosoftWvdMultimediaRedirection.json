@@ -4,12 +4,13 @@
     "Get": {
         "Download": {
             "Uri": "https://aka.ms/avdmmr/msi",
-            "MatchFilename": "(MsMMRHostInstaller.*msi)",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+            "MatchFilename": "inline; filename=(.*)$",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})",
+            "MatchVersionFallback": "(\\d+)"
         }
     },
     "Install": {
-        "Setup": "MsMMRHostInstaller.*.msi",
+        "Setup": "MsMmrHostMsi.*.msi",
         "Physical": {
             "Arguments": "/install /passive /norestart",
             "PostInstall": []
