@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Adds `XnSoftXnViewMP`, `XnSoftXnConvert` [#416](https://github.com/aaronparker/evergreen/issues/416), `KDiff3`
+* Adds `MicrosoftTerminal`, `AWSCLI`, `YubicoAuthenticator`
+
 ## 2211.686
 
 * Adds `SafingPortmaster`, `VMPlexWorkstation`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru8`, `AirtameApp`, `MicrosoftAzureWindowsVMAgent` [#413](https://github.com/aaronparker/evergreen/issues/413)

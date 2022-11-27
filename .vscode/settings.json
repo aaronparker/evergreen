@@ -14,6 +14,7 @@
         "aspnetcore",
         "Atlassian",
         "autocrlf",
+        "AWSCLI",
         "AWSSAMCLI",
         "Bitwarden",
         "Cendio",
@@ -105,6 +106,7 @@
         "Winget",
         "Wireshark",
         "xcopy",
+        "Yubico",
         "Zorgmail"
     ],
     "powershell.scriptAnalysis.settingsPath": ".vscode/PSScriptAnalyzerSettings.psd1",
