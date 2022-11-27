@@ -1,4 +1,4 @@
-Function Get-YubicoAuthenticator {
+function Get-YubicoAuthenticator {
     <#
         .SYNOPSIS
             Returns the available Yubico Authenticator versions.

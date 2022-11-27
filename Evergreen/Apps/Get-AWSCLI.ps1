@@ -1,4 +1,4 @@
-Function Get-AWSCLI {
+function Get-AWSCLI {
     <#
         .SYNOPSIS
             Get the current versions and download URLs for AWS CLI
@@ -16,20 +16,21 @@ Function Get-AWSCLI {
     )
 
     # Get latest version and download latest release via GitHub API
-    $Params = @{
-        Uri         = $res.Get.Update.Uri
-        ContentType = $res.Get.Update.ContentType
+    $params = @{
+        Uri          = $res.Get.Update.Uri
+        ContentType  = $res.Get.Update.ContentType
+        ReturnObject = "Content"
     }
-    $Content = Invoke-WebRequestWrapper @Params | ConvertFrom-Json
+    $Content = Invoke-WebRequestWrapper @params | ConvertFrom-Json
 
-    If ($Null -ne $Content) {
-        $Content | Sort-Object name | Select-Object -Last 1 | ForEach-Object {
+    if ($null -ne $Content) {
+        $Content | Sort-Object -Property "name" | Select-Object -Last 1 | ForEach-Object {
             $PSObject = [PSCustomObject] @{
                 Version = $_.name
+                Type    = Get-FileType -File $res.Get.Download.Uri
                 URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $_.name
             }
             Write-Output -InputObject $PSObject
         }
     }
-
 }
