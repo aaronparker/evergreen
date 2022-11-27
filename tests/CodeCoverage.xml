@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/27/2022 09:30:46)">
-  <sessioninfo id="this" start="1669540407615" dump="1669541446102" />
+<report name="Pester (11/27/2022 10:52:49)">
+  <sessioninfo id="this" start="1669545245168" dump="1669546369531" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -1545,12 +1545,12 @@
     </class>
     <class name="Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection" sourcefilename="Apps/Get-MicrosoftWvdMultimediaRedirection.ps1">
       <method name="Get-MicrosoftWvdMultimediaRedirection" desc="()" line="17">
-        <counter type="INSTRUCTION" missed="21" covered="0" />
-        <counter type="LINE" missed="17" covered="0" />
+        <counter type="INSTRUCTION" missed="29" covered="0" />
+        <counter type="LINE" missed="21" covered="0" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="21" covered="0" />
-      <counter type="LINE" missed="17" covered="0" />
+      <counter type="INSTRUCTION" missed="29" covered="0" />
+      <counter type="LINE" missed="21" covered="0" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -5394,18 +5394,22 @@
       <line nr="23" mi="1" ci="0" mb="0" cb="0" />
       <line nr="25" mi="1" ci="0" mb="0" cb="0" />
       <line nr="27" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="29" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="32" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="33" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="34" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="35" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="36" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="37" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="30" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="33" mi="3" ci="0" mb="0" cb="0" />
       <line nr="38" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="40" mi="1" ci="0" mb="0" cb="0" />
-      <line nr="43" mi="3" ci="0" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="21" covered="0" />
-      <counter type="LINE" missed="17" covered="0" />
+      <line nr="41" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="42" mi="3" ci="0" mb="0" cb="0" />
+      <line nr="46" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="47" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="48" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="49" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="50" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="51" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="52" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="54" mi="1" ci="0" mb="0" cb="0" />
+      <line nr="57" mi="3" ci="0" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="29" covered="0" />
+      <counter type="LINE" missed="21" covered="0" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -7408,8 +7412,8 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1234" covered="3457" />
-    <counter type="LINE" missed="557" covered="2649" />
+    <counter type="INSTRUCTION" missed="1242" covered="3457" />
+    <counter type="LINE" missed="561" covered="2649" />
     <counter type="METHOD" missed="247" covered="0" />
     <counter type="CLASS" missed="247" covered="0" />
   </package>
@@ -8840,8 +8844,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1615" covered="4254" />
-  <counter type="LINE" missed="800" covered="3237" />
+  <counter type="INSTRUCTION" missed="1623" covered="4254" />
+  <counter type="LINE" missed="804" covered="3237" />
   <counter type="METHOD" missed="250" covered="31" />
   <counter type="CLASS" missed="250" covered="31" />
 </report>
