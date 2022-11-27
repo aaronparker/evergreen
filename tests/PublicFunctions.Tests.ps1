@@ -244,7 +244,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
             { Invoke-EvergreenLibraryUpdate -Path "$Env:Temp\EvergreenLibrary" } | Should -Not -Throw
         }
     }
-    
+
     Context "Test 'Get-EvergreenLibrary'" {
         It "Returns details of the library" {
             Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" | Should -BeOfType [System.Object]
