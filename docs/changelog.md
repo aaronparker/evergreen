@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2211.694
 
 * Adds `XnSoftXnViewMP`, `XnSoftXnConvert` [#416](https://github.com/aaronparker/evergreen/issues/416), `KDiff3`
 * Adds `MicrosoftTerminal`, `AWSCLI`, `YubicoAuthenticator`

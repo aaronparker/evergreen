@@ -1,6 +1,6 @@
-﻿# 241 Supported applications
+﻿# 247 Supported applications
 
-Evergreen `2211.686` supports the following applications:
+Evergreen `2211.694` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -37,6 +37,7 @@ Evergreen `2211.686` supports the following applications:
 | AtlassianSourcetree                   | Atlassian Sourcetree                                              | https://www.sourcetreeapp.com/                                                             |
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                              |
 | AutoDarkMode                          | Windows Auto Dark Mode                                            | https://github.com/AutoDarkMode/Windows-Auto-Night-Mode                                    |
+| AWSCLI                                | AWS CLI                                                           | https://github.com/aws/aws-cli/                                                            |
 | AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                        |
 | BeekeeperStudio                       | Beekeeper Studio                                                  | https://www.beekeeperstudio.io/                                                            |
 | BISF                                  | Base Image Script Framework                                       | https://eucweb.com/                                                                        |
@@ -107,6 +108,7 @@ Evergreen `2211.686` supports the following applications:
 | jq                                    | jq                                                                | http://stedolan.github.io/jq/                                                              |
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                  |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                              |
+| KDiff3                                | KDiff3                                                            | https://kdiff3.sourceforge.net/                                                            |
 | KeePass                               | KeePass                                                           | https://keepass.net/                                                                       |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                     |
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                           |
@@ -136,6 +138,7 @@ Evergreen `2211.686` supports the following applications:
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                    |
 | MicrosoftSsms                         | Microsoft SQL Server Management Studio                            | https://go.microsoft.com/fwlink/?LinkId=531355                                             |
 | MicrosoftTeams                        | Microsoft Teams                                                   | https://www.microsoft.com/teams                                                            |
+| MicrosoftTerminal                     | Microsoft Terminal                                                | https://github.com/microsoft/terminal/                                                     |
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                        |
 | MicrosoftVisualStudioCode             | Microsoft Visual Studio Code                                      | https://code.visualstudio.com                                                              |
 | MicrosoftWindowsPackageManagerClient  | Microsoft Windows Package Manager Client                          | https://docs.microsoft.com/en-us/windows/package-manager/                                  |
@@ -242,6 +245,9 @@ Evergreen `2211.686` supports the following applications:
 | WinSCP                                | WinSCP                                                            | https://winscp.net/                                                                        |
 | Wireshark                             | Wireshark                                                         | https://www.wireshark.org/#download                                                        |
 | WixToolset                            | WiX Toolset                                                       | https://wixtoolset.org/                                                                    |
+| XnSoftXnConvert                       | XnSoft Convert                                                    | https://www.xnview.com/en/xnconvert/                                                       |
+| XnSoftXnViewMP                        | XnSoft XnView MP                                                  | https://www.xnview.com/en/xnviewmp/                                                        |
+| YubicoAuthenticator                   | Yubico Authenticator                                              | https://github.com/Yubico/yubioath-flutter/                                                |
 | Zoom                                  | Zoom                                                              | https://zoom.us/                                                                           |
 | ZorgmailVeiligVerzendenAddin          | ZorgMail Veilig verzenden plug-in                                 | https://enovationgroup.com/nl/service-support/alle-downloads/veilig-verzenden-plug-ins/    |
 | Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                    |
