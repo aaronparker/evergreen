@@ -1,4 +1,4 @@
-Function Get-MicrosoftWvdMultimediaRedirection {
+function Get-MicrosoftWvdMultimediaRedirection {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Microsoft Azure Virtual Desktop Multimedia Redirection Extensions.
@@ -24,13 +24,27 @@ Function Get-MicrosoftWvdMultimediaRedirection {
     }
     $Content = Invoke-WebRequestWrapper @params
 
-    If ($Null -ne $Content) {
-        # Match filename
-        $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+    if ($null -ne $Content) {
+        try {
+            # Match filename
+            $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+        }
+        catch {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match filename from `"$($Content.'Content-Disposition')`"."
+        }
+
+        try {
+            # Match version
+            $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+        }
+        catch {
+            $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersionFallback).Captures.Groups[1].Value
+            Write-Warning -Message "$($MyInvocation.MyCommand): Unable to determine a version number from `"$($Content.'Content-Disposition')`"."
+        }
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Value
+            Version      = $Version
             Architecture = Get-Architecture -String $Filename
             Date         = $Content.'Last-Modified'[0]
             Size         = $Content.'Content-Length'[0]
@@ -39,7 +53,7 @@ Function Get-MicrosoftWvdMultimediaRedirection {
         }
         Write-Output -InputObject $PSObject
     }
-    Else {
+    else {
         Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Download.Uri)."
     }
 }
