@@ -1,4 +1,4 @@
-Function Get-GhislerTotalCommander {
+function Get-GhislerTotalCommander {
     <#
         .SYNOPSIS
             Returns the available Ghisler TotalCommander versions.
@@ -22,18 +22,20 @@ Function Get-GhislerTotalCommander {
         Type = $res.Get.Update.DnsType
     }
     $Response = Resolve-DnsNameWrapper @params
-    if ($Null -ne $Response) {
+    if ($null -ne $Response) {
 
         try {
-            $Version = ([RegEx]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
-            $VersionString = $Version.ToString() -replace "\.", ""
+            $Value = ([RegEx]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
+            $Version = $Value.Split(".")[1,2] -join "."
+            $VersionString = $Value.Split(".")[1,2] -join ""
         }
         catch {
             $Version = "Unknown"
+            $VersionString = "Unknown"
         }
 
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version"
         foreach ($item in $res.Get.Download.Uri.GetEnumerator()) {
-
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = $item.Name
