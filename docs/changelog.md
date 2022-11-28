@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2211.697
 
 * Fixes an issue with returning data for `MicrosoftWvdMultimediaRedirection` due to a change in the Microsoft source [#418](https://github.com/aaronparker/evergreen/issues/418). **Note**: due to a change in the source file name, determining the version is difficult, thus the version string will be returned as-is
 
