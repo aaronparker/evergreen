@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE report PUBLIC "-//JACOCO//DTD Report 1.1//EN" "report.dtd"[]>
-<report name="Pester (11/28/2022 14:20:17)">
-  <sessioninfo id="this" start="1669644025553" dump="1669645217935" />
+<report name="Pester (11/29/2022 21:43:58)">
+  <sessioninfo id="this" start="1669756886182" dump="1669758238032" />
   <package name="Evergreen/Apps">
     <class name="Evergreen/Apps/Get-1Password" sourcefilename="Apps/Get-1Password.ps1">
       <method name="Get-1Password" desc="()" line="17">
@@ -610,12 +610,12 @@
     </class>
     <class name="Evergreen/Apps/Get-DockerDesktop" sourcefilename="Apps/Get-DockerDesktop.ps1">
       <method name="Get-DockerDesktop" desc="()" line="16">
-        <counter type="INSTRUCTION" missed="3" covered="16" />
-        <counter type="LINE" missed="1" covered="9" />
+        <counter type="INSTRUCTION" missed="3" covered="17" />
+        <counter type="LINE" missed="1" covered="10" />
         <counter type="METHOD" missed="1" covered="0" />
       </method>
-      <counter type="INSTRUCTION" missed="3" covered="16" />
-      <counter type="LINE" missed="1" covered="9" />
+      <counter type="INSTRUCTION" missed="3" covered="17" />
+      <counter type="LINE" missed="1" covered="10" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </class>
@@ -3669,16 +3669,17 @@
     <sourcefile name="Apps/Get-DockerDesktop.ps1">
       <line nr="16" mi="3" ci="0" mb="0" cb="0" />
       <line nr="19" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="20" mi="0" ci="1" mb="0" cb="0" />
       <line nr="21" mi="0" ci="1" mb="0" cb="0" />
       <line nr="22" mi="0" ci="1" mb="0" cb="0" />
       <line nr="23" mi="0" ci="1" mb="0" cb="0" />
       <line nr="24" mi="0" ci="1" mb="0" cb="0" />
-      <line nr="25" mi="0" ci="5" mb="0" cb="0" />
-      <line nr="26" mi="0" ci="4" mb="0" cb="0" />
-      <line nr="28" mi="0" ci="1" mb="0" cb="0" />
-      <counter type="INSTRUCTION" missed="3" covered="16" />
-      <counter type="LINE" missed="1" covered="9" />
+      <line nr="25" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="26" mi="0" ci="1" mb="0" cb="0" />
+      <line nr="27" mi="0" ci="5" mb="0" cb="0" />
+      <line nr="28" mi="0" ci="4" mb="0" cb="0" />
+      <line nr="30" mi="0" ci="1" mb="0" cb="0" />
+      <counter type="INSTRUCTION" missed="3" covered="17" />
+      <counter type="LINE" missed="1" covered="10" />
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
@@ -7415,8 +7416,8 @@
       <counter type="METHOD" missed="1" covered="0" />
       <counter type="CLASS" missed="1" covered="0" />
     </sourcefile>
-    <counter type="INSTRUCTION" missed="1243" covered="3460" />
-    <counter type="LINE" missed="562" covered="2651" />
+    <counter type="INSTRUCTION" missed="1243" covered="3461" />
+    <counter type="LINE" missed="562" covered="2652" />
     <counter type="METHOD" missed="247" covered="0" />
     <counter type="CLASS" missed="247" covered="0" />
   </package>
@@ -8847,8 +8848,8 @@
     <counter type="METHOD" missed="0" covered="1" />
     <counter type="CLASS" missed="0" covered="1" />
   </package>
-  <counter type="INSTRUCTION" missed="1624" covered="4257" />
-  <counter type="LINE" missed="805" covered="3239" />
+  <counter type="INSTRUCTION" missed="1624" covered="4258" />
+  <counter type="LINE" missed="805" covered="3240" />
   <counter type="METHOD" missed="250" covered="31" />
   <counter type="CLASS" missed="250" covered="31" />
 </report>
