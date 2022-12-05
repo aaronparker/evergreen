@@ -30,7 +30,7 @@ function Get-EvergreenLibrary {
                     $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
                 }
                 catch {
-                    throw "Encountered an error reading library $LibraryFile with: $($_.Exception.Message)"
+                    throw $_
                 }
 
                 if ($Null -ne $Library) {
@@ -85,11 +85,11 @@ function Get-EvergreenLibrary {
                 }
             }
             else {
-                throw "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
+                throw [System.IO.FileNotFoundException] "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
             }
         }
         else {
-            throw "Cannot find path $Path because it does not exist."
+            throw [System.IO.DirectoryNotFoundException] "Cannot use path $Path because it does not exist or is not a directory."
         }
     }
 
