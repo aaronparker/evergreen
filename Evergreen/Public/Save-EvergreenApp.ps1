@@ -169,8 +169,7 @@ Function Save-EvergreenApp {
                     #endregion
                 }
                 catch [System.Exception] {
-                    Write-Error -Message "Download failed: $($Object.URI)"
-                    Write-Error -Message "Error: $($_.Exception.Message)"
+                    throw $_
                 }
             }
             else {
