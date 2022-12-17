@@ -2,6 +2,7 @@
 
 ## VERSION
 
+* Adds `GitHubDesktop`
 * Fixes `GhislerTotalCommander` due to change in version number format [#423](https://github.com/aaronparker/evergreen/issues/423)
 
 ## 2211.697

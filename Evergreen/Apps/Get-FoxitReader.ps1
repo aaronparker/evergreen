@@ -29,6 +29,7 @@ function Get-FoxitReader {
     if (Test-ProxyEnv -Creds) {
         $params.ProxyCredential = $script:EvergreenProxyCreds
     }
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Query: $($res.Get.Update.Uri)"
     $updateFeed = Invoke-RestMethod @params
     if ($null -ne $updateFeed) {
 
