@@ -43,11 +43,13 @@ jobs:
           sarif_file: results.sarif
 
   pestertest:
-    name: Run tests
+    name: Run Pester Tests
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Test with Pester
         shell: powershell
