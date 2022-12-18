@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `NanaZip` [#430](https://github.com/aaronparker/evergreen/issues/430)
+
 ## 2212.704
 
 * Adds `GitHubDesktop`
