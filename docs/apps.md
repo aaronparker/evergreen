@@ -1,6 +1,6 @@
-﻿# 247 Supported applications
+﻿# 248 Supported applications
 
-Evergreen `2211.697` supports the following applications:
+Evergreen `2212.704` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -84,6 +84,7 @@ Evergreen `2211.697` supports the following applications:
 | GitExtensions                         | Git Extensions                                                    | https://github.com/gitextensions/gitextensions                                             |
 | GitForWindows                         | Git for Windows                                                   | https://gitforwindows.org/                                                                 |
 | GitHubAtom                            | GitHub Atom                                                       | https://atom.io/                                                                           |
+| GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                        |
 | GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                               |
 | Gpg4win                               | Gpg4win                                                           | https://www.gpg4win.org/                                                                   |
