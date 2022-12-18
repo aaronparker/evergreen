@@ -11,6 +11,11 @@ BeforeDiscovery {
     Import-Module $ModulePath -Force -ErrorAction "Stop"
 }
 
+BeforeAll {
+    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
+    $ManifestPath = [System.IO.Path]::Combine($ModulePath, "Evergreen.psd1")
+}
+
 Describe -Name "Test-PSCore" {
     Context "Tests whether we are running on PowerShell Core" {
         It "Returns True if running Windows PowerShell" {

@@ -72,14 +72,14 @@ jobs:
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\tests\CodeCoverage.xml"
-          $Config.Output.Verbosity = "Detailed"
+          $Config.Output.Verbosity = "Normal"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
           Invoke-Pester -Configuration $Config
 
       # Upload test results
-      - name: Upload test results
+      - name: Upload Pester test results
         uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -87,7 +87,7 @@ jobs:
           path: "${{ github.workspace }}\\tests\\TestResults.xml"
 
       # Publish Pester test results
-      - name: Publish test results
+      - name: Publish Pester test results
         uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:

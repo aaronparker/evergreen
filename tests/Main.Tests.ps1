@@ -19,6 +19,11 @@ BeforeDiscovery {
     $TestCase = $Scripts | ForEach-Object { @{file = $_ } }
 }
 
+BeforeAll {
+    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
+    $ManifestPath = [System.IO.Path]::Combine($ModulePath, "Evergreen.psd1")
+}
+
 Describe "General project validation" {
     It "Script <file.Name> should exist" -TestCases $TestCase {
         param ($file)

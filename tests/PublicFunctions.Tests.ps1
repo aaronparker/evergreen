@@ -21,6 +21,11 @@ BeforeDiscovery {
     $Installers = Get-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Channel -eq "Stable" }
 }
 
+BeforeAll {
+    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
+    $ManifestPath = [System.IO.Path]::Combine($ModulePath, "Evergreen.psd1")
+}
+
 Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
@@ -234,7 +239,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
     Context "Test 'Invoke-EvergreenLibraryUpdate'" {
         BeforeAll {
             $params = @{
-                Path        = "$projectRoot\tests\EvergreenLibrary.json"
+                Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
                 Destination = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
                 Force       = $True
                 Confirm      = $False
