@@ -50,7 +50,8 @@ function New-EvergreenLibrary {
                 New-Item @params | Out-Null
             }
             catch {
-                throw "Failed to create $Path with: $($_.Exception.Message)"
+                Write-Error -Message "Failed to create $Path"
+                throw $_
             }
         }
         #endregion

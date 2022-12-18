@@ -81,7 +81,8 @@ Function Save-EvergreenApp {
                 New-Item @params | Out-Null
             }
             catch {
-                throw "Failed to create $NewPath with: $($_.Exception.Message)"
+                Write-Error -Message "Failed to create $NewPath"
+                throw $_
             }
         }
         #endregion
@@ -105,7 +106,7 @@ Function Save-EvergreenApp {
                 }
             }
             else {
-                throw "Object does not have valid URI property."
+                throw [System.Management.Automation.PropertyNotFoundException] "InputObject does not have valid URI property."
             }
             #endregion
 
@@ -114,7 +115,7 @@ Function Save-EvergreenApp {
                 "Path" {
                     # Resolve $Path to build the initial value of $OutPath
                     $OutPath = Resolve-Path -Path $Path -ErrorAction "SilentlyContinue"
-                    if ($Null -ne $OutPath) {
+                    if ($null -ne $OutPath) {
 
                         #region Validate the Version property
                         if ([System.Boolean]($Object.Version)) {
@@ -123,12 +124,12 @@ Function Save-EvergreenApp {
                             $OutPath = New-EvergreenPath -InputObject $Object -Path $OutPath
                         }
                         else {
-                            throw "Object does not have valid Version property."
+                            throw [System.Management.Automation.PropertyNotFoundException] "InputObject does not have valid Version property."
                         }
                         #endregion
                     }
                     else {
-                        throw "Failed validating $OutPath."
+                        throw [System.IO.DirectoryNotFoundException] "Failed validating $OutPath."
                     }
                 }
                 "CustomPath" {
@@ -138,7 +139,6 @@ Function Save-EvergreenApp {
 
             $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
             if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
-
                 try {
                     #region Download the file
                     $params = @{
@@ -158,19 +158,18 @@ Function Save-EvergreenApp {
                         Invoke-WebRequest @params
                     }
                     #endregion
-
-                    #region Write the downloaded file path to the pipeline
+                }
+                catch {
+                    throw $_
+                }
+                finally {
                     if ($PSCmdlet.ShouldProcess($DownloadFile, "Output to pipeline")) {
+                        # Write the downloaded file path to the pipeline
                         if (Test-Path -Path $DownloadFile) {
                             Write-Verbose -Message "Successfully downloaded: $DownloadFile."
                             Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                         }
                     }
-                    #endregion
-                }
-                catch [System.Exception] {
-                    Write-Error -Message "Download failed: $($Object.URI)"
-                    Write-Error -Message "Error: $($_.Exception.Message)"
                 }
             }
             else {

@@ -30,6 +30,12 @@
             "VDI": {
                 "Host": "https://zoom.us/download/vdi/ZoomInstallerVDI.msi"
             },
+            "Plugin": {
+                "Universal": "https://zoom.us/download/vdi/ZoomVDIUniversalPlugin.msi"
+            },
+            "AVD" : {
+                "Client": "https://zoom.us/download/vdi/ZoomWVDMediaPlugin.msi"
+            },
             "Citrix": {
                 "Client": "https://zoom.us/download/vdi/ZoomCitrixHDXMediaPlugin.msi"
             },

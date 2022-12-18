@@ -1,4 +1,4 @@
-Function Get-Zoom {
+function Get-Zoom {
     <#
         .SYNOPSIS
             Get the current version and download URL for Zoom.
@@ -16,18 +16,18 @@ Function Get-Zoom {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    ForEach ($platform in $res.Get.Download.Keys) {
-        ForEach ($installer in $res.Get.Download[$platform].Keys) {
+    foreach ($platform in $res.Get.Download.Keys) {
+        foreach ($installer in $res.Get.Download[$platform].Keys) {
 
             # Follow the download link which will return a 301/302
             $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$installer]
 
             # Match the URL without the text after the ?
-            If ($Null -eq $redirectUrl) {
+            if ($Null -eq $redirectUrl) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Setting fallback URL to: $($script:resourceStrings.Uri.Issues)."
                 $Url = $script:resourceStrings.Uri.Issues
             }
-            Else {
+            else {
                 try {
                     $Url = [RegEx]::Match($redirectUrl.ResponseUri.AbsoluteUri, $res.Get.MatchUrl).Captures.Groups[1].Value
                 }

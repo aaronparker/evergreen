@@ -42,7 +42,8 @@ function Invoke-EvergreenLibraryUpdate {
                     $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
                 }
                 catch {
-                    throw "Encountered an error reading library $LibraryFile with: $($_.Exception.Message)"
+                    Write-Error -Message "Encountered an error reading library $LibraryFile"
+                    throw $_
                 }
 
                 foreach ($Application in $Library.Applications) {
@@ -57,7 +58,7 @@ function Invoke-EvergreenLibraryUpdate {
                         $WhereBlock = [ScriptBlock]::Create($Application.Filter)
                     }
                     catch {
-                        throw "Encountered an error creating script block with: $($_.Exception.Message)"
+                        throw $_
                     }
 
                     # Gather the application version information from Get-EvergreenApp
@@ -91,11 +92,11 @@ function Invoke-EvergreenLibraryUpdate {
                 }
             }
             else {
-                throw "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
+                throw [System.IO.FileNotFoundException] "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
             }
         }
         else {
-            throw "Cannot use path $Path because it does not exist or is not a directory."
+            throw [System.IO.DirectoryNotFoundException] "Cannot use path $Path because it does not exist or is not a directory."
         }
     }
 
