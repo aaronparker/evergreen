@@ -3,7 +3,6 @@
 [![License][license-badge]][license]
 [![PowerShell Gallery Version][psgallery-version-badge]][psgallery]
 [![PowerShell Gallery][psgallery-badge]][psgallery]
-[![main build status][appveyor-badge]][appveyor-build]
 [![codecov](https://codecov.io/gh/aaronparker/evergreen/branch/main/graph/badge.svg?token=QK2YKUgCBX)](https://codecov.io/gh/aaronparker/evergreen)
 
 ![Evergreen icon](/img/evergreenbulb.png)
@@ -17,7 +16,7 @@ Evergreen is a simple PowerShell module to return the latest version and downloa
 * [Track application updates](https://stealthpuppy.com/apptracker) to stay on top of new releases
 * Submitting manifests to `Winget` or `Chocolatey` or similar - Evergreen can return an object with a version number and download URL that can be used to construct manifests for the most recent versions
 
-Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object is sends to the pipeline:
+Via `Get-EvergreenApp` each Evergreen application returns at least two properties in the object sent to the pipeline:
 
 * `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
 * `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
@@ -106,14 +105,9 @@ Once installation is complete, you can validate that the module exists by runnin
 Import-Module -Name Evergreen
 ```
 
-[appveyor-badge]: https://img.shields.io/appveyor/ci/aaronparker/Evergreen/main.svg?style=flat-square&logo=appveyor
-[appveyor-build]: https://ci.appveyor.com/project/aaronparker/Evergreen
 [psgallery-badge]: https://img.shields.io/powershellgallery/dt/Evergreen.svg?style=flat-square
 [psgallery]: https://www.powershellgallery.com/packages/Evergreen
 [psgallery-version-badge]: https://img.shields.io/powershellgallery/v/Evergreen.svg?style=flat-square
-[psgallery-version]: https://www.powershellgallery.com/packages/Evergreen
-[github-release-badge]: https://img.shields.io/github/release/aaronparker/Evergreen.svg?style=flat-square
-[github-release]: https://github.com/aaronparker/Evergreen/releases/latest
 [license-badge]: https://img.shields.io/github/license/aaronparker/Evergreen.svg?style=flat-square
 [license]: /LICENSE
 
