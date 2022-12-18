@@ -1,4 +1,4 @@
-name: 'Validate other branches'
+name: 'Validate main branch'
 
 env:
   BUILD_NUMBER: "704"
@@ -7,13 +7,13 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches-ignore: [ "main", "development" ]
+    branches: [ "main" ]
     paths:
       - 'Evergreen/**.ps1'
       - 'Evergreen/**.psm1'
       - 'Evergreen/**.json'
   pull_request:
-    branches: [ "development" ]
+    branches: [ "main" ]
     paths:
       - 'Evergreen/**.ps1'
       - 'Evergreen/**.psm1'
@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run PSScriptAnalyzer (other branches)
+      - name: Run PSScriptAnalyzer (main push)
         uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f
         with:
           path: "./"
@@ -44,7 +44,7 @@ jobs:
           sarif_file: results.sarif
 
   pestertest:
-    name: Run Pester Tests (other branches)
+    name: Run Pester Tests (main push)
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
@@ -67,9 +67,9 @@ jobs:
           Import-Module -Name "Pester" -Force
 
           $Config = [PesterConfiguration]::Default
-          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests\Main.Tests.ps1"
           $Config.Run.PassThru = $true
-          $Config.CodeCoverage.Enabled = $true
+          $Config.CodeCoverage.Enabled = $false
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\tests\CodeCoverage.xml"
@@ -93,13 +93,3 @@ jobs:
         if: always()
         with:
           nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
-
-      # Upload code coverage tests for Codecov
-      - name: Upload to Codecov
-        id: codecov
-        uses: codecov/codecov-action@v3
-        if: always()
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
-          verbose: true

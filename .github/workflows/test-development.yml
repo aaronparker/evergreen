@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run PSScriptAnalyzer
+      - name: Run PSScriptAnalyzer (development push)
         uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f
         with:
           path: "./"
@@ -38,7 +38,7 @@ jobs:
           sarif_file: results.sarif
 
   pestertest:
-    name: Run Pester Tests
+    name: Run Pester Tests (development push)
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
