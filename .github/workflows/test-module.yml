@@ -2,6 +2,7 @@ name: 'Validate module code'
 
 env:
   BUILD_NUMBER: "704"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   workflow_dispatch:
@@ -48,8 +49,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GH_TOKEN }}
 
       - name: Test with Pester
         shell: powershell
