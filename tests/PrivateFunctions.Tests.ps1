@@ -3,10 +3,12 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
+    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
+    Import-Module $ModulePath -Force -ErrorAction "Stop"
 }
 
 Describe -Name "Test-PSCore" {

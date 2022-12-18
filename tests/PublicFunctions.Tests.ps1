@@ -3,11 +3,13 @@
         Public Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "")]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
+    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
+    Import-Module $ModulePath -Force -ErrorAction "Stop"
+
     # Get the supported applications
     # Sort randomly so that we get test various GitHub applications when we have API request limits
     $AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
