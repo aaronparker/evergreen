@@ -44,18 +44,19 @@ jobs:
 
   pestertest:
     name: Run tests
+    needs: psscriptanalyzer
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - name: Test with Pester
-        shell: powershell
+        shell: pwsh
         working-directory: "${{ github.workspace }}"
         run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force
-          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force
-          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted"
+          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
+          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
+          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
           $params = @{
               Name               = "Pester"
               SkipPublisherCheck = $true
@@ -65,13 +66,13 @@ jobs:
           Import-Module -Name "Pester" -Force
 
           $Config = [PesterConfiguration]::Default
-          $Config.Run.Path = ".\tests"
+          $Config.Run.Path = "./tests"
           $Config.Run.PassThru = $true
           $Config.CodeCoverage.Enabled = $false
           $Config.Output.Verbosity = "Detailed"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
-          $Config.TestResult.OutputPath = ".\tests\TestResults.xml"
+          $Config.TestResult.OutputPath = "./tests/TestResults.xml"
           Invoke-Pester -Configuration $Config
 
       # Upload test results
@@ -80,14 +81,14 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: "${{ github.workspace }}\\tests\\TestResults.xml"
+          path: "${{ github.workspace }}//tests//TestResults.xml"
 
       # Publish Pester test results
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
-          nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
+          nunit_files: "${{ github.workspace }}//tests//TestResults.xml"
 
       # Upload code coverage tests for Codecov
       - name: Upload to Codecov
@@ -96,5 +97,5 @@ jobs:
         if: always()
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
+          files: "${{ github.workspace }}//tests//CodeCoverage.xml"
           verbose: true
