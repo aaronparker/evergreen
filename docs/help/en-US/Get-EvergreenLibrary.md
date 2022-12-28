@@ -13,7 +13,7 @@ Returns details about an Evergreen library.
 
 ## SYNTAX
 
-```powershell
+```
 Get-EvergreenLibrary [-Path] <FileInfo> [<CommonParameters>]
 ```
 

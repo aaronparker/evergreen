@@ -37,6 +37,10 @@ Function Save-EvergreenApp {
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+
         [Parameter(Mandatory = $False)]
         [System.Management.Automation.SwitchParameter] $Force,
 
@@ -145,6 +149,7 @@ Function Save-EvergreenApp {
                         Uri             = $Object.URI
                         OutFile         = $DownloadFile
                         UseBasicParsing = $True
+                        UserAgent       = $UserAgent
                         ErrorAction     = "Continue"
                     }
                     if ($PSBoundParameters.ContainsKey("Proxy")) {

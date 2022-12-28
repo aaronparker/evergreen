@@ -13,7 +13,7 @@ Creates an Evergreen library at the specified path.
 
 ## SYNTAX
 
-```powershell
+```
 New-EvergreenLibrary [-Path] <FileInfo> [-Name <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
