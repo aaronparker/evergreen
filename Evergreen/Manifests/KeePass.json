@@ -1,6 +1,6 @@
 {
-	"Name": "KeePass",
-	"Source": "https://keepass.net/",
+	"Name": "KeePass Password Safe",
+	"Source": "https://keepass.info/",
 	"Get": {
 		"Update": {
 			"Uri": "https://sourceforge.net/projects/keepass/best_release.json",
