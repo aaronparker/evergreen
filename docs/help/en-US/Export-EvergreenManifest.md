@@ -13,7 +13,7 @@ Exports an Evergreen application JSON manifest as a hashtable.
 
 ## SYNTAX
 
-```powershell
+```
 Export-EvergreenManifest [-Name] <String> [<CommonParameters>]
 ```
 

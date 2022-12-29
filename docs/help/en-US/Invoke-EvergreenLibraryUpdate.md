@@ -13,7 +13,7 @@ Invokes the update and download of application installers in an Evergreen librar
 
 ## SYNTAX
 
-```powershell
+```
 Invoke-EvergreenLibraryUpdate [-Path] <FileInfo> [-Proxy <String>] [-ProxyCredential <PSCredential>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```

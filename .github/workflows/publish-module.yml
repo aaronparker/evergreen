@@ -1,0 +1,45 @@
+name: Publish module
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish-module:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install and cache PowerShell modules
+        id: psmodulecache
+        uses: potatoqualitee/psmodulecache@v5.2
+        with:
+          modules-to-cache: PowerShellGet
+          shell: pwsh
+
+      # Import GPG key so that we can sign the commit
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPGKEY }}
+          passphrase: ${{ secrets.GPGPASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_config_global: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: false
+          git_committer_name: ${{ secrets.COMMIT_NAME }}
+          git_committer_email: ${{ secrets.COMMIT_EMAIL }}
+
+      # Push the updated module to the PowerShell Gallery
+      - name: Push module to PowerShell Gallery
+        shell: pwsh
+        run: |
+          $params = @{
+              Path        = "${{ github.workspace }}/Evergreen"
+              NuGetApiKey = "${{ secrets.NUGETAPIKEY }}"
+              ErrorAction = "Stop"
+          }
+          Publish-Module @params

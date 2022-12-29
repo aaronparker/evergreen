@@ -14,17 +14,17 @@ Downloads target URIs passed to this function from `Get-EvergreenApp` into a dir
 ## SYNTAX
 
 ### Path (Default)
-
-```powershell
+```
 Save-EvergreenApp [-InputObject] <PSObject> [[-Path] <FileInfo>] [-Proxy <String>]
- [-ProxyCredential <PSCredential>] [-Force] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProxyCredential <PSCredential>] [-UserAgent <String>] [-Force] [-NoProgress] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CustomPath
-
-```powershell
+```
 Save-EvergreenApp [-InputObject] <PSObject> [[-CustomPath] <FileInfo>] [-Proxy <String>]
- [-ProxyCredential <PSCredential>] [-Force] [-NoProgress] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProxyCredential <PSCredential>] [-UserAgent <String>] [-Force] [-NoProgress] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,6 +198,30 @@ Forces this function to download the target application installers from the URI 
 
 ```yaml
 Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAgent
+
+Specifies a user agent string for the web request.
+
+The default user agent is similar to the below with slight variations for each operating system and platform.
+
+Mozilla/5.0 (Macintosh; Darwin 22.2.0 Darwin Kernel Version 22.2.0: Fri Nov 11 02:04:44 PST 2022; root:xnu-8792.61.2~4/RELEASE_ARM64_T8103; en-AU) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6
+
+To test a website with the standard user agent string that's used by most internet browsers, use the properties of the PSUserAgent class, such as Chrome, FireFox, InternetExplorer, Opera, and Safari.
+
+For example, the following command uses the user agent string for Internet Explorer: Save-EvergreenApp -UserAgent ([Microsoft.PowerShell.Commands.PSUserAgent]::InternetExplorer)
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 

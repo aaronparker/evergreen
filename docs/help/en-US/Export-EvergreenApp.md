@@ -13,7 +13,7 @@ Exports application details gathered by `Get-EvergreenApp` to an external JSON f
 
 ## SYNTAX
 
-```powershell
+```
 Export-EvergreenApp [-InputObject] <Array> -Path <FileInfo> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
