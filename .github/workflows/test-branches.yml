@@ -70,7 +70,7 @@ jobs:
           $Config = [PesterConfiguration]::Default
           $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests\Main.Tests.ps1"
           $Config.Run.PassThru = $true
-          $Config.CodeCoverage.Enabled = $true
+          $Config.CodeCoverage.Enabled = $false
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\tests\CodeCoverage.xml"
