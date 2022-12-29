@@ -6,7 +6,7 @@
 param()
 
 $Path = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.MyCommand.Definition)).Parent).FullName)
-$Module = Test-ModuleManifest -Path "$Path/Evergreen/Evergreen.psm1"
+$Module = Test-ModuleManifest -Path "$Path/Evergreen/Evergreen.psd1"
 if ($null -ne $Module) {
     git tag "v$($Module.Version.ToString())"
     git push origin --tags
