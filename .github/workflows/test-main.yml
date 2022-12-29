@@ -94,6 +94,14 @@ jobs:
         with:
           nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
 
+      - name: Upload to Codecov
+        id: codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
+          verbose: true
+
   update-module:
     runs-on: windows-latest
     needs: pestertest
