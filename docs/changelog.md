@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `NanaZip` [#430](https://github.com/aaronparker/evergreen/issues/430)
+* Adds parameter `-UserAgent` to `Save-EvergreenApp` [#437](https://github.com/aaronparker/evergreen/issues/437) [#436](https://github.com/aaronparker/evergreen/issues/436)
 
 ## 2212.704
 
