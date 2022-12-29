@@ -3,7 +3,7 @@ name: Publish module
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*.*"
 
 jobs:
   publish-module:
