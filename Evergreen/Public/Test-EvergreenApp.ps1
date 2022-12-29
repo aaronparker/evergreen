@@ -21,6 +21,10 @@ Function Test-EvergreenApp {
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+
         [Parameter(Mandatory = $False)]
         [System.Management.Automation.SwitchParameter] $Force,
 
@@ -58,6 +62,7 @@ Function Test-EvergreenApp {
                     Uri             = $Object.URI
                     Method          = "HEAD"
                     UseBasicParsing = $True
+                    UserAgent       = $UserAgent
                     ErrorAction     = "SilentlyContinue"
                 }
                 if ($PSBoundParameters.ContainsKey("Proxy")) {
