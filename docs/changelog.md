@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftVdot`
+
 ## 2212.709
 
 * Adds `NanaZip` [#430](https://github.com/aaronparker/evergreen/issues/430)

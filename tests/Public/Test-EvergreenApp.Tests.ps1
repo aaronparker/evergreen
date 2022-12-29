@@ -20,11 +20,14 @@ Describe -Tag "Test" -Name "Test-EvergreenApp" {
     }
 
     It "Should not throw with valid input" {
-        { Test-EvergreenApp -InputObject $App } | Should -Not -Throw
+        { Test-EvergreenApp -InputObject $App -Force $true -NoProgress $true } | Should -Not -Throw
     }
 
-    It "Should return an object with valid properties" {
+    It "Should return an object with valid Result property" {
         $Result[0].Result | Should -BeOfType [System.Boolean]
+    }
+
+    It "Should return an object with valid URI property" {
         $Result[0].URI | Should -BeOfType [System.String]
     }
 }
