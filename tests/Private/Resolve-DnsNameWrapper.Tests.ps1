@@ -1,0 +1,27 @@
+<#
+    .SYNOPSIS
+        Private Pester function tests.
+#>
+[OutputType()]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+param ()
+
+BeforeDiscovery {
+}
+
+BeforeAll {
+}
+
+Describe -Name "Resolve-DnsNameWrapper" {
+    Context "Ensure Resolve-DnsNameWrapper works as expected" {
+        It "Returns DNS records OK" {
+            InModuleScope Evergreen {
+                $params = @{
+                    Name = "github.com"
+                    Type = "TXT"
+                }
+                Resolve-DnsNameWrapper @params | Should -BeOfType [System.String]
+            }
+        }
+    }
+}

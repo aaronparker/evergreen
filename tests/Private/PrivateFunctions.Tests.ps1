@@ -7,13 +7,9 @@
 param ()
 
 BeforeDiscovery {
-    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
-    Import-Module $ModulePath -Force -ErrorAction "Stop"
 }
 
 BeforeAll {
-    $ModulePath = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "Evergreen")
-    $ManifestPath = [System.IO.Path]::Combine($ModulePath, "Evergreen.psd1")
 }
 
 Describe -Name "Test-PSCore" {
