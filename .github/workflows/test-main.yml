@@ -1,4 +1,4 @@
-name: 'Validate main branch'
+name: 'Validate main branch & update version'
 
 env:
   BUILD_NUMBER: "704"
