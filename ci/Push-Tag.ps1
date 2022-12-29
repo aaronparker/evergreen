@@ -9,5 +9,5 @@ $Path = Resolve-Path -Path (((Get-Item (Split-Path -Parent -Path $MyInvocation.M
 $Module = Test-ModuleManifest -Path "$Path/Evergreen/Evergreen.psm1"
 if ($null -ne $Module) {
     git tag "v$($Module.Version.ToString())"
-    git push origin main --tags
+    git push origin --tags
 }

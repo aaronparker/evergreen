@@ -93,3 +93,137 @@ jobs:
         if: always()
         with:
           nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
+
+  update-module:
+    runs-on: windows-latest
+    needs: pestertest
+    outputs:
+      output1: ${{ steps.commit.outputs.changes_detected }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install and cache PowerShell modules
+        id: psmodulecache
+        uses: potatoqualitee/psmodulecache@v5.2
+        with:
+          modules-to-cache: MarkdownPS
+          shell: powershell
+
+      # Update the version number in the module manifest
+      - name: Update module version number
+        id: update-version
+        shell: powershell
+        run: |
+            $ModulePath = "${{ github.workspace }}\Evergreen"
+            $ManifestPath = "${{ github.workspace }}\Evergreen\Evergreen.psd1"
+
+            # Importing the manifest to determine the version
+            $Manifest = Test-ModuleManifest -Path $ManifestPath
+            Write-Host "Old version is: $($Manifest.Version)"
+            [System.String]$NewVersion = New-Object -TypeName "System.Version" -ArgumentList ((Get-Date -Format "yyMM"), ([System.Int32]$env:GITHUB_RUN_NUMBER + [System.Int32]${{ env.BUILD_NUMBER }} ))
+            Write-Host "New version is: $NewVersion"
+
+            # Update the manifest with the new version value and fix the weird string replace bug
+            $functionList = ((Get-ChildItem -Path (Join-Path -Path $ModulePath -ChildPath "Public")).BaseName)
+            Update-ModuleManifest -Path $ManifestPath -ModuleVersion $NewVersion -FunctionsToExport $functionList
+            (Get-Content -Path $ManifestPath) -replace 'PSGet_$module', $module | Set-Content -Path $ManifestPath
+            (Get-Content -Path $ManifestPath) -replace 'NewManifest', $module | Set-Content -Path $ManifestPath
+            (Get-Content -Path $ManifestPath) -replace 'FunctionsToExport = ','FunctionsToExport = @(' | Set-Content -Path $ManifestPath -Force
+            (Get-Content -Path $ManifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $ManifestPath -Force
+            echo "::set-output name=newversion::$($NewVersion)"
+
+      # Update the change log with the new version number
+      - name: Update CHANGELOG.md
+        id: update-changelog
+        shell: powershell
+        run: |
+            $changeLog = "${{ github.workspace }}\docs\changelog.md"
+            $replaceString = "^## VERSION$"
+            $content = Get-Content -Path $changeLog
+            if ($content -match $replaceString) {
+                $content -replace $replaceString, "## ${{steps.update-version.outputs.newversion}}" | Set-Content -Path $changeLog
+            }
+            else {
+                Write-Host "No match in $changeLog for '## VERSION'. Manual update of CHANGELOG required." -ForegroundColor Cyan
+            }
+
+      # Import GPG key so that we can sign the commit
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPGKEY }}
+          passphrase: ${{ secrets.GPGPASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_config_global: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: false
+          git_committer_name: ${{ secrets.COMMIT_NAME }}
+          git_committer_email: ${{ secrets.COMMIT_EMAIL }}
+
+      - name: Commit changes
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update module ${{steps.update-version.outputs.newversion}}"
+          commit_user_name: ${{ secrets.COMMIT_NAME }}
+          commit_user_email: ${{ secrets.COMMIT_EMAIL }}
+
+      - name: "Changes have been detected"
+        if: steps.commit.outputs.changes_detected == 'true'
+        run: echo "Changes committed."
+
+      - name: "No changes have been detected"
+        if: steps.commit.outputs.changes_detected == 'false'
+        run: echo "No changes detected."
+
+  # tag-repo:
+  #   needs: update-module
+  #   if: needs.update-module.outputs.output1 == 'true'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         token: ${{ secrets.PAT }}
+  #         repository: aaronparker/Evergreen
+
+  #     - name: Git pull
+  #       id: pull
+  #       shell: pwsh
+  #       run: |
+  #           git pull origin main
+
+  #     - name: Get module version number
+  #       id: get-version
+  #       shell: pwsh
+  #       run: |
+  #           $Manifest = Test-ModuleManifest -Path "${{ github.workspace }}/Evergreen/Evergreen.psd1"
+  #           Write-Host "Found version: $($Manifest.Version)"
+  #           echo "::set-output name=version::$($Manifest.Version)"
+
+  #     # Import GPG key so that we can sign the commit
+  #     - name: Import GPG key
+  #       id: import_gpg
+  #       uses: crazy-max/ghaction-import-gpg@v5
+  #       with:
+  #         gpg_private_key: ${{ secrets.GPGKEY }}
+  #         passphrase: ${{ secrets.GPGPASSPHRASE }}
+  #         git_user_signingkey: true
+  #         git_commit_gpgsign: true
+  #         git_config_global: true
+  #         git_tag_gpgsign: true
+  #         git_push_gpgsign: false
+  #         git_committer_name: ${{ secrets.COMMIT_NAME }}
+  #         git_committer_email: ${{ secrets.COMMIT_EMAIL }}
+
+  #     # Push tag
+  #     # - name: Push tag
+  #     #   shell: bash
+  #     #   run: |
+  #     #     git tag -a "v${{steps.get-version.outputs.version}}" -m "v${{steps.get-version.outputs.version}}"
+  #     #     git push origin "v${{steps.get-version.outputs.version}}"
