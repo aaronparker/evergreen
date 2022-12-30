@@ -33,5 +33,17 @@ Describe -Name "Get-Architecture" {
                 Get-Architecture -String "the quick brown fox" | Should -Be "x86"
             }
         }
+
+        It "Returns arm32" {
+            InModuleScope -ModuleName "Evergreen" {
+                Get-Architecture -String "arm32" | Should -Be "ARM32"
+            }
+        }
+
+        It "Returns win-arm64" {
+            InModuleScope -ModuleName "Evergreen" {
+                Get-Architecture -String "win-arm64" | Should -Be "ARM64"
+            }
+        }
     }
 }

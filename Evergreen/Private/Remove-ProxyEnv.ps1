@@ -3,9 +3,8 @@ function Remove-ProxyEnv {
         .SYNOPSIS
             Remove proxy server and credentials information from environment variables
     #>
-    [CmdletBinding(SupportsShouldProcess = $True)]
-    param (
-    )
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param ()
 
     begin {}
     process {

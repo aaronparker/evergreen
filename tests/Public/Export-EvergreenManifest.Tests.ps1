@@ -26,13 +26,10 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     }
 
     Context "Validate Export-EvergreenManifest works with: <application>." {
-
-        # Test that Export-EvergreenManifest does not throw
         It "'Export-EvergreenManifest -Name <application>' should not Throw" {
             { Export-EvergreenManifest -Name $application } | Should -Not -Throw
         }
 
-        # The manifest should have the right properties
         It "<application> has expected properties" {
             $Manifest = Export-EvergreenManifest -Name $application
             $Manifest.Name.Length | Should -BeGreaterThan 0

@@ -21,5 +21,9 @@ Describe -Name "ConvertTo-Hashtable" {
                 $object | Should -BeOfType "Hashtable"
             }
         }
+
+        It "Returns Null if sent Null" {
+            ConvertTo-Hashtable | Should -BeNullOrEmpty
+        }
     }
 }
