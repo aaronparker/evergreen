@@ -24,7 +24,7 @@ Describe -Name "Expand-GzipArchive" {
             InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path             = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    DestinationPath = "$env:GITHUB_WORKSPACE\tests\dummyfile.ini"
+                    DestinationPath  = "$env:GITHUB_WORKSPACE\dummyfolder\TestFile.ini"
                 }
                 { Expand-GzipArchive @params } | Should -Throw
             }

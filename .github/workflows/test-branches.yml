@@ -94,13 +94,3 @@ jobs:
         if: always()
         with:
           nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
-
-      # Upload code coverage tests for Codecov
-      - name: Upload to Codecov
-        id: codecov
-        uses: codecov/codecov-action@v3
-        if: always()
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
-          verbose: true
