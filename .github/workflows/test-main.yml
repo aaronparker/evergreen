@@ -75,6 +75,7 @@ jobs:
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
           $Config.Output.Verbosity = "Normal"
+          $Config.Should.ErrorAction = "Continue"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
@@ -82,6 +83,7 @@ jobs:
 
       - name: List tests output
         shell: powershell
+        if: always()
         working-directory: "${{ github.workspace }}"
         run: |
           Get-ChildItem -Path "$env:GITHUB_WORKSPACE\tests\TestResults.xml"

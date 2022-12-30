@@ -12,12 +12,12 @@ $Public = @( Get-ChildItem -Path (Join-Path $publicRoot "*.ps1") -ErrorAction "S
 $Private = @( Get-ChildItem -Path (Join-Path $privateRoot "*.ps1") -ErrorAction "SilentlyContinue" )
 
 # Dot source the files
-ForEach ($import in @($Public + $Private)) {
-    Try {
+foreach ($import in @($Public + $Private)) {
+    try {
         . $import.FullName
     }
-    Catch {
-        Write-Error -Message "Failed to import function $($import.FullName): $_"
+    catch {
+        throw $_
     }
 }
 
