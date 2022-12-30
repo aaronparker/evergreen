@@ -13,11 +13,12 @@ BeforeAll {
 }
 
 Describe -Name "ConvertFrom-IniFile" {
-    BeforeAll {
-        $Ini = Get-Content -Path "$env:GITHUB_WORKSPACE\tests\Test.ini"
-    }
 
     Context "Ensure ConvertFrom-IniFile works as expected" {
+        BeforeAll {
+            $Ini = Get-Content -Path "$env:GITHUB_WORKSPACE\tests\Test.ini"
+        }
+
         It "Should not throw" {
             InModuleScope Evergreen {
                 { ConvertFrom-IniFile -InputObject $Ini } | Should -Not -Throw

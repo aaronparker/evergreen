@@ -33,8 +33,8 @@ Describe -Name "Expand-GzipArchive" {
         It "Should not throw when expanding a .gz file" {
             InModuleScope Evergreen {
                 $params = @{
-                    Path             = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    $DestinationPath = "$env:GITHUB_WORKSPACE\tests"
+                    Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
+                    DestinationPath = "$env:GITHUB_WORKSPACE\tests"
                 }
                 { Expand-GzipArchive @params } | Should -Not -Throw
             }
@@ -43,8 +43,8 @@ Describe -Name "Expand-GzipArchive" {
         It "Should return an object of type string" {
             InModuleScope Evergreen {
                 $params = @{
-                    Path             = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    $DestinationPath = "$env:GITHUB_WORKSPACE\tests"
+                    Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
+                    DestinationPath = "$env:GITHUB_WORKSPACE\tests"
                 }
                 $File = Expand-GzipArchive @params
                 $File | Should -BeOfType [System.String]
