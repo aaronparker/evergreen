@@ -16,7 +16,7 @@ Describe -Name "Expand-GzipArchive" {
     Context "Test that Expand-GzipArchive works as expected" {
         It "Should throw when given a file path that does not exist" {
             InModuleScope -ModuleName "Evergreen" {
-                { Expand-GzipArchive -Path "file.tar.gz" } | Should -Throw
+                { Expand-GzipArchive -Path "$env:GITHUB_WORKSPACE\file.tar.gz" } | Should -Throw
             }
         }
 
@@ -24,7 +24,7 @@ Describe -Name "Expand-GzipArchive" {
             InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path             = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    $DestinationPath = "$env:GITHUB_WORKSPACE\tests\dummyfolder"
+                    $DestinationPath = "$env:GITHUB_WORKSPACE\tests\dummyfile.ini"
                 }
                 { Expand-GzipArchive @params } | Should -Throw
             }
@@ -34,7 +34,7 @@ Describe -Name "Expand-GzipArchive" {
             InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    DestinationPath = "$env:GITHUB_WORKSPACE\tests"
+                    DestinationPath = "$env:GITHUB_WORKSPACE\tests\TestFile.ini"
                 }
                 { Expand-GzipArchive @params } | Should -Not -Throw
             }
@@ -44,7 +44,7 @@ Describe -Name "Expand-GzipArchive" {
             InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
-                    DestinationPath = "$env:GITHUB_WORKSPACE\tests"
+                    DestinationPath = "$env:GITHUB_WORKSPACE\tests\TestFile.ini"
                 }
                 $File = Expand-GzipArchive @params
                 $File | Should -BeOfType [System.String]

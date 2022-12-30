@@ -34,8 +34,8 @@ Describe -Name "Set-ProxyEnv" {
             }
         }
     }
-}
 
-AfterAll {
-    Remove-Variable -Name "EvergreenProxy" -ErrorAction "SilentlyContinue"
+    AfterAll {
+        Remove-Variable -Name "EvergreenProxy" -ErrorAction "SilentlyContinue"
+    }
 }
