@@ -14,14 +14,12 @@ BeforeAll {
 
 Describe -Name "Test-ProxyEnv" {
     BeforeAll {
-        InModuleScope -ModuleName "Evergreen" {
-            # Set-ProxyEnv -Proxy "proxyserver"
-        }
     }
 
     Context "Tests that Test-ProxyEnv returns true when testing proxy environment" {
         It "Returns True if proxy server is set" {
             InModuleScope -ModuleName "Evergreen" {
+                Set-ProxyEnv -Proxy "proxyserver"
                 Test-ProxyEnv | Should -BeTrue
             }
         }
