@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `MicrosoftVdot`
+* Adds parameter `-UserAgent` to `Test-EvergreenApp`
 
 ## 2212.709
 
