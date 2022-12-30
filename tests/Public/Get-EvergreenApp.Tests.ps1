@@ -10,9 +10,10 @@ param ()
 BeforeDiscovery {
     # Get the supported applications
     # Sort randomly so that we get test various GitHub applications when we have API request limits
-    $AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
+    #$AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
+    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MozillaFirefox"
     $Applications = Find-EvergreenApp | `
-        #Where-Object { $_.Name -notmatch $AppsToSkip } | `
+        Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 }
 
@@ -23,7 +24,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
-        $Output = Get-EvergreenApp -Name $application
+        $Output = Get-EvergreenApp -Name $application -WarningAction "SilentlyContinue"
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
@@ -31,12 +32,16 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
     }
 
     Context "Validate Get-EvergreenApp works with: <application>." {
-        It "<application>: should return something" {
-            ($Output | Measure-Object).Count | Should -BeGreaterThan 0
+        It "<application>: should not be null" {
+            $Output | Should -Not -BeNullOrEmpty
         }
 
         It "<application>: should return the expected output type" {
             $Output | Should -BeOfType "PSCustomObject"
+        }
+
+        It "<application>: should return something" {
+            ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }
 
         # Test that the output has a Version property and that property is a string

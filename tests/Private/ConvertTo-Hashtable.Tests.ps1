@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -23,7 +23,9 @@ Describe -Name "ConvertTo-Hashtable" {
         }
 
         It "Returns Null if sent Null" {
-            ConvertTo-Hashtable | Should -BeNullOrEmpty
+            InModuleScope -ModuleName "Evergreen" {
+                ConvertTo-Hashtable | Should -BeNullOrEmpty
+            }
         }
     }
 }
