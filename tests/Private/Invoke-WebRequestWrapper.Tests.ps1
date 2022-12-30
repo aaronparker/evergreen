@@ -16,7 +16,7 @@ BeforeAll {
 Describe -Name "Invoke-WebRequestWrapper" {
     Context "Ensure Invoke-WebRequestWrapper works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     ContentType          = "text/html"
                     ErrorAction          = "SilentlyContinue"

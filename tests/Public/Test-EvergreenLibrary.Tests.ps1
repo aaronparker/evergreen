@@ -3,8 +3,8 @@
         Public Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Justification="Outputs to log host.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Justification = "Outputs to log host.")]
 param ()
 
 BeforeDiscovery {
@@ -34,7 +34,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
                 Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
                 Destination = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
                 Force       = $True
-                Confirm      = $False
+                Confirm     = $False
             }
             Copy-Item @params
         }
@@ -44,9 +44,38 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
         }
     }
 
-    Context "Test 'Get-EvergreenLibrary'" {
+    Context "Test 'Get-EvergreenLibrary' works" {
+        BeforeAll {
+            $params = @{
+                Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
+                Destination = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
+                Force       = $True
+                Confirm     = $False
+            }
+            Copy-Item @params
+        }
+
         It "Returns details of the library" {
             Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" | Should -BeOfType [System.Object]
+        }
+
+        It "Does not throw" {
+            { Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" } | Should -Not -Throw
+        }
+    }
+
+    Context "Test 'Get-EvergreenLibrary' fails" {
+        BeforeAll {
+            $params = @{
+                FilePath = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
+                Force    = $True
+                Confirm  = $False
+            }
+            "nonsense" | Out-File @params
+        }
+
+        It "Does throw" {
+            { Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" } | Should -Throw
         }
     }
 }

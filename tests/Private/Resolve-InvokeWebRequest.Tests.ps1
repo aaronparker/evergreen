@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Resolve-InvokeWebRequest" {
     Context "Ensure Resolve-InvokeWebRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://aka.ms"
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
@@ -30,7 +30,7 @@ Describe -Name "Resolve-InvokeWebRequest" {
 Describe -Name "Save-File" {
     Context "Ensure Save-File works as expected" {
         It "Returns a string if the file is downloaded" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
                 (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
             }

@@ -60,19 +60,26 @@ jobs:
           Install-Module @params
           Import-Module -Name "Pester" -Force
 
-          Import-Module -Path "$env:GITHUB_WORKSPACE\Evergreen"
+          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen"
           $Config = [PesterConfiguration]::Default
-          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests\Main.Tests.ps1"
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
           $Config.Run.PassThru = $true
-          $Config.CodeCoverage.Enabled = $false
+          $Config.CodeCoverage.Enabled = $true
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
-          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\tests\CodeCoverage.xml"
+          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
           $Config.Output.Verbosity = "Normal"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
           Invoke-Pester -Configuration $Config
+
+      - name: List tests output
+        shell: powershell
+        working-directory: "${{ github.workspace }}"
+        run: |
+          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
+          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
 
       # Upload test results
       - name: Upload Pester test results
@@ -91,8 +98,9 @@ jobs:
 
       - name: Upload to Codecov
         id: codecov
+        if: always()
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
+          files: "./CodeCoverage.xml"
           verbose: true

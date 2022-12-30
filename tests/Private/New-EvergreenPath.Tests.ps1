@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "New-EvergreenPath" {
     Context "Ensure New-EvergreenPath works as expected" {
         It "Does not throw when creating a directory" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
                     "Product"      = "App"
                     "Track"        = "Current"
@@ -31,7 +31,7 @@ Describe -Name "New-EvergreenPath" {
         }
 
         It "Returns a string when creating a directory" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
                     "Product"      = "App"
                     "Track"        = "Current"

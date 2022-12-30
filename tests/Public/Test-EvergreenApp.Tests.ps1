@@ -20,11 +20,20 @@ Describe -Tag "Test" -Name "Test-EvergreenApp" {
     }
 
     It "Should not throw with valid input" {
-        { Test-EvergreenApp -InputObject $App } | Should -Not -Throw
+        $params = @{
+            InputObject = $App
+            UserAgent   = [Microsoft.PowerShell.Commands.PSUserAgent]::Firefox
+            Force       = $true
+            NoProgress  = $true
+        }
+        { Test-EvergreenApp @params } | Should -Not -Throw
     }
 
-    It "Should return an object with valid properties" {
+    It "Should return an object with valid Result property" {
         $Result[0].Result | Should -BeOfType [System.Boolean]
+    }
+
+    It "Should return an object with valid URI property" {
         $Result[0].URI | Should -BeOfType [System.String]
     }
 }

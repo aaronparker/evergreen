@@ -1639,13 +1639,29 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>NoProgress</maml:name>
           <maml:description>
-            <maml:para>{{ Fill NoProgress Description }}</maml:para>
+            <maml:para>`Test-EvergreenApp` uses `Invoke-WebRequest` to validate target application installers. Progress is suppressed by default for faster tests; however, when `-Verbose` is used, progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UserAgent</maml:name>
+          <maml:description>
+            <maml:para>Specifies a user agent string for the web request.</maml:para>
+            <maml:para>The default user agent is similar to the below with slight variations for each operating system and platform.</maml:para>
+            <maml:para>Mozilla/5.0 (Macintosh; Darwin 22.2.0 Darwin Kernel Version 22.2.0: Fri Nov 11 02:04:44 PST 2022; root:xnu-8792.61.2~4/RELEASE_ARM64_T8103; en-AU) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6</maml:para>
+            <maml:para>To test a website with the standard user agent string that's used by most internet browsers, use the properties of the PSUserAgent class, such as Chrome, FireFox, InternetExplorer, Opera, and Safari.</maml:para>
+            <maml:para>For example, the following command uses the user agent string for Internet Explorer: Save-EvergreenApp -UserAgent ([Microsoft.PowerShell.Commands.PSUserAgent]::InternetExplorer)</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1727,7 +1743,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>NoProgress</maml:name>
         <maml:description>
-          <maml:para>{{ Fill NoProgress Description }}</maml:para>
+          <maml:para>`Test-EvergreenApp` uses `Invoke-WebRequest` to validate target application installers. Progress is suppressed by default for faster tests; however, when `-Verbose` is used, progress will be displayed. Use `-NoProgress` with `-Verbose` to suppress download progress while also displaying verbose output.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1735,6 +1751,22 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>UserAgent</maml:name>
+        <maml:description>
+          <maml:para>Specifies a user agent string for the web request.</maml:para>
+          <maml:para>The default user agent is similar to the below with slight variations for each operating system and platform.</maml:para>
+          <maml:para>Mozilla/5.0 (Macintosh; Darwin 22.2.0 Darwin Kernel Version 22.2.0: Fri Nov 11 02:04:44 PST 2022; root:xnu-8792.61.2~4/RELEASE_ARM64_T8103; en-AU) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6</maml:para>
+          <maml:para>To test a website with the standard user agent string that's used by most internet browsers, use the properties of the PSUserAgent class, such as Chrome, FireFox, InternetExplorer, Opera, and Safari.</maml:para>
+          <maml:para>For example, the following command uses the user agent string for Internet Explorer: Save-EvergreenApp -UserAgent ([Microsoft.PowerShell.Commands.PSUserAgent]::InternetExplorer)</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>

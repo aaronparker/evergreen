@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Invoke-RestMethodWrapper" {
     Context "Ensure Invoke-RestMethodWrapper works as expected" {
         It "Returns data from a proper URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     ContentType          = "application/vnd.github.v3+json"
                     ErrorAction          = "SilentlyContinue"

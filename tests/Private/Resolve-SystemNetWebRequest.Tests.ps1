@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Resolve-SystemNetWebRequest" {
     Context "Ensure Resolve-SystemNetWebRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://github.com"
                     MaximumRedirection = 1

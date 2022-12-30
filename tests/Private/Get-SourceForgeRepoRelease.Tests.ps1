@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Get-SourceForgeRepoRelease" {
     Context "Validate function returns expected object" {
         It "Returns an object with expected properties" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Uri = "https://sourceforge.net/projects/sevenzip/best_release.json"
                 $Download = @{
                     "Folder"         = "7-Zip"

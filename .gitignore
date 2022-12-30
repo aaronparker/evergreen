@@ -36,11 +36,10 @@
 ehthumbs.db
 Thumbs.db
 
-# Visual Studio files
-######################
+# Repo files
+!tests/TestFile.ini.gz
 .vs/**
 json/**
-tests/codecov
 .cache
 TestResults.xml
 CodeCoverage.xml

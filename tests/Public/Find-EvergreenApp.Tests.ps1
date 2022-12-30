@@ -8,9 +8,30 @@
 param ()
 
 BeforeDiscovery {
+    $MicrosoftEdge = Find-EvergreenApp -Name "MicrosoftEdge"
 }
 
 BeforeAll {
+}
+
+Describe -Tag "Find" -Name "Find-EvergreenApp MicrosoftEdge" -ForEach $MicrosoftEdge {
+    BeforeEach { 
+        $Application = $_
+    }
+
+    Context "Validate apps returned by a Find-EvergreenApp query" {
+        It "Has a Name property" {
+            $Application.Name | Should -Not -BeNullOrEmpty
+        }
+
+        It "Has an Application property" {
+            $Application.Application | Should -Not -BeNullOrEmpty
+        }
+
+        It "Has a Link property" {
+            $Application.Link | Should -Not -BeNullOrEmpty
+        }
+    }
 }
 
 Describe -Tag "Find" -Name "Find-EvergreenApp" {

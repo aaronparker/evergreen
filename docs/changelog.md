@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftVdot`
+* Adds parameter `-UserAgent` to `Test-EvergreenApp`
+
 ## 2212.709
 
 * Adds `NanaZip` [#430](https://github.com/aaronparker/evergreen/issues/430)

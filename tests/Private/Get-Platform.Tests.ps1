@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -13,15 +13,39 @@ BeforeAll {
 }
 
 Describe -Name "Get-Platform" {
-    Context "Ensure platform is returned" {
-        It "Given a platform string it returns the right platform" {
-            InModuleScope Evergreen {
+    InModuleScope -ModuleName "Evergreen" {
+        Context "Ensure platform is returned" {
+            It "Returns macOS" {
                 Get-Platform -String "osx" | Should -Be "macOS"
+            }
+
+            It "Returns Linux" {
+                Get-Platform -String "linux" | Should -Be "Linux"
+            }
+
+            It "Returns Debian" {
+                Get-Platform -String "debian" | Should -Be "Debian"
+            }
+
+            It "Returns Debian" {
+                Get-Platform -String "debian" | Should -Be "Debian"
+            }
+
+            It "Returns Ubuntu" {
+                Get-Platform -String "ubuntu" | Should -Be "Ubuntu"
+            }
+
+            It "Returns CentOS" {
+                Get-Platform -String "centos" | Should -Be "CentOS"
+            }
+
+            It "Returns Windows" {
+                Get-Platform -String ".exe" | Should -Be "Windows"
             }
         }
 
-        It "Given a string that won't match, returns Windows" {
-            InModuleScope Evergreen {
+        Context "Ensure the default platform is returned" {
+            It "Given a string that won't match, returns Windows" {
                 Get-Platform -String "Neque porro quisquam est qui dolorem" | Should -Be "Windows"
             }
         }

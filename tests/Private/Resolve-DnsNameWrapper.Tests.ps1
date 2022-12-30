@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Resolve-DnsNameWrapper" {
     Context "Ensure Resolve-DnsNameWrapper works as expected" {
         It "Returns DNS records OK" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Name = "github.com"
                     Type = "TXT"

@@ -18,12 +18,10 @@ Function Export-EvergreenManifest {
         Write-Information -MessageData "Please list supported application names with Find-EvergreenApp." -InformationAction "Continue"
         Write-Information -MessageData "Find out how to contribute a new application to the Evergreen project here: $($script:resourceStrings.Uri.Docs)." -InformationAction "Continue"
         $List = Find-EvergreenApp -Name $Name -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
-        if ($Null -ne $List) {
-            Write-Information -MessageData "" -InformationAction "Continue"
-            Write-Information -MessageData "'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
-            $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
-            Write-Information -MessageData "" -InformationAction "Continue"
-        }
+        Write-Information -MessageData "" -InformationAction "Continue"
+        Write-Information -MessageData "'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
+        $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
+        Write-Information -MessageData "" -InformationAction "Continue"
         throw "Failed to retrieve manifest for application: $Name."
     }
     if ($Output) {

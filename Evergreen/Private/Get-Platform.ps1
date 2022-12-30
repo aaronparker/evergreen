@@ -2,22 +2,20 @@ Function Get-Platform {
     [OutputType([System.String])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $String
     )
 
-    Switch -Regex ($String) {
-        "rhel" { $platform = "RHEL"; Break }
-        "\.rpm" { $platform = "RedHat"; Break }
-        "\.tar.gz|linux" { $platform = "Linux"; Break }
-        "\.nupkg" { $platform = "NuGet"; Break }
-        "macos|osx|darwin" { $platform = "macOS"; Break }
-        "\.deb|debian" { $platform = "Debian"; Break }
-        "ubuntu" { $platform = "Ubuntu"; Break }
-        "centos" { $platform = "CentOS"; Break }
-        "\.exe|\.msi|windows|win" { $platform = "Windows"; Break }
-        Default {
+    switch -Regex ($String) {
+        "\.tar.gz|linux" { $platform = "Linux"; break }
+        "\.nupkg" { $platform = "NuGet"; break }
+        "macos|osx|darwin" { $platform = "macOS"; break }
+        "\.deb|debian" { $platform = "Debian"; break }
+        "ubuntu" { $platform = "Ubuntu"; break }
+        "centos" { $platform = "CentOS"; break }
+        "\.exe|\.msi|\.msix|\.appx|\.appxbundle|windows|win" { $platform = "Windows"; break }
+        default {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Platform not found, defaulting to Windows."
             $platform = "Windows"
         }
