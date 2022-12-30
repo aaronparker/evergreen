@@ -12,12 +12,12 @@ on:
       - 'Evergreen/**.ps1'
       - 'Evergreen/**.psm1'
       - 'Evergreen/**.json'
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - 'Evergreen/**.ps1'
-      - 'Evergreen/**.psm1'
-      - 'Evergreen/**.json'
+  # pull_request:
+  #   branches: [ "main" ]
+  #   paths:
+  #     - 'Evergreen/**.ps1'
+  #     - 'Evergreen/**.psm1'
+  #     - 'Evergreen/**.json'
 
 jobs:
   psscriptanalyzer:
@@ -68,7 +68,7 @@ jobs:
 
           Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen"
           $Config = [PesterConfiguration]::Default
-          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests\Main.Tests.ps1"
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
           $Config.Run.PassThru = $true
           $Config.CodeCoverage.Enabled = $true
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
@@ -168,6 +168,21 @@ jobs:
                 Write-Host "No match in $changeLog for '## VERSION'. Manual update of CHANGELOG required." -ForegroundColor Cyan
             }
 
+      # Update the list of supported apps in APPS.md
+      - name: Update APPS.md
+        id: update-apps
+        shell: powershell
+        run: |
+            Import-Module -Name MarkdownPS
+            $OutFile = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "docs", "apps.md")
+            $markdown = New-MDHeader -Text "$((Find-EvergreenApp).Count) Supported applications" -Level 1
+            $markdown += "`n"
+            $line = "Evergreen " + '`' + $newVersion + '`' + " supports the following applications:"
+            $markdown += $line
+            $markdown += "`n`n"
+            $markdown += Find-EvergreenApp | New-MDTable
+            $markdown | Out-File -FilePath $OutFile -NoNewline -Force -Encoding "Utf8"
+
       # Import GPG key so that we can sign the commit
       - name: Import GPG key
         id: import_gpg
@@ -198,49 +213,3 @@ jobs:
       - name: "No changes have been detected"
         if: steps.commit.outputs.changes_detected == 'false'
         run: echo "No changes detected."
-
-  # tag-repo:
-  #   needs: update-module
-  #   if: needs.update-module.outputs.output1 == 'true'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         token: ${{ secrets.PAT }}
-  #         repository: aaronparker/Evergreen
-
-  #     - name: Git pull
-  #       id: pull
-  #       shell: pwsh
-  #       run: |
-  #           git pull origin main
-
-  #     - name: Get module version number
-  #       id: get-version
-  #       shell: pwsh
-  #       run: |
-  #           $Manifest = Test-ModuleManifest -Path "${{ github.workspace }}/Evergreen/Evergreen.psd1"
-  #           Write-Host "Found version: $($Manifest.Version)"
-  #           echo "::set-output name=version::$($Manifest.Version)"
-
-  #     # Import GPG key so that we can sign the commit
-  #     - name: Import GPG key
-  #       id: import_gpg
-  #       uses: crazy-max/ghaction-import-gpg@v5
-  #       with:
-  #         gpg_private_key: ${{ secrets.GPGKEY }}
-  #         passphrase: ${{ secrets.GPGPASSPHRASE }}
-  #         git_user_signingkey: true
-  #         git_commit_gpgsign: true
-  #         git_config_global: true
-  #         git_tag_gpgsign: true
-  #         git_push_gpgsign: false
-  #         git_committer_name: ${{ secrets.COMMIT_NAME }}
-  #         git_committer_email: ${{ secrets.COMMIT_EMAIL }}
-
-  #     # Push tag
-  #     # - name: Push tag
-  #     #   shell: bash
-  #     #   run: |
-  #     #     git tag -a "v${{steps.get-version.outputs.version}}" -m "v${{steps.get-version.outputs.version}}"
-  #     #     git push origin "v${{steps.get-version.outputs.version}}"
