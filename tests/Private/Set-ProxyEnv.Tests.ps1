@@ -14,14 +14,14 @@ BeforeAll {
 
 Describe -Name "Set-ProxyEnv" {
     BeforeAll {
-        InModuleScope Evergreen {
+        InModuleScope -ModuleName "Evergreen" {
             Set-ProxyEnv -Proxy "proxyserver"
         }
     }
 
     Context "Tests that Set-ProxyEnv does not throw" {
         It "Should not throw" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 { Set-ProxyEnv -Proxy "proxyserver" } | Should -Not -Throw
             }
         }
@@ -29,7 +29,7 @@ Describe -Name "Set-ProxyEnv" {
 
     Context "Tests that the proxy server was set" {
         It "Returns True if proxy server is set" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Test-ProxyEnv | Should -BeTrue
             }
         }
@@ -37,5 +37,5 @@ Describe -Name "Set-ProxyEnv" {
 }
 
 AfterAll {
-    Remove-Variable -Name "EvergreenProxy" -Scope "Script" -ErrorAction "SilentlyContinue"
+    Remove-Variable -Name "EvergreenProxy" -ErrorAction "SilentlyContinue"
 }

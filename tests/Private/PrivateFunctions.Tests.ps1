@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Test-PSCore" {
     Context "Tests whether we are running on PowerShell Core" {
         It "Returns True if running Windows PowerShell" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Version = "6.0.0"
                 If (($PSVersionTable.PSVersion -ge [version]::Parse($Version)) -and ($PSVersionTable.PSEdition -eq "Core")) {
                     Test-PSCore | Should -Be $True
@@ -25,7 +25,7 @@ Describe -Name "Test-PSCore" {
     }
     Context "Tests whether we are running on Windows PowerShell" {
         It "Returns False if running Windows PowerShell" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Version = "6.0.0"
                 If (($PSVersionTable.PSVersion -lt [version]::Parse($Version)) -and ($PSVersionTable.PSEdition -eq "Desktop")) {
                     Test-PSCore | Should -Be $False
@@ -38,21 +38,21 @@ Describe -Name "Test-PSCore" {
 Describe -Name "Get-Architecture" {
     Context "It returns expected output" {
         It "Returns x64 given an x64 URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $64bitUrl = "https://statics.teams.cdn.office.net/production-windows-x64/1.3.00.34662/Teams_windows_x64.msi"
                 Get-Architecture -String $64bitUrl | Should -Be "x64"
             }
         }
 
         It "Returns x86 given an x86 URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $32bitUrl = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320074/AcroRdrDCUpd2001320074.msp"
                 Get-Architecture -String $32bitUrl | Should -Be "x86"
             }
         }
 
         It "Returns x86 given a string that won't match anything" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-Architecture -String "the quick brown fox" | Should -Be "x86"
             }
         }
@@ -62,7 +62,7 @@ Describe -Name "Get-Architecture" {
 Describe -Name "Get-GitHubRepoRelease" {
     Context "It correctly returns an object" {
         It "Does not Throw" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
 
                 # Params for Get-GitHubRepoRelease
                 $gitHubParams = @{
@@ -75,7 +75,7 @@ Describe -Name "Get-GitHubRepoRelease" {
         }
 
         It "Returns the expected properties" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
 
                 # Params for Get-GitHubRepoRelease
                 $gitHubParams = @{
@@ -99,7 +99,7 @@ Describe -Name "Get-GitHubRepoRelease" {
 Describe -Name "ConvertTo-DateTime" {
     Context "Format and return a datetime string" {
         It "Correctly formats the provided datetime" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 (ConvertTo-DateTime -DateTime "2000/14/2" -Pattern "yyyy/d/M").Split("/")[-1] | Should -Be "2000"
             }
         }
@@ -109,7 +109,7 @@ Describe -Name "ConvertTo-DateTime" {
 Describe -Name "ConvertTo-Hashtable" {
     Context "Test conversion to hashtable" {
         It "Converts a PSObject into a hashtable" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $ps = [PSCustomObject]@{ Name = "Name1"; Address = "Address1" }
                 $object = $ps | ConvertTo-Hashtable
                 $object | Should -BeOfType "Hashtable"
@@ -121,13 +121,13 @@ Describe -Name "ConvertTo-Hashtable" {
 Describe -Name "Get-Platform" {
     Context "Ensure platform is returned" {
         It "Given a platform string it returns the right platform" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-Platform -String "osx" | Should -Be "macOS"
             }
         }
 
         It "Given a string that won't match, returns Windows" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-Platform -String "Neque porro quisquam est qui dolorem" | Should -Be "Windows"
             }
         }
@@ -137,13 +137,13 @@ Describe -Name "Get-Platform" {
 Describe -Name "Get-FileType" {
     Context "Ensure file type is returned" {
         It "Given a file path string it returns the right file type" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-FileType -File "test.txt" | Should -Be "txt"
             }
         }
 
         It "Given an file path string without an extension it returns null" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-FileType -File "testtxt" | Should -BeNullOrEmpty
             }
         }
@@ -153,7 +153,7 @@ Describe -Name "Get-FileType" {
 Describe -Name "Get-SourceForgeRepoRelease" {
     Context "Validate function returns expected object" {
         It "Returns an object with expected properties" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Uri = "https://sourceforge.net/projects/sevenzip/best_release.json"
                 $Download = @{
                     "Folder"         = "7-Zip"
@@ -181,13 +181,13 @@ Describe -Name "Get-SourceForgeRepoRelease" {
 Describe -Name "Get-FunctionResource" {
     Context "Ensure function resources are returned" {
         It "Given a valid app it returns valid data" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-FunctionResource -AppName "MicrosoftEdge" | Should -BeOfType [System.Object]
             }
         }
 
         It "Given an invalid application, it throws" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 { Get-FunctionResource -AppName "DoesNotExist" } | Should -Throw
             }
         }
@@ -197,19 +197,19 @@ Describe -Name "Get-FunctionResource" {
 Describe -Name "Get-ModuleResource" {
     Context "Ensure module resources are returned" {
         It "Returns the module resource" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Get-ModuleResource | Should -BeOfType [System.Object]
             }
         }
 
         It "Given an invalid path, it throws" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 { Get-ModuleResource -Path "C:\Temp\test.txt" } | Should -Throw
             }
         }
 
         It "Returns an object with the expected properties" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 (Get-ModuleResource).Uri.Project | Should -Not -BeNullOrEmpty
                 (Get-ModuleResource).Uri.Docs | Should -Not -BeNullOrEmpty
                 (Get-ModuleResource).Uri.Issues | Should -Not -BeNullOrEmpty
@@ -223,7 +223,7 @@ Describe -Name "Get-ModuleResource" {
 Describe -Name "Invoke-RestMethodWrapper" {
     Context "Ensure Invoke-RestMethodWrapper works as expected" {
         It "Returns data from a proper URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     ContentType          = "application/vnd.github.v3+json"
                     ErrorAction          = "SilentlyContinue"
@@ -242,7 +242,7 @@ Describe -Name "Invoke-RestMethodWrapper" {
 Describe -Name "Invoke-SystemNetRequest" {
     Context "Ensure Invoke-SystemNetRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://github.com"
                     MaximumRedirection = 1
@@ -256,7 +256,7 @@ Describe -Name "Invoke-SystemNetRequest" {
 Describe -Name "Resolve-SystemNetWebRequest" {
     Context "Ensure Resolve-SystemNetWebRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://github.com"
                     MaximumRedirection = 1
@@ -270,7 +270,7 @@ Describe -Name "Resolve-SystemNetWebRequest" {
 Describe -Name "Invoke-WebRequestWrapper" {
     Context "Ensure Invoke-WebRequestWrapper works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     ContentType          = "text/html"
                     ErrorAction          = "SilentlyContinue"
@@ -292,7 +292,7 @@ Describe -Name "Invoke-WebRequestWrapper" {
 Describe -Name "New-EvergreenPath" {
     Context "Ensure New-EvergreenPath works as expected" {
         It "Does not throw when creating a directory" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
                     "Product"      = "App"
                     "Track"        = "Current"
@@ -308,7 +308,7 @@ Describe -Name "New-EvergreenPath" {
         }
 
         It "Returns a string when creating a directory" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
                     "Product"      = "App"
                     "Track"        = "Current"
@@ -328,7 +328,7 @@ Describe -Name "New-EvergreenPath" {
 Describe -Name "Resolve-DnsNameWrapper" {
     Context "Ensure Resolve-DnsNameWrapper works as expected" {
         It "Returns DNS records OK" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Name = "github.com"
                     Type = "TXT"
@@ -342,7 +342,7 @@ Describe -Name "Resolve-DnsNameWrapper" {
 Describe -Name "Resolve-InvokeWebRequest" {
     Context "Ensure Resolve-InvokeWebRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://aka.ms"
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
@@ -357,7 +357,7 @@ Describe -Name "Resolve-InvokeWebRequest" {
 Describe -Name "Save-File" {
     Context "Ensure Save-File works as expected" {
         It "Returns a string if the file is downloaded" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
                 (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
             }

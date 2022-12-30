@@ -15,13 +15,13 @@ BeforeAll {
 Describe -Name "Expand-GzipArchive" {
     Context "Test that Expand-GzipArchive works as expected" {
         It "Should throw when given a file path that does not exist" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 { Expand-GzipArchive -Path "file.tar.gz" } | Should -Throw
             }
         }
 
         It "Should throw when given a destination path that does not exist" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path             = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
                     $DestinationPath = "$env:GITHUB_WORKSPACE\tests\dummyfolder"
@@ -31,7 +31,7 @@ Describe -Name "Expand-GzipArchive" {
         }
 
         It "Should not throw when expanding a .gz file" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
                     DestinationPath = "$env:GITHUB_WORKSPACE\tests"
@@ -41,7 +41,7 @@ Describe -Name "Expand-GzipArchive" {
         }
 
         It "Should return an object of type string" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Path            = "$env:GITHUB_WORKSPACE\tests\TestFile.ini.gz"
                     DestinationPath = "$env:GITHUB_WORKSPACE\tests"

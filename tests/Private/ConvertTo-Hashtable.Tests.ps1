@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "ConvertTo-Hashtable" {
     Context "Test conversion to hashtable" {
         It "Converts a PSObject into a hashtable" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $ps = [PSCustomObject]@{ Name = "Name1"; Address = "Address1" }
                 $object = $ps | ConvertTo-Hashtable
                 $object | Should -BeOfType "Hashtable"

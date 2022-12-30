@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Invoke-SystemNetRequest" {
     Context "Ensure Invoke-SystemNetRequest works as expected" {
         It "Returns data from a URL" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 $params = @{
                     Uri                = "https://github.com"
                     MaximumRedirection = 1

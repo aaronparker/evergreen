@@ -14,20 +14,20 @@ BeforeAll {
 
 Describe -Name "Test-ProxyEnv" {
     BeforeAll {
-        InModuleScope Evergreen {
+        InModuleScope -ModuleName "Evergreen" {
             Set-ProxyEnv -Proxy "proxyserver"
         }
     }
 
     Context "Tests that Test-ProxyEnv returns true when testing proxy environment" {
         It "Returns True if proxy server is set" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Test-ProxyEnv | Should -BeTrue
             }
         }
 
         It "Returns False if proxy credentials are not set" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
                 Test-ProxyEnv -Creds | Should -BeFalse
             }
         }
@@ -35,5 +35,5 @@ Describe -Name "Test-ProxyEnv" {
 }
 
 AfterAll {
-    Remove-Variable -Name "EvergreenProxy" -Scope "Script" -ErrorAction "SilentlyContinue"
+    Remove-Variable -Name "EvergreenProxy" -ErrorAction "SilentlyContinue"
 }

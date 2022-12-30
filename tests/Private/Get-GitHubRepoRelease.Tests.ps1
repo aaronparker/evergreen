@@ -15,7 +15,7 @@ BeforeAll {
 Describe -Name "Get-GitHubRepoRelease" {
     Context "It correctly returns an object" {
         It "Does not Throw" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
 
                 # Params for Get-GitHubRepoRelease
                 $gitHubParams = @{
@@ -28,7 +28,7 @@ Describe -Name "Get-GitHubRepoRelease" {
         }
 
         It "Returns the expected properties" {
-            InModuleScope Evergreen {
+            InModuleScope -ModuleName "Evergreen" {
 
                 # Params for Get-GitHubRepoRelease
                 $gitHubParams = @{
