@@ -73,12 +73,19 @@ jobs:
           $Config.CodeCoverage.Enabled = $true
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
-          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\tests\CodeCoverage.xml"
+          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
           $Config.Output.Verbosity = "Normal"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
           Invoke-Pester -Configuration $Config
+
+      - name: List tests output
+        shell: powershell
+        working-directory: "${{ github.workspace }}"
+        run: |
+          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
+          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
 
       # Upload test results
       - name: Upload Pester test results
@@ -101,7 +108,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
+          files: "./CodeCoverage.xml"
           verbose: true
 
   update-module:
