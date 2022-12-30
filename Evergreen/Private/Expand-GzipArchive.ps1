@@ -1,14 +1,14 @@
 Function Expand-GzipArchive {
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript( { If (Test-Path -Path $_ -PathType "Leaf") { $True } Else { Throw "Cannot find path $_." } })]
+        [ValidateScript( { if (Test-Path -Path $_ -PathType "Leaf") { $true } else { throw "Cannot find path $_." } })]
         [System.String] $Path,
 
-        [Parameter(Mandatory = $False, Position = 1)]
+        [Parameter(Mandatory = $false, Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript( { If (Test-Path -Path $(Split-Path -Path $_ -Parent) -PathType "Container") { $True } Else { Throw "Cannot find path $(Split-Path -Path $_ -Parent)." } })]
+        [ValidateScript( { if (Test-Path -Path $(Split-Path -Path $_ -Parent) -PathType "Container") { $true } else { throw "Cannot find path $(Split-Path -Path $_ -Parent)." } })]
         [System.String] $DestinationPath = ($Path -replace "\.gz$", ""),
 
         [Parameter()]
@@ -34,17 +34,17 @@ Function Expand-GzipArchive {
         ([System.IO.Compression.CompressionMode]::Decompress)
     }
     catch {
-        Throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
     }
 
     # Expand the archive
-    If ($Null -ne $GzipStream) {
+    if ($null -ne $GzipStream) {
         try {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Attempt expand: $DestinationPath."
             $buffer = New-Object -TypeName System.Byte[] -ArgumentList $BufferSize
-            While ($true) {
+            while ($true) {
                 $read = $GzipStream.Read($buffer, 0, $BufferSize)
-                If ($read -le 0) { Break }
+                if ($read -le 0) { break }
                 $OutputStream.Write($buffer, 0, $read)
             }
         }

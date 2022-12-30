@@ -14,6 +14,7 @@
 *.7z
 *.dmg
 *.gz
+!tests/Test.tar.gz
 *.iso
 *.jar
 *.rar
