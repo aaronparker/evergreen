@@ -114,10 +114,10 @@ jobs:
           verbose: true
 
   update-module:
+    name: Update module version
     runs-on: windows-latest
     needs: pestertest
-    outputs:
-      output1: ${{ steps.commit.outputs.changes_detected }}
+    if: always()
 
     steps:
       - uses: actions/checkout@v3
