@@ -15,7 +15,7 @@ BeforeAll {
 }
 
 Describe -Tag "Find" -Name "Find-EvergreenApp MicrosoftEdge" -ForEach $MicrosoftEdge {
-    BeforeEach { 
+    BeforeEach {
         $Application = $_
     }
 

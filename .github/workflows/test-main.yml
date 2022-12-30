@@ -66,7 +66,7 @@ jobs:
           Install-Module @params
           Import-Module -Name "Pester" -Force
 
-          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen"
+          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
           $Config = [PesterConfiguration]::Default
           $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
           $Config.Run.PassThru = $true
@@ -175,7 +175,9 @@ jobs:
         id: update-apps
         shell: powershell
         run: |
+            Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
             Import-Module -Name MarkdownPS
+
             $OutFile = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "docs", "apps.md")
             $markdown = New-MDHeader -Text "$((Find-EvergreenApp).Count) Supported applications" -Level 1
             $markdown += "`n"
