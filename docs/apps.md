@@ -1,6 +1,6 @@
-﻿# 248 Supported applications
+﻿# 250 Supported applications
 
-Evergreen `2212.704` supports the following applications:
+Evergreen `` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                       |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -110,7 +110,7 @@ Evergreen `2212.704` supports the following applications:
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                  |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                              |
 | KDiff3                                | KDiff3                                                            | https://kdiff3.sourceforge.net/                                                            |
-| KeePass                               | KeePass                                                           | https://keepass.net/                                                                       |
+| KeePass                               | KeePass Password Safe                                             | https://keepass.info/                                                                      |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                     |
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                           |
 | LogMeInGoToMeeting                    | LogMeIn GoToMeeting                                               | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                    |
@@ -140,6 +140,7 @@ Evergreen `2212.704` supports the following applications:
 | MicrosoftSsms                         | Microsoft SQL Server Management Studio                            | https://go.microsoft.com/fwlink/?LinkId=531355                                             |
 | MicrosoftTeams                        | Microsoft Teams                                                   | https://www.microsoft.com/teams                                                            |
 | MicrosoftTerminal                     | Microsoft Terminal                                                | https://github.com/microsoft/terminal/                                                     |
+| MicrosoftVdot                         | Microsoft Virtual Desktop Optimization Tool                       | https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool              |
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                        |
 | MicrosoftVisualStudioCode             | Microsoft Visual Studio Code                                      | https://code.visualstudio.com                                                              |
 | MicrosoftWindowsPackageManagerClient  | Microsoft Windows Package Manager Client                          | https://docs.microsoft.com/en-us/windows/package-manager/                                  |
@@ -157,6 +158,7 @@ Evergreen `2212.704` supports the following applications:
 | MozillaThunderbird                    | Mozilla Thunderbird                                               | https://www.thunderbird.net/                                                               |
 | mRemoteNG                             | mRemoteNG                                                         | https://mremoteng.org/                                                                     |
 | MuseScore                             | MuseScore                                                         | https://musescore.org/                                                                     |
+| NanaZip                               | NanaZip                                                           | https://github.com/M2Team/NanaZip                                                          |
 | Naps2                                 | Ben Olden-Cooligan NAPS2                                          | https://www.naps2.com/                                                                     |
 | NETworkManager                        | NETworkManager                                                    | https://github.com/BornToBeRoot/NETworkManager                                             |
 | NevcairielLAVFilters                  | Nevcairiel LAV Filters                                            | https://github.com/Nevcairiel/LAVFilters                                                   |
