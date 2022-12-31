@@ -24,8 +24,11 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
         if ($env:Temp) {
             $Path = Join-Path -Path $env:Temp -ChildPath "Downloads"
         }
-        else {
+        elseif ($env:TMPDIR) {
             $Path = Join-Path -Path $env:TMPDIR -ChildPath "Downloads"
+        }
+        elseif ($env:RUNNER_TEMP) {
+            $Path = Join-Path -Path $env:RUNNER_TEMP -ChildPath "Downloads"
         }
         New-Item -Path $Path -ItemType "Directory" -Force -ErrorAction "SilentlyContinue" > $Null
     }

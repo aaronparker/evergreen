@@ -105,6 +105,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install module DnsClient-PS
+        shell: pwsh
+        working-directory: "${{ github.workspace }}"
+        run: |
+          "DnsClient-PS"
+
       - name: Pester tests
         shell: pwsh
         working-directory: "${{ github.workspace }}"
