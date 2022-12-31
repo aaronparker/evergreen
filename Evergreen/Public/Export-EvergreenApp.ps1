@@ -28,7 +28,7 @@ function Export-EvergreenApp {
         if (Test-Path -Path $Path) {
             try {
                 # Add the new details to the existing file content
-                $Content = Get-Content -Path $Path -Verbose:$VerbosePreference | ConvertFrom-Json -Depth 20
+                $Content = Get-Content -Path $Path -Verbose:$VerbosePreference | ConvertFrom-Json
                 $InputObject += $Content
             }
             catch {
@@ -44,7 +44,7 @@ function Export-EvergreenApp {
 
         # Export the data to file
         $OutputObject | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $false } | `
-            ConvertTo-Json -Depth 20 | `
+            ConvertTo-Json | `
             Out-File -FilePath $Path -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
 
         if ($PSCmdlet.ShouldProcess($Path, "Output to pipeline")) {
