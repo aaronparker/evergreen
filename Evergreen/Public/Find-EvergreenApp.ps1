@@ -17,18 +17,13 @@
 
     begin {
         #region Get the per-application manifests from the Evergreen/Manifests folder
-        try {
-            $params = @{
-                Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
-                Filter      = "*.json"
-                ErrorAction = "SilentlyContinue"
-            }
-            Write-Verbose -Message "Search path for application manifests: $($params.Path)."
-            $Manifests = Get-ChildItem @params
+        $params = @{
+            Path        = Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Manifests"
+            Filter      = "*.json"
+            ErrorAction = "SilentlyContinue"
         }
-        catch {
-            throw $_
-        }
+        Write-Verbose -Message "Search path for application manifests: $($params.Path)."
+        $Manifests = Get-ChildItem @params
         #endregion
     }
 
@@ -46,21 +41,18 @@
 
         #region Output details from the manifest/s
         foreach ($manifest in $Manifests) {
-            try {
-                # Read the JSON manifest and convert to an object
-                $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
-            }
-            catch {
-                throw $_
-            }
+            # Read the JSON manifest and convert to an object
+            $Json = Get-Content -Path $manifest.FullName | ConvertFrom-Json
 
             # Build an object from the manifest details and file name and output to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
-                Application = $Json.Name
-                Link        = $Json.Source
+            if ($null -ne $Json) {
+                $PSObject = [PSCustomObject] @{
+                    Name        = [System.IO.Path]::GetFileNameWithoutExtension($manifest.Name)
+                    Application = $Json.Name
+                    Link        = $Json.Source
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
         #endregion
     }
