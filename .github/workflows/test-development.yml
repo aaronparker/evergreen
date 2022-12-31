@@ -109,7 +109,12 @@ jobs:
         shell: pwsh
         working-directory: "${{ github.workspace }}"
         run: |
-          "DnsClient-PS"
+          $params = @{
+              Name               = "DnsClient-PS"
+              SkipPublisherCheck = $true
+              ErrorAction        = "Stop"
+          }
+          Install-Module @params
 
       - name: Pester tests
         shell: pwsh

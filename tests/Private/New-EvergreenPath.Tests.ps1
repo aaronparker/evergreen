@@ -13,19 +13,19 @@ BeforeAll {
 }
 
 Describe -Name "New-EvergreenPath" {
-    BeforeAll {
-        if ($env:Temp) {
-            $Path = $env:Temp
-        }
-        elseif ($env:TMPDIR) {
-            $Path = $env:TMPDIR
-        }
-        elseif ($env:RUNNER_TEMP) {
-            $Path = $env:RUNNER_TEMP
-        }
-    }
-
     Context "Ensure New-EvergreenPath works as expected" {
+        BeforeAll {
+            if ($env:Temp) {
+                $Path = $env:Temp
+            }
+            elseif ($env:TMPDIR) {
+                $Path = $env:TMPDIR
+            }
+            elseif ($env:RUNNER_TEMP) {
+                $Path = $env:RUNNER_TEMP
+            }
+        }
+
         It "Does not throw when creating a directory" {
             InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
