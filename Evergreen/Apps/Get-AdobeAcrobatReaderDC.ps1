@@ -22,44 +22,33 @@ Function Get-AdobeAcrobatReaderDC {
     #region Installer downloads
     foreach ($language in $res.Get.Update.Languages.GetEnumerator()) {
 
-        try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching updates for language: $($language.Name)."
-            $params = @{
-                Uri     = $res.Get.Update.Uri -replace "#Language", $language.Name
-            }
-            $UpdateContent = Invoke-RestMethodWrapper @params
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Searching updates for language: $($language.Name)."
+        $params = @{
+            Uri = $res.Get.Update.Uri -replace "#Language", $language.Name
         }
-        catch {
-            Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-        }
+        $UpdateContent = Invoke-RestMethodWrapper @params
 
-        if ($UpdateContent) {
+        if ($Null -ne $UpdateContent) {
             foreach ($item in $UpdateContent.products.reader) {
 
-                try {
-                    $LanguageFullName = $($res.Get.Update.Languages[$language.Key])
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Searching downloads for language: $LanguageFullName, $($language.Name)."
-                    $params = @{
-                        Uri = $res.Get.Download.Uri -replace "#DisplayName", $item.displayName -replace "#ShortLanguage", $language.Name -replace " ", "%20"
-                    }
-                    $DownloadContent = Invoke-RestMethodWrapper @params
+                $LanguageFullName = $($res.Get.Update.Languages[$language.Key])
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Searching downloads for language: $LanguageFullName, $($language.Name)."
+                $params = @{
+                    Uri = $res.Get.Download.Uri -replace "#DisplayName", $item.displayName -replace "#ShortLanguage", $language.Name -replace " ", "%20"
                 }
-                catch {
-                    Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-                }
+                $DownloadContent = Invoke-RestMethodWrapper @params
 
-                $PSObject = [PSCustomObject] @{
-                    Version      = $item.version
-                    Language     = $LanguageFullName
-                    Architecture = Get-Architecture -String $DownloadContent.downloadURL
-                    Name         = $item.displayName
-                    URI          = $DownloadContent.downloadURL
+                if ($null -ne $DownloadContent) {
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $item.version
+                        Language     = $LanguageFullName
+                        Architecture = Get-Architecture -String $DownloadContent.downloadURL
+                        Name         = $item.displayName
+                        URI          = $DownloadContent.downloadURL
+                    }
+                    Write-Output -InputObject $PSObject
                 }
-                Write-Output -InputObject $PSObject
             }
-        }
-        else{
-            Write-Error -Message "$($MyInvocation.MyCommand): Failed to return content for: $($language.Name)."
         }
     }
     #endregion

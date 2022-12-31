@@ -8,7 +8,7 @@ Function Get-MestrelabMnova {
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -19,19 +19,13 @@ Function Get-MestrelabMnova {
 
     # Query the repo to get the full list of files
     $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-
-    If ($Null -ne $updateFeed) {
+    if ($null -ne $updateFeed) {
 
         # Grab the Windows files
-        Try {
-            $windowsReleases = $updateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }
-        }
-        Catch {
-            Throw "$($MyInvocation.MyCommand): Failed to extract windows versions"
-        }
+        $windowsReleases = $updateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }
 
         # Build the output object for each release
-        ForEach ($Release in $windowsReleases) {
+        foreach ($Release in $windowsReleases) {
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version      = $Release.Version
@@ -41,8 +35,5 @@ Function Get-MestrelabMnova {
             }
             Write-Output -InputObject $PSObject
         }
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
 }

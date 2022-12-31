@@ -34,20 +34,6 @@
 
             # Find the latest version
             foreach ($node in $nodes) {
-
-                # Construct the output for EXE; Return the custom object to the pipeline
-                if ([System.Boolean]($node.PSobject.Properties.name -match "binary")) {
-                    $PSObject = [PSCustomObject] @{
-                        Version      = $node.currentversion
-                        Architecture = Get-Architecture -String $node.binary.url
-                        Ring         = $ring.Name
-                        Sha256       = $node.binary.sha256hash
-                        Type         = [System.IO.Path]::GetExtension($node.binary.url).Split(".")[-1]
-                        URI          = $node.binary.url
-                    }
-                    Write-Output -InputObject $PSObject
-                }
-
                 if ([System.Boolean]($node.PSobject.Properties.name -match "amd64binary")) {
                     $PSObject = [PSCustomObject] @{
                         Version      = $node.currentversion
@@ -69,6 +55,19 @@
                         Sha256       = If ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } Else { "N/A" }
                         Type         = [System.IO.Path]::GetExtension($node.msixbinary.url).Split(".")[-1]
                         URI          = $node.msixbinary.url
+                    }
+                    Write-Output -InputObject $PSObject
+                }
+
+                # Construct the output for EXE; Return the custom object to the pipeline
+                if ([System.Boolean]($node.PSobject.Properties.name -match "binary")) {
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $node.currentversion
+                        Architecture = Get-Architecture -String $node.binary.url
+                        Ring         = $ring.Name
+                        Sha256       = $node.binary.sha256hash
+                        Type         = [System.IO.Path]::GetExtension($node.binary.url).Split(".")[-1]
+                        URI          = $node.binary.url
                     }
                     Write-Output -InputObject $PSObject
                 }

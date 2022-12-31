@@ -18,59 +18,50 @@ Function Get-PSFPython {
 
     # Query the python API to get the list of versions
     $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-    If ($Null -ne $updateFeed) {
+    if ($null -ne $updateFeed) {
 
         # Get latest versions from update feed (PSF typically maintain a version of Python2 and a version of Python 3)
         $LatestVersions = $updateFeed | Where-Object { $_.is_latest -eq "True" }
-        If ($Null -ne $LatestVersions) {
-
-            ForEach ($PythonVersion in $LatestVersions) {
+        if ($null -ne $LatestVersions) {
+            foreach ($PythonVersion in $LatestVersions) {
 
                 # Extract release ID from resource uri
                 try {
                     $releaseToQuery = [RegEx]::Match($PythonVersion.resource_uri, $res.Get.Update.MatchRelease).Captures.Groups[0].Value
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Found ReleaseID: [$releaseToQuery]."
                 }
-                Catch {
-                    Throw "$($MyInvocation.MyCommand): could not find release ID in resource uri."
+                catch {
+                    throw "$($MyInvocation.MyCommand): could not find release ID in resource uri."
                 }
 
                 # Query the python API to get the list of download uris
-                $iwcParams = @{
+                $params = @{
                     Uri  = $res.Get.Download.Uri
                     Body = @{
                         os      = "1"
                         release = $releaseToQuery
                     }
                 }
-                $downloadFeed = Invoke-RestMethodWrapper @iwcParams
+                $downloadFeed = Invoke-RestMethodWrapper @params
 
-                # Filter the download feed to obtain the installers
-                try {
-                    $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Download.MatchFileTypes }
-                }
-                catch {
-                    Throw "$($MyInvocation.MyCommand): could not filter download feed for executable filetypes."
-                }
-
-                # Match this release with entries from the download feed
+                # Filter the download feed to obtain the installers; Match this release with entries from the download feed
+                $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Download.MatchFileTypes }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Processing $($PythonVersion.name)"
                 $WindowsRelease = $windowsDownloadFeed | Where-Object { $_.release -eq $PythonVersion.resource_uri }
 
-                If ($Null -ne $WindowsRelease) {
+                if ($null -ne $WindowsRelease) {
 
                     # Each release typically has an x86 and x64 installer, so we need to loop through the results
-                    ForEach ($UniqueFile in $WindowsRelease) {
-
+                    foreach ($UniqueFile in $WindowsRelease) {
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Found: $($UniqueFile.name)."
 
                         # Extract exact version (eg 3.9.6) from URI
-                        Try {
+                        try {
                             $FileVersion = [RegEx]::Match($UniqueFile.url, $res.Get.Download.MatchVersion).Captures.Groups[0].Value
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$FileVersion]."
                         }
-                        Catch {
-                            Throw "$($MyInvocation.MyCommand): Failed to find exact version from: $($UniqueFile.url)"
+                        catch {
+                            throw "$($MyInvocation.MyCommand): Failed to find exact version from: $($UniqueFile.url)"
                         }
 
                         # Construct the output; Return the custom object to the pipeline
@@ -86,18 +77,8 @@ Function Get-PSFPython {
                         }
                         Write-Output -InputObject $PSObject
                     }
-
-                }
-                Else {
-                    Throw "$($MyInvocation.MyCommand): Failed to lookup download URI based on release $($PythonVersion.resource_uri)."
                 }
             }
         }
-        Else {
-            Throw "$($MyInvocation.MyCommand): Release feed didn't contain any releases marked as latest."
-        }
-    }
-    Else {
-        Throw "$($MyInvocation.MyCommand): Failed to obtain release information from json release feed."
     }
 }

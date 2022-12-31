@@ -22,8 +22,7 @@ Function Get-Fork {
         Uri = $res.Get.Update.Uri
     }
     $Content = Invoke-RestMethodWrapper @params
-
-    If ($Content) {
+    if ($null -ne $Content) {
         try {
             # Parse the returned content and match the version number
             # Content returned as a single string - split into lines and return the last line (with the latest version number)
@@ -42,8 +41,5 @@ Function Get-Fork {
             URI     = $res.Get.Download.Uri
         }
         Write-Output -InputObject $PSObject
-    }
-    Else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return content from the update API."
     }
 }

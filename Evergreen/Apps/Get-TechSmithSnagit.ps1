@@ -18,43 +18,40 @@ Function Get-TechSmithSnagit {
 
     # Query the TechSmith update URI to get the list of versions
     $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.UpdateFeed
-
-    If ($Null -ne $updateFeed) {
+    if ($null -ne $updateFeed) {
 
         # Grab latest version, sort by descending version number
         $Latest = $updateFeed | `
             Sort-Object -Property @{ Expression = { [System.Version]"$($_.Major).$($_.Minor).$($_.Maintenance)" }; Descending = $true } | `
             Select-Object -First 1
 
-        If ($Null -ne $Latest) {
+        if ($null -ne $Latest) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Latest is $Latest"
 
             # Build uri so we can query the api to find the file corresponding to this version
-            $LatestUpdateFeedUri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceVersion, $Latest.VersionID
-            $latestupdateFeed = (Invoke-RestMethodWrapper -Uri $LatestUpdateFeedUri).PrimaryDownloadInformation
-
-            If ($Null -ne $latestupdateFeed) {
+            $latestUpdateFeedUri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceVersion, $Latest.VersionID
+            $latestUpdateFeed = (Invoke-RestMethodWrapper -Uri $latestUpdateFeedUri).PrimaryDownloadInformation
+            if ($null -ne $latestUpdateFeed) {
 
                 # Strip the file extension from the filename (eg snagit.exe becomes snagit)
-                $FileName = [System.IO.Path]::GetFileNameWithoutExtension($latestupdateFeed.Name)
-
-                ForEach ($InstallerType in $res.Get.Download.Uri.GetEnumerator()) {
+                $FileName = [System.IO.Path]::GetFileNameWithoutExtension($latestUpdateFeed.Name)
+                foreach ($InstallerType in $res.Get.Download.Uri.GetEnumerator()) {
 
                     # Build the download URL
-                    $Uri = ($InstallerType.Value -replace $res.Get.Download.ReplaceFileName, $FileName) -replace $res.Get.Download.ReplaceRelativePath, $latestupdateFeed.RelativePath
+                    $Uri = ($InstallerType.Value -replace $res.Get.Download.ReplaceFileName, $FileName) -replace $res.Get.Download.ReplaceRelativePath, $latestUpdateFeed.RelativePath
 
                     # Extract file type
-                    Try {
+                    try {
                         $Type = [RegEx]::Match($InstallerType.Key, $res.Get.Update.MatchType).Captures.Groups[0].Value
                     }
-                    Catch {
-                        Throw "$($MyInvocation.MyCommand): failed to obtain file type information."
+                    catch {
+                        throw "$($MyInvocation.MyCommand): failed to obtain file type information."
                     }
 
                     # Construct the output; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
-                        Version      = "$($latestupdateFeed.Major).$($latestupdateFeed.Minor).$($latestupdateFeed.Maintenance)"
-                        Date         = ConvertTo-DateTime -DateTime $latestupdateFeed.Release -Pattern $res.Get.Update.DatePattern
+                        Version      = "$($latestUpdateFeed.Major).$($latestUpdateFeed.Minor).$($latestUpdateFeed.Maintenance)"
+                        Date         = ConvertTo-DateTime -DateTime $latestUpdateFeed.Release -Pattern $res.Get.Update.DatePattern
                         Type         = $Type
                         Architecture = Get-Architecture $InstallerType.Key
                         URI          = $Uri
@@ -62,15 +59,7 @@ Function Get-TechSmithSnagit {
                     Write-Output -InputObject $PSObject
                 }
             }
-            Else {
-                Throw "$($MyInvocation.MyCommand): Failed to determine the latest Windows release."
-            }
-        }
-        Else {
-            Throw "$($MyInvocation.MyCommand): Failed to determine the latest Snagit release."
         }
     }
-    Else {
-        Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
-    }
+
 }

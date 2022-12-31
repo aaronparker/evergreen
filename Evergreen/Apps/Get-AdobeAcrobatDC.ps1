@@ -20,21 +20,16 @@ Function Get-AdobeAcrobatDC {
     )
 
     #region Installer downloads
-    ForEach ($language in $res.Get.Update.Languages) {
-        try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
-            $params = @{
-                Uri = $($res.Get.Update.Uri -replace "#Language", $language)
-                #Headers         = $res.Get.Update.Headers
-            }
-            $Content = Invoke-RestMethodWrapper @params
+    foreach ($language in $res.Get.Update.Languages) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Searching download language: [$language]."
+        $params = @{
+            Uri = $($res.Get.Update.Uri -replace "#Language", $language)
+            #Headers         = $res.Get.Update.Headers
         }
-        catch {
-            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-        }
+        $Content = Invoke-RestMethodWrapper @params
 
         # Construct update download list
-        If ($Null -ne $Content) {
+        if ($null -ne $Content) {
 
             # Format version string
             if ($Content.products.reader.version.count -gt 1) {
@@ -48,8 +43,8 @@ Function Get-AdobeAcrobatDC {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Update found: $($versionString)."
 
             # Build the output object
-            ForEach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
-                ForEach ($Url in $res.Get.Download.Uri.($Architecture.Name).GetEnumerator()) {
+            foreach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
+                foreach ($Url in $res.Get.Download.Uri.($Architecture.Name).GetEnumerator()) {
 
                     # Construct the URI property
                     $Uri = ($res.Get.Download.Uri.($Architecture.Name)[$Url.key] `
@@ -65,9 +60,6 @@ Function Get-AdobeAcrobatDC {
                     Write-Output -InputObject $PSObject
                 }
             }
-        }
-        Else {
-            Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri[$item.key])."
         }
     }
     #endregion

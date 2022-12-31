@@ -23,7 +23,7 @@ function Get-Zoom {
             $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$installer]
 
             # Match the URL without the text after the ?
-            if ($Null -eq $redirectUrl) {
+            if ($null -eq $redirectUrl) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Setting fallback URL to: $($script:resourceStrings.Uri.Issues)."
                 $Url = $script:resourceStrings.Uri.Issues
             }
