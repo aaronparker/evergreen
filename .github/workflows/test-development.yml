@@ -109,9 +109,14 @@ jobs:
         shell: pwsh
         working-directory: "${{ github.workspace }}"
         run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
+          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
+          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
           $params = @{
               Name               = "DnsClient-PS"
               SkipPublisherCheck = $true
+              Force              = $true
               ErrorAction        = "Stop"
           }
           Install-Module @params

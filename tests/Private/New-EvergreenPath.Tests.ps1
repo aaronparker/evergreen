@@ -14,18 +14,6 @@ BeforeAll {
 
 Describe -Name "New-EvergreenPath" {
     Context "Ensure New-EvergreenPath works as expected" {
-        BeforeAll {
-            if ($env:Temp) {
-                $Path = $env:Temp
-            }
-            elseif ($env:TMPDIR) {
-                $Path = $env:TMPDIR
-            }
-            elseif ($env:RUNNER_TEMP) {
-                $Path = $env:RUNNER_TEMP
-            }
-        }
-
         It "Does not throw when creating a directory" {
             InModuleScope -ModuleName "Evergreen" {
                 $Object = [PSCustomObject] @{
@@ -38,7 +26,7 @@ Describe -Name "New-EvergreenPath" {
                     "Language"     = "English"
                     "Architecture" = "x64"
                 }
-                { New-EvergreenPath -InputObject $Object -Path "$Path" } | Should -Not -Throw
+                { New-EvergreenPath -InputObject $Object -Path $([System.IO.Path]::Combine($env:RUNNER_TEMP, "test")) } | Should -Not -Throw
             }
         }
 
@@ -54,7 +42,7 @@ Describe -Name "New-EvergreenPath" {
                     "Language"     = "English"
                     "Architecture" = "x64"
                 }
-                (New-EvergreenPath -InputObject $Object -Path "$Path") | Should -BeOfType [System.String]
+                (New-EvergreenPath -InputObject $Object -Path $([System.IO.Path]::Combine($env:RUNNER_TEMP, "test"))) | Should -BeOfType [System.String]
             }
         }
     }
