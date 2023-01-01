@@ -27,7 +27,7 @@ Author = 'Aaron Parker'
 CompanyName = 'stealthpuppy'
 
 # Copyright statement for this module
-Copyright = '(c) 2022 stealthpuppy. All rights reserved.'
+Copyright = '(c) 2023 stealthpuppy. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Create evergreen Windows image builds with the latest versions of applications. Evergreen is a simple PowerShell module that retrieves the latest version numbers and download URLs for various software products directly from the vendor source.'
@@ -101,7 +101,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps','AzureVirtualDesktop','Endpoint-Manager','Windows'
+        Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps','AzureVirtualDesktop','Intune','Windows'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/main/LICENSE'
