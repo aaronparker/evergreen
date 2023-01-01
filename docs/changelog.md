@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2301.717
 
 * Fixes filename case for `AppVentiX` which was causing issues when run on Linux
 * Remove the use of the `-Depth` parameter when used with `ConvertFrom-Json` as this is not supported on PowerShell 5.1 [#442](https://github.com/aaronparker/evergreen/issues/442)

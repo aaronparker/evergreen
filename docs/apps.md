@@ -32,7 +32,7 @@ Evergreen `` supports the following applications:
 | AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                           |
 | Anaconda                              | Anaconda                                                          | https://www.anaconda.com/                                                                  |
 | Anki                                  | Anki                                                              | https://github.com/ankitects/anki/                                                         |
-| AppVentix                             | AppVentix                                                         | https://appventix.com/                                                                     |
+| AppVentiX                             | AppVentiX                                                         | https://appventix.com/                                                                     |
 | ArtifexGhostscript                    | Artifex Ghostscript                                               | https://www.ghostscript.com/                                                               |
 | AtlassianSourcetree                   | Atlassian Sourcetree                                              | https://www.sourcetreeapp.com/                                                             |
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                              |
