@@ -52,7 +52,7 @@ function Get-EvergreenLibrary {
 
                                 try {
                                     Write-Verbose -Message "Read: $AppManifest."
-                                    $Versions = Get-Content -Path $AppManifest | ConvertFrom-Json -Depth 20
+                                    $Versions = Get-Content -Path $AppManifest | ConvertFrom-Json
                                 }
                                 catch {
                                     Write-Warning -Message "Encountered an error reading $AppManifest with: $($_.Exception.Message)"

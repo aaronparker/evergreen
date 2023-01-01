@@ -1,6 +1,12 @@
 # Change log
 
-## 2212.711
+## VERSION
+
+* Fixes filename case for `AppVentiX` which was causing issues when run on Linux
+* Remove the use of the `-Depth` parameter when used with `ConvertFrom-Json` as this is not supported on PowerShell 5.1 [#442](https://github.com/aaronparker/evergreen/issues/442)
+* Code optimisations for various functions via improved Pester tests and code coverage review ([CodeCov](https://app.codecov.io/gh/aaronparker/evergreen)) including removing code that would never be executed under normal circumstances
+
+## 2212.715
 
 * Adds `MicrosoftVdot`
 * Adds parameter `-UserAgent` to `Test-EvergreenApp`

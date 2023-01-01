@@ -1,4 +1,4 @@
-Function Get-AppVentix {
+Function Get-AppVentiX {
     <#
         .SYNOPSIS
             Get the current version and download URIs for AppVentix.

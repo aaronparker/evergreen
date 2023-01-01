@@ -14,17 +14,29 @@ BeforeAll {
 }
 
 Describe -Tag "Library" -Name "Test Evergreen Library" {
+    BeforeAll {
+        if ($env:Temp) {
+            $Path = $env:Temp
+        }
+        elseif ($env:TMPDIR) {
+            $Path = $env:TMPDIR
+        }
+        elseif ($env:RUNNER_TEMP) {
+            $Path = $env:RUNNER_TEMP
+        }
+    }
+
     Context "Test 'New-EvergreenLibrary'" {
         It "Does not throw when creating a new new Evergreen Library" {
-            { New-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" -Name "TestLibrary" } | Should -Not -Throw
+            { New-EvergreenLibrary -Path "$Path\EvergreenLibrary" -Name "TestLibrary" } | Should -Not -Throw
         }
 
         It "Creates a new Evergreen Library OK" {
-            Test-Path -Path "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json" | Should -BeTrue
+            Test-Path -Path "$Path\EvergreenLibrary\EvergreenLibrary.json" | Should -BeTrue
         }
 
         It "Sets the library name OK" {
-            (Get-Content -Path "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json" | ConvertFrom-Json).Name | Should -BeExactly "TestLibrary"
+            (Get-Content -Path "$Path\EvergreenLibrary\EvergreenLibrary.json" | ConvertFrom-Json).Name | Should -BeExactly "TestLibrary"
         }
     }
 
@@ -32,7 +44,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
         BeforeAll {
             $params = @{
                 Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
-                Destination = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
+                Destination = "$Path\EvergreenLibrary\EvergreenLibrary.json"
                 Force       = $True
                 Confirm     = $False
             }
@@ -40,7 +52,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
         }
 
         It "Update an Evergreen library" {
-            { Invoke-EvergreenLibraryUpdate -Path "$Env:Temp\EvergreenLibrary" } | Should -Not -Throw
+            { Invoke-EvergreenLibraryUpdate -Path "$Path\EvergreenLibrary" } | Should -Not -Throw
         }
     }
 
@@ -48,34 +60,34 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
         BeforeAll {
             $params = @{
                 Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
-                Destination = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
+                Destination = "$Path\EvergreenLibrary\EvergreenLibrary.json"
                 Force       = $True
-                Confirm     = $False
+                Confirm      = $False
             }
             Copy-Item @params
         }
 
         It "Returns details of the library" {
-            Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" | Should -BeOfType [System.Object]
+            Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" | Should -BeOfType [System.Object]
         }
 
         It "Does not throw" {
-            { Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" } | Should -Not -Throw
+            { Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" } | Should -Not -Throw
         }
     }
 
     Context "Test 'Get-EvergreenLibrary' fails" {
         BeforeAll {
             $params = @{
-                FilePath = "$Env:Temp\EvergreenLibrary\EvergreenLibrary.json"
+                FilePath = "$Path\EvergreenLibrary\EvergreenLibrary.json"
                 Force    = $True
-                Confirm  = $False
+                Confirm   = $False
             }
             "nonsense" | Out-File @params
         }
 
         It "Does throw" {
-            { Get-EvergreenLibrary -Path "$Env:Temp\EvergreenLibrary" } | Should -Throw
+            { Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" } | Should -Throw
         }
     }
 }

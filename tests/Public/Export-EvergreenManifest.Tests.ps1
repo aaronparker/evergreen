@@ -21,18 +21,29 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
+        $Manifest = Export-EvergreenManifest -Name $application
     }
 
     Context "Validate Export-EvergreenManifest works with: <application>." {
         It "'Export-EvergreenManifest -Name <application>' should not Throw" {
             { Export-EvergreenManifest -Name $application } | Should -Not -Throw
         }
+    }
 
-        It "<application> has expected properties" {
-            $Manifest = Export-EvergreenManifest -Name $application
+    Context "Validate Export-EvergreenManifest output object properties." {
+        It "Has expected property Name" {
             $Manifest.Name.Length | Should -BeGreaterThan 0
+        }
+
+        It "Has expected property Source" {
             $Manifest.Source.Length | Should -BeGreaterThan 0
+        }
+
+        It "Has expected property Get" {
             $Manifest.Get.Length | Should -BeGreaterThan 0
+        }
+
+        It "Has expected property Install" {
             $Manifest.Install.Length | Should -BeGreaterThan 0
         }
     }

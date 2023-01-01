@@ -37,14 +37,14 @@ jobs:
         with:
           sarif_file: results.sarif
 
-  pestertest:
-    name: Run Pester Tests (development push)
+  pestertest5:
+    name: Run Pester tests on Windows PowerShell (development push)
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test with Pester
+      - name: Pester tests
         shell: powershell
         working-directory: "${{ github.workspace }}"
         run: |
@@ -74,13 +74,6 @@ jobs:
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
           Invoke-Pester -Configuration $Config
 
-      - name: List tests output
-        shell: powershell
-        working-directory: "${{ github.workspace }}"
-        run: |
-          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
-          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
-
       # Upload test results
       - name: Upload Pester test results
         uses: actions/upload-artifact@v3
@@ -103,4 +96,81 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: "./CodeCoverage.xml"
+          verbose: true
+
+  pestertest7:
+    name: Run Pester tests on PowerShell Core (development push)
+    needs: psscriptanalyzer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install module DnsClient-PS
+        shell: pwsh
+        working-directory: "${{ github.workspace }}"
+        run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
+          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
+          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
+          $params = @{
+              Name               = "DnsClient-PS"
+              SkipPublisherCheck = $true
+              Force              = $true
+              ErrorAction        = "Stop"
+          }
+          Install-Module @params
+
+      - name: Pester tests
+        shell: pwsh
+        working-directory: "${{ github.workspace }}"
+        run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
+          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
+          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
+          $params = @{
+              Name               = "Pester"
+              SkipPublisherCheck = $true
+              ErrorAction        = "Stop"
+          }
+          Install-Module @params
+          Import-Module -Name "Pester" -Force
+
+          Import-Module -Name "$env:GITHUB_WORKSPACE/Evergreen"
+          $Config = [PesterConfiguration]::Default
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE/tests"
+          $Config.Run.PassThru = $true
+          $Config.CodeCoverage.Enabled = $true
+          $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE/Evergreen"
+          $Config.CodeCoverage.OutputFormat = "JaCoCo"
+          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE/CodeCoverage7.xml"
+          $Config.Output.Verbosity = "Normal"
+          $Config.TestResult.Enabled = $true
+          $Config.TestResult.OutputFormat = "NUnitXml"
+          $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE/tests/TestResults7.xml"
+          Invoke-Pester -Configuration $Config
+
+      # Upload test results
+      - name: Upload Pester test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: "${{ github.workspace }}//tests//TestResults7.xml"
+
+      # Publish Pester test results
+      - name: Publish Pester test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          nunit_files: "${{ github.workspace }}//tests//TestResults7.xml"
+
+      - name: Upload to Codecov
+        id: codecov
+        if: always()
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "./CodeCoverage7.xml"
           verbose: true

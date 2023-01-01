@@ -26,7 +26,7 @@ Describe -Name "New-EvergreenPath" {
                     "Language"     = "English"
                     "Architecture" = "x64"
                 }
-                { New-EvergreenPath -InputObject $Object -Path "$Env:Temp" } | Should -Not -Throw
+                { New-EvergreenPath -InputObject $Object -Path $([System.IO.Path]::Combine($env:RUNNER_TEMP, "test")) } | Should -Not -Throw
             }
         }
 
@@ -42,7 +42,7 @@ Describe -Name "New-EvergreenPath" {
                     "Language"     = "English"
                     "Architecture" = "x64"
                 }
-                (New-EvergreenPath -InputObject $Object -Path "$Env:Temp") | Should -BeOfType [System.String]
+                (New-EvergreenPath -InputObject $Object -Path $([System.IO.Path]::Combine($env:RUNNER_TEMP, "test"))) | Should -BeOfType [System.String]
             }
         }
     }

@@ -57,16 +57,11 @@ Function Get-EvergreenApp {
         if (Test-Path -Path $Function -PathType "Leaf" -ErrorAction "SilentlyContinue") {
             Write-Verbose -Message "Function exists: $Function."
 
-            try {
-                # Dot source the function so that we can use it
-                # Import function here rather than at module import to reduce IO and memory footprint as the module grows
-                # This also allows us to add an application manifest and function without having to re-load the module
-                Write-Verbose -Message "Dot sourcing: $Function."
-                . $Function
-            }
-            catch {
-                throw "Failed to load function: $Function. With error: $($_.Exception.Message)"
-            }
+            # Dot source the function so that we can use it
+            # Import function here rather than at module import to reduce IO and memory footprint as the module grows
+            # This also allows us to add an application manifest and function without having to re-load the module
+            Write-Verbose -Message "Dot sourcing: $Function."
+            . $Function
 
             try {
                 # Run the function to grab the application details; pass the per-app manifest to the app function
@@ -103,17 +98,20 @@ Function Get-EvergreenApp {
             }
         }
         else {
-            Write-Information -MessageData "" -InformationAction "Continue"
-            Write-Information -MessageData "Please list supported application names with Find-EvergreenApp." -InformationAction "Continue"
-            Write-Information -MessageData "Find out how to contribute a new application to the Evergreen project here: $($script:resourceStrings.Uri.Docs)." -InformationAction "Continue"
-            $List = Find-EvergreenApp -Name $Name -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
-            if ($null -ne $List) {
-                Write-Information -MessageData "" -InformationAction "Continue"
-                Write-Information -MessageData "'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
-                $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
-                Write-Information -MessageData "" -InformationAction "Continue"
+            Write-Information -MessageData "`nPlease list supported application names with Find-EvergreenApp." -InformationAction "Continue"
+            Write-Information -MessageData "Find out how to contribute a new application to the Evergreen project at: $($script:resourceStrings.Uri.Docs)." -InformationAction "Continue"
+            try {
+                $List = Find-EvergreenApp -Name $Name -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
             }
-            throw "'$Name' is not a supported application."
+            catch {
+                $List = @{
+                    Name = "No applications match '$Name'"
+                }
+            }
+            Write-Information -MessageData "`n'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
+            $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
+            Write-Information -MessageData "" -InformationAction "Continue"
+            throw "Failed to retrieve manifest for application: $Name."
         }
         #endregion
     }
