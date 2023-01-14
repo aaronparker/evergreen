@@ -29,7 +29,12 @@
         ForEach ($Update in $Updates) {
 
             # Build the latest version number
-            $Version = "$($Update.version_major).$($Update.version_minor).$($Update.version_patch)"
+            If ($Update.version_patch -eq 0) {
+                # Handle edge case where binaries with version_patch of 0 are published with only major.minor version
+                $Version = "$($Update.version_major).$($Update.version_minor)"
+            } else {
+                $Version = "$($Update.version_major).$($Update.version_minor).$($Update.version_patch)"
+            }
 
             # Build the output object
             ForEach ($Architecture in $res.Get.Download.Architectures) {
