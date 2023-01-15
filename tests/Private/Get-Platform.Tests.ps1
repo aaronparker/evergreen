@@ -23,6 +23,10 @@ Describe -Name "Get-Platform" {
                 Get-Platform -String "linux" | Should -Be "Linux"
             }
 
+            It "Returns NuGet" {
+                Get-Platform -String "nupkg" | Should -Be "NuGet"
+            }
+
             It "Returns Debian" {
                 Get-Platform -String "debian" | Should -Be "Debian"
             }

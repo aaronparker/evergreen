@@ -17,8 +17,8 @@ Function ConvertTo-Hashtable {
     process {
         ## Return null if the input is null. This can happen when calling the function
         ## recursively and a property is null
-        if ($Null -eq $InputObject) {
-            return $Null
+        if ($null -eq $InputObject) {
+            return $null
         }
 
         ## Check if the input is an array or collection. If so, we also need to convert
@@ -34,19 +34,19 @@ Function ConvertTo-Hashtable {
             ## Return the array but don't enumerate it because the object may be pretty complex
             Write-Output -NoEnumerate -InputObject $collection
         }
-        elseIf ($InputObject -is [PSObject]) {
+        elseif ($InputObject -is [PSObject]) {
             ## If the object has properties that need enumeration
             ## Convert it to its own hash table and return it
             $hash = @{ }
             foreach ($property in $InputObject.PSObject.Properties) {
                 $hash[$property.Name] = ConvertTo-Hashtable -InputObject $property.Value
             }
-            $hash
+            Write-Output -InputObject $hash
         }
         else {
             ## If the object isn't an array, collection, or other object, it's already a hash table
             ## So just return it.
-            $InputObject
+            Write-Output -InputObject $InputObject
         }
     }
 }

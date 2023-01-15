@@ -17,17 +17,11 @@ Function Get-FunctionResource {
 
     # Read the content from the manifest file
     if (Test-Path -Path $AppManifest) {
-        try {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): read application resource strings from [$AppManifest]"
-            $content = Get-Content -Path $AppManifest -Raw
-        }
-        catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $AppManifest."
-            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-        }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): read application resource strings from [$AppManifest]"
+        $content = Get-Content -Path $AppManifest -Raw
     }
     else {
-        throw "$($MyInvocation.MyCommand): manifest does not exist: $AppManifest."
+        throw [System.IO.FileNotFoundException]::New("$($MyInvocation.MyCommand): manifest does not exist: $AppManifest.")
     }
 
     # Convert the content from JSON into a hashtable
@@ -41,11 +35,11 @@ Function Get-FunctionResource {
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required hashtable object."
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw $_
     }
 
     # If we got a hashtable, return it to the pipeline
-    if ($Null -ne $hashTable) {
+    if ($null -ne $hashTable) {
         Write-Output -InputObject $hashTable
     }
 }

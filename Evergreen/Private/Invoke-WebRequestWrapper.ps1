@@ -4,8 +4,6 @@ function Invoke-WebRequestWrapper {
             Validates and return responses from Invoke-WebRequest
             Enables normalisation for all public functions and across PowerShell/Windows PowerShell
             Some validation of $Uri is expected before passing to this function
-
-            TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
     [CmdletBinding(SupportsShouldProcess = $True)]

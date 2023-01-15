@@ -10,7 +10,7 @@ param ()
 BeforeDiscovery {
     # Get the supported applications and sort randomly
     # Exclude applications that appear to have issues when tested within the pipeline
-    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI"
+    $AppsToSkip = "MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI"
     $Applications = Find-EvergreenApp | `
         Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"

@@ -21,7 +21,7 @@ function Resolve-InvokeWebRequest {
     )
 
     # Build the Invoke-WebRequest parameters; Use ErrorAction:SilentlyContinue to enable the try/catch to work
-    $iwrParams = @{
+    $params = @{
         MaximumRedirection = $MaximumRedirection
         Uri                = $Uri
         UseBasicParsing    = $True
@@ -29,20 +29,22 @@ function Resolve-InvokeWebRequest {
         ErrorAction        = "SilentlyContinue"
     }
     if (Test-ProxyEnv) {
-        $iwrParams.Proxy = $script:EvergreenProxy
+        $params.Proxy = $script:EvergreenProxy
     }
     if (Test-ProxyEnv -Creds) {
-        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
+        $params.ProxyCredential = $script:EvergreenProxyCreds
     }
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving URI: [$Uri]."
-    foreach ($item in $iwrParams.GetEnumerator()) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
+
+    # Output the parameters when using -Verbose
+    foreach ($item in $params.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($item.name): $($item.value)."
     }
 
     if (Test-PSCore) {
         try {
             # If running PowerShell Core, request URL and catch the response
-            Invoke-WebRequest @iwrParams | Out-Null
+            Invoke-WebRequest @params | Out-Null
         }
         catch [System.Exception] {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
@@ -59,14 +61,15 @@ function Resolve-InvokeWebRequest {
     else {
         try {
             # If running Windows PowerShell, request the URL and return the response
-            $response = Invoke-WebRequest @iwrParams
+            $response = Invoke-WebRequest @params
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
             Write-Output -InputObject $response.Headers.Location
         }
         catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-            Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw $_
         }
     }
 }
