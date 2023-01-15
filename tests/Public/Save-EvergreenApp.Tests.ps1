@@ -35,7 +35,7 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
 
     # Test that Save-EvergreenApp accepts the object and saves the file
     Context "Validate Save-EvergreenApp works with <installer.Architecture>." {
-        It "Save-EvergreenApp should not Throw with Path" {
+        It "Save-EvergreenApp should not throw with Path" {
             $params = @{
                 InputObject = $installer
                 Path        = $Path
@@ -52,7 +52,7 @@ Describe -Tag "Save" -Name "Save-EvergreenApp" -ForEach $Installers {
             Test-Path -Path $File -PathType "Leaf" | Should -Be $True
         }
 
-        It "Save-EvergreenApp should not Throw with CustomPath" {
+        It "Save-EvergreenApp should not throw with CustomPath" {
             $params = @{
                 InputObject = $installer
                 CustomPath  = $Path

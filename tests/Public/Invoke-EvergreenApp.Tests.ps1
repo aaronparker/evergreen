@@ -8,20 +8,14 @@
 param ()
 
 BeforeDiscovery {
-    # Get the supported applications
-    # Sort randomly so that we get test various GitHub applications when we have API request limits
-    #$AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
-    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MestrelabMnova|MozillaFirefox|AWSCLI"
-    $Applications = Find-EvergreenApp | `
-        Where-Object { $_.Name -notmatch $AppsToSkip } | `
-        Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty "Name"
 }
 
-Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <application>" -ForEach $Applications {
+Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application: <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
-        $Output = Get-EvergreenApp -Name $application -WarningAction "SilentlyContinue"
+        $Output = Invoke-EvergreenApp -Name $application -WarningAction "SilentlyContinue"
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
@@ -37,12 +31,12 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
             $Output | Should -BeOfType "PSCustomObject"
         }
 
-        It "Get-EvergreenApp -Name <application> should return a count of 1 or more" {
+        It "Invoke-EvergreenApp -Name <application> should return a count of 1 or more" {
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }
     }
 
-    Context "Validate Get-EvergreenApp works with <application>." -ForEach $Output {
+    Context "Validate Invoke-EvergreenApp works with <application>." -ForEach $Output {
         BeforeAll {
             $Item = $_
         }
@@ -64,22 +58,10 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
     }
 }
 
-Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
-    Context "Validate 'Get-EvergreenApp fails gracefully" {
-        It "Should throw with invalid app" {
-            { Get-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
-        }
-    }
-}
-
-Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
-    Context "Validate 'Get-EvergreenApp' with -SkipCertificateCheck" {
-        It "Should not throw with an app that uses Invoke-RestMethodWrapper" {
-            { Get-EvergreenApp -Name "MicrosoftEdge" } | Should -Not -Throw
-        }
-
-        It "Should not throw with an app that uses Invoke-WebRequestWrapper" {
-            { Get-EvergreenApp -Name "Get-BlueJ" } | Should -Not -Throw
+Describe -Tag "Get" -Name "Invoke-EvergreenApp fail tests" {
+    Context "Validate 'Invoke-EvergreenApp fails gracefully" {
+        It "Should Throw with invalid app" {
+            { Invoke-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
         }
     }
 }
