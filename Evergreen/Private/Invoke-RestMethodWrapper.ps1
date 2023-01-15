@@ -79,8 +79,8 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
     }
 
-    # Call Invoke-RestMethod
-    $irmParams = @{
+    #region Build the Invoke-RestMethod parameters
+    $params = @{
         Uri                = $Uri
         ContentType        = $ContentType
         DisableKeepAlive   = $true
@@ -91,39 +91,42 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
     if ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
-        $irmParams.Headers = $Headers
+        $params.Headers = $Headers
     }
     if ($PSBoundParameters.ContainsKey("Body")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
-        $irmParams.Body = $Body
+        $params.Body = $Body
     }
     if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
-        $irmParams.SkipCertificateCheck = $True
+        $params.SkipCertificateCheck = $True
     }
     if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
-        $irmParams.SslProtocol = $SslProtocol
+        $params.SslProtocol = $SslProtocol
     }
     if (Test-ProxyEnv) {
-        $irmParams.Proxy = $script:EvergreenProxy
+        $params.Proxy = $script:EvergreenProxy
     }
     if (Test-ProxyEnv -Creds) {
-        $irmParams.ProxyCredential = $script:EvergreenProxyCreds
+        $params.ProxyCredential = $script:EvergreenProxyCreds
     }
-    foreach ($item in $irmParams.GetEnumerator()) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: [$($item.name): $($item.value)]."
+    #endregion
+
+    # Output the parameters when using -Verbose
+    foreach ($item in $params.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-RestMethod parameter: $($item.name): $($item.value)."
     }
+
+    # Call Invoke-RestMethod
     try {
-        $Response = Invoke-RestMethod @irmParams
+        $Response = Invoke-RestMethod @params
+        Write-Output -InputObject $Response
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-        Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-    }
-    finally {
-        Write-Output -InputObject $Response
+        throw $_
     }
 }

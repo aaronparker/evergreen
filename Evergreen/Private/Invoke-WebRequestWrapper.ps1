@@ -81,64 +81,66 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
     }
 
-    #region Set Invoke-WebRequest parameters
-    $iwrParams = @{
+    # Build the Invoke-WebRequest parameters
+    $params = @{
         Uri             = $Uri
         Method          = $Method
         UserAgent       = $UserAgent
-        UseBasicParsing = $True
+        UseBasicParsing = $true
     }
 
     # Set additional parameters
     if ($PSBoundParameters.ContainsKey("ContentType")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding ContentType."
-        $iwrParams.ContentType = $ContentType
+        $params.ContentType = $ContentType
     }
     if ($PSBoundParameters.ContainsKey("Headers")) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
-        $iwrParams.Headers = $Headers
+        $params.Headers = $Headers
     }
     if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
-        $iwrParams.SkipCertificateCheck = $True
+        $params.SkipCertificateCheck = $true
     }
     if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
-        $iwrParams.SslProtocol = $SslProtocol
+        $params.SslProtocol = $SslProtocol
     }
     if ($PSBoundParameters.ContainsKey("Raw")) {
         $tempFile = New-TemporaryFile -WhatIf:$WhatIfPreference
-        $iwrParams.OutFile = $tempFile
-        $iwrParams.PassThru = $True
+        $params.OutFile = $tempFile
+        $params.PassThru = $True
         Write-Verbose -Message "$($MyInvocation.MyCommand): Using temp file $tempFile."
     }
     if (Test-ProxyEnv) {
-        $iwrParams.Proxy = $script:EvergreenProxy
+        $params.Proxy = $script:EvergreenProxy
     }
     if (Test-ProxyEnv -Creds) {
-        $iwrParams.ProxyCredential = $script:EvergreenProxyCreds
-    }
-    foreach ($item in $iwrParams.GetEnumerator()) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: [$($item.name): $($item.value)]."
+        $params.ProxyCredential = $script:EvergreenProxyCreds
     }
     #endregion
+
+    # Output the parameters when using -Verbose
+    foreach ($item in $params.GetEnumerator()) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($item.name): $($item.value)."
+    }
 
     # Call Invoke-WebRequest
     try {
         if ($PSCmdlet.ShouldProcess($Uri, "Invoke-WebRequest")) {
-            $Response = Invoke-WebRequest @iwrParams
+            $Response = Invoke-WebRequest @params
         }
     }
     catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-        Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw $_
     }
 
-    if ($Null -ne $Response) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($Response.StatusCode)]."
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: [$($Response.Headers.'Content-Type')]."
+    if ($null -ne $Response) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Response: $($Response.StatusCode)."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Content type: $($Response.Headers.'Content-Type')."
 
         # Output content from the response
         switch ($ReturnObject) {
@@ -153,7 +155,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                 break
             }
             "RawContent" {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: [$($Response.RawContent.Length)]."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: $($Response.RawContent.Length)."
                 Write-Output -InputObject $Response.RawContent
                 break
             }
@@ -164,7 +166,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                 else {
                     $Content = $Response.Content
                 }
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: $($Content.Length)."
                 Write-Output -InputObject $Content
                 break
             }
@@ -175,7 +177,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                 else {
                     $Content = $Response.Content
                 }
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: [$($Content.Length)]."
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: $($Content.Length)."
                 Write-Output -InputObject $Content
             }
         }

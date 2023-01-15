@@ -8,10 +8,9 @@
 param ()
 
 BeforeDiscovery {
-    # Get the supported applications
-    # Sort randomly so that we get test various GitHub applications when we have API request limits
-    #$AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
-    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MestrelabMnova|MozillaFirefox|AWSCLI"
+    # Get the supported applications and sort randomly
+    # Exclude applications that appear to have issues when tested within the pipeline
+    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI"
     $Applications = Find-EvergreenApp | `
         Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
@@ -28,7 +27,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Output from <application> should return something" {
+    Context "Application function should return something" {
         It "Output from <application> should not be null" {
             $Output | Should -Not -BeNullOrEmpty
         }
@@ -42,7 +41,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         }
     }
 
-    Context "Validate Get-EvergreenApp works with <application>." -ForEach $Output {
+    Context "Output from application function returns expected properties" -ForEach $Output {
         BeforeAll {
             $Item = $_
         }
