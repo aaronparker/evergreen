@@ -24,16 +24,9 @@ Describe -Name "Resolve-InvokeWebRequest" {
                 Resolve-InvokeWebRequest @params | Should -BeOfType [System.String]
             }
         }
-    }
-}
 
-Describe -Name "Save-File" {
-    Context "Ensure Save-File works as expected" {
-        It "Returns a string if the file is downloaded" {
-            InModuleScope -ModuleName "Evergreen" {
-                $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
-                (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
-            }
+        It "Should throws with an invalid URL" {
+            Resolve-InvokeWebRequest -Uri "https://nonsense.git" | Should -Throw
         }
     }
 }

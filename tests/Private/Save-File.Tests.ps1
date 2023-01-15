@@ -20,5 +20,9 @@ Describe -Name "Save-File" {
                 (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
             }
         }
+
+        It "Should throws an error with an invalid URL" {
+            { Save-File -Uri "https://nonsense.git"  } | Should -Throw
+        }
     }
 }

@@ -32,5 +32,9 @@ Describe -Name "Invoke-WebRequestWrapper" {
                 Invoke-WebRequestWrapper @params | Should -BeOfType [System.String]
             }
         }
+
+        It "Should throws with an invalid URL" {
+            Invoke-WebRequestWrapper -Uri "https://nonsense.git" | Should -Throw
+        }
     }
 }

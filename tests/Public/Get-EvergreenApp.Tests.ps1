@@ -68,6 +68,10 @@ Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
         It "Should throw with invalid app" {
             { Get-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
         }
+
+        It "Should throw with an invalid proxy server " {
+            { Get-EvergreenApp -Name "MicrosoftEdge" -Proxy "test.local" } | Should -Throw
+        }
     }
 }
 

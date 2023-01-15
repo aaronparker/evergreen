@@ -28,5 +28,9 @@ Describe -Name "Invoke-RestMethodWrapper" {
                 Invoke-RestMethodWrapper @params | Should -BeOfType [System.Object]
             }
         }
+
+        It "Should throws with an invalid URL" {
+            Invoke-RestMethodWrapper -Uri "https://nonsense.git" | Should -Throw
+        }
     }
 }

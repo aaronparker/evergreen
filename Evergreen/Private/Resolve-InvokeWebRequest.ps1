@@ -55,12 +55,12 @@ function Resolve-InvokeWebRequest {
             Invoke-WebRequest @params | Out-Null
         }
         catch [System.Exception] {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
             if ($null -ne $_.Exception.Response.Headers.Location.AbsoluteUri) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
                 Write-Output -InputObject $_.Exception.Response.Headers.Location.AbsoluteUri
             }
             else {
-                # We can't throw here because we need to capture the error response to return a URL
+                # We can't throw here because apps that use loops that call this function will fail
                 Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
                 Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
                 Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
