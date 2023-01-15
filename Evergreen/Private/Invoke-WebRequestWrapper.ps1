@@ -44,7 +44,7 @@ function Invoke-WebRequestWrapper {
     )
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
-    if ($PSBoundParameters.ContainsKey('Verbose')) {
+    if ($PSBoundParameters.ContainsKey("Verbose")) {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
     }
     else {

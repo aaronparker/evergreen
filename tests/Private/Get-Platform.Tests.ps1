@@ -24,7 +24,7 @@ Describe -Name "Get-Platform" {
             }
 
             It "Returns NuGet" {
-                Get-Platform -String "nupkg" | Should -Be "NuGet"
+                Get-Platform -String "file.nupkg" | Should -Be "NuGet"
             }
 
             It "Returns Debian" {
@@ -44,7 +44,7 @@ Describe -Name "Get-Platform" {
             }
 
             It "Returns Windows" {
-                Get-Platform -String ".exe" | Should -Be "Windows"
+                Get-Platform -String "file.exe" | Should -Be "Windows"
             }
         }
 

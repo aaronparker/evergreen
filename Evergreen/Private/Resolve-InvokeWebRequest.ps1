@@ -5,7 +5,7 @@ function Resolve-InvokeWebRequest {
             Uses Invoke-WebRequest to find 301/302 headers and return the ResponseUri
     #>
     [OutputType([System.String])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(Mandatory = $True, Position = 0)]
         [ValidateNotNullOrEmpty()]
@@ -20,13 +20,21 @@ function Resolve-InvokeWebRequest {
         [System.Int32] $MaximumRedirection = 0
     )
 
+    # Disable the Invoke-WebRequest progress bar for faster downloads
+    if ($PSBoundParameters.ContainsKey("Verbose")) {
+        $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
+    }
+    else {
+        $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
+    }
+
     # Build the Invoke-WebRequest parameters; Use ErrorAction:SilentlyContinue to enable the try/catch to work
     $params = @{
         MaximumRedirection = $MaximumRedirection
         Uri                = $Uri
-        UseBasicParsing    = $True
+        UseBasicParsing    = $true
         UserAgent          = $UserAgent
-        ErrorAction        = "SilentlyContinue"
+        ErrorAction        = "Continue"
     }
     if (Test-ProxyEnv) {
         $params.Proxy = $script:EvergreenProxy
@@ -52,6 +60,7 @@ function Resolve-InvokeWebRequest {
                 Write-Output -InputObject $_.Exception.Response.Headers.Location.AbsoluteUri
             }
             else {
+                # We can't throw here because we need to capture the error response to return a URL
                 Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
                 Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
                 Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
