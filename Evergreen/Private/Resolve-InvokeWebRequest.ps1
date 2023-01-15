@@ -34,7 +34,7 @@ function Resolve-InvokeWebRequest {
         Uri                = $Uri
         UseBasicParsing    = $true
         UserAgent          = $UserAgent
-        ErrorAction        = "Continue"
+        ErrorAction        = "SilentlyContinue"
     }
     if (Test-ProxyEnv) {
         $params.Proxy = $script:EvergreenProxy

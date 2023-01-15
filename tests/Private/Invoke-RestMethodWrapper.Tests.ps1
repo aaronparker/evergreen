@@ -29,12 +29,12 @@ InModuleScope -ModuleName "Evergreen" {
             }
 
             It "Should throw with an invalid URL" {
-                { Invoke-RestMethodWrapper -Uri "https://nonsense.git" } | Should -Throw
+                { Invoke-RestMethodWrapper -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
             }
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Invoke-RestMethodWrapper -Uri "https://example.com" } | Should -Throw
+                { Invoke-RestMethodWrapper -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
                 Remove-ProxyEnv
             }
         }

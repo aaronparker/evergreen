@@ -25,12 +25,12 @@ InModuleScope -ModuleName "Evergreen" {
             }
 
             It "Should throw with an invalid URL" {
-                { Resolve-InvokeWebRequest -Uri "https://nonsense.git" } | Should -Throw
+                { Resolve-InvokeWebRequest -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
             }
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Resolve-InvokeWebRequest -Uri "https://example.com" } | Should -Throw
+                { Resolve-InvokeWebRequest -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
                 Remove-ProxyEnv
             }
         }

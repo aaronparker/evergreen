@@ -33,12 +33,12 @@ InModuleScope -ModuleName "Evergreen" {
             }
 
             It "Should throw with an invalid URL" {
-                { Invoke-WebRequestWrapper -Uri "https://nonsense.git" } | Should -Throw
+                { Invoke-WebRequestWrapper -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
             }
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Invoke-WebRequestWrapper -Uri "https://example.com" } | Should -Throw
+                { Invoke-WebRequestWrapper -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
                 Remove-ProxyEnv
             }
         }

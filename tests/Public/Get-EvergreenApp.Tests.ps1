@@ -93,11 +93,11 @@ Describe -Tag "Get" -Name "Application functions with additional parameters" {
             { Get-EvergreenApp -Name "GitHubRelease" -AppParams @{Uri = "https://github.com"} } | Should -Throw
         }
 
-        It "Get-GitHubRelease should throw with an invalid URL" {
+        It "Should pass parameters to MozillaFirefox" {
             { Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
         }
 
-        It "Get-GitHubRelease should throw with an invalid URL" {
+        It "Should pass parameters to MozillaThunderbird" {
             { Get-EvergreenApp -Name "MozillaThunderbird" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
         }
     }

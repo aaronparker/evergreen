@@ -33,8 +33,6 @@ Function Get-MozillaFirefox {
                 foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
                     $params = @{
                         Uri           = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
-                        WarningAction = "Ignore"
-                        ErrorAction   = "Ignore"
                     }
                     $Url = Resolve-InvokeWebRequest @params
 
