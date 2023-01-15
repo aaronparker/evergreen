@@ -38,7 +38,7 @@ jobs:
           sarif_file: results.sarif
 
   pestertest5:
-    name: Run Pester tests on Windows PowerShell (development push)
+    name: "Run Pester tests on Windows PowerShell (development push)"
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
@@ -82,24 +82,15 @@ jobs:
           name: test-results
           path: "${{ github.workspace }}\\tests\\TestResults.xml"
 
-      # Publish Pester test results
-      - name: Publish Pester test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      - name: Upload code coverage results
+        uses: actions/upload-artifact@v3
         if: always()
         with:
-          nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
-
-      - name: Upload to Codecov
-        id: codecov
-        if: always()
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: "./CodeCoverage.xml"
-          verbose: true
+          name: codecov-results
+          path: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
 
   pestertest7:
-    name: Run Pester tests on PowerShell Core (development push)
+    name: "Run Pester tests on PowerShell Core (development push)"
     needs: psscriptanalyzer
     runs-on: ubuntu-latest
     steps:
@@ -159,12 +150,41 @@ jobs:
           name: test-results
           path: "${{ github.workspace }}//tests//TestResults7.xml"
 
-      # Publish Pester test results
-      - name: Publish Pester test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      - name: Upload code coverage results
+        uses: actions/upload-artifact@v3
         if: always()
         with:
-          nunit_files: "${{ github.workspace }}//tests//TestResults7.xml"
+          name: codecov-results
+          path: "${{ github.workspace }}\\tests\\CodeCoverage7.xml"
+
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: [ "pestertest5", "pestertest7"]
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      checks: write
+
+      # only needed unless run with comment_mode: off
+      pull-requests: write
+
+    steps:
+      - name: Download Pester Test Result Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results
+          path: test-results
+
+      - name: Publish Pester Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          nunit_files: "test-results/**/*.xml"
+
+      - name: Download Code Coverage Result Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: codecov-results
+          path: codecov-results
 
       - name: Upload to Codecov
         id: codecov
@@ -172,5 +192,5 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "./CodeCoverage7.xml"
+          files: "codecov-results/**/*.xml"
           verbose: true
