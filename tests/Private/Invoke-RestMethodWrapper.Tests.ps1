@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -12,10 +12,10 @@ BeforeDiscovery {
 BeforeAll {
 }
 
-Describe -Name "Invoke-RestMethodWrapper" {
-    Context "Ensure Invoke-RestMethodWrapper works as expected" {
-        It "Returns data from a proper URL" {
-            InModuleScope -ModuleName "Evergreen" {
+InModuleScope -ModuleName "Evergreen" {
+    Describe -Name "Invoke-RestMethodWrapper" {
+        Context "Ensure Invoke-RestMethodWrapper works as expected" {
+            It "Returns data from a proper URL" {
                 $params = @{
                     ContentType          = "application/vnd.github.v3+json"
                     ErrorAction          = "SilentlyContinue"
@@ -27,10 +27,16 @@ Describe -Name "Invoke-RestMethodWrapper" {
                 }
                 Invoke-RestMethodWrapper @params | Should -BeOfType [System.Object]
             }
-        }
 
-        It "Should throws with an invalid URL" {
-            Invoke-RestMethodWrapper -Uri "https://nonsense.git" | Should -Throw
+            It "Should throw with an invalid URL" {
+                { Invoke-RestMethodWrapper -Uri "https://nonsense.git" } | Should -Throw
+            }
+
+            It "Should throw with an invalid proxy server " {
+                Set-ProxyEnv -Proxy "test.local"
+                { Invoke-RestMethodWrapper -Uri "https://example.com" } | Should -Throw
+                Remove-ProxyEnv
+            }
         }
     }
 }

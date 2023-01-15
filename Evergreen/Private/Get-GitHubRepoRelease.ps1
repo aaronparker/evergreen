@@ -195,7 +195,6 @@ function Get-GitHubRepoRelease {
                     }
                 }
             }
-
         }
     }
 }

@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -13,10 +13,10 @@ BeforeAll {
 
 }
 
-Describe -Name "Invoke-WebRequestWrapper" {
-    Context "Ensure Invoke-WebRequestWrapper works as expected" {
-        It "Returns data from a URL" {
-            InModuleScope -ModuleName "Evergreen" {
+InModuleScope -ModuleName "Evergreen" {
+    Describe -Name "Invoke-WebRequestWrapper" {
+        Context "Ensure Invoke-WebRequestWrapper works as expected" {
+            It "Returns data from a URL" {
                 $params = @{
                     ContentType          = "text/html"
                     ErrorAction          = "SilentlyContinue"
@@ -31,10 +31,16 @@ Describe -Name "Invoke-WebRequestWrapper" {
                 }
                 Invoke-WebRequestWrapper @params | Should -BeOfType [System.String]
             }
-        }
 
-        It "Should throws with an invalid URL" {
-            Invoke-WebRequestWrapper -Uri "https://nonsense.git" | Should -Throw
+            It "Should throw with an invalid URL" {
+                { Invoke-WebRequestWrapper -Uri "https://nonsense.git" } | Should -Throw
+            }
+
+            It "Should throw with an invalid proxy server " {
+                Set-ProxyEnv -Proxy "test.local"
+                { Invoke-WebRequestWrapper -Uri "https://example.com" } | Should -Throw
+                Remove-ProxyEnv
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -12,10 +12,10 @@ BeforeDiscovery {
 BeforeAll {
 }
 
-Describe -Name "Resolve-InvokeWebRequest" {
-    Context "Ensure Resolve-InvokeWebRequest works as expected" {
-        It "Returns data from a URL" {
-            InModuleScope -ModuleName "Evergreen" {
+InModuleScope -ModuleName "Evergreen" {
+    Describe -Name "Resolve-InvokeWebRequest" {
+        Context "Ensure Resolve-InvokeWebRequest works as expected" {
+            It "Returns data from a URL" {
                 $params = @{
                     Uri                = "https://aka.ms"
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
@@ -23,10 +23,16 @@ Describe -Name "Resolve-InvokeWebRequest" {
                 }
                 Resolve-InvokeWebRequest @params | Should -BeOfType [System.String]
             }
-        }
 
-        It "Should throws with an invalid URL" {
-            Resolve-InvokeWebRequest -Uri "https://nonsense.git" | Should -Throw
+            It "Should throw with an invalid URL" {
+                { Resolve-InvokeWebRequest -Uri "https://nonsense.git" } | Should -Throw
+            }
+
+            It "Should throw with an invalid proxy server " {
+                Set-ProxyEnv -Proxy "test.local"
+                { Invoke-WebRequestWrapper -Uri "https://example.com" } | Should -Throw
+                Resolve-InvokeWebRequest
+            }
         }
     }
 }
