@@ -87,7 +87,7 @@ jobs:
         if: always()
         with:
           name: codecov-results
-          path: "${{ github.workspace }}\\tests\\CodeCoverage.xml"
+          path: "${{ github.workspace }}\\CodeCoverage.xml"
 
   pestertest7:
     name: "Run Pester tests on PowerShell Core (development push)"
@@ -155,7 +155,7 @@ jobs:
         if: always()
         with:
           name: codecov-results
-          path: "${{ github.workspace }}\\tests\\CodeCoverage7.xml"
+          path: "${{ github.workspace }}//CodeCoverage7.xml"
 
   publish-test-results:
     name: "Publish Tests Results"
@@ -182,13 +182,13 @@ jobs:
 
       - name: Download Code Coverage Result Artifacts
         uses: actions/download-artifact@v2
+        if: always()
         with:
           name: codecov-results
           path: codecov-results
 
       - name: Upload to Codecov
         id: codecov
-        if: always()
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
