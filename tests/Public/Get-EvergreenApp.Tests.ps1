@@ -79,7 +79,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
         }
 
         It "Should not throw with an app that uses Invoke-WebRequestWrapper" {
-            { Get-EvergreenApp -Name "Get-BlueJ" } | Should -Not -Throw
+            { Get-EvergreenApp -Name "BlueJ" } | Should -Not -Throw
         }
     }
 }
