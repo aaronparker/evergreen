@@ -30,8 +30,8 @@ InModuleScope -ModuleName "Evergreen" {
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Invoke-WebRequestWrapper -Uri "https://example.com" } | Should -Throw
-                Resolve-InvokeWebRequest
+                { Resolve-InvokeWebRequest -Uri "https://example.com" } | Should -Throw
+                Remove-ProxyEnv
             }
         }
     }
