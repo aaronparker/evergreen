@@ -86,3 +86,19 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
         }
     }
 }
+
+Describe -Tag "Get" -Name "Application functions with additional parameters" {
+    Context "Validate applications that support additional parameters" {
+        It "Get-GitHubRelease should throw with an invalid URL" {
+            { Get-EvergreenApp -Name "GitHubRelease" -AppParams @{Uri = "https://github.com"} } | Should -Throw
+        }
+
+        It "Get-GitHubRelease should throw with an invalid URL" {
+            { Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
+        }
+
+        It "Get-GitHubRelease should throw with an invalid URL" {
+            { Get-EvergreenApp -Name "MozillaThunderbird" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
+        }
+    }
+}
