@@ -132,27 +132,6 @@ Any supported language can be passed to `MozillaFirefox` by passing a hashtable 
 
 Most [supported languages](https://www.mozilla.org/en-US/firefox/all/#product-desktop-release) can be passed to the function as the language short code. The list of languages can be found in the [MozillaFirefox](https://github.com/aaronparker/evergreen/blob/main/Evergreen/Manifests/MozillaFirefox.json) manifest.
 
-#### Errors and Warnings
-
-`MozillaFirefox` will warnings and an error similar to the following which is normal - not all channels or installer types may return an object from the Mozilla site that is used to find an installer download URL. In the example below, a call is being made for the ARM64, MSI version of the Extended Support Release which doesn't exist.
-
-```powershell
-WARNING: Resolve-SystemNetWebRequest: Error at URI: https://download.mozilla.org/?product=firefox-esr-msi-latest-ssl&os=win64-aarch64&lang=en-US.
-WARNING: Resolve-SystemNetWebRequest: Response: Exception calling "GetResponse" with "0" argument(s): "The remote server returned an error: (404) Not Found.".
-WARNING: Resolve-SystemNetWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
-Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MozillaFirefox.ps1:38
-Line |
-  38 |                      $response = Resolve-SystemNetWebRequest @params
-     |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Resolve-SystemNetWebRequest: Exception calling "GetResponse" with "0" argument(s): "The remote server returned an error: (404) Not Found.".
-```
-
-You can suppress this output with the following syntax:
-
-```powershell
-Get-EvergreenApp -Name "MozillaFirefox" -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
-```
-
 ### OBSStudio
 
 Returning the latest version and download for OBS Studio may fail when the OBS Project modifies the availability of the update manifest at `https://obsproject.com/update_studio/manifest.json`. `Get-EvergreenApp -Name OBSStudio` will return a 404 error. The only recourse is to wait until the OBS Project makes the manifest available again.
