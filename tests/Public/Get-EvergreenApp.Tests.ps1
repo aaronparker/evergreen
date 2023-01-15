@@ -28,13 +28,15 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Validate Get-EvergreenApp works with: <application>." -ForEach $Output {
+    Context "Output from <application> should return something" {
+        It "Output from <application> should not be null" {
+            $Output | Should -Not -BeNullOrEmpty
+        }
+    }
+
+    Context "Validate Get-EvergreenApp works with <application>." -ForEach $Output {
         BeforeAll {
             $Item = $_
-        }
-
-        It "Output from <application>: should not be null" -ForEach $Item {
-            $_ | Should -Not -BeNullOrEmpty
         }
 
         It "Output from <application>: should return the expected output type" -ForEach $Item {

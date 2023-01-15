@@ -68,7 +68,7 @@ jobs:
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
-          $Config.Output.Verbosity = "Normal"
+          $Config.Output.Verbosity = "Detailed"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
@@ -145,7 +145,7 @@ jobs:
           $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE/Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
           $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE/CodeCoverage7.xml"
-          $Config.Output.Verbosity = "Normal"
+          $Config.Output.Verbosity = "Detailed"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
           $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE/tests/TestResults7.xml"
