@@ -17,11 +17,8 @@ BeforeDiscovery {
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 }
 
-BeforeAll {
-}
-
-Describe -Tag "Get" -Name "Get-EvergreenApp works with supported applications" {
-    Context "Validate Get-EvergreenApp works with: <application>." -ForEach $Applications {
+Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <application>" -ForEach $Applications {
+    Context "Validate Get-EvergreenApp works with: <application>." {
         BeforeAll {
             # Renaming the automatic $_ variable to $application to make it easier to work with
             $application = $_
