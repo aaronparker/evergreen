@@ -27,7 +27,7 @@ jobs:
       - name: Run PSScriptAnalyzer (development push)
         uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f
         with:
-          path: "./"
+          path: "./Evergreen"
           recurse: true
           output: results.sarif
 
@@ -48,19 +48,10 @@ jobs:
         shell: powershell
         working-directory: "${{ github.workspace }}"
         run: |
-          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
-          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
-          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
-          $params = @{
-              Name               = "Pester"
-              SkipPublisherCheck = $true
-              ErrorAction        = "Stop"
-          }
-          Install-Module @params
-          Import-Module -Name "Pester" -Force
+          .\tests\Install-Pester.ps1
+          Import-Module -Name "Pester" -Force -ErrorAction "Stop"
+          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
 
-          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen"
           $Config = [PesterConfiguration]::Default
           $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
           $Config.Run.PassThru = $true
@@ -116,19 +107,10 @@ jobs:
         shell: pwsh
         working-directory: "${{ github.workspace }}"
         run: |
-          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
-          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
-          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
-          $params = @{
-              Name               = "Pester"
-              SkipPublisherCheck = $true
-              ErrorAction        = "Stop"
-          }
-          Install-Module @params
-          Import-Module -Name "Pester" -Force
+          ./tests/Install-Pester.ps1
+          Import-Module -Name "Pester" -Force -ErrorAction "Stop"
+          Import-Module -Name "$env:GITHUB_WORKSPACE/Evergreen" -Force
 
-          Import-Module -Name "$env:GITHUB_WORKSPACE/Evergreen"
           $Config = [PesterConfiguration]::Default
           $Config.Run.Path = "$env:GITHUB_WORKSPACE/tests"
           $Config.Run.PassThru = $true
