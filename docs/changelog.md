@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with `OBSStudio` where the incorrect URI was returned where build number equals 0 [#445](https://github.com/aaronparker/evergreen/issues/445)
+* Updates `Invoke-EvergreenApp` to check for supported applications before posting a request
+* Updates `MozillaFirefox` to suppress errors and warning when attempting to return installers for specific languages
+* Updates various private functions to ensure consistent use of `throw` when encountering an error
+
 ## 2301.717
 
 * Fixes filename case for `AppVentiX` which was causing issues when run on Linux
