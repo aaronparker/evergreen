@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2301.718
 
 * Fixes an issue with `OBSStudio` where the incorrect URI was returned where build number equals 0 [#445](https://github.com/aaronparker/evergreen/issues/445)
 * Updates `Invoke-EvergreenApp` to check for supported applications before posting a request
