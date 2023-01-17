@@ -1,4 +1,4 @@
-Function Get-GitHubRelease {
+function Get-GitHubRelease {
     <#
         .SYNOPSIS
             Returns latest version and URI from a GitHub repository release list.
@@ -27,11 +27,11 @@ Function Get-GitHubRelease {
 
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateScript( {
-                If ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
+                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
                     $True
                 }
-                Else {
-                    Throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
+                else {
+                    throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]
         [System.String] $Uri = "https://api.github.com/repos/atom/atom/releases/latest"
@@ -41,7 +41,7 @@ Function Get-GitHubRelease {
     $res = Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]
 
     # If -Uri isn't used, we'll use the default value to show at least something
-    If (-not($PSBoundParameters.ContainsKey('Uri'))) {
+    if (-not($PSBoundParameters.ContainsKey("Uri"))) {
         Write-Warning -Message "$($MyInvocation.MyCommand): -Uri parameter not specified. Using the default repository."
     }
 

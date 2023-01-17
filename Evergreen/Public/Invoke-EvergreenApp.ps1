@@ -17,6 +17,16 @@ Function Invoke-EvergreenApp {
     )
 
     process {
-        Invoke-RestMethodWrapper -Uri "https://evergreen-api.stealthpuppy.com/app/$Name"
+        try {
+            Find-EvergreenApp -Name $Name | Out-Null
+            $params = @{
+                Uri         = "https://evergreen-api.stealthpuppy.com/app/$Name"
+                ErrorAction = "Stop"
+            }
+            Invoke-RestMethodWrapper @params
+        }
+        catch {
+            throw $_
+        }
     }
 }

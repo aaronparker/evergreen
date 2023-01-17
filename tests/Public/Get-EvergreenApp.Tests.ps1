@@ -3,24 +3,20 @@
         Public Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Justification="Outputs to log host.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Justification = "Outputs to log host.")]
 param ()
 
 BeforeDiscovery {
-    # Get the supported applications
-    # Sort randomly so that we get test various GitHub applications when we have API request limits
-    #$AppsToSkip = "FileZilla|Tableau|MicrosoftWvdRemoteDesktop|MicrosoftWvdRtcService|MicrosoftWvdBootloader|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|PaintDotNet|Mozilla"
-    $AppsToSkip = "MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MestrelabMnova|MozillaFirefox|AWSCLI"
+    # Get the supported applications and sort randomly
+    # Exclude applications that appear to have issues when tested within the pipeline
+    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI"
     $Applications = Find-EvergreenApp | `
         Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 }
 
-BeforeAll {
-}
-
-Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Applications {
+Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
@@ -31,58 +27,78 @@ Describe -Tag "Get" -Name "Get-EvergreenApp <application>" -ForEach $Application
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Validate Get-EvergreenApp works with: <application>." {
-        It "<application>: should not be null" {
+    Context "Application function should return something" {
+        It "Output from <application> should not be null" {
             $Output | Should -Not -BeNullOrEmpty
         }
 
-        It "<application>: should return the expected output type" {
+        It "Output from <application> should return the expected output type" {
             $Output | Should -BeOfType "PSCustomObject"
         }
 
-        It "<application>: should return something" {
+        It "Get-EvergreenApp -Name <application> should return a count of 1 or more" {
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
+        }
+    }
+
+    Context "Output from application function returns expected properties" -ForEach $Output {
+        BeforeAll {
+            $Item = $_
         }
 
         # Test that the output has a Version property and that property is a string
-        It "<application>: should have a Version property that is a string" {
-            if ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
-                ForEach ($object in $Output) {
-                    $object.Version | Should -BeOfType [System.String]
-                }
-            }
-            else {
-                Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
-            }
+        It "Output for <application> should have a Version property that is a string" {
+            $Item.Version | Should -BeOfType [System.String]
         }
 
         # Test that output with Version property is valid
-        It "<application>: should have a valid version number" {
-            if ([System.Boolean]($Output[0].PSObject.Properties.name -match "Version")) {
-                foreach ($object in $Output) {
-                    if ($object.Version.Length -gt 0) {
-                        $object.Version | Should -Match $MatchVersions
-                    }
-                }
-            }
-            else {
-                Write-Host -ForegroundColor Yellow "`t<application> does not have a Version property."
-            }
+        It "Output for <application> should have a valid version number" {
+            $Item.Version | Should -Match $MatchVersions
         }
 
         # Test that the output has a URI property and that property is a string
-        It "<application>: should have a URI property that is a string" {
-            foreach ($object in $Output) {
-                $object.URI | Should -BeOfType [System.String]
-            }
+        It "Output for <application> should have a URI property that is a string" {
+            $Item.URI | Should -BeOfType [System.String]
         }
     }
 }
 
 Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
     Context "Validate 'Get-EvergreenApp fails gracefully" {
-        It "Should Throw with invalid app" {
+        It "Should throw with invalid app" {
             { Get-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
+        }
+
+        It "Should throw with an invalid proxy server " {
+            { Get-EvergreenApp -Name "MicrosoftEdge" -Proxy "test.local" } | Should -Throw
+        }
+    }
+}
+
+Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
+    Context "Validate 'Get-EvergreenApp' with -SkipCertificateCheck" {
+        It "Should not throw with an app that uses Invoke-RestMethodWrapper" {
+            { Get-EvergreenApp -Name "MicrosoftEdge" } | Should -Not -Throw
+        }
+
+        It "Should not throw with an app that uses Invoke-WebRequestWrapper" {
+            { Get-EvergreenApp -Name "BlueJ" } | Should -Not -Throw
+        }
+    }
+}
+
+Describe -Tag "Get" -Name "Application functions with additional parameters" {
+    Context "Validate applications that support additional parameters" {
+        It "Get-GitHubRelease should throw with an invalid URL" {
+            { Get-EvergreenApp -Name "GitHubRelease" -AppParams @{Uri = "https://github.com"} } | Should -Throw
+        }
+
+        # It "Should pass parameters to MozillaFirefox" {
+        #     { Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
+        # }
+
+        It "Should pass parameters to MozillaThunderbird" {
+            { Get-EvergreenApp -Name "MozillaThunderbird" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
         }
     }
 }

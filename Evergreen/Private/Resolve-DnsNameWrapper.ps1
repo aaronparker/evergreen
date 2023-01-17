@@ -31,9 +31,9 @@ Function Resolve-DnsNameWrapper {
             $Response = Resolve-DnsName @params | Where-Object { $_.Type -eq $Type }
         }
         catch {
-            Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw $_
         }
-        if ($Null -ne $Response) {
+        if ($null -ne $Response) {
             Write-Output -InputObject $Response.Strings
         }
         else {
@@ -49,14 +49,14 @@ Function Resolve-DnsNameWrapper {
                 $params = @{
                     Query       = $Name
                     QueryType   = $Type
-                    ErrorAction = "SilentlyContinue"
+                    ErrorAction = "Continue"
                 }
                 $Response = Resolve-Dns @params | Where-Object { $_.Answers.RecordType -eq $Type }
             }
             catch {
-                Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+                throw $_
             }
-            if ($Null -ne $Response) {
+            if ($null -ne $Response) {
                 Write-Output -InputObject $Response.Answers.Text
             }
             else {

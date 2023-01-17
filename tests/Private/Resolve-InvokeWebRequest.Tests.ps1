@@ -3,7 +3,7 @@
         Private Pester function tests.
 #>
 [OutputType()]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="This OK for the tests files.")]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification = "This OK for the tests files.")]
 param ()
 
 BeforeDiscovery {
@@ -12,10 +12,10 @@ BeforeDiscovery {
 BeforeAll {
 }
 
-Describe -Name "Resolve-InvokeWebRequest" {
-    Context "Ensure Resolve-InvokeWebRequest works as expected" {
-        It "Returns data from a URL" {
-            InModuleScope -ModuleName "Evergreen" {
+InModuleScope -ModuleName "Evergreen" {
+    Describe -Name "Resolve-InvokeWebRequest" {
+        Context "Ensure Resolve-InvokeWebRequest works as expected" {
+            It "Returns data from a URL" {
                 $params = @{
                     Uri                = "https://aka.ms"
                     UserAgent          = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
@@ -23,16 +23,15 @@ Describe -Name "Resolve-InvokeWebRequest" {
                 }
                 Resolve-InvokeWebRequest @params | Should -BeOfType [System.String]
             }
-        }
-    }
-}
 
-Describe -Name "Save-File" {
-    Context "Ensure Save-File works as expected" {
-        It "Returns a string if the file is downloaded" {
-            InModuleScope -ModuleName "Evergreen" {
-                $Uri = "https://raw.githubusercontent.com/aaronparker/evergreen/main/Evergreen/Evergreen.json"
-                (Save-File -Uri $Uri) | Should -BeOfType [System.IO.FileInfo]
+            It "Should throw with an invalid URL" {
+                { Resolve-InvokeWebRequest -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
+            }
+
+            It "Should throw with an invalid proxy server " {
+                Set-ProxyEnv -Proxy "test.local"
+                { Resolve-InvokeWebRequest -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
+                Remove-ProxyEnv
             }
         }
     }

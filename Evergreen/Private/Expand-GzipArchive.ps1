@@ -34,7 +34,7 @@ Function Expand-GzipArchive {
         ([System.IO.Compression.CompressionMode]::Decompress)
     }
     catch {
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw $_
     }
 
     # Expand the archive
@@ -49,7 +49,7 @@ Function Expand-GzipArchive {
             }
         }
         catch {
-            throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+            throw $_
         }
         finally {
             # Close the streams

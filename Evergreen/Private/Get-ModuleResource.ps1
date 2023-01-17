@@ -13,34 +13,23 @@ Function Get-ModuleResource {
     )
 
     try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from [$Path]"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): read module resource strings from: $Path"
         $params = @{
             Path        = $Path
             Raw         = $True
             ErrorAction = "Stop"
         }
         $content = Get-Content @params
-    }
-    catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to read from: $Path."
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-    }
-
-    try {
-        If (Test-PSCore) {
+        if (Test-PSCore) {
             $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "Stop"
         }
-        Else {
+        else {
             $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction "Stop" | ConvertTo-Hashtable
         }
+        Write-Output -InputObject $script:resourceStringsTable
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert strings to required object."
-        throw "$($MyInvocation.MyCommand): $($_.Exception.Message)."
-    }
-    finally {
-        If ($Null -ne $script:resourceStringsTable) {
-            Write-Output -InputObject $script:resourceStringsTable
-        }
+        Write-Warning -Message "$($MyInvocation.MyCommand): failed to module manifest at: $Path."
+        throw $_
     }
 }

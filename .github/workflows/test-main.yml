@@ -33,7 +33,7 @@ jobs:
       - name: Run PSScriptAnalyzer (main push)
         uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f
         with:
-          path: "./"
+          path: "./Evergreen"
           recurse: true
           output: results.sarif
 
@@ -43,15 +43,74 @@ jobs:
         with:
           sarif_file: results.sarif
 
-  pestertest:
-    name: Run Pester Tests (main push)
+  pestertest5:
+    name: "Run Pester tests on Windows PowerShell (main push)"
     needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test with Pester
+      - name: Pester tests
         shell: powershell
+        working-directory: "${{ github.workspace }}"
+        run: |
+          .\tests\Install-Pester.ps1
+          Import-Module -Name "Pester" -Force -ErrorAction "Stop"
+          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
+
+          $Config = [PesterConfiguration]::Default
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
+          $Config.Run.PassThru = $true
+          $Config.CodeCoverage.Enabled = $true
+          $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
+          $Config.CodeCoverage.OutputFormat = "JaCoCo"
+          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
+          $Config.Output.Verbosity = "Detailed"
+          $Config.TestResult.Enabled = $true
+          $Config.TestResult.OutputFormat = "NUnitXml"
+          $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
+          Invoke-Pester -Configuration $Config
+
+      # Upload test results
+      - name: Upload Pester test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: "${{ github.workspace }}\\tests\\TestResults.xml"
+
+      - name: Upload code coverage results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: codecov-results
+          path: "${{ github.workspace }}\\CodeCoverage.xml"
+
+  pestertest7:
+    name: "Run Pester tests on PowerShell Core (main push)"
+    needs: psscriptanalyzer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install module DnsClient-PS
+        shell: pwsh
+        working-directory: "${{ github.workspace }}"
+        run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Install-PackageProvider -Name "NuGet" -MinimumVersion "2.8.5.208" -Force -ErrorAction "SilentlyContinue"
+          Install-PackageProvider -Name "PowerShellGet" -MinimumVersion "2.2.5" -Force -ErrorAction "SilentlyContinue"
+          Set-PSRepository -Name "PSGallery" -InstallationPolicy "Trusted" -ErrorAction "SilentlyContinue"
+          $params = @{
+              Name               = "DnsClient-PS"
+              SkipPublisherCheck = $true
+              Force              = $true
+              ErrorAction        = "Stop"
+          }
+          Install-Module @params
+
+      - name: Pester tests
+        shell: pwsh
         working-directory: "${{ github.workspace }}"
         run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -66,28 +125,19 @@ jobs:
           Install-Module @params
           Import-Module -Name "Pester" -Force
 
-          Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
+          Import-Module -Name "$env:GITHUB_WORKSPACE/Evergreen"
           $Config = [PesterConfiguration]::Default
-          $Config.Run.Path = "$env:GITHUB_WORKSPACE\tests"
+          $Config.Run.Path = "$env:GITHUB_WORKSPACE/tests"
           $Config.Run.PassThru = $true
           $Config.CodeCoverage.Enabled = $true
-          $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE\Evergreen"
+          $Config.CodeCoverage.Path = "$env:GITHUB_WORKSPACE/Evergreen"
           $Config.CodeCoverage.OutputFormat = "JaCoCo"
-          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
-          $Config.Output.Verbosity = "Normal"
-          $Config.Should.ErrorAction = "Continue"
+          $Config.CodeCoverage.OutputPath = "$env:GITHUB_WORKSPACE/CodeCoverage7.xml"
+          $Config.Output.Verbosity = "Detailed"
           $Config.TestResult.Enabled = $true
           $Config.TestResult.OutputFormat = "NUnitXml"
-          $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
+          $Config.TestResult.OutputPath = "$env:GITHUB_WORKSPACE/tests/TestResults7.xml"
           Invoke-Pester -Configuration $Config
-
-      - name: List tests output
-        shell: powershell
-        if: always()
-        working-directory: "${{ github.workspace }}"
-        run: |
-          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\tests\TestResults.xml"
-          Get-ChildItem -Path "$env:GITHUB_WORKSPACE\CodeCoverage.xml"
 
       # Upload test results
       - name: Upload Pester test results
@@ -95,30 +145,58 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: "${{ github.workspace }}\\tests\\TestResults.xml"
+          path: "${{ github.workspace }}//tests//TestResults7.xml"
 
-      # Publish Pester test results
-      - name: Publish Pester test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      - name: Upload code coverage results
+        uses: actions/upload-artifact@v3
         if: always()
         with:
-          nunit_files: "${{ github.workspace }}\\tests\\TestResults.xml"
+          name: codecov-results
+          path: "${{ github.workspace }}//CodeCoverage7.xml"
+
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: [ "pestertest5", "pestertest7"]
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      checks: write
+
+      # only needed unless run with comment_mode: off
+      pull-requests: write
+
+    steps:
+      - name: Download Pester Test Result Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: test-results
+          path: test-results
+
+      - name: Publish Pester Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          nunit_files: "test-results/**/*.xml"
+
+      - name: Download Code Coverage Result Artifacts
+        uses: actions/download-artifact@v2
+        if: always()
+        with:
+          name: codecov-results
+          path: codecov-results
 
       - name: Upload to Codecov
         id: codecov
-        if: always()
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "./CodeCoverage.xml"
+          files: "codecov-results/**/*.xml"
           verbose: true
 
   update-module:
     name: Update module version
     runs-on: windows-latest
-    needs: pestertest
+    needs: [ pestertest5, pestertest7 ]
     if: always()
-
     steps:
       - uses: actions/checkout@v3
         with:

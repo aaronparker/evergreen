@@ -7,58 +7,53 @@
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
-        [Parameter(Mandatory = $True, Position = 1)]
+        [Parameter(Mandatory = $true, Position = 1)]
         [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable] $Download,
 
-        [Parameter(Mandatory = $True, Position = 2)]
+        [Parameter(Mandatory = $true, Position = 2)]
         [ValidateNotNullOrEmpty()]
         [System.String] $MatchVersion
     )
 
     # Retrieve best release json
-    try {
-        $bestRelease = Invoke-RestMethodWrapper -Uri $Uri
-    }
-    catch {
-        Write-Error -Message "$($MyInvocation.MyCommand): Failed to resolve update feed: $Uri."
-    }
+    $BestRelease = Invoke-RestMethodWrapper -Uri $Uri
 
-    # Validate that $bestRelease has the expected properties
+    # Validate that $BestRelease has the expected properties
     Write-Verbose -Message "$($MyInvocation.MyCommand): Validating SourceForge release object."
     $params = @{
         ReferenceObject  = $script:resourceStrings.Properties.SourceForge
-        DifferenceObject = (Get-Member -InputObject $bestRelease -MemberType NoteProperty)
-        PassThru         = $True
-        ErrorAction      = "Continue"
+        DifferenceObject = (Get-Member -InputObject $BestRelease -MemberType NoteProperty)
+        PassThru         = $true
+        ErrorAction      = "SilentlyContinue"
     }
     $missingProperties = Compare-Object @params
-    If ($Null -ne $missingProperties) {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Validated successfully."
+    if ($null -ne $missingProperties) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Property validation succeeded."
     }
-    Else {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Validation failed."
+    else {
+        Write-Warning -Message "$($MyInvocation.MyCommand): Property validation failed."
         $missingProperties | ForEach-Object {
-            Throw [System.Management.Automation.ValidationMetadataException] "$($MyInvocation.MyCommand): Property: '$_' missing"
+            throw [System.Management.Automation.ValidationMetadataException]::New("$($MyInvocation.MyCommand): Property: '$_' missing")
         }
     }
 
     # Find version number and the releases folder
     try {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Capture version number from: $($bestRelease.platform_releases.windows.filename)."
-        $Filename = Split-Path -Path $bestRelease.platform_releases.windows.filename -Leaf
-        $Folder = ($bestRelease.platform_releases.windows.filename -split $Filename)[0]
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Capture version number from: $($BestRelease.platform_releases.windows.filename)."
+        $Filename = Split-Path -Path $BestRelease.platform_releases.windows.filename -Leaf
+        $Folder = ($BestRelease.platform_releases.windows.filename -split $Filename)[0]
         $Version = [RegEx]::Match($Folder, $MatchVersion).Captures.Groups[1].Value
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found filename: [$Filename]."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found folder:   [$Folder]."
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version:  [$Version]."
     }
     catch {
-        Write-Error -Message "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($bestRelease.platform_releases.windows.filename)."
+        throw "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($BestRelease.platform_releases.windows.filename)."
     }
 
     # Get the downloads XML feed and select the latest item via the $Version value
@@ -73,7 +68,7 @@
     Write-Verbose -Message "$($MyInvocation.MyCommand): found $($fileItems.Count) items."
 
     # For each filtered file, build a release object
-    ForEach ($item in $fileItems) {
+    foreach ($item in $fileItems) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $($item.link)."
         $Url = "$($Download.Uri)$($item.description.'#cdata-section')" -replace " ", "%20"
         $PSObject = [PSCustomObject] @{

@@ -32,7 +32,7 @@
         Invoke-WebRequest @params
     }
     catch {
-        Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
+        throw $_
     }
 
     # Write the OutFile properties to the pipeline

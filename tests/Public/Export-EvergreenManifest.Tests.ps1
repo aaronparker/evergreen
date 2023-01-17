@@ -14,9 +14,6 @@ BeforeDiscovery {
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 }
 
-BeforeAll {
-}
-
 Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
@@ -25,7 +22,7 @@ Describe -Tag "Export" -Name "Export-EvergreenManifest" -ForEach $Applications {
     }
 
     Context "Validate Export-EvergreenManifest works with: <application>." {
-        It "'Export-EvergreenManifest -Name <application>' should not Throw" {
+        It "'Export-EvergreenManifest -Name <application>' should not throw" {
             { Export-EvergreenManifest -Name $application } | Should -Not -Throw
         }
     }

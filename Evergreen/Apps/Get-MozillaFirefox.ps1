@@ -25,18 +25,18 @@ Function Get-MozillaFirefox {
     $Versions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
     # Construct custom object with output details
-    ForEach ($currentLanguage in $Language) {
-        ForEach ($channel in $res.Get.Update.Channels) {
-            ForEach ($platform in $res.Get.Download.Platforms) {
+    foreach ($currentLanguage in $Language) {
+        foreach ($channel in $res.Get.Update.Channels) {
+            foreach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                ForEach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
+                foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
                     $params = @{
-                        Uri = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        Uri           = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
                     }
                     $Url = Resolve-InvokeWebRequest @params
 
-                    If ($Null -ne $Url) {
+                    if ($Null -ne $Url) {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
