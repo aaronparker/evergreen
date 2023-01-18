@@ -15,8 +15,7 @@
             "Uri": "https://cdn-fastly.obsproject.com/downloads/#FileName",
             "FileName": "OBS-Studio-#Version-Full-Installer-#Architecture.exe",
             "Architectures": [
-                "x64",
-                "x86"
+                "x64"
             ],
             "ReplaceText": {
                 "Version": "#Version",

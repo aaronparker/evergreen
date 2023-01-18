@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with `MicrosoftWvdRemoteDesktop`
+* Removes `x86` architecture from `OBSStudio`
+
 ## 2301.767
 
 * Fixes an issue with `OBSStudio` where the incorrect URI was returned where build number equals 0 [#445](https://github.com/aaronparker/evergreen/issues/445)
