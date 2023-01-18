@@ -3,6 +3,7 @@
 ## VERSION
 
 * Fixes an issue with `MicrosoftWvdRemoteDesktop`
+* Removes `x86` architecture from `OBSStudio`
 
 ## 2301.767
 
