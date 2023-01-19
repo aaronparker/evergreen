@@ -1,6 +1,6 @@
 # Change log
 
-## 2301.719
+## 2301.769
 
 * Fixes an issue with `MicrosoftWvdRemoteDesktop`
 * Removes `x86` architecture from `OBSStudio`
