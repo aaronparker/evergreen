@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2301.786
 
 * Adds `Get-EvergreenLibraryApp`
 * Fix an issue with `OctopusTentacle` where URL redirects are not followed
