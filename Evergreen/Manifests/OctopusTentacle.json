@@ -7,8 +7,8 @@
 		},
 		"Download": {
 			"Uri": {
-                "x86": "https://octopus.com/downloads/latest/WindowsX86/OctopusTentacle",
-                "x64": "https://octopus.com/downloads/latest/WindowsX64/OctopusTentacle"
+                "x86": "https://www.octopus.com/downloads/latest/WindowsX86/OctopusTentacle",
+                "x64": "https://www.octopus.com/downloads/latest/WindowsX64/OctopusTentacle"
             },
 			"Property": "ResponseUri.Headers.Location",
 			"MatchVersion": "(\\d+(\\.\\d+){1,3})"

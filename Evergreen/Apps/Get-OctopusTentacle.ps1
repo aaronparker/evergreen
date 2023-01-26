@@ -20,14 +20,15 @@ function Get-OctopusTentacle {
 
         # Get the latest download
         $Url = Resolve-InvokeWebRequest -Uri $res.Get.Download.Uri[$download.Key]
-        if ($Null -ne $Url) {
+        if ($null -ne $Url) {
 
             # Extract the version information from the uri
             try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found URL: $Url"
                 $Version = [RegEx]::Match($Url, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
             }
             catch {
-                throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
+                throw "$($MyInvocation.MyCommand): Failed to extract the version information from the URI."
             }
 
             # Construct the output; Return the custom object to the pipeline
