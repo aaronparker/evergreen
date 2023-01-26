@@ -139,6 +139,7 @@ nav:
     - Using Evergreen: use.md
     - Example usage: examples.md
     - Under the hood: under.md
+    - How to use the Evergreen API: invoke.md
   - Evergreen Libraries:
     - Create a library: newlibrary.md
     - Update a library: updatelibrary.md
