@@ -32,7 +32,6 @@ function Invoke-EvergreenLibraryUpdate {
     }
 
     process {
-
         if (Test-Path -Path $Path -PathType "Container") {
             $LibraryFile = $(Join-Path -Path $Path -ChildPath "EvergreenLibrary.json")
 
@@ -92,11 +91,13 @@ function Invoke-EvergreenLibraryUpdate {
                 }
             }
             else {
-                throw [System.IO.FileNotFoundException] "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
+                $Msg = "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
+                throw [System.IO.FileNotFoundException]::New($Msg)
             }
         }
         else {
-            throw [System.IO.DirectoryNotFoundException] "Cannot use path $Path because it does not exist or is not a directory."
+            $Msg = "Cannot use path $Path because it does not exist or is not a directory."
+            throw [System.IO.DirectoryNotFoundException]::New($Msg)
         }
     }
 

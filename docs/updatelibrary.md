@@ -16,7 +16,7 @@ Here's an example - `EvergreenLibrary.json` contains the following entry for Mic
 * `EvergreenApp` - defines the application name supported by Evergreen. The list of supported application names can be found with `Find-EvergreenApp`
 * `Filter` - this is the filter typically used with `Get-EvergreenApp | Where-Object` to filter the application version information for a specific application installer
 
-The Microsoft Teams installer will be downloaded in this example to the following folder structure: `E:\EvergreenLibrary\MicrosoftTeams\General\1.5.00.17656\x64`. After the installers are successfully downloaded, the application version information is saved. For this example, `E:\EvergreenLibrary\MicrosoftTeams\MicrosoftTeams.json` will be saved with the following details:
+The Microsoft Teams installer will be downloaded in this example to the following folder structure: `\\server\EvergreenLibrary\MicrosoftTeams\General\1.5.00.17656\x64`. After the installers are successfully downloaded, the application version information is saved. For this example, `\\server\EvergreenLibrary\MicrosoftTeams\MicrosoftTeams.json` will be saved with the following details:
 
 ```json
 {
@@ -36,7 +36,7 @@ Each time a new version of Team installer is downloaded, `MicrosoftTeams.json` i
 `Invoke-EvergreenLibraryUpdate` has a single parameter - `-Path`, which should be the path to the Evergreen library:
 
 ```powershell
-Invoke-EvergreenLibraryUpdate -Path "E:\EvergreenLibrary"
+Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
 ```
 
 If a path is specified that does not contain `EvergreenLibrary.json` and error will be thrown.

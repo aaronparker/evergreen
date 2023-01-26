@@ -45,7 +45,7 @@ The filter can define any property from an application version object, so that y
 To create a new Evergreen library, use `New-EvergreenLibrary` and specifiy a valid local or UNC path:
 
 ```powershell
-New-EvergreenLibrary -Path "E:\EvergreenLibrary"
+New-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 ```
 
 `New-EvergreenLibrary` will create the target directory and copy the default `EvergreenLibrary.json` into the path. The library will now be ready to download the 64-bit, release versions of:
