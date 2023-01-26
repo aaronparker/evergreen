@@ -9,14 +9,14 @@ Function Get-MozillaFirefox {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1]),
 
-        [Parameter(Mandatory = $False, Position = 1)]
+        [Parameter(Mandatory = $false, Position = 1)]
         [ValidateNotNull()]
         [System.String[]] $Language = @("en-US")
     )
@@ -33,6 +33,8 @@ Function Get-MozillaFirefox {
                 foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
                     $params = @{
                         Uri           = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        WarningAction = "SilentlyContinue"
+                        ErrorAction   = "SilentlyContinue"
                     }
                     $Url = Resolve-InvokeWebRequest @params
 
