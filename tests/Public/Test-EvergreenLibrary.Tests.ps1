@@ -13,7 +13,7 @@ BeforeDiscovery {
 BeforeAll {
 }
 
-Describe -Tag "Library" -Name "Test Evergreen Library" {
+Describe -Tag "Library" -Name "Test Evergreen Library functions" {
     BeforeAll {
         if ($env:Temp) {
             $Path = $env:Temp
@@ -73,6 +73,28 @@ Describe -Tag "Library" -Name "Test Evergreen Library" {
 
         It "Does not throw" {
             { Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" } | Should -Not -Throw
+        }
+    }
+
+    Context "Test 'Get-EvergreenLibraryApp' works" {
+        It "Does not throw when getting details for MicrosoftTeams" {
+            { Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftTeams" } | Should -Not -Throw
+        }
+
+        It "Return details from the library for MicrosoftTeams" {
+            Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftTeams" | Should -BeOfType [System.Object]
+        }
+    }
+
+    Context "Test 'Get-EvergreenLibraryApp' fails" {
+        BeforeAll {
+            $Object = [PSCustomObject]@{
+                Name = "Value"
+            }
+        }
+
+        It "Throws when passed an invalid library object" {
+            { $Object | Get-EvergreenLibraryApp -Name "MicrosoftTeams" } | Should -Throw
         }
     }
 

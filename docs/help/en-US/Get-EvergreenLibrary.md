@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Returns details about an Evergreen library.
+Returns details about an Evergreen library including details about the applications configured in the library and the downloaded application binaries and versions.
 
 ## SYNTAX
 
