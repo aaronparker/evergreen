@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `Get-EvergreenLibraryApp`
+
 ## 2301.769
 
 * Fixes an issue with `MicrosoftWvdRemoteDesktop`
