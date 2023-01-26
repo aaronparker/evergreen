@@ -1,7 +1,7 @@
 name: 'Validate main branch & update version'
 
 env:
-  BUILD_NUMBER: "704"
+  BUILD_NUMBER: "769"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
