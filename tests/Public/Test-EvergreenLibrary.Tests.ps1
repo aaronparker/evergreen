@@ -96,6 +96,10 @@ Describe -Tag "Library" -Name "Test Evergreen Library functions" {
         It "Throws when passed an invalid library object" {
             { $Object | Get-EvergreenLibraryApp -Name "MicrosoftTeams" } | Should -Throw
         }
+
+        It "Throws when an application that is not in the library is passed" {
+            { Get-EvergreenLibrary -Path "$Path\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftEdge" } | Should -Throw
+        }
     }
 
     Context "Test 'Get-EvergreenLibrary' fails" {
