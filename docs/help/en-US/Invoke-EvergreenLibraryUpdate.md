@@ -29,11 +29,11 @@ An Evergreen library can be used to maintain multiple versions of application in
 ### EXAMPLE 1
 
 ```powershell
-Invoke-EvergreenLibraryUpdate -Path "E:\EvergreenLibrary"
+Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
 ```
 
 Description:
-`Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in E:\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
+`Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \\server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
 
 ## PARAMETERS
 

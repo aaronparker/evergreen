@@ -143,6 +143,7 @@ nav:
     - Create a library: newlibrary.md
     - Update a library: updatelibrary.md
     - Retrieve details from a library: getlibrary.md
+    - Install an application from a library: getlibraryapp.md
   - Resources:
     - Troubleshooting: troubleshoot.md
     - Known issues: issues.md
@@ -155,8 +156,9 @@ nav:
       - Save-EvergreenApp: help/en-US/Save-EvergreenApp.md
       - Test-EvergreenApp: help/en-US/Test-EvergreenApp.md
       - New-EvergreenLibrary: help/en-US/New-EvergreenLibrary.md
-      - Invoke-EvergreenLibrary: help/en-US/Invoke-EvergreenLibrary.md
+      - Invoke-EvergreenLibraryUpdate: help/en-US/Invoke-EvergreenLibraryUpdate.md
       - Get-EvergreenLibrary: help/en-US/Get-EvergreenLibrary.md
+      - Get-EvergreenLibraryApp: help/en-US/Get-EvergreenLibraryApp.md
       - Export-EvergreenApp: help/en-US/Export-EvergreenApp.md
       - Export-EvergreenManifest: help/en-US/Export-EvergreenManifest.md
   - App Tracker: https://stealthpuppy.com/apptracker/

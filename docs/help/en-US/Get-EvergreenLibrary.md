@@ -26,10 +26,10 @@ Returns details about an Evergreen library at a specified path. This will includ
 ### Example 1
 
 ```powershell
-PS C:\> Get-EvergreenLibrary -Path "E:\EvergreenLibrary"
+PS C:\> Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 ```
 
-Returns details about the Evergreen library at E:\EvergreenLibrary, including application version information stored for each application.
+Returns details about the Evergreen library at \\server\EvergreenLibrary, including application version information stored for each application.
 
 ## PARAMETERS
 

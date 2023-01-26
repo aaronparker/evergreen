@@ -26,20 +26,20 @@ Creates an Evergreen library at the specified path. An Evergreen library is a di
 ### EXAMPLE 1
 
 ```powershell
-New-EvergreenLibrary -Path "E:\EvergreenLibrary"
+New-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 ```
 
 Description:
-Creates a new Evergreen library in the path E:\EvergreenLibrary.
+Creates a new Evergreen library in the path \\server\EvergreenLibrary.
 
 ### EXAMPLE 2
 
 ```powershell
-New-EvergreenLibrary -Path "E:\EvergreenLibrary" -Name "AzureVirtualDesktopProd"
+New-EvergreenLibrary -Path "\\server\EvergreenLibrary" -Name "AzureVirtualDesktopProd"
 ```
 
 Description:
-Creates a new Evergreen library in the path E:\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.
+Creates a new Evergreen library in the path \\server\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.
 
 ## PARAMETERS
 

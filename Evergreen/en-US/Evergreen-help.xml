@@ -692,9 +692,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Returns details about the Evergreen library at E:\EvergreenLibrary, including application version information stored for each application.</maml:para>
+          <maml:para>Returns details about the Evergreen library at \\server\EvergreenLibrary, including application version information stored for each application.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -800,13 +800,13 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "\\server\library" | Get-EvergreenLibraryApp -Name "MicrosoftVisualStudioCode"
+        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftVisualStudioCode"
 
 Version      : 1.74.3
 URI          : https://az764295.vo.msecnd.net/stable/97dec172d3256f8ca4bfb2143f3f76b503ca0534/VSCodeSetup-x64-1.74.3.exe
 Sha256       : cea32aa015116f8346e054c59497908f6da6059361c1b33d5b68059031f2dc97
 Platform     : win32-x64
-Path         : \\server\library\MicrosoftVisualStudioCode\Stable\1.74.3\x64\VSCodeSetup-x64-1.74.3.exe
+Path         : \\server\EvergreenLibrary\MicrosoftVisualStudioCode\Stable\1.74.3\x64\VSCodeSetup-x64-1.74.3.exe
 Channel      : Stable
 Architecture : x64
 
@@ -814,7 +814,7 @@ Version      : 1.74.0
 URI          : https://az764295.vo.msecnd.net/stable/5235c6bb189b60b01b1f49062f4ffa42384f8c91/VSCodeSetup-x64-1.74.0.exe
 Sha256       : fbe977aa69a1c1438d2c2b9d5525415e1fd8d97b6dbb149301a7c3bf3a84b14a
 Platform     : win32-x64
-Path         : \\server\library\MicrosoftVisualStudioCode\Stable\1.74.3\x64\VSCodeSetup-x64-1.74.0.exe
+Path         : \\server\EvergreenLibrary\MicrosoftVisualStudioCode\Stable\1.74.3\x64\VSCodeSetup-x64-1.74.0.exe
 Channel      : Stable
 Architecture : x64</dev:code>
         <dev:remarks>
@@ -823,21 +823,21 @@ Architecture : x64</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; $Library = Get-EvergreenLibrary -Path "\\server\library"
+        <dev:code>PS C:\&gt; $Library = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 PS C:\&gt; Get-EvergreenLibraryApp -Inventory $Library -Name "MicrosoftTeams"
 
 Version      : 1.5.00.36367
 URI          : https://statics.teams.cdn.office.net/production-windows-x64/1.5.00.36367/Teams_windows_x64.msi
 Type         : msi
 Ring         : General
-Path         : \\server\library\MicrosoftTeams\General\1.5.00.36367\x64\Teams_windows_x64.msi
+Path         : \\server\EvergreenLibrary\MicrosoftTeams\General\1.5.00.36367\x64\Teams_windows_x64.msi
 Architecture : x64
 
 Version      : 1.5.00.31168
 URI          : https://statics.teams.cdn.office.net/production-windows-x64/1.5.00.31168/Teams_windows_x64.msi
 Type         : msi
 Ring         : General
-Path         : \\server\library\MicrosoftTeams\General\1.5.00.31168\x64\Teams_windows_x64.msi
+Path         : \\server\EvergreenLibrary\MicrosoftTeams\General\1.5.00.31168\x64\Teams_windows_x64.msi
 Architecture : x64</dev:code>
         <dev:remarks>
           <maml:para>Uses Get-EvergreenLibrary to place details about the Evergreen library at \server\library into an object called $Library, which is then used on the command line for Get-EvergreenLibraryApp to return details about Microsoft Teams.</maml:para>
@@ -1116,9 +1116,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>Invoke-EvergreenLibraryUpdate -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:code>Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Description: `Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in E:\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
+          <maml:para>Description: `Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \\server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1261,16 +1261,16 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:examples>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
-        <dev:code>New-EvergreenLibrary -Path "E:\EvergreenLibrary"</dev:code>
+        <dev:code>New-EvergreenLibrary -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Creates a new Evergreen library in the path E:\EvergreenLibrary.</maml:para>
+          <maml:para>Description: Creates a new Evergreen library in the path \\server\EvergreenLibrary.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
-        <dev:code>New-EvergreenLibrary -Path "E:\EvergreenLibrary" -Name "AzureVirtualDesktopProd"</dev:code>
+        <dev:code>New-EvergreenLibrary -Path "\\server\EvergreenLibrary" -Name "AzureVirtualDesktopProd"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Creates a new Evergreen library in the path E:\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.</maml:para>
+          <maml:para>Description: Creates a new Evergreen library in the path \\server\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

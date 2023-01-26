@@ -3,7 +3,7 @@
 Once the library has been populated it will contain information that describes the library - the library configuration file, application version information for each application, and the application installers. Over time, the library will contain information on multiple applications and versions. `Get-EvergreenLibrary` can be used to retrieve application information from the library:
 
 ```powershell
-Get-EvergreenLibrary -Path "E:\EvergreenLibrary"
+Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 
 Library   : @{Name=EvergreenLibrary; Applications=System.Object[]}
 Inventory : {@{ApplicationName=Microsoft.NET; Versions=}, @{ApplicationName=MicrosoftOneDrive; Versions=System.Object[]}, @{ApplicationName=MicrosoftEdge; Versions=System.Object[]},
