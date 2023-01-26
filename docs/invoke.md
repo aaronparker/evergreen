@@ -9,7 +9,7 @@ Full documentation for the API is available here: [evergreen-api](https://app.sw
 Data that is returned by the Evergreen API can be viewed at the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/).
 
 !!! attention "Attention"
-    Support the Evergreen API is provided as a best effort. The API is currently provided by the free tier of Cloudflare Workers which provides up to 100,000 requests per day. If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
+    Support for the Evergreen API is provided as a best effort. The API is currently provided by the free tier of Cloudflare Workers which provides up to 100,000 requests per day. If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
 
 ## Usage
 
@@ -27,7 +27,14 @@ Details for a specific application are returned from the `/app/{appName}` endpoi
 PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
 ```
 
-If an unknown application is passed to this endpoint, an error is returned.
+Data returned from the API can be  filtered and sent to `Save-EvergreenApp` to download binaries:
+
+```powershell
+$Edge = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
+$Edge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" } | Save-EvergreenApp -Path "C:\Apps"
+```
+
+If an unknown application is passed to the `/app` endpoint, an error is returned:
 
 ```powershell
 PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/UnsupportedApp"
