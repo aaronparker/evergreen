@@ -61,7 +61,7 @@ function Resolve-InvokeWebRequest {
             }
             else {
                 # We can't throw here because apps that use loops that call this function will fail
-                Write-Warning -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
+                Write-Warning -Message "$($MyInvocation.MyCommand): Response: '$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)'."
                 Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
                 Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
             }
@@ -75,10 +75,10 @@ function Resolve-InvokeWebRequest {
             Write-Output -InputObject $response.Headers.Location
         }
         catch [System.Exception] {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
-            Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
+            # We can't throw here because apps that use loops that call this function will fail
+            Write-Warning -Message "$($MyInvocation.MyCommand): Response: '$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)'."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
-            throw $_
+            Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
         }
     }
 }

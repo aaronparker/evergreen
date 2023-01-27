@@ -93,7 +93,8 @@ Function Get-EvergreenApp {
                     Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
                 }
                 else {
-                    throw "Application function Get-$Name ran, but we failed to capture any output.`nRun 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
+                    $Msg = "Application function Get-$Name ran, but we failed to capture any output.`nRun 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
+                    throw [System.NullReferenceException]::New($Msg)
                 }
             }
         }
@@ -102,16 +103,16 @@ Function Get-EvergreenApp {
             Write-Information -MessageData "Find out how to contribute a new application to the Evergreen project at: $($script:resourceStrings.Uri.Docs)." -InformationAction "Continue"
             try {
                 $List = Find-EvergreenApp -Name $Name -ErrorAction "SilentlyContinue" -WarningAction "SilentlyContinue"
+                $AppList = ($List | Select-Object -ExpandProperty "Name") -join "`n"
             }
             catch {
-                $List = @{
-                    Name = "No applications match '$Name'"
-                }
+                $AppList = "No applications match '$Name'"
             }
             Write-Information -MessageData "`n'$Name' not found. Evergreen supports these similar applications:" -InformationAction "Continue"
-            $List | Select-Object -ExpandProperty "Name" | Write-Information -InformationAction "Continue"
+            Write-Information -MessageData $AppList -InformationAction "Continue"
             Write-Information -MessageData "" -InformationAction "Continue"
-            throw "Failed to retrieve manifest for application: $Name."
+            $Msg = "Failed to retrieve manifest for application: $Name."
+            throw [System.IO.FileNotFoundException]::New($Msg)
         }
         #endregion
     }

@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Fix an issue in `Resolve-InvokeWebRequest` where a throw would only occur under Windows PowerShell preventing app functions that require loops to exit without returning data [#452](https://github.com/aaronparker/evergreen/issues/452)
+* Fix an issue in `Get-EvergreenApp` where null was sent to Write-Information
+
 ## 2301.786
 
 * Adds `Get-EvergreenLibraryApp`
