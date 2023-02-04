@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `ResponsivelyApp`
+
 ## 2301.787
 
 * Fix an issue in `Resolve-InvokeWebRequest` where a throw would only occur under Windows PowerShell preventing app functions that require loops to exit without returning data [#452](https://github.com/aaronparker/evergreen/issues/452)
