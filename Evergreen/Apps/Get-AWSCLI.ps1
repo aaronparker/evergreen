@@ -23,7 +23,7 @@ function Get-AWSCLI {
     }
 
     # Get only latest version tag from GitHub API
-    $Content = ((Invoke-WebRequestWrapper @params | ConvertFrom-Json).name | ForEach-Object { New-Object System.Version ($_) } | Sort-Object -Descending | Select-Object -First 1 | ForEach-Object {("{0}.{1}.{2}" -f $_.Major,$_.Minor,$_.Build)})
+    $Content = ((Invoke-WebRequestWrapper @params | ConvertFrom-Json).name | ForEach-Object { New-Object -TypeName "System.Version" ($_) } | Sort-Object -Descending | Select-Object -First 1 | ForEach-Object {("{0}.{1}.{2}" -f $_.Major,$_.Minor,$_.Build)})
 
     if ($null -ne $Content) {
         $Content | ForEach-Object {
