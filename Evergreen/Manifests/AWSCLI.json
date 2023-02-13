@@ -4,7 +4,7 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://api.github.com/repos/aws/aws-cli/tags",
-            "ContentType": "application/json; charset=utf-8"
+			"ContentType": "application/json; charset=utf-8"
 		},
 		"Download": {
 			"Uri" :"https://awscli.amazonaws.com/AWSCLIV2-#version.msi",
