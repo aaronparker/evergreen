@@ -10,7 +10,9 @@ $UrlMatch = "http[s]?\:\/\/([^\/?#]+)(?:[\/?#]|$)"
 $Endpoints = Get-ChildItem -Path "/Users/aaron/projects/evergreen/Evergreen/Manifests" -Recurse -Include "*.json" | ForEach-Object {
     [PSCustomObject]@{
         Application = $_.BaseName
-        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | Select-Object -Unique | Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
+        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | `
+                        Select-Object -Unique | `
+                        Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
     }
 }
 $Endpoints | ConvertTo-Json | Out-File -FilePath "./Endpoints.json" -Encoding "Utf8" -NoNewline
@@ -21,7 +23,9 @@ Remove-Item -Path "./Endpoints.json"
 $Endpoints = Get-ChildItem -Path "/Users/aaron/projects/apptracker/json" -Recurse -Include "*.json" | ForEach-Object {
     [PSCustomObject]@{
         Application = $_.BaseName
-        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | Select-Object -Unique | Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
+        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | `
+                        Select-Object -Unique | `
+                        Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
     }
 }
 $Endpoints | ConvertTo-Json | Out-File -FilePath "./Endpoints.json" -Encoding "Utf8" -NoNewline
