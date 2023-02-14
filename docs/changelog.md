@@ -3,6 +3,8 @@
 ## VERSION
 
 * Adds `ResponsivelyApp`
+* Addresses a change in source update data for `VMwareHorizonClient` [#460](https://github.com/aaronparker/evergreen/issues/460)
+* Fixes an issue with `AWSCLI` where the incorrect version number would be returned
 
 ## 2301.787
 

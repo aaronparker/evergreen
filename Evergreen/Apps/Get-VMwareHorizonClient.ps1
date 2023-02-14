@@ -37,7 +37,7 @@
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($UpdateList.Count) available updates for version: $($LatestVersion.version)."
             Write-Verbose -Message "$($MyInvocation.MyCommand): Match latest update."
             $VersionList = New-Object -TypeName "System.Collections.ArrayList"
-            ForEach ($Update in $UpdateList) {
+            foreach ($Update in $UpdateList) {
                 $Version = [RegEx]::Match($Update.url, $res.Get.Update.MatchVersion).Captures.Groups[1].Value
                 $VersionList.Add($Version) | Out-Null
             }
@@ -78,7 +78,7 @@
             }
 
             # Build the object and write to the pipeline
-            if (($Null -ne $Version) -and ($Null -ne $FileName)) {
+            if (($null -ne $Version) -and ($null -ne $FileName)) {
                 $PSObject = [PSCustomObject] @{
                     Version = "$($Version.version).$($Version.buildNumber)"
                     URI     = "$($res.Get.Download.Uri)$($Version.productId)/$($Version.version)/$($Version.buildNumber)/$($FileName)"
