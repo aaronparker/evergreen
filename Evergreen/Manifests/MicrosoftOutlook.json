@@ -1,6 +1,6 @@
 {
-    "Name": "Microsoft Teams",
-    "Source": "https://www.microsoft.com/teams",
+    "Name": "Microsoft Outlook",
+    "Source": "https://www.microsoft.com/en/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook",
     "Get": {
         "Update": {
             "Uri": "https://res.cdn.office.net/nativehost/5mttl/installer/v1/win-x64/prod/RELEASES?id=Outlook&localVersion=1.2022.10050400&arch=amd64",
@@ -37,17 +37,17 @@
         }
     },
     "Install": {
-        "Setup": "Teams*.msi",
+        "Setup": "",
         "Physical": {
             "Arguments": "",
             "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
+                ""
             ]
         },
         "Virtual": {
-            "Arguments": "ALLUSER=1 ALLUSERS=1",
+            "Arguments": "",
             "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
+                ""
             ]
         }
     }
