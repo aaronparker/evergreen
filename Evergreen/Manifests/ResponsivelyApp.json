@@ -2,7 +2,7 @@
 	"Name": "Responsively App",
 	"Source": "https://responsively.app/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/responsively-org/responsively-app/releases/latest",
+		"Uri": "https://api.github.com/repos/responsively-org/responsively-app-releases/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
 		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
