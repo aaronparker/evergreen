@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2303.788
 
 * Adds `ResponsivelyApp`
 * Addresses a change in source update data for `VMwareHorizonClient` [#460](https://github.com/aaronparker/evergreen/issues/460)
