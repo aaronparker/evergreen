@@ -4,8 +4,11 @@
 
 * Adds `ResponsivelyApp`
 * Addresses a change in source update data for `VMwareHorizonClient` [#460](https://github.com/aaronparker/evergreen/issues/460)
+* Fixes an issue in `Export-EvergreenApp` [#463](https://github.com/aaronparker/evergreen/issues/463)
 * Fixes an issue with `AWSCLI` where the incorrect version number would be returned
+* Fixes an issue with ESET applications where the version number for a specific language can be higher than other languages, and only releases for a single language is returned [#466](https://github.com/aaronparker/evergreen/issues/466)
 * Reverts changes to the URLs used by `OctopusTentacle`
+* Fix an issue with incorrect application name and URLs in `MicrosoftOutlook` [#465](https://github.com/aaronparker/evergreen/issues/465)
 
 ## 2301.787
 
