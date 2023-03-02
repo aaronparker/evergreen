@@ -8,7 +8,8 @@
 param ()
 
 BeforeDiscovery {
-    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty "Name"
+    $Uri = "https://evergreen-api.stealthpuppy.com/apps"
+    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name"
 }
 
 Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application: <application>" -ForEach $Applications {
