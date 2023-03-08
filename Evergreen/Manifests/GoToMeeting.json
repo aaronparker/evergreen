@@ -1,6 +1,6 @@
 ﻿{
-    "Name": "LogMeIn GoToMeeting",
-    "Source": "https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013",
+    "Name": "GoTo Meeting",
+    "Source": "https://support.goto.com/meeting/help/install-via-msi-windows",
     "Get": {
         "Update": {
             "Uri": ""

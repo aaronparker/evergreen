@@ -1,6 +1,6 @@
 ﻿{
     "Name": "GoTo Connect",
-    "Source": "https://www.goto.com/connect",
+    "Source": "https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments",
     "Get": {
         "Update": {
             "Uri": "https://goto-desktop.goto.com/machine/latest.yml",

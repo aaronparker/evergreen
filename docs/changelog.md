@@ -4,6 +4,10 @@
 
 * Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469)
 
+BREAKING CHANGES
+
+* Renames `LogMeInGoToMeeting` and `LogMeInGoToOpener` to `GoToMeeting` and `GoToOpener`
+
 ## 2303.788
 
 * Adds `ResponsivelyApp`
