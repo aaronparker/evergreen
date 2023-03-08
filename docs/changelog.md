@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469)
+
 ## 2303.788
 
 * Adds `ResponsivelyApp`
