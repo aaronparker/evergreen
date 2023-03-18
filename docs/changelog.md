@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469)
+* Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `MicrosoftAzurePipelinesAgent` [#472](https://github.com/aaronparker/evergreen/issues/472), `AutodeskFusion360`
 
 BREAKING CHANGES
 

@@ -1,4 +1,4 @@
-Function Get-Fusion360 {
+Function Get-AutodeskFusion360 {
     <#
         .SYNOPSIS
             Returns downloads for the latest Autodesk Fusion 360 releases.
@@ -24,10 +24,10 @@ Function Get-Fusion360 {
         if ($Null -ne $Url) {
             # Build object and output to the pipeline
             $PSObject = [PSCustomObject] @{
+                Version           = $Versions.'build-version'
                 BuildVersion      = $Versions.'build-version'
                 MajorBuildVersion = $Versions.'major-update-version'
-                Version           = $Versions.'build-version'
-                Type              = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                Type              = Get-FileType -File $Url
                 Filename          = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                 URI               = $Url
             }
