@@ -7,7 +7,7 @@
 			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=WKST-PLAYER-1701"
 		},
 		"Download": {
-			"Uri": "https://download3.vmware.com/software/player/file/#filename"
+			"Uri": "https://download3.vmware.com/software/WKST-PLAYER-1701/#filename"
 		}
 	},
 	"Install": {

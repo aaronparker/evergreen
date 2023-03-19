@@ -3,11 +3,11 @@
 	"Source": "https://www.vmware.com/products/workstation-pro.html",
 	"Get": {
 		"Update": {
-			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=WKST-1621-WIN&productId=1038",
-			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?downloadGroup=WKST-1621-WIN"
+			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=WKST-1701-WIN&productId=1376",
+			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?downloadGroup=WKST-1701-WIN"
 		},
 		"Download": {
-			"Uri": "https://download3.vmware.com/software/wkst/file/#filename"
+			"Uri": "https://download3.vmware.com/software/WKST-1701-WIN/#filename"
 		}
 	},
 	"Install": {
