@@ -1,4 +1,4 @@
-﻿# 251 Supported applications
+﻿# 255 Supported applications
 
 Evergreen `` supports the following applications:
 
@@ -37,6 +37,7 @@ Evergreen `` supports the following applications:
 | AtlassianSourcetree                   | Atlassian Sourcetree                                              | https://www.sourcetreeapp.com/                                                                   |
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                                    |
 | AutoDarkMode                          | Windows Auto Dark Mode                                            | https://github.com/AutoDarkMode/Windows-Auto-Night-Mode                                          |
+| AutodeskFusion360                     | Autodesk Fusion 360                                               | https://www.autodesk.com/products/fusion-360/overview                                            |
 | AWSCLI                                | AWS CLI                                                           | https://github.com/aws/aws-cli/                                                                  |
 | AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                              |
 | BeekeeperStudio                       | Beekeeper Studio                                                  | https://www.beekeeperstudio.io/                                                                  |
@@ -87,6 +88,9 @@ Evergreen `` supports the following applications:
 | GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                      |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                              |
 | GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
+| GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
+| GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |
+| GoToOpener                            | GoTo Opener                                                       | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi                 |
 | Gpg4win                               | Gpg4win                                                           | https://www.gpg4win.org/                                                                         |
 | Greenshot                             | Greenshot                                                         | https://getgreenshot.org/                                                                        |
 | gretl                                 | gretl                                                             | http://gretl.sourceforge.net/                                                                    |
@@ -113,8 +117,6 @@ Evergreen `` supports the following applications:
 | KeePass                               | KeePass Password Safe                                             | https://keepass.info/                                                                            |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                           |
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                                 |
-| LogMeInGoToMeeting                    | LogMeIn GoToMeeting                                               | https://support.goto.com/meeting/help/install-via-msi-windows-g2m010013                          |
-| LogMeInGoToOpener                     | LogMeIn GoToOpener                                                | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002       |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                                  |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                            |
 | Maximus5ConEmu                        | Maximus5 ConEmu                                                   | https://github.com/Maximus5/ConEmu                                                               |
@@ -125,6 +127,7 @@ Evergreen `` supports the following applications:
 | Microsoft365Apps                      | Microsoft 365 Apps                                                | https://www.microsoft.com/office                                                                 |
 | MicrosoftAzureDataStudio              | Microsoft Azure Data Studio                                       | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                          |
 | MicrosoftAzureFunctionsCoreTools      | Azure Functions Core Tools                                        | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                       |
+| MicrosoftAzurePipelinesAgent          | Microsoft Azure Pipelines Agent                                   | https://learn.microsoft.com/en-au/azure/devops/pipelines/agents/agents                           |
 | MicrosoftAzureStorageExplorer         | Microsoft Azure Storage Explorer                                  | https://azure.microsoft.com/en-au/features/storage-explorer/                                     |
 | MicrosoftAzureWindowsVMAgent          | MicrosoftAzureWindowsVMAgent                                      | https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows                |
 | MicrosoftBicep                        | Microsoft Bicep                                                   | https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview                     |
@@ -182,6 +185,7 @@ Evergreen `` supports the following applications:
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
 | PaintDotNetOfflineInstaller           | dotPDN LLC Paint.NET                                              | https://getpaint.net/                                                                            |
 | Pandoc                                | Pandoc                                                            | https://pandoc.org/                                                                              |
+| PDFArranger                           | PDF Arranger                                                      | https://github.com/pdfarranger/pdfarranger/                                                      |
 | PDFForgePDFCreator                    | pdfforge PDFCreator                                               | https://www.pdfforge.org/pdfcreator                                                              |
 | PeaZipPeaZip                          | PeaZip PeaZip                                                     | https://peazip.github.io/                                                                        |
 | PiriformCCleanerFree                  | Piriform CCleaner Free                                            | https://www.ccleaner.com/ccleaner                                                                |

@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2303.789
 
 * Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `MicrosoftAzurePipelinesAgent` [#472](https://github.com/aaronparker/evergreen/issues/472), `AutodeskFusion360`, `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `PDFArranger` [#471](https://github.com/aaronparker/evergreen/issues/471)
 * Adds a temporary fix for `VMwareWorkstationPlayer`, and `VMwareWorkstationPro` with new download URLs [#474](https://github.com/aaronparker/evergreen/issues/474)
