@@ -24,7 +24,7 @@ function Get-ESETEndpointSecurity {
 
         # Grab the JSON metadata from the returned object
         Write-Verbose -Message "$($MyInvocation.MyCommand): Filter for metadata and sorting updates."
-        $InfoData = (('{' + $(([Regex]::Matches($Metadata, '(?<=_{)(.*?)(?=}],"switch")')).Value) + '}]}').TrimStart("_") | ConvertFrom-Json).info
+        $InfoData = (('{' + $(([Regex]::Matches($Metadata, '(?<={)(.*?)(?=}],"switch")')).Value) + '}]}').TrimStart("_") | ConvertFrom-Json).info
 
         # Find all the supported languages because the versions can be different per language
         $Languages = $InfoData.Language | Select-Object -Unique

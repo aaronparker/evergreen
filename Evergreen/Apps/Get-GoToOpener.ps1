@@ -1,8 +1,5 @@
-﻿Function Get-LogMeInGoToOpener {
+﻿Function Get-GoToOpener {
     <#
-        .SYNOPSIS
-            Returns the available LogMeIn GoToOpener versions and download URIs.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

@@ -1,8 +1,5 @@
-﻿Function Get-LogMeInGoToMeeting {
+﻿Function Get-GoToMeeting {
     <#
-        .SYNOPSIS
-            Returns the available LogMeIn GoToMeeting versions and download URIs.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
@@ -17,7 +14,7 @@
     )
 
     # Step through each installer type
-    ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
+    foreach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
         # Resolve the URL to the target location
         $URI = Resolve-InvokeWebRequest -Uri $res.Get.Download.Uri[$item.Key]

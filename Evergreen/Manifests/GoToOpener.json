@@ -1,6 +1,6 @@
 ﻿{
-    "Name": "LogMeIn GoToOpener",
-    "Source": "https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi-g2m850002",
+    "Name": "GoTo Opener",
+    "Source": "https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi",
     "Get": {
         "Update": {
             "Uri": ""
