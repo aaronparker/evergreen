@@ -1,5 +1,5 @@
 {
-    "Name": "Microsoft Edge",
+    "Name": "Microsoft Edge WebDriver",
     "Source": "https://www.microsoft.com/edge",
     "Get": {
         "Update": {
