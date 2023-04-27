@@ -1,7 +1,7 @@
-Function Get-MicrosoftTeams2 {
+Function Get-MicrosoftTeamsPreview {
     <#
         .SYNOPSIS
-            Returns the available Microsoft Teams versions and download URIs.
+            Returns the available Microsoft Teams 2 Preview versions and download URIs.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
