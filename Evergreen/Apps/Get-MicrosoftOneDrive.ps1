@@ -46,13 +46,25 @@
                     Write-Output -InputObject $PSObject
                 }
 
+                if ([System.Boolean]($node.PSobject.Properties.name -match "arm64binary")) {
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $node.currentversion
+                        Architecture = Get-Architecture -String $node.arm64binary.url
+                        Ring         = $ring.Name
+                        Sha256       = $node.arm64binary.sha256hash
+                        Type         = [System.IO.Path]::GetExtension($node.arm64binary.url).Split(".")[-1]
+                        URI          = $node.arm64binary.url
+                    }
+                    Write-Output -InputObject $PSObject
+                }
+
                 if ([System.Boolean]($node.PSobject.Properties.name -match "msixbinary")) {
                     # Construct the output for MSIX; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
                         Version      = $node.currentversion
                         Architecture = Get-Architecture -String $node.msixbinary.url
                         Ring         = $ring.Name
-                        Sha256       = If ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } Else { "N/A" }
+                        Sha256       = if ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } else { "N/A" }
                         Type         = [System.IO.Path]::GetExtension($node.msixbinary.url).Split(".")[-1]
                         URI          = $node.msixbinary.url
                     }

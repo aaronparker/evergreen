@@ -1,5 +1,5 @@
 {
-    "Name": "Azure Functions Core Tools",
+    "Name": "Microsoft Azure Functions Core Tools",
     "Source": "https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local",
     "Get": {
         "Update": {

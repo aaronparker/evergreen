@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftTeamsPreview` which will return versions and installers for the Microsoft Teams preview. **Note**: this function will change in a future release once this version of Teams is out of preview
+* Adds `ARM64` architecture to `MicrosoftOneDrive`
+* Updates `Minitab` by removing version 19 and adding version 21
+* Updates internal function `Get-SourceForgeRepoRelease` to determine a download mirror and return that in URLs [#483](https://github.com/aaronparker/evergreen/issues/483)
+
 ## 2303.789
 
 * Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `MicrosoftAzurePipelinesAgent` [#472](https://github.com/aaronparker/evergreen/issues/472), `AutodeskFusion360`, `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `PDFArranger` [#471](https://github.com/aaronparker/evergreen/issues/471)

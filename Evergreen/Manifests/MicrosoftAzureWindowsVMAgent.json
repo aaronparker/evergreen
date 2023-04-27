@@ -1,5 +1,5 @@
 {
-	"Name": "MicrosoftAzureWindowsVMAgent",
+	"Name": "Microsoft Azure Windows VMAgent",
 	"Source": "https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows",
 	"Get": {
 		"Uri": "https://api.github.com/repos/Azure/WindowsVMAgent/releases/latest",
