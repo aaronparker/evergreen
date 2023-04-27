@@ -56,6 +56,10 @@
         throw "$($MyInvocation.MyCommand): Failed to find filename, folder, version number from: $($BestRelease.platform_releases.windows.filename)."
     }
 
+    # Find the mirror for the download
+    $Resolved = Resolve-SystemNetWebRequest -Uri $BestRelease.platform_releases.windows.url
+    $MirrorUrl = Split-Path -Path $Resolved.ResponseUri.AbsoluteUri -Parent
+
     # Get the downloads XML feed and select the latest item via the $Version value
     $params = @{
         Uri         = "$($Download.Feed)$Folder"
@@ -70,11 +74,18 @@
     # For each filtered file, build a release object
     foreach ($item in $fileItems) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $($item.link)."
-        $Url = "$($Download.Uri)$($item.description.'#cdata-section')" -replace " ", "%20"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): file: $($item.description.'#cdata-section')"
+
+        # Build the URL to the file using the mirror captured above
+        $Url = "$($MirrorUrl)/$(Split-Path -Path $item.description.'#cdata-section' -Leaf)" -replace " ", "%20"
+
+        # Create the output object
         $PSObject = [PSCustomObject] @{
             Version      = $Version
             Architecture = Get-Architecture -String $Url
             Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+            Size         = $item.content.filesize
+            Md5          = $item.content.hash.'#text'
             URI          = $Url
         }
         Write-Output -InputObject $PSObject
