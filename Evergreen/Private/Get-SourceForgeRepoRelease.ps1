@@ -1,11 +1,11 @@
-﻿Function Get-SourceForgeRepoRelease {
+﻿function Get-SourceForgeRepoRelease {
     <#
         .SYNOPSIS
             Validates a JSON string returned from a SourceForge releases API and returns a formatted object
             Example: https://sourceforge.net/projects/sevenzip/best_release.json
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
@@ -58,7 +58,7 @@
 
     # Find the mirror for the download
     $Resolved = Resolve-SystemNetWebRequest -Uri $BestRelease.platform_releases.windows.url
-    $MirrorUrl = Split-Path -Path $Resolved.ResponseUri.AbsoluteUri -Parent
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Resolve mirror to: $($Resolved.ResponseUri.Host)."
 
     # Get the downloads XML feed and select the latest item via the $Version value
     $params = @{
@@ -68,16 +68,24 @@
     $Content = Invoke-RestMethodWrapper @params
 
     # Filter items for file types that we've included in the manifest
-    $fileItems = $Content | Where-Object { ($_.link -replace $Download.ReplaceText.Link, "") -match $Download.MatchFileTypes }
+    $FileItems = $Content | Where-Object { ($_.link -replace $Download.ReplaceText.Link, "") -match $Download.MatchFileTypes }
     Write-Verbose -Message "$($MyInvocation.MyCommand): found $($fileItems.Count) items."
 
     # For each filtered file, build a release object
-    foreach ($item in $fileItems) {
+    foreach ($item in $FileItems) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): matched: $($item.link)."
         Write-Verbose -Message "$($MyInvocation.MyCommand): file: $($item.description.'#cdata-section')"
 
-        # Build the URL to the file using the mirror captured above
-        $Url = "$($MirrorUrl)/$(Split-Path -Path $item.description.'#cdata-section' -Leaf)" -replace " ", "%20"
+        #region Build the URL to the file using the mirror captured above
+        # Remove the file name from the path segments; # Build the URL path using the mirror and the file name for that specific item
+        $Segments = $Resolved.ResponseUri.Segments | Where-Object { $_ -ne $Resolved.ResponseUri.Segments[-1] }
+        $Url = @(
+            "https://",
+            $Resolved.ResponseUri.Host,
+            ($Segments -join ""),
+            $(Split-Path -Path $item.description.'#cdata-section' -Leaf) -replace " ", "%20"
+        ) -join ""
+        #endregion
 
         # Create the output object
         $PSObject = [PSCustomObject] @{
