@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fix an issue in `Get-SourceForgeRepoRelease.ps1` - fix an issue introduced in `2304.790` on Windows PowerShell where URLs are being returned with `\` instead of `/` - updates the approach to building the file URL path [#483](https://github.com/aaronparker/evergreen/issues/483)
+
 ## 2304.790
 
 * Adds `MicrosoftTeamsPreview` which will return versions and installers for the Microsoft Teams preview. **Note**: this function will change in a future release once this version of Teams is out of preview
