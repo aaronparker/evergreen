@@ -1,4 +1,4 @@
-﻿# 255 Supported applications
+﻿# 256 Supported applications
 
 Evergreen `` supports the following applications:
 
@@ -126,14 +126,14 @@ Evergreen `` supports the following applications:
 | Microsoft.NET                         | Microsoft .NET Desktop Runtime                                    | https://dotnet.microsoft.com/download/                                                           |
 | Microsoft365Apps                      | Microsoft 365 Apps                                                | https://www.microsoft.com/office                                                                 |
 | MicrosoftAzureDataStudio              | Microsoft Azure Data Studio                                       | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                          |
-| MicrosoftAzureFunctionsCoreTools      | Azure Functions Core Tools                                        | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                       |
+| MicrosoftAzureFunctionsCoreTools      | Microsoft Azure Functions Core Tools                              | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                       |
 | MicrosoftAzurePipelinesAgent          | Microsoft Azure Pipelines Agent                                   | https://learn.microsoft.com/en-au/azure/devops/pipelines/agents/agents                           |
 | MicrosoftAzureStorageExplorer         | Microsoft Azure Storage Explorer                                  | https://azure.microsoft.com/en-au/features/storage-explorer/                                     |
-| MicrosoftAzureWindowsVMAgent          | MicrosoftAzureWindowsVMAgent                                      | https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows                |
+| MicrosoftAzureWindowsVMAgent          | Microsoft Azure Windows VMAgent                                   | https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows                |
 | MicrosoftBicep                        | Microsoft Bicep                                                   | https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview                     |
 | MicrosoftBotFrameworkEmulator         | Microsoft Bot Framework Emulator                                  | https://github.com/microsoft/BotFramework-Emulator/                                              |
 | MicrosoftEdge                         | Microsoft Edge                                                    | https://www.microsoft.com/edge                                                                   |
-| MicrosoftEdgeDriver                   | Microsoft Edge                                                    | https://www.microsoft.com/edge                                                                   |
+| MicrosoftEdgeDriver                   | Microsoft Edge WebDriver                                          | https://www.microsoft.com/edge                                                                   |
 | MicrosoftEdgeWebView2Runtime          | Microsoft Edge WebView2 Runtime                                   | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                                   |
 | MicrosoftFSLogixApps                  | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                              |
 | MicrosoftOneDrive                     | Microsoft OneDrive                                                | https://onedrive.live.com/                                                                       |
@@ -142,6 +142,7 @@ Evergreen `` supports the following applications:
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                          |
 | MicrosoftSsms                         | Microsoft SQL Server Management Studio                            | https://go.microsoft.com/fwlink/?LinkId=531355                                                   |
 | MicrosoftTeams                        | Microsoft Teams                                                   | https://www.microsoft.com/teams                                                                  |
+| MicrosoftTeamsPreview                 | Microsoft Teams 2 Preview                                         | https://www.microsoft.com/teams                                                                  |
 | MicrosoftTerminal                     | Microsoft Terminal                                                | https://github.com/microsoft/terminal/                                                           |
 | MicrosoftVdot                         | Microsoft Virtual Desktop Optimization Tool                       | https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool                    |
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                              |

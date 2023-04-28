@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2304.790
 
 * Adds `MicrosoftTeamsPreview` which will return versions and installers for the Microsoft Teams preview. **Note**: this function will change in a future release once this version of Teams is out of preview
 * Adds `ARM64` architecture to `MicrosoftOneDrive`
