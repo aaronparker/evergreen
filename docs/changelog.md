@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Update `MicrosoftWvdMultimediaRedirection` to remove file size as value is not returned from Microsoft source
+
 ## 2304.791
 
 * Fix an issue in `Get-SourceForgeRepoRelease.ps1` - fix an issue introduced in `2304.790` on Windows PowerShell where URLs are being returned with `\` instead of `/` - updates the approach to building the file URL path [#483](https://github.com/aaronparker/evergreen/issues/483)
