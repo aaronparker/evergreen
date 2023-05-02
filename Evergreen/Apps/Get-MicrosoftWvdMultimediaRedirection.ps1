@@ -9,9 +9,9 @@ function Get-MicrosoftWvdMultimediaRedirection {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -28,18 +28,21 @@ function Get-MicrosoftWvdMultimediaRedirection {
         try {
             # Match filename
             $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found filename: $Filename."
         }
         catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match filename from `"$($Content.'Content-Disposition')`"."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match filename from '$($Content.'Content-Disposition')'."
         }
 
         try {
             # Match version
             $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
         }
         catch {
             $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersionFallback).Captures.Groups[1].Value
-            Write-Warning -Message "$($MyInvocation.MyCommand): Unable to determine a version number from `"$($Content.'Content-Disposition')`"."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
+            Write-Warning -Message "$($MyInvocation.MyCommand): Unable to determine a version number from '$($Content.'Content-Disposition')'."
         }
 
         # Construct the output; Return the custom object to the pipeline
@@ -47,13 +50,9 @@ function Get-MicrosoftWvdMultimediaRedirection {
             Version      = $Version
             Architecture = Get-Architecture -String $Filename
             Date         = $Content.'Last-Modified'[0]
-            Size         = $Content.'Content-Length'[0]
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
         }
         Write-Output -InputObject $PSObject
-    }
-    else {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Download.Uri)."
     }
 }
