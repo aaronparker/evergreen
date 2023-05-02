@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2305.792
 
 * Update `MicrosoftWvdMultimediaRedirection` to remove file size as value is not returned from Microsoft source
 
