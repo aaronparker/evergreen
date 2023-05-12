@@ -2,10 +2,10 @@ function Export-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
-    [CmdletBinding(SupportsShouldProcess = $True)]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipeline,
             HelpMessage = "Pass an application object from Get-EvergreenApp.")]
@@ -13,7 +13,7 @@ function Export-EvergreenApp {
         [System.Array] $InputObject,
 
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 1,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the JSON file.",
@@ -22,18 +22,16 @@ function Export-EvergreenApp {
         [System.IO.FileInfo] $Path
     )
 
-    begin {}
-
     process {
         if (Test-Path -Path $Path) {
-            try {
-                # Add the new details to the existing file content
-                $Content = Get-Content -Path $Path -Verbose:$VerbosePreference | ConvertFrom-Json
-                $InputObject += $Content
+            # Add the new details to the existing file content
+            $params = @{
+                Path        = $Path
+                ErrorAction = "Stop"
+                Verbose     = $VerbosePreference
             }
-            catch {
-                throw $_
-            }
+            $Content = Get-Content @params | ConvertFrom-Json -ErrorAction "Stop"
+            $InputObject += $Content
         }
 
         # Sort the content and keep unique versions
@@ -43,8 +41,8 @@ function Export-EvergreenApp {
         $OutputObject = $InputObject | Select-Object -Unique -Property $Properties
 
         # Export the data to file
-        $OutputObject | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $false } | `
-            ConvertTo-Json | `
+        $OutputObject | Sort-Object -Property @{ Expression = { [System.Version] $_.Version }; Descending = $false } -ErrorAction "SilentlyContinue" | `
+            ConvertTo-Json -ErrorAction "Stop" | `
             Out-File -FilePath $Path -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
 
         if ($PSCmdlet.ShouldProcess($Path, "Output to pipeline")) {
@@ -54,6 +52,4 @@ function Export-EvergreenApp {
             Write-Output -InputObject $Output
         }
     }
-
-    end {}
 }
