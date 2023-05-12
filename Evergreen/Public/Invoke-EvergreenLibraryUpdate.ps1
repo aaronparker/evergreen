@@ -37,13 +37,7 @@ function Invoke-EvergreenLibraryUpdate {
 
             if (Test-Path -Path $LibraryFile) {
                 Write-Verbose -Message "Library exists: $LibraryFile."
-                try {
-                    $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
-                }
-                catch {
-                    Write-Error -Message "Encountered an error reading library $LibraryFile"
-                    throw $_
-                }
+                $Library = Get-Content -Path $LibraryFile -ErrorAction "Stop" | ConvertFrom-Json -ErrorAction "Stop"
 
                 foreach ($Application in $Library.Applications) {
 
@@ -100,6 +94,4 @@ function Invoke-EvergreenLibraryUpdate {
             throw [System.IO.DirectoryNotFoundException]::New($Msg)
         }
     }
-
-    end {}
 }

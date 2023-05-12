@@ -23,9 +23,6 @@ function Get-EvergreenLibraryApp {
         [System.String] $Name
     )
 
-    begin {
-    }
-
     process {
         # Validate $Inventory has the required properties
         if ([System.Boolean]($Inventory.Inventory)) {
@@ -44,8 +41,5 @@ function Get-EvergreenLibraryApp {
         else {
             Write-Error -Message "Cannot find an application in the library that matches '$Name'"
         }
-    }
-
-    end {
     }
 }
