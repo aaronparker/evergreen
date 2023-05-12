@@ -3,11 +3,11 @@ Function Save-EvergreenApp {
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/save/", DefaultParameterSetName = "Path")]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpURI = "https://stealthpuppy.com/evergreen/save/", DefaultParameterSetName = "Path")]
     [Alias("sea")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipeline,
             HelpMessage = "Pass an application object from Get-EvergreenApp.")]
@@ -15,7 +15,7 @@ Function Save-EvergreenApp {
         [System.Management.Automation.PSObject] $InputObject,
 
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $false,
             Position = 1,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify a top-level directory path where the application installers will be saved into.",
@@ -23,17 +23,18 @@ Function Save-EvergreenApp {
         [System.IO.FileInfo] $Path,
 
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $false,
             Position = 1,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify a single directory path where all application installers will be saved into.",
             ParameterSetName = "CustomPath")]
+        [Alias("LiteralPath")]
         [System.IO.FileInfo] $CustomPath,
 
-        [Parameter(Mandatory = $False, Position = 2)]
+        [Parameter(Mandatory = $false, Position = 2)]
         [System.String] $Proxy,
 
-        [Parameter(Mandatory = $False, Position = 3)]
+        [Parameter(Mandatory = $false, Position = 3)]
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
@@ -41,10 +42,10 @@ Function Save-EvergreenApp {
         [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
 
-        [Parameter(Mandatory = $False)]
+        [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter] $Force,
 
-        [Parameter(Mandatory = $False)]
+        [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter] $NoProgress
     )
 
@@ -75,19 +76,13 @@ Function Save-EvergreenApp {
         }
         else {
             Write-Verbose -Message "Path does not exist: $NewPath."
-            try {
-                Write-Verbose -Message "Create: $NewPath."
-                $params = @{
-                    Path        = $NewPath
-                    ItemType    = "Container"
-                    ErrorAction = "SilentlyContinue"
-                }
-                New-Item @params | Out-Null
+            Write-Verbose -Message "Create: $NewPath."
+            $params = @{
+                Path        = $NewPath
+                ItemType    = "Container"
+                ErrorAction = "Stop"
             }
-            catch {
-                Write-Error -Message "Failed to create $NewPath"
-                throw $_
-            }
+            New-Item @params | Out-Null
         }
         #endregion
 
@@ -142,39 +137,30 @@ Function Save-EvergreenApp {
             }
 
             $DownloadFile = $(Join-Path -Path $OutPath -ChildPath $OutFile)
-            if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf" -ErrorAction "SilentlyContinue")) {
-                try {
-                    #region Download the file
-                    $params = @{
-                        Uri             = $Object.URI
-                        OutFile         = $DownloadFile
-                        UseBasicParsing = $True
-                        UserAgent       = $UserAgent
-                        ErrorAction     = "Continue"
-                    }
-                    if ($PSBoundParameters.ContainsKey("Proxy")) {
-                        $params.Proxy = $Proxy
-                    }
-                    if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
-                        $params.ProxyCredential = $ProxyCredential
-                    }
-                    # Download the file
-                    if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
-                        Invoke-WebRequest @params
-                    }
-                    #endregion
+            if ($PSBoundParameters.ContainsKey("Force") -or !(Test-Path -Path $DownloadFile -PathType "Leaf")) {
+                #region Download the file
+                $params = @{
+                    Uri             = $Object.URI
+                    OutFile         = $DownloadFile
+                    UseBasicParsing = $true
+                    UserAgent       = $UserAgent
+                    ErrorAction     = "Continue"
                 }
-                catch {
-                    throw $_
+                if ($PSBoundParameters.ContainsKey("Proxy")) {
+                    $params.Proxy = $Proxy
                 }
-                finally {
-                    if ($PSCmdlet.ShouldProcess($DownloadFile, "Output to pipeline")) {
-                        # Write the downloaded file path to the pipeline
-                        if (Test-Path -Path $DownloadFile) {
-                            Write-Verbose -Message "Successfully downloaded: $DownloadFile."
-                            Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
-                        }
-                    }
+                if ($PSBoundParameters.ContainsKey("ProxyCredential")) {
+                    $params.ProxyCredential = $ProxyCredential
+                }
+                # Download the file
+                if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {
+                    Invoke-WebRequest @params
+                }
+                #endregion
+                # Write the downloaded file path to the pipeline
+                if (Test-Path -Path $DownloadFile) {
+                    Write-Verbose -Message "Successfully downloaded: $DownloadFile."
+                    Write-Output -InputObject $(Get-ChildItem -Path $DownloadFile)
                 }
             }
             else {
