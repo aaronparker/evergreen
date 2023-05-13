@@ -1,6 +1,6 @@
 # Change log
 
-## 2305.792
+## 2305.795
 
 * Fixes an issue with `MicrosoftWvdInfraAgent` where the source no longer returns the download size [#490](https://github.com/aaronparker/evergreen/issues/490)
 * Updates private function `GitHubRepoRelease` to return a new property `InstallerType` with values for `Portable`, `User`, or `Debug` based on the installer type. This property has a default value of `Default` where none of the other types are supported

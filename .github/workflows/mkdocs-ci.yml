@@ -3,15 +3,19 @@ name: mkdocs-build
 on:
   push:
     paths:
-      - 'docs/**'
+      #- 'docs/**'
       - 'mkdocs.yml'
     branches:
       - main
+    tags:
+      - "v*.*"
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    name: Publish docs
+
     steps:
       - uses: actions/checkout@v3
 

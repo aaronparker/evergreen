@@ -1,7 +1,6 @@
 name: 'Validate main branch & update version'
 
 env:
-  BUILD_NUMBER: "769"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
@@ -12,12 +11,6 @@ on:
       - 'Evergreen/**.ps1'
       - 'Evergreen/**.psm1'
       - 'Evergreen/**.json'
-  # pull_request:
-  #   branches: [ "main" ]
-  #   paths:
-  #     - 'Evergreen/**.ps1'
-  #     - 'Evergreen/**.psm1'
-  #     - 'Evergreen/**.json'
 
 jobs:
   psscriptanalyzer:
@@ -221,7 +214,7 @@ jobs:
             # Importing the manifest to determine the version
             $Manifest = Test-ModuleManifest -Path $ManifestPath
             Write-Host "Old version is: $($Manifest.Version)"
-            [System.String]$NewVersion = New-Object -TypeName "System.Version" -ArgumentList ((Get-Date -Format "yyMM"), ([System.Int32]$env:GITHUB_RUN_NUMBER + [System.Int32]${{ env.BUILD_NUMBER }} ))
+            [System.String]$NewVersion = New-Object -TypeName "System.Version" -ArgumentList ((Get-Date -Format "yyMM"), ($Manifest.Version + [System.Int32]$env:GITHUB_RUN_NUMBER + 1 ))
             Write-Host "New version is: $NewVersion"
 
             # Update the manifest with the new version value and fix the weird string replace bug
