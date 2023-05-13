@@ -8,7 +8,7 @@
 * Fixes an issue with `Export-EvergreenApp` where the version property is not a proper version number [#491](https://github.com/aaronparker/evergreen/issues/491)
 * Some small code improvements in public functions
 
-## VERSION
+## 2305.793
 
 * Update `MicrosoftWvdMultimediaRedirection` to remove file size as value is not returned from Microsoft source
 
