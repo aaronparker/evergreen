@@ -37,7 +37,7 @@ Describe -Name "Get-InstallerType" {
 
         It "Returns Debug given an debug URL" {
             InModuleScope -ModuleName "Evergreen" {
-                $Url = "https://github.com/microsoft/PowerToys/releases/download/v0.69.1/PowerToysPortableDEBUG-0.69.1-arm64.exe"
+                $Url = "https://github.com/microsoft/PowerToys/releases/download/v0.69.1/PowerToysDEBUG-0.69.1-arm64.exe"
                 Get-InstallerType -String $Url | Should -Be "Debug"
             }
         }
