@@ -1,4 +1,4 @@
-Function Get-MicrosoftWvdInfraAgent {
+function Get-MicrosoftWvdInfraAgent {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Microsoft Windows Virtual Desktop Infrastructure agent.
@@ -34,10 +34,10 @@ Function Get-MicrosoftWvdInfraAgent {
             Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Value
             Architecture = Get-Architecture -String $Filename
             Date         = $Content.'Last-Modified'[0]
-            Size         = $Content.'Content-Length'[0]
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
         }
+        #if ($null -ne $Content.'Content-Length') { $PSObject | Add-Member -Name 'Size' -Type "NoteProperty" -Value $Content.'Content-Length'[0] }
         Write-Output -InputObject $PSObject
     }
 }

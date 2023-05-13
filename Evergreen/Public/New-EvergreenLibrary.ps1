@@ -23,13 +23,8 @@ function New-EvergreenLibrary {
     )
 
     begin {
-        try {
-            $LibraryJsonTemplate = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "EvergreenLibraryTemplate.json")
-            $Library = Get-Content -Path $LibraryJsonTemplate -Verbose:$VerbosePreference | ConvertFrom-Json
-        }
-        catch {
-            throw $_
-        }
+        $LibraryJsonTemplate = [System.IO.Path]::Combine($MyInvocation.MyCommand.Module.ModuleBase, "EvergreenLibraryTemplate.json")
+        $Library = Get-Content -Path $LibraryJsonTemplate  -ErrorAction "Stop" -Verbose:$VerbosePreference | ConvertFrom-Json -ErrorAction "Stop"
     }
 
     process {
@@ -38,21 +33,15 @@ function New-EvergreenLibrary {
             Write-Verbose -Message "Path exists: $Path."
         }
         else {
-            try {
-                $params = @{
-                    Path        = $Path
-                    ItemType    = "Container"
-                    ErrorAction = "SilentlyContinue"
-                    Verbose     = $VerbosePreference
-                }
-                Write-Verbose -Message "Path does not exist: $Path."
-                Write-Verbose -Message "Create: $Path."
-                New-Item @params | Out-Null
+            $params = @{
+                Path        = $Path
+                ItemType    = "Container"
+                ErrorAction = "Stop"
+                Verbose     = $VerbosePreference
             }
-            catch {
-                Write-Error -Message "Failed to create $Path"
-                throw $_
-            }
+            Write-Verbose -Message "Path does not exist: $Path."
+            Write-Verbose -Message "Create: $Path."
+            New-Item @params | Out-Null
         }
         #endregion
 
@@ -61,13 +50,8 @@ function New-EvergreenLibrary {
             Write-Verbose -Message "Library exists: $Path."
         }
         else {
-            try {
-                $Library.Name = $Name
-                $Library | ConvertTo-Json | Out-File -FilePath $LibraryFile -Encoding "Utf8" -NoNewline -Verbose:$VerbosePreference
-            }
-            catch {
-                throw $_
-            }
+            $Library.Name = $Name
+            $Library | ConvertTo-Json -ErrorAction "Stop" | Out-File -FilePath $LibraryFile -Encoding "Utf8" -NoNewline -ErrorAction "Stop" -Verbose:$VerbosePreference
         }
     }
 
