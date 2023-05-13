@@ -177,13 +177,14 @@ function Get-GitHubRepoRelease {
 
                             # Build the output object
                             $PSObject = [PSCustomObject] @{
-                                Version      = $version
-                                Platform     = Get-Platform -String $asset.browser_download_url
-                                Architecture = Get-Architecture -String $asset.browser_download_url
-                                Type         = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
-                                Date         = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
-                                Size         = $asset.size
-                                URI          = $asset.browser_download_url
+                                Version       = $version
+                                Platform      = Get-Platform -String $asset.browser_download_url
+                                Architecture  = Get-Architecture -String $asset.browser_download_url
+                                Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
+                                InstallerType = Get-InstallerType -String $asset.browser_download_url
+                                Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
+                                Size          = $asset.size
+                                URI           = $asset.browser_download_url
                             }
                             if ($PSObject.Platform -eq "Windows") {
                                 Write-Output -InputObject $PSObject
