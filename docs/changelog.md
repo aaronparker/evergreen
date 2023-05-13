@@ -2,6 +2,14 @@
 
 ## VERSION
 
+* Fixes an issue with `MicrosoftWvdInfraAgent` where the source no longer returns the download size [#490](https://github.com/aaronparker/evergreen/issues/490)
+* Updates private function `GitHubRepoRelease` to return a new property `InstallerType` with values for `Portable`, `User`, or `Debug` based on the installer type. This property has a default value of `Default` where none of the other types are supported
+* Adds private function `Get-InstallerType` to determine the installer type
+* Fixes an issue with `Export-EvergreenApp` where the version property is not a proper version number [#491](https://github.com/aaronparker/evergreen/issues/491)
+* Some small code improvements in public functions
+
+## VERSION
+
 * Update `MicrosoftWvdMultimediaRedirection` to remove file size as value is not returned from Microsoft source
 
 ## 2304.791
