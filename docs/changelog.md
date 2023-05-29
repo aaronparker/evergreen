@@ -2,7 +2,9 @@
 
 ## VERSION
 
-* Adds `OCSInventoryWindowsAgent`
+* Adds `OCSInventoryWindowsAgent` [#496](https://github.com/aaronparker/evergreen/issues/496), `GoogleDrive` [#480](https://github.com/aaronparker/evergreen/issues/480), `gsudo` [#464](https://github.com/aaronparker/evergreen/issues/464)
+* Removes HDX RTME from `CitrixWorkspaceApp` [#493](https://github.com/aaronparker/evergreen/issues/493)
+* Fixes an issue with the `-Body` parameter on the internal function `Invoke-RestMethodWrapper`
 
 ## 2305.795
 
