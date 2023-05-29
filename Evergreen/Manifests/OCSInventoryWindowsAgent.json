@@ -1,0 +1,23 @@
+{
+	"Name": "OCS Inventory Windows Agent",
+	"Source": "http://https://ocsinventory-ng.org/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/OCSInventory-NG/WindowsAgent/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.zip$"
+	},
+	"Install": {
+		"Setup": "",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": [
+			]
+		},
+		"Virtual": {
+			"Arguments": "/",
+			"PostInstall": [
+			]
+		}
+	}
+}

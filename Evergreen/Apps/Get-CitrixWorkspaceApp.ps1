@@ -1,4 +1,4 @@
-﻿Function Get-CitrixWorkspaceApp {
+﻿function Get-CitrixWorkspaceApp {
     <#
         .SYNOPSIS
             Returns the current Citrix Workspace app releases and HDX RTME release.
@@ -8,9 +8,9 @@
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -24,23 +24,25 @@
     $UpdateFeed = Invoke-RestMethodWrapper @params
 
     # Convert content to XML document
-    If ($Null -ne $UpdateFeed) {
+    if ($null -ne $UpdateFeed) {
+
+        # Filter the update feed for just the installers we want
+        $Installers = $UpdateFeed.Catalog.Installers | `
+            Where-Object { $_.name -eq $res.Get.Update.FilterName } | `
+            Select-Object -ExpandProperty $res.Get.Update.ExpandProperty
 
         # Walk through each node to output details
-        ForEach ($Installer in $UpdateFeed.Catalog.Installers) {
-            ForEach ($node in $Installer.Installer) {
-                $PSObject = [PSCustomObject] @{
-                    Version = $node.Version
-                    Title   = $($node.ShortDescription -replace ":", "")
-                    Size    = $(If ($node.Size) { $node.Size } Else { "Unknown" })
-                    Hash    = $node.Hash
-                    Date    = ConvertTo-DateTime -DateTime $node.StartDate -Pattern $res.Get.Update.DatePattern
-                    Stream  = $node.Stream
-                    URI     = "$($res.Get.Download.Uri)$($node.DownloadURL)"
-                }
-                Write-Output -InputObject $PSObject
+        foreach ($Installer in $Installers) {
+            $PSObject = [PSCustomObject] @{
+                Version = $Installer.Version
+                Title   = $($Installer.ShortDescription -replace ":", "")
+                Size    = $(if ($Installer.Size) { $Installer.Size } else { "Unknown" })
+                Hash    = $Installer.Hash
+                Date    = ConvertTo-DateTime -DateTime $Installer.StartDate -Pattern $res.Get.Update.DatePattern
+                Stream  = $Installer.Stream
+                URI     = "$($res.Get.Download.Uri)$($Installer.DownloadURL)"
             }
+            Write-Output -InputObject $PSObject
         }
     }
-    Write-Warning -Message "$($MyInvocation.MyCommand): HDX RTME for Windows version returned is out of date. See $($script:resourceStrings.Uri.Issues) for more information."
 }

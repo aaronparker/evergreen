@@ -25,7 +25,8 @@ function Invoke-RestMethodWrapper {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.Collections.Hashtable] $Body,
+        #[System.Collections.Hashtable] $Body,
+        [System.Object] $Body,
 
         [Parameter()]
         [ValidateSet("Default", "Get", "Head", "Post")]

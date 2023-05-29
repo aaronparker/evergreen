@@ -6,7 +6,9 @@
             "Uri": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml",
             "UserAgent": "CitrixReceiver/19.7.0.15 WinOS/10.0.18362",
             "XmlNode": "//Installer",
-            "DatePattern": "yyyy-MM-dd"
+            "DatePattern": "yyyy-MM-dd",
+            "FilterName": "Receiver",
+            "ExpandProperty": "Installer"
         },
         "Download": {
             "Uri": "https://downloadplugins.citrix.com/ReceiverUpdates/Prod"
