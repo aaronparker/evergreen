@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `OCSInventoryWindowsAgent`
+
 ## 2305.795
 
 * Fixes an issue with `MicrosoftWvdInfraAgent` where the source no longer returns the download size [#490](https://github.com/aaronparker/evergreen/issues/490)
