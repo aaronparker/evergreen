@@ -2,8 +2,8 @@ name: Publish module
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     tags:
       - "v*.*"
 
