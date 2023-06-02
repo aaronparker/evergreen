@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Add `mySQLWorkbench` [[#499](https://github.com/aaronparker/evergreen/issues/499)
+* Update `Get-GitHubRepoRelease` to support finding a version number from repository tags
+
 ## 2305.798
 
 * Adds `OCSInventoryWindowsAgent` [#496](https://github.com/aaronparker/evergreen/issues/496), `GoogleDrive` [#480](https://github.com/aaronparker/evergreen/issues/480), `gsudo` [#464](https://github.com/aaronparker/evergreen/issues/464)

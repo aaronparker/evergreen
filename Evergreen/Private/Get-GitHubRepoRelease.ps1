@@ -11,7 +11,7 @@ function Get-GitHubRepoRelease {
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [ValidateScript( {
-                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)") {
+                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/tags|/releases)") {
                     $true
                 }
                 else {
@@ -143,14 +143,27 @@ function Get-GitHubRepoRelease {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) asset/s."
 
             if ($PSBoundParameters.ContainsKey("ReturnVersionOnly")) {
-                # Return just the version string
-                try {
-                    $version = [RegEx]::Match($release[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                if ($Uri -match "^*tags$") {
+                    try {
+                        # Uri matches tags fo the repo; find the latest tag
+                        $version = [RegEx]::Match($release[0].name, $MatchVersion).Captures.Groups[1].Value
+                    }
+                    catch {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
+                        $version = $release[0].name
+                    }
                 }
-                catch {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
-                    $version = $item.$VersionTag
+                else {
+                    try {
+                        # Uri matches releases for the repo; return just the version string
+                        $version = [RegEx]::Match($release[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                    }
+                    catch {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
+                        $version = $item.$VersionTag
+                    }
                 }
+
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
                     Version = $version
