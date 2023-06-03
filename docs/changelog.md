@@ -2,8 +2,9 @@
 
 ## VERSION
 
-* Add `mySQLWorkbench` [[#499](https://github.com/aaronparker/evergreen/issues/499)
+* Add `mySQLWorkbench` [#499](https://github.com/aaronparker/evergreen/issues/499)
 * Update `Get-GitHubRepoRelease` to support finding a version number from repository tags
+* Fix an issue in `ChromiumChromeDriver` where the version doesn't match Google Chrome [#500](https://github.com/aaronparker/evergreen/issues/500)
 
 ## 2305.798
 

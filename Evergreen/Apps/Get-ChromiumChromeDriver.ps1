@@ -15,7 +15,7 @@ function Get-ChromiumChromeDriver {
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
     $UpdateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri.Chrome
-    if ($Null -ne $UpdateFeed) {
+    if ($null -ne $UpdateFeed) {
 
         # Read the JSON and build an array of platform, channel, version
         foreach ($channel in $res.Get.Update.Channels) {
@@ -29,15 +29,25 @@ function Get-ChromiumChromeDriver {
                 $UpdateItem = $UpdateFeed.versions | Where-Object { ($_.channel -eq $channel) -and ($_.os -eq $platform) }
                 foreach ($item in $UpdateItem) {
 
-                    # Query for the matching ChromeDriver version
-                    $Version = [System.Version]$item.Version
-                    $params = @{
-                        Uri          = $res.Get.Update.Uri.Driver -replace "#version", "$($Version.Major).$($Version.Minor).$($Version.Build)"
-                        ReturnObject = "Content"
+                    try {
+                        # Query for the matching ChromeDriver version
+                        $Version = [System.Version]$item.Version
+                        $params = @{
+                            Uri          = $res.Get.Update.Uri.Driver -replace "#version", "$($Version.Major).$($Version.Minor).$($Version.Build)"
+                            ReturnObject = "Content"
+                        }
+                        $DriverVersion = Invoke-WebRequestWrapper @params
                     }
-                    $DriverVersion = Invoke-WebRequestWrapper @params
+                    catch {
+                        # If the URL above fails, the version doesn't match Chrome, so try without the version number
+                        $params = @{
+                            Uri          = $res.Get.Update.Uri.Driver -replace "_#version", ""
+                            ReturnObject = "Content"
+                        }
+                        $DriverVersion = Invoke-WebRequestWrapper @params
+                    }
 
-                    if ($Null -ne $DriverVersion) {
+                    if ($null -ne $DriverVersion) {
                         # Output the version and URI object
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($item.Count) item/s for $($channel.Name), $platform."
                         $PSObject = [PSCustomObject] @{
