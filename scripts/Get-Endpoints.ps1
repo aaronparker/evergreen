@@ -1,33 +1,25 @@
-# Read the application manifests and output URLs as a PSObject
-# $UrlMatch = "(http|https):\/\/(.*[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+)/"
-# $UrlMatch = "(?:(?:http|https):\/\/)(.*[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+)"
-# Select-String -Path "/Users/aaron/projects/evergreen/Evergreen/Manifests/MicrosoftEdge.json" -Pattern $UrlMatch
+function Get-ApplicationEndpoint {
+    <#
+        Retrieve the list of endpoints for a given application from the Evergreen API
+        for input into firewall rules
+    #>
+    [Parameter()]
+    [System.String[]] $Apps = @("MicrosoftWvdRtcService",
+        "MicrosoftWvdMultimediaRedirection",
+        "MicrosoftFSLogixApps",
+        "Microsoft.NET",
+        "MicrosoftEdge",
+        "MicrosoftOneDrive",
+        "MicrosoftTeams",
+        "Microsoft365Apps",
+        "AdobeAcrobatReaderDC",
+        "RemoteDisplayAnalyzer")
 
-$Namespace = "037069e7da3e4944be2cbc97c92409a5"
-$UrlMatch = "http[s]?\:\/\/([^\/?#]+)(?:[\/?#]|$)"
+    $Versions = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions"
+    $Versions | Where-Object { $_.Application -in $Apps } | Select-Object -ExpandProperty "Endpoints" -Unique | Write-Output
 
-# Get endpoint URLs from Evergreen manifests and post to the version endpoint
-$Endpoints = Get-ChildItem -Path "/Users/aaron/projects/evergreen/Evergreen/Manifests" -Recurse -Include "*.json" | ForEach-Object {
-    [PSCustomObject]@{
-        Application = $_.BaseName
-        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | `
-                        Select-Object -Unique | `
-                        Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
-    }
+    $Downloads = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/downloads"
+    $Downloads | Where-Object { $_.Application -in $Apps } | Select-Object -ExpandProperty "Endpoints" -Unique | Write-Output
 }
-$Endpoints | ConvertTo-Json | Out-File -FilePath "./Endpoints.json" -Encoding "Utf8" -NoNewline
-wrangler kv:key put "endpoints-versions" --path="./Endpoints.json" --namespace-id=$Namespace
-Remove-Item -Path "./Endpoints.json"
 
-# Get endpoint URLs for downloads from the Evergreen AppTracker and port to the downloads endpoint
-$Endpoints = Get-ChildItem -Path "/Users/aaron/projects/apptracker/json" -Recurse -Include "*.json" | ForEach-Object {
-    [PSCustomObject]@{
-        Application = $_.BaseName
-        Endpoints   = ((((Select-String -Path $_.FullName -Pattern $UrlMatch).Matches.Value | `
-                        Select-Object -Unique | `
-                        Sort-Object) -replace "http://|https://", "").TrimEnd("/|#"))
-    }
-}
-$Endpoints | ConvertTo-Json | Out-File -FilePath "./Endpoints.json" -Encoding "Utf8" -NoNewline
-wrangler kv:key put "endpoints-downloads" --path="./Endpoints.json" --namespace-id=$Namespace
-Remove-Item -Path "./Endpoints.json"
+Get-ApplicationEndpoint | Select-Object -Unique
