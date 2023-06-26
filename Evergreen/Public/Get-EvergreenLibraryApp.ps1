@@ -36,7 +36,7 @@ function Get-EvergreenLibraryApp {
         $Application = $Inventory.Inventory | Where-Object { $_.ApplicationName -eq $Name }
         if ($null -ne $Application) {
             Write-Verbose -Message "Filtering library inventory for '$Name'"
-            Write-Output -InputObject ($Application.Versions | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true })
+            Write-Output -InputObject ($Application.Versions | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
         }
         else {
             Write-Error -Message "Cannot find an application in the library that matches '$Name'"
