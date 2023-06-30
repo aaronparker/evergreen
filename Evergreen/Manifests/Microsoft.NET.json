@@ -7,8 +7,7 @@
             "ReplaceText": "#channel",
             "Channels": [
                 "Current",
-                "LTS",
-                "3.1"
+                "LTS"
             ]
         },
         "Download": {
