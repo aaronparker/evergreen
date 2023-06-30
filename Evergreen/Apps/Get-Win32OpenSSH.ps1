@@ -1,4 +1,4 @@
-Function Get-Win32OpenSSH {
+function Get-Win32OpenSSH {
     <#
         .SYNOPSIS
             Returns the available Win32-OpenSSH versions.
