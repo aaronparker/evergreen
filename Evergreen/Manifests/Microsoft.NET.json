@@ -1,5 +1,5 @@
 {
-    "Name": "Microsoft .NET Desktop Runtime",
+    "Name": "Microsoft .NET",
     "Source": "https://dotnet.microsoft.com/download/",
     "Get": {
         "Update": {
@@ -16,7 +16,8 @@
             "Installers": [
                 "windowsdesktop",
                 "runtime",
-                "sdk"
+                "sdk",
+                "aspnetcore-runtime"
             ]
         }
     },
