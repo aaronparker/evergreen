@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2305.801
 
 * Add `mySQLWorkbench` [#499](https://github.com/aaronparker/evergreen/issues/499), `MicrosoftAzureCLI` [#506](https://github.com/aaronparker/evergreen/issues/506)
 * Adds MSI file type to `Win32OpenSSH` [#505](https://github.com/aaronparker/evergreen/issues/505)
