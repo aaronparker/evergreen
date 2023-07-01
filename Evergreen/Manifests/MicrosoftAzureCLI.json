@@ -1,0 +1,21 @@
+{
+	"Name": "Microsoft Azure CLI",
+	"Source": "https://learn.microsoft.com/en-au/cli/azure/",
+	"Get": {
+		"Uri": "https://api.github.com/repos/Azure/azure-cli/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$"
+	},
+	"Install": {
+		"Setup": "",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}

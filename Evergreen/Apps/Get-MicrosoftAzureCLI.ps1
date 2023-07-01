@@ -1,8 +1,5 @@
-function Get-Win32OpenSSH {
+function Get-MicrosoftAzureCLI {
     <#
-        .SYNOPSIS
-            Returns the available Win32-OpenSSH versions.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy

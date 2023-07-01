@@ -2,8 +2,14 @@
 
 ## VERSION
 
-* Add `mySQLWorkbench` [[#499](https://github.com/aaronparker/evergreen/issues/499)
+* Add `mySQLWorkbench` [#499](https://github.com/aaronparker/evergreen/issues/499), `MicrosoftAzureCLI` [#506](https://github.com/aaronparker/evergreen/issues/506)
+* Adds MSI file type to `Win32OpenSSH` [#505](https://github.com/aaronparker/evergreen/issues/505)
+* Adds Windows Server Hosting and ASP Net Core Runtimes to `Microsoft.NET` [#501](https://github.com/aaronparker/evergreen/issues/501)
+* Update `Get-EvergreenLibraryApp` to account for non-standard version numbers [#502](https://github.com/aaronparker/evergreen/issues/502)
 * Update `Get-GitHubRepoRelease` to support finding a version number from repository tags
+* Fix a duplicate object issue in `Anaconda` [#503](https://github.com/aaronparker/evergreen/issues/503)
+* Fix an issue in `ChromiumChromeDriver` where the version doesn't match Google Chrome [#500](https://github.com/aaronparker/evergreen/issues/500)
+* Removes version `3.1` from `Microsoft.NET` [#507](https://github.com/aaronparker/evergreen/issues/507)
 
 ## 2305.798
 
