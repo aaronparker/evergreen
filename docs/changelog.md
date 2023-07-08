@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `NodeJs` [#510](https://github.com/aaronparker/evergreen/issues/510)
+
 ## 2305.801
 
 * Add `mySQLWorkbench` [#499](https://github.com/aaronparker/evergreen/issues/499), `MicrosoftAzureCLI` [#506](https://github.com/aaronparker/evergreen/issues/506)
