@@ -73,28 +73,18 @@ Function Get-EvergreenApp {
                     Write-Verbose -Message "Adding AppParams."
                     $params += $AppParams
                 }
+                # Run the application function and sort the output
                 Write-Verbose -Message "Calling: Get-$Name."
-                $Output = & Get-$Name @params
+                & Get-$Name | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue"
             }
             catch {
-                Write-Error -Message "Internal application function: $Function, failed with error: $($_.Exception.Message)"
+                $Msg = "Run 'Get-EvergreenApp -Name `"$Name`" -Verbose' to review additional details for troubleshooting."
+                Write-Warning -Message $Msg
+                throw $_
             }
             finally {
                 if ($PSBoundParameters.ContainsKey("Proxy")) {
                     Remove-ProxyEnv
-                }
-            }
-
-            # if we get an object, return it to the pipeline
-            # Sort object on the Version property
-            if ($PSCmdlet.ShouldProcess($Function, "Return output")) {
-                if ($Output) {
-                    Write-Verbose -Message "Output result from: $Function."
-                    Write-Output -InputObject ($Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue")
-                }
-                else {
-                    $Msg = "Application function Get-$Name ran, but we failed to capture any output.`nRun 'Get-EvergreenApp -Name $Name -Verbose' to review additional details."
-                    throw [System.NullReferenceException]::New($Msg)
                 }
             }
         }
