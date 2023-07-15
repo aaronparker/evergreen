@@ -37,45 +37,20 @@ function Get-GitHubRepoRelease {
     )
 
     begin {
-
-        # If GITHUB_TOKEN or GH_TOKEN exists, let's add that to the API requests
-        if (Test-Path -Path "env:GITHUB_TOKEN") {
-            $Token = $true
-            $TokenValue = $env:GITHUB_TOKEN
-        }
-        elseif (Test-Path -Path "env:GH_TOKEN") {
-            $Token = $true
-            $TokenValue = $env:GH_TOKEN
-        }
-
-        # Check that we aren't rate limited
-        # https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-        $params = @{
-            Uri = "https://api.github.com/rate_limit"
-        }
-        if ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Checking for how many requests to the GitHub API we have left."
-        $GitHubRate = Invoke-RestMethodWrapper @params
+        $RateLimit = Get-GitHubRateLimit
     }
 
     process {
-        if ($GitHubRate.rate.remaining -eq 0) {
+        if ($RateLimit.remaining -eq 0) {
             # We're rate limited, so output a special object
-            Write-Warning -Message "$($MyInvocation.MyCommand): Requests to GitHub are being rate limited."
-            $ResetWindow = [System.TimeZone]::CurrentTimeZone.ToLocalTime(([System.DateTime]'1/1/1970').AddSeconds($GitHubRate.rate.reset))
-            Write-Warning -Message "$($MyInvocation.MyCommand): Rate limit window resets at: $($ResetWindow.ToShortDateString()) $($ResetWindow.ToShortTimeString())."
-            $PSObject = [PSCustomObject] @{
+            [PSCustomObject] @{
                 Version = "RateLimited"
                 URI     = "https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting"
-            }
-            Write-Output -InputObject $PSObject
+            } | Write-Output
         }
         else {
-
-            # Retrieve the releases from the GitHub API
-            Write-Verbose -Message "$($MyInvocation.MyCommand): We have $($GitHubRate.rate.remaining) requests left to the GitHub API in this window."
             try {
-
+                # Retrieve the releases from the GitHub API
                 # Use TLS for connections
                 $SslProtocol = "Tls12"
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Set TLS to $SslProtocol."
@@ -86,7 +61,7 @@ function Get-GitHubRepoRelease {
                 # https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-latest-release
                 $params = @{
                     ContentType        = "application/vnd.github.v3+json"
-                    ErrorAction        = "SilentlyContinue"
+                    ErrorAction        = "Stop"
                     MaximumRedirection = 0
                     DisableKeepAlive   = $true
                     UseBasicParsing    = $true
@@ -99,12 +74,17 @@ function Get-GitHubRepoRelease {
                 if (Test-ProxyEnv -Creds) {
                     $params.ProxyCredential = $script:EvergreenProxyCreds
                 }
-                if ($Token) { $params.Headers = @{ Authorization = "token $TokenValue" } }
+                # If GITHUB_TOKEN or GH_TOKEN exists, let's add that to the API request
+                if (Test-Path -Path "env:GITHUB_TOKEN") {
+                    $params.Headers = @{ Authorization = "token $env:GITHUB_TOKEN" }
+                }
+                elseif (Test-Path -Path "env:GH_TOKEN") {
+                    $params.Headers = @{ Authorization = "token $env:GH_TOKEN" }
+                }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
                 $release = Invoke-RestMethod @params
             }
             catch {
-                Write-Error -Message "$($MyInvocation.MyCommand): Error querying GitHub at: $Uri"
                 throw $_
             }
 
@@ -181,7 +161,9 @@ function Get-GitHubRepoRelease {
 
                             # Capture the version string from the specified release tag
                             try {
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Matching version number against: $($item.$VersionTag)."
                                 $version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version number: $version."
                             }
                             catch {
                                 Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning: $($item.$VersionTag)."
