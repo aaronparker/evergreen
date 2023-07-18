@@ -19,7 +19,7 @@ Function Get-MicrosoftVisualStudioCode {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
+        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split('-'))[1])
     )
 
     # Walk through each platform
@@ -28,13 +28,12 @@ Function Get-MicrosoftVisualStudioCode {
 
         # Walk through each channel in the platform
         ForEach ($channel in $res.Get.Update.Channel) {
-
             # Read the version details from the API, format and return to the pipeline
-            $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/VERSION"
+            $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/latest"
             $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
             If ($updateFeed) {
                 $PSObject = [PSCustomObject] @{
-                    Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
+                    Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ''
                     Platform     = $platform
                     Channel      = $channel
                     Architecture = Get-Architecture -String $updateFeed.url
@@ -43,6 +42,7 @@ Function Get-MicrosoftVisualStudioCode {
                 }
                 Write-Output -InputObject $PSObject
             }
+
         }
     }
 }

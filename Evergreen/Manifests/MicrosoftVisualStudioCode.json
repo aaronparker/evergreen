@@ -15,8 +15,8 @@
             "Channel": [
                 "Insider",
                 "Stable"
-			],
-			"ReplaceText": "-insider"
+            ],
+            "ReplaceText": "-insider"
         }
     },
     "Install": {
