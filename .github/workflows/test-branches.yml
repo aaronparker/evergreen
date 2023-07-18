@@ -7,7 +7,7 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches-ignore: [ "main", "development" ]
+    branches-ignore: [ "main", "dev" ]
     paths:
       - 'Evergreen/**.ps1'
       - 'Evergreen/**.psm1'
