@@ -32,7 +32,7 @@ jobs:
 
   update-module:
     name: Update module version
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: psscriptanalyzer
     if: always()
     steps:
@@ -51,7 +51,7 @@ jobs:
       # Update the version number in the module manifest
       - name: Update module version number
         id: update-version
-        shell: powershell
+        shell: pwsh
         run: |
             $ModulePath = "${{ github.workspace }}\Evergreen"
             $ManifestPath = "${{ github.workspace }}\Evergreen\Evergreen.psd1"
@@ -69,12 +69,12 @@ jobs:
             (Get-Content -Path $ManifestPath) -replace 'NewManifest', $module | Set-Content -Path $ManifestPath
             (Get-Content -Path $ManifestPath) -replace 'FunctionsToExport = ','FunctionsToExport = @(' | Set-Content -Path $ManifestPath -Force
             (Get-Content -Path $ManifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $ManifestPath -Force
-            echo "::set-output name=newversion::$($NewVersion)"
+            echo "{name}={value}" >> $GITHUB_OUTPUT
 
       # Update the change log with the new version number
       - name: Update CHANGELOG.md
         id: update-changelog
-        shell: powershell
+        shell: pwsh
         run: |
             $changeLog = "${{ github.workspace }}\docs\changelog.md"
             $replaceString = "^## VERSION$"
@@ -89,7 +89,7 @@ jobs:
       # Update the list of supported apps in APPS.md
       - name: Update APPS.md
         id: update-apps
-        shell: powershell
+        shell: pwsh
         run: |
             Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
             Import-Module -Name MarkdownPS
@@ -124,9 +124,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Update module ${{steps.update-version.outputs.newversion}}"
+          tagging_message: "v${{steps.update-version.outputs.newversion}}"
           commit_user_name: ${{ secrets.COMMIT_NAME }}
           commit_user_email: ${{ secrets.COMMIT_EMAIL }}
-          tagging_message: "v${{steps.update-version.outputs.newversion}}"
 
       - name: "Changes have been detected"
         if: steps.commit.outputs.changes_detected == 'true'
