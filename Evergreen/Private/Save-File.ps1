@@ -22,16 +22,14 @@
             UseBasicParsing = $True
             UserAgent       = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome
         }
-        if (Test-PSCore) {
-            $params.SslProtocol = "Tls12"
-        }
-        else {
-            $SslProtocol = "Tls12"
+        if ($PSVersionTable.PSEdition -eq 'Core') {
+            $params.SslProtocol = 'Tls12'
+        } else {
+            $SslProtocol = 'Tls12'
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
         }
         Invoke-WebRequest @params
-    }
-    catch {
+    } catch {
         throw $_
     }
 

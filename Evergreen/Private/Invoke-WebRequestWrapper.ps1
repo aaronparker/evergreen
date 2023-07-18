@@ -21,12 +21,12 @@ function Invoke-WebRequestWrapper {
         [System.Collections.Hashtable] $Headers,
 
         [Parameter()]
-        [ValidateSet("Default", "Get", "Head", "Post")]
-        [System.String] $Method = "Default",
+        [ValidateSet('Default', 'Get', 'Head', 'Post')]
+        [System.String] $Method = 'Default',
 
         [Parameter()]
-        [ValidateSet("Default", "Tls", "Tls11", "Tls12", "Tls13")]
-        [System.String] $SslProtocol = "Tls12",
+        [ValidateSet('Default', 'Tls', 'Tls11', 'Tls12', 'Tls13')]
+        [System.String] $SslProtocol = 'Tls12',
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -39,23 +39,26 @@ function Invoke-WebRequestWrapper {
         [System.Management.Automation.SwitchParameter] $SkipCertificateCheck,
 
         [Parameter()]
-        [ValidateSet("Content", "RawContent", "Headers", "All")]
-        [System.String] $ReturnObject = "Content"
+        [ValidateSet('Content', 'RawContent', 'Headers', 'All')]
+        [System.String] $ReturnObject = 'Content'
     )
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
-    if ($PSBoundParameters.ContainsKey("Verbose")) {
+    if ($PSBoundParameters.ContainsKey('Verbose')) {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
-    }
-    else {
+    } else {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
     }
 
+    # Check if this script function is running in PS Core
+    # Variable is set at the beginning 
+    $isPSCore = $PSVersionTable.PSEdition -eq 'Core'
+
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and -not(Test-PSCore)) {
+    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey('SkipCertificateCheck')) -and -not($isPSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
-        Add-Type @"
+        Add-Type @'
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 public class TrustAllCertsPolicy : ICertificatePolicy {
@@ -65,14 +68,14 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         return true;
     }
 }
-"@
-        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
+'@
+        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName 'TrustAllCertsPolicy'
     }
 
     # Use TLS for connections
-    if ($PSBoundParameters.ContainsKey("SslProtocol") -and -not(Test-PSCore)) {
-        if ($SslProtocol -eq "Tls13") {
-            $SslProtocol = "Tls12"
+    if ($PSBoundParameters.ContainsKey('SslProtocol') -and -not($isPSCore)) {
+        if ($SslProtocol -eq 'Tls13') {
+            $SslProtocol = 'Tls12'
             Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
         }
         Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
@@ -88,23 +91,23 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 
     # Set additional parameters
-    if ($PSBoundParameters.ContainsKey("ContentType")) {
+    if ($PSBoundParameters.ContainsKey('ContentType')) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding ContentType."
         $params.ContentType = $ContentType
     }
-    if ($PSBoundParameters.ContainsKey("Headers")) {
+    if ($PSBoundParameters.ContainsKey('Headers')) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $params.Headers = $Headers
     }
-    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
+    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey('SkipCertificateCheck')) -and ($isPSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $params.SkipCertificateCheck = $true
     }
-    if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey('SslProtocol') -and ($isPSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $params.SslProtocol = $SslProtocol
     }
-    if ($PSBoundParameters.ContainsKey("Raw")) {
+    if ($PSBoundParameters.ContainsKey('Raw')) {
         $tempFile = New-TemporaryFile -WhatIf:$WhatIfPreference
         $params.OutFile = $tempFile
         $params.PassThru = $True
@@ -125,11 +128,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
     # Call Invoke-WebRequest
     try {
-        if ($PSCmdlet.ShouldProcess($Uri, "Invoke-WebRequest")) {
+        if ($PSCmdlet.ShouldProcess($Uri, 'Invoke-WebRequest')) {
             $Response = Invoke-WebRequest @params
         }
-    }
-    catch {
+    } catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
@@ -142,26 +144,25 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
         # Output content from the response
         switch ($ReturnObject) {
-            "All" {
+            'All' {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning entire response."
                 Write-Output -InputObject $Response
                 break
             }
-            "Headers" {
+            'Headers' {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning headers."
                 Write-Output -InputObject $Response.Headers
                 break
             }
-            "RawContent" {
+            'RawContent' {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning raw content of length: $($Response.RawContent.Length)."
                 Write-Output -InputObject $Response.RawContent
                 break
             }
-            "Content" {
-                if ($PSBoundParameters.ContainsKey("Raw")) {
+            'Content' {
+                if ($PSBoundParameters.ContainsKey('Raw')) {
                     $Content = Get-Content -Path $TempFile
-                }
-                else {
+                } else {
                     $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: $($Content.Length)."
@@ -169,10 +170,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                 break
             }
             default {
-                if ($PSBoundParameters.ContainsKey("Raw")) {
+                if ($PSBoundParameters.ContainsKey('Raw')) {
                     $Content = Get-Content -Path $TempFile
-                }
-                else {
+                } else {
                     $Content = $Response.Content
                 }
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Returning content of length: $($Content.Length)."

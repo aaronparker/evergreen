@@ -9,7 +9,7 @@ Function Get-ModuleResource {
         [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [ValidateScript( { If (Test-Path -Path $_ -PathType 'Leaf') { $True } Else { Throw "Cannot find file $_" } })]
-        [System.String] $Path = (Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath "Evergreen.json")
+        [System.String] $Path = (Join-Path -Path $MyInvocation.MyCommand.Module.ModuleBase -ChildPath 'Evergreen.json')
     )
 
     try {
@@ -17,18 +17,16 @@ Function Get-ModuleResource {
         $params = @{
             Path        = $Path
             Raw         = $True
-            ErrorAction = "Stop"
+            ErrorAction = 'Stop'
         }
         $content = Get-Content @params
-        if (Test-PSCore) {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction "Stop"
-        }
-        else {
-            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction "Stop" | ConvertTo-Hashtable
+        if ($PSVersionTable.PSEdition -eq 'Core') {
+            $script:resourceStringsTable = $content | ConvertFrom-Json -AsHashtable -ErrorAction 'Stop'
+        } else {
+            $script:resourceStringsTable = $content | ConvertFrom-Json -ErrorAction 'Stop' | ConvertTo-Hashtable
         }
         Write-Output -InputObject $script:resourceStringsTable
-    }
-    catch {
+    } catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): failed to module manifest at: $Path."
         throw $_
     }

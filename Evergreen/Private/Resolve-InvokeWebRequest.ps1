@@ -21,10 +21,9 @@ function Resolve-InvokeWebRequest {
     )
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
-    if ($PSBoundParameters.ContainsKey("Verbose")) {
+    if ($PSBoundParameters.ContainsKey('Verbose')) {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::Continue
-    }
-    else {
+    } else {
         $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
     }
 
@@ -34,7 +33,7 @@ function Resolve-InvokeWebRequest {
         Uri                = $Uri
         UseBasicParsing    = $true
         UserAgent          = $UserAgent
-        ErrorAction        = "SilentlyContinue"
+        ErrorAction        = 'SilentlyContinue'
     }
     if (Test-ProxyEnv) {
         $params.Proxy = $script:EvergreenProxy
@@ -49,32 +48,28 @@ function Resolve-InvokeWebRequest {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($item.name): $($item.value)."
     }
 
-    if (Test-PSCore) {
+    if ($PSVersionTable.PSEdition -eq 'Core') {
         try {
             # If running PowerShell Core, request URL and catch the response
             Invoke-WebRequest @params | Out-Null
-        }
-        catch [System.Exception] {
+        } catch [System.Exception] {
             if ($null -ne $_.Exception.Response.Headers.Location.AbsoluteUri) {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)]."
                 Write-Output -InputObject $_.Exception.Response.Headers.Location.AbsoluteUri
-            }
-            else {
+            } else {
                 # We can't throw here because apps that use loops that call this function will fail
                 Write-Warning -Message "$($MyInvocation.MyCommand): Response: '$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)'."
                 Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
                 Write-Error -Message "$($MyInvocation.MyCommand): $($_.Exception.Message)."
             }
         }
-    }
-    else {
+    } else {
         try {
             # If running Windows PowerShell, request the URL and return the response
             $response = Invoke-WebRequest @params
             Write-Verbose -Message "$($MyInvocation.MyCommand): Response: [$($response.StatusCode) - $($response.StatusDescription)]."
             Write-Output -InputObject $response.Headers.Location
-        }
-        catch [System.Exception] {
+        } catch [System.Exception] {
             # We can't throw here because apps that use loops that call this function will fail
             Write-Warning -Message "$($MyInvocation.MyCommand): Response: '$($_.Exception.Response.StatusCode) - $($_.Exception.Response.ReasonPhrase)'."
             Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."

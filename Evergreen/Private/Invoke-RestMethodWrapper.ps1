@@ -17,7 +17,7 @@ function Invoke-RestMethodWrapper {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.String] $ContentType = "application/json; charset=utf-8",
+        [System.String] $ContentType = 'application/json; charset=utf-8',
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -29,12 +29,12 @@ function Invoke-RestMethodWrapper {
         [System.Object] $Body,
 
         [Parameter()]
-        [ValidateSet("Default", "Get", "Head", "Post")]
-        [System.String] $Method = "Default",
+        [ValidateSet('Default', 'Get', 'Head', 'Post')]
+        [System.String] $Method = 'Default',
 
         [Parameter()]
-        [ValidateSet("Default", "Tls", "Tls11", "Tls12", "Tls13")]
-        [System.String] $SslProtocol = "Tls12",
+        [ValidateSet('Default', 'Tls', 'Tls11', 'Tls12', 'Tls13')]
+        [System.String] $SslProtocol = 'Tls12',
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -45,18 +45,22 @@ function Invoke-RestMethodWrapper {
     )
 
     # Set ErrorAction value
-    if ($PSBoundParameters.ContainsKey("ErrorAction")) {
+    if ($PSBoundParameters.ContainsKey('ErrorAction')) {
         $ErrorActionPreference = $ErrorAction
-    }
-    else {
+    } else {
         $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Continue
     }
 
+    # Check if this script function is running in PS Core
+    # Variable is set at the beginning 
+    $isPSCore = $PSVersionTable.PSEdition -eq 'Core'
+
+
     # PowerShell 5.1: Trust certificate used by the remote server (typically self-sign certs)
     # PowerShell Core will use -SkipCertificateCheck
-    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and -not(Test-PSCore)) {
+    if (-not($isPSCore) -and ($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey('SkipCertificateCheck'))) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Creating class TrustAllCertsPolicy."
-        Add-Type @"
+        Add-Type @'
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 public class TrustAllCertsPolicy : ICertificatePolicy {
@@ -66,15 +70,15 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         return true;
     }
 }
-"@
+'@
         Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
-        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
+        [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName 'TrustAllCertsPolicy'
     }
 
     # Use TLS for connections
-    if (($SslProtocol.IsPresent) -and -not(Test-PSCore)) {
-        if ($SslProtocol -eq "Tls13") {
-            $SslProtocol = "Tls12"
+    if (-not($isPSCore) -and ($SslProtocol.IsPresent)) {
+        if ($SslProtocol -eq 'Tls13') {
+            $SslProtocol = 'Tls12'
             Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
         }
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
@@ -90,19 +94,19 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
         UseBasicParsing    = $true
         UserAgent          = $UserAgent
     }
-    if ($PSBoundParameters.ContainsKey("Headers")) {
+    if ($PSBoundParameters.ContainsKey('Headers')) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
         $params.Headers = $Headers
     }
-    if ($PSBoundParameters.ContainsKey("Body")) {
+    if ($PSBoundParameters.ContainsKey('Body')) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
         $params.Body = $Body
     }
-    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
+    if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey('SkipCertificateCheck')) -and ($isPSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
         $params.SkipCertificateCheck = $True
     }
-    if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
+    if ($PSBoundParameters.ContainsKey('SslProtocol') -and ($isPSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $params.SslProtocol = $SslProtocol
     }
@@ -123,8 +127,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     try {
         $Response = Invoke-RestMethod @params
         Write-Output -InputObject $Response
-    }
-    catch {
+    } catch {
         Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): Error encountered: $($_.Exception.Message)."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
