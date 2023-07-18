@@ -126,6 +126,7 @@ jobs:
           commit_message: "Update module ${{steps.update-version.outputs.newversion}}"
           commit_user_name: ${{ secrets.COMMIT_NAME }}
           commit_user_email: ${{ secrets.COMMIT_EMAIL }}
+          tagging_message: "v${{steps.update-version.outputs.newversion}}"
 
       - name: "Changes have been detected"
         if: steps.commit.outputs.changes_detected == 'true'
