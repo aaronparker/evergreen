@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '2307.832'
+ModuleVersion = '2307.841'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
