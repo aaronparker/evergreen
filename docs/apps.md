@@ -1,4 +1,4 @@
-﻿# 264 Supported applications
+# 264 Supported applications
 
 Evergreen `` supports the following applications:
 
