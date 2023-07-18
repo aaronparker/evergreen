@@ -69,7 +69,7 @@ jobs:
             (Get-Content -Path $ManifestPath) -replace 'NewManifest', $module | Set-Content -Path $ManifestPath
             (Get-Content -Path $ManifestPath) -replace 'FunctionsToExport = ','FunctionsToExport = @(' | Set-Content -Path $ManifestPath -Force
             (Get-Content -Path $ManifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $ManifestPath -Force
-            echo "{name}={value}" >> $GITHUB_OUTPUT
+            echo "{newversion}={$NewVersion}" >> $GITHUB_OUTPUT
 
       # Update the change log with the new version number
       - name: Update CHANGELOG.md
