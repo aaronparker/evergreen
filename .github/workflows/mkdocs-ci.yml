@@ -4,11 +4,11 @@ on:
   push:
     paths:
       #- 'docs/**'
-      - 'mkdocs.yml'
+      #- 'mkdocs.yml'
     branches:
-      - main
+      #- main
     tags:
-      - "v*.*"
+      #- "v*.*"
   workflow_dispatch:
 
 jobs:

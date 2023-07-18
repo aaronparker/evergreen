@@ -39,7 +39,15 @@ jobs:
       - name: Push module to PowerShell Gallery
         shell: pwsh
         run: |
+          $repParams = @{
+            Name = "github"
+            SourceLocation = "https://nuget.pkg.github.com/${{ vars.ORG_NAME }}/index.json"
+            PublishLocation = "https://nuget.pkg.github.com/${{ vars.ORG_NAME }}/index.json"
+            ErrorAction = "Stop"
+          }
+          Register-PSRepository @repParams
           $params = @{
+              Repository  = "github"
               Path        = "${{ github.workspace }}/Evergreen"
               NuGetApiKey = "${{ secrets.NUGETAPIKEY }}"
               ErrorAction = "Stop"
