@@ -1,0 +1,141 @@
+name: 'Update version on main branch'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'Evergreen/**.ps1'
+      - 'Evergreen/**.psm1'
+      - 'Evergreen/**.json'
+
+jobs:
+  psscriptanalyzer:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    name: Run PSScriptAnalyzer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run PSScriptAnalyzer (main push)
+        uses: microsoft/psscriptanalyzer-action@6b2948b1944407914a58661c49941824d149734f
+        with:
+          path: "./Evergreen"
+          recurse: true
+          output: results.sarif
+
+      # Upload the SARIF file generated in the previous step
+      - name: Upload SARIF results file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+
+  update-module:
+    name: Update module version
+    runs-on: windows-latest
+    needs: psscriptanalyzer
+    if: always()
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install and cache PowerShell modules
+        id: psmodulecache
+        uses: potatoqualitee/psmodulecache@v5.2
+        with:
+          modules-to-cache: MarkdownPS
+          shell: powershell
+
+      # Update the version number in the module manifest
+      - name: Update module version number
+        id: update-version
+        shell: powershell
+        run: |
+            $ModulePath = "${{ github.workspace }}\Evergreen"
+            $ManifestPath = "${{ github.workspace }}\Evergreen\Evergreen.psd1"
+
+            # Importing the manifest to determine the version
+            $Manifest = Test-ModuleManifest -Path $ManifestPath
+            Write-Host "Old version is: $($Manifest.Version)"
+            [System.String]$NewVersion = New-Object -TypeName "System.Version" -ArgumentList ((Get-Date -Format "yyMM"), ($Manifest.Version.Minor + [System.Int32]$env:GITHUB_RUN_NUMBER + 1 ))
+            Write-Host "New version is: $NewVersion"
+
+            # Update the manifest with the new version value and fix the weird string replace bug
+            $functionList = ((Get-ChildItem -Path (Join-Path -Path $ModulePath -ChildPath "Public")).BaseName)
+            Update-ModuleManifest -Path $ManifestPath -ModuleVersion $NewVersion -FunctionsToExport $functionList
+            (Get-Content -Path $ManifestPath) -replace 'PSGet_$module', $module | Set-Content -Path $ManifestPath
+            (Get-Content -Path $ManifestPath) -replace 'NewManifest', $module | Set-Content -Path $ManifestPath
+            (Get-Content -Path $ManifestPath) -replace 'FunctionsToExport = ','FunctionsToExport = @(' | Set-Content -Path $ManifestPath -Force
+            (Get-Content -Path $ManifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $ManifestPath -Force
+            echo "::set-output name=newversion::$($NewVersion)"
+
+      # Update the change log with the new version number
+      - name: Update CHANGELOG.md
+        id: update-changelog
+        shell: powershell
+        run: |
+            $changeLog = "${{ github.workspace }}\docs\changelog.md"
+            $replaceString = "^## VERSION$"
+            $content = Get-Content -Path $changeLog
+            if ($content -match $replaceString) {
+                $content -replace $replaceString, "## ${{steps.update-version.outputs.newversion}}" | Set-Content -Path $changeLog
+            }
+            else {
+                Write-Host "No match in $changeLog for '## VERSION'. Manual update of CHANGELOG required." -ForegroundColor Cyan
+            }
+
+      # Update the list of supported apps in APPS.md
+      - name: Update APPS.md
+        id: update-apps
+        shell: powershell
+        run: |
+            Import-Module -Name "$env:GITHUB_WORKSPACE\Evergreen" -Force
+            Import-Module -Name MarkdownPS
+
+            $OutFile = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "docs", "apps.md")
+            $markdown = New-MDHeader -Text "$((Find-EvergreenApp).Count) Supported applications" -Level 1
+            $markdown += "`n"
+            $line = "Evergreen " + '`' + $newVersion + '`' + " supports the following applications:"
+            $markdown += $line
+            $markdown += "`n`n"
+            $markdown += Find-EvergreenApp | New-MDTable
+            $markdown | Out-File -FilePath $OutFile -NoNewline -Force -Encoding "Utf8"
+
+      # Import GPG key so that we can sign the commit
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPGKEY }}
+          passphrase: ${{ secrets.GPGPASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_config_global: true
+          git_tag_gpgsign: true
+          git_push_gpgsign: false
+          git_committer_name: ${{ secrets.COMMIT_NAME }}
+          git_committer_email: ${{ secrets.COMMIT_EMAIL }}
+
+      - name: Commit changes
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update module ${{steps.update-version.outputs.newversion}}"
+          commit_user_name: ${{ secrets.COMMIT_NAME }}
+          commit_user_email: ${{ secrets.COMMIT_EMAIL }}
+
+      - name: "Changes have been detected"
+        if: steps.commit.outputs.changes_detected == 'true'
+        run: echo "Changes committed."
+
+      - name: "No changes have been detected"
+        if: steps.commit.outputs.changes_detected == 'false'
+        run: echo "No changes detected."
