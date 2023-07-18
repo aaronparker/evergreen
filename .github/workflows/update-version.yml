@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
 
       - name: Install and cache PowerShell modules
         id: psmodulecache
