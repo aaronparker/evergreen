@@ -1,8 +1,8 @@
 {
 	"Name": "jq",
-	"Source": "http://stedolan.github.io/jq/",
+	"Source": "https://jqlang.github.io/jq/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/stedolan/jq/releases/latest",
+		"Uri": "https://api.github.com/repos/jqlang/jq/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
 		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
@@ -11,13 +11,11 @@
 		"Preinstall": "",
 		"Physical": {
 			"Arguments": "",
-			"PostInstall": [
-			]
+			"PostInstall": []
 		},
 		"Virtual": {
 			"Arguments": "",
-			"PostInstall": [
-			]
+			"PostInstall": []
 		}
 	}
 }
