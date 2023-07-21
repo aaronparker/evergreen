@@ -2,7 +2,11 @@
 
 ## VERSION
 
-* Adds `NodeJs` [#510](https://github.com/aaronparker/evergreen/issues/510)
+* Adds `NodeJs` [#510](https://github.com/aaronparker/evergreen/issues/510), `GeoGebraClassic`, `LehrerOffice`, `ThymioSuite`, `TPGiColourContrastAnalyser` [#519](https://github.com/aaronparker/evergreen/issues/519)
+* Fixes an issue with `MicrosoftVisualStudioCode` [#518](https://github.com/aaronparker/evergreen/issues/518)
+* Fixes an issue with `jq` due to a change in repository
+* Removes `CitrixVMTools` - Citrix VM Tools requires a login to download [#512](https://github.com/aaronparker/evergreen/issues/512)
+* Updates `Get-EvergreenApp` to return clearer output when an application function fails
 
 ## 2305.801
 
