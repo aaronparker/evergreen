@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2307.805
 
 * Adds `NodeJs` [#510](https://github.com/aaronparker/evergreen/issues/510), `GeoGebraClassic`, `LehrerOffice`, `ThymioSuite`, `TPGiColourContrastAnalyser` [#519](https://github.com/aaronparker/evergreen/issues/519)
 * Fixes an issue with `MicrosoftVisualStudioCode` [#518](https://github.com/aaronparker/evergreen/issues/518)

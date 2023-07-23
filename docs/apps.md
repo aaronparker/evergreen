@@ -1,4 +1,4 @@
-﻿# 256 Supported applications
+﻿# 265 Supported applications
 
 Evergreen `` supports the following applications:
 
@@ -47,7 +47,6 @@ Evergreen `` supports the following applications:
 | BlueJ                                 | BlueJ                                                             | https://www.bluej.org/                                                                           |
 | CendioThinLinc                        | Cendio ThinLinc                                                   | https://www.cendio.com/                                                                          |
 | ChromiumChromeDriver                  | Chromium ChromeDriver                                             | https://chromedriver.chromium.org/home                                                           |
-| CitrixVMTools                         | Citrix VM Tools                                                   | https://www.citrix.com/downloads/citrix-hypervisor/                                              |
 | CitrixWorkspaceApp                    | Citrix Workspace app                                              | https://www.citrix.com/downloads/workspace-app/                                                  |
 | CodelerityApacheNetBeans              | Codelerity Apache NetBeans                                        | https://www.codelerity.com/netbeans/                                                             |
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                    |
@@ -79,6 +78,7 @@ Evergreen `` supports the following applications:
 | FreedomScientificZoomText             | Freedom Scientific ZoomText                                       | https://www.freedomscientific.com/products/software/zoomtext/                                    |
 | FreeFem                               | FreeFem                                                           | https://freefem.org/                                                                             |
 | GeekSoftwarePDF24Creator              | Geek Software PDF24 Creator                                       | https://tools.pdf24.org/en/creator/                                                              |
+| GeoGebraClassic                       | GeoGebra Classic                                                  | https://www.geogebra.org                                                                         |
 | Gephi                                 | Gephi                                                             | https://gephi.org/                                                                               |
 | GhislerTotalCommander                 | Ghisler TotalCommander                                            | https://www.ghisler.com/                                                                         |
 | Gimp                                  | GIMP                                                              | https://www.gimp.org/                                                                            |
@@ -88,12 +88,14 @@ Evergreen `` supports the following applications:
 | GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                      |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                              |
 | GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
+| GoogleDrive                           | Google Drive                                                      | https://support.google.com/drive/answer/7329379                                                  |
 | GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
 | GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |
 | GoToOpener                            | GoTo Opener                                                       | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi                 |
 | Gpg4win                               | Gpg4win                                                           | https://www.gpg4win.org/                                                                         |
 | Greenshot                             | Greenshot                                                         | https://getgreenshot.org/                                                                        |
 | gretl                                 | gretl                                                             | http://gretl.sourceforge.net/                                                                    |
+| gsudo                                 | gsudo                                                             | https://gerardog.github.io/gsudo                                                                 |
 | Handbrake                             | Handbrake                                                         | https://handbrake.fr/                                                                            |
 | HashicorpBoundary                     | Hashicorp Boundary                                                | https://www.boundaryproject.io/                                                                  |
 | HashicorpConsul                       | Hashicorp Consul                                                  | https://www.consul.io/                                                                           |
@@ -110,21 +112,23 @@ Evergreen `` supports the following applications:
 | JeremyMainGPUProfiler                 | JeremyMain GPUProfiler                                            | https://github.com/JeremyMain/GPUProfiler                                                        |
 | JetBrainsIntelliJIDEA                 | JetBrains IntelliJ IDEA                                           | https://www.jetbrains.com/                                                                       |
 | JetBrainsPyCharm                      | JetBrains PyCharm                                                 | https://www.jetbrains.com/                                                                       |
-| jq                                    | jq                                                                | http://stedolan.github.io/jq/                                                                    |
+| jq                                    | jq                                                                | https://jqlang.github.io/jq/                                                                     |
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                        |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                                    |
 | KDiff3                                | KDiff3                                                            | https://kdiff3.sourceforge.net/                                                                  |
 | KeePass                               | KeePass Password Safe                                             | https://keepass.info/                                                                            |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                           |
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                                 |
+| LehrerOffice                          | LehrerOffice                                                      | https://lehreroffice.net/                                                                        |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                                  |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                            |
 | Maximus5ConEmu                        | Maximus5 ConEmu                                                   | https://github.com/Maximus5/ConEmu                                                               |
 | McNeelRhino                           | McNeel Rhino                                                      | https://www.rhino3d.com/                                                                         |
 | MendeleyDesktop                       | Mendeley Desktop                                                  | https://www.mendeley.com/                                                                        |
 | MestrelabMnova                        | Mestrelab Mnova                                                   | https://mestrelab.com/software/mnova/                                                            |
-| Microsoft.NET                         | Microsoft .NET Desktop Runtime                                    | https://dotnet.microsoft.com/download/                                                           |
+| Microsoft.NET                         | Microsoft .NET                                                    | https://dotnet.microsoft.com/download/                                                           |
 | Microsoft365Apps                      | Microsoft 365 Apps                                                | https://www.microsoft.com/office                                                                 |
+| MicrosoftAzureCLI                     | Microsoft Azure CLI                                               | https://learn.microsoft.com/en-au/cli/azure/                                                     |
 | MicrosoftAzureDataStudio              | Microsoft Azure Data Studio                                       | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                          |
 | MicrosoftAzureFunctionsCoreTools      | Microsoft Azure Functions Core Tools                              | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                       |
 | MicrosoftAzurePipelinesAgent          | Microsoft Azure Pipelines Agent                                   | https://learn.microsoft.com/en-au/azure/devops/pipelines/agents/agents                           |
@@ -162,15 +166,18 @@ Evergreen `` supports the following applications:
 | MozillaThunderbird                    | Mozilla Thunderbird                                               | https://www.thunderbird.net/                                                                     |
 | mRemoteNG                             | mRemoteNG                                                         | https://mremoteng.org/                                                                           |
 | MuseScore                             | MuseScore                                                         | https://musescore.org/                                                                           |
+| mySQLWorkbench                        | mySQL Workbench                                                   | https://dev.mysql.com/doc/workbench/en/                                                          |
 | NanaZip                               | NanaZip                                                           | https://github.com/M2Team/NanaZip                                                                |
 | Naps2                                 | Ben Olden-Cooligan NAPS2                                          | https://www.naps2.com/                                                                           |
 | NETworkManager                        | NETworkManager                                                    | https://github.com/BornToBeRoot/NETworkManager                                                   |
 | NevcairielLAVFilters                  | Nevcairiel LAV Filters                                            | https://github.com/Nevcairiel/LAVFilters                                                         |
+| NodeJs                                | Node.js                                                           | https://nodejs.org/                                                                              |
 | Nomacs                                | nomacs Image Lounge                                               | https://nomacs.org/                                                                              |
 | Notable                               | Notable                                                           | https://notable.app/                                                                             |
 | NotepadPlusPlus                       | Notepad++                                                         | https://notepad-plus-plus.org/                                                                   |
 | Obsidian                              | Obsidian                                                          | https://obsidian.md/                                                                             |
 | OBSStudio                             | OBS Studio                                                        | https://obsproject.com/                                                                          |
+| OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | http://https://ocsinventory-ng.org/                                                              |
 | OctopusDeployServer                   | Octopus Deploy Server                                             | https://octopus.com/                                                                             |
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                             |
 | OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                          |
@@ -231,9 +238,11 @@ Evergreen `` supports the following applications:
 | TelerikFiddlerEverywhere              | Telerik Fiddler Everywhere                                        | https://www.telerik.com/fiddler                                                                  |
 | Terminals                             | Terminals                                                         | https://github.com/terminals-Origin/Terminals/                                                   |
 | TeXstudio                             | TeXstudio                                                         | https://www.texstudio.org/                                                                       |
+| ThymioSuite                           | Thymio Suite                                                      | https://www.thymio.org/                                                                          |
 | TogglDesktop                          | Toggl Desktop                                                     | https://www.toggl.com/                                                                           |
 | TorProjectTorBrowser                  | Tor Project Tor Browser                                           | https://www.torproject.org/                                                                      |
 | Tower                                 | Tower                                                             | https://www.git-tower.com/windows/                                                               |
+| TPGiColourContrastAnalyser            | TGPi Colour Contrast Analyser                                     | https://www.tpgi.com/color-contrast-checker/                                                     |
 | TrackerSoftwarePDFXChangeEditor       | Tracker Software PDF X-Change Editor                              | https://pdf-xchange.eu/pdf-xchange-editor/index.htm                                              |
 | USBPcap                               | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                              |
 | VastLimitsUberAgent                   | vast limits uberAgent                                             | https://uberagent.com/                                                                           |
