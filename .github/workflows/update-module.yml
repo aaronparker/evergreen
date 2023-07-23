@@ -1,4 +1,4 @@
-name: 'Validate main branch & update version'
+name: 'Update module version'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
