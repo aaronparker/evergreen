@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue in `Get-EvergreenApp` where `-AppParams` was not being passed to the application function
+
 ## 2307.810
 
 * Adds `NodeJs` [#510](https://github.com/aaronparker/evergreen/issues/510), `GeoGebraClassic`, `LehrerOffice`, `ThymioSuite`, `TPGiColourContrastAnalyser` [#519](https://github.com/aaronparker/evergreen/issues/519)
