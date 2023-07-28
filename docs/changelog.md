@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2307.816
 
 * Fixes an issue in `Get-EvergreenApp` where `-AppParams` was not being passed to the application function
 
