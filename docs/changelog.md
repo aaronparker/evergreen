@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524)
+
 ## 2307.816
 
 * Fixes an issue in `Get-EvergreenApp` where `-AppParams` was not being passed to the application function
