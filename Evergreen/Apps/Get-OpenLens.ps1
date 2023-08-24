@@ -26,7 +26,7 @@ Function Get-OpenLens {
     $object = Get-GitHubRepoRelease @params
 
     # For windows there are two different .exe versions.
-    # Setup:   OpenLens.Setup.6.5.2-366.exe
+    # Setup:    OpenLens.Setup.6.5.2-366.exe
     # Portable: OpenLens.6.5.2-366.exe
     foreach($o in $object) {
         if(-not($o.URI.contains("Setup")) -and $o.URI.EndsWith(".exe"))
