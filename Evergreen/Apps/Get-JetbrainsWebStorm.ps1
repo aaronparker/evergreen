@@ -1,4 +1,4 @@
-Function Get-JetBrainsWebStorm {
+function Get-JetBrainsWebStorm {
     <#
         .SYNOPSIS
             Get the current version and download URLs for each edition of WebStorm.
@@ -15,7 +15,7 @@ Function Get-JetBrainsWebStorm {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    ForEach ($Edition in $res.Get.Update.Editions.GetEnumerator()) {
+    foreach ($Edition in $res.Get.Update.Editions.GetEnumerator()) {
 
         # Build the update uri based on the edition
         $uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceEdition, $Edition.Value
@@ -23,7 +23,7 @@ Function Get-JetBrainsWebStorm {
         # Query the Jetbrains URI to get the JSON
         $updateFeed = Invoke-RestMethodWrapper -Uri $uri
 
-        If ($Null -ne $updateFeed) {
+        if ($null -ne $updateFeed) {
 
             # Construct the output; Return the custom object to the pipeline
 
@@ -37,9 +37,6 @@ Function Get-JetBrainsWebStorm {
                 URI     = $updateFeed.$($Edition.Value).downloads.windows.link
             }
             Write-Output -InputObject $PSObject
-        }
-        Else {
-            Throw "$($MyInvocation.MyCommand): unable to retrieve content from $($uri)."
         }
     }
 }
