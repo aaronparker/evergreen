@@ -2,7 +2,9 @@
 
 ## VERSION
 
-* Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524)
+* Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524), `JetBrainsCLion`, `JetBrainsDataGrip`, `JetBrainsDataSpell`, `JetBrainsGoLand`, `JetBrainsPhpStorm`, `JetBrainsRubyMine`, `JetBrainsWebStorm`
+* Updates `JetBrainsIntelliJIDEA`, `JetBrainsPyCharm`
+* Updates `OpenLens` with additional installer types
 
 ## 2307.816
 

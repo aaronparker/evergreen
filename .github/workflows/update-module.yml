@@ -78,7 +78,7 @@ jobs:
             $OutFile = [System.IO.Path]::Combine($env:GITHUB_WORKSPACE, "docs", "apps.md")
             $markdown = New-MDHeader -Text "$((Find-EvergreenApp).Count) Supported applications" -Level 1
             $markdown += "`n"
-            $line = "Evergreen " + '`' + $newVersion + '`' + " supports the following applications:"
+            $line = "Evergreen " + '`' + ${{steps.update-version.outputs.newversion}} + '`' + " supports the following applications:"
             $markdown += $line
             $markdown += "`n`n"
             $markdown += Find-EvergreenApp | New-MDTable
