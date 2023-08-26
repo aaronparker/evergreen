@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2308.823
 
 * Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524), `JetBrainsCLion`, `JetBrainsDataGrip`, `JetBrainsDataSpell`, `JetBrainsGoLand`, `JetBrainsPhpStorm`, `JetBrainsRubyMine`, `JetBrainsWebStorm`
 * Updates `JetBrainsIntelliJIDEA`, `JetBrainsPyCharm`

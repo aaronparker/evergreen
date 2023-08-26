@@ -1,6 +1,6 @@
-﻿# 265 Supported applications
+﻿# 275 Supported applications
 
-Evergreen `` supports the following applications:
+Evergreen `2308.823` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -61,6 +61,7 @@ Evergreen `` supports the following applications:
 | dnGrep                                | dnGrep                                                            | https://dngrep.github.io/                                                                        |
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                                  |
 | DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                          |
+| DruvainSyncClient                     | Druva inSync Client                                               | https://docs.druva.com/005_inSync_Client                                                         |
 | EgnyteDesktopApp                      | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                           |
 | ESETEndpointAntivirus                 | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                                  |
 | ESETEndpointSecurity                  | ESET Endpoint Security                                            | https://www.eset.com/au/business/solutions/endpoint-protection/                                  |
@@ -110,8 +111,17 @@ Evergreen `` supports the following applications:
 | JamTreeSizeProfessional               | JAM Software TreeSize Professional                                | https://www.jam-software.com/treesize/                                                           |
 | JASP                                  | JASP                                                              | https://jasp-stats.org/                                                                          |
 | JeremyMainGPUProfiler                 | JeremyMain GPUProfiler                                            | https://github.com/JeremyMain/GPUProfiler                                                        |
+| JetBrainsCLion                        | JetBrains CLion                                                   | https://www.jetbrains.com/clion                                                                  |
+| JetBrainsDataGrip                     | JetBrains DataGrip                                                | https://www.jetbrains.com/datagrip                                                               |
+| JetBrainsDataSpell                    | JetBrains DataSpell                                               | https://www.jetbrains.com/dataspell                                                              |
+| JetBrainsGoLand                       | JetBrains GoLand                                                  | https://www.jetbrains.com/dataspell                                                              |
 | JetBrainsIntelliJIDEA                 | JetBrains IntelliJ IDEA                                           | https://www.jetbrains.com/                                                                       |
+| JetBrainsPhpStorm                     | JetBrains PhpStorm                                                | https://www.jetbrains.com/phpstorm                                                               |
 | JetBrainsPyCharm                      | JetBrains PyCharm                                                 | https://www.jetbrains.com/                                                                       |
+| JetBrainsRider                        | JetBrains Rider                                                   | https://www.jetbrains.com/                                                                       |
+| JetBrainsRubyMine                     | JetBrains RubyMine                                                | https://www.jetbrains.com/rubymine                                                               |
+| JetBrainsSpace                        | JetBrains Space                                                   | https://www.jetbrains.com/space                                                                  |
+| JetBrainsWebStorm                     | JetBrains WebStorm                                                | https://www.jetbrains.com/webstorm                                                               |
 | jq                                    | jq                                                                | https://jqlang.github.io/jq/                                                                     |
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                        |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                                    |
