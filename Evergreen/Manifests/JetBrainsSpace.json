@@ -1,11 +1,11 @@
 {
-    "Name": "JetBrains WebStorm",
-    "Source": "https://www.jetbrains.com/webstorm",
+    "Name": "JetBrains Space",
+    "Source": "https://www.jetbrains.com/space",
     "Get": {
         "Update": {
             "Uri": "https://data.services.jetbrains.com/products/releases?code=#ReplaceEdition&latest",
             "Editions": {
-                "WebStorm": "WS"
+                "Space Desktop": "SPA"
             },
             "ReplaceEdition": "#ReplaceEdition",
             "DatePattern": "yyyy-MM-dd"
@@ -13,7 +13,7 @@
         "Download": {}
     },
     "Install": {
-        "Setup": "WebStorm*.exe",
+        "Setup": "",
         "Physical": {
             "Arguments": "/S",
             "PostInstall": []

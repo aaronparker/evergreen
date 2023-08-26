@@ -1,4 +1,4 @@
-function Get-JetBrainsWebStorm {
+function Get-JetBrainsSpace {
     <#
         .SYNOPSIS
             Get the current version and download URLs for each edition of WebStorm.
@@ -29,7 +29,7 @@ function Get-JetBrainsWebStorm {
 
             $PSObject = [PSCustomObject] @{
                 Version = $updateFeed.$($Edition.Value).version
-                Build   = $updateFeed.$($Edition.Value).build
+                #Build   = $updateFeed.$($Edition.Value).build
                 Edition = $Edition.Key
                 Date    = ConvertTo-DateTime -DateTime $updateFeed.$($Edition.Value).date -Pattern $res.Get.Update.DatePattern
                 Size    = $updateFeed.$($Edition.Value).downloads.windows.size

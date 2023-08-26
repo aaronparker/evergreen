@@ -4,7 +4,6 @@ function Get-JetBrainsRider {
             Get the current version and download URLs for each edition of WebStorm.
 
         .NOTES
-           
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
