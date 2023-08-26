@@ -1,4 +1,4 @@
-﻿Function Get-VMwareTools {
+﻿function Get-VMwareTools {
     <#
         .SYNOPSIS
             Get the current version and download URL for the VMware Tools.
@@ -21,13 +21,11 @@
     $params = @{
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
-        Raw         = $True
+        Raw         = $true
     }
     $Content = Invoke-WebRequestWrapper @params
-    If ($Null -eq $Content) {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Failed to return usable content from $($res.Get.Update.Uri)."
-    }
-    Else {
+
+    if ($null -ne $Content) {
         # Format the results returns and convert into an array that we can sort and use
         Write-Verbose -Message "$($MyInvocation.MyCommand): Filtering version table with $($Content.Count) lines."
         $Lines = $Content | Where-Object { $_ -notmatch "^#" }
@@ -53,7 +51,7 @@
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($LatestVersion.Version)-$($LatestVersion.ClientBuild)"
 
         # Build the output object for each platform and architecture
-        ForEach ($architecture in $res.Get.Download.Architecture.GetEnumerator()) {
+        foreach ($architecture in $res.Get.Download.Architecture.GetEnumerator()) {
 
             # Build the output object
             $PSObject = [PSCustomObject] @{

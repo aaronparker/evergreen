@@ -1,13 +1,11 @@
 {
-    "Name": "JetBrains PyCharm",
-    "Source": "https://www.jetbrains.com/",
+    "Name": "JetBrains WebStorm",
+    "Source": "https://www.jetbrains.com/webstorm",
     "Get": {
         "Update": {
             "Uri": "https://data.services.jetbrains.com/products/releases?code=#ReplaceEdition&latest",
             "Editions": {
-                "PyCharm Community": "PCC",
-                "PyCharm Edu": "PCE",
-                "PyCharm Professional": "PCP"
+                "WebStorm": "WS"
             },
             "ReplaceEdition": "#ReplaceEdition",
             "DatePattern": "yyyy-MM-dd"
@@ -15,7 +13,7 @@
         "Download": {}
     },
     "Install": {
-        "Setup": "pycharm*.exe",
+        "Setup": "WebStorm*.exe",
         "Physical": {
             "Arguments": "/S",
             "PostInstall": []

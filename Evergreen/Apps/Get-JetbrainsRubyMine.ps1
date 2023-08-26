@@ -1,11 +1,10 @@
-function Get-JetBrainsPyCharm {
+function Get-JetBrainsRubyMine {
     <#
         .SYNOPSIS
-            Get the current version and download URLs for each edition of PyCharm.
+            Get the current version and download URLs for each edition of PhpStorm.
 
         .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
+
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]

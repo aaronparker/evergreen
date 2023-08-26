@@ -1,11 +1,10 @@
-function Get-JetBrainsPyCharm {
+function Get-JetBrainsSpace {
     <#
         .SYNOPSIS
-            Get the current version and download URLs for each edition of PyCharm.
+            Get the current version and download URLs for each edition of WebStorm.
 
         .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
+
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -30,7 +29,7 @@ function Get-JetBrainsPyCharm {
 
             $PSObject = [PSCustomObject] @{
                 Version = $updateFeed.$($Edition.Value).version
-                Build   = $updateFeed.$($Edition.Value).build
+                #Build   = $updateFeed.$($Edition.Value).build
                 Edition = $Edition.Key
                 Date    = ConvertTo-DateTime -DateTime $updateFeed.$($Edition.Value).date -Pattern $res.Get.Update.DatePattern
                 Size    = $updateFeed.$($Edition.Value).downloads.windows.size
