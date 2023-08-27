@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* Adds `Get-JetBrainsYouTrack`, `Get-JetBrainsGateway`, `Get-JetBrainsHub`, `Get-JetBrainsTeamCity`
+* Adds `Get-JetBrainsYouTrack`, `Get-JetBrainsGateway`, `Get-JetBrainsHub`, `Get-JetBrainsTeamCity`, `JetBrainsToolbox`
 
 ## 2308.823
 
