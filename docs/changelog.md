@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `Get-JetBrainsYouTrack`, `Get-JetBrainsGateway`, `Get-JetBrainsHub`, `Get-JetBrainsTeamCity`
+
 ## 2308.823
 
 * Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524), `JetBrainsCLion`, `JetBrainsDataGrip`, `JetBrainsDataSpell`, `JetBrainsGoLand`, `JetBrainsPhpStorm`, `JetBrainsRubyMine`, `JetBrainsWebStorm`
