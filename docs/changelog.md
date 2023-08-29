@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `GoogleChromeDriver` [#537](https://github.com/aaronparker/evergreen/issues/537), `ControlUpRemoteDX`
+* Adds `Get-JetBrainsYouTrack`, `Get-JetBrainsGateway`, `Get-JetBrainsHub`, `Get-JetBrainsTeamCity`, `JetBrainsToolbox`
+* Adds internal function `Get-JetBrainsApp` for shared code for JetBrains functions
+
 ## 2308.823
 
 * Adds `DruvainSyncClient` [#524](https://github.com/aaronparker/evergreen/issues/524), `JetBrainsCLion`, `JetBrainsDataGrip`, `JetBrainsDataSpell`, `JetBrainsGoLand`, `JetBrainsPhpStorm`, `JetBrainsRubyMine`, `JetBrainsWebStorm`

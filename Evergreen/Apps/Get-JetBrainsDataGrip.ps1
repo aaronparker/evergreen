@@ -1,11 +1,7 @@
-function Get-JetBrainsIntelliJIDEA {
+function Get-JetBrainsDataGrip {
     <#
         .SYNOPSIS
-            Get the current version and download URLs for each edition of IntelliJ IDEA.
-
-        .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
+            Get the current version and download URLs for each edition of DataGrip.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]

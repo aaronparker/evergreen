@@ -1,11 +1,7 @@
-function Get-JetBrainsIntelliJIDEA {
+function Get-JetBrainsSpace {
     <#
         .SYNOPSIS
-            Get the current version and download URLs for each edition of IntelliJ IDEA.
-
-        .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
+            Get the current version and download URLs for each edition of WebStorm.
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]

@@ -1,5 +1,5 @@
 {
-	"Name": "ControlUp Agent",
+	"Name": "ControlUp Remote DX Plugins",
 	"Source": "https://www.controlup.com/products/controlup/agent/",
 	"Get": {
 		"Update": {
@@ -7,7 +7,8 @@
 			"Properties": {
 				"Version": "GAed_Version",
 				"Agent": "Agent",
-				"Console": "Console"
+				"Console": "Console",
+				"RemoteDX": "Remote DX"
 			},
 			"ReplaceText": "v"
 		}
