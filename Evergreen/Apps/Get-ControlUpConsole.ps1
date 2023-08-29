@@ -24,7 +24,7 @@ Function Get-ControlUpConsole {
         ForEach ($item in $Object) {
             $PSObject = [PSCustomObject] @{
                 Version      = $Object.($res.Get.Update.Properties.Version) -replace $res.Get.Update.ReplaceText, ""
-                URI          = $Object.($res.Get.Update.Properties.Console)
+                URI          = $Object.($res.Get.Update.Properties.Console).Trim()
             }
             Write-Output -InputObject $PSObject
         }

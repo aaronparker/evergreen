@@ -4,7 +4,6 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://www.controlup.com/latest-agent-console/",
-			"Matches": "(?smi)({\n\"GA.*?})$",
 			"Properties": {
 				"Version": "GAed_Version",
 				"Agent": "Agent",
