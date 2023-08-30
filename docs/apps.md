@@ -1,6 +1,6 @@
-﻿# 275 Supported applications
+﻿# 282 Supported applications
 
-Evergreen `2308.823` supports the following applications:
+Evergreen `2308.831` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -52,6 +52,7 @@ Evergreen `2308.823` supports the following applications:
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                    |
 | ControlUpAgent                        | ControlUp Agent                                                   | https://www.controlup.com/products/controlup/agent/                                              |
 | ControlUpConsole                      | ControlUp Console                                                 | https://www.controlup.com/products/controlup/management/                                         |
+| ControlUpRemoteDX                     | ControlUp Remote DX Plugins                                       | https://www.controlup.com/products/controlup/agent/                                              |
 | Cyberduck                             | iterate GmbH Cyberduck                                            | https://cyberduck.io/                                                                            |
 | dbeaver                               | dbeaver                                                           | https://github.com/dbeaver/dbeaver                                                               |
 | DebaucheeBarrier                      | Debauchee Barrier                                                 | https://github.com/debauchee/barrier                                                             |
@@ -89,6 +90,7 @@ Evergreen `2308.823` supports the following applications:
 | GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                      |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                              |
 | GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
+| GoogleChromeDriver                    | Google Chrome Driver                                              | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
 | GoogleDrive                           | Google Drive                                                      | https://support.google.com/drive/answer/7329379                                                  |
 | GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
 | GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |
@@ -114,14 +116,19 @@ Evergreen `2308.823` supports the following applications:
 | JetBrainsCLion                        | JetBrains CLion                                                   | https://www.jetbrains.com/clion                                                                  |
 | JetBrainsDataGrip                     | JetBrains DataGrip                                                | https://www.jetbrains.com/datagrip                                                               |
 | JetBrainsDataSpell                    | JetBrains DataSpell                                               | https://www.jetbrains.com/dataspell                                                              |
+| JetBrainsGateway                      | JetBrains Gateway                                                 | https://www.jetbrains.com/                                                                       |
 | JetBrainsGoLand                       | JetBrains GoLand                                                  | https://www.jetbrains.com/dataspell                                                              |
+| JetBrainsHub                          | JetBrains Hub                                                     | https://www.jetbrains.com/hub                                                                    |
 | JetBrainsIntelliJIDEA                 | JetBrains IntelliJ IDEA                                           | https://www.jetbrains.com/                                                                       |
 | JetBrainsPhpStorm                     | JetBrains PhpStorm                                                | https://www.jetbrains.com/phpstorm                                                               |
 | JetBrainsPyCharm                      | JetBrains PyCharm                                                 | https://www.jetbrains.com/                                                                       |
 | JetBrainsRider                        | JetBrains Rider                                                   | https://www.jetbrains.com/                                                                       |
 | JetBrainsRubyMine                     | JetBrains RubyMine                                                | https://www.jetbrains.com/rubymine                                                               |
 | JetBrainsSpace                        | JetBrains Space                                                   | https://www.jetbrains.com/space                                                                  |
+| JetBrainsTeamCity                     | JetBrains TeamCity                                                | https://www.jetbrains.com/teamcity                                                               |
+| JetBrainsToolbox                      | JetBrains Toolbox App                                             | https://www.jetbrains.com/youtrack                                                               |
 | JetBrainsWebStorm                     | JetBrains WebStorm                                                | https://www.jetbrains.com/webstorm                                                               |
+| JetBrainsYouTrack                     | JetBrains YouTrack                                                | https://www.jetbrains.com/youtrack                                                               |
 | jq                                    | jq                                                                | https://jqlang.github.io/jq/                                                                     |
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                        |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                                    |

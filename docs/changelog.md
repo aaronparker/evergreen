@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2308.831
 
 * Adds `GoogleChromeDriver` [#537](https://github.com/aaronparker/evergreen/issues/537), `ControlUpRemoteDX`
 * Adds `Get-JetBrainsYouTrack`, `Get-JetBrainsGateway`, `Get-JetBrainsHub`, `Get-JetBrainsTeamCity`, `JetBrainsToolbox`
