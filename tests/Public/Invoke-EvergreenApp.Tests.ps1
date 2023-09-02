@@ -16,7 +16,7 @@ Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application:
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
-        $Output = Invoke-EvergreenApp -Name $application -WarningAction "SilentlyContinue"
+        $Output = Invoke-EvergreenApp -Name $application
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"

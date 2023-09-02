@@ -48,8 +48,7 @@ Function Invoke-SystemNetRequest {
         Write-Output -InputObject $result
     }
     catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
-        Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($_)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): $_, with: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         throw $_
     }
