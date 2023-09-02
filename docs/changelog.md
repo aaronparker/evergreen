@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `BellSoftLibericaJDK20`, `BellSoftLibericaJDK17`, `BellSoftLibericaJDK11`, `BellSoftLibericaJDK8` [#539](https://github.com/aaronparker/evergreen/issues/539)
+
 ## 2308.831
 
 * Adds `GoogleChromeDriver` [#537](https://github.com/aaronparker/evergreen/issues/537), `ControlUpRemoteDX`
