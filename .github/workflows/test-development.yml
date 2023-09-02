@@ -39,7 +39,6 @@ jobs:
 
   pestertest5:
     name: "Run Pester tests on Windows PowerShell (development push)"
-    needs: psscriptanalyzer
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
