@@ -1,9 +1,9 @@
 {
-    "Name": "Adoptium Temurin 17",
+    "Name": "Adoptium Temurin 18",
     "Source": "https://adoptium.net/",
     "Get": {
         "Update": {
-            "Uri": "https://api.adoptium.net/v3/assets/latest/17/hotspot?os=windows&jvm_impl=hotspot",
+            "Uri": "https://api.adoptium.net/v3/assets/latest/20/hotspot?os=windows&jvm_impl=hotspot",
             "ContentType": "application/json",
             "MatchImage": "jdk|jre"
         }

@@ -3,13 +3,13 @@
     "Source": "https://adoptium.net/",
     "Get": {
         "Update": {
-            "Uri": "https://api.adoptium.net/v3/assets/latest/16/hotspot?release=latest&jvm_impl=hotspot&vendor=adoptium",
-            "MatchOS": "windows",
+            "Uri": "https://api.adoptium.net/v3/assets/latest/16/hotspot?os=windows&jvm_impl=hotspot",
+            "ContentType": "application/json",
             "MatchImage": "jdk|jre"
         }
     },
     "Install": {
-        "Setup": "OpenJDK*.msi",
+        "Setup": "",
         "Physical": {
             "Arguments": "",
             "PostInstall": []
