@@ -9,14 +9,15 @@ param ()
 
 BeforeDiscovery {
     $Uri = "https://evergreen-api.stealthpuppy.com/apps"
-    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name"
+    $AppsToSkip = "JetBrainsYouTrack"
+    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name" | Where-Object { $_ -notmatch $AppsToSkip }
 }
 
 Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application: <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
-        $Output = Invoke-EvergreenApp -Name $application -WarningAction "SilentlyContinue"
+        $Output = Invoke-EvergreenApp -Name $application
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"

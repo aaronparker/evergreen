@@ -54,8 +54,7 @@ function Resolve-SystemNetWebRequest {
         Write-Output -InputObject $PSObject
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): Error at URI: $Uri."
-        Write-Warning -Message "$($MyInvocation.MyCommand): Response: $($webResponse.StatusCode)."
+        Write-Warning -Message "$($MyInvocation.MyCommand): $($webResponse.StatusCode), with: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         throw $_
     }

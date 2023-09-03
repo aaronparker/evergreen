@@ -1,11 +1,12 @@
 {
-    "Name": "Adoptium Temurin 17",
-    "Source": "https://adoptium.net/",
+    "Name": "Red Hat OpenJDK 11",
+    "Source": "https://developers.redhat.com/products/openjdk/overview",
     "Get": {
         "Update": {
-            "Uri": "https://api.adoptium.net/v3/assets/latest/17/hotspot?os=windows&jvm_impl=hotspot",
+            "Uri": "https://marketplace-api.adoptium.net/v1/assets/latestForVendors?feature_version=11&os=windows&vendor=redhat",
             "ContentType": "application/json",
-            "MatchImage": "jdk|jre"
+            "MatchImage": "jdk|jre",
+            "ResolveUri": false
         }
     },
     "Install": {

@@ -1,11 +1,12 @@
 {
-    "Name": "Adoptium Temurin 16",
-    "Source": "https://adoptium.net/",
+    "Name": "Microsoft OpenJDK 17",
+    "Source": "https://www.microsoft.com/openjdk",
     "Get": {
         "Update": {
-            "Uri": "https://api.adoptium.net/v3/assets/latest/16/hotspot?os=windows&jvm_impl=hotspot",
+            "Uri": "https://marketplace-api.adoptium.net/v1/assets/latestForVendors?feature_version=17&os=windows&vendor=microsoft",
             "ContentType": "application/json",
-            "MatchImage": "jdk|jre"
+            "MatchImage": "jdk|jre",
+            "ResolveUri": true
         }
     },
     "Install": {

@@ -1,11 +1,11 @@
-function Get-AdoptiumTemurin16 {
+function Get-AzulZulu8 {
     <#
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $false)]
+    [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
