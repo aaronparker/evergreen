@@ -21,16 +21,39 @@ function Get-AdoptiumTemurin {
 
     # Build the output object for each returned release
     foreach ($Release in ($Releases | Where-Object { $_.binary.image_type -match $res.Get.Update.MatchImage })) {
-        $PSObject = [PSCustomObject]@{
-            Version      = $Release.version.openjdk_version
-            ImageType    = $Release.binary.image_type
-            Date         = $Release.binary.updated_at
-            Checksum     = $Release.binary.installer.checksum
-            Size         = $Release.binary.installer.size
-            Type         = Get-FileType -File $Release.binary.installer.link
-            Architecture = Get-Architecture -String $Release.binary.architecture
-            URI          = $Release.binary.installer.link
+
+        if ($res.Get.Update.ResolveUri -eq $true) {
+            $Uri = Resolve-InvokeWebRequest -Uri $Release.binary.installer.link
         }
-        Write-Output -InputObject $PSObject
+        else {
+            $Uri = $Release.binary.installer.link
+        }
+
+        if ([System.String]::IsNullOrWhiteSpace($Release.binary.updated_at)) {
+            $PSObject = [PSCustomObject]@{
+                Version      = $Release.version.openjdk_version
+                ImageType    = $Release.binary.image_type
+                Date         = $Release.binary.timestamp
+                # Checksum     = $Release.binary.installer.checksum
+                # Size         = $Release.binary.installer.size
+                Architecture = Get-Architecture -String $Release.binary.architecture
+                Type         = Get-FileType -File $Uri
+                URI          = $Uri
+            }
+            Write-Output -InputObject $PSObject
+        }
+        else {
+            $PSObject = [PSCustomObject]@{
+                Version      = $Release.version.openjdk_version
+                ImageType    = $Release.binary.image_type
+                Date         = $Release.binary.updated_at
+                Checksum     = $Release.binary.installer.checksum
+                Size         = $Release.binary.installer.size
+                Architecture = Get-Architecture -String $Release.binary.architecture
+                Type         = Get-FileType -File $Uri
+                URI          = $Uri
+            }
+            Write-Output -InputObject $PSObject
+        }
     }
 }
