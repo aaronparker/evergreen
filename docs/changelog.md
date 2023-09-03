@@ -3,7 +3,9 @@
 ## VERSION
 
 * Adds `BellSoftLibericaJDK20`, `BellSoftLibericaJDK17`, `BellSoftLibericaJDK11`, `BellSoftLibericaJDK8` [#539](https://github.com/aaronparker/evergreen/issues/539)
-* Adds `AdoptiumTemurin20`, `AdoptiumTemurin19`, `MicrosoftOpenJDK17`, `MicrosoftOpenJDK16`, `MicrosoftOpenJDK11`, `MicrosoftOpenJDK8` [#540](https://github.com/aaronparker/evergreen/issues/540)
+* Adds `AdoptiumTemurin20`, `AdoptiumTemurin19` [#540](https://github.com/aaronparker/evergreen/issues/540)
+* Adds `MicrosoftOpenJDK17`, `MicrosoftOpenJDK16`, `MicrosoftOpenJDK11`, `MicrosoftOpenJDK8` [#540](https://github.com/aaronparker/evergreen/issues/540)
+* Adds `AzulZulu17`, `AzulZulu11`, `AzulZulu8` [#540](https://github.com/aaronparker/evergreen/issues/540)
 * Updates `AdoptiumTemurin` apps to optimise shared code
 * Removes `AdoptOpenJDK11`, `AdoptOpenJDK16`, `AdoptOpenJDK8`, `AdoptOpenJDKIcedTeaWeb`, `AdoptOpenJDKSemuru11`, `AdoptOpenJDKSemuru17`, `AdoptOpenJDKSemuru18`, `AdoptOpenJDKSemuru8` [#540](https://github.com/aaronparker/evergreen/issues/540)
 
