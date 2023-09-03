@@ -26,6 +26,9 @@
 				},
 				"17": {
 					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.msi"
+				},
+				"20": {
+					"x64msi" :"https://corretto.aws/downloads/latest/amazon-corretto-20-x64-windows-jdk.msi"
 				}
 			},
 			"Property": "ResponseUri.Headers.Location",
