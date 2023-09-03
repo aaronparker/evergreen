@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2309.840
 
 * Adds `BellSoftLibericaJDK20`, `BellSoftLibericaJDK17`, `BellSoftLibericaJDK11`, `BellSoftLibericaJDK8` [#539](https://github.com/aaronparker/evergreen/issues/539)
 * Adds `AdoptiumTemurin20`, `AdoptiumTemurin19` [#540](https://github.com/aaronparker/evergreen/issues/540)

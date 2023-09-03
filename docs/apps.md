@@ -1,6 +1,6 @@
-﻿# 282 Supported applications
+﻿# 290 Supported applications
 
-Evergreen `2308.831` supports the following applications:
+Evergreen `2309.84` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -18,15 +18,9 @@ Evergreen `2308.831` supports the following applications:
 | AdoptiumTemurin16                     | Adoptium Temurin 16                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin17                     | Adoptium Temurin 17                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin18                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
+| AdoptiumTemurin19                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
+| AdoptiumTemurin20                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin8                      | Adoptium Temurin 8                                                | https://adoptium.net/                                                                            |
-| AdoptOpenJDK11                        | AdoptOpenJDK OpenJDK Official Binaries (JDK 11u)                  | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDK16                        | AdoptOpenJDK OpenJDK Official Binaries (JDK 16u)                  | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDK8                         | AdoptOpenJDK OpenJDK Official Binaries (JDK 8u)                   | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDKIcedTeaWeb                | AdoptOpenJDK IcedTeaWeb                                           | https://adoptopenjdk.net/icedtea-web.html                                                        |
-| AdoptOpenJDKSemuru11                  | AdoptOpenJDK Semuru 11                                            | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDKSemuru17                  | AdoptOpenJDK Semuru 17                                            | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDKSemuru18                  | AdoptOpenJDK Semuru 18                                            | https://adoptopenjdk.net/index.html                                                              |
-| AdoptOpenJDKSemuru8                   | AdoptOpenJDK Semuru 8                                             | https://adoptopenjdk.net/index.html                                                              |
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                             |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                |
 | AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                                 |
@@ -40,7 +34,14 @@ Evergreen `2308.831` supports the following applications:
 | AutodeskFusion360                     | Autodesk Fusion 360                                               | https://www.autodesk.com/products/fusion-360/overview                                            |
 | AWSCLI                                | AWS CLI                                                           | https://github.com/aws/aws-cli/                                                                  |
 | AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                              |
+| AzulZulu11                            | Azul Zulu 11                                                      | https://www.azul.com/downloads/#zulu                                                             |
+| AzulZulu17                            | Azul Zulu 17                                                      | https://www.azul.com/downloads/#zulu                                                             |
+| AzulZulu8                             | Azul Zulu 8                                                       | https://www.azul.com/downloads/#zulu                                                             |
 | BeekeeperStudio                       | Beekeeper Studio                                                  | https://www.beekeeperstudio.io/                                                                  |
+| BellSoftLibericaJDK11                 | BellSoft Liberica JDK 11 LTS                                      | https://bell-sw.com/libericajdk/                                                                 |
+| BellSoftLibericaJDK17                 | BellSoft Liberica JDK 17 LTS                                      | https://bell-sw.com/libericajdk/                                                                 |
+| BellSoftLibericaJDK20                 | BellSoft Liberica JDK 20                                          | https://bell-sw.com/libericajdk/                                                                 |
+| BellSoftLibericaJDK8                  | BellSoft Liberica JDK 8 LTS                                       | https://bell-sw.com/libericajdk/                                                                 |
 | BISF                                  | Base Image Script Framework                                       | https://eucweb.com/                                                                              |
 | BitwardenDesktop                      | Bitwarden Desktop                                                 | https://bitwarden.com/                                                                           |
 | BlenderLauncher                       | Blender Launcher                                                  | https://dotbow.github.io/Blender-Launcher/                                                       |
@@ -158,6 +159,10 @@ Evergreen `2308.831` supports the following applications:
 | MicrosoftEdgeWebView2Runtime          | Microsoft Edge WebView2 Runtime                                   | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                                   |
 | MicrosoftFSLogixApps                  | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                              |
 | MicrosoftOneDrive                     | Microsoft OneDrive                                                | https://onedrive.live.com/                                                                       |
+| MicrosoftOpenJDK11                    | Microsoft OpenJDK 11                                              | https://www.microsoft.com/openjdk                                                                |
+| MicrosoftOpenJDK16                    | Microsoft OpenJDK 16                                              | https://www.microsoft.com/openjdk                                                                |
+| MicrosoftOpenJDK17                    | Microsoft OpenJDK 17                                              | https://www.microsoft.com/openjdk                                                                |
+| MicrosoftOpenJDK8                     | Microsoft OpenJDK 8                                               | https://www.microsoft.com/openjdk                                                                |
 | MicrosoftOutlook                      | Microsoft Outlook                                                 | https://www.microsoft.com/en/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook |
 | MicrosoftPowerShell                   | Microsoft PowerShell                                              | https://docs.microsoft.com/powershell/                                                           |
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                          |
@@ -226,6 +231,9 @@ Evergreen `2308.831` supports the following applications:
 | PuTTY                                 | PuTTY                                                             | https://www.chiark.greenend.org.uk/~sgtatham/putty/                                              |
 | RCoreTeamRforWindows                  | R Core Team R for Windows                                         | https://cran.r-project.org/bin/windows/base/                                                     |
 | RDAnalyzer                            | Remote Desktop Analyzer                                           | https://rdanalyzer.com/                                                                          |
+| RedHatOpenJDK11                       | Red Hat OpenJDK 11                                                | https://developers.redhat.com/products/openjdk/overview                                          |
+| RedHatOpenJDK17                       | Red Hat OpenJDK 17                                                | https://developers.redhat.com/products/openjdk/overview                                          |
+| RedHatOpenJDK8                        | Red Hat OpenJDK 8                                                 | https://developers.redhat.com/products/openjdk/overview                                          |
 | ResponsivelyApp                       | Responsively App                                                  | https://responsively.app/                                                                        |
 | RingCentral                           | RingCentral                                                       | https://www.ringcentral.com                                                                      |
 | RizonesoftNotepad3                    | Rizonesoft Notepad3                                               | https://www.rizonesoft.com/downloads/notepad3                                                    |
