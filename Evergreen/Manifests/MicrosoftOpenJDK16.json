@@ -1,0 +1,23 @@
+{
+    "Name": "Microsoft OpenJDK 16",
+    "Source": "https://www.microsoft.com/openjdk",
+    "Get": {
+        "Update": {
+            "Uri": "https://marketplace-api.adoptium.net/v1/assets/latestForVendors?feature_version=16&os=windows&vendor=microsoft",
+            "ContentType": "application/json",
+            "MatchImage": "jdk|jre",
+            "ResolveUri": true
+        }
+    },
+    "Install": {
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}
