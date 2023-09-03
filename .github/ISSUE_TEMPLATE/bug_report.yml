@@ -39,11 +39,10 @@ body:
       label: Which operating system/s are you running Evergreen on?
       multiple: true
       options:
-        - Windows 10
+        - Windows 10+
         - Windows Server 2016+
         - macOS
         - Linux
-        - Other
     validations:
       required: true
   - type: checkboxes
