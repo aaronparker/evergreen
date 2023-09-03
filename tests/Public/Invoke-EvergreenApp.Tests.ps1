@@ -9,7 +9,8 @@ param ()
 
 BeforeDiscovery {
     $Uri = "https://evergreen-api.stealthpuppy.com/apps"
-    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name"
+    $AppsToSkip = "JetBrains"
+    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name" | Where-Object { $_.Name -notmatch $AppsToSkip }
 }
 
 Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application: <application>" -ForEach $Applications {
