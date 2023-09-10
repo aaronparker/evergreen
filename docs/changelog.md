@@ -1,5 +1,9 @@
 # Change log
 
+## RELEASE
+
+* Adds `UnitySetup` [#245](https://github.com/aaronparker/evergreen/issues/245)
+
 ## 2309.840
 
 * Adds `BellSoftLibericaJDK20`, `BellSoftLibericaJDK17`, `BellSoftLibericaJDK11`, `BellSoftLibericaJDK8` [#539](https://github.com/aaronparker/evergreen/issues/539)
