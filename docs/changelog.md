@@ -4,6 +4,7 @@
 
 * Adds `UnitySetup` [#245](https://github.com/aaronparker/evergreen/issues/245)
 * Updates `GoogleChrome` to address retirement of update source [#546](https://github.com/aaronparker/evergreen/issues/546)
+* Removes `MicrosoftOpenJDK16`, `MicrosoftOpenJDK8` as binaries are not available
 
 ## 2309.840
 
