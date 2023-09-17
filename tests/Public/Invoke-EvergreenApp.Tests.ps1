@@ -9,7 +9,7 @@ param ()
 
 BeforeDiscovery {
     $Uri = "https://evergreen-api.stealthpuppy.com/apps"
-    $AppsToSkip = "JetBrainsYouTrack"
+    $AppsToSkip = "JetBrainsYouTrack|MicrosoftOpenJDK8|MicrosoftOpenJDK16"
     $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name" | Where-Object { $_ -notmatch $AppsToSkip }
 }
 

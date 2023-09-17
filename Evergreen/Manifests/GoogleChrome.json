@@ -3,29 +3,31 @@
     "Source": "https://cloud.google.com/chrome-enterprise/browser/download/",
     "Get": {
         "Update": {
-            "Uri": "https://omahaproxy.appspot.com/json"
+            "Uri2": "https://chromiumdash.appspot.com/fetch_releases?channel=#channel&platform=Windows",
+            "Uri": "https://versionhistory.googleapis.com/v1/chrome/platforms/win64/channels/#channel/versions/all/releases",
+            "Channels": [
+                "extended",
+                "stable",
+                "beta",
+                "dev",
+                "canary"
+            ]
         },
         "Download": {
             "Uri": {
-                "stable": {
-                    "win64": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
-                    "win": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise.msi"
-                },
-                "beta": {
-                    "win64": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
-                    "win": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi"
-                },
-                "dev": {
-                    "win64": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi",
-                    "win": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise.msi"
-                }
+                "extended": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+                "stable": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+                "beta": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
+                "dev": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi",
+                "canary": "https://dl.google.com/update2/installers/ChromeSetup.exe"
             },
-            "Platforms": [
-                "win64",
-                "win"
-            ],
-            "DatePattern": "MM/dd/yy"
-        }
+            "Bundle": "https://dl.google.com/dl/chrome/install/GoogleChromeEnterpriseBundle64.zip"
+        },
+        "Platforms": [
+            "win64",
+            "win"
+        ],
+        "DatePattern": "MM/dd/yy"
     },
     "Install": {
         "Setup": "googlechrome*standaloneenterprise*.msi",
