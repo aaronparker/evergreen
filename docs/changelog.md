@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Adds `OracleJava20`, `OracleJava17` [#381](https://github.com/aaronparker/evergreen/issues/381)
+
 ## 2309.850
 
 * Adds `UnitySetup` [#245](https://github.com/aaronparker/evergreen/issues/245)
