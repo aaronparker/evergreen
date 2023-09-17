@@ -1,6 +1,6 @@
-﻿# 290 Supported applications
+﻿# 289 Supported applications
 
-Evergreen `2309.84` supports the following applications:
+Evergreen `2309.85` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -160,9 +160,7 @@ Evergreen `2309.84` supports the following applications:
 | MicrosoftFSLogixApps                  | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                              |
 | MicrosoftOneDrive                     | Microsoft OneDrive                                                | https://onedrive.live.com/                                                                       |
 | MicrosoftOpenJDK11                    | Microsoft OpenJDK 11                                              | https://www.microsoft.com/openjdk                                                                |
-| MicrosoftOpenJDK16                    | Microsoft OpenJDK 16                                              | https://www.microsoft.com/openjdk                                                                |
 | MicrosoftOpenJDK17                    | Microsoft OpenJDK 17                                              | https://www.microsoft.com/openjdk                                                                |
-| MicrosoftOpenJDK8                     | Microsoft OpenJDK 8                                               | https://www.microsoft.com/openjdk                                                                |
 | MicrosoftOutlook                      | Microsoft Outlook                                                 | https://www.microsoft.com/en/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook |
 | MicrosoftPowerShell                   | Microsoft PowerShell                                              | https://docs.microsoft.com/powershell/                                                           |
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                          |
@@ -269,6 +267,7 @@ Evergreen `2309.84` supports the following applications:
 | Tower                                 | Tower                                                             | https://www.git-tower.com/windows/                                                               |
 | TPGiColourContrastAnalyser            | TGPi Colour Contrast Analyser                                     | https://www.tpgi.com/color-contrast-checker/                                                     |
 | TrackerSoftwarePDFXChangeEditor       | Tracker Software PDF X-Change Editor                              | https://pdf-xchange.eu/pdf-xchange-editor/index.htm                                              |
+| UnityEditor                           | Unity Editor                                                      | https://unity.com/download                                                                       |
 | USBPcap                               | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                              |
 | VastLimitsUberAgent                   | vast limits uberAgent                                             | https://uberagent.com/                                                                           |
 | VeraCrypt                             | VeraCrypt                                                         | https://www.veracrypt.fr/en/Home.html                                                            |
