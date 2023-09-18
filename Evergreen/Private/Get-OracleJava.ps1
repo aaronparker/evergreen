@@ -35,7 +35,6 @@ function Get-OracleJava {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($Type.Name)."
         [PSCustomObject] @{
             Version = $LatestVersion.version
-            Date    = ConvertTo-DateTime -DateTime $LatestVersion.ga -Pattern $res.Get.Update.DateFormat
             Sha256  = Invoke-WebRequestWrapper -uri "$($res.Get.Download.Uri[$Type.Key]).sha256" -ReturnObject "Content"
             Type    = Get-FileType -File $res.Get.Download.Uri[$Type.Key]
             URI     = $res.Get.Download.Uri[$Type.Key]
