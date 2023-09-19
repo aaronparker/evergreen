@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `OracleJava20`, `OracleJava17` [#381](https://github.com/aaronparker/evergreen/issues/381)
+* Updates `GoogleChrome` to address missing `x86` installers [#550](https://github.com/aaronparker/evergreen/issues/550)
 
 ## 2309.850
 

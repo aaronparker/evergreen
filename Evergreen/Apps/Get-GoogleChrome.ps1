@@ -34,7 +34,8 @@ function Get-GoogleChrome {
         }
         Write-Output -InputObject $PSObject
 
-        if ($Channel -eq "stable") {
+        if ($Channel -eq $res.Get.Download.BundleFilter) {
+            # Output the version and URI for the bundle download
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
                 Architecture = Get-Architecture -String $res.Get.Download.Bundle
@@ -44,35 +45,17 @@ function Get-GoogleChrome {
             }
             Write-Output -InputObject $PSObject
         }
+
+        if ($Channel -match $res.Get.Download.'32bitFilter') {
+            # Output the version and URI object for the 32-bit version
+            $PSObject = [PSCustomObject] @{
+                Version      = $Version
+                Architecture = Get-Architecture -String $($res.Get.Download.Uri.$Channel -replace "64", "")
+                Channel      = $Channel
+                Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
+                URI          = $res.Get.Download.Uri.$Channel -replace "64", ""
+            }
+            Write-Output -InputObject $PSObject
+        }
     }
-
-    # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    # $UpdateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
-
-    # # Read the JSON and build an array of platform, channel, version
-    # foreach ($channel in $res.Get.Download.Uri.GetEnumerator()) {
-    #     Write-Verbose -Message "$($MyInvocation.MyCommand): Channel: $($channel.Name)."
-
-    #     # Step through each platform property
-    #     foreach ($platform in $res.Get.Download.Platforms) {
-    #         Write-Verbose -Message "$($MyInvocation.MyCommand): Platform: $platform."
-
-    #         # Filter the feed for the specific channel and platform
-    #         $UpdateItem = $UpdateFeed.versions | Where-Object { ($_.channel -eq $channel.Name) -and ($_.os -eq $platform) }
-    #         foreach ($item in $UpdateItem) {
-
-    #             # Output the version and URI object
-    #             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($item.Count) item/s for $($channel.Name), $platform."
-    #             $PSObject = [PSCustomObject] @{
-    #                 Version      = $item.Version
-    #                 Architecture = Get-Architecture -String $item.Os
-    #                 Channel      = $item.Channel
-    #                 Date         = ConvertTo-DateTime -DateTime $item.Current_RelDate.Trim() -Pattern $res.Get.Download.DatePattern
-    #                 Type         = [System.IO.Path]::GetExtension($($res.Get.Download.Uri[$channel.Key].($Platform))).Split(".")[-1]
-    #                 URI          = $($res.Get.Download.Uri[$channel.Key].($Platform))
-    #             }
-    #             Write-Output -InputObject $PSObject
-    #         }
-    #     }
-    # }
 }

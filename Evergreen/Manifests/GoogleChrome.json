@@ -1,10 +1,10 @@
 {
-    "Name": "Google Chrome",
+    "Name": "Google Chrome Enterprise",
     "Source": "https://cloud.google.com/chrome-enterprise/browser/download/",
     "Get": {
         "Update": {
-            "Uri2": "https://chromiumdash.appspot.com/fetch_releases?channel=#channel&platform=Windows",
             "Uri": "https://versionhistory.googleapis.com/v1/chrome/platforms/win64/channels/#channel/versions/all/releases",
+            "Uri2": "https://chromiumdash.appspot.com/fetch_releases?channel=#channel&platform=Windows",
             "Channels": [
                 "extended",
                 "stable",
@@ -21,13 +21,10 @@
                 "dev": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi",
                 "canary": "https://dl.google.com/update2/installers/ChromeSetup.exe"
             },
-            "Bundle": "https://dl.google.com/dl/chrome/install/GoogleChromeEnterpriseBundle64.zip"
-        },
-        "Platforms": [
-            "win64",
-            "win"
-        ],
-        "DatePattern": "MM/dd/yy"
+            "Bundle": "https://dl.google.com/dl/chrome/install/GoogleChromeEnterpriseBundle64.zip",
+            "BundleFilter": "stable",
+            "32bitFilter": "stable|beta|extended|dev"
+        }
     },
     "Install": {
         "Setup": "googlechrome*standaloneenterprise*.msi",
