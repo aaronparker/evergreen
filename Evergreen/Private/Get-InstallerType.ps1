@@ -7,10 +7,11 @@ function Get-InstallerType {
     )
 
     switch -Regex ($String.ToLower()) {
-        "user"          { $Type = "User"; break }
-        "portable"      { $Type = "Portable"; break }
-        "no-installer"  { $Type = "Portable"; break }
-        "debug"         { $Type = "Debug"; break }
+        "min"          { $Type = "Minimal"; break }
+        "user"         { $Type = "User"; break }
+        "portable"     { $Type = "Portable"; break }
+        "no-installer" { $Type = "Portable"; break }
+        "debug"        { $Type = "Debug"; break }
         default {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Installer type not found in $String, defaulting to 'Default'."
             $Type = "Default"
