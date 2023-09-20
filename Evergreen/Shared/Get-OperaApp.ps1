@@ -12,8 +12,7 @@ function Get-OperaApp {
     param (
         [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.Management.Automation.PSObject]
-        $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
+        [System.Management.Automation.PSObject] $res
     )
 
     foreach ($Channel in $res.Get.Update.Channels) {
