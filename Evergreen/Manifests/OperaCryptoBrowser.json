@@ -25,8 +25,7 @@
             },
             "Architectures": [
                 "x64"
-            ],
-            "ReplaceText": "#version"
+            ]
         }
     },
     "Install": {
