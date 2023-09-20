@@ -6,15 +6,17 @@
 param ()
 
 #region Get public and private function definition files
-$publicRoot = Join-Path -Path $PSScriptRoot -ChildPath "Public"
-$privateRoot = Join-Path -Path $PSScriptRoot -ChildPath "Private"
-$Public = @( Get-ChildItem -Path (Join-Path $publicRoot "*.ps1") -ErrorAction "SilentlyContinue" )
-$Private = @( Get-ChildItem -Path (Join-Path $privateRoot "*.ps1") -ErrorAction "SilentlyContinue" )
+$PublicRoot = Join-Path -Path $PSScriptRoot -ChildPath "Public"
+$PrivateRoot = Join-Path -Path $PSScriptRoot -ChildPath "Private"
+$SharedRoot = Join-Path -Path $PSScriptRoot -ChildPath "Shared"
+$Public = @( Get-ChildItem -Path (Join-Path -Path $PublicRoot -ChildPath "*.ps1") -ErrorAction "SilentlyContinue" )
+$Private = @( Get-ChildItem -Path (Join-Path -Path $PrivateRoot -ChildPath "*.ps1") -ErrorAction "SilentlyContinue" )
+$Shared = @( Get-ChildItem -Path (Join-Path -Path $SharedRoot -ChildPath "*.ps1") -ErrorAction "SilentlyContinue" )
 
 # Dot source the files
-foreach ($import in @($Public + $Private)) {
+foreach ($Import in @($Public + $Private + $Shared)) {
     try {
-        . $import.FullName
+        . $Import.FullName
     }
     catch {
         throw $_
