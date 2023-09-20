@@ -3,8 +3,13 @@
 	"Source": "https://gitforwindows.org/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/git-for-windows/git/releases/latest",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msp$|\\.zip$"
+		"MatchVersion": "(\\d+.*)",
+		"OldMatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$|\\.msi$",
+		"VersionReplace": [
+			".windows",
+			""
+		]
 	},
 	"Install": {
 		"Setup": "Git*.exe",
