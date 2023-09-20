@@ -1,4 +1,4 @@
-Function Get-HashicorpConsul {
+function Get-HashicorpConsul {
     <#
         .SYNOPSIS
             Get the current versions and download URLs for Hashicorp Consul.
@@ -8,34 +8,15 @@ Function Get-HashicorpConsul {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
-        [ValidateNotNull()]
+        [Parameter(Mandatory = $false, Position = 0)]
+        [ValidateNotNullOrEmpty()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Pass the repo releases API URL and return a formatted object
-    $params = @{
-        Uri               = $res.Get.Update.Uri
-        MatchVersion      = $res.Get.Update.MatchVersion
-        Filter            = $res.Get.Update.MatchFileTypes
-        ReturnVersionOnly = $True
-    }
-    $object = Get-GitHubRepoRelease @params
-
-    # Build the output object
-    If ($Null -ne $object) {
-        ForEach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
-            $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceText, $object.Version
-            $PSObject = [PSCustomObject] @{
-                Version      = $object.Version
-                Type         = Get-FileType -File $Uri
-                Architecture = $Architecture.Name
-                URI          = $Uri
-            }
-            Write-Output -InputObject $PSObject
-        }
-    }
+    $Output = Get-HashicorpApp -res $res
+    Write-Output -InputObject $Output
 }
