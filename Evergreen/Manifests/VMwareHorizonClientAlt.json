@@ -3,11 +3,17 @@
 	"Source": "https://docs.vmware.com/en/VMware-Horizon-Client/index.html",
 	"Get": {
 		"Update": {
-			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=CART23FQ1_WIN_2203&productId=1027",
-			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=CART23FQ1_WIN_2203&productId=1027&rPId=#releasePackageId"
+			"Uri": "https://softwareupdate.vmware.com/horizon-clients/zon-clients/viewcrt-windows.xml",
+			"ContentType": "application/xml",
+			"Property": "metaList.metadata",
+			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 		},
 		"Download": {
-			"Uri": "https://download3.vmware.com/software/#container/#filename"
+			"Uri": "https://softwareupdate.vmware.com/horizon-clients/",
+            "VersionXPath": "//productList",
+            "VersionProperty": "product",
+            "FileXPath": "//relativePath",
+            "FileProperty": "#text"
 		}
 	},
 	"Install": {
