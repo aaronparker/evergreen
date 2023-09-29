@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2309.859
 
 * Adds `OracleJava20`, `OracleJava17` [#381](https://github.com/aaronparker/evergreen/issues/381)
 * Adds `Get-VMwareSDWANClient`, `MicrosoftODBCDriverForSQLServer`, `MicrosoftOLEDBDriverForSQLServer`

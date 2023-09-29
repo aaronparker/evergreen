@@ -1,6 +1,6 @@
-﻿# 289 Supported applications
+﻿# 294 Supported applications
 
-Evergreen `2309.85` supports the following applications:
+Evergreen `2309.859` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -90,7 +90,7 @@ Evergreen `2309.85` supports the following applications:
 | GitHubAtom                            | GitHub Atom                                                       | https://atom.io/                                                                                 |
 | GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                      |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                              |
-| GoogleChrome                          | Google Chrome                                                     | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
+| GoogleChrome                          | Google Chrome Enterprise                                          | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
 | GoogleChromeDriver                    | Google Chrome Driver                                              | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
 | GoogleDrive                           | Google Drive                                                      | https://support.google.com/drive/answer/7329379                                                  |
 | GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
@@ -158,6 +158,8 @@ Evergreen `2309.85` supports the following applications:
 | MicrosoftEdgeDriver                   | Microsoft Edge WebDriver                                          | https://www.microsoft.com/edge                                                                   |
 | MicrosoftEdgeWebView2Runtime          | Microsoft Edge WebView2 Runtime                                   | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                                   |
 | MicrosoftFSLogixApps                  | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                              |
+| MicrosoftODBCDriverForSQLServer       | Microsoft ODBC Driver for SQL Server                              | https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server           |
+| MicrosoftOLEDBDriverForSQLServer      | Microsoft OLE DB Driver for SQL Server                            | https://learn.microsoft.com/en-us/sql/connect/oledb/download-oledb-driver-for-sql-server         |
 | MicrosoftOneDrive                     | Microsoft OneDrive                                                | https://onedrive.live.com/                                                                       |
 | MicrosoftOpenJDK11                    | Microsoft OpenJDK 11                                              | https://www.microsoft.com/openjdk                                                                |
 | MicrosoftOpenJDK17                    | Microsoft OpenJDK 17                                              | https://www.microsoft.com/openjdk                                                                |
@@ -208,6 +210,8 @@ Evergreen `2309.85` supports the following applications:
 | OperaBrowser                          | Opera Browser                                                     | https://www.opera.com/browsers/opera                                                             |
 | OperaCryptoBrowser                    | Opera Crypto Browser                                              | https://www.opera.com/crypto/next                                                                |
 | OperaGXBrowser                        | Opera GX Browser                                                  | https://www.opera.com/gx                                                                         |
+| OracleJava17                          | Oracle Java 17                                                    | https://www.java.com                                                                             |
+| OracleJava20                          | Oracle Java 20                                                    | https://www.java.com                                                                             |
 | OracleJava8                           | Oracle Java 8                                                     | https://www.java.com                                                                             |
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                      |
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
@@ -278,6 +282,7 @@ Evergreen `2309.85` supports the following applications:
 | VMwareHorizonClient                   | VMware Horizon Client                                             | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                      |
 | VMwareHorizonClientAlt                | VMware Horizon Client (alternate method)                          | https://docs.vmware.com/en/VMware-Horizon-Client/index.html                                      |
 | VMwareOSOptimizationTool              | VMware OS Optimization Tool                                       | https://techzone.vmware.com/resource/windows-os-optimization-tool-vmware-horizon-guide           |
+| VMwareSDWANClient                     | VMware SD-WAN Client                                              | https://docs.vmware.com/en/VMware-SD-WAN-Client/index.html                                       |
 | VMwareTools                           | VMware Tools                                                      | https://docs.vmware.com/en/VMware-Tools/index.html                                               |
 | VMwareWorkstationPlayer               | VMware Workstation Player                                         | https://www.vmware.com/products/workstation-player.html                                          |
 | VMwareWorkstationPro                  | VMware Workstation Pro                                            | https://www.vmware.com/products/workstation-pro.html                                             |
