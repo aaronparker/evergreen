@@ -3,7 +3,15 @@
 ## VERSION
 
 * Adds `OracleJava20`, `OracleJava17` [#381](https://github.com/aaronparker/evergreen/issues/381)
+* Adds `Get-VMwareSDWANClient`, `MicrosoftODBCDriverForSQLServer`, `MicrosoftOLEDBDriverForSQLServer`
 * Updates `GoogleChrome` to address missing `x86` installers [#550](https://github.com/aaronparker/evergreen/issues/550)
+* Updates `GhislerTotalCommander` to address version and URL issue [#552](https://github.com/aaronparker/evergreen/issues/552)
+* Updates `GitForWindows` to address version string issue [#511](https://github.com/aaronparker/evergreen/issues/511)
+* Optimises shared code for Hashicorp apps
+* Optimises shared code for Opera apps
+* Optimises shared code for Oracle Java apps
+* Optimises shared code for VMware apps [#474](https://github.com/aaronparker/evergreen/issues/474)
+* Updates `MicrosoftVisualStudio` to return release `17`
 
 ## 2309.850
 
