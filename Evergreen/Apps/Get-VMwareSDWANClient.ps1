@@ -1,4 +1,4 @@
-﻿function Get-VMwareWorkstationPlayer {
+function Get-VMwareSDWANClient {
     <#
         .NOTES
             Author: Aaron Parker

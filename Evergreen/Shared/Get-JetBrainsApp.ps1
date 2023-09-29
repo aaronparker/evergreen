@@ -19,8 +19,10 @@ function Get-JetBrainsApp {
 
         # Query the JetBrains URI to get the JSON
         $UpdateFeed = Invoke-RestMethodWrapper -Uri $uri
-        if ($null -ne $UpdateFeed) {
-
+        if ([System.String]::IsNullOrWhiteSpace($UpdateFeed.$($Edition.Value).downloads.windows.link)) {
+            Write-Warning -Message "$($MyInvocation.MyCommand): 'downloads.windows.link' property is null; from '$uri'."
+        }
+        else {
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version = $UpdateFeed.$($Edition.Value).version

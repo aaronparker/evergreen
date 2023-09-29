@@ -8,50 +8,43 @@
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
-        [ValidateNotNull()]
+        [Parameter(Mandatory = $false, Position = 0)]
+        [ValidateNotNullOrEmpty()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Read the update RSS feed
-    $params = @{
-        Uri = $res.Get.Update.Uri
-    }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
 
-    If ($Null -ne $UpdateFeed) {
+    # Latest version is the last item in the feed
+    # Can't cast $_.version to [System.Version] because underscore character is in the string
+    $Count = $UpdateFeed.'java-update-map'.mapping.Count
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Filter $Count items in feed for latest update."
+    $latestUpdate = $UpdateFeed.'java-update-map'.mapping | `
+        Where-Object { $_.url -notlike "*-cb.xml" } | `
+        Select-Object -Last 1
 
-        # Latest version is the last item in the feed
-        # Can't cast $_.version to [System.Version] because underscore character is in the string
-        $Count = $UpdateFeed.'java-update-map'.mapping.Count
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Filter $Count items in feed for latest update."
-        $latestUpdate = $UpdateFeed.'java-update-map'.mapping | Where-Object { $_.url -notlike "*-cb.xml" } | Select-Object -Last 1
+    # Read the XML listed in the most recent update
+    $Feed = Invoke-RestMethodWrapper -Uri $latestUpdate.url
+    if ($null -ne $Feed) {
 
-        # Read the XML listed in the most recent update
-        $params = @{
-            Uri = $latestUpdate.url
-        }
-        $Feed = Invoke-RestMethodWrapper @params
+        # Select the update info
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Select item in feed for $($res.Get.Update.Filter)."
+        $Update = $Feed.'java-update'.information | Where-Object { $_.lang -eq $res.Get.Update.Filter } | Select-Object -First 1
 
-        If ($Null -ne $Feed) {
-
-            # Select the update info
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Select item in feed for $($res.Get.Update.Filter)."
-            $Update = $Feed.'java-update'.information | Where-Object { $_.lang -eq $res.Get.Update.Filter } | Select-Object -First 1
-
-            # Construct the output; Return the custom object to the pipeline
-            ForEach ($item in $res.Get.Update.FileStrings.GetEnumerator()) {
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($item.Name)."
-                $PSObject = [PSCustomObject] @{
-                    Version      = $($Update.version | Select-Object -Last 1)
-                    Architecture = $item.Name
-                    URI          = $Update.url -replace $res.Get.Update.ReplaceText, $res.Get.Update.FileStrings[$item.Key]
-                }
-                Write-Output -InputObject $PSObject
+        # Construct the output; Return the custom object to the pipeline
+        foreach ($item in $res.Get.Update.FileStrings.GetEnumerator()) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($item.Name)."
+            $PSObject = [PSCustomObject] @{
+                Version      = $($Update.version | Select-Object -Last 1)
+                Architecture = $item.Name
+                Type         = Get-FileType -File $($Update.url -replace $res.Get.Update.ReplaceText, $res.Get.Update.FileStrings[$item.Key])
+                URI          = $Update.url -replace $res.Get.Update.ReplaceText, $res.Get.Update.FileStrings[$item.Key]
             }
+            Write-Output -InputObject $PSObject
         }
     }
 }

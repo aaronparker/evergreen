@@ -32,6 +32,9 @@ function Get-GitHubRepoRelease {
         [ValidateNotNullOrEmpty()]
         [System.String] $Filter = "\.exe$|\.msi$|\.msp$|\.zip$",
 
+        [Parameter(Mandatory = $false, Position = 4)]
+        [System.Array] $VersionReplace,
+
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $ReturnVersionOnly
     )
@@ -126,27 +129,32 @@ function Get-GitHubRepoRelease {
                 if ($Uri -match "^*tags$") {
                     try {
                         # Uri matches tags fo the repo; find the latest tag
-                        $version = [RegEx]::Match($release[0].name, $MatchVersion).Captures.Groups[1].Value
+                        $Version = [RegEx]::Match($release[0].name, $MatchVersion).Captures.Groups[1].Value
                     }
                     catch {
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
-                        $version = $release[0].name
+                        $Version = $release[0].name
                     }
                 }
                 else {
                     try {
                         # Uri matches releases for the repo; return just the version string
-                        $version = [RegEx]::Match($release[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                        $Version = [RegEx]::Match($release[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
                     }
                     catch {
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
-                        $version = $item.$VersionTag
+                        $Version = $item.$VersionTag
                     }
+                }
+
+                if ($PSBoundParameters.ContainsKey("VersionReplace")) {
+                    # Replace string in version
+                    $Version = $Version -replace $res.Get.VersionReplace[0], $res.Get.VersionReplace[1]
                 }
 
                 # Build the output object
                 $PSObject = [PSCustomObject] @{
-                    Version = $version
+                    Version = $Version
                 }
                 Write-Output -InputObject $PSObject
             }
@@ -162,17 +170,23 @@ function Get-GitHubRepoRelease {
                             # Capture the version string from the specified release tag
                             try {
                                 Write-Verbose -Message "$($MyInvocation.MyCommand): Matching version number against: $($item.$VersionTag)."
-                                $version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
-                                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version number: $version."
+                                $Version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version number: $Version."
                             }
                             catch {
                                 Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning: $($item.$VersionTag)."
-                                $version = $item.$VersionTag
+                                $Version = $item.$VersionTag
+                            }
+
+                            if ($PSBoundParameters.ContainsKey("VersionReplace")) {
+                                # Replace string in version
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Replace $($res.Get.VersionReplace[0])."
+                                $Version = $Version -replace $res.Get.VersionReplace[0], $res.Get.VersionReplace[1]
                             }
 
                             # Build the output object
                             $PSObject = [PSCustomObject] @{
-                                Version       = $version
+                                Version       = $Version
                                 Platform      = Get-Platform -String $asset.browser_download_url
                                 Architecture  = Get-Architecture -String $asset.browser_download_url
                                 Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]

@@ -1,19 +1,19 @@
 {
-	"Name": "VMware Workstation Pro",
-	"Source": "https://www.vmware.com/products/workstation-pro.html",
+	"Name": "VMware SD-WAN Client",
+	"Source": "https://docs.vmware.com/en/VMware-SD-WAN-Client/index.html",
 	"Get": {
 		"Update": {
 			"Uri": ""
 		},
 		"Download": {
 			"Uri": "download3.vmware.com",
-            "ProductName": "VMware Workstation Pro",
+            "ProductName": "VMware SD-WAN Client",
             "MatchFileTypes": "\\.exe$|\\.msi$",
-            "ReplaceText": ""
+            "ReplaceText": "SD-WAN Client "
 		}
 	},
 	"Install": {
-		"Setup": "VMware-player*.exe",
+		"Setup": "",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [

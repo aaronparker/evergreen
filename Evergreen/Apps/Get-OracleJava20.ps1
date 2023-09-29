@@ -1,8 +1,5 @@
-function Get-OperaGXBrowser {
+﻿function Get-OracleJava20 {
     <#
-        .SYNOPSIS
-            Returns the available Opera GX Browser versions and download URIs.
-
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
@@ -16,6 +13,6 @@ function Get-OperaGXBrowser {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Output = Get-OperaApp -res $res
+    $Output = Get-OracleJava -res $res
     Write-Output -InputObject $Output
 }

@@ -3,15 +3,17 @@
 	"Source": "https://www.vmware.com/products/workstation-player.html",
 	"Get": {
 		"Update": {
-			"Uri": "https://customerconnect.vmware.com/channel/public/api/v1.0/products/getDLGHeader?locale=en_US&downloadGroup=WKST-PLAYER-1701&productId=1377",
-			"File": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=WKST-PLAYER-1701"
+			"Uri": ""
 		},
 		"Download": {
-			"Uri": "https://download3.vmware.com/software/WKST-PLAYER-1701/#filename"
+			"Uri": "download3.vmware.com",
+            "ProductName": "VMware Workstation Player",
+            "MatchFileTypes": "\\.exe$|\\.msi$",
+            "ReplaceText": ""
 		}
 	},
 	"Install": {
-		"Setup": "VMware-player*.exe",
+		"Setup": "",
 		"Physical": {
 			"Arguments": "",
 			"PostInstall": [

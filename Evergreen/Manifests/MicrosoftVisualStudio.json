@@ -3,8 +3,8 @@
 	"Source": "https://visualstudio.microsoft.com/",
 	"Get": {
 		"Update": {
-            "Uri": "https://aka.ms/vs/16/release/channel",
-            "MatchFilter": "VisualStudio.16.Release.Bootstrappers.Setup"
+            "Uri": "https://aka.ms/vs/17/release/channel",
+            "MatchFilter": "VisualStudio.17.Release.Bootstrappers.Setup"
 		},
 		"Download": {
 			"Uri": "https://download.app.com"
@@ -13,13 +13,13 @@
 	"Install": {
 		"Setup": "AppName.*.exe",
 		"Physical": {
-			"Arguments": "--channelid \"VisualStudio.16.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
+			"Arguments": "--channelid \"VisualStudio.17.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
 			"PostInstall": [
 
 			]
 		},
 		"Virtual": {
-			"Arguments": "--channelid \"VisualStudio.16.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
+			"Arguments": "--channelid \"VisualStudio.17.Release\" --productid \"Microsoft.VisualStudio.Product.Community\"",
 			"PostInstall": [
 
 			]

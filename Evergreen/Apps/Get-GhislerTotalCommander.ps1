@@ -25,11 +25,17 @@ function Get-GhislerTotalCommander {
     if ($null -ne $Response) {
 
         try {
-            $Value = ([RegEx]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
-            $Version = $Value.Split(".")[1,2] -join "."
-            $VersionString = $Value.Split(".")[1,2] -join ""
+            $Value = ([Regex]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
+            $Major = $Value.Split(".")[1]
+            $Minor = $Value.Split(".")[2]
+            if ([System.Int16]$Minor -le 9) {
+                $Minor = "0$Minor"
+            }
+            $Version = "$Major.$Minor"
+            $VersionString = "$Major$Minor"
         }
         catch {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to find version number."
             $Version = "Unknown"
             $VersionString = "Unknown"
         }

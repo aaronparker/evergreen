@@ -17,7 +17,7 @@
         },
         "Download": {
             "Uri": {
-                "Stable": "https://get.geo.opera.com/pub/opera/#version/win/Opera_#version_Setup#architecture.exe",
+                "Stable": "https://get.geo.opera.com/pub/opera/desktop/#version/win/Opera_#version_Setup#architecture.exe",
                 "Beta": "https://get.geo.opera.com/pub/opera-beta/#version/win/Opera_beta_#version_Setup#architecture.exe",
                 "Developer": "https://get.geo.opera.com/pub/opera-developer/#version/win/Opera_Developer_#version_Setup#architecture.exe"
             },
@@ -28,8 +28,7 @@
             "Architectures": [
                 "x64",
                 "x86"
-            ],
-            "ReplaceText": "#version"
+            ]
         }
     },
     "Install": {
