@@ -29,6 +29,8 @@ function Get-VMwareProductDownload {
                             Version     = $File.version
                             ReleaseDate = $([System.DateTime]::ParseExact($File.releaseDate, "yyyy-MM-dd", [System.Globalization.CultureInfo]::CurrentUICulture.DateTimeFormat))
                             Md5         = $File.md5checksum
+                            Sha256      = $File.sha256checksum
+                            Size        = $File.fileSize
                             Type        = Get-FileType -File $File.fileName
                             URI         = "https://download3.vmware.com/software/$($Dlg.code)/$($File.fileName)"
                         }
