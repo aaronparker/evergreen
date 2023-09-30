@@ -1,6 +1,6 @@
 {
     "Name": "Oracle Java 20",
-    "Source": "https://www.java.com",
+    "Source": "https://www.oracle.com/java/technologies/downloads/#java20",
     "Get": {
         "Update": {
             "Uri": "https://www.java.com/releases/releases.json",
