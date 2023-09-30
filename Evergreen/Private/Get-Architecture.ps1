@@ -21,7 +21,7 @@ function Get-Architecture {
         "win-x86"   { $architecture = "x86"; break }
         "x86_64"    { $architecture = "x64"; break }
         "x64"       { $architecture = "x64"; break }
-        "64"        { $architecture = "x64"; break }
+        #"64"        { $architecture = "x64"; break }
         "w64"       { $architecture = "x64"; break }
         "-64"       { $architecture = "x64"; break }
         "64-bit"    { $architecture = "x64"; break }
