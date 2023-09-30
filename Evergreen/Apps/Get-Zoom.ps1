@@ -16,6 +16,7 @@ function Get-Zoom {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    <#
     foreach ($platform in $res.Get.Download.Keys) {
         foreach ($installer in $res.Get.Download[$platform].Keys) {
 
@@ -53,6 +54,72 @@ function Get-Zoom {
                 URI          = $Url
             }
             Write-Output -InputObject $PSObject
+        }
+    }
+    #>
+
+    # Get the download data from the API
+    $params = @{
+        Uri         = $res.Get.Download.Uri
+        ContentType = $res.Get.Download.ContentType
+    }
+    $DownloadFeed = Invoke-RestMethodWrapper @params
+
+    # Step through each the download types
+    foreach ($Property in $res.Get.Download.Properties) {
+
+        # Construct the URL for the User installer
+        $Url = "$($res.Get.Download.Hostname)/$($DownloadFeed.result.downloadVO.$Property.version)/$($DownloadFeed.result.downloadVO.$Property.packageName)"
+
+        # Add the architecture to the URL
+        if (-not([System.String]::IsNullOrEmpty($DownloadFeed.result.downloadVO.$Property.archType))) {
+            $Url = "$Url$("?archType=")$($DownloadFeed.result.downloadVO.$Property.archType)"
+        }
+
+        # Resolve the download URL
+        $ResolvedUrl = Resolve-SystemNetWebRequest -Uri $Url
+
+        # Version number
+        if ($DownloadFeed.result.downloadVO.$Property.version -eq "latest") {
+            $Version = $DownloadFeed.result.downloadVO.$Property.displayVersion -replace "\s+\(", "." -replace "\)", ""
+        }
+        else {
+            $Version = $DownloadFeed.result.downloadVO.$Property.version
+        }
+
+        # Create an output object
+        [PSCustomObject]@{
+            Version      = $Version
+            Platform     = $res.Get.Download.PropertyMatrix[$Property]
+            Installer    = "User"
+            Size         = $ResolvedUrl.ContentLength
+            Type         = Get-FileType -File $ResolvedUrl.ResponseUri.AbsoluteUri
+            Architecture = Get-Architecture -String $ResolvedUrl.ResponseUri.AbsoluteUri
+            URI          = $ResolvedUrl.ResponseUri.AbsoluteUri
+        }
+
+        # Construct the URL for the IT installer
+        if (-not([System.String]::IsNullOrEmpty($DownloadFeed.result.downloadVO.$Property.packageNameForIT))) {
+            $Url = "$($res.Get.Download.Hostname)/$($DownloadFeed.result.downloadVO.$Property.version)/$($DownloadFeed.result.downloadVO.$Property.packageNameForIT)"
+
+            # Add the architecture to the URL
+            if (-not([System.String]::IsNullOrEmpty($DownloadFeed.result.downloadVO.$Property.archType))) {
+                $Url = "$Url$("?archType=")$($DownloadFeed.result.downloadVO.$Property.archType)"
+            }
+
+            # Resolve the download URL
+            $ResolvedUrl = Resolve-SystemNetWebRequest -Uri $Url
+
+            # Create an output object
+            [PSCustomObject]@{
+                Version      = $Version
+                Platform     = $res.Get.Download.PropertyMatrix[$Property]
+                Installer    = "Admin"
+                Size         = $ResolvedUrl.ContentLength
+                Type         = Get-FileType -File $ResolvedUrl.ResponseUri.AbsoluteUri
+                Architecture = Get-Architecture -String $ResolvedUrl.ResponseUri.AbsoluteUri
+                URI          = $ResolvedUrl.ResponseUri.AbsoluteUri
+            }
         }
     }
 }
