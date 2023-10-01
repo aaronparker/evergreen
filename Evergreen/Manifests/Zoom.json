@@ -1,53 +1,35 @@
 {
     "Name": "Zoom",
-    "Source": "https://zoom.us/",
+    "Source": "https://zoom.us/download",
     "Get": {
         "Download": {
-            "Meetings": {
-                "Exex86": "https://zoom.us/client/latest/ZoomInstallerFull.exe",
-                "Exex64": "https://zoom.us/client/latest/ZoomInstallerFull.exe?archType=x64",
-                "ExeArm64": "https://zoom.us/client/latest/ZoomInstallerFull.exe?archType=winarm64",
-                "Msix86": "https://zoom.us/client/latest/ZoomInstallerFull.msi",
-                "Msix64": "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=x64",
-                "MsiArm64": "https://zoom.us/client/latest/ZoomInstallerFull.msi?archType=winarm64"
+            "Uri": "https://zoom.us/rest/download?os=win",
+            "ContentType": "application/json",
+            "Properties": [
+                "lyncPlugin",
+                "notesPlugin",
+                "outlookPlugin",
+                "zoom",
+                "zoomArm64",
+                "zoomRooms",
+                "zoomRoomsX64",
+                "zoomX64"
+            ],
+            "PropertyMatrix": {
+                "lyncPlugin": "Lync",
+                "notesPlugin": "Notes",
+                "outlookPlugin": "Outlook",
+                "zoom": "Desktop",
+                "zoomArm64": "Desktop",
+                "zoomRooms": "Rooms",
+                "zoomRoomsX64": "Rooms",
+                "zoomX64": "Desktop"
             },
-            "Rooms": {
-                "Exex86": "https://zoom.us/client/latest/ZoomRooms.exe",
-                "Exex64": "https://zoom.us/client/latest/ZoomRooms.exe?archType=x64",
-                "Msix86": "https://zoom.us/client/latest/ZoomRoomsInstaller.msi",
-                "Msix64": "https://zoom.us/client/latest/ZoomRoomsInstaller.msi?archType=x64"
-            },
-            "Outlook": {
-                "Msix86": "https://zoom.us/client/latest/ZoomOutlookPluginSetup.msi"
-            },
-            "Lync": {
-                "Msix86": "https://zoom.us/client/latest/ZoomLyncPluginSetup.msi"
-            },
-            "Notes": {
-                "Notes": "https://zoom.us/client/latest/ZoomNotesPluginSetup.msi",
-                "Admin": "https://zoom.us/client/latest/ZoomNotesPluginAdminTool.msi"
-            },
-            "VDI": {
-                "Host": "https://zoom.us/download/vdi/ZoomInstallerVDI.msi"
-            },
-            "Plugin": {
-                "Universal": "https://zoom.us/download/vdi/ZoomVDIUniversalPlugin.msi"
-            },
-            "AVD" : {
-                "Client": "https://zoom.us/download/vdi/ZoomWVDMediaPlugin.msi"
-            },
-            "Citrix": {
-                "Client": "https://zoom.us/download/vdi/ZoomCitrixHDXMediaPlugin.msi"
-            },
-            "VMware": {
-                "Client": "https://zoom.us/download/vdi/ZoomVmwareMediaPlugin.msi"
-            }
-        },
-        "MatchVersion": "(\\d+(\\.\\d+){1,4})",
-        "MatchUrl": "(.*)\\?"
+            "Hostname": "https://zoom.us/client"
+        }
     },
     "Install": {
-        "Setup": "Zoom*.exe",
+        "Setup": "",
         "Physical": {
             "Arguments": "",
             "PostInstall": []

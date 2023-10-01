@@ -1,6 +1,6 @@
 {
-    "Name": "Oracle Java 17",
-    "Source": "https://www.oracle.com/java/technologies/downloads/#java17",
+    "Name": "Oracle Java 21",
+    "Source": "https://www.oracle.com/java/technologies/downloads/#java21",
     "Get": {
         "Update": {
             "Uri": "https://www.java.com/releases/releases.json",
@@ -15,14 +15,14 @@
                 "authority": "www.java.com"
             },
             "UserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81",
-            "Family": 17,
+            "Family": 21,
             "DateFormat": "yyyy-MM-dd"
         },
         "Download": {
             "Uri": {
-                "zip": "https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.zip",
-                "exe": "https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe",
-                "msi": "https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.msi"
+                "zip": "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip",
+                "exe": "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe",
+                "msi": "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.msi"
             }
         }
     },

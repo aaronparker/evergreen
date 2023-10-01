@@ -25,7 +25,7 @@ function Get-OracleJava {
 
     # Sort the data for the latest version
     $LatestVersion = $UpdateFeed.data.releases | `
-        Where-Object { $_.family -eq $res.Get.Update.Family } | `
+        Where-Object { $_.family -eq $res.Get.Update.Family -and $_.status -eq "delivered" } | `
         Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } -ErrorAction "SilentlyContinue" | `
         Select-Object -First 1
     Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($LatestVersion.version)"

@@ -1,5 +1,16 @@
 # Change log
 
+## VERSION
+
+* Adds `OracleJava21`, `ZoomVDI`
+* Updates `RStudio` to use the Stable release feed instead of the Dailies feed [#554](https://github.com/aaronparker/evergreen/issues/554)
+* Updates `Zoom` to use the download JSON found in the Zoom downloads page [#555](https://github.com/aaronparker/evergreen/issues/555)
+* Fixes an issue with `OracleJava17` (and all Oracle Java apps) where a later version was returned instead of the release version [#558](https://github.com/aaronparker/evergreen/issues/558)
+
+BREAKING CHANGES
+
+* `Zoom` has been split into `Zoom` and `ZoomVDI`. These functions also provide different property values. [#556](https://github.com/aaronparker/evergreen/discussions/556)
+
 ## 2309.859
 
 * Adds `OracleJava20`, `OracleJava17` [#381](https://github.com/aaronparker/evergreen/issues/381)

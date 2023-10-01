@@ -1,21 +1,12 @@
 {
 	"Name": "RStudio Desktop",
-	"Source": "https://www.rstudio.com/",
+	"Source": "https://posit.co/products/open-source/rstudio/",
 	"Get": {
-		"Update": {
-            "Uri": {
-				"Spotted Wakerobin": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
-				"Prairie Trillium": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
-				"Ghost Orchid": "https://dailies.rstudio.com/rstudio/prairie-trillium/index.json",
-				"Juliet Rose": "https://dailies.rstudio.com/rstudio/juliet-rose/index.json"
-			},
+		"Download": {
+            "Uri": "https://www.rstudio.com/wp-content/downloads.json",
 			"Products": [
-				"desktop",
-				"desktop-pro"
-			],
-			"Platforms": [
-				"windows",
-				"windows-xcopy"
+				"open_source",
+				"pro"
 			]
 		}
 	},
