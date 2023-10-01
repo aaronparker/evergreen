@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2310.868
 
 * Adds `OracleJava21`, `ZoomVDI`
 * Updates `RStudio` to use the Stable release feed instead of the Dailies feed [#554](https://github.com/aaronparker/evergreen/issues/554)

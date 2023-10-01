@@ -1,6 +1,6 @@
-﻿# 294 Supported applications
+﻿# 296 Supported applications
 
-Evergreen `2309.859` supports the following applications:
+Evergreen `2310.868` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -18,8 +18,8 @@ Evergreen `2309.859` supports the following applications:
 | AdoptiumTemurin16                     | Adoptium Temurin 16                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin17                     | Adoptium Temurin 17                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin18                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
-| AdoptiumTemurin19                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
-| AdoptiumTemurin20                     | Adoptium Temurin 18                                               | https://adoptium.net/                                                                            |
+| AdoptiumTemurin19                     | Adoptium Temurin 19                                               | https://adoptium.net/                                                                            |
+| AdoptiumTemurin20                     | Adoptium Temurin 20                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin8                      | Adoptium Temurin 8                                                | https://adoptium.net/                                                                            |
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                             |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                |
@@ -210,8 +210,9 @@ Evergreen `2309.859` supports the following applications:
 | OperaBrowser                          | Opera Browser                                                     | https://www.opera.com/browsers/opera                                                             |
 | OperaCryptoBrowser                    | Opera Crypto Browser                                              | https://www.opera.com/crypto/next                                                                |
 | OperaGXBrowser                        | Opera GX Browser                                                  | https://www.opera.com/gx                                                                         |
-| OracleJava17                          | Oracle Java 17                                                    | https://www.java.com                                                                             |
-| OracleJava20                          | Oracle Java 20                                                    | https://www.java.com                                                                             |
+| OracleJava17                          | Oracle Java 17                                                    | https://www.oracle.com/java/technologies/downloads/#java17                                       |
+| OracleJava20                          | Oracle Java 20                                                    | https://www.oracle.com/java/technologies/downloads/#java20                                       |
+| OracleJava21                          | Oracle Java 21                                                    | https://www.oracle.com/java/technologies/downloads/#java21                                       |
 | OracleJava8                           | Oracle Java 8                                                     | https://www.java.com                                                                             |
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                      |
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
@@ -239,7 +240,7 @@ Evergreen `2309.859` supports the following applications:
 | ResponsivelyApp                       | Responsively App                                                  | https://responsively.app/                                                                        |
 | RingCentral                           | RingCentral                                                       | https://www.ringcentral.com                                                                      |
 | RizonesoftNotepad3                    | Rizonesoft Notepad3                                               | https://www.rizonesoft.com/downloads/notepad3                                                    |
-| RStudio                               | RStudio Desktop                                                   | https://www.rstudio.com/                                                                         |
+| RStudio                               | RStudio Desktop                                                   | https://posit.co/products/open-source/rstudio/                                                   |
 | SafeExamBrowser                       | Safe Exam Browser                                                 | https://safeexambrowser.org/                                                                     |
 | SafingPortmaster                      | Safing Portmaster                                                 | https://safing.io/                                                                               |
 | SAGAGIS                               | SAGA-GIS                                                          | http://www.saga-gis.org/                                                                         |
@@ -295,6 +296,7 @@ Evergreen `2309.859` supports the following applications:
 | XnSoftXnConvert                       | XnSoft Convert                                                    | https://www.xnview.com/en/xnconvert/                                                             |
 | XnSoftXnViewMP                        | XnSoft XnView MP                                                  | https://www.xnview.com/en/xnviewmp/                                                              |
 | YubicoAuthenticator                   | Yubico Authenticator                                              | https://github.com/Yubico/yubioath-flutter/                                                      |
-| Zoom                                  | Zoom                                                              | https://zoom.us/                                                                                 |
+| Zoom                                  | Zoom                                                              | https://zoom.us/download                                                                         |
+| ZoomVDI                               | Zoom Plugins for VDI                                              | https://support.zoom.us/hc/en-us/articles/4415057249549-VDI-releases-and-downloads               |
 | ZorgmailVeiligVerzendenAddin          | ZorgMail Veilig verzenden plug-in                                 | https://enovationgroup.com/nl/service-support/alle-downloads/veilig-verzenden-plug-ins/          |
 | Zotero                                | Zotero                                                            | https://www.zotero.org/                                                                          |
