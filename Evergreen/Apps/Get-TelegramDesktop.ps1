@@ -1,4 +1,4 @@
-Function Get-TelegramDesktop {
+function Get-TelegramDesktop {
     <#
         .SYNOPSIS
             Returns the latest Telegram Desktop version number and download.
@@ -8,9 +8,9 @@ Function Get-TelegramDesktop {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -21,12 +21,12 @@ Function Get-TelegramDesktop {
         Uri               = $res.Get.Update.Uri
         MatchVersion      = $res.Get.Update.MatchVersion
         Filter            = $res.Get.Update.MatchFileTypes
-        ReturnVersionOnly = $True
+        ReturnVersionOnly = $true
     }
     $object = Get-GitHubRepoRelease @params
 
     # Build the output object
-    If ($Null -ne $object) {
+    if ($null -ne $object) {
         $PSObject = [PSCustomObject] @{
             Version = $object.Version
             URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $object.Version
