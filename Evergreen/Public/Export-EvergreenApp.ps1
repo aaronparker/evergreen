@@ -34,6 +34,13 @@ function Export-EvergreenApp {
             $InputObject += $Content
         }
 
+        foreach ($AppLibInfo in $InputObject) {
+            if (([System.Uri]$AppLibInfo.URI).Host -like '*.dl.sourceforge.net') {
+                Write-Verbose "Normalise Sourceforge download mirror URL"
+                $AppLibInfo.URI = $AppLibInfo.URI -replace ([System.Uri]$AppLibInfo.URI).Host,"nchc.dl.sourceforge.net"
+            }
+        }
+
         # Sort the content and keep unique versions
         $Properties = $InputObject | Get-Member | `
             Where-Object { $_.MemberType -eq "NoteProperty" } | Select-Object -ExpandProperty "Name" -Unique | `

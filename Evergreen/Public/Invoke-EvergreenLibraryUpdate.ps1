@@ -55,6 +55,7 @@ function Invoke-EvergreenLibraryUpdate {
                     }
 
                     # Gather the application version information from Get-EvergreenApp
+                    [array]$App = @()
                     $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
 
                     # If something returned, add to the library
@@ -69,7 +70,7 @@ function Invoke-EvergreenLibraryUpdate {
                         # Add the saved installer path to the application version information
                         if ($Saved.Count -gt 1) {
                             for ($i = 0; $i -lt $App.Count; $i++) {
-                                $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version }
+                                $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version -and ((Split-Path $_.FullName -Leaf) -eq (Split-Path $App[$i].URI -Leaf)) }
                                 Write-Verbose -Message "Add path to object: $($Item.FullName)"
                                 $App[$i] | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Item.FullName
                             }
