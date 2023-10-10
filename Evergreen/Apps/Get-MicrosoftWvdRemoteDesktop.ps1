@@ -9,9 +9,9 @@ Function Get-MicrosoftWvdRemoteDesktop {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -23,11 +23,11 @@ Function Get-MicrosoftWvdRemoteDesktop {
         foreach ($architecture in $res.Get.Update.Uri.$channel.Keys) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Querying for architecture: $architecture."
             $Redirect = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri.$channel[$architecture]
-
             if ($null -ne $Redirect) {
-                $Update = Invoke-RestMethodWrapper -Uri $Redirect.ResponseUri.AbsoluteUri
 
+                $Update = Invoke-RestMethodWrapper -Uri $Redirect.ResponseUri.AbsoluteUri
                 if ($null -ne $Update) {
+
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($Update.version)"
                     $Date = ConvertTo-DateTime -DateTime $($Redirect.Headers['Last-Modified'] | Select-Object -First 1) -Pattern $res.Get.Download.DatePattern
                     $FileName = $($Redirect.Headers['Content-Disposition'] -split $res.Get.Download.SplitText)[-1] -replace "\.json$", ".msi"
@@ -35,11 +35,11 @@ Function Get-MicrosoftWvdRemoteDesktop {
                     # Output the version object
                     $PSObject = [PSCustomObject] @{
                         Version      = $Update.version
-                        Architecture = $architecture
-                        Channel      = $channel
                         Date         = $Date
+                        Channel      = $channel
                         MD5          = $Update.md5
                         Sha2         = $Update.sha2
+                        Architecture = $architecture
                         Filename     = $FileName
                         URI          = $Update.url
                     }

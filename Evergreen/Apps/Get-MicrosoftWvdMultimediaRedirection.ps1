@@ -23,8 +23,8 @@ function Get-MicrosoftWvdMultimediaRedirection {
         ReturnObject = "Headers"
     }
     $Content = Invoke-WebRequestWrapper @params
-
     if ($null -ne $Content) {
+
         try {
             # Match filename
             $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
@@ -48,8 +48,8 @@ function Get-MicrosoftWvdMultimediaRedirection {
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version      = $Version
-            Architecture = Get-Architecture -String $Filename
             Date         = $Content.'Last-Modified'[0]
+            Architecture = Get-Architecture -String $Filename
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
         }
