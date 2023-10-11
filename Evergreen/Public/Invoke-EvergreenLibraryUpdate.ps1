@@ -39,6 +39,9 @@ function Invoke-EvergreenLibraryUpdate {
                 Write-Verbose -Message "Library exists: $LibraryFile."
                 $Library = Get-Content -Path $LibraryFile -ErrorAction "Stop" | ConvertFrom-Json -ErrorAction "Stop"
 
+                # Get current list of install media files present in library
+                $LibContentBefore = Get-ChildItem -Path $Path -File -Recurse -Exclude "*.json" | Select-Object FullName | Sort-Object FullName
+
                 foreach ($Application in $Library.Applications) {
 
                     # Return the application details
@@ -81,8 +84,32 @@ function Invoke-EvergreenLibraryUpdate {
                         }
 
                         # Write the application version information to the library
-                        Export-EvergreenApp -InputObject $App -Path $(Join-Path -Path $AppPath -ChildPath "$($Application.Name).json")
+                        Export-EvergreenApp -InputObject $App -Path $(Join-Path -Path $AppPath -ChildPath "$($Application.Name).json") | Out-Null
                     }
+                }
+
+                # Get new list of install media files present in library following update
+                $LibContentAfter = Get-ChildItem -Path $Path -File -Recurse -Exclude "*.json" | Select-Object FullName | Sort-Object FullName
+
+                # Output details of library updates
+                if ($Null -eq $LibContentAfter) {
+                    Write-Output "No Installer Media found in Evergreen Library"
+                }
+                elseif ($Null -ne $LibContentBefore) {
+                        (Compare-Object $LibContentBefore $LibContentAfter -Property FullName -IncludeEqual | ForEach-Object {
+                        [PSCustomObject]@{
+                            Installer = $_.Fullname
+                            Status    = $_.SideIndicator -replace '=>','NEW' -replace '==','UNCHANGED' -replace '<=','DELETED'
+                        }
+                    })
+                }
+                else {
+                    ($LibContentAfter | ForEach-Object {
+                        [PSCustomObject]@{
+                            Installer = $_.Fullname
+                            Status    = 'NEW'
+                        }
+                    })
                 }
             }
             else {
