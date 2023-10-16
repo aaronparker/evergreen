@@ -48,7 +48,7 @@ function Get-MicrosoftWvdMultimediaRedirection {
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version      = $Version
-            Date         = $Content.'Last-Modified'[0]
+            Date         = $Content.'Last-Modified'
             Architecture = Get-Architecture -String $Filename
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
