@@ -9,7 +9,7 @@
 		},
 		"Download": {
 			"Uri": {
-				"x64": "https://cdn.mysql.com/Downloads/MySQLInstaller/mysql-installer-community-#version.msi"
+				"x64": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-#version-winx64.msi"
 			},
 			"ReplaceText": "#version"
 		}
