@@ -12,7 +12,7 @@ body:
     attributes:
       label: "What is the new application?"
       description: "Provide clear details about the new application you want to see added to Evergreen."
-      placeholder: "Provide details of the new application that could be added to Evergreen. If known, please add details of an update source/API etc., where current versions of this application can be queried."
+      placeholder: "Provide details of the new application that could be added to Evergreen. Please add details of an update source/API, evergreen download links etc., where current versions of this application can be queried."
     validations:
       required: true
   - type: input
@@ -33,8 +33,18 @@ body:
           required: true
   - type: dropdown
     attributes:
-      label: "Does the vendor require a sign-in?"
+      label: "Does the vendor require a sign-in to download the app?"
       description: "If the vendor requires a sign-in to download installers, this application probably won't be a good candidate for Evergreen."
+      multiple: false
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: "Does the application include an updater?"
+      description: "Applications that actively check for updates and notify the user or automatically install updates? (These applications may be good candidates for Evergreen)"
       multiple: false
       options:
         - "Yes"
