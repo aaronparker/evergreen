@@ -17,7 +17,7 @@ function Get-UnityEditor {
         Uri         = $res.Get.Download.Uri
         ContentType = $res.Get.Download.ContentType
     }
-    $DownloadsFeed = Invoke-RestMethodWrapper @params
+    $DownloadsFeed = Invoke-EvergreenRestMethod @params
 
     foreach ($Channel in $res.Get.Download.Channels) {
         foreach ($item in $DownloadsFeed.$Channel) {

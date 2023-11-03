@@ -21,7 +21,7 @@ Function Get-PiriformCCleanerFree {
         Uri       = $res.Get.Update.Uri
         UserAgent = $res.Get.Update.UserAgent
     }
-    $Update = Invoke-RestMethodWrapper @params
+    $Update = Invoke-EvergreenRestMethod @params
 
     # Build object and output to the pipeline
     if ($null -ne $Update) {
@@ -32,7 +32,7 @@ Function Get-PiriformCCleanerFree {
             Method       = "Head"
             ReturnObject = "Headers"
         }
-        $Headers = Invoke-WebRequestWrapper @params
+        $Headers = Invoke-EvergreenWebRequest @params
         $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
 
         $PSObject = [PSCustomObject] @{

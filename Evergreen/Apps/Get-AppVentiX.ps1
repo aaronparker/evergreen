@@ -20,7 +20,7 @@ Function Get-AppVentiX {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
     If ($Null -ne $Content) {
 
         # Construct the output; Return the custom object to the pipeline

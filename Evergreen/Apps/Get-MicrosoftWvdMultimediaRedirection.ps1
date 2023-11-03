@@ -22,7 +22,7 @@ function Get-MicrosoftWvdMultimediaRedirection {
         Method       = "Head"
         ReturnObject = "Headers"
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
     if ($null -ne $Content) {
 
         try {

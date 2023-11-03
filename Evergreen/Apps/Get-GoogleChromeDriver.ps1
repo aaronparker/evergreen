@@ -17,7 +17,7 @@ function Get-GoogleChromeDriver {
     )
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    $DownloadFeed = Invoke-RestMethodWrapper -Uri $res.Get.Download.Uri
+    $DownloadFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Download.Uri
     if ($null -ne $DownloadFeed) {
 
         # Get the list of channels in the feed

@@ -22,7 +22,7 @@ Function Get-RCoreTeamRforWindows {
         Uri = $res.Get.Update.Uri
         Raw = $true
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
 
     if ($Null -ne $Content) {
         try {
@@ -34,7 +34,7 @@ Function Get-RCoreTeamRforWindows {
 
         # Follow the download link
         try {
-            $Content = Invoke-WebRequestWrapper $res.Get.Download.Uri
+            $Content = Invoke-EvergreenWebRequest $res.Get.Download.Uri
             $File = [RegEx]::Match($Content, $res.Get.Download.MatchFile).Captures.Groups[1].Value
             $Url = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $File
         }

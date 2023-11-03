@@ -14,8 +14,8 @@ BeforeAll {
 }
 
 InModuleScope -ModuleName "Evergreen" {
-    Describe -Name "Invoke-WebRequestWrapper" {
-        Context "Ensure Invoke-WebRequestWrapper works as expected" {
+    Describe -Name "Invoke-EvergreenWebRequest" {
+        Context "Ensure Invoke-EvergreenWebRequest works as expected" {
             It "Returns data from a URL" {
                 $params = @{
                     ContentType          = "text/html"
@@ -29,16 +29,16 @@ InModuleScope -ModuleName "Evergreen" {
                     UserAgent            = [Microsoft.PowerShell.Commands.PSUserAgent]::Safari
                     Uri                  = "https://github.com"
                 }
-                Invoke-WebRequestWrapper @params | Should -BeOfType [System.String]
+                Invoke-EvergreenWebRequest @params | Should -BeOfType [System.String]
             }
 
             It "Should throw with an invalid URL" {
-                { Invoke-WebRequestWrapper -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
+                { Invoke-EvergreenWebRequest -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
             }
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Invoke-WebRequestWrapper -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
+                { Invoke-EvergreenWebRequest -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
                 Remove-ProxyEnv
             }
         }

@@ -20,7 +20,7 @@
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Version = Invoke-RestMethodWrapper @params
+    $Version = Invoke-EvergreenRestMethod @params
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Version) {

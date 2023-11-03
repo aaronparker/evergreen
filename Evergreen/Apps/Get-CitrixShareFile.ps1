@@ -20,7 +20,7 @@
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     # Walk through each node to output details
     if ($null -ne $UpdateFeed) {

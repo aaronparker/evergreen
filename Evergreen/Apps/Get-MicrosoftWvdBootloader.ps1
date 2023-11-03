@@ -23,7 +23,7 @@ function Get-MicrosoftWvdBootLoader {
         Method       = "Head"
         ReturnObject = "Headers"
     }
-    $Headers = Invoke-WebRequestWrapper @params
+    $Headers = Invoke-EvergreenWebRequest @params
     if ($null -ne $Headers) {
 
         # Match filename

@@ -26,7 +26,7 @@ Function Get-AdobeAcrobatReaderDC {
         $params = @{
             Uri = $res.Get.Update.Uri -replace "#Language", $language.Name
         }
-        $UpdateContent = Invoke-RestMethodWrapper @params
+        $UpdateContent = Invoke-EvergreenRestMethod @params
 
         if ($Null -ne $UpdateContent) {
             foreach ($item in $UpdateContent.products.reader) {
@@ -36,7 +36,7 @@ Function Get-AdobeAcrobatReaderDC {
                 $params = @{
                     Uri = $res.Get.Download.Uri -replace "#DisplayName", $item.displayName -replace "#ShortLanguage", $language.Name -replace " ", "%20"
                 }
-                $DownloadContent = Invoke-RestMethodWrapper @params
+                $DownloadContent = Invoke-EvergreenRestMethod @params
 
                 if ($null -ne $DownloadContent) {
                     $PSObject = [PSCustomObject] @{

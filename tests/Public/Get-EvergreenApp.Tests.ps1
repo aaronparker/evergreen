@@ -77,11 +77,11 @@ Describe -Tag "Get" -Name "Get-EvergreenApp fail tests" {
 
 Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
     Context "Validate 'Get-EvergreenApp' with -SkipCertificateCheck" {
-        It "Should not throw with an app that uses Invoke-RestMethodWrapper" {
+        It "Should not throw with an app that uses Invoke-EvergreenRestMethod" {
             { Get-EvergreenApp -Name "MicrosoftEdge" } | Should -Not -Throw
         }
 
-        It "Should not throw with an app that uses Invoke-WebRequestWrapper" {
+        It "Should not throw with an app that uses Invoke-EvergreenWebRequest" {
             { Get-EvergreenApp -Name "BlueJ" } | Should -Not -Throw
         }
     }

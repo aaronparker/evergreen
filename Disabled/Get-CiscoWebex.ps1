@@ -22,7 +22,7 @@
         Uri         = $res.Get.Download.Uri
         ContentType = $res.Get.Download.ContentType
     }
-    $object = Invoke-RestMethodWrapper @params
+    $object = Invoke-EvergreenRestMethod @params
     If ($Null -ne $object) {
 
         # Desktop app

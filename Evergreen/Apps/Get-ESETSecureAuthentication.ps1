@@ -19,7 +19,7 @@ function Get-ESETSecureAuthentication {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Metadata = Invoke-RestMethodWrapper @params
+    $Metadata = Invoke-EvergreenRestMethod @params
     if ($null -ne $Metadata) {
 
         # Grab the JSON metadata from the returned object

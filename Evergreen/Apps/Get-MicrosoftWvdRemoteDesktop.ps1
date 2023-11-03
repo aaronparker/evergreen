@@ -25,7 +25,7 @@ Function Get-MicrosoftWvdRemoteDesktop {
             $Redirect = Resolve-SystemNetWebRequest -Uri $res.Get.Update.Uri.$channel[$architecture]
             if ($null -ne $Redirect) {
 
-                $Update = Invoke-RestMethodWrapper -Uri $Redirect.ResponseUri.AbsoluteUri
+                $Update = Invoke-EvergreenRestMethod -Uri $Redirect.ResponseUri.AbsoluteUri
                 if ($null -ne $Update) {
 
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($Update.version)"

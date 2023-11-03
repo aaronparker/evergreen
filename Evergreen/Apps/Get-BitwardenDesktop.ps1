@@ -21,7 +21,7 @@ Function Get-BitwardenDesktop {
         UserAgent = "electron-builder"
         ReturnObject = "RawContent"
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
 
     If ($Null -ne $Content) {
         try {

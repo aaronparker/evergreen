@@ -21,7 +21,7 @@ Function Get-Fork {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
     if ($null -ne $Content) {
         try {
             # Parse the returned content and match the version number

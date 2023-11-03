@@ -17,7 +17,7 @@ Function Get-TechSmithSnagit {
     )
 
     # Query the TechSmith update URI to get the list of versions
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.UpdateFeed
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.UpdateFeed
     if ($null -ne $updateFeed) {
 
         # Grab latest version, sort by descending version number
@@ -30,7 +30,7 @@ Function Get-TechSmithSnagit {
 
             # Build uri so we can query the api to find the file corresponding to this version
             $latestUpdateFeedUri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceVersion, $Latest.VersionID
-            $latestUpdateFeed = (Invoke-RestMethodWrapper -Uri $latestUpdateFeedUri).PrimaryDownloadInformation
+            $latestUpdateFeed = (Invoke-EvergreenRestMethod -Uri $latestUpdateFeedUri).PrimaryDownloadInformation
             if ($null -ne $latestUpdateFeed) {
 
                 # Strip the file extension from the filename (eg snagit.exe becomes snagit)

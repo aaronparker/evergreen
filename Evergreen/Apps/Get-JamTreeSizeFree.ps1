@@ -22,7 +22,7 @@ Function Get-JamTreeSizeFree {
         Uri       = $res.Get.Uri
         UserAgent = $res.Get.UserAgent
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-EvergreenWebRequest @iwcParams
 
     # Build object and output to the pipeline
     $PSObject = [PSCustomObject] @{

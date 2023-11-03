@@ -1,4 +1,4 @@
-function Invoke-RestMethodWrapper {
+function Invoke-EvergreenRestMethod {
     <#
         .SYNOPSIS
             Validate and return content from Invoke-RestMethod for reading update APIs (typically JSON)

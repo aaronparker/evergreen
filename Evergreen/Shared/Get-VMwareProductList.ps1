@@ -12,7 +12,7 @@ function Get-VMwareProductList {
     $params = @{
         Uri = "$(Get-VMwareAPIPath)/${APIResource}"
     }
-    $WebResult = Invoke-RestMethodWrapper @params
+    $WebResult = Invoke-EvergreenRestMethod @params
 
     $FilteredProductList = $WebResult.productCategoryList.ProductList
     if ($PSBoundParameters.ContainsKey('Name')) {

@@ -19,7 +19,7 @@ function Get-VMwareProductDownload {
                 $params = @{
                     Uri = $(Get-VMwareDLGDetailsQuery -DownloadGroup $Dlg.code)
                 }
-                $DownloadFiles = $(Invoke-RestMethodWrapper @params).downloadFiles
+                $DownloadFiles = $(Invoke-EvergreenRestMethod @params).downloadFiles
 
                 foreach ($File in $DownloadFiles) {
                     if ([System.String]::IsNullOrEmpty($File.title)) {

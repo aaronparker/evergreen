@@ -22,7 +22,7 @@
             Uri       = $res.Get.Update.Uri[$item.Key]
             UserAgent = $res.Get.Update.UserAgent
         }
-        $Update = Invoke-RestMethodWrapper @params
+        $Update = Invoke-EvergreenRestMethod @params
 
         if ($Null -ne $Update) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($Update.enclosure.count) releases."

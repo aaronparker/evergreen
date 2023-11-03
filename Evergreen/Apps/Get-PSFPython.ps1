@@ -17,7 +17,7 @@ Function Get-PSFPython {
     )
 
     # Query the python API to get the list of versions
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $updateFeed) {
 
         # Get latest versions from update feed (PSF typically maintain a version of Python2 and a version of Python 3)
@@ -42,7 +42,7 @@ Function Get-PSFPython {
                         release = $releaseToQuery
                     }
                 }
-                $downloadFeed = Invoke-RestMethodWrapper @params
+                $downloadFeed = Invoke-EvergreenRestMethod @params
 
                 # Filter the download feed to obtain the installers; Match this release with entries from the download feed
                 $windowsDownloadFeed = $downloadFeed | Where-Object { $_.url -match $res.Get.Download.MatchFileTypes }

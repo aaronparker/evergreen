@@ -20,7 +20,7 @@ Function Get-Miniconda {
     $Uri = $res.Get.Update.Uri -replace "#replace", $res.Get.Update.ReplaceFileList
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $Uri
 
     If ($Null -ne $updateFeed) {
 

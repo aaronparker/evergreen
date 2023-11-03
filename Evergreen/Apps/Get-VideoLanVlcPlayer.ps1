@@ -23,7 +23,7 @@
             Uri         = $res.Get.Update.Uri.Windows[$platform.Key]
             ContentType = "application/octet-stream"
         }
-        $Content = Invoke-RestMethodWrapper @params
+        $Content = Invoke-EvergreenRestMethod @params
 
         If ($Null -ne $Content) {
             # Follow the download link which will return a 301

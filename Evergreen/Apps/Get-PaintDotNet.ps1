@@ -17,7 +17,7 @@ Function Get-PaintDotNet {
     )
 
     # Read the Paint.NET updates feed
-    $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
+    $Content = Invoke-EvergreenWebRequest -Uri $res.Get.Uri
     If ($Null -ne $Content) {
 
         # Convert the content from string data

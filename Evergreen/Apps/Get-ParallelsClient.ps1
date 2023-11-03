@@ -18,7 +18,7 @@ function Get-ParallelsClient {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     foreach ($Architecture in $res.Get.Update.Architectures) {
         [PSCustomObject]@{

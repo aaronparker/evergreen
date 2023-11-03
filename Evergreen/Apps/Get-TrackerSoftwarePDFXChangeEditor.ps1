@@ -18,7 +18,7 @@
     )
 
     try {
-        [System.XML.XMLDocument] $xmlDocument = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri -Raw
+        [System.XML.XMLDocument] $xmlDocument = Invoke-EvergreenWebRequest -Uri $res.Get.Update.Uri -Raw
     }
     catch [System.Exception] {
         throw "$($MyInvocation.MyCommand): failed to convert feed into an XML object with: $($_.Exception.Message)"

@@ -25,7 +25,7 @@
             Uri         = $res.Get.Update.Uri[$release.key]
             ContentType = $res.Get.Update.ContentType
         }
-        $Content = Invoke-RestMethodWrapper @params
+        $Content = Invoke-EvergreenRestMethod @params
 
         If ($Null -ne $Content) {
 

@@ -19,7 +19,7 @@ function Get-DruvainSyncClient {
         Uri         = $res.Get.Download.Uri
         ContentType = $res.Get.Download.ContentType
     }
-    $DownloadFeed = Invoke-RestMethodWrapper @params
+    $DownloadFeed = Invoke-EvergreenRestMethod @params
 
     if ($null -ne $DownloadFeed) {
         try {

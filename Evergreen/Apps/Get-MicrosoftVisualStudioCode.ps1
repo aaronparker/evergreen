@@ -30,7 +30,7 @@ Function Get-MicrosoftVisualStudioCode {
         ForEach ($channel in $res.Get.Update.Channel) {
             # Read the version details from the API, format and return to the pipeline
             $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/latest"
-            $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
+            $updateFeed = Invoke-EvergreenRestMethod -Uri $Uri
             If ($updateFeed) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ''

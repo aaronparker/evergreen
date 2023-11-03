@@ -30,7 +30,7 @@ Function Get-MicrosoftTeams {
             Uri       = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $res.Get.Update.Rings[$ring.Key]
             UserAgent = $res.Get.Update.UserAgent
         }
-        $updateFeed = Invoke-RestMethodWrapper @params
+        $updateFeed = Invoke-EvergreenRestMethod @params
 
         # Read the JSON and build an array of platform, channel, version
         If ($Null -ne $updateFeed) {
@@ -47,7 +47,7 @@ Function Get-MicrosoftTeams {
                     Uri       = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText.architecture, $Architecture -replace $res.Get.Download.ReplaceText.ring, $res.Get.Update.Rings[$ring.Key]
                     UserAgent = $res.Get.Update.UserAgent
                 }
-                $Uri = Invoke-RestMethodWrapper @params
+                $Uri = Invoke-EvergreenRestMethod @params
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found installer: $Uri."
 
                 # Build the output object and output object to the pipeline

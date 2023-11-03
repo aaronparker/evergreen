@@ -22,7 +22,7 @@ Function Get-VastLimitsUberAgent {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-EvergreenWebRequest @iwcParams
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {

@@ -25,7 +25,7 @@
             Raw         = $true
             ErrorAction = "Stop"
         }
-        [System.XML.XMLDocument] $xmlDocument = Invoke-WebRequestWrapper @params
+        [System.XML.XMLDocument] $xmlDocument = Invoke-EvergreenWebRequest @params
 
         # Build an output object by selecting installer entries from the feed
         if ($xmlDocument -is [System.XML.XMLDocument]) {

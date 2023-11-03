@@ -19,12 +19,12 @@ In this example, we can see that calling `MicrosoftWvdInfraAgent` results in a H
 ```powershell
 Get-EvergreenApp -Name "MicrosoftWvdInfraAgent"
 
-Invoke-WebRequestWrapper : Invoke-WebRequestWrapper: The remote server returned an error: (503) Server Unavailable..
+Invoke-EvergreenWebRequest : Invoke-EvergreenWebRequest: The remote server returned an error: (503) Server Unavailable..
 At C:\projects\evergreen\Evergreen\Apps\Get-MicrosoftWvdInfraAgent.ps1:25 char:16
-+     $Content = Invoke-WebRequestWrapper @params
++     $Content = Invoke-EvergreenWebRequest @params
 +                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Invoke-WebRequestWrapper
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Invoke-EvergreenWebRequest
 ```
 
 ### Example - MicrosoftWvdMultimediaRedirection
@@ -34,14 +34,14 @@ In this example, we again have a HTTP 503 error, so the source location is proba
 ```powershell
 Get-EvergreenApp -Name "MicrosoftWvdMultimediaRedirection"
 
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection.ps1:25
 Line |
-  25 |      $Content = Invoke-WebRequestWrapper @params
+  25 |      $Content = Invoke-EvergreenWebRequest @params
      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Invoke-WebRequestWrapper: Response status code does not indicate success: 503 (Service Unavailable)..
+     | Invoke-EvergreenWebRequest: Response status code does not indicate success: 503 (Service Unavailable)..
 
 WARNING: Get-MicrosoftWvdMultimediaRedirection: Failed to return a header from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
 Exception: /Users/aaron/projects/evergreen/Evergreen/Public/Get-EvergreenApp.ps1:80
@@ -61,20 +61,20 @@ VERBOSE: Function exists: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-Mic
 VERBOSE: Dot sourcing: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection.ps1.
 VERBOSE: Get-FunctionResource: read application resource strings from [/Users/aaron/projects/evergreen/Evergreen/Manifests/MicrosoftWvdMultimediaRedirection.json]
 VERBOSE: Calling: Get-MicrosoftWvdMultimediaRedirection.
-VERBOSE: Invoke-WebRequestWrapper: Invoke-WebRequest parameter: [Method: Head].
-VERBOSE: Invoke-WebRequestWrapper: Invoke-WebRequest parameter: [UserAgent: Mozilla/5.0 (Macintosh; Darwin 21.5.0 Darwin Kernel Version 21.5.0: Tue Apr 26 21:08:29 PDT 2022; root:xnu-8020.121.3~4/RELEASE_ARM64_T8101; en-AU) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6].
-VERBOSE: Invoke-WebRequestWrapper: Invoke-WebRequest parameter: [UseBasicParsing: True].
-VERBOSE: Invoke-WebRequestWrapper: Invoke-WebRequest parameter: [Uri: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF].
+VERBOSE: Invoke-EvergreenWebRequest: Invoke-WebRequest parameter: [Method: Head].
+VERBOSE: Invoke-EvergreenWebRequest: Invoke-WebRequest parameter: [UserAgent: Mozilla/5.0 (Macintosh; Darwin 21.5.0 Darwin Kernel Version 21.5.0: Tue Apr 26 21:08:29 PDT 2022; root:xnu-8020.121.3~4/RELEASE_ARM64_T8101; en-AU) AppleWebKit/534.6 (KHTML, like Gecko) Chrome/7.0.500.0 Safari/534.6].
+VERBOSE: Invoke-EvergreenWebRequest: Invoke-WebRequest parameter: [UseBasicParsing: True].
+VERBOSE: Invoke-EvergreenWebRequest: Invoke-WebRequest parameter: [Uri: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF].
 VERBOSE: HEAD with 0-byte payload
 VERBOSE: received 175-byte response of content type text/html
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 Write-Error: /Users/aaron/projects/evergreen/Evergreen/Apps/Get-MicrosoftWvdMultimediaRedirection.ps1:25
 Line |
-  25 |      $Content = Invoke-WebRequestWrapper @params
+  25 |      $Content = Invoke-EvergreenWebRequest @params
      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Invoke-WebRequestWrapper: Response status code does not indicate success: 503 (Service Unavailable)..
+     | Invoke-EvergreenWebRequest: Response status code does not indicate success: 503 (Service Unavailable)..
 
 WARNING: Get-MicrosoftWvdMultimediaRedirection: Failed to return a header from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWrF.
 Exception: /Users/aaron/projects/evergreen/Evergreen/Public/Get-EvergreenApp.ps1:80
@@ -138,21 +138,21 @@ Some functions may output errors and warnings, but still return application vers
 ```powershell
 Get-EvergreenApp -Name "MicrosoftWvdRemoteDesktop"
 
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51od9.
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE51gy7.
 ```
 

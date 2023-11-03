@@ -23,7 +23,7 @@
         ContentType = $res.Get.Update.ContentType
         Raw         = $true
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
 
     if ($null -ne $Content) {
         # Format the results returns and convert into an array that we can sort and use

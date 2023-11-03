@@ -21,7 +21,7 @@ Function Get-Microsoft365Apps {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Updates = Invoke-RestMethodWrapper @params
+    $Updates = Invoke-EvergreenRestMethod @params
 
     ForEach ($Update in $Updates) {
 

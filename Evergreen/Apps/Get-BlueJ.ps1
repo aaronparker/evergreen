@@ -22,7 +22,7 @@ Function Get-BlueJ {
         UserAgent = $res.Get.UserAgent
     }
 
-    $Content = Invoke-WebRequestWrapper @iwcParams
+    $Content = Invoke-EvergreenWebRequest @iwcParams
 
     If ($Null -ne $Content) {
 

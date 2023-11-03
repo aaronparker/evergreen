@@ -21,7 +21,7 @@ function Get-Zoom {
         Uri         = $res.Get.Download.Uri
         ContentType = $res.Get.Download.ContentType
     }
-    $DownloadFeed = Invoke-RestMethodWrapper @params
+    $DownloadFeed = Invoke-EvergreenRestMethod @params
 
     # Step through each the download types
     foreach ($Property in $res.Get.Download.Properties) {

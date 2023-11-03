@@ -16,7 +16,7 @@ Function Get-AutodeskFusion360 {
     )
 
     # Get latest Fusion 360 version
-    $Versions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Versions = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     foreach ($installer in $res.Get.Download.Uri.GetEnumerator()) {
         $Url = $res.Get.Download.Uri[$installer.Key]

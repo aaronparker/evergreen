@@ -14,7 +14,7 @@
     )
 
     # Resolve the URL to the target location
-    $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     if ($null -ne $Update) {
         $Version = [RegEx]::Match($Update, $res.Get.Update.MatchVersion).Captures.Groups[1].Value

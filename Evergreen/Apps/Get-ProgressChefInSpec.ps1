@@ -31,7 +31,7 @@ Function Get-ProgressChefInSpec {
                     $params = @{
                         Uri = $UpdateUrl -replace "#channel", $Channel -replace "#project", $Project
                     }
-                    $UpdateObject = Invoke-RestMethodWrapper @params
+                    $UpdateObject = Invoke-EvergreenRestMethod @params
 
                     if ($null -ne $UpdateObject) {
                         $CsvObject = $UpdateObject | ConvertFrom-Csv -Delimiter "`t" -Header "Property", "Value"

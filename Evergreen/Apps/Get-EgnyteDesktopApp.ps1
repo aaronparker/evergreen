@@ -19,7 +19,7 @@ Function Get-EgnyteDesktopApp {
 
 
     # Get update from the application update URI
-    $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     If ($Null -ne $Update) {
 
         # Construct the output; Return the custom object to the pipeline

@@ -18,7 +18,7 @@
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Updates = Invoke-RestMethodWrapper @params
+    $Updates = Invoke-EvergreenRestMethod @params
     if ($null -ne $Updates) {
 
         # Select the latest version

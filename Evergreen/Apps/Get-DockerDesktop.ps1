@@ -16,7 +16,7 @@ Function Get-DockerDesktop {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Updates = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Updates = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     foreach ($Update in $Updates) {
         if ($Null -ne $Update) {

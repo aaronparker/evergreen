@@ -63,9 +63,9 @@ The version of the HDX RealTime Media Engine for Microsoft Skype for Business fo
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the following error:
 
 ```powershell
-WARNING: Invoke-RestMethodWrapper: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
-WARNING: Invoke-RestMethodWrapper: Error encountered: Response status code does not indicate success: 404 (Not Found)..
-WARNING: Invoke-RestMethodWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenRestMethod: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
+WARNING: Invoke-EvergreenRestMethod: Error encountered: Response status code does not indicate success: 404 (Not Found)..
+WARNING: Invoke-EvergreenRestMethod: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 ```
 
 This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
@@ -112,13 +112,13 @@ The version number returned by the Microsoft Teams update API may be slightly di
 `MicrosoftWvdRemoteDesktop` may report an HTTP 503 error from some URLs (see an example below). This is intermittent behavior, but the function should still usable data. Suppress this warning with `-WarningAction "SilentlyContinue".
 
 ```powershell
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50Mp8.
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
-WARNING: Invoke-WebRequestWrapper: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: Response status code does not indicate success: 503 (Service Unavailable)..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 WARNING: Get-MicrosoftWvdRemoteDesktop: Unable to retrieve headers from https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE50t3P.
 ```
 
@@ -145,14 +145,14 @@ Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://gi
 `Get-EvergreenApp -Name PaintDotNet` produces the following error under PowerShell on Linux. As a workaround, use `Get-EvergreenApp -Name PaintDotNetOfflineInstaller` instead.
 
 ```powershell
-WARNING: Invoke-WebRequestWrapper: Error at URI: https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt.
-WARNING: Invoke-WebRequestWrapper: Error encountered: The SSL connection could not be established, see inner exception..
-WARNING: Invoke-WebRequestWrapper: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+WARNING: Invoke-EvergreenWebRequest: Error at URI: https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt.
+WARNING: Invoke-EvergreenWebRequest: Error encountered: The SSL connection could not be established, see inner exception..
+WARNING: Invoke-EvergreenWebRequest: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
 Write-Error: /home/aaron/.local/share/powershell/Modules/Evergreen/2205.561/Apps/Get-PaintDotNet.ps1:20
 Line |
-  20 |      $Content = Invoke-WebRequestWrapper -Uri $res.Get.Uri
+  20 |      $Content = Invoke-EvergreenWebRequest -Uri $res.Get.Uri
      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Invoke-WebRequestWrapper: The SSL connection could not be established, see inner exception.
+     | Invoke-EvergreenWebRequest: The SSL connection could not be established, see inner exception.
 ```
 
 ### VideoLanVlcPlayer

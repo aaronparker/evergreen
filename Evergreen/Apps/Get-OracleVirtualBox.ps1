@@ -16,7 +16,7 @@ Function Get-OracleVirtualBox {
 
         # Get latest VirtualBox version
         Write-Verbose -Message "$($MyInvocation.MyCommand): Check channel: $($Channel.Name)"
-        $Version = Invoke-WebRequestWrapper -Uri $res.Get.Update.Uri[$Channel.Key]
+        $Version = Invoke-EvergreenWebRequest -Uri $res.Get.Update.Uri[$Channel.Key]
 
         if ($Null -ne $Version) {
 
@@ -31,7 +31,7 @@ Function Get-OracleVirtualBox {
                 Uri          = "$($res.Get.Download.Uri)$Version/"
                 ReturnObject = "All"
             }
-            $Downloads = Invoke-WebRequestWrapper @iwrParams
+            $Downloads = Invoke-EvergreenWebRequest @iwrParams
             if ($Null -ne $Downloads) {
 
                 # Filter downloads with the version string and the file types we want

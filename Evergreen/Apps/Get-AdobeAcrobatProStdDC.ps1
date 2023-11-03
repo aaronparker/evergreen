@@ -23,7 +23,7 @@ Function Get-AdobeAcrobatProStdDC {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
 
     # Construct update download list
     if ($Null -ne $Content) {

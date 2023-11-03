@@ -23,7 +23,7 @@
             Uri       = $res.Get.Uri[$language.key]
             UserAgent = $res.Get.UserAgent
         }
-        $Content = Invoke-RestMethodWrapper @iwcParams
+        $Content = Invoke-EvergreenRestMethod @iwcParams
 
         # If something is returned
         If ($Null -ne $Content) {

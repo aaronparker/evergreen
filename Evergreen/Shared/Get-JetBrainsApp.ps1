@@ -18,7 +18,7 @@ function Get-JetBrainsApp {
         $uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceEdition, $Edition.Value
 
         # Query the JetBrains URI to get the JSON
-        $UpdateFeed = Invoke-RestMethodWrapper -Uri $uri
+        $UpdateFeed = Invoke-EvergreenRestMethod -Uri $uri
         if ([System.String]::IsNullOrWhiteSpace($UpdateFeed.$($Edition.Value).downloads.windows.link)) {
             Write-Warning -Message "$($MyInvocation.MyCommand): 'downloads.windows.link' property is null; from '$uri'."
         }

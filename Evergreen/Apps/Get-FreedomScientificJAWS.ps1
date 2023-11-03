@@ -22,7 +22,7 @@ Function Get-FreedomScientificJAWS {
 
     # Query the API to get the list of major versions
     $MajorVersionsURI = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
-    $MajorVersions = Invoke-RestMethodWrapper $MajorVersionsURI
+    $MajorVersions = Invoke-EvergreenRestMethod $MajorVersionsURI
 
     # Get latest version
     $LatestVersion = $MajorVersions | Sort-Object -Property { [Int] $_.MajorVersion } -Descending | Select-Object -First 1
@@ -30,7 +30,7 @@ Function Get-FreedomScientificJAWS {
 
     # Query the API to get the list of releases
     $DownloadFeedURI = ($res.Get.Download.Uri -replace $res.Get.Download.ReplaceMajorVersion, $LatestVersion.MajorVersion ) -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
-    $downloadFeed = Invoke-RestMethodWrapper $DownloadFeedURI
+    $downloadFeed = Invoke-EvergreenRestMethod $DownloadFeedURI
 
     If ($Null -ne $downloadFeed) {
 

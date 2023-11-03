@@ -63,5 +63,5 @@ The `Private` folder includes re-usable code, used by many of the application fu
 
 * `Get-GitHubRepoRelease` - returns releases from a target GitHub repository
 * `Get-SourceForgeRepoRelease` - returns releases from a target SourceForge repository
-* `Invoke-RestMethodWrapper` - provides logic around `Invoke-RestMethod` to return content from an update API
-* `Invoke-WebRequestWrapper` - provides logic around `Invoke-WebRequest` to return the content from a target URI
+* `Invoke-EvergreenRestMethod` - provides logic around `Invoke-RestMethod` to return content from an update API
+* `Invoke-EvergreenWebRequest` - provides logic around `Invoke-WebRequest` to return the content from a target URI

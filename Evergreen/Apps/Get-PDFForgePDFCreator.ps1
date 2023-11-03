@@ -22,7 +22,7 @@ Function Get-PDFForgePDFCreator {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Update = Invoke-RestMethodWrapper @params
+    $Update = Invoke-EvergreenRestMethod @params
     if ($Null -ne $Update) {
 
         # Select the latest version

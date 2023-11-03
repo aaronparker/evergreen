@@ -24,7 +24,7 @@ Function Get-MicrosoftSsms {
     $params = @{
         Uri = $UpdateFeed.ResponseUri.AbsoluteUri
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
 
     If ($Null -ne $Content) {
         ForEach ($entry in $Content.component) {

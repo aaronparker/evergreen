@@ -32,7 +32,7 @@ Function Get-LibreOffice {
             ContentType          = $res.Get.Update.ContentType
             SkipCertificateCheck = $True
         }
-        $Update = Invoke-RestMethodWrapper @params
+        $Update = Invoke-EvergreenRestMethod @params
         If ($Null -ne $Update) {
 
             If ($Null -eq $Update.description.version) {
@@ -49,7 +49,7 @@ Function Get-LibreOffice {
                         Uri          = "$($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/"
                         ReturnObject = "All"
                     }
-                    $PlatformList = Invoke-WebRequestWrapper @params
+                    $PlatformList = Invoke-EvergreenWebRequest @params
                     #Write-Verbose "PlatformList is type: $($PlatformList.GetType())"
                     If ($Null -eq $PlatformList) {
                         Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/."
@@ -64,7 +64,7 @@ Function Get-LibreOffice {
                                 Uri          = "$($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/"
                                 ReturnObject = "All"
                             }
-                            $ArchitectureList = Invoke-WebRequestWrapper @params
+                            $ArchitectureList = Invoke-EvergreenWebRequest @params
                             #Write-Verbose "ArchitectureList is type: $($ArchitectureList.GetType())"
                             If ($Null -eq $ArchitectureList) {
                                 Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/."

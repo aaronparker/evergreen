@@ -14,7 +14,7 @@ function Get-ChromiumChromeDriver {
     )
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Chrome
-    $UpdateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri.Chrome
+    $UpdateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri.Chrome
     if ($null -ne $UpdateFeed) {
 
         # Read the JSON and build an array of platform, channel, version
@@ -36,7 +36,7 @@ function Get-ChromiumChromeDriver {
                             Uri          = $res.Get.Update.Uri.Driver -replace "#version", "$($Version.Major).$($Version.Minor).$($Version.Build)"
                             ReturnObject = "Content"
                         }
-                        $DriverVersion = Invoke-WebRequestWrapper @params
+                        $DriverVersion = Invoke-EvergreenWebRequest @params
                     }
                     catch {
                         # If the URL above fails, the version doesn't match Chrome, so try without the version number
@@ -44,7 +44,7 @@ function Get-ChromiumChromeDriver {
                             Uri          = $res.Get.Update.Uri.Driver -replace "_#version", ""
                             ReturnObject = "Content"
                         }
-                        $DriverVersion = Invoke-WebRequestWrapper @params
+                        $DriverVersion = Invoke-EvergreenWebRequest @params
                     }
 
                     if ($null -ne $DriverVersion) {

@@ -18,7 +18,7 @@ function Get-MicrosoftVisualStudio {
     )
 
     # Get details from the update feed
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Build the output object/s
     $items = $updateFeed.channelItems | Where-Object { $_.id -eq $res.Get.Update.MatchFilter }

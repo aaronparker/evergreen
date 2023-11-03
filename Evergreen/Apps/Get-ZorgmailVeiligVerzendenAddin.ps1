@@ -17,7 +17,7 @@ Function Get-ZorgmailVeiligVerzendenAddin {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     if ($Null -ne $UpdateFeed) {
         $res.Get.Download.Editions | ForEach-Object {

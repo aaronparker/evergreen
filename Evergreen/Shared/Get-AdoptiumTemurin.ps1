@@ -17,7 +17,7 @@ function Get-AdoptiumTemurin {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Releases = Invoke-RestMethodWrapper @params
+    $Releases = Invoke-EvergreenRestMethod @params
     Write-Verbose -Message "$($MyInvocation.MyCommand): found $($Releases.count) releases."
 
     # Build the output object for each returned release

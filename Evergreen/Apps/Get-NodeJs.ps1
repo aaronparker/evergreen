@@ -20,7 +20,7 @@ Function Get-NodeJs {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     if ($null -ne $updateFeed) {
 

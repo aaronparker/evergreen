@@ -1,4 +1,4 @@
-function Invoke-WebRequestWrapper {
+function Invoke-EvergreenWebRequest {
     <#
         .SYNOPSIS
             Validates and return responses from Invoke-WebRequest
