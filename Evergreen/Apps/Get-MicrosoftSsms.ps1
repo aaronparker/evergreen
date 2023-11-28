@@ -28,7 +28,6 @@ Function Get-MicrosoftSsms {
 
     If ($Null -ne $Content) {
         ForEach ($entry in $Content.component) {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Version returned from the update feed: $($entry.version). See $($script:resourceStrings.Uri.Issues) for more information."
 
             ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
 
