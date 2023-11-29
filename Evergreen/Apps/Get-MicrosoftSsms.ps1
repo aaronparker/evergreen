@@ -1,4 +1,4 @@
-Function Get-MicrosoftSsms {
+function Get-MicrosoftSsms {
     <#
         .SYNOPSIS
             Returns the latest SQL Server Management Studio
@@ -9,9 +9,9 @@ Function Get-MicrosoftSsms {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -26,17 +26,16 @@ Function Get-MicrosoftSsms {
     }
     $Content = Invoke-EvergreenRestMethod @params
 
-    If ($Null -ne $Content) {
-        ForEach ($entry in $Content.component) {
-
-            ForEach ($language in $res.Get.Download.Language.GetEnumerator()) {
+    if ($null -ne $Content) {
+        foreach ($entry in $Content.component) {
+            foreach ($language in $res.Get.Download.Language.GetEnumerator()) {
 
                 # Follow the download link which will return a 301
                 $Uri = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $res.Get.Download.Language[$language.key]
                 $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
 
                 # Check returned URL. It should be a go.microsoft.com/fwlink/?linkid style link
-                If ($Null -ne $ResponseUri) {
+                if ($null -ne $ResponseUri) {
 
                     # Construct the output; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{

@@ -3,8 +3,8 @@
     "Source": "https://filezilla-project.org/",
     "Get": {
         "Update": {
-            "Uri": "https://update.filezilla-project.org/update.php?initial=0&manual=1&osarch=64&osversion=10.0&package=1&platform=x86_64-w64-mingw32&updated=0&version=3.47.2.1",
-            "UserAgent": "FileZilla/3.47.2.1",
+            "Uri": "https://update.filezilla-project.org/update.php?osarch=64&platform=x86_64-w64-mingw32&version=3.56.1",
+            "UserAgent": "FileZilla/3.66.1",
             "Delimiter": " ",
             "Headers": [
                 "Channel",

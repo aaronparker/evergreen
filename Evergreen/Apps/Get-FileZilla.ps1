@@ -1,4 +1,4 @@
-Function Get-FileZilla {
+function Get-FileZilla {
     <#
         .SYNOPSIS
             Get the current version and download URI for FileZilla for Windows.
@@ -19,10 +19,10 @@ Function Get-FileZilla {
 
     # Query the update feed
     $params = @{
-        Uri                  = $res.Get.Update.Uri
-        UserAgent            = $res.Get.Update.UserAgent
-        SkipCertificateCheck = $True
-        Raw                  = $True
+        Uri                 = $res.Get.Update.Uri
+        UserAgent           = $res.Get.Update.UserAgent
+        SkipCertificateCheck = $true
+        Raw                 = $true
     }
     $Content = Invoke-EvergreenWebRequest @params
 
@@ -32,12 +32,11 @@ Function Get-FileZilla {
             Where-Object { $_.Channel -eq $res.Get.Update.Channel }
     }
     catch [System.Exception] {
-        Write-Warning -Message "$($MyInvocation.MyCommand): failed to convert update feed."
-        Break
+        throw $_
     }
 
     # Output the object to the pipeline
-    ForEach ($Update in $Updates) {
+    foreach ($Update in $Updates) {
         $PSObject = [PSCustomObject] @{
             Version = $Update.Version
             Size    = $Update.Size
