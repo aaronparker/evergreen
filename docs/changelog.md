@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2312.878
 
 * Adds `CitrixShareFile` #564, `ParallelsClient` #577 
 * Updates `Microsoft.NET` for all available supported channels #583 

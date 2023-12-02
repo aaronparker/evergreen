@@ -1,6 +1,6 @@
-﻿# 296 Supported applications
+﻿# 298 Supported applications
 
-Evergreen `2310.868` supports the following applications:
+Evergreen `2312.878` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -48,6 +48,7 @@ Evergreen `2310.868` supports the following applications:
 | BlueJ                                 | BlueJ                                                             | https://www.bluej.org/                                                                           |
 | CendioThinLinc                        | Cendio ThinLinc                                                   | https://www.cendio.com/                                                                          |
 | ChromiumChromeDriver                  | Chromium ChromeDriver                                             | https://chromedriver.chromium.org/home                                                           |
+| CitrixShareFile                       | Citrix ShareFile for Windows                                      | https://www.citrix.com/downloads/sharefile/clients-and-plug-ins/citrix-files-for-windows.html    |
 | CitrixWorkspaceApp                    | Citrix Workspace app                                              | https://www.citrix.com/downloads/workspace-app/                                                  |
 | CodelerityApacheNetBeans              | Codelerity Apache NetBeans                                        | https://www.codelerity.com/netbeans/                                                             |
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                    |
@@ -127,7 +128,7 @@ Evergreen `2310.868` supports the following applications:
 | JetBrainsRubyMine                     | JetBrains RubyMine                                                | https://www.jetbrains.com/rubymine                                                               |
 | JetBrainsSpace                        | JetBrains Space                                                   | https://www.jetbrains.com/space                                                                  |
 | JetBrainsTeamCity                     | JetBrains TeamCity                                                | https://www.jetbrains.com/teamcity                                                               |
-| JetBrainsToolbox                      | JetBrains Toolbox App                                             | https://www.jetbrains.com/youtrack                                                               |
+| JetBrainsToolbox                      | JetBrains Toolbox App                                             | https://www.jetbrains.com/toolbox-app/                                                           |
 | JetBrainsWebStorm                     | JetBrains WebStorm                                                | https://www.jetbrains.com/webstorm                                                               |
 | JetBrainsYouTrack                     | JetBrains YouTrack                                                | https://www.jetbrains.com/youtrack                                                               |
 | jq                                    | jq                                                                | https://jqlang.github.io/jq/                                                                     |
@@ -178,7 +179,7 @@ Evergreen `2310.868` supports the following applications:
 | MicrosoftWvdInfraAgent                | Microsoft Azure Virtual Desktop Agent                             | https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell              |
 | MicrosoftWvdMultimediaRedirection     | Microsoft Azure Virtual Desktop Multimedia Redirection Extensions | https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection                    |
 | MicrosoftWvdRemoteDesktop             | Microsoft Remote Desktop                                          | https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10                      |
-| MicrosoftWvdRtcService                | Microsoft Remote Desktop WebRTC Redirector Service                | https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd                              |
+| MicrosoftWvdRtcService                | Microsoft Remote Desktop WebRTC Redirector Service                | https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-avd                              |
 | Miniconda                             | Miniconda                                                         | https://docs.conda.io/en/latest/miniconda.html                                                   |
 | Minitab                               | Minitab                                                           | https://www.minitab.com/                                                                         |
 | MiniZincIDE                           | MiniZinc IDE                                                      | https://www.minizinc.org/                                                                        |
@@ -218,6 +219,7 @@ Evergreen `2310.868` supports the following applications:
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
 | PaintDotNetOfflineInstaller           | dotPDN LLC Paint.NET                                              | https://getpaint.net/                                                                            |
 | Pandoc                                | Pandoc                                                            | https://pandoc.org/                                                                              |
+| ParallelsClient                       | Parallels Client                                                  | https://www.parallels.com/products/ras/download/links/                                           |
 | PDFArranger                           | PDF Arranger                                                      | https://github.com/pdfarranger/pdfarranger/                                                      |
 | PDFForgePDFCreator                    | pdfforge PDFCreator                                               | https://www.pdfforge.org/pdfcreator                                                              |
 | PeaZipPeaZip                          | PeaZip PeaZip                                                     | https://peazip.github.io/                                                                        |
