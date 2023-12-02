@@ -19,7 +19,7 @@ Function Get-McNeelRhino {
     foreach ($Release in $res.Get.Update.GetEnumerator()) {
 
         # Query the Rhino update API
-        # This requires redirection so Invoke-RestMethodWrapper produces "Operation is not valid due to the current state of the object."
+        # This requires redirection so Invoke-EvergreenRestMethod produces "Operation is not valid due to the current state of the object."
         $Uri = Resolve-InvokeWebRequest -Uri $Release.Value
         $UpdateFeed = Invoke-RestMethod -Uri $Uri
 

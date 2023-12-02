@@ -17,7 +17,7 @@ Function Get-TechSmithCamtasia {
     )
 
     # Query the TechSmith update URI to get the list of versions
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.UpdateFeed
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.UpdateFeed
     if ($null -ne $updateFeed) {
 
         # Grab latest version, sort by descending version number
@@ -30,7 +30,7 @@ Function Get-TechSmithCamtasia {
 
             # Build uri so we can query the api to find the file corresponding to this version
             $LatestUpdateFeedUri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceVersion, $Latest.VersionID
-            $latestUpdateFeed = (Invoke-RestMethodWrapper -Uri $LatestUpdateFeedUri).PrimaryDownloadInformation
+            $latestUpdateFeed = (Invoke-EvergreenRestMethod -Uri $LatestUpdateFeedUri).PrimaryDownloadInformation
             if ($null -ne $latestUpdateFeed) {
 
                 # Strip the file extension from the filename (eg camtasia.exe becomes camtasia)

@@ -16,7 +16,7 @@ Function Get-MicrosoftTeamsPreview {
     Write-Warning -Message "This application function is subject to change and may change once Microsoft Teams 2.x is out of preview."
 
     # Query for the download/update feed
-    $Feed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Feed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $Feed) {
 
         foreach ($Release in $res.Get.Update.Releases.GetEnumerator()) {

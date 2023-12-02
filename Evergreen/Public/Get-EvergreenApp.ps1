@@ -41,7 +41,7 @@ Function Get-EvergreenApp {
             }
         }
 
-        # Force Invoke-RestMethodWrapper and Invoke-WebRequestWrapper to ignore certificate errors
+        # Force Invoke-EvergreenRestMethod and Invoke-EvergreenWebRequest to ignore certificate errors
         if ($PSBoundParameters.ContainsKey("SkipCertificateCheck")) {
             $script:SkipCertificateCheck = $true
         }

@@ -18,7 +18,7 @@ Function Get-MicrosoftAzureDataStudio {
     )
 
     # Get the commit details
-    $commit = (Invoke-RestMethodWrapper -Uri $res.Get.Update.Version.Uri).($res.Get.Update.Version.Property)
+    $commit = (Invoke-EvergreenRestMethod -Uri $res.Get.Update.Version.Uri).($res.Get.Update.Version.Property)
 
     # Walk through each platform
     If ($commit) {
@@ -30,7 +30,7 @@ Function Get-MicrosoftAzureDataStudio {
 
                 # Read the version details from the API, format and return to the pipeline
                 $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/$commit"
-                $updateFeed = Invoke-RestMethodWrapper -Uri $Uri
+                $updateFeed = Invoke-EvergreenRestMethod -Uri $Uri
                 If ($updateFeed) {
                     $PSObject = [PSCustomObject] @{
                         Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""

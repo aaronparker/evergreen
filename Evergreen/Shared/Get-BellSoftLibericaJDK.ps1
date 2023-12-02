@@ -29,7 +29,7 @@ function Get-BellSoftLibericaJDK {
                         Uri         = $Url
                         ContentType = $res.Get.Download.ContentType
                     }
-                    $Releases = Invoke-RestMethodWrapper @params
+                    $Releases = Invoke-EvergreenRestMethod @params
 
                     # Build the output object for each returned release
                     foreach ($Release in $Releases) {

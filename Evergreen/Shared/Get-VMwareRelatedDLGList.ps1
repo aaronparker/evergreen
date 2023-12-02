@@ -36,7 +36,7 @@ function Get-VMwareRelatedDLGList {
         $params = @{
             Uri             = "$(Get-VMwareAPIPath)/$($APIResource)?$($queryString.TrimStart('&'))"
         }
-        $WebResult = Invoke-RestMethodWrapper @params
+        $WebResult = Invoke-EvergreenRestMethod @params
         Write-Output -InputObject $WebResult.dlgEditionsLists.dlgList
     }
 }

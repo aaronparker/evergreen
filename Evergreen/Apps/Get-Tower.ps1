@@ -23,7 +23,7 @@ Function Get-Tower {
         $params = @{
             Uri = $res.Get.Update.Uri -replace "#channel", $channel
         }
-        $Content = Invoke-RestMethodWrapper @params
+        $Content = Invoke-EvergreenRestMethod @params
         if ($Null -ne $Content) {
 
             # Convert the returned release data into a useable object with Version, URI etc.

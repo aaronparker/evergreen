@@ -16,14 +16,14 @@
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($Null -eq $Update) {
         Write-Error -Message "$($MyInvocation.MyCommand): Failed to return usable content from $($res.Get.Update.Uri)."
     }
     else {
 
         $FileUrl = $res.Get.Update.File -replace "#releasePackageId", $Update.product.releasePackageId
-        $File = Invoke-RestMethodWrapper -Uri $FileUrl
+        $File = Invoke-EvergreenRestMethod -Uri $FileUrl
         if ($Null -eq $File) {
             Write-Error -Message "$($MyInvocation.MyCommand): Failed to return usable content from $FileUrl."
         }

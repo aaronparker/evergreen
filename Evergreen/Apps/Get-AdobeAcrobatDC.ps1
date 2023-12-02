@@ -26,7 +26,7 @@ Function Get-AdobeAcrobatDC {
             Uri = $($res.Get.Update.Uri -replace "#Language", $language)
             #Headers         = $res.Get.Update.Headers
         }
-        $Content = Invoke-RestMethodWrapper @params
+        $Content = Invoke-EvergreenRestMethod @params
 
         # Construct update download list
         if ($null -ne $Content) {

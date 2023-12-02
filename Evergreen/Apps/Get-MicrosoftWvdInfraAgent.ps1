@@ -9,9 +9,9 @@ function Get-MicrosoftWvdInfraAgent {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -22,8 +22,7 @@ function Get-MicrosoftWvdInfraAgent {
         Method       = "Head"
         ReturnObject = "Headers"
     }
-    $Content = Invoke-WebRequestWrapper @params
-
+    $Content = Invoke-EvergreenWebRequest @params
     if ($null -ne $Content) {
 
         # Match filename
@@ -32,8 +31,8 @@ function Get-MicrosoftWvdInfraAgent {
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version      = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Value
-            Architecture = Get-Architecture -String $Filename
             Date         = $Content.'Last-Modified'[0]
+            Architecture = Get-Architecture -String $Filename
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
         }

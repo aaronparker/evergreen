@@ -19,7 +19,7 @@ Function Get-MicrosoftPowerShell {
     # Get the latest release from the PowerShell metadata
     try {
         # Get details from the update feed
-        $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+        $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     }
     catch {
         Throw "Failed to resolve metadata: $($res.Get.Update.Uri)."

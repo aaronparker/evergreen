@@ -1,4 +1,4 @@
-Function Get-MicrosoftWvdBootLoader {
+function Get-MicrosoftWvdBootLoader {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Microsoft Remote Desktop Boot Loader.
@@ -9,9 +9,9 @@ Function Get-MicrosoftWvdBootLoader {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -23,15 +23,15 @@ Function Get-MicrosoftWvdBootLoader {
         Method       = "Head"
         ReturnObject = "Headers"
     }
-    $Headers = Invoke-WebRequestWrapper @params
+    $Headers = Invoke-EvergreenWebRequest @params
+    if ($null -ne $Headers) {
 
-    If ($Null -ne $Headers) {
         # Match filename
         $Filename = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchFilename).Captures.Groups[1].Value
 
         # Match version
         $Version = [RegEx]::Match($Headers['Content-Disposition'], $res.Get.Download.MatchVersion).Captures.Value
-        If ($Version.Length -eq 0) { $Version = "Unknown" }
+        if ($Version.Length -eq 0) { $Version = "Unknown" }
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
@@ -43,8 +43,5 @@ Function Get-MicrosoftWvdBootLoader {
             URI          = $res.Get.Download.Uri
         }
         Write-Output -InputObject $PSObject
-    }
-    Else {
-        Throw "$($MyInvocation.MyCommand): Failed to return a header from $($res.Get.Download.Uri)."
     }
 }

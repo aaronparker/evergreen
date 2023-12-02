@@ -16,7 +16,7 @@ Function Get-MattermostDesktop {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Content = Invoke-RestMethodWrapper $res.Get.Update.Uri
+    $Content = Invoke-EvergreenRestMethod $res.Get.Update.Uri
     if ($Null -ne $Content) {
 
         foreach ($Line in ($Content -split "\n")) {

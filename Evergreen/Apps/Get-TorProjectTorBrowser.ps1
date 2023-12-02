@@ -17,7 +17,7 @@ Function Get-TorProjectTorBrowser {
     )
 
     # Pass the repo releases API URL and return a formatted object
-    $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Get properties from the manifest to make reading the coder easier to read
     $Downloads = $res.Get.Update.Property.Download

@@ -28,7 +28,7 @@ function Get-CitrixVMTools {
             Uri         = $res.Get.Update.Uri[$update.Key]
             ContentType = $res.Get.Update.ContentType
         }
-        $updateFeed = Invoke-RestMethodWrapper @params
+        $updateFeed = Invoke-EvergreenRestMethod @params
 
         if ($null -ne $updateFeed) {
             # Convert the JSON to usable output

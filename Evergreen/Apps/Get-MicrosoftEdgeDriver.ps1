@@ -17,7 +17,7 @@ Function Get-MicrosoftEdgeDriver {
     )
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Edge
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, architecture, version
     if ($Null -ne $updateFeed) {

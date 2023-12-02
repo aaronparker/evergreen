@@ -21,7 +21,7 @@ function Get-MicrosoftOutlook {
         Uri = $res.Get.Update.Uri
         Raw = $True
     }
-    $Update = Invoke-WebRequestWrapper @params
+    $Update = Invoke-EvergreenWebRequest @params
 
     # Read the JSON and build an array of platform, channel, version
     if ($Null -ne $Update) {

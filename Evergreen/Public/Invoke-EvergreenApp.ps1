@@ -23,7 +23,7 @@ Function Invoke-EvergreenApp {
                 Uri         = "https://evergreen-api.stealthpuppy.com/app/$Name"
                 ErrorAction = "Stop"
             }
-            Invoke-RestMethodWrapper @params
+            Invoke-EvergreenRestMethod @params
         }
         catch {
             throw $_

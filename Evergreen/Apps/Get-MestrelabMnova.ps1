@@ -18,7 +18,7 @@ Function Get-MestrelabMnova {
     )
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $updateFeed) {
 
         # Grab the Windows files

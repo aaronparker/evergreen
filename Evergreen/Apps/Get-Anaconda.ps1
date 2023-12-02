@@ -18,7 +18,7 @@ function Get-Anaconda {
 
     # Query the repo to get the full list of files
     $Uri = $res.Get.Update.Uri -replace "#replace", $res.Get.Update.ReplaceFileList
-    $UpdateFeed = Invoke-RestMethodWrapper -Uri $Uri
+    $UpdateFeed = Invoke-EvergreenRestMethod -Uri $Uri
     if ($null -ne $UpdateFeed) {
 
         # Grab the Windows files

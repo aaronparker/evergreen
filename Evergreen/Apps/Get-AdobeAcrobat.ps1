@@ -25,7 +25,7 @@ Function Get-AdobeAcrobat {
                 Uri         = $res.Get.Update.Uri.($Product.Name)[$item.key]
                 ContentType = $res.Get.Update.ContentType
             }
-            $Content = Invoke-WebRequestWrapper @params
+            $Content = Invoke-EvergreenWebRequest @params
 
             # Construct update download list
             If ($Null -ne $Content) {

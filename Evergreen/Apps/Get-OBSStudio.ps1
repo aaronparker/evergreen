@@ -22,7 +22,7 @@
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $Updates = Invoke-RestMethodWrapper @params
+    $Updates = Invoke-EvergreenRestMethod @params
 
     # Output the object to the pipeline
     If ($Null -ne $Updates) {

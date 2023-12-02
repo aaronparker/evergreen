@@ -20,7 +20,7 @@ function Get-Microsoft.NET {
     foreach ($Channel in $res.Get.Update.Channels) {
 
         # Determine the version for each channel
-        $Content = Invoke-RestMethodWrapper -Uri $($res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $Channel)
+        $Content = Invoke-EvergreenRestMethod -Uri $($res.Get.Update.Uri -replace $res.Get.Update.ReplaceText, $Channel)
         if ($null -ne $Content) {
 
             # Read last line of the returned content to retrieve the version number
@@ -35,7 +35,7 @@ function Get-Microsoft.NET {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $MajorMinor."
 
             # Read the releases JSON for that version
-            $Releases = Invoke-RestMethodWrapper -Uri $($res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $MajorMinor)
+            $Releases = Invoke-EvergreenRestMethod -Uri $($res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $MajorMinor)
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($Releases.releases.Count) release/s."
 
             # Step through each release type

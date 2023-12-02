@@ -20,7 +20,7 @@ function Get-XnSoftXnViewMP {
         ContentType  = $res.Get.Update.ContentType
         ReturnObject = "Content"
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
     if ($null -ne $Content) {
         $Update = ConvertFrom-IniFile -InputObject $Content
 

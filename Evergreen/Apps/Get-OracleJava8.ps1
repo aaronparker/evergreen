@@ -17,7 +17,7 @@
     )
 
     # Read the update RSS feed
-    $UpdateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $UpdateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Latest version is the last item in the feed
     # Can't cast $_.version to [System.Version] because underscore character is in the string
@@ -28,7 +28,7 @@
         Select-Object -Last 1
 
     # Read the XML listed in the most recent update
-    $Feed = Invoke-RestMethodWrapper -Uri $latestUpdate.url
+    $Feed = Invoke-EvergreenRestMethod -Uri $latestUpdate.url
     if ($null -ne $Feed) {
 
         # Select the update info

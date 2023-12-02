@@ -16,7 +16,7 @@ Function Get-GitHubDesktop {
     $params = @{
         "Uri" = $res.Get.Update.Uri
     }
-    $Update = Invoke-RestMethodWrapper @params
+    $Update = Invoke-EvergreenRestMethod @params
     if ($null -ne $Update) {
         $Version = $Update.Version | Sort-Object -Descending | Select-Object -First 1
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."

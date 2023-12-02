@@ -20,7 +20,7 @@ Function Get-RingCentral {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
     try {
         $YmlVersion = [RegEx]::Match($Content, $res.Get.MatchYmlVersion).Captures.Groups[1].Value
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $YmlVersion."

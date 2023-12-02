@@ -22,7 +22,7 @@ Function Get-1Password7 {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $updateFeed = Invoke-RestMethodWrapper @params
+    $updateFeed = Invoke-EvergreenRestMethod @params
     if ($Null -ne $updateFeed) {
 
         # Filter for the latest version

@@ -16,7 +16,7 @@ function Get-OperaApp {
     )
 
     foreach ($Channel in $res.Get.Update.Channels) {
-        $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri[$Channel]
+        $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri[$Channel]
 
         if ($null -ne $Update.($res.Get.Update.Property)) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): checking property: $($res.Get.Update.Property)."

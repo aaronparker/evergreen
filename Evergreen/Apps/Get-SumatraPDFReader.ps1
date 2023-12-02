@@ -20,7 +20,7 @@ Function Get-SumatraPDFReader {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-WebRequestWrapper @params
+    $Content = Invoke-EvergreenWebRequest @params
 
     If ($Null -ne $Content) {
         try {

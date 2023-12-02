@@ -12,7 +12,7 @@ function Get-ControlUpRemoteDX {
     )
 
     # Query the ControlUp Agent JSON
-    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Object = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $Object) {
 
         # Build and array of the latest release and download URLs

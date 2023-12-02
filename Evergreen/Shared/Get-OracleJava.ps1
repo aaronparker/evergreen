@@ -21,7 +21,7 @@ function Get-OracleJava {
         Headers   = $res.Get.Update.Headers
         UserAgent = $res.Get.Update.UserAgent
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     # Sort the data for the latest version
     $LatestVersion = $UpdateFeed.data.releases | `
@@ -35,7 +35,7 @@ function Get-OracleJava {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($Type.Name)."
         [PSCustomObject] @{
             Version = $LatestVersion.version
-            Sha256  = Invoke-WebRequestWrapper -uri "$($res.Get.Download.Uri[$Type.Key]).sha256" -ReturnObject "Content"
+            Sha256  = Invoke-EvergreenWebRequest -uri "$($res.Get.Download.Uri[$Type.Key]).sha256" -ReturnObject "Content"
             Type    = Get-FileType -File $res.Get.Download.Uri[$Type.Key]
             URI     = $res.Get.Download.Uri[$Type.Key]
         } | Write-Output

@@ -17,7 +17,7 @@ Function Get-voidtoolsEverything {
     )
 
     # Pass the repo releases API URL and return a formatted object
-    $Response = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Response = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Build the output object
     If ($Null -ne $Response) {

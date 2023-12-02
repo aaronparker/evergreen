@@ -1,6 +1,6 @@
 {
     "Name": "Microsoft Remote Desktop WebRTC Redirector Service",
-    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-wvd",
+    "Source": "https://docs.microsoft.com/en-us/azure/virtual-desktop/teams-on-avd",
     "Get": {
         "Download": {
             "Uri": "https://aka.ms/msrdcwebrtcsvc/msi",

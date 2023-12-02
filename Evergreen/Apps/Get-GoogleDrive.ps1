@@ -18,7 +18,7 @@ function Get-GoogleDrive {
         Method           = $res.Get.Update.Method
         Body             = $res.Get.Update.RequestBody
     }
-    $Response = Invoke-RestMethodWrapper @params
+    $Response = Invoke-EvergreenRestMethod @params
     if ($null -ne $Response) {
         [PSCustomObject]@{
             Version = $Response.response.app.updatecheck.manifest.version

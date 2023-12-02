@@ -22,7 +22,7 @@ Function Get-OctopusDeployServer {
         Uri         = $res.Get.Update.Uri
         ContentType = $res.Get.Update.ContentType
     }
-    $versions = Invoke-RestMethodWrapper @params
+    $versions = Invoke-EvergreenRestMethod @params
 
     If ($Null -ne $versions) {
         $LatestVersion = $versions | Select-Object -Last 1

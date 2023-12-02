@@ -18,7 +18,7 @@ Function Get-Gimp {
     )
 
     # Query the GIMP update URI to get the JSON
-    $updateFeed = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $updateFeed) {
 
         # Grab latest version, sort by descending version number

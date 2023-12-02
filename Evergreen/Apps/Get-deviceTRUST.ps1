@@ -21,7 +21,7 @@ Function Get-deviceTRUST {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Updates = Invoke-RestMethodWrapper @params
+    $Updates = Invoke-EvergreenRestMethod @params
 
     # Build the output object
     If ($Null -ne $Updates) {

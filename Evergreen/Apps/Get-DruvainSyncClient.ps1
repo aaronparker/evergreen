@@ -19,7 +19,7 @@ function Get-DruvainSyncClient {
         Uri         = $res.Get.Download.Uri
         ContentType = $res.Get.Download.ContentType
     }
-    $DownloadFeed = Invoke-RestMethodWrapper @params
+    $DownloadFeed = Invoke-EvergreenRestMethod @params
 
     if ($null -ne $DownloadFeed) {
         try {
@@ -32,20 +32,31 @@ function Get-DruvainSyncClient {
 
             # Find the latest release object using the version number
             $LatestRelease = $DownloadFeed | Where-Object { $_.title -eq "Windows" -and $LatestVersion.ToString() -in $_.supportedVersions } | `
-                Select-Object -ExpandProperty "installerDetails" | `
-                Where-Object { $_.version -eq $LatestVersion.ToString() }
+                Where-Object { $_.installerDetails.version -eq $LatestVersion.ToString() }
         }
         catch {
             throw $_
         }
 
         # Output the object to the pipeline
-        $PSObject = [PSCustomObject] @{
-            Version          = $LatestRelease.version
-            InstallerVersion = $LatestRelease.installerVersion
-            Md5sum           = $LatestRelease.md5sum
-            URI              = $LatestRelease.downloadURL
+        foreach ($Release in $LatestRelease) {
+
+            # Filter the platform based on the release notes
+            switch -Regex ($Release.cloudopsNotes) {
+                ".*GOVCloud.*" { $Platform = "GOVCloud"; break }
+                default { $Platform = "Cloud" }
+            }
+
+            # Build the output object
+            $PSObject = [PSCustomObject] @{
+                Version          = $Release.installerDetails[0].version
+                InstallerVersion = $Release.installerDetails[0].installerVersion
+                CloudPlatform    = $Platform
+                Md5sum           = $Release.installerDetails[0].md5sum
+                Type             = Get-FileType -File $Release.installerDetails[0].downloadURL
+                URI              = $Release.installerDetails[0].downloadURL
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }

@@ -18,7 +18,7 @@ function Get-FoxitPDFEditor {
     )
 
     # Query the Foxit PDF Editor package download form to get the JSON
-    # TODO: Fix issue with Invoke-RestMethodWrapper that produces "Operation is not valid due to the current state of the object."
+    # TODO: Fix issue with Invoke-EvergreenRestMethod that produces "Operation is not valid due to the current state of the object."
     $params = @{
         Uri             = $res.Get.Update.Uri
         UseBasicParsing = $true

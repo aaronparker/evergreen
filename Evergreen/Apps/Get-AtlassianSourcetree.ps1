@@ -20,7 +20,7 @@ Function Get-AtlassianSourcetree {
     $params = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
 
     # Read the JSON and build an array of platform, channel, version
     If ($Null -ne $Content) {

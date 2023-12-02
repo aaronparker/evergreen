@@ -13,8 +13,8 @@ BeforeAll {
 }
 
 InModuleScope -ModuleName "Evergreen" {
-    Describe -Name "Invoke-RestMethodWrapper" {
-        Context "Ensure Invoke-RestMethodWrapper works as expected" {
+    Describe -Name "Invoke-EvergreenRestMethod" {
+        Context "Ensure Invoke-EvergreenRestMethod works as expected" {
             It "Returns data from a proper URL" {
                 $params = @{
                     ContentType          = "application/vnd.github.v3+json"
@@ -25,16 +25,16 @@ InModuleScope -ModuleName "Evergreen" {
                     UserAgent            = [Microsoft.PowerShell.Commands.PSUserAgent]::Safari
                     Uri                  = "https://api.github.com/rate_limit"
                 }
-                Invoke-RestMethodWrapper @params | Should -BeOfType [System.Object]
+                Invoke-EvergreenRestMethod @params | Should -BeOfType [System.Object]
             }
 
             It "Should throw with an invalid URL" {
-                { Invoke-RestMethodWrapper -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
+                { Invoke-EvergreenRestMethod -Uri "https://nonsense.git" -WarningAction "SilentlyIgnore" } | Should -Throw
             }
 
             It "Should throw with an invalid proxy server " {
                 Set-ProxyEnv -Proxy "test.local"
-                { Invoke-RestMethodWrapper -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
+                { Invoke-EvergreenRestMethod -Uri "https://example.com" -WarningAction "SilentlyIgnore" } | Should -Throw
                 Remove-ProxyEnv
             }
         }

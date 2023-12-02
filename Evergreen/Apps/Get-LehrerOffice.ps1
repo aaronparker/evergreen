@@ -16,7 +16,7 @@ Function Get-LehrerOffice {
     $webrequest = @{
         Uri = $res.Get.Update.Uri
     }
-    $Content = Invoke-WebRequestWrapper @webrequest
+    $Content = Invoke-EvergreenWebRequest @webrequest
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Content) {

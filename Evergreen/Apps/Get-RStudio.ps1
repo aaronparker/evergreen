@@ -18,7 +18,7 @@ function Get-RStudio {
     )
 
     # Read the download URI
-    $Content = Invoke-RestMethodWrapper -Uri $res.Get.Download.Uri
+    $Content = Invoke-EvergreenRestMethod -Uri $res.Get.Download.Uri
 
     # Step through each installer type
     foreach ($Product in $res.Get.Download.Products) {

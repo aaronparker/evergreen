@@ -6,8 +6,9 @@
             "Uri": "https://dotnetcli.blob.core.windows.net/dotnet/Runtime/#channel/latest.version",
             "ReplaceText": "#channel",
             "Channels": [
-                "Current",
-                "LTS"
+                "STS",
+                "LTS",
+                "6.0"
             ]
         },
         "Download": {

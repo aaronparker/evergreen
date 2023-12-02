@@ -18,7 +18,7 @@ Function Get-MirantisLens {
     )
 
     ForEach ($Release in $res.Get.Update.Uri.GetEnumerator()) {
-        $Update = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri[$Release.Key]
+        $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri[$Release.Key]
         If ($Null -ne $Update) {
 
             $PSObject = [PSCustomObject] @{

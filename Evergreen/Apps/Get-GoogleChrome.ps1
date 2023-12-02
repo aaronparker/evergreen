@@ -18,7 +18,7 @@ function Get-GoogleChrome {
 
     foreach ($Channel in $res.Get.Update.Channels) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Channel: $Channel."
-        $Versions = Invoke-RestMethodWrapper -Uri $($res.Get.Update.Uri -replace "#channel", $Channel)
+        $Versions = Invoke-EvergreenRestMethod -Uri $($res.Get.Update.Uri -replace "#channel", $Channel)
         $Version = $Versions.releases.version | `
             Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1

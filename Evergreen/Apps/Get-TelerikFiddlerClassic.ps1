@@ -18,7 +18,7 @@ Function Get-TelerikFiddlerClassic {
     )
 
     # Get the latest download
-    $Response = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Response = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Construct the output; Return the custom object to the pipeline
     If ($Null -ne $Response) {

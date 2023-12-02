@@ -21,7 +21,7 @@
     )
 
     # Retrieve best release json
-    $BestRelease = Invoke-RestMethodWrapper -Uri $Uri
+    $BestRelease = Invoke-EvergreenRestMethod -Uri $Uri
 
     # Validate that $BestRelease has the expected properties
     Write-Verbose -Message "$($MyInvocation.MyCommand): Validating SourceForge release object."
@@ -65,7 +65,7 @@
         Uri         = "$($Download.Feed)$Folder"
         ContentType = $Download.ContentType
     }
-    $Content = Invoke-RestMethodWrapper @params
+    $Content = Invoke-EvergreenRestMethod @params
 
     # Filter items for file types that we've included in the manifest
     $FileItems = $Content | Where-Object { ($_.link -replace $Download.ReplaceText.Link, "") -match $Download.MatchFileTypes }

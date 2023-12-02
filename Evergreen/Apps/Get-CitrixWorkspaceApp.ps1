@@ -21,7 +21,7 @@
         Uri       = $res.Get.Update.Uri
         UserAgent = $res.Get.Update.UserAgent
     }
-    $UpdateFeed = Invoke-RestMethodWrapper @params
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
     # Convert content to XML document
     if ($null -ne $UpdateFeed) {

@@ -22,7 +22,7 @@ Function Get-MozillaFirefox {
     )
 
     # Get latest Firefox version
-    $Versions = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Versions = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Construct custom object with output details
     foreach ($currentLanguage in $Language) {

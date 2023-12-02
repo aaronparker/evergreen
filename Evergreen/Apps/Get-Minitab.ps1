@@ -20,7 +20,7 @@
 
         # Build the update uri based on the release number; Query the update feed; Convert from unicode
         $Uri = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceRelease, $Release
-        $UpdateFeed = Invoke-WebRequestWrapper -Uri $Uri
+        $UpdateFeed = Invoke-EvergreenWebRequest -Uri $Uri
         $Updates = [System.Text.Encoding]::Unicode.GetString($UpdateFeed)
 
         try {

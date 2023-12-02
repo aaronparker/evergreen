@@ -17,7 +17,7 @@ Function Get-ControlUpConsole {
     )
 
     # Query the ControlUp Agent JSON
-    $Object = Invoke-RestMethodWrapper -Uri $res.Get.Update.Uri
+    $Object = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     If ($Null -ne $Object) {
 
         # Build and array of the latest release and download URLs
