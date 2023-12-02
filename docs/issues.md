@@ -99,10 +99,6 @@ Full channel names are listed here: [Update history for Microsoft 365 Apps](http
 
 Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApp -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.
 
-### MicrosoftSsms
-
-The product release feed used by the Microsoft SQL Server Management Studio (e.g., [SSMS_PRODUCTRELEASESFEED.xml](https://download.microsoft.com/download/3/f/d/3fd533f5-fdfc-407d-98a6-d5deb214d13b/SSMS_PRODUCTRELEASESFEED.xml)) includes the internal build number of the SQL Server Management Studio and not the display version, thus the version return will be similar to `15.0.18369.0` instead of the display version: `18.9.1`. See [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) for more info. Also see [SQL SSMS is reporting the wrong version](https://github.com/aaronparker/Evergreen/issues/82).
-
 ### MicrosoftTeams
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).

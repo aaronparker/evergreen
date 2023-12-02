@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `CitrixShareFile` #564, `ParallelsClient` #577 
+* Updates `Microsoft.NET` for all available supported channels #583 
+* Updates `mySQLWorkbench` download URL
+* Updates source URL used in `MicrosoftSsms` to fix version numbers
+* Updates `DruvainSyncClient` for Cloud and GovCloud releases 
+* Fix date property on `MicrosoftWvdMultimediaRedirection`
+
 ## 2310.868
 
 * Adds `OracleJava21`, `ZoomVDI`
