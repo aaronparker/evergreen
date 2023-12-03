@@ -112,4 +112,4 @@ Import-Module -Name Evergreen
 [license]: /LICENSE
 
 ---
-[Greentech icon by Icons8](https://icons8.com/icon/BzV6L4Y7vPPZ/greentech)
+[Greentech icon by Icons8](https://icons8.com/icon/set/bulb/3d-fluency)
