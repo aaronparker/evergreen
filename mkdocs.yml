@@ -49,7 +49,7 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/favicon.png
+  favicon: assets/favicon.ico
   #icon:
     #logo: logo
   logo: assets/images/evergreenbulb.png
