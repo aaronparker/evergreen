@@ -4,6 +4,7 @@
     "Get": {
 		"Uri": "https://api.github.com/repos/Amebis/eduVPN/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFile": "^eduVPNClient_\\.*\\.(exe|msi)$",
 		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
 	"Install": {
