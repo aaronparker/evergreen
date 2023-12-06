@@ -1,4 +1,4 @@
-Function Get-Audacity {
+Function Get-eduVPN {
     <#
         .SYNOPSIS
             Returns the latest EduVPN version number and download.
