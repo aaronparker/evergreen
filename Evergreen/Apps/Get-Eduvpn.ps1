@@ -5,7 +5,7 @@ Function Get-eduVPN {
 
         .NOTES
             Author: Jasper Metselaar
-            E-mail :jms@du.se
+            E-mail: jms@du.se
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
