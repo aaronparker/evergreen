@@ -23,8 +23,6 @@ Function Get-eduVPN {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-    #Filter the LetsConnectClient installers
-    $object = $object | Where-Object {$_ -notmatch "LetsConnectClient_"}
 
     Write-Output -InputObject $object
 }
