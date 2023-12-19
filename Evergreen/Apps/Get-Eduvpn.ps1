@@ -23,5 +23,6 @@ Function Get-eduVPN {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
+
     Write-Output -InputObject $object
 }

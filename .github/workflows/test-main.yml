@@ -31,7 +31,7 @@ jobs:
 
       # Upload the SARIF file generated in the previous step
       - name: Upload SARIF results file
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
 
@@ -65,14 +65,14 @@ jobs:
 
       # Upload test results
       - name: Upload Pester test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results
           path: "${{ github.workspace }}\\tests\\TestResults.xml"
 
       - name: Upload code coverage results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: codecov-results
@@ -133,14 +133,14 @@ jobs:
 
   #     # Upload test results
   #     - name: Upload Pester test results
-  #       uses: actions/upload-artifact@v3
+  #       uses: actions/upload-artifact@v4
   #       if: always()
   #       with:
   #         name: test-results
   #         path: "${{ github.workspace }}//tests//TestResults7.xml"
 
   #     - name: Upload code coverage results
-  #       uses: actions/upload-artifact@v3
+  #       uses: actions/upload-artifact@v4
   #       if: always()
   #       with:
   #         name: codecov-results
@@ -159,7 +159,7 @@ jobs:
 
     steps:
       - name: Download Pester Test Result Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: test-results
           path: test-results
@@ -170,7 +170,7 @@ jobs:
           nunit_files: "test-results/**/*.xml"
 
       - name: Download Code Coverage Result Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         if: always()
         with:
           name: codecov-results
