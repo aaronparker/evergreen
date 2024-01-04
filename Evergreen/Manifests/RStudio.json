@@ -2,12 +2,18 @@
 	"Name": "RStudio Desktop",
 	"Source": "https://posit.co/products/open-source/rstudio/",
 	"Get": {
+		"Update": {
+			"Uri": "https://www.rstudio.org/links/check_for_update?version=2023.12.0&os=win&format=kvp"
+		},
 		"Download": {
-            "Uri": "https://www.rstudio.com/wp-content/downloads.json",
-			"Products": [
-				"open_source",
-				"pro"
-			]
+			"Edition": [
+				"Open Source",
+				"Pro"
+			],
+			"Uri": {
+				"Open Source": "https://download1.rstudio.org/electron/windows/RStudio-",
+				"Pro": "https://download1.rstudio.org/electron/windows/RStudio-pro-"
+			}
 		}
 	},
 	"Install": {

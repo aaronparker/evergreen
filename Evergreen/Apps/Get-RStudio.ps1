@@ -4,9 +4,8 @@ function Get-RStudio {
             Returns the available RStudio version and download URI.
 
         .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
-            Based on Get-AtlassianBitbucket.ps1
+            Author: Jasper Metselaar
+            E-mail: jms@du.se
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $false)]
@@ -17,22 +16,31 @@ function Get-RStudio {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Read the download URI
-    $Content = Invoke-EvergreenRestMethod -Uri $res.Get.Download.Uri
+    # Read the Update URI
+    $Content = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
+    $array = $Content -split "&"
+    $version = $array[2] -replace "update-message=RStudio%20", ""
+    $version = $version -replace "%20is%20now.*", ""
+    $version = $version -replace "%2B", "-"
 
     # Step through each installer type
-    foreach ($Product in $res.Get.Download.Products) {
+    foreach ($Edition in $res.Get.Download.Edition) {
+
+        # Create download URI
+        if ($Edition -eq "Open Source") {
+            $DownloadURI = $res.Get.Download.Uri.$Edition + $version + ".exe"
+        }
+        if ($Edition -eq "Pro") {
+            $DownloadURI = $res.Get.Download.Uri.$Edition + $version + ".pro3.exe"
+        }
 
         # Build the output object; Output object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version      = $Content.rstudio.$Product.stable.desktop.installer.windows.version
-            ProductName  = $Content.rstudio.$Product.stable.desktop.installer.windows.label
-            Pro          = $Content.rstudio.$Product.stable.desktop.installer.windows.pro
-            Date         = $Content.rstudio.$Product.stable.desktop.installer.windows.last_modified
-            Size         = $Content.rstudio.$Product.stable.desktop.installer.windows.size
-            Sha256       = $Content.rstudio.$Product.stable.desktop.installer.windows.sha256
-            Type         = Get-FileType -File $Content.rstudio.$Product.stable.desktop.installer.windows.url
-            URI          = $Content.rstudio.$Product.stable.desktop.installer.windows.url
+            Version     = $version
+            ProductName = $res.Name
+            Edition     = $Edition
+            Type        = Get-FileType -File $DownloadURI
+            URI         = $DownloadURI
         }
         Write-Output -InputObject $PSObject
     }
