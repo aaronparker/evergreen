@@ -1,0 +1,26 @@
+{
+	"Name": "Npcap",
+	"Source": "https://npcap.com/",
+	"Get": {
+		"Update": {
+			"Uri": "https://api.github.com/repos/nmap/npcap/tags",
+			"ContentType": "application/json; charset=utf-8"
+		},
+		"Download": {
+			"Uri": "https://npcap.com/dist/npcap-#version.exe",
+			"ReplaceText": "#version"
+		}
+	},
+	"Install": {
+		"Setup": "npcap-*.exe",
+		"Preinstall": "",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}
