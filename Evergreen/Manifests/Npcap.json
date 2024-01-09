@@ -15,7 +15,7 @@
 		"Setup": "npcap-*.exe",
 		"Preinstall": "",
 		"Physical": {
-			"Arguments": "/S",
+			"Arguments": "",
 			"PostInstall": []
 		},
 		"Virtual": {
