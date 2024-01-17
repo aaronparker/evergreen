@@ -7,7 +7,7 @@
         },
         "Download": {
             "Uri": {
-                "Free": "https://www.masterpackager.com/installer/public/standard/masterpackager_#version.0.msi"
+                "Free": "https://www.masterpackager.com/installer/masterpackager_#version.msi"
             },
             "ReplaceText": {
                 "Version": "#version"
