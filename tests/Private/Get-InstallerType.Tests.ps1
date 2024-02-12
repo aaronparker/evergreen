@@ -41,5 +41,13 @@ Describe -Name "Get-InstallerType" {
                 Get-InstallerType -String $Url | Should -Be "Debug"
             }
         }
+
+        It "Returns Airgap given an airgap URL" {
+            InModuleScope -ModuleName "Evergreen" {
+                $Url = "https://github.com/containers/podman-desktop/releases/download/v1.6.4/podman-desktop-airgap-1.6.4-x64.exe"
+                Get-InstallerType -String $Url | Should -Be "Airgap"
+            }
+        }
+
     }
 }

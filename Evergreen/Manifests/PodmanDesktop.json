@@ -1,0 +1,20 @@
+{
+	"Name": "Podman Desktop",
+	"Source": "https://github.com/containers/podman-desktop",
+	"Get": {
+		"Uri": "https://api.github.com/repos/containers/podman-desktop/releases/latest",
+		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+		"MatchFileTypes": "\\.exe$"
+	},
+	"Install": {
+		"Setup": "podman-desktop*.exe",
+		"Physical": {
+			"Arguments": "/S",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}
