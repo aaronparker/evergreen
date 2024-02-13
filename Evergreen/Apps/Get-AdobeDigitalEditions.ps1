@@ -18,7 +18,6 @@ Function Get-AdobeDigitalEditions {
 
     $params = @{
         Uri         = $res.Get.Update.Uri
-        ContentType = $res.Get.Update.ContentType
     }
     $updateFeed = Invoke-EvergreenRestMethod @params
 
