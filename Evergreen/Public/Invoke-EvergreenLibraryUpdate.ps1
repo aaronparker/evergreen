@@ -40,17 +40,17 @@ function Invoke-EvergreenLibraryUpdate {
                 $Library = Get-Content -Path $LibraryFile -ErrorAction "Stop" | ConvertFrom-Json -ErrorAction "Stop"
 
                 # Get current list of install media files present in library
-                $LibContentBefore = Get-ChildItem -Path $Path -File -Recurse -Exclude "*.json" | Select-Object FullName | Sort-Object FullName
+                $LibContentBefore = Get-ChildItem -Path $Path -File -Recurse -Exclude "*.json" | `
+                    Select-Object -Property "FullName" | Sort-Object -Property "FullName"
 
+                # Return the application details
                 foreach ($Application in $Library.Applications) {
-
-                    # Return the application details
                     $AppPath = $(Join-Path -Path $Path -ChildPath $Application.Name)
-                    Write-Verbose -Message "Application path: $AppPath."
-                    Write-Verbose -Message "Query Evergreen for: $($Application.Name)."
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Application path: $AppPath."
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Query Evergreen for: $($Application.Name)."
 
                     try {
-                        Write-Verbose -Message "Filter: $($Application.Filter)."
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Filter: $($Application.Filter)."
                         $WhereBlock = [ScriptBlock]::Create($Application.Filter)
                     }
                     catch {
@@ -58,12 +58,12 @@ function Invoke-EvergreenLibraryUpdate {
                     }
 
                     # Gather the application version information from Get-EvergreenApp
-                    [array]$App = @()
+                    [System.Array]$App = @()
                     $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
 
                     # If something returned, add to the library
-                    if ($Null -ne $App) {
-                        Write-Verbose -Message "Download count for $($Application.EvergreenApp): $($App.Count)."
+                    if ($null -ne $App) {
+                        Write-Verbose  -Message "$($MyInvocation.MyCommand): Download count for $($Application.EvergreenApp): $($App.Count)."
 
                         # Save the installers to the library
                         if ($PSCmdlet.ShouldProcess("Downloading $($App.Count) application installers.", "Save-EvergreenApp")) {
@@ -74,12 +74,12 @@ function Invoke-EvergreenLibraryUpdate {
                         if ($Saved.Count -gt 1) {
                             for ($i = 0; $i -lt $App.Count; $i++) {
                                 $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version -and ((Split-Path $_.FullName -Leaf) -eq (Split-Path $App[$i].URI -Leaf)) }
-                                Write-Verbose -Message "Add path to object: $($Item.FullName)"
+                                Write-Verbose  -Message "$($MyInvocation.MyCommand): Add path to object: $($Item.FullName)"
                                 $App[$i] | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Item.FullName
                             }
                         }
                         else {
-                            Write-Verbose -Message "Add path to object: $($Saved.FullName)"
+                            Write-Verbose  -Message "$($MyInvocation.MyCommand): Add path to object: $($Saved.FullName)"
                             $App | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Saved.FullName
                         }
 
@@ -92,22 +92,22 @@ function Invoke-EvergreenLibraryUpdate {
                 $LibContentAfter = Get-ChildItem -Path $Path -File -Recurse -Exclude "*.json" | Select-Object FullName | Sort-Object FullName
 
                 # Output details of library updates
-                if ($Null -eq $LibContentAfter) {
-                    Write-Output "No Installer Media found in Evergreen Library"
+                if ($null -eq $LibContentAfter) {
+                    Write-Warning -Message "$($MyInvocation.MyCommand): No media found in Evergreen Library"
                 }
-                elseif ($Null -ne $LibContentBefore) {
+                elseif ($null -ne $LibContentBefore) {
                         (Compare-Object $LibContentBefore $LibContentAfter -Property FullName -IncludeEqual | ForEach-Object {
                         [PSCustomObject]@{
                             Installer = $_.Fullname
-                            Status    = $_.SideIndicator -replace '=>','NEW' -replace '==','UNCHANGED' -replace '<=','DELETED'
+                            Status    = $_.SideIndicator -replace "=>", "NEW" -replace "==", "UNCHANGED" -replace "<=", "DELETED"
                         }
                     })
                 }
                 else {
                     ($LibContentAfter | ForEach-Object {
                         [PSCustomObject]@{
-                            Installer = $_.Fullname
-                            Status    = 'NEW'
+                            Installer = $_.FullName
+                            Status    = "NEW"
                         }
                     })
                 }

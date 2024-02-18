@@ -34,10 +34,11 @@ function Export-EvergreenApp {
             $InputObject += $Content
         }
 
+        # Normalise URLs that can change on each request
         foreach ($AppLibInfo in $InputObject) {
-            if (([System.Uri]$AppLibInfo.URI).Host -like '*.dl.sourceforge.net') {
-                Write-Verbose "Normalise Sourceforge download mirror URL"
-                $AppLibInfo.URI = $AppLibInfo.URI -replace ([System.Uri]$AppLibInfo.URI).Host,"nchc.dl.sourceforge.net"
+            if (([System.Uri]$AppLibInfo.URI).Host -like "*.dl.sourceforge.net") {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Normalise Sourceforge download mirror URL"
+                $AppLibInfo.URI = $AppLibInfo.URI -replace ([System.Uri]$AppLibInfo.URI).Host, "nchc.dl.sourceforge.net"
             }
         }
 
