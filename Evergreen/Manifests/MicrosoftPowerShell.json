@@ -12,7 +12,7 @@
 			},
 			"Uri": "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/",
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "MatchFileTypes": "\\.exe$|\\.msi$"
+            "MatchFileTypes": "\\.exe$|\\.msi$|\\.msixbundle$"
         }
     },
     "Install": {

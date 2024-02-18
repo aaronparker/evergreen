@@ -12,6 +12,7 @@ function Get-InstallerType {
         "portable"     { $Type = "Portable"; break }
         "no-installer" { $Type = "Portable"; break }
         "debug"        { $Type = "Debug"; break }
+        "airgap"       { $Type = "Airgap"; break }
         default {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Installer type not found in $String, defaulting to 'Default'."
             $Type = "Default"
