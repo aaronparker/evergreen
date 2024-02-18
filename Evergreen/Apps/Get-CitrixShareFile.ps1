@@ -5,7 +5,6 @@
 
         .NOTES
             Author: Tschuegy
-            Twitter: 
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $false)]
