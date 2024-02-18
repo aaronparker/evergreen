@@ -28,10 +28,10 @@ function Get-FileZilla {
 
     # Convert the content to an object
     try {
-        $Updates = ($Content | ConvertFrom-Csv -Delimiter $res.Get.Update.Delimiter -Header $res.Get.Update.Headers) | `
+        $Updates = $Content | ConvertFrom-Csv -Delimiter $res.Get.Update.Delimiter -Header $res.Get.Update.Headers | `
             Where-Object { $_.Channel -eq $res.Get.Update.Channel }
     }
-    catch [System.Exception] {
+    catch {
         throw $_
     }
 
