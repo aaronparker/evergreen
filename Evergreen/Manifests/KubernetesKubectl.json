@@ -1,0 +1,36 @@
+{
+	"Name": "Kubernetes Kubectl",
+	"Source": "https://kubernetes.io/",
+	"Get": {
+		"Update": {
+			"Uri": "https://cdn.dl.k8s.io/release/stable.txt"			
+		},
+		"Download": {			
+			"Uri": {
+				"Windows_x64": "https://dl.k8s.io/release/#version/bin/windows/amd64/kubectl.exe",
+				"Windows_x86": "https://dl.k8s.io/release/#version/bin/windows/386/kubectl.exe",
+				"Windows_arm64": "https://dl.k8s.io/release/#version/bin/windows/arm64/kubectl.exe",
+				"Linux_x64": "https://dl.k8s.io/release/#version/bin/linux/amd64/kubectl",
+				"Linux_arm64": "https://dl.k8s.io/release/#version/bin/linux/arm64/kubectl",
+				"Darwin_x64": "https://dl.k8s.io/release/#version/bin/darwin/amd64/kubectl",
+				"Darwin_arm64": "https://dl.k8s.io/release/#version/bin/darwin/arm64/kubectl"
+			},
+			"ReplaceVersionText": "#version"
+		}
+	},
+	"Install": {
+		"Setup": {
+			"Windows": "kubectl.exe",
+			"Linux" : "kubectl",
+			"Darwin" : "kubectl"		
+		},
+		"Physical": {
+			"Arguments": "",
+			"PostInstall": []
+		},
+		"Virtual": {
+			"Arguments": "",
+			"PostInstall": []
+		}
+	}
+}
