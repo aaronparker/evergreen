@@ -1,4 +1,4 @@
-Function Get-KubernetesKubectl {
+function Get-KubernetesKubectl {
     <#
         .SYNOPSIS
             Returns the available Kubernetes Kubectl versions.
@@ -18,10 +18,10 @@ Function Get-KubernetesKubectl {
 
     # Get the latest version for kubectl
     $Version = Invoke-RestMethod -Uri $res.Get.Update.Uri
-    
+
     # Build the download links for each platform & architecture
     foreach ($DownloadUri in $res.Get.Download.Uri.GetEnumerator()) {
-        [pscustomobject] @{
+        [PSCustomObject] @{
             Version      = $Version
             Architecture = $DownloadUri.Name.Split("_")[1]
             Platform     = $DownloadUri.Name.Split("_")[0]
