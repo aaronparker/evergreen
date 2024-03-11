@@ -7,9 +7,9 @@
         },
         "Download": {
             "Uri": [
-                "https://go.microsoft.com/fwlink/?linkid=2242886",
-                "https://go.microsoft.com/fwlink/?linkid=2242980",
-                "https://go.microsoft.com/fwlink/?linkid=2243268"
+                "https://go.microsoft.com/fwlink/?linkid=2249006",
+                "https://go.microsoft.com/fwlink/?linkid=2249005",
+                "https://go.microsoft.com/fwlink/?linkid=2248720"
             ],
             "MaximumRedirection": 3,
             "DatePattern": "d/M/yyyy"

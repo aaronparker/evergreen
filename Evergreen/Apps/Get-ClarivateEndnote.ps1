@@ -22,7 +22,7 @@ function Get-ClarivateEndNote {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Download URL: $($res.Get.Download.Uri.$Release)"
 
         # Query the EndNote update API
-        $UpdateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri.($Release) 
+        $UpdateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri.($Release)
         if ($null -ne $UpdateFeed) {
 
             # Sort the updates to find the latest
