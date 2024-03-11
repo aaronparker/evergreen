@@ -1,5 +1,14 @@
 # Change log
 
+## 2403.889
+
+* Adds `KubernetesKubectl` [#634](https://github.com/aaronparker/evergreen/issues/634), `ProtonVPN` [#596](https://github.com/aaronparker/evergreen/issues/596), `eduVPN`, `AdobeDigitalEditions` [#621](https://github.com/aaronparker/evergreen/issues/621), `ClarivateEndNote`, `DBBrowserforSQLite`, `JabraDirect`, `MicrosoftWSL`, `Npcap`, `PodmanDesktop`, `Podman`
+* Update URLs for `MicrosoftODBCDriverForSQLServer` and `MicrosoftOLEDBDriverForSQLServer` [#567](https://github.com/aaronparker/evergreen/issues/567)
+* Updates `Invoke-EvergreenLibraryUpdate` [#488](https://github.com/aaronparker/evergreen/issues/488) [#566](https://github.com/aaronparker/evergreen/pull/566)
+* Updates `MicrosoftPowerShell` to return `msixbundle` file type
+* Fixes update source for `MasterPackager`
+* Address PSScriptAnalyzer issues
+
 ## 2312.878
 
 * Adds `CitrixShareFile` #564, `ParallelsClient` #577 
