@@ -1,6 +1,6 @@
-﻿# 298 Supported applications
+﻿# 309 Supported applications
 
-Evergreen `2312.878` supports the following applications:
+Evergreen `2403.889` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -14,6 +14,7 @@ Evergreen `2312.878` supports the following applications:
 | AdobeAcrobatReaderDC                  | Adobe Acrobat Reader DC                                           | https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html                                          |
 | AdobeBrackets                         | Adobe Brackets                                                    | http://brackets.io/                                                                              |
 | AdobeConnect                          | Adobe Connect meeting application                                 | https://www.adobe.com/products/adobeconnect.html                                                 |
+| AdobeDigitalEditions                  | Adobe Digital Editions                                            | https://www.adobe.com/solutions/ebook/digital-editions.html                                      |
 | AdoptiumTemurin11                     | Adoptium Temurin 11                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin16                     | Adoptium Temurin 16                                               | https://adoptium.net/                                                                            |
 | AdoptiumTemurin17                     | Adoptium Temurin 17                                               | https://adoptium.net/                                                                            |
@@ -50,12 +51,14 @@ Evergreen `2312.878` supports the following applications:
 | ChromiumChromeDriver                  | Chromium ChromeDriver                                             | https://chromedriver.chromium.org/home                                                           |
 | CitrixShareFile                       | Citrix ShareFile for Windows                                      | https://www.citrix.com/downloads/sharefile/clients-and-plug-ins/citrix-files-for-windows.html    |
 | CitrixWorkspaceApp                    | Citrix Workspace app                                              | https://www.citrix.com/downloads/workspace-app/                                                  |
+| ClarivateEndnote                      | Clarivate EndNote                                                 | https://www.endnote.com/                                                                         |
 | CodelerityApacheNetBeans              | Codelerity Apache NetBeans                                        | https://www.codelerity.com/netbeans/                                                             |
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                    |
 | ControlUpAgent                        | ControlUp Agent                                                   | https://www.controlup.com/products/controlup/agent/                                              |
 | ControlUpConsole                      | ControlUp Console                                                 | https://www.controlup.com/products/controlup/management/                                         |
 | ControlUpRemoteDX                     | ControlUp Remote DX Plugins                                       | https://www.controlup.com/products/controlup/agent/                                              |
 | Cyberduck                             | iterate GmbH Cyberduck                                            | https://cyberduck.io/                                                                            |
+| DBBrowserforSQLite                    | DB Browser for SQLite                                             | https://sqlitebrowser.org/                                                                       |
 | dbeaver                               | dbeaver                                                           | https://github.com/dbeaver/dbeaver                                                               |
 | DebaucheeBarrier                      | Debauchee Barrier                                                 | https://github.com/debauchee/barrier                                                             |
 | deviceTRUST                           | deviceTRUST                                                       | https://devicetrust.com/                                                                         |
@@ -65,6 +68,7 @@ Evergreen `2312.878` supports the following applications:
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                                  |
 | DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                          |
 | DruvainSyncClient                     | Druva inSync Client                                               | https://docs.druva.com/005_inSync_Client                                                         |
+| Eduvpn                                | eduVPN                                                            | https://app.eduvpn.org/                                                                          |
 | EgnyteDesktopApp                      | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                           |
 | ESETEndpointAntivirus                 | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                                  |
 | ESETEndpointSecurity                  | ESET Endpoint Security                                            | https://www.eset.com/au/business/solutions/endpoint-protection/                                  |
@@ -111,6 +115,7 @@ Evergreen `2312.878` supports the following applications:
 | HashicorpWaypoint                     | Hashicorp Waypoint                                                | https://www.waypointproject.io/                                                                  |
 | ImageGlass                            | ImageGlass                                                        | https://imageglass.org/                                                                          |
 | ImageMagickStudioImageMagick          | ImageMagick Studio ImageMagick                                    | https://imagemagick.org/                                                                         |
+| JabraDirect                           | JabraDirect                                                       | https://www.jabra.com/software-and-services/jabra-direct                                         |
 | JamTreeSizeFree                       | JAM Software TreeSize Free                                        | https://www.jam-software.com/treesize_free/                                                      |
 | JamTreeSizeProfessional               | JAM Software TreeSize Professional                                | https://www.jam-software.com/treesize/                                                           |
 | JASP                                  | JASP                                                              | https://jasp-stats.org/                                                                          |
@@ -138,6 +143,7 @@ Evergreen `2312.878` supports the following applications:
 | KeePass                               | KeePass Password Safe                                             | https://keepass.info/                                                                            |
 | KeePassXCTeamKeePassXC                | KeePassXC Team KeePassXC                                          | https://keepassxc.org/                                                                           |
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                                 |
+| KubernetesKubectl                     | Kubernetes Kubectl                                                | https://kubernetes.io/                                                                           |
 | LehrerOffice                          | LehrerOffice                                                      | https://lehreroffice.net/                                                                        |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                                  |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                            |
@@ -175,6 +181,7 @@ Evergreen `2312.878` supports the following applications:
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                              |
 | MicrosoftVisualStudioCode             | Microsoft Visual Studio Code                                      | https://code.visualstudio.com                                                                    |
 | MicrosoftWindowsPackageManagerClient  | Microsoft Windows Package Manager Client                          | https://docs.microsoft.com/en-us/windows/package-manager/                                        |
+| MicrosoftWSL                          | Microsoft WSL                                                     | https://github.com/microsoft/wsl/                                                                |
 | MicrosoftWvdBootloader                | Microsoft Azure Virtual Desktop Agent Bootloader                  | https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell              |
 | MicrosoftWvdInfraAgent                | Microsoft Azure Virtual Desktop Agent                             | https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-powershell              |
 | MicrosoftWvdMultimediaRedirection     | Microsoft Azure Virtual Desktop Multimedia Redirection Extensions | https://docs.microsoft.com/en-us/azure/virtual-desktop/multimedia-redirection                    |
@@ -198,6 +205,7 @@ Evergreen `2312.878` supports the following applications:
 | Nomacs                                | nomacs Image Lounge                                               | https://nomacs.org/                                                                              |
 | Notable                               | Notable                                                           | https://notable.app/                                                                             |
 | NotepadPlusPlus                       | Notepad++                                                         | https://notepad-plus-plus.org/                                                                   |
+| Npcap                                 | Npcap                                                             | https://npcap.com/                                                                               |
 | Obsidian                              | Obsidian                                                          | https://obsidian.md/                                                                             |
 | OBSStudio                             | OBS Studio                                                        | https://obsproject.com/                                                                          |
 | OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | http://https://ocsinventory-ng.org/                                                              |
@@ -224,6 +232,8 @@ Evergreen `2312.878` supports the following applications:
 | PDFForgePDFCreator                    | pdfforge PDFCreator                                               | https://www.pdfforge.org/pdfcreator                                                              |
 | PeaZipPeaZip                          | PeaZip PeaZip                                                     | https://peazip.github.io/                                                                        |
 | PiriformCCleanerFree                  | Piriform CCleaner Free                                            | https://www.ccleaner.com/ccleaner                                                                |
+| Podman                                | Podman                                                            | https://github.com/containers/podman                                                             |
+| PodmanDesktop                         | Podman Desktop                                                    | https://github.com/containers/podman-desktop                                                     |
 | Postman                               | Postman                                                           | https://www.getpostman.com/                                                                      |
 | Praat                                 | Praat                                                             | https://www.fon.hum.uva.nl/praat/                                                                |
 | ProgressChefInfraClient               | Progress Chef Infra Client                                        | https://www.chef.io/products/chef-infra                                                          |
@@ -231,6 +241,7 @@ Evergreen `2312.878` supports the following applications:
 | ProgressChefWorkstation               | Progress Chef Workstation                                         | https://www.chef.io/products/chef-workstation                                                    |
 | ProjectLibre                          | ProjectLibre                                                      | https://www.projectlibre.com/                                                                    |
 | Protege                               | Protege                                                           | https://protege.stanford.edu/                                                                    |
+| ProtonVPN                             | ProtonVPN                                                         | https://protonvpn.com/                                                                           |
 | PSAppDeployToolkit                    | PSAppDeployToolkit                                                | https://psappdeploytoolkit.com/                                                                  |
 | PSFPython                             | PSF Python                                                        | https://www.python.org/                                                                          |
 | PuTTY                                 | PuTTY                                                             | https://www.chiark.greenend.org.uk/~sgtatham/putty/                                              |
