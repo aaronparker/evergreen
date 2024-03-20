@@ -30,7 +30,7 @@ function Invoke-EvergreenWebRequest {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $Raw,
