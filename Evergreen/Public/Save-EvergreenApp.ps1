@@ -87,7 +87,7 @@ Function Save-EvergreenApp {
         #endregion
 
         # Enable TLS 1.2
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     }
 
     process {

@@ -67,18 +67,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Trust all certificates."
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
     # Use TLS for connections
-    if (($SslProtocol.IsPresent) -and -not(Test-PSCore)) {
-        if ($SslProtocol -eq "Tls13") {
-            $SslProtocol = "Tls12"
-            Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
-        }
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
-    }
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
     #region Build the Invoke-RestMethod parameters
     $params = @{
