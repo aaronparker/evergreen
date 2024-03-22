@@ -1,53 +1,36 @@
 {
-    "Name": "Microsoft Teams",
+    "Name": "Microsoft Teams (new)",
     "Source": "https://www.microsoft.com/teams",
     "Get": {
         "Update": {
-            "Uri": "https://teams.microsoft.com/package/desktopclient/update/1.2.00.32462/windows/x64?ring=#ring",
+            "Uri": "https://config.teams.microsoft.com/config/v1/MicrosoftTeams/1415_1.0.0.0?environment=prod&audienceGroup=general&teamsRing=general&agent=TeamsBuilds",
             "ContentType": "application/json; charset=utf-8",
-            "UserAgent": "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-            "Rings": {
-                "General": "general",
-                "ITAdmins": "ring1_5",
-                "DeveloperPartners": "ring1_6",
-                "Dogfood": "ring2",
-                "TAP": "ring3",
-                "Preview": "ring3_6",
-                "OuterRing": "ring3_9",
-                "Public": "ring4"
-            },
-            "ReplaceText": "#ring"
+            "Releases": {
+                "Consumer": "WebView2",
+                "Enterprise": "WebView2Canary"
+            }
         },
         "Download": {
-            "Uri": "https://teams.microsoft.com/desktopclient/installer/windows/#architecture?ring=#ring",
             "Architecture": [
                 "x64",
-                "x32",
+                "x86",
                 "arm64"
             ],
-            "ReplaceText": {
-                "architecture": "#architecture",
-                "ring": "#ring"
-            },
-            "Extensions": [
-                ".exe",
-                ".msi"
+            "Exclude": [
+                "macOS"
             ]
         }
     },
     "Install": {
-        "Setup": "Teams*.msi",
+        "Setup": "",
         "Physical": {
             "Arguments": "",
             "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
             ]
         },
         "Virtual": {
-            "Arguments": "ALLUSER=1 ALLUSERS=1",
+            "Arguments": "",
             "PostInstall": [
-                "Remove-Item -Path \"$env:Public\\Desktop\\Microsoft Teams.lnk\" -Force -ErrorAction \"SilentlyContinue\""
             ]
         }
     }
