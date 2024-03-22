@@ -18,7 +18,7 @@ function Invoke-Download {
         [Parameter(Position = 2)]
         [System.String] $FileName,
 
-        [System.String[]] $UserAgent = $script:resourceStrings.UserAgent.Download,
+        [System.String[]] $UserAgent = @('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36', 'Googlebot/2.1 (+http://www.google.com/bot.html)'),
 
         [System.String] $TempPath = [System.IO.Path]::GetTempPath(),
 
@@ -84,8 +84,8 @@ function Invoke-Download {
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Unable to determine file size"
             }
 
+            # Try to get the last modified date from the "Last-Modified" header, use error handling in case string is in invalid format
             try {
-                # Try to get the last modified date from the "Last-Modified" header, use error handling in case string is in invalid format
                 $LastModified = $null
                 $LastModified = [DateTime]::ParseExact($ResponseHeader.Content.Headers.GetValues('Last-Modified')[0], 'r', [System.Globalization.CultureInfo]::InvariantCulture)
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Last modified: $($LastModified.ToString())"
