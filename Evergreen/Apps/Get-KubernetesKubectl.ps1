@@ -22,7 +22,7 @@ function Get-KubernetesKubectl {
     # Build the download links for each platform & architecture
     foreach ($DownloadUri in $res.Get.Download.Uri.GetEnumerator()) {
         [PSCustomObject] @{
-            Version      = $Version
+            Version      = $Version.TrimStart("v")
             Architecture = $DownloadUri.Name.Split("_")[1]
             Platform     = $DownloadUri.Name.Split("_")[0]
             URI          = $DownloadUri.Value -replace $res.Get.Download.ReplaceVersionText, $Version
