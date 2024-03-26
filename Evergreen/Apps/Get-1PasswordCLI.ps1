@@ -26,6 +26,7 @@ function Get-1PasswordCLI {
             $PSObject = [PSCustomObject] @{
                 Version      = $updateFeed.version
                 Architecture = $Architecture.Name
+                Type         = Get-FileType -File $res.Get.Download.Uri[$Architecture.Name]
                 URI          = $res.Get.Download.Uri[$Architecture.Name] -replace $res.Get.Download.ReplaceText, $updateFeed.version
             }
             Write-Output -InputObject $PSObject
