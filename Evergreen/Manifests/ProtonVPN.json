@@ -1,5 +1,5 @@
 {
-    "Name": "ProtonVPN",
+    "Name": "Proton VPN",
     "Source": "https://protonvpn.com/",
     "Get": {
         "Uri": "https://api.github.com/repos/ProtonVPN/win-app/releases/latest",
