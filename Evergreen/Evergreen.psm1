@@ -29,3 +29,8 @@ Export-ModuleMember -Function $public.Basename -Alias *
 
 # Get module strings
 $script:resourceStrings = Get-ModuleResource
+
+Register-ArgumentCompleter -CommandName 'Get-EvergreenApp', 'Find-EvergreenApp' -ParameterName 'Name' -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+    (Get-ChildItem -Path "$PSScriptRoot\Manifests\$wordToComplete*.json" -ErrorAction Ignore).BaseName
+}
