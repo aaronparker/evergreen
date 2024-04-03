@@ -15,7 +15,7 @@ jobs:
 
       - name: Install and cache PowerShell modules
         id: psmodulecache
-        uses: potatoqualitee/psmodulecache@v6.1
+        uses: potatoqualitee/psmodulecache@v6.2
         with:
           modules-to-cache: PowerShellGet
           shell: pwsh
