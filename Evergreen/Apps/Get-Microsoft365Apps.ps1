@@ -45,7 +45,7 @@ function Get-Microsoft365Apps {
                 ReleaseVersion = $OfficeVersion.releaseVersion
                 Channel        = $Channel.name
                 Name           = $Channel.displayName
-                AvailableDate  = ConvertTo-DateTime -DateTime $OfficeVersion.availabilityDate -Pattern $res.Get.Update.DateTime
+                Date           = ConvertTo-DateTime -DateTime $OfficeVersion.availabilityDate -Pattern $res.Get.Update.DateTime
                 EOSDate        = ConvertTo-DateTime -DateTime $OfficeVersion.endOfSupportDate -Pattern $res.Get.Update.DateTime
                 URI            = $res.Get.Download.Uri
             }
