@@ -4,43 +4,9 @@
     "Get": {
         "Update": {
             "Uri": "https://clients.config.office.net/releases/v1.0/OfficeReleases",
-            "ChannelNames": {
-                "BetaChannel": "Beta",
-                "CurrentPreview": "Current Channel (Preview)",
-                "Current": "Current Channel",
-                "MonthlyEnterprise": "Monthly Enterprise",
-                "SemiAnnualPreview": "Semi-Annual Channel Preview",
-                "SemiAnnual": "Semi-Annual Channel",
-                "PerpetualVL2021": "Office LTSC 2021 Perpetual Enterprise",
-                "PerpetualVL2019": "Office 2019 Perpetual Enterprise"
-            },
+            "Channels": "https://config.office.com/api/filelist/channels",
             "ContentType": "application/json; charset=utf-8",
-            "DateTime": "MM/dd/yyyy HH:mm"
-        },
-        "Update2": {
-            "Uri": "https://mrodevicemgr.officeapps.live.com/mrodevicemgrsvc/api/v2/C2RReleaseData?audienceFFN=",
-            "Channels": {
-                "BetaChannel": "5440fd1f-7ecb-4221-8110-145efaa6372f",
-                "CurrentPreview": "64256afe-f5d9-4f86-8936-8840a6a4f5be",
-                "Current": "492350f6-3a01-4f97-b9c0-c7c6ddf67d60",
-                "MonthlyEnterprise": "55336b82-a18d-4dd6-b5f6-9e5095c314a6",
-                "SemiAnnualPreview": "b8f9b850-328d-4355-9145-c59439a0c4cf",
-                "SemiAnnual": "7ffbc6bf-bc32-4f92-8982-f9dd17fd3114",
-                "PerpetualVL2021": "5030841d-c919-4594-8d2d-84ae4f96e58e",
-                "PerpetualVL2019": "f2e724c1-748f-4b47-8fb8-8e0d210e9208"
-            },
-            "ChannelNames": {
-                "BetaChannel": "Beta",
-                "CurrentPreview": "Current Channel (Preview)",
-                "Current": "Current Channel",
-                "MonthlyEnterprise": "Monthly Enterprise",
-                "SemiAnnualPreview": "Semi-Annual Channel Preview",
-                "SemiAnnual": "Semi-Annual Channel",
-                "PerpetualVL2021": "Office LTSC 2021 Perpetual Enterprise",
-                "PerpetualVL2019": "Office 2019 Perpetual Enterprise"
-            },
-            "ContentType": "application/json; charset=utf-8",
-            "DateTime": "MM/dd/yyyy HH:mm"
+            "DateTime": "dd/MM/yyyy HH:mm:ss a"
         },
         "Download": {
             "Uri": "https://officecdn.microsoft.com/pr/wsus/setup.exe"
