@@ -6,7 +6,7 @@
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/eea/windows/metadata",
             "ContentType": "application/octet-stream",
             "MatchMetadata": "(?<={)(.*?)(?=}],\"switch\")')).Value)+'}]}",
-            "OS": "Windows 11, 10"
+            "OS": "Window*"
         },
         "Download": {
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/eea/windows/#file"

@@ -6,7 +6,7 @@
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/eei/agent/metadata",
             "ContentType": "application/octet-stream",
             "MatchMetadata": "(?<={)(.*?)(?=}],\"switch\")')).Value)+'}]}",
-            "OS": "Windows 11, 10, 8, 7, Windows Server 2022, 2004, 2009, 2019, 2016, 2012 R2, 2012, 2008 R2"
+            "OS": "Windows*"
         },
         "Download": {
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/eei/agent/#file"

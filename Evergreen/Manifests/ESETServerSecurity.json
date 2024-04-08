@@ -6,7 +6,7 @@
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/efs/windows/metadata",
             "ContentType": "application/octet-stream",
             "MatchMetadata": "(?<={)(.*?)(?=}],\"switch\")')).Value)+'}]}",
-            "OS": "Windows Server"
+            "OS": "Windows*"
         },
         "Download": {
             "Uri": "https://repository.eset.com/v1/com/eset/apps/business/efs/windows/#file"
