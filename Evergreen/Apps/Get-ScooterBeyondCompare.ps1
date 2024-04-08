@@ -1,4 +1,4 @@
-﻿Function Get-ScooterBeyondCompare {
+﻿function Get-ScooterBeyondCompare {
     <#
         .SYNOPSIS
             Returns the latest Beyond Compare and download URL.
@@ -10,39 +10,47 @@
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    ForEach ($language in $res.Get.Uri.GetEnumerator()) {
+    foreach ($language in $res.Get.Uri.GetEnumerator()) {
 
         # Query the Beyond Compare update API
-        $iwcParams = @{
+        $params = @{
             Uri       = $res.Get.Uri[$language.key]
             UserAgent = $res.Get.UserAgent
         }
-        $Content = Invoke-EvergreenRestMethod @iwcParams
+        $Content = Invoke-EvergreenRestMethod @params
+        if ($null -ne $Content) {
 
-        # If something is returned
-        If ($Null -ne $Content) {
+            if ($Content -is [System.Xml.XmlDocument]) {
+                $XmlContent = $Content
+            }
+            else {
+                # Normalize the XML content
+                $Content = $Content -replace "<a", "" -replace "</a>", ""
+                $XmlContent = New-Object -TypeName "System.Xml.XmlDocument"
+                $XmlContent.LoadXml($Content)
+            }
 
             # Build an array of the latest release and download URLs
-            ForEach ($update in $Content.Update) {
-
+            foreach ($Update in $XmlContent.Update) {
                 try {
-                    $version = [RegEx]::Match($update.latestversion, $res.Get.MatchVersion).Captures.Value
-                    $version = "$($version).$($update.latestBuild)"
+                    $Version = [RegEx]::Match($Update.latestVersion, $res.Get.MatchVersion).Captures.Value
+                    $Version = "$($Version).$($Update.latestBuild)"
                 }
                 catch {
-                    $version = $update.latestVersion
+                    $Version = $Update.latestVersion
                 }
 
                 $PSObject = [PSCustomObject] @{
-                    Version  = $version
+                    Version  = $Version
                     Language = $res.Get.Languages[$language.key]
-                    URI      = $update.download
+                    Type     = Get-FileType -File $Update.download
+                    URI      = $Update.download
                 }
                 Write-Output -InputObject $PSObject
             }
