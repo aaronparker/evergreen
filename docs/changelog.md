@@ -1,5 +1,17 @@
 # Change log
 
+## VERSION
+
+* Adds argument completer for `Get-EvergreenApp`
+* Updates the default user agent used by Evergreen to match Microsoft Edge [#642](https://github.com/aaronparker/evergreen/issues/642)
+* Adds `TeraTerm`, `SUSERancherDesktop` [#635](https://github.com/aaronparker/evergreen/issues/635), `GrafanaAgent` [#628](https://github.com/aaronparker/evergreen/issues/628), `PlexDesktop`, `PlexHTPC`, `PlexMediaServer` [#270](https://github.com/aaronparker/evergreen/issues/270), `Flameshot` [#597](https://github.com/aaronparker/evergreen/issues/597), `1PasswordCLI` [#589](https://github.com/aaronparker/evergreen/issues/589), `ProtonDrive` [#595](https://github.com/aaronparker/evergreen/issues/595)
+* Updates `MicrosoftTeams` to support Teams 2.0 (removes `MicrosoftTeamsPreview`), Adds `MicrosoftTeamsClassic` to return details of Teams 1.0 [#625](https://github.com/aaronparker/evergreen/issues/625)
+* Updates `Microsoft365Apps` to dynamically determine channel names and removed from hard coded channel details from the manifest [#650](https://github.com/aaronparker/evergreen/issues/650)
+* Fixes the source releases feed for `MicrosoftSsms` to return current releases [#651](https://github.com/aaronparker/evergreen/issues/651)
+* Updates various functions to use a consistent approach to enabling TLS 1.2 [#643](https://github.com/aaronparker/evergreen/issues/643)
+* Fixes an issue with `KubernetesKubectl`
+* Fixes an issue with `ScooterBeyondCompare` to resolve an with XML conversion of the update source feed
+
 ## 2403.889
 
 * Adds `KubernetesKubectl` [#634](https://github.com/aaronparker/evergreen/issues/634), `ProtonVPN` [#596](https://github.com/aaronparker/evergreen/issues/596), `eduVPN`, `AdobeDigitalEditions` [#621](https://github.com/aaronparker/evergreen/issues/621), `ClarivateEndNote`, `DBBrowserforSQLite`, `JabraDirect`, `MicrosoftWSL`, `Npcap`, `PodmanDesktop`, `Podman`
