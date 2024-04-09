@@ -1,4 +1,4 @@
-Function Get-LibreOffice {
+function Get-LibreOffice {
     <#
         .SYNOPSIS
             Gets the latest LibreOffice version and download URIs, including help packs / language packs for Windows.
@@ -7,25 +7,22 @@ Function Get-LibreOffice {
             Author: Bronson Magnan
             Twitter: @cit_bronson
 
-            This functions scrapes the vendor web page to find versions and downloads.
-            TODO: find a better method to find version and URLs
-
             Uses: https://cgit.freedesktop.org/libreoffice/website/tree/check.php?h=update
 
         .LINK
             https://github.com/aaronparker/Evergreen
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the LibreOffice update API
-    ForEach ($item in $res.Get.Update.UserAgent.GetEnumerator()) {
+    foreach ($item in $res.Get.Update.UserAgent.GetEnumerator()) {
         $params = @{
             Uri                  = $res.Get.Update.Uri
             UserAgent            = $res.Get.Update.UserAgent[$item.Key]
@@ -33,16 +30,16 @@ Function Get-LibreOffice {
             SkipCertificateCheck = $True
         }
         $Update = Invoke-EvergreenRestMethod @params
-        If ($Null -ne $Update) {
+        if ($null -ne $Update) {
 
-            If ($Null -eq $Update.description.version) {
+            if ($null -eq $Update.description.version) {
                 Write-Warning "$($MyInvocation.MyCommand): failed to return a version number for release $($item.Name) from: $($res.Get.Update.Uri)."
             }
-            Else {
+            else {
                 Write-Verbose "$($MyInvocation.MyCommand): $($res.Get.Update.Uri) returned version: $($Update.description.version)."
 
                 # Get downloads for each platform for the latest version
-                ForEach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
+                foreach ($platform in $res.Get.Download.Platforms.GetEnumerator()) {
 
                     Write-Verbose "$($MyInvocation.MyCommand): parsing: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/."
                     $params = @{
@@ -50,13 +47,13 @@ Function Get-LibreOffice {
                         ReturnObject = "All"
                     }
                     $PlatformList = Invoke-EvergreenWebRequest @params
-                    #Write-Verbose "PlatformList is type: $($PlatformList.GetType())"
-                    If ($Null -eq $PlatformList) {
+
+                    if ($null -eq $PlatformList) {
                         Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/."
                     }
-                    Else {
+                    else {
                         $Architectures = ($PlatformList.Links | Where-Object { $_.href -match $res.Get.Download.MatchArchitectures }).href -replace "/", ""
-                        ForEach ($arch in $Architectures) {
+                        foreach ($arch in $Architectures) {
 
                             # Get downloads for each architecture for the latest version/platform
                             Write-Verbose "$($MyInvocation.MyCommand): parsing: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/."
@@ -65,21 +62,21 @@ Function Get-LibreOffice {
                                 ReturnObject = "All"
                             }
                             $ArchitectureList = Invoke-EvergreenWebRequest @params
-                            #Write-Verbose "ArchitectureList is type: $($ArchitectureList.GetType())"
-                            If ($Null -eq $ArchitectureList) {
+
+                            if ($null -eq $ArchitectureList) {
                                 Write-Warning "$($MyInvocation.MyCommand): Check that the following URL is valid: $($res.Get.Download.Uri)/$($Update.description.version)/$($platform.Name)/$arch/."
                             }
-                            Else {
+                            else {
                                 $Files = ($ArchitectureList.Links | Where-Object { $_.href -match $res.Get.Download.MatchExtensions }).href -replace "/", ""
-                                ForEach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
+                                foreach ($file in ($Files | Where-Object { $_ -notlike "*sdk*" })) {
 
                                     # Match language string
                                     Remove-Variable -Name "Language", "match" -ErrorAction "SilentlyContinue"
                                     $match = $file | Select-String -Pattern $res.Get.Download.MatchLanguage
-                                    If ($Null -ne $match) {
+                                    if ($null -ne $match) {
                                         $Language = $match.Matches.Groups[1].Value
                                     }
-                                    Else {
+                                    else {
                                         $Language = $res.Get.Download.NoLanguage
                                     }
 
