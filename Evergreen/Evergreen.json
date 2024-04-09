@@ -1,41 +1,48 @@
 {
-	"Preferences": {
-		"ErrorAction": "Stop"
-	},
-	"Filters": {
-		"WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$",
-		"Filename": "(([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.exe|.msi|.msp|.zip))"
-	},
-	"Properties": {
-		"SourceForge": [
-			"release",
-			"platform_releases"
-		],
-		"GitHub": [
-			"assets",
-			"assets_url",
-			"author",
-			"body",
-			"created_at",
-			"draft",
-			"html_url",
-			"id",
-			"name",
-			"node_id",
-			"prerelease",
-			"published_at",
-			"tag_name",
-			"tarball_url",
-			"target_commitish",
-			"upload_url",
-			"url",
-			"zipball_url"
-		]
-	},
-	"Uri": {
-		"Project": "https://github.com/aaronparker/evergreen/",
-		"Docs": "https://stealthpuppy.com/evergreen/",
-		"Issues": "https://stealthpuppy.com/evergreen/issues/",
-		"Info": "https://stealthpuppy.com/evergreen/troubleshoot/"
-	}
+    "Preferences": {
+        "ErrorAction": "Stop"
+    },
+    "UserAgent": {
+		"Base": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.",
+        "Download": [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.",
+            "Googlebot/2.1 (+http://www.google.com/bot.html)"
+        ]
+    },
+    "Filters": {
+        "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$",
+        "Filename": "(([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.exe|.msi|.msp|.zip))"
+    },
+    "Properties": {
+        "SourceForge": [
+            "release",
+            "platform_releases"
+        ],
+        "GitHub": [
+            "assets",
+            "assets_url",
+            "author",
+            "body",
+            "created_at",
+            "draft",
+            "html_url",
+            "id",
+            "name",
+            "node_id",
+            "prerelease",
+            "published_at",
+            "tag_name",
+            "tarball_url",
+            "target_commitish",
+            "upload_url",
+            "url",
+            "zipball_url"
+        ]
+    },
+    "Uri": {
+        "Project": "https://github.com/aaronparker/evergreen/",
+        "Docs": "https://stealthpuppy.com/evergreen/",
+        "Issues": "https://stealthpuppy.com/evergreen/issues/",
+        "Info": "https://stealthpuppy.com/evergreen/troubleshoot/"
+    }
 }

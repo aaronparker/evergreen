@@ -55,9 +55,8 @@ function Get-GitHubRepoRelease {
             try {
                 # Retrieve the releases from the GitHub API
                 # Use TLS for connections
-                $SslProtocol = "Tls12"
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Set TLS to $SslProtocol."
-                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Set TLS to 1.2."
+                [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
                 # Invoke the GitHub releases REST API
                 # Note that the API performs rate limiting.

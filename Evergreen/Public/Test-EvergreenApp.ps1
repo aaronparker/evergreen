@@ -23,7 +23,7 @@ Function Test-EvergreenApp {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter(Mandatory = $False)]
         [System.Management.Automation.SwitchParameter] $Force,

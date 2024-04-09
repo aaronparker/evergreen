@@ -8,8 +8,7 @@
 param ()
 
 try {
-    $SslProtocol = "Tls12"
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
     $params = @{
         ContentType        = "application/vnd.github.v3+json"
         ErrorAction        = "SilentlyContinue"

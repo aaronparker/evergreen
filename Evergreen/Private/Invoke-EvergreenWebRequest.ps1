@@ -30,7 +30,7 @@ function Invoke-EvergreenWebRequest {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter] $Raw,
@@ -66,18 +66,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Trust all certificates."        
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 
     # Use TLS for connections
-    if ($PSBoundParameters.ContainsKey("SslProtocol") -and -not(Test-PSCore)) {
-        if ($SslProtocol -eq "Tls13") {
-            $SslProtocol = "Tls12"
-            Write-Warning -Message "$($MyInvocation.MyCommand): Defaulting back to TLS1.2."
-        }
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Settings Net.SecurityProtocolType to $SslProtocol."
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::$SslProtocol
-    }
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
     # Build the Invoke-WebRequest parameters
     $params = @{

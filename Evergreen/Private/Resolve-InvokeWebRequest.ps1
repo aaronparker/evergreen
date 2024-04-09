@@ -13,7 +13,7 @@ function Resolve-InvokeWebRequest {
 
         [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty()]
-        [System.String] $UserAgent = [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome,
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter(Position = 2)]
         [ValidateNotNullOrEmpty()]

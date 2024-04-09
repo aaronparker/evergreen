@@ -2,7 +2,8 @@
     .SYNOPSIS
         Evergreen script to initiate the module
 #>
-[CmdletBinding(SupportsShouldProcess = $False)]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter", "", Justification="Required for argument completion.")]
+[CmdletBinding(SupportsShouldProcess = $false)]
 param ()
 
 #region Get public and private function definition files
@@ -29,3 +30,9 @@ Export-ModuleMember -Function $public.Basename -Alias *
 
 # Get module strings
 $script:resourceStrings = Get-ModuleResource
+
+# Register the argument completer for the Get-EvergreenApp and Find-EvergreenApp cmdlets
+Register-ArgumentCompleter -CommandName "Get-EvergreenApp", "Find-EvergreenApp" -ParameterName "Name" -ScriptBlock {
+    param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+    (Get-ChildItem -Path "$PSScriptRoot\Manifests\$wordToComplete*.json" -ErrorAction "Ignore").BaseName
+}
