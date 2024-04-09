@@ -1,11 +1,12 @@
-﻿# 309 Supported applications
+﻿# 318 Supported applications
 
-Evergreen `2403.889` supports the following applications:
+Evergreen `2404.901` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | 1Password                             | 1Password                                                         | https://1password.com/                                                                           |
 | 1Password7                            | 1Password 7                                                       | https://1password.com/                                                                           |
+| 1PasswordCLI                          | 1Password CLI                                                     | https://developer.1password.com/docs/cli/                                                        |
 | 7zip                                  | 7zip                                                              | https://www.7-zip.org/                                                                           |
 | 7ZipZS                                | 7-Zip ZS                                                          | https://mcmilk.de/projects/7-Zip-zstd/                                                           |
 | AdobeAcrobat                          | Adobe Acrobat updates                                             | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                               |
@@ -78,6 +79,7 @@ Evergreen `2403.889` supports the following applications:
 | ESETSecureAuthentication              | ESET Secure Authentication                                        | https://www.eset.com/au/business/download/secure-authentication/                                 |
 | ESETServerSecurity                    | ESET Server Security                                              | https://www.eset.com/int/business/solutions/file-server-security/                                |
 | FileZilla                             | FileZilla                                                         | https://filezilla-project.org/                                                                   |
+| Flameshot                             | Flameshot                                                         | https://flameshot.org/                                                                           |
 | Fork                                  | Dan Pristupov Fork                                                | https://www.fork.dev                                                                             |
 | FoxitPDFEditor                        | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                                |
 | FoxitReader                           | Foxit Reader                                                      | https://www.foxitsoftware.com/pdf-reader/                                                        |
@@ -102,6 +104,7 @@ Evergreen `2403.889` supports the following applications:
 | GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |
 | GoToOpener                            | GoTo Opener                                                       | https://support.goto.com/meeting/help/what-is-the-multi-user-launcher-opener-msi                 |
 | Gpg4win                               | Gpg4win                                                           | https://www.gpg4win.org/                                                                         |
+| GrafanaAgent                          | Grafana Agent                                                     | https://grafana.com/docs/agent/                                                                  |
 | Greenshot                             | Greenshot                                                         | https://getgreenshot.org/                                                                        |
 | gretl                                 | gretl                                                             | http://gretl.sourceforge.net/                                                                    |
 | gsudo                                 | gsudo                                                             | https://gerardog.github.io/gsudo                                                                 |
@@ -174,8 +177,8 @@ Evergreen `2403.889` supports the following applications:
 | MicrosoftPowerShell                   | Microsoft PowerShell                                              | https://docs.microsoft.com/powershell/                                                           |
 | MicrosoftPowerToys                    | Microsoft PowerToys                                               | https://github.com/microsoft/PowerToys/                                                          |
 | MicrosoftSsms                         | Microsoft SQL Server Management Studio                            | https://go.microsoft.com/fwlink/?LinkId=531355                                                   |
-| MicrosoftTeams                        | Microsoft Teams                                                   | https://www.microsoft.com/teams                                                                  |
-| MicrosoftTeamsPreview                 | Microsoft Teams 2 Preview                                         | https://www.microsoft.com/teams                                                                  |
+| MicrosoftTeams                        | Microsoft Teams (new)                                             | https://www.microsoft.com/teams                                                                  |
+| MicrosoftTeamsClassic                 | Microsoft Teams (classic)                                         | https://www.microsoft.com/teams                                                                  |
 | MicrosoftTerminal                     | Microsoft Terminal                                                | https://github.com/microsoft/terminal/                                                           |
 | MicrosoftVdot                         | Microsoft Virtual Desktop Optimization Tool                       | https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool                    |
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                              |
@@ -232,6 +235,9 @@ Evergreen `2403.889` supports the following applications:
 | PDFForgePDFCreator                    | pdfforge PDFCreator                                               | https://www.pdfforge.org/pdfcreator                                                              |
 | PeaZipPeaZip                          | PeaZip PeaZip                                                     | https://peazip.github.io/                                                                        |
 | PiriformCCleanerFree                  | Piriform CCleaner Free                                            | https://www.ccleaner.com/ccleaner                                                                |
+| PlexDesktop                           | Plex Media Desktop                                                | https://www.plex.tv/media-server-downloads/                                                      |
+| PlexHTPC                              | Plex HTPC                                                         | https://www.plex.tv/media-server-downloads/                                                      |
+| PlexMediaServer                       | Plex Media ServerDesktop                                          | https://www.plex.tv/media-server-downloads/                                                      |
 | Podman                                | Podman                                                            | https://github.com/containers/podman                                                             |
 | PodmanDesktop                         | Podman Desktop                                                    | https://github.com/containers/podman-desktop                                                     |
 | Postman                               | Postman                                                           | https://www.getpostman.com/                                                                      |
@@ -241,7 +247,8 @@ Evergreen `2403.889` supports the following applications:
 | ProgressChefWorkstation               | Progress Chef Workstation                                         | https://www.chef.io/products/chef-workstation                                                    |
 | ProjectLibre                          | ProjectLibre                                                      | https://www.projectlibre.com/                                                                    |
 | Protege                               | Protege                                                           | https://protege.stanford.edu/                                                                    |
-| ProtonVPN                             | ProtonVPN                                                         | https://protonvpn.com/                                                                           |
+| ProtonDrive                           | Proton Drive                                                      | https://proton.me/drive/                                                                         |
+| ProtonVPN                             | Proton VPN                                                        | https://protonvpn.com/                                                                           |
 | PSAppDeployToolkit                    | PSAppDeployToolkit                                                | https://psappdeploytoolkit.com/                                                                  |
 | PSFPython                             | PSF Python                                                        | https://www.python.org/                                                                          |
 | PuTTY                                 | PuTTY                                                             | https://www.chiark.greenend.org.uk/~sgtatham/putty/                                              |
@@ -268,6 +275,7 @@ Evergreen `2403.889` supports the following applications:
 | stealthpuppyWindowsCustomisedDefaults | stealthpuppy Windows Customised Defaults                          | https://stealthpuppy.com/image-customise/                                                        |
 | StefansToolsgregpWin                  | Stefans Tools gregpWin                                            | https://tools.stefankueng.com/grepWin.html                                                       |
 | SumatraPDFReader                      | Sumatra PDF Reader                                                | https://www.sumatrapdfreader.org/                                                                |
+| SUSERancherDesktop                    | SUSE Rancher Desktop                                              | https://rancherdesktop.io/                                                                       |
 | TableauDesktop                        | Tableau Desktop                                                   | https://www.tableau.com/                                                                         |
 | TableauPrep                           | Tableau Prep                                                      | https://www.tableau.com/                                                                         |
 | TableauReader                         | Tableau Reader                                                    | https://www.tableau.com/                                                                         |
@@ -277,6 +285,7 @@ Evergreen `2403.889` supports the following applications:
 | TelegramDesktop                       | Telegram Desktop                                                  | https://desktop.telegram.org/                                                                    |
 | TelerikFiddlerClassic                 | Telerik Fiddler Classic                                           | https://www.telerik.com/fiddler/fiddler-classic                                                  |
 | TelerikFiddlerEverywhere              | Telerik Fiddler Everywhere                                        | https://www.telerik.com/fiddler                                                                  |
+| TeraTerm                              | TeraTerm                                                          | https://teratermproject.github.io/index-en.html                                                  |
 | Terminals                             | Terminals                                                         | https://github.com/terminals-Origin/Terminals/                                                   |
 | TeXstudio                             | TeXstudio                                                         | https://www.texstudio.org/                                                                       |
 | ThymioSuite                           | Thymio Suite                                                      | https://www.thymio.org/                                                                          |

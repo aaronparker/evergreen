@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2404.901
 
 * Adds argument completer for `Get-EvergreenApp`
 * Updates the default user agent used by Evergreen to match Microsoft Edge [#642](https://github.com/aaronparker/evergreen/issues/642)
