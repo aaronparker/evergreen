@@ -1,4 +1,4 @@
-Function Get-DockerDesktop {
+function Get-DockerDesktop {
     <#
         .SYNOPSIS
             Returns the available Docker Desktop versions.
@@ -16,19 +16,23 @@ Function Get-DockerDesktop {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    # Get the releases data
     $Updates = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
-    foreach ($Update in $Updates) {
-        if ($Null -ne $Update) {
-            $PSObject = [PSCustomObject] @{
-                Version = $Update.enclosure.shortVersionString
-                Build   = $Update.enclosure.version
-                Size    = $Update.enclosure.length
-                Type    = Get-FileType -File $($Update.enclosure.url | Where-Object { $_ -match "\.exe$" } | Select-Object -First 1)
-                URI     = $Update.enclosure.url | Where-Object { $_ -match "\.exe$" } | Select-Object -First 1
-            }
-            Write-Output -InputObject $PSObject
-        }
-    }
+    # Select the latest version
+    $Latest = $Updates | `
+        Sort-Object -Property @{ Expression = { [System.Version]$_.enclosure.shortVersionString }; Descending = $true } | `
+        Select-Object -First 1
 
+    # Output the latest version
+    foreach ($Item in $Latest.enclosure.url) {
+        $PSObject = [PSCustomObject] @{
+            Version = $Latest.enclosure.shortVersionString
+            Build   = $Latest.enclosure.version
+            Size    = $Latest.enclosure.length
+            Type    = Get-FileType -File $Item
+            URI     = $Item
+        }
+        Write-Output -InputObject $PSObject
+    }
 }
