@@ -32,7 +32,8 @@ Export-ModuleMember -Function $public.Basename -Alias *
 $script:resourceStrings = Get-ModuleResource
 
 # Register the argument completer for the Get-EvergreenApp and Find-EvergreenApp cmdlets
-Register-ArgumentCompleter -CommandName "Get-EvergreenApp", "Find-EvergreenApp" -ParameterName "Name" -ScriptBlock {
+$Commands = "Get-EvergreenApp", "Find-EvergreenApp", "Invoke-EvergreenApp", "Export-EvergreenManifest", "Get-EvergreenLibraryApp"
+Register-ArgumentCompleter -CommandName $Commands -ParameterName "Name" -ScriptBlock {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
     (Get-ChildItem -Path "$PSScriptRoot\Manifests\$wordToComplete*.json" -ErrorAction "Ignore").BaseName
 }
