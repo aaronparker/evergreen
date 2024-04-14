@@ -1,6 +1,6 @@
 {
 	"Name": "OCS Inventory Windows Agent",
-	"Source": "http://https://ocsinventory-ng.org/",
+	"Source": "https://ocsinventory-ng.org/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/OCSInventory-NG/WindowsAgent/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
