@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds `DrataAgent`
+* Restores `LibreOffice` - note this function currently returns only the 7.x release of Libre Office
+* Fix `DevToys` to reference the moved repository
+* Update `DockerDesktop` to return both MSI and EXE installers
+* Update `deviceTRUST` to filter update feed for latest Windows installers only
+
 ## 2404.914
 
 * Adds `Get-EvergreenEndpoint`
