@@ -34,11 +34,13 @@ Output returns from both of these endpoints is in JSON format - the name of the 
 
 ```json
 {
-  "Application": "MicrosoftEdge",
-  "Endpoints": [
-    "edgeupdates.microsoft.com",
-    "www.microsoft.com"
-  ]
+    "Application": "MicrosoftEdge",
+    "Endpoints": [
+        "msedge.sf.dl.delivery.mp.microsoft.com"
+    ],
+    "Ports": [
+        "443"
+    ]
 }
 ```
 
@@ -46,11 +48,11 @@ If you are using PowerShell, use `Invoke-RestMethod` to return an object of appl
 
 ```powershell
 $Endpoints = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/versions"
-$Endpoints | Where-Object { $_.Name -eq "MicrosoftEdge" }
+$Endpoints | Where-Object { $_.Application -eq "MicrosoftEdge" }
 
-Application   Endpoints
------------   ---------
-MicrosoftEdge {edgeupdates.microsoft.com, www.microsoft.com}
+Application   Endpoints                                      Ports
+-----------   ---------                                      -----
+MicrosoftEdge {edgeupdates.microsoft.com, www.microsoft.com} {443}
 ```
 
 ## Using Get-EvergreenEndpoint
