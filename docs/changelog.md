@@ -1,5 +1,9 @@
 # Change log
 
+## 2404.914
+
+* Adds `Get-EvergreenEndpoint`
+
 ## 2404.901
 
 * Adds argument completer for `Get-EvergreenApp`
