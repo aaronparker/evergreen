@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2404.928
 
 * Adds `DrataAgent`
 * Restores `LibreOffice` - note this function currently returns only the 7.x release of Libre Office

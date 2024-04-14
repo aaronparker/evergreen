@@ -1,6 +1,6 @@
-﻿# 318 Supported applications
+﻿# 320 Supported applications
 
-Evergreen `2404.914` supports the following applications:
+Evergreen `2404.928` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -68,6 +68,7 @@ Evergreen `2404.914` supports the following applications:
 | dnGrep                                | dnGrep                                                            | https://dngrep.github.io/                                                                        |
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                                  |
 | DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                          |
+| DrataAgent                            | Drata Agent                                                       | https://help.drata.com/en/articles/5002305-installing-the-drata-agent-via-windows-os             |
 | DruvainSyncClient                     | Druva inSync Client                                               | https://docs.druva.com/005_inSync_Client                                                         |
 | Eduvpn                                | eduVPN                                                            | https://app.eduvpn.org/                                                                          |
 | EgnyteDesktopApp                      | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                           |
@@ -148,6 +149,7 @@ Evergreen `2404.914` supports the following applications:
 | KeeWeb                                | KeeWeb                                                            | https://github.com/keeweb/keeweb                                                                 |
 | KubernetesKubectl                     | Kubernetes Kubectl                                                | https://kubernetes.io/                                                                           |
 | LehrerOffice                          | LehrerOffice                                                      | https://lehreroffice.net/                                                                        |
+| LibreOffice                           | LibreOffice                                                       | https://www.libreoffice.org/                                                                     |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                                  |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                            |
 | Maximus5ConEmu                        | Maximus5 ConEmu                                                   | https://github.com/Maximus5/ConEmu                                                               |
