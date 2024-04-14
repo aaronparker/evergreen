@@ -2,7 +2,7 @@
 	"Name": "DevToys",
 	"Source": "https://devtoys.app/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/veler/DevToys/releases/latest",
+		"Uri": "https://api.github.com/repos/DevToys-app/DevToys/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
 		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msixbundle$"
 	},

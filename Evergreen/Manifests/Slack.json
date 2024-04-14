@@ -3,7 +3,7 @@
 	"Source": "https://slack.com/intl/en-au/help/articles/212475728-Deploy-Slack-via-Microsoft-Installer",
 	"Get": {
 		"Update": {
-			"Uri": "https://update.app.com"
+			"Uri": ""
 		},
 		"Download": {
 			"PerUser": {

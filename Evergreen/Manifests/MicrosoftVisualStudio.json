@@ -5,9 +5,6 @@
 		"Update": {
             "Uri": "https://aka.ms/vs/17/release/channel",
             "MatchFilter": "VisualStudio.17.Release.Bootstrappers.Setup"
-		},
-		"Download": {
-			"Uri": "https://download.app.com"
 		}
 	},
 	"Install": {
