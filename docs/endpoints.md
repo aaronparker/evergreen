@@ -63,7 +63,7 @@ PS C:\> Get-EvergreenEndpoint
 Application          Endpoints                                                                              Ports
 -----------          ---------                                                                              -----
 1Password            {1password.com, app-updates.agilebits.com, downloads.1password.com, cdn.agilebits.com} {443}
-1Password7           {1password.com, c.1password.com, download.app.com"}                                    {443}
+1Password7           {1password.com, c.1password.com}                                                       {443}
 1PasswordCLI         {app-updates.agilebits.com, cache.agilebits.com, developer.1password.com}              {443}
 7zip                 {nchc.dl.sourceforge.net, sourceforge.net, www.7-zip.org, versaweb.dl.sourceforge.net} {443}
 7ZipZS               {api.github.com, mcmilk.de, github.com}                                                {443}
