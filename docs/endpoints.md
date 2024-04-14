@@ -92,3 +92,18 @@ The output of `Get-EvergreenEndpoint` can be filtered to create a simple list of
 ```powershell
 PS C:\> Get-EvergreenEndpoint | Select-Object -ExpandProperty "Endpoints" -Unique
 ```
+
+### Convert output to CSV
+
+The code below can be used to convert the output from `Get-EvergreenEndpoint` to a file in CSV format. The file will include the application name, endpoints URLs in a comma separated list, and ports in a comma separated list.
+
+```powershell
+$Path = "./Endpoints.csv"
+Get-EvergreenEndpoint | ForEach-Object {
+    [PSCustomObject]@{
+        Application = $_.Application
+        Endpoints   = $_.Endpoints -join ","
+        Ports       = $_.Ports -join ","
+    }
+} | Export-Csv -Path $Path -NoTypeInformation -Encoding "Utf8" -Append
+```
