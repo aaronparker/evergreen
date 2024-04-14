@@ -4,7 +4,7 @@ The Evergreen API can return the endpoint URLs used by Evergreen to retrieve app
 
 The list of endpoints can be imported into firewall or proxy server systems where an allowed list of endpoints is required before using Evergreen to download application installers. All endpoints are accessed on TCP 80 or 443.
 
-## Usage
+## API Usage
 
 The API provides two lists of endpoints - URLs used by Evergreen to determine application versions and downloads, and URLs used to download application installers.
 
@@ -28,7 +28,7 @@ Here is an example using `Invoke-RestMethod` to return the list of URLs used by 
 PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/endpoints/downloads"
 ```
 
-## Output
+### Output
 
 Output returns from both of these endpoints is in JSON format - the name of the application (a string) and the endpoints (an array) for that application are both returned. Here's sample output filtered for Microsoft Edge:
 
@@ -51,4 +51,44 @@ $Endpoints | Where-Object { $_.Name -eq "MicrosoftEdge" }
 Application   Endpoints
 -----------   ---------
 MicrosoftEdge {edgeupdates.microsoft.com, www.microsoft.com}
+```
+
+## Using Get-EvergreenEndpoint
+
+`Get-EvergreenEndpoint` can be used to simplify usage of the API, by returning all endpoints used by Evergreen in a single object. Running `Get-EvergreenEndpoint` with no parameters, will return a complete list of endpoints and ports used for all applications.
+
+```powershell
+PS C:\> Get-EvergreenEndpoint
+
+Application          Endpoints                                                                              Ports
+-----------          ---------                                                                              -----
+1Password            {1password.com, app-updates.agilebits.com, downloads.1password.com, cdn.agilebits.com} {443}
+1Password7           {1password.com, c.1password.com, download.app.com"}                                    {443}
+1PasswordCLI         {app-updates.agilebits.com, cache.agilebits.com, developer.1password.com}              {443}
+7zip                 {nchc.dl.sourceforge.net, sourceforge.net, www.7-zip.org, versaweb.dl.sourceforge.net} {443}
+7ZipZS               {api.github.com, mcmilk.de, github.com}                                                {443}
+AdobeAcrobat         {ardownload2.adobe.com, armmf.adobe.com, helpx.adobe.com}                              {443}
+AdobeAcrobatDC       {ardownload2.adobe.com, rdc.adobe.io, www.adobe.com}                                   {443}
+AdobeAcrobatProStdDC {helpx.adobe.com, rdc.adobe.io, trials.adobe.com}                                      {443}
+AdobeAcrobatReaderDC {acrobat.adobe.com, rdc.adobe.io, ardownload2.adobe.com}                               {443}
+AdobeBrackets        {brackets.io, api.github.com, github.com}                                              {80, 443}
+```
+
+`Get-EvergreenEndpoint` can return endpoints for a single application or an array of with the `-Name` parameter. In the example below `Get-EvergreenEndpoint` is used to return the endpoints and ports for the Microsoft Teams and Microsoft Edge endpoints.
+
+```powershell
+PS C:\> Get-EvergreenEndpoint -Name "MicrosoftTeams", "MicrosoftEdge"
+
+Application    Endpoints                                                                              Ports
+-----------    ---------                                                                              -----
+MicrosoftEdge  {edgeupdates.microsoft.com, www.microsoft.com, msedge.sf.dl.delivery.mp.microsoft.com} {443}
+MicrosoftTeams {config.teams.microsoft.com, www.microsoft.com, statics.teams.cdn.office.net}          {443}
+```
+
+### Return a simple list of all endpoints
+
+The output of `Get-EvergreenEndpoint` can be filtered to create a simple list of all unique endpoint URLs. The command below will generate an array of URLs that can then be used for an allow list of all endpoints required by Evergreen.
+
+```powershell
+PS C:\> Get-EvergreenEndpoint | Select-Object -ExpandProperty "Endpoints" -Unique
 ```

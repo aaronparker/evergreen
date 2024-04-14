@@ -24,10 +24,6 @@ Updating `Get-GitHubRepoRelease` to support authenticated requests is planned fo
 
 ## Application Functions
 
-### 7zip
-
-The 32-bit installers returned by `7Zip` link to a SourceForge download page instead of the file directly. These installers can be downloaded by `Invoke-WebRequest` by setting the UserAgent to the [Googlebot](https://github.com/aaronparker/Evergreen/issues/124#issuecomment-839447242).
-
 ### AdobeAcrobat
 
 Where Adobe releases an update for Acrobat/Reader DC for Windows ahead of macOS, the current patch release may not be returned. In most cases, Adobe keeps both platforms in sync, so this should be a rare occurrence.
@@ -45,19 +41,6 @@ Alternative application - `AdobeAcrobatDC` and `AdobeAcrobatReaderDC` use a web 
 
 Validate whether `AdobeAcrobat` returns the latest update version.
 
-### CiscoWebEx
-
-The versions returned for Cisco WebEx may be out of date. Refer to [Cisco WebEx - new app available, Evergreen returning legacy version only](https://github.com/aaronparker/evergreen/issues/197) until a fix is found.
-
-### CitrixWorkspaceApp
-
-#### HDX RealTime Media Engine
-
-The version of the HDX RealTime Media Engine for Microsoft Skype for Business for Windows returned by `CitrixWorkspaceApp` is out of date. This is the version of the HDX RTME that is returned by the Workspace App update feed ([https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml](https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml)). Use `CitrixWorkspaceAppFeed` to find the latest version of the HDX RTME.
-
-!!! info "Note"
-    `CitrixWorkspaceAppFeed` returns a link to the download page and not the installer directly. See [Get-CitrixWorkspaceApp does not return the latest Citrix HDX RealTime Media Engine](https://github.com/aaronparker/Evergreen/issues/59).
-
 #### 404 Error
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the following error:
@@ -74,9 +57,13 @@ This typically occurs right after the release of a new version of the Workspace 
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
 
+### FileZilla
+
+`FileZilla` does not return application version data on PowerShell Core. This function does work on Windows PowerShell.
+
 ### GhislerTotalCommander
 
-Supports Windows platforms only - this application relies on `Resolve-DnsName` which is not available under PowerShell 6+ on macOS or Linux.
+This application function works OK without additional requirements on Windows, but requires the `DnsClient-PS` on macOS or Linux.
 
 ### LibreOffice
 
@@ -95,11 +82,7 @@ Channel properties are listed in the following articles: [Configuration options 
 
 Full channel names are listed here: [Update history for Microsoft 365 Apps](https://docs.microsoft.com/en-us/officeupdates/update-history-microsoft365-apps-by-date).
 
-### MicrosoftFSLogixApps
-
-Depending on release schedules, the preview version of the FSLogix Apps download may not be available. The preview version is found here: `https://aka.ms/fslogix/downloadpreview` - if no preview version is behind this URL, `Get-EvergreenApp -Name MicrosoftFSLogixApps` will return an error when attempting to resolve the preview URL, but will continue to return the release version.
-
-### MicrosoftTeams
+### MicrosoftTeamsClassic
 
 The version number returned by the Microsoft Teams update API may be slightly different to the version number displayed in the `ProductVersion` property in the MSI or in Programs and Features. For example, `Get-EvergreenApp -Name MicrosoftTeams` may report a version number of `1.4.00.8872`, but the Windows Installer may report `1.4.0.8872`. Also see [Get-MicrosoftTeams displays slightly wrong formatted version number](https://github.com/aaronparker/Evergreen/issues/58).
 
@@ -163,7 +146,3 @@ The source code for the update site can be found here: [VideoLAN organization > 
 
 !!! info "Note"
     `VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
-
-### Zoom
-
-`Zoom` returns versions as `Latest` for some downloads - the source used by this function does not provide a method for determining the version number. Also see [Zoom currently failing](https://github.com/aaronparker/Evergreen/issues/200)

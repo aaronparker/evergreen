@@ -164,5 +164,6 @@ nav:
       - Get-EvergreenLibraryApp: help/en-US/Get-EvergreenLibraryApp.md
       - Export-EvergreenApp: help/en-US/Export-EvergreenApp.md
       - Export-EvergreenManifest: help/en-US/Export-EvergreenManifest.md
+      - Get-EvergreenEndpoint: help/en-US/Get-EvergreenEndpoint.md
   - App Tracker: https://stealthpuppy.com/apptracker/
   - PSPackageFactory: https://stealthpuppy.com/packagefactory/
