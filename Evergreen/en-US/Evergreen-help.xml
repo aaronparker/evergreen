@@ -623,6 +623,124 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Get-EvergreenEndpoint</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>EvergreenEndpoint</command:noun>
+      <maml:description>
+        <maml:para>Returns an array of applications, endpoints and ports required by Evergreen to source application updates and URLs for application downloads.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Queries the Evergreen API to return endpoints URLs and TCP ports required to use Evergreen to find application versions and download application installers.</maml:para>
+      <maml:para>The list of endpoints returned can be used for auditing purposes and to define an allow list for firewalls or proxy servers where internet access is restricted.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-EvergreenEndpoint</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The application name to return details for. The list of supported applications can be found with `Find-EvergreenApp`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Array</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Get-EvergreenEndpoint
+
+Application  Endpoints                                                                              Ports
+-----------  ---------                                                                              -----
+1Password    {1password.com, app-updates.agilebits.com, downloads.1password.com, cdn.agilebits.com} {443}
+1Password7   {1password.com, c.1password.com, download.app.com"}                                    {443}
+1PasswordCLI {app-updates.agilebits.com, cache.agilebits.com, developer.1password.com}              {443}
+7zip         {nchc.dl.sourceforge.net, sourceforge.net, www.7-zip.org, versaweb.dl.sourceforge.net} {443}
+7ZipZS       {api.github.com, mcmilk.de, github.com}                                                {443}</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the list of endpoint URL sources and ports for all of the applications currently supported by Evergreen.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>Get-EvergreenEndpoint -Name "MicrosoftEdge", "MicrosoftTeams"
+
+Application    Endpoints                                                                              Ports
+-----------    ---------                                                                              -----
+MicrosoftEdge  {edgeupdates.microsoft.com, www.microsoft.com, msedge.sf.dl.delivery.mp.microsoft.com} {443}
+MicrosoftTeams {config.teams.microsoft.com, www.microsoft.com, statics.teams.cdn.office.net}          {443}</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns the list of endpoint URL sources and ports for determining the application versions and downloads for Microsoft Edge and Microsoft Teams.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>Get-EvergreenEndpoint | Select-Object -ExpandProperty Endpoints -Unique
+
+1password.com
+app-updates.agilebits.com
+downloads.1password.com
+cdn.agilebits.com
+c.1password.com</dev:code>
+        <dev:remarks>
+          <maml:para>Description: Returns a simple array of all of the unique endpoint URLs for the applications currently supported by Evergreen.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Use Evergreen:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Get-EvergreenLibrary</command:name>
       <command:verb>Get</command:verb>
       <command:noun>EvergreenLibrary</command:noun>
@@ -818,7 +936,7 @@ Path         : \\server\EvergreenLibrary\MicrosoftVisualStudioCode\Stable\1.74.3
 Channel      : Stable
 Architecture : x64</dev:code>
         <dev:remarks>
-          <maml:para>Returns details about Microsoft Visual Studio Code from the Evergreen library at \server\library that is sent to Get-EvergreenLibraryApp from Get-EvergreenLibrary via the pipeline.</maml:para>
+          <maml:para>Returns details about Microsoft Visual Studio Code from the Evergreen library at \\server\EvergreenLibrary that is sent to Get-EvergreenLibraryApp from Get-EvergreenLibrary via the pipeline.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -840,7 +958,7 @@ Ring         : General
 Path         : \\server\EvergreenLibrary\MicrosoftTeams\General\1.5.00.31168\x64\Teams_windows_x64.msi
 Architecture : x64</dev:code>
         <dev:remarks>
-          <maml:para>Uses Get-EvergreenLibrary to place details about the Evergreen library at \server\library into an object called $Library, which is then used on the command line for Get-EvergreenLibraryApp to return details about Microsoft Teams.</maml:para>
+          <maml:para>Uses Get-EvergreenLibrary to place details about the Evergreen library at \\server\EvergreenLibrary into an object called $Library, which is then used on the command line for Get-EvergreenLibraryApp to return details about Microsoft Teams.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

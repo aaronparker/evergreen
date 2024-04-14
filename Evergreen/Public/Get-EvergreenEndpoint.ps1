@@ -1,19 +1,6 @@
 function Get-EvergreenEndpoint {
     <#
         .EXTERNALHELP Evergreen-help.xml
-
-        Retrieve the list of endpoints for a given application from the Evergreen API for input into firewall rules
-
-            "MicrosoftWvdRtcService",
-            "MicrosoftWvdMultimediaRedirection",
-            "MicrosoftFSLogixApps",
-            "Microsoft.NET",
-            "MicrosoftEdge",
-            "MicrosoftOneDrive",
-            "MicrosoftTeams",
-            "Microsoft365Apps",
-            "AdobeAcrobatReaderDC",
-            "RemoteDisplayAnalyzer")
     #>
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
