@@ -69,11 +69,11 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest', 
-               'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenLibrary', 
-               'Get-EvergreenLibraryApp', 'Invoke-EvergreenApp', 
-               'Invoke-EvergreenLibraryUpdate', 'New-EvergreenLibrary', 
-               'Save-EvergreenApp', 'Test-EvergreenApp')
+FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest',
+               'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenLibrary',
+               'Get-EvergreenLibraryApp', 'Invoke-EvergreenApp',
+               'Invoke-EvergreenLibraryUpdate', 'New-EvergreenLibrary',
+               'Save-EvergreenApp', 'Test-EvergreenApp', 'Get-EvergreenEndpoint')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
