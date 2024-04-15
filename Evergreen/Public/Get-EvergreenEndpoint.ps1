@@ -17,14 +17,14 @@ function Get-EvergreenEndpoint {
             Uri         = "https://evergreen-api.stealthpuppy.com/endpoints/versions"
             ErrorAction = "Stop"
         }
-        $Versions = Invoke-RestMethod @params
+        $Versions = Invoke-EvergreenRestMethod @params
 
         # Get the endpoints from the download URLs
         $params = @{
             Uri         = "https://evergreen-api.stealthpuppy.com/endpoints/downloads"
             ErrorAction = "Stop"
         }
-        $Downloads = Invoke-RestMethod @params
+        $Downloads = Invoke-EvergreenRestMethod @params
     }
     process {
         # Output the endpoints by joining the two queries
