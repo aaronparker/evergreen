@@ -10,6 +10,10 @@ Function Invoke-SystemNetRequest {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
+        [Parameter(Position = 1)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Int32] $MaximumRedirection = 3
@@ -17,6 +21,7 @@ Function Invoke-SystemNetRequest {
 
     try {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
+        $httpWebRequest.UserAgent = $UserAgent
         $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
 

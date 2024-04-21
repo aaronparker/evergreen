@@ -11,34 +11,39 @@ function Resolve-SystemNetWebRequest {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
+        [Parameter(Position = 1)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Int32] $MaximumRedirection = 3
     )
 
-    try {
-        $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
-        $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
-        $httpWebRequest.AllowAutoRedirect = $true
+    $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
+    $httpWebRequest.UserAgent = $UserAgent
+    $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
+    $httpWebRequest.AllowAutoRedirect = $true
 
-        if (Test-ProxyEnv) {
-            $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
-            $ProxyObj.Address = $script:EvergreenProxy
-            $ProxyObj.UseDefaultCredentials = $true
+    if (Test-ProxyEnv) {
+        $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
+        $ProxyObj.Address = $script:EvergreenProxy
+        $ProxyObj.UseDefaultCredentials = $true
+        $httpWebRequest.Proxy = $ProxyObj
+
+        if (Test-ProxyEnv -Creds) {
+            $ProxyObj.UseDefaultCredentials = $false
+            $ProxyObj.Credentials = $script:EvergreenProxyCreds
+            $httpWebRequest.UseDefaultCredentials = $false
             $httpWebRequest.Proxy = $ProxyObj
-
-            if (Test-ProxyEnv -Creds) {
-                $ProxyObj.UseDefaultCredentials = $false
-                $ProxyObj.Credentials = $script:EvergreenProxyCreds
-                $httpWebRequest.UseDefaultCredentials = $false
-                $httpWebRequest.Proxy = $ProxyObj
-                $httpWebRequest.Credentials = $script:EvergreenProxyCreds
-            }
+            $httpWebRequest.Credentials = $script:EvergreenProxyCreds
         }
-        else {
-            $httpWebRequest.UseDefaultCredentials = $true
-        }
+    }
+    else {
+        $httpWebRequest.UseDefaultCredentials = $true
+    }
 
+    try {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $webResponse = $httpWebRequest.GetResponse()
         Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
@@ -54,7 +59,7 @@ function Resolve-SystemNetWebRequest {
         Write-Output -InputObject $PSObject
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): $($webResponse.StatusCode), with: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Return code: [$($webResponse.StatusCode)], with: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         throw $_
     }
