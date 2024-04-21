@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/updatelibrary.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/Invoke-EvergreenLibraryUpdate/
 schema: 2.0.0
 ---
 
@@ -136,9 +136,11 @@ Invoke-EvergreenLibraryUpdate accepts a string parameter.
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Update an Evergreen library:](https://stealthpuppy.com/evergreen/updatelibrary.html)
+[Update an Evergreen library](https://stealthpuppy.com/evergreen/updatelibrary/)

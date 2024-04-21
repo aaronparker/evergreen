@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/save.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/Save-EvergreenApp/
 schema: 2.0.0
 ---
 
@@ -251,9 +251,11 @@ Provides a list of paths of the downloaded target files.
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Download application installers:](https://stealthpuppy.com/evergreen/save.html)
+[Download application installers:](https://stealthpuppy.com/evergreen/save)

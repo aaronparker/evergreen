@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/newlibrary.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/New-EvergreenLibrary/
 schema: 2.0.0
 ---
 
@@ -127,4 +127,4 @@ Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Create an Evergreen library:](https://stealthpuppy.com/evergreen/newlibrary.html)
+[Create an Evergreen library:](https://stealthpuppy.com/evergreen/newlibrary/)

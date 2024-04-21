@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/getlibrary.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenLibrary/
 schema: 2.0.0
 ---
 
@@ -64,9 +64,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Create an Evergreen library:](https://stealthpuppy.com/evergreen/getlibrary.html)
+[Create an Evergreen library](https://stealthpuppy.com/evergreen/getlibrary.html)

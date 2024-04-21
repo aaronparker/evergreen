@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/find.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/Find-EvergreenApp/
 schema: 2.0.0
 ---
 
@@ -84,9 +84,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Find supported applications:](https://stealthpuppy.com/evergreen/find.html)
+[Find supported applications](https://stealthpuppy.com/evergreen/find/)

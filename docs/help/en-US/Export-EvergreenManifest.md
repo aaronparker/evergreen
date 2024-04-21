@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/
+online version: https://stealthpuppy.com/evergreen/help/en-US/Export-EvergreenManifest/
 schema: 2.0.0
 ---
 
@@ -65,9 +65,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Getting started with Evergreen:](https://stealthpuppy.com/evergreen/)
+[Getting started with Evergreen](https://stealthpuppy.com/evergreen/)
