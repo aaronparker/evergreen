@@ -20,30 +20,30 @@ function Resolve-SystemNetWebRequest {
         [System.Int32] $MaximumRedirection = 3
     )
 
-    $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
-    $httpWebRequest.UserAgent = $UserAgent
-    $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
-    $httpWebRequest.AllowAutoRedirect = $true
-
-    if (Test-ProxyEnv) {
-        $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
-        $ProxyObj.Address = $script:EvergreenProxy
-        $ProxyObj.UseDefaultCredentials = $true
-        $httpWebRequest.Proxy = $ProxyObj
-
-        if (Test-ProxyEnv -Creds) {
-            $ProxyObj.UseDefaultCredentials = $false
-            $ProxyObj.Credentials = $script:EvergreenProxyCreds
-            $httpWebRequest.UseDefaultCredentials = $false
-            $httpWebRequest.Proxy = $ProxyObj
-            $httpWebRequest.Credentials = $script:EvergreenProxyCreds
-        }
-    }
-    else {
-        $httpWebRequest.UseDefaultCredentials = $true
-    }
-
     try {
+        $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
+        $httpWebRequest.UserAgent = $UserAgent
+        $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
+        $httpWebRequest.AllowAutoRedirect = $true
+
+        if (Test-ProxyEnv) {
+            $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
+            $ProxyObj.Address = $script:EvergreenProxy
+            $ProxyObj.UseDefaultCredentials = $true
+            $httpWebRequest.Proxy = $ProxyObj
+
+            if (Test-ProxyEnv -Creds) {
+                $ProxyObj.UseDefaultCredentials = $false
+                $ProxyObj.Credentials = $script:EvergreenProxyCreds
+                $httpWebRequest.UseDefaultCredentials = $false
+                $httpWebRequest.Proxy = $ProxyObj
+                $httpWebRequest.Credentials = $script:EvergreenProxyCreds
+            }
+        }
+        else {
+            $httpWebRequest.UseDefaultCredentials = $true
+        }
+
         Write-Verbose -Message "$($MyInvocation.MyCommand): Attempting to resolve: $Uri."
         $webResponse = $httpWebRequest.GetResponse()
         Write-Verbose -Message "$($MyInvocation.MyCommand): Resolved to: [$($webResponse.ResponseUri.AbsoluteUri)]."
