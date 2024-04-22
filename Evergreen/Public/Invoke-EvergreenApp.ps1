@@ -1,10 +1,10 @@
-Function Invoke-EvergreenApp {
+function Invoke-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/invoke/")]
-    [Alias("iea")]
+    [CmdletBinding(SupportsShouldProcess = $false)]
+    [Alias("iea", "Get-EvergreenAppFromApi")]
     param (
         [Parameter(
             Mandatory = $True,

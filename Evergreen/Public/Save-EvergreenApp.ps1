@@ -1,9 +1,9 @@
-Function Save-EvergreenApp {
+function Save-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $true, HelpURI = "https://stealthpuppy.com/evergreen/save/", DefaultParameterSetName = "Path")]
+    [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "Path")]
     [Alias("sea")]
     param (
         [Parameter(

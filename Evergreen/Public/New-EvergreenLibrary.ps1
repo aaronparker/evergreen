@@ -2,10 +2,10 @@ function New-EvergreenLibrary {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
-    [CmdletBinding(SupportsShouldProcess = $True)]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the library.",
@@ -14,7 +14,7 @@ function New-EvergreenLibrary {
         [System.IO.FileInfo] $Path,
 
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $false,
             Position = 1,
             HelpMessage = "Specify a name for the library.",
             ParameterSetName = "Path")]

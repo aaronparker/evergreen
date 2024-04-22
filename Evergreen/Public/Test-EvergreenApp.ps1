@@ -1,13 +1,13 @@
-Function Test-EvergreenApp {
+function Test-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/test/", DefaultParameterSetName = "Path")]
+    [CmdletBinding(SupportsShouldProcess = $true, DefaultParameterSetName = "Path")]
     [Alias("tea")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipeline,
             HelpMessage = "Pass an application object from Get-EvergreenApp.")]
@@ -17,7 +17,7 @@ Function Test-EvergreenApp {
         [Parameter(Mandatory = $False, Position = 1)]
         [System.String] $Proxy,
 
-        [Parameter(Mandatory = $False, Position = 2)]
+        [Parameter(Mandatory = $false, Position = 2)]
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
@@ -25,10 +25,10 @@ Function Test-EvergreenApp {
         [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
-        [Parameter(Mandatory = $False)]
+        [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter] $Force,
 
-        [Parameter(Mandatory = $False)]
+        [Parameter(Mandatory = $false)]
         [System.Management.Automation.SwitchParameter] $NoProgress
     )
 

@@ -1,13 +1,13 @@
-Function Get-EvergreenApp {
+function Get-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $True, HelpURI = "https://stealthpuppy.com/evergreen/use/")]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("gea")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
@@ -16,15 +16,15 @@ Function Get-EvergreenApp {
         [System.String] $Name,
 
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $false,
             Position = 1,
             HelpMessage = "Specify a hashtable of parameters to pass to the internal application function.")]
         [System.Collections.Hashtable] $AppParams,
 
-        [Parameter(Mandatory = $False, Position = 2)]
+        [Parameter(Mandatory = $false, Position = 2)]
         [System.String] $Proxy,
 
-        [Parameter(Mandatory = $False, Position = 3)]
+        [Parameter(Mandatory = $false, Position = 3)]
         [System.Management.Automation.PSCredential]
         $ProxyCredential = [System.Management.Automation.PSCredential]::Empty,
 
