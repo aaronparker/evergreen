@@ -10,8 +10,8 @@
         ]
     },
     "Filters": {
-        "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$",
-        "Filename": "(([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.exe|.msi|.msp|.zip))"
+        "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$|\\.msix$||\\.msixbundle$\\.appx$",
+        "Filename": "(([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.exe|.msi|.msp|.zip|.msix|.msixbundle|.appx))"
     },
     "Properties": {
         "SourceForge": [
