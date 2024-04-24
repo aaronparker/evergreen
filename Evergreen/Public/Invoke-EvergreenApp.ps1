@@ -18,7 +18,6 @@ function Invoke-EvergreenApp {
 
     process {
         try {
-            Find-EvergreenApp -Name $Name | Out-Null
             $params = @{
                 Uri         = "https://evergreen-api.stealthpuppy.com/app/$Name"
                 ErrorAction = "Stop"
