@@ -359,7 +359,7 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     <maml:description>
       <maml:para>Queries the internal application functions and manifests included in the module to find the latest version and download link/s for the specified application.</maml:para>
       <maml:para>The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.</maml:para>
-      <maml:para>`Get-EvergreenApp` uses official vendor sites including update APIs, web queries, and code repository locations to return details of a target application at run time.</maml:para>
+      <maml:para>`Get-EvergreenApp` uses official vendor sources including update APIs, web queries, and code repository locations to return details of a target application at run time.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1017,11 +1017,11 @@ Architecture : x64</dev:code>
       <command:verb>Invoke</command:verb>
       <command:noun>EvergreenApp</command:noun>
       <maml:description>
-        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours.</maml:para>
+        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours. This function is experimental and functionality may change - do not use in production.</maml:para>
+      <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data. Data for the API is from a key/value store updated by Get-EvergreenApp every 12-hours.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
