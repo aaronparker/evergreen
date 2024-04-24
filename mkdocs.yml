@@ -159,6 +159,7 @@ nav:
       - Save-EvergreenApp: help/en-US/Save-EvergreenApp.md
       - Test-EvergreenApp: help/en-US/Test-EvergreenApp.md
       - New-EvergreenLibrary: help/en-US/New-EvergreenLibrary.md
+      - Invoke-EvergreenApp: help/en-US/Invoke-EvergreenApp.md
       - Invoke-EvergreenLibraryUpdate: help/en-US/Invoke-EvergreenLibraryUpdate.md
       - Get-EvergreenLibrary: help/en-US/Get-EvergreenLibrary.md
       - Get-EvergreenLibraryApp: help/en-US/Get-EvergreenLibraryApp.md
