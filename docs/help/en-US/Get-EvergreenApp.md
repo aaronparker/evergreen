@@ -24,7 +24,7 @@ Queries the internal application functions and manifests included in the module 
 
 The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.
 
-`Get-EvergreenApp` uses official vendor sites including update APIs, web queries, and code repository locations to return details of a target application at run time.
+`Get-EvergreenApp` uses official vendor sources including update APIs, web queries, and code repository locations to return details of a target application at run time.
 
 ## EXAMPLES
 

@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours.
+Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-EvergreenApp [-Name] <String> [<CommonParameters>]
 
 ## DESCRIPTION
 
-Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours. This function is experimental and functionality may change - do not use in production.
+Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data. Data for the API is from a key/value store updated by Get-EvergreenApp every 12-hours.
 
 ## EXAMPLES
 
