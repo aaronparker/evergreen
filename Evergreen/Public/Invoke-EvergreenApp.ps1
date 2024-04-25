@@ -13,6 +13,7 @@ function Invoke-EvergreenApp {
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify an application name. Use Find-EvergreenApp to list supported applications.")]
         [ValidateNotNull()]
+        [Alias("ApplicationName")]
         [System.String] $Name
     )
 

@@ -8,6 +8,7 @@ function Get-EvergreenEndpoint {
             Position = 0,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName)]
+        [Alias("ApplicationName")]
         [System.String[]] $Name
     )
 

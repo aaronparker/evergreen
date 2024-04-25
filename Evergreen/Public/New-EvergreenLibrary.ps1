@@ -19,6 +19,7 @@ function New-EvergreenLibrary {
             HelpMessage = "Specify a name for the library.",
             ParameterSetName = "Path")]
         [ValidateNotNull()]
+        [Alias("LibraryName")]
         [System.String] $Name = "EvergreenLibrary"
     )
 

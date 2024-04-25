@@ -12,6 +12,7 @@
             ValueFromPipeline,
             HelpMessage = "Specify an a string to search from the list of supported applications.")]
         [ValidateNotNull()]
+        [Alias("ApplicationName")]
         [System.String] $Name
     )
 

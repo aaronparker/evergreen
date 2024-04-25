@@ -7,6 +7,7 @@ function Export-EvergreenManifest {
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNull()]
+        [Alias("ApplicationName")]
         [System.String] $Name
     )
 
