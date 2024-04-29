@@ -8,7 +8,7 @@ function Get-Architecture {
 
     switch -Regex ($String.ToLower()) {
         "aarch64"   { $architecture = "ARM64"; break }
-        "amd64"     { $architecture = "AMD64"; break }
+        "amd64"     { $architecture = "x64"; break }
         "arm64"     { $architecture = "ARM64"; break }
         "arm32"     { $architecture = "ARM32"; break }
         "arm"       { $architecture = "ARM32"; break }
