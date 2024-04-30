@@ -3,14 +3,14 @@
         "ErrorAction": "Stop"
     },
     "UserAgent": {
-		"Base": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+		"Base": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.2478.67",
         "Download": [
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.2478.67",
             "Googlebot/2.1 (+http://www.google.com/bot.html)"
         ]
     },
     "Filters": {
-        "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$|\\.msix$||\\.msixbundle$\\.appx$",
+        "WindowsInstallers": "\\.exe$|\\.msi$|\\.msp$|\\.zip$|\\.msix$|\\.msixbundle$|\\.appx$|\\.intunewin$",
         "Filename": "(([a-zA-Z0-9\\s_\\.\\-\\(\\):])+(.exe|.msi|.msp|.zip|.msix|.msixbundle|.appx))"
     },
     "Properties": {
