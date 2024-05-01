@@ -3,23 +3,25 @@
     "Source": "https://cloud.google.com/chrome-enterprise/browser/download/",
     "Get": {
         "Update": {
-            "Uri": "https://versionhistory.googleapis.com/v1/chrome/platforms/win64/channels/#channel/versions/all/releases",
-            "Uri2": "https://chromiumdash.appspot.com/fetch_releases?channel=#channel&platform=Windows",
+            "Uri": "https://chromiumdash.appspot.com/fetch_releases?channel=#channel&platform=Windows&num=6&offset=0",
+            "DateUri": "https://versionhistory.googleapis.com/v1/chrome/platforms/win64/channels/#channel/versions/all/releases?filter=endtime=none",
             "Channels": [
-                "extended",
-                "stable",
-                "beta",
-                "dev",
-                "canary"
-            ]
+                "Extended",
+                "Stable",
+                "Beta",
+                "Dev",
+                "Canary"
+            ],
+            "DatePattern": "yyyy-MM-dd",
+            "UserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0"
         },
         "Download": {
             "Uri": {
-                "extended": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
-                "stable": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
-                "beta": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
-                "dev": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi",
-                "canary": "https://dl.google.com/update2/installers/ChromeSetup.exe"
+                "Extended": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+                "Stable": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+                "Beta": "https://dl.google.com/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi",
+                "Dev": "https://dl.google.com/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi",
+                "Canary": "https://dl.google.com/update2/installers/ChromeSetup.exe"
             },
             "Bundle": "https://dl.google.com/dl/chrome/install/GoogleChromeEnterpriseBundle64.zip",
             "BundleFilter": "stable",
