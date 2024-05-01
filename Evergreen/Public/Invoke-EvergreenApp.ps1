@@ -7,14 +7,14 @@ function Invoke-EvergreenApp {
     [Alias("iea", "Get-EvergreenAppFromApi")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $false,
             Position = 0,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify an application name. Use Find-EvergreenApp to list supported applications.")]
-        [ValidateNotNull()]
+        [ValidateNotNullOrEmpty()]
         [Alias("ApplicationName")]
-        [System.String] $Name
+        [System.String] $Name = "Microsoft365Apps"
     )
 
     process {
