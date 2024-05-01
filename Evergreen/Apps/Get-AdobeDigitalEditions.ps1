@@ -8,7 +8,7 @@ Function Get-AdobeDigitalEditions {
             E-mail: jms@du.se
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -17,29 +17,23 @@ Function Get-AdobeDigitalEditions {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    # Get the update feed
     $params = @{
-        Uri         = $res.Get.Update.Uri
+        Uri          = $res.Get.Update.Uri
+        Raw          = $true
+        ReturnObject = "Content"
     }
-    $updateFeed = Invoke-EvergreenRestMethod @params
-
-    # Removing first 3 bytes from array by selecting the full length and stripping first 3
-    Write-Verbose "Remove-ByteOrderMark (UTF8 BOM)"
-    $OutputBytes = $updateFeed[3..$updateFeed.Length]
-    $updateFeed = [System.Text.Encoding]::UTF8.GetString($OutputBytes) | ConvertFrom-Json
-
-    if ($Null -ne $updateFeed) {
+    $UpdateFeed = Invoke-EvergreenWebRequest @params | ConvertFrom-Json -ErrorAction "Stop"
+    if ($null -ne $UpdateFeed) {
 
         # Output the object to the pipeline
-        foreach ($item in $updateFeed) {
+        foreach ($item in $UpdateFeed) {
             $PSObject = [PSCustomObject] @{
                 Version = $item.version
+                Type    = Get-FileType -File $item.SecuredDownloadPath
                 URI     = $item.SecuredDownloadPath
             }
             Write-Output -InputObject $PSObject
         }
-
-    }
-    else {
-        Write-Error -Message "$($MyInvocation.MyCommand): unable to retrieve content from $($res.Get.Update.Uri)."
     }
 }
