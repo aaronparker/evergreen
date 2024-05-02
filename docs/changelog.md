@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.959
 
 * Fix an issue with date/time conversion on Windows PowerShell for `GoogleChrome` #668
 

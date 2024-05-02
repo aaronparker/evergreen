@@ -1,6 +1,6 @@
 ﻿# 321 Supported applications
 
-Evergreen `2405.943` supports the following applications:
+Evergreen `2405.959` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
