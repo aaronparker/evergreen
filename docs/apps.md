@@ -1,6 +1,6 @@
-﻿# 320 Supported applications
+﻿# 321 Supported applications
 
-Evergreen `2404.928` supports the following applications:
+Evergreen `2405.943` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -213,7 +213,7 @@ Evergreen `2404.928` supports the following applications:
 | Npcap                                 | Npcap                                                             | https://npcap.com/                                                                               |
 | Obsidian                              | Obsidian                                                          | https://obsidian.md/                                                                             |
 | OBSStudio                             | OBS Studio                                                        | https://obsproject.com/                                                                          |
-| OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | http://https://ocsinventory-ng.org/                                                              |
+| OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | https://ocsinventory-ng.org/                                                                     |
 | OctopusDeployServer                   | Octopus Deploy Server                                             | https://octopus.com/                                                                             |
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                             |
 | OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                          |
@@ -227,6 +227,7 @@ Evergreen `2404.928` supports the following applications:
 | OracleJava17                          | Oracle Java 17                                                    | https://www.oracle.com/java/technologies/downloads/#java17                                       |
 | OracleJava20                          | Oracle Java 20                                                    | https://www.oracle.com/java/technologies/downloads/#java20                                       |
 | OracleJava21                          | Oracle Java 21                                                    | https://www.oracle.com/java/technologies/downloads/#java21                                       |
+| OracleJava22                          | Oracle Java 22                                                    | https://www.oracle.com/java/technologies/downloads/#java22                                       |
 | OracleJava8                           | Oracle Java 8                                                     | https://www.java.com                                                                             |
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                      |
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
