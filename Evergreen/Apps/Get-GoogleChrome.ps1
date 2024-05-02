@@ -38,9 +38,19 @@ function Get-GoogleChrome {
             Uri       = $($res.Get.Update.DateUri -replace "#channel", $Channel).ToLower()
             UserAgent = $res.Get.Update.UserAgent
         }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Get release data for this channel."
         $Dates = Invoke-EvergreenRestMethod @params
         $LatestDate = $Dates.releases | Where-Object { $_.version -eq $Version }
-        $Date = $LatestDate.serving.startTime.ToShortDateString()
+
+        # Get the short date
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Get short date from $($LatestDate.serving.startTime)."
+        if ($LatestDate.serving.startTime -is [System.DateTime]) {
+            $Date = $LatestDate.serving.startTime.ToShortDateString()
+        }
+        else {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Convert string to DateTime."
+            $Date = ([System.DateTime]$LatestDate.serving.startTime).ToShortDateString()
+        }
 
         # Output the version and URI object
         $PSObject = [PSCustomObject] @{
