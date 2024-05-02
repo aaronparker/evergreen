@@ -1,5 +1,20 @@
 # Change log
 
+## VERSION
+
+* 
+
+## 2405.943
+
+* Update default user agent #642 
+* Fix an issue with `Get-Architecture` returning `AMD64` #663 
+* Adds `Get-EvergreenAppFromApi`, `Start-EvergreenLibraryUpdate` aliases. Public functions will be renamed in a future release
+* Fix various issues with help URI links for public functions
+* Update help XML
+* Adds `OracleJava22`
+* Fixes `AdobeDigitalEditions`, `JetBrainsYouTrack`, `ProgressChefInfraClient`
+* Updates `GoogleChrome` with start date for each channel
+
 ## 2404.928
 
 * Adds `DrataAgent`
