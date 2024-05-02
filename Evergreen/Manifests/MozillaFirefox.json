@@ -7,10 +7,9 @@
             "Channels": [
                 "LATEST_FIREFOX_VERSION",
                 "FIREFOX_ESR",
-                "FIREFOX_ESR_NEXT"
-            ],
-            "Preview": [
-                "FIREFOX_ESR_NEXT"
+                "FIREFOX_ESR_NEXT",
+                "FIREFOX_DEVEDITION",
+                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION"
             ]
         },
         "Download": {
@@ -29,6 +28,16 @@
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-next-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=firefox-esr-next-msi-latest-ssl&os=#platform&lang=#language",
                     "Msix": "https://download.mozilla.org/?product=firefox-esr-next-msix-latest-ssl&os=#platform&lang=#language"
+                },
+                "FIREFOX_DEVEDITION": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-devedition-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-devedition-next-msix-latest-ssl&os=#platform&lang=#language"
+                },
+                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-beta-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-beta-next-msix-latest-ssl&os=#platform&lang=#language"
                 }
             },
             "Platforms": [
