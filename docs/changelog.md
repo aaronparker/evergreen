@@ -2,12 +2,12 @@
 
 ## 2405.959
 
-* Fix an issue with date/time conversion on Windows PowerShell for `GoogleChrome` #668
+* Fix an issue with date/time conversion on Windows PowerShell for `GoogleChrome` [#668](https://github.com/aaronparker/evergreen/issues/668)
 
 ## 2405.943
 
 * Update default user agent #642 
-* Fix an issue with `Get-Architecture` returning `AMD64` #663 
+* Fix an issue with `Get-Architecture` returning `AMD64` [#663](https://github.com/aaronparker/evergreen/issues/663)
 * Adds `Get-EvergreenAppFromApi`, `Start-EvergreenLibraryUpdate` aliases. Public functions will be renamed in a future release
 * Fix various issues with help URI links for public functions
 * Update help XML
@@ -50,8 +50,8 @@
 
 ## 2312.878
 
-* Adds `CitrixShareFile` #564, `ParallelsClient` #577 
-* Updates `Microsoft.NET` for all available supported channels #583 
+* Adds `CitrixShareFile` [#564](https://github.com/aaronparker/evergreen/issues/564), `ParallelsClient` [#577](https://github.com/aaronparker/evergreen/issues/577)
+* Updates `Microsoft.NET` for all available supported channels [#583](https://github.com/aaronparker/evergreen/issues/583)
 * Updates `mySQLWorkbench` download URL
 * Updates source URL used in `MicrosoftSsms` to fix version numbers
 * Updates `DruvainSyncClient` for Cloud and GovCloud releases 
