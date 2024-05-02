@@ -13,11 +13,9 @@
             ],
             "Channels": [
                 "current",
-                "stable",
-                "unstable"
+                "stable"
             ],
             "PlatformVersions": [
-                "2012r2",
                 "2016",
                 "2019",
                 "2022",

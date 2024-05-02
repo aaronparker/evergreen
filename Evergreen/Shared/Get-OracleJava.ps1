@@ -33,9 +33,17 @@ function Get-OracleJava {
     # Return an object for each of the download URIs listed in the manifest
     foreach ($Type in $res.Get.Download.Uri.GetEnumerator()) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Build object for $($Type.Name)."
+
+        try {
+            $Sha256 = Invoke-EvergreenWebRequest -uri "$($res.Get.Download.Uri[$Type.Key]).sha256" -ReturnObject "Content"
+        }
+        catch {
+            $Sha256 = "$($res.Get.Download.Uri[$Type.Key]).sha256"
+        }
+
         [PSCustomObject] @{
             Version = $LatestVersion.version
-            Sha256  = Invoke-EvergreenWebRequest -uri "$($res.Get.Download.Uri[$Type.Key]).sha256" -ReturnObject "Content"
+            Sha256  = $Sha256
             Type    = Get-FileType -File $res.Get.Download.Uri[$Type.Key]
             URI     = $res.Get.Download.Uri[$Type.Key]
         } | Write-Output

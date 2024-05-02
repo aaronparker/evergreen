@@ -18,15 +18,34 @@ function Get-GoogleChrome {
 
     foreach ($Channel in $res.Get.Update.Channels) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Channel: $Channel."
-        $Versions = Invoke-EvergreenRestMethod -Uri $($res.Get.Update.Uri -replace "#channel", $Channel)
-        $Version = $Versions.releases.version | `
-            Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
-            Select-Object -First 1
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Version: $Version"
+
+        # Get the list of versions for the channel
+        $params = @{
+            Uri       = $($res.Get.Update.Uri -replace "#channel", $Channel)
+            UserAgent = $res.Get.Update.UserAgent
+        }
+        $Versions = Invoke-EvergreenRestMethod @params
+
+        # Sort versions for the latest version
+        $Version = $Versions | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
+            Select-Object -First 1 | `
+            Select-Object -ExpandProperty "version"
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version"
+
+        # Get date for this version
+        $params = @{
+            Uri       = $($res.Get.Update.DateUri -replace "#channel", $Channel).ToLower()
+            UserAgent = $res.Get.Update.UserAgent
+        }
+        $Dates = Invoke-EvergreenRestMethod @params
+        $LatestDate = $Dates.releases | Where-Object { $_.version -eq $Version }
+        $Date = $LatestDate.serving.startTime.ToShortDateString()
 
         # Output the version and URI object
         $PSObject = [PSCustomObject] @{
             Version      = $Version
+            StartDate    = $Date
             Architecture = Get-Architecture -String $res.Get.Download.Uri.$Channel
             Channel      = $Channel
             Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
@@ -38,6 +57,7 @@ function Get-GoogleChrome {
             # Output the version and URI for the bundle download
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
+                StartDate    = $Date
                 Architecture = Get-Architecture -String $res.Get.Download.Bundle
                 Channel      = $Channel
                 Type         = Get-FileType -File $res.Get.Download.Bundle
@@ -50,6 +70,7 @@ function Get-GoogleChrome {
             # Output the version and URI object for the 32-bit version
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
+                StartDate    = $Date
                 Architecture = Get-Architecture -String $($res.Get.Download.Uri.$Channel -replace "64", "")
                 Channel      = $Channel
                 Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
