@@ -4,13 +4,13 @@
     "Get": {
         "Update": {
             "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-            "Channels": [
-                "LATEST_FIREFOX_VERSION",
-                "FIREFOX_ESR",
-                "FIREFOX_ESR_NEXT",
-                "FIREFOX_DEVEDITION",
-                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION"
-            ]
+            "Channels": {
+                "LATEST_FIREFOX_VERSION": "Current",
+                "FIREFOX_ESR": "Extended Support",
+                "FIREFOX_ESR_NEXT": "Extended Support Next",
+                "FIREFOX_DEVEDITION": "Developer",
+                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION": "Beta"
+            }
         },
         "Download": {
             "Uri": {

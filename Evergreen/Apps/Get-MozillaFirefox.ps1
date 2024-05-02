@@ -28,13 +28,13 @@ function Get-MozillaFirefox {
 
     # Construct custom object with output details
     foreach ($currentLanguage in $Language) {
-        foreach ($channel in $res.Get.Update.Channels) {
+        foreach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
             foreach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
+                foreach ($installer in $res.Get.Download.Uri[$channel.Key].GetEnumerator()) {
                     $params = @{
-                        Uri           = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        Uri           = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
                         WarningAction = "SilentlyContinue"
                         ErrorAction   = "SilentlyContinue"
                     }
@@ -42,18 +42,18 @@ function Get-MozillaFirefox {
                     if ($null -ne $Url) {
 
                         # Catch if version is null
-                        if ([System.String]::IsNullOrEmpty($Versions.$channel)) {
+                        if ([System.String]::IsNullOrEmpty($Versions.$($channel.Key))) {
                             $Version = "Unknown"
                         }
                         else {
-                            $Version = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
+                            $Version = $Versions.$($channel.Key) -replace $res.Get.Download.ReplaceText.Version, ""
                         }
 
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Version
                             Architecture = Get-Architecture -String $platform
-                            Channel      = $channel
+                            Channel      = $channel.Value
                             Language     = $currentLanguage
                             Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
                             Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
