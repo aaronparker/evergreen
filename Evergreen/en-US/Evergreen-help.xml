@@ -126,7 +126,9 @@
     <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -142,8 +144,12 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Export application version information:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/export.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Export-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Export application version information</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/export/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -212,7 +218,9 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -226,7 +234,11 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Getting started with Evergreen:</maml:linkText>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Export-EvergreenManifest/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Getting started with Evergreen</maml:linkText>
         <maml:uri>https://stealthpuppy.com/evergreen/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -296,7 +308,9 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -324,8 +338,12 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Find supported applications:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/find.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Find-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Find supported applications</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/find/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -341,7 +359,7 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     <maml:description>
       <maml:para>Queries the internal application functions and manifests included in the module to find the latest version and download link/s for the specified application.</maml:para>
       <maml:para>The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.</maml:para>
-      <maml:para>`Get-EvergreenApp` uses official vendor sites including update APIs, web queries, and code repository locations to return details of a target application at run time.</maml:para>
+      <maml:para>`Get-EvergreenApp` uses official vendor sources including update APIs, web queries, and code repository locations to return details of a target application at run time.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -543,7 +561,9 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -616,8 +636,12 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Use Evergreen:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Use Evergreen</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/use/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -687,7 +711,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -734,8 +760,12 @@ c.1password.com</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Use Evergreen:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/use.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenEndpoint/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Retrieve endpoints used by Evergreen</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/endpoints/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -804,7 +834,9 @@ c.1password.com</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -812,13 +844,17 @@ c.1password.com</dev:code>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Returns details about the Evergreen library at \\server\EvergreenLibrary, including application version information stored for each application.</maml:para>
+          <maml:para>Returns details about the Evergreen library at \server\EvergreenLibrary, including application version information stored for each application.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Create an Evergreen library:</maml:linkText>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenLibrary/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Create an Evergreen library</maml:linkText>
         <maml:uri>https://stealthpuppy.com/evergreen/getlibrary.html</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
@@ -912,7 +948,9 @@ c.1password.com</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -936,7 +974,7 @@ Path         : \\server\EvergreenLibrary\MicrosoftVisualStudioCode\Stable\1.74.3
 Channel      : Stable
 Architecture : x64</dev:code>
         <dev:remarks>
-          <maml:para>Returns details about Microsoft Visual Studio Code from the Evergreen library at \\server\EvergreenLibrary that is sent to Get-EvergreenLibraryApp from Get-EvergreenLibrary via the pipeline.</maml:para>
+          <maml:para>Returns details about Microsoft Visual Studio Code from the Evergreen library at \server\EvergreenLibrary that is sent to Get-EvergreenLibraryApp from Get-EvergreenLibrary via the pipeline.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -958,14 +996,14 @@ Ring         : General
 Path         : \\server\EvergreenLibrary\MicrosoftTeams\General\1.5.00.31168\x64\Teams_windows_x64.msi
 Architecture : x64</dev:code>
         <dev:remarks>
-          <maml:para>Uses Get-EvergreenLibrary to place details about the Evergreen library at \\server\EvergreenLibrary into an object called $Library, which is then used on the command line for Get-EvergreenLibraryApp to return details about Microsoft Teams.</maml:para>
+          <maml:para>Uses Get-EvergreenLibrary to place details about the Evergreen library at \server\EvergreenLibrary into an object called $Library, which is then used on the command line for Get-EvergreenLibraryApp to return details about Microsoft Teams.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/getlibraryapp.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenLibraryApp/</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Create an Evergreen library:</maml:linkText>
@@ -979,11 +1017,11 @@ Architecture : x64</dev:code>
       <command:verb>Invoke</command:verb>
       <command:noun>EvergreenApp</command:noun>
       <maml:description>
-        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours.</maml:para>
+        <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function queries an API that is updated by Get-EvergreenApp every 8 hours. This function is experimental and functionality may change - do not use in production.</maml:para>
+      <maml:para>Returns the latest version and download URL/s for an application supported by the Evergreen module. This function returns the same data as Get-EvergreenApp, but queries the Evergreen App Tracker API for this data. Data for the API is from a key/value store updated by Get-EvergreenApp every 12-hours.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1038,7 +1076,9 @@ Architecture : x64</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1067,6 +1107,10 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Invoke-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>https://stealthpuppy.com/evergreen/invoke/</maml:linkText>
         <maml:uri>https://stealthpuppy.com/evergreen/invoke/</maml:uri>
@@ -1228,7 +1272,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1236,14 +1282,18 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Description: `Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \\server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
+          <maml:para>Description: `Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Update an Evergreen library:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/updatelibrary.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Invoke-EvergreenLibraryUpdate/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Update an Evergreen library</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/updatelibrary/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1381,21 +1431,25 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
         <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>New-EvergreenLibrary -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Creates a new Evergreen library in the path \\server\EvergreenLibrary.</maml:para>
+          <maml:para>Description: Creates a new Evergreen library in the path \server\EvergreenLibrary.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>New-EvergreenLibrary -Path "\\server\EvergreenLibrary" -Name "AzureVirtualDesktopProd"</dev:code>
         <dev:remarks>
-          <maml:para>Description: Creates a new Evergreen library in the path \\server\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.</maml:para>
+          <maml:para>Description: Creates a new Evergreen library in the path \server\EvergreenLibrary. Assigns the name AzureVirtualDesktopProd to the manifest file - `EvergreenLibrary.json`.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/New-EvergreenLibrary/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Create an Evergreen library:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/newlibrary.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/newlibrary/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -1792,7 +1846,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1813,8 +1869,12 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Save-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Download application installers:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/save.html</maml:uri>
+        <maml:uri>https://stealthpuppy.com/evergreen/save</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -2059,7 +2119,9 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2073,8 +2135,12 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Download application installers:</maml:linkText>
-        <maml:uri>https://stealthpuppy.com/evergreen/test.html</maml:uri>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/help/en-US/Save-EvergreenApp/</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Test installers</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/test/</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>

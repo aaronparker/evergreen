@@ -2,10 +2,11 @@ function Invoke-EvergreenLibraryUpdate {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
-    [CmdletBinding(SupportsShouldProcess = $True)]
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    [Alias("Start-EvergreenLibraryUpdate")]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the library.",

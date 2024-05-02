@@ -11,6 +11,10 @@ function Resolve-SystemNetWebRequest {
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
+        [Parameter(Position = 1)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [System.Int32] $MaximumRedirection = 3
@@ -18,6 +22,7 @@ function Resolve-SystemNetWebRequest {
 
     try {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
+        $httpWebRequest.UserAgent = $UserAgent
         $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
 
@@ -54,7 +59,7 @@ function Resolve-SystemNetWebRequest {
         Write-Output -InputObject $PSObject
     }
     catch {
-        Write-Warning -Message "$($MyInvocation.MyCommand): $($webResponse.StatusCode), with: $Uri."
+        Write-Warning -Message "$($MyInvocation.MyCommand): Return code: [$($webResponse.StatusCode)], with: $Uri."
         Write-Warning -Message "$($MyInvocation.MyCommand): For troubleshooting steps see: $($script:resourceStrings.Uri.Info)."
         throw $_
     }

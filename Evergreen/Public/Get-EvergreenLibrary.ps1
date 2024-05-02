@@ -2,10 +2,10 @@ function Get-EvergreenLibrary {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(
-            Mandatory = $True,
+            Mandatory = $true,
             Position = 0,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the library.",
@@ -33,7 +33,7 @@ function Get-EvergreenLibrary {
                     throw $_
                 }
 
-                if ($Null -ne $Library) {
+                if ($null -ne $Library) {
 
                     # Build the output object
                     $Output = [PSCustomObject] @{

@@ -1,7 +1,7 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/use.html
+online version: https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenApp/
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Queries the internal application functions and manifests included in the module 
 
 The output from this function can be passed to Where-Object to filter for a specific download based on properties including processor architecture, file type or other properties.
 
-`Get-EvergreenApp` uses official vendor sites including update APIs, web queries, and code repository locations to return details of a target application at run time.
+`Get-EvergreenApp` uses official vendor sources including update APIs, web queries, and code repository locations to return details of a target application at run time.
 
 ## EXAMPLES
 
@@ -247,9 +247,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 Site: https://stealthpuppy.com
+
 Author: Aaron Parker
+
 Twitter: @stealthpuppy
 
 ## RELATED LINKS
 
-[Use Evergreen:](https://stealthpuppy.com/evergreen/use.html)
+[Use Evergreen](https://stealthpuppy.com/evergreen/use/)

@@ -187,7 +187,7 @@ function Get-GitHubRepoRelease {
                             $PSObject = [PSCustomObject] @{
                                 Version       = $Version
                                 Platform      = Get-Platform -String $asset.browser_download_url
-                                Architecture  = Get-Architecture -String $asset.browser_download_url
+                                Architecture  = Get-Architecture -String $(Split-Path -Path $asset.browser_download_url -Leaf)
                                 Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
                                 InstallerType = Get-InstallerType -String $asset.browser_download_url
                                 Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"

@@ -1,17 +1,18 @@
-﻿Function Find-EvergreenApp {
+﻿function Find-EvergreenApp {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False, HelpURI = "https://stealthpuppy.com/evergreen/find/")]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     [Alias("fea")]
     param (
         [Parameter(
-            Mandatory = $False,
+            Mandatory = $false,
             Position = 0,
             ValueFromPipeline,
             HelpMessage = "Specify an a string to search from the list of supported applications.")]
         [ValidateNotNull()]
+        [Alias("ApplicationName")]
         [System.String] $Name
     )
 
