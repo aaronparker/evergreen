@@ -2,7 +2,7 @@
 
 ## VERSION
 
-* 
+* Fix an issue with date/time conversion on Windows PowerShell for `GoogleChrome` #668
 
 ## 2405.943
 
