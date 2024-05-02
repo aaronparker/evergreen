@@ -1,6 +1,6 @@
 {
-    "Name": "Oracle Java 20",
-    "Source": "https://www.oracle.com/java/technologies/downloads/#java20",
+    "Name": "Oracle Java 22",
+    "Source": "https://www.oracle.com/java/technologies/downloads/#java22",
     "Get": {
         "Update": {
             "Uri": "https://www.java.com/releases/releases.json",
@@ -15,14 +15,14 @@
                 "authority": "www.java.com"
             },
             "UserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.81",
-            "Family": 20,
+            "Family": 22,
             "DateFormat": "yyyy-MM-dd"
         },
         "Download": {
             "Uri": {
-                "zip": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.zip",
-                "exe": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.exe",
-                "msi": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.msi"
+                "zip": "https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.zip",
+                "exe": "https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.exe",
+                "msi": "https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.msi"
             }
         }
     },

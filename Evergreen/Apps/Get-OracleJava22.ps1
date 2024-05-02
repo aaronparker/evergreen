@@ -1,4 +1,4 @@
-﻿function Get-OracleJava20 {
+﻿function Get-OracleJava22 {
     <#
         .NOTES
             Author: Aaron Parker
