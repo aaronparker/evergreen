@@ -1,39 +1,41 @@
-Function Get-TableauReader {
+function Get-TableauReader {
     <#
-        .SYNOPSIS
-            Get the current version and download URL for Tableau Reader.
-
         .NOTES
             Author: Andrew Cooper
             Twitter: @adotcoop
             based on Get-TelerikFiddlerEverywhere.ps1
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Get the latest download
-    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
-
-    If ($Null -ne $Response) {
+    $params = @{
+        Uri     = $res.Get.Download.Uri
+        Headers = $res.Get.Download.Headers
+    }
+    $Response = Resolve-InvokeWebRequest @params
+    if ($null -ne $Response) {
 
         # Extract the version information from the uri
         try {
-            $Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+            $Version = [RegEx]::Match($Response, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
         }
         catch {
-            Throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
+            throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
         }
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
-            Version = $Version.Replace('-', '.')
-            URI     = $Response.ResponseUri.AbsoluteUri
+            Version      = $Version.Replace('-', '.')
+            Architecture = Get-Architecture -String $Response
+            Type         = Get-FileType -File $Response
+            URI          = $Response
         }
         Write-Output -InputObject $PSObject
     }
