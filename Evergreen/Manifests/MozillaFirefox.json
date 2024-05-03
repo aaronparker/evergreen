@@ -4,14 +4,13 @@
     "Get": {
         "Update": {
             "Uri": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-            "Channels": [
-                "LATEST_FIREFOX_VERSION",
-                "FIREFOX_ESR",
-                "FIREFOX_ESR_NEXT"
-            ],
-            "Preview": [
-                "FIREFOX_ESR_NEXT"
-            ]
+            "Channels": {
+                "LATEST_FIREFOX_VERSION": "Current",
+                "FIREFOX_ESR": "Extended Support",
+                "FIREFOX_ESR_NEXT": "Extended Support Next",
+                "FIREFOX_DEVEDITION": "Developer",
+                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION": "Beta"
+            }
         },
         "Download": {
             "Uri": {
@@ -29,6 +28,16 @@
                     "Exe": "https://download.mozilla.org/?product=firefox-esr-next-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=firefox-esr-next-msi-latest-ssl&os=#platform&lang=#language",
                     "Msix": "https://download.mozilla.org/?product=firefox-esr-next-msix-latest-ssl&os=#platform&lang=#language"
+                },
+                "FIREFOX_DEVEDITION": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-devedition-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-devedition-next-msix-latest-ssl&os=#platform&lang=#language"
+                },
+                "LATEST_FIREFOX_RELEASED_DEVEL_VERSION": {						 
+                    "Exe": "https://download.mozilla.org/?product=firefox-beta-latest-ssl&os=#platform&lang=#language",
+                    "Msi": "https://download.mozilla.org/?product=firefox-beta-msi-latest-ssl&os=#platform&lang=#language",
+                    "Msix": "https://download.mozilla.org/?product=firefox-beta-next-msix-latest-ssl&os=#platform&lang=#language"
                 }
             },
             "Platforms": [

@@ -1,4 +1,4 @@
-Function Get-McNeelRhino {
+function Get-McNeelRhino {
     <#
         .SYNOPSIS
             Get the current version and download URIs for the supported releases of Rhino.
@@ -8,30 +8,34 @@ Function Get-McNeelRhino {
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    foreach ($Release in $res.Get.Update.GetEnumerator()) {
+    foreach ($Release in $res.Get.Update.Uri.GetEnumerator()) {
+        foreach ($Language in $res.Get.Update.Languages) {
 
-        # Query the Rhino update API
-        # This requires redirection so Invoke-EvergreenRestMethod produces "Operation is not valid due to the current state of the object."
-        $Uri = Resolve-InvokeWebRequest -Uri $Release.Value
-        $UpdateFeed = Invoke-RestMethod -Uri $Uri
-
-        If ($Null -ne $UpdateFeed) {
-
-            # Construct the output; Return the custom object to the pipeline
-            $PSObject = [PSCustomObject] @{
-                Version = $updateFeed.ProductVersionDescription.Version
-                Release = $Release.Name
-                URI     = $updateFeed.ProductVersionDescription.DownloadUrl
+            # Query the Rhino update API
+            $params = @{
+                Uri                   = $Release.Value -replace "#language", $Language
+                AllowInsecureRedirect = $true
             }
-            Write-Output -InputObject $PSObject
+            $UpdateFeed = Invoke-EvergreenRestMethod @params
+            if ($null -ne $UpdateFeed) {
+
+                # Construct the output; Return the custom object to the pipeline
+                $PSObject = [PSCustomObject] @{
+                    Version  = $UpdateFeed.ProductVersionDescription.Version
+                    Release  = $Release.Name
+                    Language = $Language
+                    URI      = $UpdateFeed.ProductVersionDescription.DownloadUrl
+                }
+                Write-Output -InputObject $PSObject
+            }
         }
     }
 }

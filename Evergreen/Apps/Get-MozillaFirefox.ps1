@@ -1,4 +1,4 @@
-Function Get-MozillaFirefox {
+function Get-MozillaFirefox {
     <#
         .SYNOPSIS
             Returns downloads for the latest Mozilla Firefox releases.
@@ -7,6 +7,8 @@ Function Get-MozillaFirefox {
             Site: https://stealthpuppy.com
             Author: Aaron Parker
             Twitter: @stealthpuppy
+
+            # https://wiki.mozilla.org/Release_Management/Product_details
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $false)]
@@ -26,24 +28,32 @@ Function Get-MozillaFirefox {
 
     # Construct custom object with output details
     foreach ($currentLanguage in $Language) {
-        foreach ($channel in $res.Get.Update.Channels) {
+        foreach ($channel in $res.Get.Update.Channels.GetEnumerator()) {
             foreach ($platform in $res.Get.Download.Platforms) {
 
                 # Select the download file for the selected platform
-                foreach ($installer in $res.Get.Download.Uri[$channel].GetEnumerator()) {
+                foreach ($installer in $res.Get.Download.Uri[$channel.Key].GetEnumerator()) {
                     $params = @{
-                        Uri           = (($res.Get.Download.Uri[$channel][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        Uri           = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
                         WarningAction = "SilentlyContinue"
                         ErrorAction   = "SilentlyContinue"
                     }
                     $Url = Resolve-InvokeWebRequest @params
+                    if ($null -ne $Url) {
 
-                    if ($Null -ne $Url) {
+                        # Catch if version is null
+                        if ([System.String]::IsNullOrEmpty($Versions.$($channel.Key))) {
+                            $Version = "Unknown"
+                        }
+                        else {
+                            $Version = $Versions.$($channel.Key) -replace $res.Get.Download.ReplaceText.Version, ""
+                        }
+
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
-                            Version      = $Versions.$channel -replace $res.Get.Download.ReplaceText.Version, ""
+                            Version      = $Version
                             Architecture = Get-Architecture -String $platform
-                            Channel      = $channel
+                            Channel      = $channel.Value
                             Language     = $currentLanguage
                             Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
                             Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
