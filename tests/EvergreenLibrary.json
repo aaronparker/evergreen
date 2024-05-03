@@ -9,7 +9,7 @@
         {
             "Name": "MicrosoftTeams",
             "EvergreenApp": "MicrosoftTeams",
-            "Filter": "$_.Ring -eq \"General\" -and $_.Architecture -eq \"x64\" -and $_.Type -eq \"msi\""
+            "Filter": "$_.Architecture -eq \"x64\" -and $_.Release -eq \"Enterprise\""
         }
     ]
 }

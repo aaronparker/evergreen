@@ -10,7 +10,8 @@ param ()
 BeforeDiscovery {
     # Get the supported applications and sort randomly
     # Exclude applications that have issues when run from GitHub or fail randomly due to the source server
-    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI|OBSStudio|ProgressChefInfraClient|MirantisLens|JetBrainsHub"
+    #$AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI|OBSStudio|ProgressChefInfraClient|MirantisLens|JetBrainsHub|FileZilla|PDFArranger"
+    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|FileZilla|PDFArranger"
     $Applications = Find-EvergreenApp | `
         Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
@@ -27,7 +28,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Application function should return something" {
+    Context "Application function <application> should return something" {
         It "Output from <application> should not be null" {
             $Output | Should -Not -BeNullOrEmpty
         }
@@ -41,7 +42,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         }
     }
 
-    Context "Output from application function returns expected properties" -ForEach $Output {
+    Context "Output from application function <application> returns expected properties" -ForEach $Output {
         BeforeAll {
             $Item = $_
         }
