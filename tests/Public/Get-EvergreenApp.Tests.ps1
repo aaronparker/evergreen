@@ -11,7 +11,7 @@ BeforeDiscovery {
     # Get the supported applications and sort randomly
     # Exclude applications that have issues when run from GitHub or fail randomly due to the source server
     #$AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI|OBSStudio|ProgressChefInfraClient|MirantisLens|JetBrainsHub|FileZilla|PDFArranger"
-    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|FileZilla|PDFArranger"
+    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|FileZilla|PDFArranger|JetBrainsHub"
     $Applications = Find-EvergreenApp | `
         Where-Object { $_.Name -notmatch $AppsToSkip } | `
         Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
