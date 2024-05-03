@@ -12,7 +12,6 @@ function Resolve-SystemNetWebRequest {
         [System.String] $Uri,
 
         [Parameter(Position = 1)]
-        [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter()]
@@ -22,9 +21,14 @@ function Resolve-SystemNetWebRequest {
 
     try {
         $httpWebRequest = [System.Net.WebRequest]::Create($Uri)
-        $httpWebRequest.UserAgent = $UserAgent
         $httpWebRequest.MaximumAutomaticRedirections = $MaximumRedirection
         $httpWebRequest.AllowAutoRedirect = $true
+
+        # Don't add a UserAgent if it's not provided
+        if ([System.String]::IsNullOrEmpty($UserAgent)) {}
+        else {
+            $httpWebRequest.UserAgent = $UserAgent
+        }
 
         if (Test-ProxyEnv) {
             $ProxyObj = New-Object -TypeName "System.Net.WebProxy"
