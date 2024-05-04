@@ -17,7 +17,8 @@ BeforeDiscovery {
     #     Where-Object { $_.Name -notmatch $AppsToSkip } | `
     #     Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
 
-    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty "Name"
+    # Export the list of apps
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty "Name" | Sort-Object
 }
 
 Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <application>" -ForEach $Applications {
