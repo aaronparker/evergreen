@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.976
 
 * Adds `VSCodium`
 * Updates `MozillaFirefox` with additional channels

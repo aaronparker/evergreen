@@ -1,6 +1,6 @@
-﻿# 321 Supported applications
+﻿# 322 Supported applications
 
-Evergreen `2405.959` supports the following applications:
+Evergreen `2405.976` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -313,6 +313,7 @@ Evergreen `2405.959` supports the following applications:
 | VMwareWorkstationPlayer               | VMware Workstation Player                                         | https://www.vmware.com/products/workstation-player.html                                          |
 | VMwareWorkstationPro                  | VMware Workstation Pro                                            | https://www.vmware.com/products/workstation-pro.html                                             |
 | voidtoolsEverything                   | voidtools Everything                                              | https://www.voidtools.com/                                                                       |
+| VSCodium                              | VSCodium                                                          | https://vscodium.com                                                                             |
 | Win32OpenSSH                          | Win32-OpenSSH                                                     | https://github.com/PowerShell/Win32-OpenSSH/                                                     |
 | WinMerge                              | WinMerge                                                          | https://winmerge.org/                                                                            |
 | WinSCP                                | WinSCP                                                            | https://winscp.net/                                                                              |
