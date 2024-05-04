@@ -98,7 +98,7 @@ AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Get-EvergreenAppFromApi',
 PrivateData = @{
 
     #RepositorySourceLocation of this module
-    RepositorySourceLocation = 'https://github.com/aaronparker/Evergreen/'
+    RepositorySourceLocation = 'https://github.com/aaronparker/evergreen/'
 
     PSData = @{
 
@@ -106,7 +106,7 @@ PrivateData = @{
         Tags = 'Evergreen','Packer','Automation','MDT','ConfigMgr','DevOps','AzureVirtualDesktop','Intune','Windows'
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/aaronparker/Evergreen/blob/main/LICENSE'
+        LicenseUri = 'https://github.com/aaronparker/evergreen/blob/main/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://stealthpuppy.com/evergreen/'

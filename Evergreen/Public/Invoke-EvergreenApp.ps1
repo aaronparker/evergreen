@@ -21,6 +21,7 @@ function Invoke-EvergreenApp {
         try {
             $params = @{
                 Uri         = "https://evergreen-api.stealthpuppy.com/app/$Name"
+                UserAgent   = "Evergreen/$((Get-Module -Name "Evergreen").Version)"
                 ErrorAction = "Stop"
             }
             Invoke-EvergreenRestMethod @params

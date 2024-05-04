@@ -12,6 +12,7 @@
 * Fixes `TableauDesktop`, `TableauPrep`, `TableauReader` [#658](https://github.com/aaronparker/evergreen/issues/658)
 * Updates `Get-SourceForgeRepoRelease` to use null UserAgent and resolve correct download hosts [#669](https://github.com/aaronparker/evergreen/issues/669)
 * Fixes an issue with `Resolve-SystemNetWebRequest` with ability to set UserAgent to null [#669](https://github.com/aaronparker/evergreen/issues/669)
+* Add a custom user agent to `Invoke-EvergreenApp`
 
 BREAKING CHANGES
 
