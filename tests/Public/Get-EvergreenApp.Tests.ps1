@@ -11,10 +11,13 @@ BeforeDiscovery {
     # Get the supported applications and sort randomly
     # Exclude applications that have issues when run from GitHub or fail randomly due to the source server
     #$AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|MestrelabMnova|MozillaFirefox|AWSCLI|OBSStudio|ProgressChefInfraClient|MirantisLens|JetBrainsHub|FileZilla|PDFArranger"
-    $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|FileZilla|PDFArranger|JetBrainsHub"
-    $Applications = Find-EvergreenApp | `
-        Where-Object { $_.Name -notmatch $AppsToSkip } | `
-        Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
+
+    # $AppsToSkip = "MicrosoftWvdRtcService|MicrosoftWvdRemoteDesktop|MicrosoftWvdMultimediaRedirection|MicrosoftWvdInfraAgent|MicrosoftWvdBootloader|FileZilla|PDFArranger|JetBrainsHub"
+    # $Applications = Find-EvergreenApp | `
+    #     Where-Object { $_.Name -notmatch $AppsToSkip } | `
+    #     Sort-Object { Get-Random } | Select-Object -ExpandProperty "Name"
+
+    $Applications = Find-EvergreenApp | Select-Object -ExpandProperty "Name"
 }
 
 Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <application>" -ForEach $Applications {
@@ -28,17 +31,21 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with supported application: <a
         $MatchVersions = "(\d+(\.\d+){1,4}).*|(\d+)|^[0-9]{4}$|insider|Latest|Unknown|Preview|Any|jdk*|RateLimited"
     }
 
-    Context "Application function <application> should return something" {
+    Context "Application function <application> should return something" -ForEach $Output {
+        BeforeAll {
+            $Item = $_
+        }
+
         It "Output from <application> should not be null" {
-            $Output | Should -Not -BeNullOrEmpty
+            $Item | Should -Not -BeNullOrEmpty
         }
 
         It "Output from <application> should return the expected output type" {
-            $Output | Should -BeOfType "PSCustomObject"
+            $Item | Should -BeOfType "PSCustomObject"
         }
 
         It "Get-EvergreenApp -Name <application> should return a count of 1 or more" {
-            ($Output | Measure-Object).Count | Should -BeGreaterThan 0
+            ($Item | Measure-Object).Count | Should -BeGreaterThan 0
         }
     }
 
@@ -91,7 +98,7 @@ Describe -Tag "Get" -Name "Get-EvergreenApp works with -SkipCertificateCheck" {
 Describe -Tag "Get" -Name "Application functions with additional parameters" {
     Context "Validate applications that support additional parameters" {
         It "Get-GitHubRelease should throw with an invalid URL" {
-            { Get-EvergreenApp -Name "GitHubRelease" -AppParams @{Uri = "https://github.com"} } | Should -Throw
+            { Get-EvergreenApp -Name "GitHubRelease" -AppParams @{Uri = "https://github.com" } } | Should -Throw
         }
 
         # It "Should pass parameters to MozillaFirefox" {
@@ -99,7 +106,7 @@ Describe -Tag "Get" -Name "Application functions with additional parameters" {
         # }
 
         It "Should pass parameters to MozillaThunderbird" {
-            { Get-EvergreenApp -Name "MozillaThunderbird" -AppParams @{Language = "en-GB"} } | Should -Not -Throw
+            { Get-EvergreenApp -Name "MozillaThunderbird" -AppParams @{Language = "en-GB" } } | Should -Not -Throw
         }
     }
 }
