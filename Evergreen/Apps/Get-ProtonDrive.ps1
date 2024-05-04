@@ -16,11 +16,15 @@ function Get-ProtonDrive {
     }
     $Updates = Invoke-EvergreenRestMethod @params
 
+    # Update feed may include duplicate keys in the JSON
+    if ($Updates -is [System.String]) {
+        $Updates = $Updates | ConvertFrom-Json -ErrorAction "Stop"
+    }
+
     # Sort for the latest version
     $LatestVersion = $Updates.Releases | `
         Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue" | `
         Select-Object -First 1
-
 
     # Construct the output; Return the custom object to the pipeline
     $PSObject = [PSCustomObject] @{

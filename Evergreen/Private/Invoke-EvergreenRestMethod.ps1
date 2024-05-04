@@ -5,13 +5,11 @@ function Invoke-EvergreenRestMethod {
             Enables normalisation for all public functions and across PowerShell/Windows PowerShell
             Some validation of $Uri is expected before passing to this function
             Does not support redirection, as this should be handled before sending to this function
-
-            TODO: Add proxy support
     #>
     [OutputType([Microsoft.PowerShell.Commands.WebResponseObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $True, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String] $Uri,
 
@@ -41,7 +39,10 @@ function Invoke-EvergreenRestMethod {
         [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter()]
-        [System.Management.Automation.SwitchParameter] $SkipCertificateCheck
+        [System.Management.Automation.SwitchParameter] $SkipCertificateCheck,
+
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter] $AllowInsecureRedirect
     )
 
     # Set ErrorAction value
@@ -94,11 +95,15 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
     if (($script:SkipCertificateCheck -eq $true -or $PSBoundParameters.ContainsKey("SkipCertificateCheck")) -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SkipCertificateCheck."
-        $params.SkipCertificateCheck = $True
+        $params.SkipCertificateCheck = $true
     }
     if ($PSBoundParameters.ContainsKey("SslProtocol") -and (Test-PSCore)) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Adding SslProtocol."
         $params.SslProtocol = $SslProtocol
+    }
+    if ($PSBoundParameters.ContainsKey("AllowInsecureRedirect")) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Body."
+        $params.AllowInsecureRedirect = $true
     }
     if (Test-ProxyEnv) {
         $params.Proxy = $script:EvergreenProxy

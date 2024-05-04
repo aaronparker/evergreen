@@ -12,12 +12,15 @@ function Resolve-InvokeWebRequest {
         [System.String] $Uri,
 
         [Parameter(Position = 1)]
-        [ValidateNotNullOrEmpty()]
         [System.String] $UserAgent = $script:resourceStrings.UserAgent.Base,
 
         [Parameter(Position = 2)]
         [ValidateNotNullOrEmpty()]
-        [System.Int32] $MaximumRedirection = 0
+        [System.Int32] $MaximumRedirection = 0,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [System.Collections.Hashtable] $Headers
     )
 
     # Disable the Invoke-WebRequest progress bar for faster downloads
@@ -33,9 +36,18 @@ function Resolve-InvokeWebRequest {
         MaximumRedirection = $MaximumRedirection
         Uri                = $Uri
         UseBasicParsing    = $true
-        UserAgent          = $UserAgent
         ErrorAction        = "SilentlyContinue"
     }
+    if ([System.String]::IsNullOrEmpty($UserAgent)) {}
+    else {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding UserAgent."
+        $params.UserAgent = $UserAgent
+    }
+    if ($PSBoundParameters.ContainsKey("Headers")) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Adding Headers."
+        $params.Headers = $Headers
+    }
+
     if (Test-ProxyEnv) {
         $params.Proxy = $script:EvergreenProxy
     }

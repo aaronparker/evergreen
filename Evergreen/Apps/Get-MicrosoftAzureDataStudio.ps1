@@ -1,7 +1,8 @@
-Function Get-MicrosoftAzureDataStudio {
+function Get-MicrosoftAzureDataStudio {
     <#
         .SYNOPSIS
-            Reads the Microsoft Azure Data Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows.
+            Reads the Microsoft Azure Data Studio code update API to retrieve available
+            Stable and Insider builds version numbers and download URLs for Windows.
 
         .NOTES
             Site: https://stealthpuppy.com
@@ -9,42 +10,53 @@ Function Get-MicrosoftAzureDataStudio {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Get the commit details
-    $commit = (Invoke-EvergreenRestMethod -Uri $res.Get.Update.Version.Uri).($res.Get.Update.Version.Property)
+    $params = @{
+        Uri         = $res.Get.Update.Version.Uri
+        ErrorAction = "Stop"
+    }
+    $Commit = (Invoke-EvergreenRestMethod @params).($res.Get.Update.Version.Property)
 
     # Walk through each platform
-    If ($commit) {
-        ForEach ($platform in $res.Get.Update.Platform) {
+    if ([System.String]::IsNullOrEmpty($Commit)) {
+        throw "$($MyInvocation.MyCommand): No value found for property: $($res.Get.Update.Version.Property)."
+    }
+    else {
+        foreach ($platform in $res.Get.Update.Platform) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $platform."
 
             # Walk through each channel in the platform
-            ForEach ($channel in $res.Get.Update.Channel) {
+            foreach ($channel in $res.Get.Update.Channel) {
 
                 # Read the version details from the API, format and return to the pipeline
-                $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/$commit"
-                $updateFeed = Invoke-EvergreenRestMethod -Uri $Uri
-                If ($updateFeed) {
+                $params = @{
+                    Uri         = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/$Commit"
+                    ErrorAction = "Stop"
+                }
+                $updateFeed = Invoke-EvergreenRestMethod @params
+
+                if ([System.String]::IsNullOrEmpty($updateFeed)) {
+                    throw "$($MyInvocation.MyCommand): No update feed found for $platform and $channel."
+                }
+                else {
                     $PSObject = [PSCustomObject] @{
-                        Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
-                        Platform     = $platform
-                        Channel      = $channel
-                        Sha256       = $updateFeed.sha256hash
-                        URI          = $updateFeed.url
+                        Version  = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
+                        Platform = $platform
+                        Channel  = $channel
+                        Sha256   = $updateFeed.sha256hash
+                        URI      = $updateFeed.url
                     }
                     Write-Output -InputObject $PSObject
                 }
             }
         }
-    }
-    Else {
-        Throw "$($MyInvocation.MyCommand): failed to get commit details from: $($res.Get.Update.Version.Uri)."
     }
 }

@@ -57,7 +57,11 @@
     }
 
     # Find the mirror for the download
-    $Resolved = Resolve-SystemNetWebRequest -Uri $BestRelease.platform_releases.windows.url
+    $params = @{
+        Uri       = $BestRelease.platform_releases.windows.url
+        UserAgent = $null
+    }
+    $Resolved = Resolve-SystemNetWebRequest @params
     Write-Verbose -Message "$($MyInvocation.MyCommand): Resolve mirror to: $($Resolved.ResponseUri.Host)."
 
     # Get the downloads XML feed and select the latest item via the $Version value
