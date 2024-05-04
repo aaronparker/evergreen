@@ -1,5 +1,22 @@
 # Change log
 
+## VERSION
+
+* Adds `VSCodium`
+* Updates `MozillaFirefox` with additional channels
+* Updates `MicrosoftAzureDataStudio` to throw if the update feed is 
+* Updates `ProtonDrive` to throw if the update feed includes parsing issues
+* Updates `Resolve-InvokeWebRequest` with support for Headers, ability to set UserAgent to null
+* Fixes an issue with `AdobeConnect`
+* Fixes an issue with `McNeelRhino` [#670](https://github.com/aaronparker/evergreen/issues/670)
+* Fixes `TableauDesktop`, `TableauPrep`, `TableauReader` [#658](https://github.com/aaronparker/evergreen/issues/658)
+* Updates `Get-SourceForgeRepoRelease` to use null UserAgent and resolve correct download hosts [#669](https://github.com/aaronparker/evergreen/issues/669)
+* Fixes an issue with `Resolve-SystemNetWebRequest` with ability to set UserAgent to null [#669](https://github.com/aaronparker/evergreen/issues/669)
+
+BREAKING CHANGES
+
+* Changes values for `MozillaFirefox` to be human readable [#667](https://github.com/aaronparker/evergreen/issues/667) [#672](https://github.com/aaronparker/evergreen/issues/672)
+
 ## 2405.959
 
 * Fix an issue with date/time conversion on Windows PowerShell for `GoogleChrome` [#668](https://github.com/aaronparker/evergreen/issues/668)
