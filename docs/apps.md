@@ -1,6 +1,6 @@
-﻿# 322 Supported applications
+﻿# 323 Supported applications
 
-Evergreen `2405.976` supports the following applications:
+Evergreen `2405.994` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -49,7 +49,6 @@ Evergreen `2405.976` supports the following applications:
 | BlenderLauncher                       | Blender Launcher                                                  | https://dotbow.github.io/Blender-Launcher/                                                       |
 | BlueJ                                 | BlueJ                                                             | https://www.bluej.org/                                                                           |
 | CendioThinLinc                        | Cendio ThinLinc                                                   | https://www.cendio.com/                                                                          |
-| ChromiumChromeDriver                  | Chromium ChromeDriver                                             | https://chromedriver.chromium.org/home                                                           |
 | CitrixShareFile                       | Citrix ShareFile for Windows                                      | https://www.citrix.com/downloads/sharefile/clients-and-plug-ins/citrix-files-for-windows.html    |
 | CitrixWorkspaceApp                    | Citrix Workspace app                                              | https://www.citrix.com/downloads/workspace-app/                                                  |
 | ClarivateEndnote                      | Clarivate EndNote                                                 | https://www.endnote.com/                                                                         |
@@ -99,7 +98,9 @@ Evergreen `2405.976` supports the following applications:
 | GitHubDesktop                         | GitHub Desktop                                                    | https://desktop.github.com/                                                                      |
 | GitHubRelease                         | GitHub release                                                    | https://github.com/                                                                              |
 | GoogleChrome                          | Google Chrome Enterprise                                          | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
-| GoogleChromeDriver                    | Google Chrome Driver                                              | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
+| GoogleChromeDriver                    | Google Chrome Driver                                              | https://googlechromelabs.github.io/chrome-for-testing/                                           |
+| GoogleChromeForTesting                | Google Chrome for Testing                                         | https://googlechromelabs.github.io/chrome-for-testing/                                           |
+| GoogleChromeHeadlessShell             | Google Chrome for Testing                                         | https://googlechromelabs.github.io/chrome-for-testing/                                           |
 | GoogleDrive                           | Google Drive                                                      | https://support.google.com/drive/answer/7329379                                                  |
 | GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
 | GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |
@@ -231,7 +232,7 @@ Evergreen `2405.976` supports the following applications:
 | OracleJava8                           | Oracle Java 8                                                     | https://www.java.com                                                                             |
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                      |
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                             |
-| PaintDotNetOfflineInstaller           | dotPDN LLC Paint.NET                                              | https://getpaint.net/                                                                            |
+| PaintDotNetOfflineInstaller           | dotPDN LLC Paint.NET Offline Installer                            | https://getpaint.net/                                                                            |
 | Pandoc                                | Pandoc                                                            | https://pandoc.org/                                                                              |
 | ParallelsClient                       | Parallels Client                                                  | https://www.parallels.com/products/ras/download/links/                                           |
 | PDFArranger                           | PDF Arranger                                                      | https://github.com/pdfarranger/pdfarranger/                                                      |
