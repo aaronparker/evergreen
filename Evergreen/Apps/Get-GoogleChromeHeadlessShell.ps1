@@ -1,7 +1,7 @@
-function Get-GoogleChromeDriver {
+function Get-GoogleChromeHeadlessShell {
     <#
         .SYNOPSIS
-            Returns the available Google Chrome Driver versions across all platforms and
+            Returns the available Google Chrome Headless Shell versions across all platforms and
             channels by querying the official Google version JSON.
 
         .NOTES
@@ -32,7 +32,7 @@ function Get-GoogleChromeDriver {
             foreach ($platform in $res.Get.Download.Platforms) {
 
                 # Grab the URL for this channel and platform/architecture
-                $Url = $DownloadFeed.channels.$channel.downloads.chromedriver | `
+                $Url = $DownloadFeed.channels.$channel.downloads.'chrome-headless-shell' | `
                     Where-Object { $_.platform -eq $platform } | Select-Object -ExpandProperty "url"
 
                 if ($null -ne $Url) {

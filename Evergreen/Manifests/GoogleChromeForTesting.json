@@ -1,5 +1,5 @@
 {
-    "Name": "Google Chrome Driver",
+    "Name": "Google Chrome for Testing",
     "Source": "https://googlechromelabs.github.io/chrome-for-testing/",
     "Get": {
         "Update": {

@@ -1,5 +1,5 @@
 {
-	"Name": "dotPDN LLC Paint.NET",
+	"Name": "dotPDN LLC Paint.NET Offline Installer",
 	"Source": "https://getpaint.net/",
 	"Get": {
 		"Uri": "https://api.github.com/repos/paintdotnet/release/releases/latest",

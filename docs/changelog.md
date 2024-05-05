@@ -2,6 +2,15 @@
 
 ## 2405.976
 
+* Adds `GoogleChromeForTesting`, `GoogleChromeHeadlessShell` [#674](https://github.com/aaronparker/evergreen/issues/674)
+* Updates `MozillaThunderbird` with human readable channel names, adds Beta channel, MSIX file types
+
+BREAKING CHANGES
+
+* Removes `ChromiumChromeDriver` [#674](https://github.com/aaronparker/evergreen/issues/674)
+
+## 2405.976
+
 * Adds `VSCodium`
 * Updates `MozillaFirefox` with additional channels
 * Updates `MicrosoftAzureDataStudio` to throw if the update feed is unavailable
