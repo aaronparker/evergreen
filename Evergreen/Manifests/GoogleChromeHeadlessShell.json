@@ -1,5 +1,5 @@
 {
-    "Name": "Google Chrome for Testing",
+    "Name": "Google Chrome Headless Shell",
     "Source": "https://googlechromelabs.github.io/chrome-for-testing/",
     "Get": {
         "Update": {
