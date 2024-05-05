@@ -33,20 +33,27 @@ function Get-MozillaFirefox {
 
                 # Select the download file for the selected platform
                 foreach ($installer in $res.Get.Download.Uri[$channel.Key].GetEnumerator()) {
-                    $params = @{
-                        Uri           = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
-                        WarningAction = "SilentlyContinue"
-                        ErrorAction   = "SilentlyContinue"
+                    try {
+                        $params = @{
+                            Uri = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) `
+                                    -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        }
+                        $Url = Resolve-InvokeWebRequest @params
                     }
-                    $Url = Resolve-InvokeWebRequest @params
+                    catch {
+                        Write-Error -Message "$($MyInvocation.MyCommand): Failed to resolve $Url, with: $($_.Exception.Message)"
+                        continue
+                    }
                     if ($null -ne $Url) {
 
                         # Catch if version is null
                         if ([System.String]::IsNullOrEmpty($Versions.$($channel.Key))) {
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): No version info for channel: $($channel.Key)."
                             $Version = "Unknown"
                         }
                         else {
                             $Version = $Versions.$($channel.Key) -replace $res.Get.Download.ReplaceText.Version, ""
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
                         }
 
                         # Build object and output to the pipeline
@@ -55,7 +62,7 @@ function Get-MozillaFirefox {
                             Architecture = Get-Architecture -String $platform
                             Channel      = $channel.Value
                             Language     = $currentLanguage
-                            Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
+                            Type         = Get-FileType -File $Url
                             Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                             URI          = $Url
                         }
