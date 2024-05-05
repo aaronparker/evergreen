@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `GoogleChromeForTesting`, `GoogleChromeHeadlessShell` [#674](https://github.com/aaronparker/evergreen/issues/674)
+* Updates `MozillaThunderbird` with human readable channel names, adds Beta channel, MSIX file types
 
 BREAKING CHANGES
 
