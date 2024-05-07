@@ -1,4 +1,4 @@
-Function Get-MestrelabMnova {
+function Get-MestrelabMnova {
     <#
         .SYNOPSIS
             Get the current version and download URL for Mestrelab MNova.
@@ -9,23 +9,24 @@ Function Get-MestrelabMnova {
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # Query the repo to get the full list of files
-    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
-    if ($null -ne $updateFeed) {
+    $UpdateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
+    if ($UpdateFeed -is [System.Xml.XmlDocument]) {
 
         # Grab the Windows files
-        $windowsReleases = $updateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }
+        $WindowsReleases = $UpdateFeed.Products.Product | Where-Object { $_.Platform -match $res.Get.Platform }
 
         # Build the output object for each release
-        foreach ($Release in $windowsReleases) {
+        foreach ($Release in $WindowsReleases) {
+
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version      = $Release.Version
@@ -35,5 +36,8 @@ Function Get-MestrelabMnova {
             }
             Write-Output -InputObject $PSObject
         }
+    }
+    else {
+        throw "$($MyInvocation.MyCommand): Xml document not returned from $($res.Get.Update.Uri)."
     }
 }
