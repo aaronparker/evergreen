@@ -4,7 +4,11 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://www.gimp.org/gimp_versions.json",
-			"DatePattern": "yyyy-MM-dd"
+			"DatePattern": "yyyy-MM-dd",
+			"Channels": [
+				"STABLE",
+				"DEVELOPMENT"
+			]
 		},
 		"Download": {
             "Uri": "https://download.gimp.org/mirror/pub/gimp/v#minorversion/windows/#filename",
