@@ -21,6 +21,8 @@ Via `Get-EvergreenApp` each Evergreen application returns at least two propertie
 * `Version` - a string property that is the version number of the application. If you need these in a version format, cast them with `[System.Version]`
 * `URI` - a string property that is the download location for the latest version of the application. These will be publicly available locations that provide installers in typically Windows installer formats, e.g., `exe`, `msi`. Some downloads may be in other formats, such as `zip` that will need to be extracted before install
 
+![Alt](https://repobeats.axiom.co/api/embed/ab0139306213ed1f2e467127afeb269dc57bb353.svg "Repobeats analytics image")
+
 ## How Evergreen Works
 
 **Application version and download links are only pulled from official sources (vendor's web site, vendor's application update API, GitHub, SourceForge etc.) and never a third party**.
