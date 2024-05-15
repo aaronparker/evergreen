@@ -1,0 +1,31 @@
+{
+    "Name": "Akeo Rufus (alternate method)",
+    "Source": "https://rufus.ie",
+    "Get": {
+        "Update": {
+            "Uri": "https://rufus.ie/Rufus_win.ver",
+            "UserAgent": "Rufus/4.4.2103 (Windows NT 11.0)",
+            "Strings": {
+                "Version": "version"
+            },
+            "Architectures": {
+                "x86": "download_url",
+                "x64": "download_url_x86",
+                "ARM32": "download_url_arm\\s",
+                "ARM64": "download_url_arm64"
+            }
+        }
+    },
+    "Install": {
+        "Preinstall": "",
+        "Setup": "",
+        "Physical": {
+            "Arguments": "",
+            "PostInstall": []
+        },
+        "Virtual": {
+            "Arguments": "",
+            "PostInstall": []
+        }
+    }
+}

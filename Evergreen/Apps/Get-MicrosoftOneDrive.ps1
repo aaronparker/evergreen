@@ -9,9 +9,9 @@
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -41,8 +41,8 @@
                         Throttle     = $node.throttle
                         Architecture = Get-Architecture -String $node.amd64binary.url
                         Ring         = $ring.Name
-                        Type         = [System.IO.Path]::GetExtension($node.amd64binary.url).Split(".")[-1]
-                        Sha256       = $node.amd64binary.sha256hash
+                        Type         = Get-FileType -File $node.amd64binary.url
+                        Sha256       = ConvertFrom-Base64String -Base64String $node.amd64binary.sha256hash
                         URI          = $node.amd64binary.url
                     } | Write-Output
                 }
@@ -54,7 +54,7 @@
                         Architecture = Get-Architecture -String $node.arm64binary.url
                         Ring         = $ring.Name
                         Type         = Get-FileType -File $node.arm64binary.url
-                        Sha256       = $node.arm64binary.sha256hash
+                        Sha256       = ConvertFrom-Base64String -Base64String $node.arm64binary.sha256hash
                         URI          = $node.arm64binary.url
                     } | Write-Output
                 }
@@ -67,7 +67,7 @@
                         Architecture = Get-Architecture -String $node.msixbinary.url
                         Ring         = $ring.Name
                         Type         = Get-FileType -File $node.msixbinary.url
-                        Sha256       = if ($node.msixbinary.sha256hash) { $node.msixbinary.sha256hash } else { "N/A" }
+                        Sha256       = if ($node.msixbinary.sha256hash) { ConvertFrom-Base64String -Base64String $node.msixbinary.sha256hash } else { "N/A" }
                         URI          = $node.msixbinary.url
                     } | Write-Output
                 }
@@ -79,8 +79,8 @@
                         Throttle     = $node.throttle
                         Architecture = Get-Architecture -String $node.binary.url
                         Ring         = $ring.Name
-                        Sha256       = $node.binary.sha256hash
                         Type         = Get-FileType -File $node.binary.url
+                        Sha256       = ConvertFrom-Base64String -Base64String $node.binary.sha256hash
                         URI          = $node.binary.url
                     }
                     Write-Output -InputObject $PSObject
