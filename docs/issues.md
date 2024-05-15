@@ -57,18 +57,39 @@ This typically occurs right after the release of a new version of the Workspace 
 
 Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
 
+### CitrixWorkspaceApp
+
+Citrix occasionally makes changes to the update feed for Citrix Workspace app resulting in the version number and/or the installer URI not returning the correct data. We suspect this issue may be related to Citrix throttling updates for the Citrix Workspace app. The issue with the data source is typically fixed within 72 hours.
+
+When the incorrect data is returned, Evergreen will return data similar to the below.
+
+```powershell
+Version : 24.2.0.172
+Title   : Citrix Workspace - LTSR
+Size    : 380803896
+Hash    : 7efe56e0f177cf9de336fa48daa8b6461080909fd37f7d550fd4f313221091b8
+Date    : 10/4/2024
+Stream  : LTSR
+URI     : https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Win/CitrixWorkspaceApp24.2.0.172.exe
+
+Version : 0.0.0.0
+Title   : Citrix Workspace - Current Release
+Size    : 382956344
+Hash    : 5c369d1c127b14a8530b7441a6d3ec49c681fe672e8447c63ecf453cf8b87237
+Date    : 25/4/2024
+Stream  : Current
+URI     : https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Win/CitrixWorkspaceApp24.3.0.93.exe
+```
+
 ### FileZilla
 
-`FileZilla` does not return application version data on PowerShell Core. This function does work on Windows PowerShell.
+`FileZilla` does not currently return data on PowerShell Core and inconsistently returns data on Windows PowerShell. FileZilla uses a self-signed certificate on their update server and the server uses HSTS, which present some challenges with getting Evergreen to work with the server.
 
 ### GhislerTotalCommander
 
 This application function works OK without additional requirements on Windows, but requires the `DnsClient-PS` on macOS or Linux.
 
 ### LibreOffice
-
-!!! attention "Attention"
-    `LibreOffice` has been removed from Evergreen due to on-going changes that TDF makes to the update mechanism.
 
 `LibreOffice` uses the update host at `https://update.libreoffice.org/check.php` to determine the available update release. The Document Foundation does not immediately make the update host return the latest version at the time of release. In a scenario where the update host does not return the very latest version and the TDF has pulled the downloads for the same version returned from the update host, `LibreOffice` is unable to build valid download links.
 
