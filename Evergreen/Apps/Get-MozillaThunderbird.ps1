@@ -33,17 +33,14 @@ function Get-MozillaThunderbird {
 
                 # Select the download file for the selected platform
                 foreach ($installer in $res.Get.Download.Uri[$channel.Key].GetEnumerator()) {
-                    try {
-                        $params = @{
-                            Uri = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) `
-                                    -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
-                        }
-                        $Url = Resolve-InvokeWebRequest @params
+
+                    $params = @{
+                        Uri           = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) `
+                                -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                        ErrorAction   = "SilentlyContinue"
+                        WarningAction = "SilentlyContinue"
                     }
-                    catch {
-                        Write-Error -Message "$($MyInvocation.MyCommand): Failed to resolve $Url, with: $($_.Exception.Message)"
-                        continue
-                    }
+                    $Url = Resolve-InvokeWebRequest @params
                     if ($null -ne $Url) {
 
                         # Catch if version is null
