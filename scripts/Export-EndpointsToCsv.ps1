@@ -26,3 +26,32 @@ Get-EvergreenEndpoint | ForEach-Object {
         Ports       = $_.Ports -join ","
     }
 } | Export-Csv -Path $Path -NoTypeInformation -Encoding "Utf8" -Append
+
+$Apps = @("7ZipZS", 
+    "AdobeAcrobatReaderDC", 
+    "GitForWindows", 
+    "KeePass", 
+    "Microsoft.NET", 
+    "Microsoft365Apps", 
+    "MicrosoftAzureCLI", 
+    "MicrosoftAzureStorageExplorer", 
+    "MicrosoftWvdMultimediaRedirection", 
+    "MicrosoftEdge", 
+    "MicrosoftFSLogix", 
+    "MicrosoftOneDrive", 
+    "MicrosoftWvdRtcService", 
+    "MicrosoftSsms", 
+    "MicrosoftTeams", 
+    "MicrosoftVisualStudioCode", 
+    "NotepadPlusPlus", 
+    "MicrosoftPowerShell", 
+    "PuTTY", 
+    "RemoteDisplayAnalyzer", 
+    "WinSCP")
+
+$Endpoints = Get-EvergreenEndpoint
+$Endpoints | Where-Object { $_.Application -in $Apps } | `
+    Select-Object -ExpandProperty "Endpoints" | `
+    Select-Object -Unique | `
+    Sort-Object | `
+    Set-Clipboard
