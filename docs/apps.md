@@ -1,6 +1,6 @@
-﻿# 323 Supported applications
+﻿# 324 Supported applications
 
-Evergreen `2405.994` supports the following applications:
+Evergreen `2405.1013` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                             |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -25,6 +25,7 @@ Evergreen `2405.994` supports the following applications:
 | AdoptiumTemurin8                      | Adoptium Temurin 8                                                | https://adoptium.net/                                                                            |
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                             |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                |
+| AkeoRufusAlt                          | Akeo Rufus (alternate method)                                     | https://rufus.ie                                                                                 |
 | AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                                 |
 | Anaconda                              | Anaconda                                                          | https://www.anaconda.com/                                                                        |
 | Anki                                  | Anki                                                              | https://github.com/ankitects/anki/                                                               |
@@ -100,7 +101,7 @@ Evergreen `2405.994` supports the following applications:
 | GoogleChrome                          | Google Chrome Enterprise                                          | https://cloud.google.com/chrome-enterprise/browser/download/                                     |
 | GoogleChromeDriver                    | Google Chrome Driver                                              | https://googlechromelabs.github.io/chrome-for-testing/                                           |
 | GoogleChromeForTesting                | Google Chrome for Testing                                         | https://googlechromelabs.github.io/chrome-for-testing/                                           |
-| GoogleChromeHeadlessShell             | Google Chrome for Testing                                         | https://googlechromelabs.github.io/chrome-for-testing/                                           |
+| GoogleChromeHeadlessShell             | Google Chrome Headless Shell                                      | https://googlechromelabs.github.io/chrome-for-testing/                                           |
 | GoogleDrive                           | Google Drive                                                      | https://support.google.com/drive/answer/7329379                                                  |
 | GoToConnect                           | GoTo Connect                                                      | https://support.goto.com/connect/help/what-are-the-download-links-for-it-admin-deployments       |
 | GoToMeeting                           | GoTo Meeting                                                      | https://support.goto.com/meeting/help/install-via-msi-windows                                    |

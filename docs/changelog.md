@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.1013
 
 * Adds `AkeoRufusAlt`
 * Update `Gimp` with `Revision` property [#639](https://github.com/aaronparker/evergreen/issues/639)
