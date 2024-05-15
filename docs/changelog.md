@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `AkeoRufusAlt`
+* Update `Gimp` with `Revision` property [#639](https://github.com/aaronparker/evergreen/issues/639)
+* Updates `MicrosoftOneDrive` to convert sha256 value from base64 to string [#481](https://github.com/aaronparker/evergreen/issues/481)
+* Update `MestrelabMnova` to throw an error when update feed is not in the expected format
+* Fix an issue with `MozillaFirefox` [#676](https://github.com/aaronparker/evergreen/issues/676)
+* Adds `ConvertFrom-Base64String ` private function
+
 ## 2405.976
 
 * Adds `GoogleChromeForTesting`, `GoogleChromeHeadlessShell` [#674](https://github.com/aaronparker/evergreen/issues/674)
