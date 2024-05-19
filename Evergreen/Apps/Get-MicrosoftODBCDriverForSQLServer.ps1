@@ -12,6 +12,9 @@ function Get-MicrosoftODBCDriverForSQLServer {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Output = Get-MicrosoftFwLink -res $res
-    Write-Output -InputObject $Output
+    $params = @{
+        Uri                = $res.Get.Download.Uri
+        MaximumRedirection = $res.Get.Download.MaximumRedirection
+    }
+    Resolve-MicrosoftFwLink @params | Write-Output
 }
