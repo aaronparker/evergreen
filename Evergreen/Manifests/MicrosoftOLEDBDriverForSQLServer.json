@@ -1,5 +1,5 @@
 {
-    "Name": "Microsoft OLE DB Driver for SQL Server",
+    "Name": "Microsoft OLE DB Driver for SQL Server (latest)",
     "Source": "https://learn.microsoft.com/en-us/sql/connect/oledb/download-oledb-driver-for-sql-server",
     "Get": {
         "Update": {
