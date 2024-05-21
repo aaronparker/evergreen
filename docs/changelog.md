@@ -1,5 +1,17 @@
 # Change log
 
+## VERSION
+
+* Adds `MicrosoftOpenJDK21`, `AdoptiumTemurin21`, `AzulZulu21`, `Proxyman`, `RedHatOpenJDK21`
+* Adds `MicrosoftODBCDriverForSQLServer17` [#685](https://github.com/aaronparker/evergreen/issues/685), `MicrosoftOLEDBDriverForSQLServer18` [#686](https://github.com/aaronparker/evergreen/issues/686)
+* Updates `MicrosoftODBCDriverForSQLServer` [#685](https://github.com/aaronparker/evergreen/issues/685), `MicrosoftOLEDBDriverForSQLServer18` [#686](https://github.com/aaronparker/evergreen/issues/686), `MicrosoftOLEDBDriverForSQLServer` [#686](https://github.com/aaronparker/evergreen/issues/686)
+* Updates `MicrosoftSsms` with new source URL that should ensure latest version is always found, and simplifies function code [#687](https://github.com/aaronparker/evergreen/issues/687)
+* Updates `Resolve-MicrosoftFwLink` to support more flexible queries
+
+BREAKING CHANGES
+
+* Removes `VMwareHorizonClient`, `VMwareOSOptimizationTool`, `VMwareSDWANClient`, `VMwareWorkstationPlayer`, `VMwareWorkstationPro` [#678](https://github.com/aaronparker/evergreen/issues/678)
+
 ## 2405.1013
 
 * Adds `AkeoRufusAlt`
