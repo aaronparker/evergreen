@@ -194,6 +194,7 @@ function Get-GitHubRepoRelease {
                                 Size          = $asset.size
                                 URI           = $asset.browser_download_url
                             }
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Matching platform 'Windows' against: $($PSObject.Platform)."
                             if ($PSObject.Platform -eq "Windows") {
                                 Write-Output -InputObject $PSObject
                             }
