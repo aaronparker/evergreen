@@ -1,4 +1,4 @@
-function Get-MicrosoftFwLink {
+function Resolve-MicrosoftFwLink {
     <#
         .SYNOPSIS
             Resolves https://go.microsoft.com/fwlink URLs
@@ -10,18 +10,27 @@ function Get-MicrosoftFwLink {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $false, Position = 0)]
+        [Parameter(Mandatory = $true, Position = 0)]
+        [ValidateScript( {
+                if ($_ -match "^(https:\/\/go\.microsoft\.com\/fwlink\/\?linkid=)([0-9]+).*$") { $true }
+                else {
+                    throw "'$_' must be in the format 'https://go.microsoft.com/fwlink/?linkid=2248728'."
+                }
+            })]
+        [System.String[]] $Uri,
+
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.Management.Automation.PSObject] $res
+        [System.Int32] $MaximumRedirection = 2
     )
 
     process {
-        foreach ($Uri in $res.Get.Download.Uri) {
+        foreach ($Url in $Uri) {
 
             # Resolve the URL
             $params = @{
-                Uri                = $Uri
-                MaximumRedirection = $res.Get.Download.MaximumRedirection
+                Uri                = $Url
+                MaximumRedirection = $MaximumRedirection
             }
             $ResolvedUrl = Resolve-SystemNetWebRequest @params
 
@@ -30,19 +39,20 @@ function Get-MicrosoftFwLink {
                 $Version = [RegEx]::Match($ResolvedUrl.ResponseUri.AbsoluteUri, "(\d+(\.\d+){1,4}).*").Captures.Groups[1].Value
             }
             catch {
+                $Version = "Unknown"
                 Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match version number from: $($ResolvedUrl.ResponseUri.AbsoluteUri)."
             }
 
             # Output a version object
-            $Output = [PSCustomObject]@{
+            [PSCustomObject]@{
                 Version      = $Version
-                Date         = $ResolvedUrl.LastModified #ConvertTo-DateTime -Date $ResolvedUrl.LastModified -Pattern $res.Get.Download.DatePattern
+                Date         = $ResolvedUrl.LastModified.ToShortDateString()
                 Size         = $ResolvedUrl.ContentLength
+                Language     = "Unknown"
                 Architecture = Get-Architecture -String $ResolvedUrl.ResponseUri.AbsoluteUri
                 Type         = Get-FileType -File $ResolvedUrl.ResponseUri.AbsoluteUri
                 URI          = $ResolvedUrl.ResponseUri.AbsoluteUri
-            }
-            Write-Output -InputObject $Output
+            } | Write-Output
         }
     }
 }

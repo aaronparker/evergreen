@@ -1,5 +1,5 @@
 {
-    "Name": "Microsoft ODBC Driver for SQL Server (latest)",
+    "Name": "Microsoft ODBC Driver for SQL Server 17.x",
     "Source": "https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server",
     "Get": {
         "Update": {
@@ -7,9 +7,8 @@
         },
         "Download": {
             "Uri": [
-                "https://go.microsoft.com/fwlink/?linkid=2266640",
-                "https://go.microsoft.com/fwlink/?linkid=2266742",
-                "https://go.microsoft.com/fwlink/?linkid=2266837"
+                "https://go.microsoft.com/fwlink/?linkid=2266337",
+                "https://go.microsoft.com/fwlink/?linkid=2266446"
             ],
             "Language": {
 				"English": "0x409",

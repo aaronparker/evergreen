@@ -1,15 +1,14 @@
 {
-    "Name": "Microsoft ODBC Driver for SQL Server (latest)",
-    "Source": "https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server",
+    "Name": "Microsoft OLE DB Driver for SQL Server 18",
+    "Source": "https://learn.microsoft.com/en-us/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server?view=sql-server-ver16#previous-releases",
     "Get": {
         "Update": {
             "Uri": ""
         },
         "Download": {
             "Uri": [
-                "https://go.microsoft.com/fwlink/?linkid=2266640",
-                "https://go.microsoft.com/fwlink/?linkid=2266742",
-                "https://go.microsoft.com/fwlink/?linkid=2266837"
+                "https://go.microsoft.com/fwlink/?linkid=2266757",
+                "https://go.microsoft.com/fwlink/?linkid=2266858"
             ],
             "Language": {
 				"English": "0x409",
