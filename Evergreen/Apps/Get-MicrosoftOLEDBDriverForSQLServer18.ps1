@@ -1,4 +1,4 @@
-function Get-MicrosoftOLEDBDriverForSQLServer {
+function Get-MicrosoftOLEDBDriverForSQLServer18 {
     <#
         .SYNOPSIS
 

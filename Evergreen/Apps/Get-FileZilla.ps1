@@ -8,10 +8,10 @@ function Get-FileZilla {
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     [OutputType([System.Management.Automation.PSObject])]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -19,21 +19,19 @@ function Get-FileZilla {
 
     # Query the update feed
     $params = @{
-        Uri                 = $res.Get.Update.Uri
-        UserAgent           = $res.Get.Update.UserAgent
+        Uri                  = $res.Get.Update.Uri
+        UserAgent            = $res.Get.Update.UserAgent
+        Headers              = @{
+            Accept = "*/*"
+        }
         SkipCertificateCheck = $true
-        Raw                 = $true
+        Raw                  = $true
     }
     $Content = Invoke-EvergreenWebRequest @params
 
     # Convert the content to an object
-    try {
-        $Updates = $Content | ConvertFrom-Csv -Delimiter $res.Get.Update.Delimiter -Header $res.Get.Update.Headers | `
-            Where-Object { $_.Channel -eq $res.Get.Update.Channel }
-    }
-    catch {
-        throw $_
-    }
+    $Updates = $Content | ConvertFrom-Csv -Delimiter $res.Get.Update.Delimiter -Header $res.Get.Update.Headers | `
+        Where-Object { $_.Channel -eq $res.Get.Update.Channel }
 
     # Output the object to the pipeline
     foreach ($Update in $Updates) {
