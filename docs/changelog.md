@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.1033
 
 * Adds `MicrosoftOpenJDK21`, `AdoptiumTemurin21`, `AzulZulu21`, `Proxyman`, `RedHatOpenJDK21`
 * Adds `MicrosoftODBCDriverForSQLServer17` [#685](https://github.com/aaronparker/evergreen/issues/685), `MicrosoftOLEDBDriverForSQLServer18` [#686](https://github.com/aaronparker/evergreen/issues/686)
