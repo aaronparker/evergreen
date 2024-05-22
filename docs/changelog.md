@@ -12,7 +12,7 @@
 * Updates `MicrosoftSsms` with new source URL that should ensure latest version is always found, and simplifies function code [#687](https://github.com/aaronparker/evergreen/issues/687)
 * Updates `Resolve-MicrosoftFwLink` to support more flexible queries
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Removes `VMwareHorizonClient`, `VMwareOSOptimizationTool`, `VMwareSDWANClient`, `VMwareWorkstationPlayer`, `VMwareWorkstationPro` [#678](https://github.com/aaronparker/evergreen/issues/678)
 
@@ -30,7 +30,7 @@ BREAKING CHANGES
 * Adds `GoogleChromeForTesting`, `GoogleChromeHeadlessShell` [#674](https://github.com/aaronparker/evergreen/issues/674)
 * Updates `MozillaThunderbird` with human readable channel names, adds Beta channel, MSIX file types
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Removes `ChromiumChromeDriver` [#674](https://github.com/aaronparker/evergreen/issues/674)
 
@@ -48,7 +48,7 @@ BREAKING CHANGES
 * Fixes an issue with `Resolve-SystemNetWebRequest` with ability to set UserAgent to null [#669](https://github.com/aaronparker/evergreen/issues/669)
 * Adds a custom user agent to `Invoke-EvergreenApp` to improve reporting on Cloudflare Workers
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Changes values for `MozillaFirefox` to be human readable [#667](https://github.com/aaronparker/evergreen/issues/667) [#672](https://github.com/aaronparker/evergreen/issues/672)
 
@@ -116,7 +116,7 @@ BREAKING CHANGES
 * Updates `Zoom` to use the download JSON found in the Zoom downloads page [#555](https://github.com/aaronparker/evergreen/issues/555)
 * Fixes an issue with `OracleJava17` (and all Oracle Java apps) where a later version was returned instead of the release version [#558](https://github.com/aaronparker/evergreen/issues/558)
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * `Zoom` has been split into `Zoom` and `ZoomVDI`. These functions also provide different property values. [#556](https://github.com/aaronparker/evergreen/discussions/556)
 
@@ -219,7 +219,7 @@ BREAKING CHANGES
 * Adds `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `MicrosoftAzurePipelinesAgent` [#472](https://github.com/aaronparker/evergreen/issues/472), `AutodeskFusion360`, `GoToConnect` [#469](https://github.com/aaronparker/evergreen/issues/469), `PDFArranger` [#471](https://github.com/aaronparker/evergreen/issues/471)
 * Adds a temporary fix for `VMwareWorkstationPlayer`, and `VMwareWorkstationPro` with new download URLs [#474](https://github.com/aaronparker/evergreen/issues/474)
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Renames `LogMeInGoToMeeting` and `LogMeInGoToOpener` to `GoToMeeting` and `GoToOpener`
 
@@ -345,7 +345,7 @@ BREAKING CHANGES
 * Updates `Zoom` to add `x64` and `ARM64` support for meetings clients. Updates `Platform` property to better identify application installer
 * Updates `Invoke-EvergreenLibraryUpdate` to add installer path to application version information JSON file [#362](https://github.com/aaronparker/evergreen/discussions/362)
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * The values of the `Property` property in `Zoom` have changed. The values are `Meetings`, `Rooms`, `Plugin`, `VDI`, `Citrix`, `VMware`
 
@@ -395,7 +395,7 @@ BREAKING CHANGES
 * Fix an issue with `VMwareTools` due to changes in source data
 * Fix an issue with `MattermostDesktop` due to changes in releases on the [GitHub repository](https://github.com/mattermost/desktop)
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * The following applications have been removed from Evergreen as they provide only links to downloads rather than direct links to installers - `CitrixAppLayeringFeed`, `CitrixApplicationDeliveryManagementFeed`, `CitrixEndpointManagementFeed`, `CitrixGatewayFeed`, `CitrixHypervisorFeed`, `CitrixLicensingFeed`, `CitrixReceiverFeed`, `CitrixSdwanFeed`, `CitrixVirtualAppsDesktopsFeed`, `CitrixWorkspaceAppFeed`
 
@@ -417,7 +417,7 @@ BREAKING CHANGES
 * Fixes an issue with installers returned by `MicrosoftEdgeDriver` and `MicrosoftEdgeWebView2Runtime`
 * Updates `McNeelRhino` to work under PowerShell 6/7 - resolves an issue when using `Invoke-RestMethod` which does not follow a HTTP 302 response
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * `RStudio` returns new properties that will require filtering the output. Properties include: `Branch`, `Channel`, `ProductName`, and `InstallerName`
 
@@ -440,7 +440,7 @@ BREAKING CHANGES
 * Updates `MicrosoftEdge`, `MicrosoftEdgeDriver`, `MicrosoftEdgeWebView2Runtime` to ensure that the correct versions are returned for the `Enterprise` view for Edge installers [#311](https://github.com/aaronparker/evergreen/discussions/311)
 * Updates various functions to use `Write-Error` instead of `throw` to ensure that functions continue where a specific query for an installer fails [#306](https://github.com/aaronparker/evergreen/issues/306)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Updates the approach used in `AdobeAcrobatReaderDC` to determine the version and available downloads for Adobe Acrobat Reader DC. Adobe has changed the available enterprise installers at [https://get.adobe.com/uk/reader/enterprise/](https://get.adobe.com/uk/reader/enterprise/) [#312](https://github.com/aaronparker/evergreen/discussions/312)
 
@@ -490,7 +490,7 @@ BREAKING CHANGES:
 * Fixes URI values for `SumatraPDFViewer` due to changes in source [#211](https://github.com/aaronparker/evergreen/issues/211)
 * Fixes URI values for `FoxitReader` due to changes in source [#261](https://github.com/aaronparker/evergreen/issues/261)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Removes all default languages from `MozillaFirefox` and includes `en-US` only. Any supported languages can be passed to `MozillaFirefox` by passing a hashtable to `-AppParams`. For example: `Get-EvergreenApp -Name "MozillaFirefox" -AppParams @{Language="en-GB", "es-ES"}`
 * Removes `FIREFOX_ESR_NEXT` from `MozillaFirefox` as the Firefox update feed is not including the version number
@@ -503,7 +503,7 @@ BREAKING CHANGES:
 * Updates method used to determine version and download for `JSAP`
 * Adds private function `Resolve-DnsNameWrapper` to resolve DNS TXT records. Used by `GhislerTotalCommander`. Currently supports Windows only
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Disables `LibreOffice` - the update method keeps changing requiring a significant amount of work to fix each time. [#218](https://github.com/aaronparker/evergreen/issues/218)
 * Updates `Microsoft365Apps` to fix some instances where the incorrect version number returned, and updates channel names in `Channel` property using the names listed in the `Channel` property in the configuration.xml. A `Name` property has been added with the full channel names to ensure readability. This reflects the same channel names used when creating a configuration in the [Microsoft 365 Apps admin center]((https://config.office.com/))
@@ -516,7 +516,7 @@ BREAKING CHANGES:
 * Adds the parameter `-AppParams` to `Get-EvergreenApp` that takes a hashtable of parameters to be passed to the internal application functions. Right now, this will only work with `GitHubRelease` - enabling Evergreen to return the releases for any GitHub repository with Windows releases that you pass via `-AppParams`
 * Updates the approach used for `TelegramDesktop`, because Telegram posts a release to GitHub that doesn't match the latest Windows release
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Updates the channel names, and adds additional channels, in `Microsoft365Apps` - this release adds all available Microsoft 365 Apps channels - `FirstReleaseCurrent`, `Insiders`, `Monthly`, `Current`, `MonthlyEnterprise`, `Deferred`, `Broad`, `Targeted`, `FirstReleaseDeferred`, `Perpetual2019`, `PerpetualVL2019`
 * Disables `CiscoWebEx` - function is unable to return the current WebEx version using the existing method and no working method has been found
@@ -527,7 +527,7 @@ BREAKING CHANGES:
 * Fixes an issue in `Save-EvergreenApp` when the path specified in the `-Path` parameter does not exist
 * Updates `LibreOffice` to gracefully handle download a scenario where the The Document Foundation pulls the download links for a published version [#218](https://github.com/aaronparker/evergreen/issues/218)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Updates `Postman` with `x86` and `x64` architecture
 * Updates `LibreOffice` with `Release` property with a value of `Still` or `Fresh`
@@ -550,7 +550,7 @@ BREAKING CHANGES:
 * Updates `CitrixWorkspaceApp` to return a `Stream` property that includes a value of `Current` or `LTSR`
 * Updates `LibreOffice` [#171](https://github.com/aaronparker/evergreen/issues/171), `CitrixWorkspaceApp`, `OracleJava8`, `MicrosoftSsms` to use `Invoke-RestMethodWrapper` to avoid needing to convert update feed into XML simplifying the code
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Renames `AtlassianBitbucket` to `AtlassianSourcetree` [#177](https://github.com/aaronparker/evergreen/issues/177)
 
@@ -580,7 +580,7 @@ BREAKING CHANGES:
 * Updates private function `Get-Architecture` with additional processor architecture detections
 * Updates private function `Get-GitHubRepoRelease` to return a custom object if the GitHub API is rate limited
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Remove portable installers and `.zip` file types from `Notepad++`
 
@@ -590,7 +590,7 @@ BREAKING CHANGES:
 * Updates `MicrosoftFSLogixApps` to return both the production and preview releases [#176](https://github.com/aaronparker/evergreen/issues/176)
 * Updates `Veracrypt` to return the complete version number (e.g. `1.24-Update7`) [#166](https://github.com/aaronparker/evergreen/issues/166)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Adds the `Production` and `Preview` channels to `MicrosoftFSLogixApps` that will require filtering with `Where-Object`
 
@@ -615,7 +615,7 @@ BREAKING CHANGES:
 * Updates `AdobeAcrobat` to include Reader updates for `2015`, `2017`, `2020`
 * Updates `AdobeAcrobat` to include 64-bit updates for Reader and Acrobat DC
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Adds the `Architecture` property to `AdobeAcrobat`
 
@@ -679,7 +679,7 @@ BREAKING CHANGES
 * Updates `Get-ControlUpAgent` to use the published JSON at [https://www.controlup.com/latest-agent-console/](https://www.controlup.com/latest-agent-console/) - the last vestiges of any screen scraping code have been swept away
 * Updates `Get-AdobeAcrobatReaderDC` to account for the new 64-bit version of Reader to add [#121](https://github.com/aaronparker/Evergreen/issues/121). Filter with `Where-Object` to return the required version, language and architecture
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Adds `Architecture` property and removes `Type` property from the output of `Get-AdobeAcrobatReaderDC`
 * Removes the Adobe Acrobat Reader DC updaters from `Get-AdobeAcrobatReaderDC` as there is no consistent automated method to determine whether an update is required or optional
@@ -692,7 +692,7 @@ BREAKING CHANGES
 * Adds `Preview` ring to `Get-MicrosoftTeams`
 * Updates function comment-based help and corrects spelling across several functions
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Adds `Track` property to `Get-AdobeAcrobat` with values of `DC`, `2020`, `2017`, `2015` - filter with `Where-Object`
 * Adds `Ring` property to `Get-MicrosoftTeams` for `General` (i.e., current / production ring) and `Preview` rings - filter with `Where-Object`
@@ -721,7 +721,7 @@ BREAKING CHANGES
   * `Resolve-Uri` to `Resolve-SystemNetWebRequest`
   * `Resolve-RedirectedUri` to `Resolve-InvokeWebRequest`
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Removes parameter from several functions (below) to simplify existing functions and support a move to a single `Get-EvergreenApp` function
 * Removes the `-Channel` and `-Platform` parameters from `Get-MicrosoftVisualStudioCode`. Filter output using `Where-Object` on the `Channel` and `Platform` parameters on the function output
@@ -732,7 +732,7 @@ BREAKING CHANGES
 * Adds `Get-AtlassianBitbucket`, `Get-TelegramDesktop`, `Get-Gimp`, `Get-BitwardenDesktop`, `Get-MicrosoftBicep`
 * Updates `Get-MicrosoftPowerShell` to return both the `Stable` and `LTS` releases of PowerShell
 
-BREAKING CHANGES
+### BREAKING CHANGES
 
 * Update output of `Get-MicrosoftOneDrive` - changes property `Sha256Hash` to `Sha256` to be consistent with other functions
 * Adds a `Release` property to the output of `Get-MicrosoftPowerShell` - use `Where-Object` to filter on `Stable` or `LTS`
@@ -761,7 +761,7 @@ BREAKING CHANGES
 * Updates version output for `Get-MicrosoftWvdRtcService` and `Get-MicrosoftWvdInfraAgent`
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Output of `Get-MicrosoftOneDrive` has changed - `Platform` has been removed and `Type` has been added
 * Output of `Get-OracleVirtualBox` has changed - `Type` property has been added
@@ -782,7 +782,7 @@ BREAKING CHANGES:
 * Updates manifest for a number of functions to better align with an updated standard structure (see `Manifests/Template.json`)
 * Updates private function `ConvertTo-DateTime` to better handle date/time format conversion. Still some improvements to be made here
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Updates `Get-OpenJDK` to return only Msi releases and removes Debug, zip etc. On-going improvements - see [#76](https://github.com/aaronparker/Evergreen/issues/76)
 * Removes Beta and Snapshots releases from `Get-Cyberduck`
