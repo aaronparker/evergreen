@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.1054
 
 * Fixes an issue with `MicrosoftSsms`
 
