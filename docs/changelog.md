@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes an issue with `MicrosoftSsms`
+
 ## 2405.1033
 
 * Adds `MicrosoftOpenJDK21`, `AdoptiumTemurin21`, `AzulZulu21`, `Proxyman`, `RedHatOpenJDK21`
