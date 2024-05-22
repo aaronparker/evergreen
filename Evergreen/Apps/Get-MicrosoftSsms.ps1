@@ -28,7 +28,7 @@ function Get-MicrosoftSsms {
                 $Query = "?clcid="
                 $Uri = "$($Entry.link.href)$($Query)$($res.Get.Download.Language[$language.key])"
                 $ResponseUri = Resolve-SystemNetWebRequest -Uri $Uri
-                if ($ResponseUri.ResponseUri.AbsoluteUri -eq $true) {
+                if ($ResponseUri.ResponseUri -is [System.Uri]) {
 
                     # Construct the output; Return the custom object to the pipeline
                     $PSObject = [PSCustomObject] @{
