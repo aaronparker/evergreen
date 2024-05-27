@@ -4,16 +4,16 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/borntoberoot/networkmanager/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$"
+		"MatchFileTypes": "\\.msi$"
 	},
 	"Install": {
-		"Setup": "NETworkManager_*_Setup.exe",
+		"Setup": "NETworkManager_*_Setup.msi",
 		"Physical": {
-			"Arguments": "/VERYSILENT /SUPPRESSMSGBOXES /TASKS=\"desktopicon\" /NORESTART /SP-",
+			"Arguments": "/qn /norestart",
 			"PostInstall": []
 		},
 		"Virtual": {
-			"Arguments": "/VERYSILENT /SUPPRESSMSGBOXES /TASKS=\"desktopicon\" /NORESTART /SP-",
+			"Arguments": "/qn /norestart",
 			"PostInstall": []
 		}
 	}
