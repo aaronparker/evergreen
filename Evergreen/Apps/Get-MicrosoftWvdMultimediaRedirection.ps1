@@ -22,33 +22,33 @@ function Get-MicrosoftWvdMultimediaRedirection {
         Method       = "Head"
         ReturnObject = "Headers"
     }
-    $Content = Invoke-EvergreenWebRequest @params
-    if ($null -ne $Content) {
+    $Headers = Invoke-EvergreenWebRequest @params
+    if ($null -ne $Headers) {
 
-        try {
-            # Match filename
-            $Filename = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+        # Match filename
+        #$Filename = [RegEx]::Match($Headers.'Content-Disposition', $res.Get.Download.MatchFilename).Captures.Groups[1].Value
+        $FileName = $Headers.'Content-Disposition'.Split("=")[-1]
+        if ($null -ne $Filename) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found filename: $Filename."
         }
-        catch {
-            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match filename from '$($Content.'Content-Disposition')'."
+        else {
+            Write-Warning -Message "$($MyInvocation.MyCommand): Failed to match filename from '$($Headers.'Content-Disposition')'."
         }
 
-        try {
-            # Match version
-            $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+        # Match version
+        $Version = [RegEx]::Match($FileName, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+        if ($null -ne $Version) {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
         }
-        catch {
-            $Version = [RegEx]::Match($Content.'Content-Disposition', $res.Get.Download.MatchVersionFallback).Captures.Groups[1].Value
+        else {
+            $Version = [RegEx]::Match($Headers.'Content-Disposition', $res.Get.Download.MatchVersionFallback).Captures.Groups[1].Value
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
-            Write-Warning -Message "$($MyInvocation.MyCommand): Unable to determine a version number from '$($Content.'Content-Disposition')'."
         }
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version      = $Version
-            Date         = $Content.'Last-Modified'
+            Date         = ConvertTo-DateTime -DateTime $($Headers.'Last-Modified' | Select-Object -First 1) -Pattern $res.Get.Download.DateFormat
             Architecture = Get-Architecture -String $Filename
             Filename     = $Filename
             URI          = $res.Get.Download.Uri
