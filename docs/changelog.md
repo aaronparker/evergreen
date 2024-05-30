@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2405.1076
 
 * Adds  `DockerCompose`
 * Updates `NETworkManager` to return new MSI installers

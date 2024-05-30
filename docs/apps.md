@@ -1,6 +1,6 @@
-﻿# 326 Supported applications
+﻿# 327 Supported applications
 
-Evergreen `2405.1054` supports the following applications:
+Evergreen `2405.1076` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -68,6 +68,7 @@ Evergreen `2405.1054` supports the following applications:
 | DevToys                               | DevToys                                                           | https://devtoys.app/                                                                                                                      |
 | diagrams.net                          | diagrams.net                                                      | https://www.diagrams.net/                                                                                                                 |
 | dnGrep                                | dnGrep                                                            | https://dngrep.github.io/                                                                                                                 |
+| DockerCompose                         | Docker Compose                                                    | https://github.com/docker/compose                                                                                                         |
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                                                                           |
 | DoubleCommander                       | Double Commander                                                  | https://github.com/doublecmd/doublecmd/                                                                                                   |
 | DrataAgent                            | Drata Agent                                                       | https://help.drata.com/en/articles/5002305-installing-the-drata-agent-via-windows-os                                                      |
