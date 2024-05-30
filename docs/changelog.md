@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds  `DockerCompose`
+* Updates `NETworkManager` to return new MSI installers
+* Updates `MicrosoftAzureCLI` to return `x64` and `x86` architectures [#691](https://github.com/aaronparker/evergreen/issues/691)
+* Fixes an issue with `GoogleChrome` where source data returns date value as an array
+* Minor updates to `MicrosoftWvdMultimediaRedirection` and `MicrosoftWvdRtcService`
+
 ## 2405.1054
 
 * Fixes an issue with `MicrosoftSsms`
