@@ -28,10 +28,11 @@ function Get-Proxyman {
 
     # Return a formatted object to the pipeline
     [PSCustomObject]@{
-        Version = $LatestVersion.Version
-        Date    = $Url.LastModified.ToShortDateString()
-        Size    = $Url.ContentLength
-        Type    = Get-FileType -File $Url.ResponseUri.AbsoluteUri
-        URI     = $Url.ResponseUri.AbsoluteUri
+        Version      = $LatestVersion.Version
+        Date         = $Url.LastModified.ToShortDateString()
+        Size         = $Url.ContentLength
+        Architecture = Get-Architecture -String $Url.ResponseUri.AbsoluteUri
+        Type         = Get-FileType -File $Url.ResponseUri.AbsoluteUri
+        URI          = $Url.ResponseUri.AbsoluteUri
     } | Write-Output
 }

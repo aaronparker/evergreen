@@ -6,7 +6,8 @@
             "Uri": "https://aka.ms/avdmmr/msi",
             "MatchFilename": "inline; filename=(.*)$",
             "MatchVersion": "(\\d+(\\.\\d+){1,4})",
-            "MatchVersionFallback": "(\\d+)"
+            "MatchVersionFallback": "(\\d+)",
+            "DateFormat": "EEE, dd MMM yyyy HH:mm:ss zzz"
         }
     },
     "Install": {

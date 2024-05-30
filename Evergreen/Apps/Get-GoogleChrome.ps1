@@ -45,11 +45,11 @@ function Get-GoogleChrome {
         # Get the short date
         Write-Verbose -Message "$($MyInvocation.MyCommand): Get short date from $($LatestDate.serving.startTime)."
         if ($LatestDate.serving.startTime -is [System.DateTime]) {
-            $Date = $LatestDate.serving.startTime.ToShortDateString()
+            $Date = $LatestDate.serving.startTime[0].ToShortDateString()
         }
         else {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Convert string to DateTime."
-            $Date = ([System.DateTime]$LatestDate.serving.startTime).ToShortDateString()
+            $Date = ([System.DateTime]$LatestDate.serving.startTime[0]).ToShortDateString()
         }
 
         # Output the version and URI object

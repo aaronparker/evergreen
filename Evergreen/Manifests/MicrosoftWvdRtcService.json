@@ -5,7 +5,9 @@
         "Download": {
             "Uri": "https://aka.ms/msrdcwebrtcsvc/msi",
             "MatchFilename": "(MsRdcWebRTCSvc.*msi)",
-            "MatchVersion": "(\\d+(\\.\\d+){1,4})"
+            "MatchVersion": "(\\d+(\\.\\d+){1,4})",
+            "MatchVersionFallback": "(\\d+)",
+            "DateFormat": "EEE, dd MMM yyyy HH:mm:ss zzz"
         }
     },
     "Install": {
