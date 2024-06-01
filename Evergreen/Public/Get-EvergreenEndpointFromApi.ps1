@@ -1,8 +1,9 @@
-function Get-EvergreenEndpoint {
+function Get-EvergreenEndpointFromApi {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [CmdletBinding(SupportsShouldProcess = $false)]
+    [Alias("Get-EvergreenEndpoint")]
     param (
         [Parameter(
             Position = 0,

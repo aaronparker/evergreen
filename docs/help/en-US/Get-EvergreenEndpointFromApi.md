@@ -1,11 +1,11 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenEndpoint/
+online version: https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenEndpointFromApi/
 schema: 2.0.0
 ---
 
-# Get-EvergreenEndpoint
+# Get-EvergreenEndpointFromApi
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ Returns an array of applications, endpoints and ports required by Evergreen to s
 ## SYNTAX
 
 ```
-Get-EvergreenEndpoint [-Name] <String> [-Confirm] [<CommonParameters>]
+Get-EvergreenEndpointFromApi [-Name] <String> [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ The list of endpoints returned can be used for auditing purposes and to define a
 ### EXAMPLE 1
 
 ```powershell
-Get-EvergreenEndpoint
+Get-EvergreenEndpointFromApi
 
 Application  Endpoints                                                                              Ports
 -----------  ---------                                                                              -----
@@ -45,7 +45,7 @@ Returns the list of endpoint URL sources and ports for all of the applications c
 ### EXAMPLE 2
 
 ```powershell
-Get-EvergreenEndpoint -Name "MicrosoftEdge", "MicrosoftTeams"
+Get-EvergreenEndpointFromApi -Name "MicrosoftEdge", "MicrosoftTeams"
 
 Application    Endpoints                                                                              Ports
 -----------    ---------                                                                              -----
@@ -59,7 +59,7 @@ Returns the list of endpoint URL sources and ports for determining the applicati
 ### EXAMPLE 3
 
 ```powershell
-Get-EvergreenEndpoint | Select-Object -ExpandProperty Endpoints -Unique
+Get-EvergreenEndpointFromApi | Select-Object -ExpandProperty Endpoints -Unique
 
 1password.com
 app-updates.agilebits.com
