@@ -4,18 +4,18 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/DevToys-app/DevToys/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msixbundle$"
+		"MatchFileTypes": "\\.exe$|\\.zip$|\\.msixbundle$"
 	},
 	"Install": {
-		"Setup": "Brackets*.msi",
+		"Setup": "*.exe",
 		"Preinstall": "",
 		"Physical": {
-			"Arguments": "/quiet /norestart",
+			"Arguments": "/VERYSILENT /NORESTART",
 			"PostInstall": [
 			]
 		},
 		"Virtual": {
-			"Arguments": "/quiet /norestart",
+			"Arguments": "/VERYSILENT /NORESTART",
 			"PostInstall": [
 			]
 		}
