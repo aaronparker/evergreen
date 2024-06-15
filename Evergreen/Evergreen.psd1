@@ -12,7 +12,7 @@
 RootModule = 'Evergreen.psm1'
 
 # Version number of this module.
-ModuleVersion = '2405.1076'
+ModuleVersion = '2405.1077'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,11 +69,7 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest', 
-               'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenEndpointFromApi', 
-               'Get-EvergreenLibrary', 'Get-EvergreenLibraryApp', 
-               'Get-EvergreenAppFromApi', 'Start-EvergreenLibraryUpdate', 
-               'New-EvergreenLibrary', 'Save-EvergreenApp', 'Test-EvergreenApp')
+FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest', 'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenEndpointFromApi','Get-EvergreenLibrary', 'Get-EvergreenLibraryApp', 'Get-EvergreenAppFromApi', 'Start-EvergreenLibraryUpdate', 'New-EvergreenLibrary', 'Save-EvergreenApp', 'Test-EvergreenApp')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -82,8 +78,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Get-EvergreenAppFromApi', 
-               'Start-EvergreenLibraryUpdate'
+AliasesToExport = @('sea', 'gea', 'fea', 'tea', 'iea', 'Get-EvergreenAppFromApi', 'Start-EvergreenLibraryUpdate', 'Get-EvergreenEndpoint')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

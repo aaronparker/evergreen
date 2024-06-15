@@ -1,5 +1,17 @@
 # Change log
 
+## VERSION
+
+* Adds `QGIS`
+* Updates internal function `Get-GitHubRelease` to allow returning all releases and then filtering the results in an app function
+* Updates `PDFArranger` to return the latest Windows release with downloads
+
+IMPORTANT UPDATES
+
+* Renames `Invoke-EvergreenApp` to `Get-EvergreenAppFromApi`. `Invoke-EvergreenApp` remains as the alias
+* Renames `Invoke-EvergreenLibraryUpdate` to `Start-EvergreenLibraryUpdate`. `Invoke-EvergreenLibraryUpdate` remains as the alias
+* Renames `Get-EvergreenEndpoint` to `Get-EvergreenEndpointFromApi`. `Get-EvergreenEndpoint` remains as the alias
+
 ## 2405.1076
 
 * Adds  `DockerCompose`
