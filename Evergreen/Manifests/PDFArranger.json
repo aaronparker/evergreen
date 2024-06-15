@@ -2,7 +2,7 @@
 	"Name": "PDF Arranger",
 	"Source": "https://github.com/pdfarranger/pdfarranger/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/pdfarranger/pdfarranger/releases/latest",
+		"Uri": "https://api.github.com/repos/pdfarranger/pdfarranger/releases",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
 		"MatchFileTypes": "\\.exe$|\\.msi$"
 	},
