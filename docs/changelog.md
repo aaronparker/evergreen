@@ -12,6 +12,10 @@ IMPORTANT UPDATES
 * Renames `Invoke-EvergreenLibraryUpdate` to `Start-EvergreenLibraryUpdate`. `Invoke-EvergreenLibraryUpdate` remains as the alias
 * Renames `Get-EvergreenEndpoint` to `Get-EvergreenEndpointFromApi`. `Get-EvergreenEndpoint` remains as the alias
 
+BREAKING CHANGES
+
+* Removes `JetBrainsHub` - the update source no longer includes Windows specific update info
+
 ## 2405.1076
 
 * Adds  `DockerCompose`
