@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2406.1100
 
 * Adds `QGIS`
 * Updates internal function `Get-GitHubRelease` to allow returning all releases and then filtering the results in an app function

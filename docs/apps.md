@@ -1,6 +1,6 @@
 ﻿# 327 Supported applications
 
-Evergreen `2405.1076` supports the following applications:
+Evergreen `2406.11` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -134,7 +134,6 @@ Evergreen `2405.1076` supports the following applications:
 | JetBrainsDataSpell                    | JetBrains DataSpell                                               | https://www.jetbrains.com/dataspell                                                                                                       |
 | JetBrainsGateway                      | JetBrains Gateway                                                 | https://www.jetbrains.com/                                                                                                                |
 | JetBrainsGoLand                       | JetBrains GoLand                                                  | https://www.jetbrains.com/dataspell                                                                                                       |
-| JetBrainsHub                          | JetBrains Hub                                                     | https://www.jetbrains.com/hub                                                                                                             |
 | JetBrainsIntelliJIDEA                 | JetBrains IntelliJ IDEA                                           | https://www.jetbrains.com/                                                                                                                |
 | JetBrainsPhpStorm                     | JetBrains PhpStorm                                                | https://www.jetbrains.com/phpstorm                                                                                                        |
 | JetBrainsPyCharm                      | JetBrains PyCharm                                                 | https://www.jetbrains.com/                                                                                                                |
@@ -264,6 +263,7 @@ Evergreen `2405.1076` supports the following applications:
 | PSAppDeployToolkit                    | PSAppDeployToolkit                                                | https://psappdeploytoolkit.com/                                                                                                           |
 | PSFPython                             | PSF Python                                                        | https://www.python.org/                                                                                                                   |
 | PuTTY                                 | PuTTY                                                             | https://www.chiark.greenend.org.uk/~sgtatham/putty/                                                                                       |
+| QGIS                                  | QGIS                                                              | https://qgis.org/en/site/index.html                                                                                                       |
 | RCoreTeamRforWindows                  | R Core Team R for Windows                                         | https://cran.r-project.org/bin/windows/base/                                                                                              |
 | RDAnalyzer                            | Remote Desktop Analyzer                                           | https://rdanalyzer.com/                                                                                                                   |
 | RedHatOpenJDK11                       | Red Hat OpenJDK 11                                                | https://developers.redhat.com/products/openjdk/overview                                                                                   |
