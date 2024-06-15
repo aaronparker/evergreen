@@ -1,11 +1,11 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/help/en-US/Invoke-EvergreenApp/
+online version: https://stealthpuppy.com/evergreen/help/en-US/Get-EvergreenAppFromApi/
 schema: 2.0.0
 ---
 
-# Invoke-EvergreenApp
+# Get-EvergreenAppFromApi
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ Returns the latest version and download URL/s for an application supported by th
 ## SYNTAX
 
 ```
-Invoke-EvergreenApp [-Name] <String> [<CommonParameters>]
+Get-EvergreenAppFromApi [-Name] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Returns the latest version and download URL/s for an application supported by th
 ### Example 1
 
 ```powershell
-Invoke-EvergreenApp -Name "MicrosoftEdge"
+Get-EvergreenAppFromApi -Name "MicrosoftEdge"
 
 Version      : 89.0.774.76
 Platform     : Windows
@@ -44,7 +44,7 @@ Returns the current version and download URLs for Microsoft Edge using the offic
 ### EXAMPLE 2
 
 ```powershell
-Invoke-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
+Get-EvergreenAppFromApi -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
 ```
 
 Description:

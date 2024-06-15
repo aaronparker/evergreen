@@ -6,7 +6,7 @@
 [CmdletBinding(SupportsShouldProcess = $false)]
 param ()
 
-#region Get public and private function definition files
+# Get public and private function definition files
 $PublicRoot = Join-Path -Path $PSScriptRoot -ChildPath "Public"
 $PrivateRoot = Join-Path -Path $PSScriptRoot -ChildPath "Private"
 $SharedRoot = Join-Path -Path $PSScriptRoot -ChildPath "Shared"
@@ -24,16 +24,15 @@ foreach ($Import in @($Public + $Private + $Shared)) {
     }
 }
 
-# Export the public modules and aliases
-Export-ModuleMember -Function $public.Basename -Alias *
-#endregion
-
 # Get module strings
 $script:resourceStrings = Get-ModuleResource
 
 # Register the argument completer for the Get-EvergreenApp and Find-EvergreenApp cmdlets
-$Commands = "Get-EvergreenApp", "Find-EvergreenApp", "Invoke-EvergreenApp", "Export-EvergreenManifest", "Get-EvergreenLibraryApp", "Get-EvergreenEndpoint"
+$Commands = "Get-EvergreenApp", "Find-EvergreenApp", "Get-EvergreenAppFromApi", "Export-EvergreenManifest", "Get-EvergreenLibraryApp", "Get-EvergreenEndpointFromApi"
 Register-ArgumentCompleter -CommandName $Commands -ParameterName "Name" -ScriptBlock {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
     (Get-ChildItem -Path "$PSScriptRoot\Manifests\$wordToComplete*.json" -ErrorAction "Ignore").BaseName
 }
+
+# Export the public modules and aliases
+Export-ModuleMember -Function $public.Basename -Alias *

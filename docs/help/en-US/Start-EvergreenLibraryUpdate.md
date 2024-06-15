@@ -1,20 +1,20 @@
 ---
 external help file: Evergreen-help.xml
 Module Name: Evergreen
-online version: https://stealthpuppy.com/evergreen/help/en-US/Invoke-EvergreenLibraryUpdate/
+online version: https://stealthpuppy.com/evergreen/help/en-US/Start-EvergreenLibraryUpdate/
 schema: 2.0.0
 ---
 
-# Invoke-EvergreenLibraryUpdate
+# Start-EvergreenLibraryUpdate
 
 ## SYNOPSIS
 
-Invokes the update and download of application installers in an Evergreen library. `Invoke-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
+Invokes the update and download of application installers in an Evergreen library. `Start-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
 
 ## SYNTAX
 
 ```
-Invoke-EvergreenLibraryUpdate [-Path] <FileInfo> [-Proxy <String>] [-ProxyCredential <PSCredential>] [-WhatIf]
+Start-EvergreenLibraryUpdate [-Path] <FileInfo> [-Proxy <String>] [-ProxyCredential <PSCredential>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,18 +22,18 @@ Invoke-EvergreenLibraryUpdate [-Path] <FileInfo> [-Proxy <String>] [-ProxyCreden
 
 An Evergreen library can be used to maintain multiple versions of application installers, rather than always using the latest installer. An Evergreen library allows you to install the version of an application required for a specific environment including rolling back to a previous version of an application. An Evergreen library also enables you to build an image build without requiring internet access, by downloading the application installers to the library and then using those installers during the image build process.
 
-`Invoke-EvergreenLibraryUpdate` invokes the update and download of application installers in an Evergreen library. `Invoke-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
+`Start-EvergreenLibraryUpdate` invokes the update and download of application installers in an Evergreen library. `Start-EvergreenLibraryUpdate` reads the library manifest (`EvergreenLibrary.json`) which defines the applications in the library and uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 
 ```powershell
-Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
+Start-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
 ```
 
 Description:
-`Invoke-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \\server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
+`Start-EvergreenLibraryUpdate` reads the library manifest `EvergreenLibrary.json` located in \\server\EvergreenLibrary which defines the applications for that library. It uses `Get-EvergreenApp` and `Save-EvergreenApp` to download the latest installers to the library.
 
 ## PARAMETERS
 
@@ -129,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-Invoke-EvergreenLibraryUpdate accepts a string parameter.
+Start-EvergreenLibraryUpdate accepts a string parameter.
 
 ## OUTPUTS
 

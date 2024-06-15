@@ -9,14 +9,14 @@ param ()
 
 BeforeDiscovery {
     $Uri = "https://evergreen-api.stealthpuppy.com/apps"
-    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing) | Select-Object -ExpandProperty "Name" | Sort-Object
+    $Applications = (Invoke-RestMethod -Uri $Uri -UseBasicParsing -UserAgent "Evergreen/1000.999") | Select-Object -ExpandProperty "Name" | Sort-Object
 }
 
-Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application: <application>" -ForEach $Applications {
+Describe -Tag "Get" -Name "Get-EvergreenAppFromApi works with supported application: <application>" -ForEach $Applications {
     BeforeAll {
         # Renaming the automatic $_ variable to $application to make it easier to work with
         $application = $_
-        $Output = Invoke-EvergreenApp -Name $application
+        $Output = Get-EvergreenAppFromApi -Name $application
 
         # RegEx
         $MatchUrl = "(\s*\[+?\s*(\!?)\s*([a-z]*)\s*\|?\s*([a-z0-9\.\-_]*)\s*\]+?)?\s*([^\s]+)\s*"
@@ -32,12 +32,12 @@ Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application:
             $Output | Should -BeOfType "PSCustomObject"
         }
 
-        It "Invoke-EvergreenApp -Name <application> should return a count of 1 or more" {
+        It "Get-EvergreenAppFromApi -Name <application> should return a count of 1 or more" {
             ($Output | Measure-Object).Count | Should -BeGreaterThan 0
         }
     }
 
-    Context "Validate Invoke-EvergreenApp works with <application>." -ForEach $Output {
+    Context "Validate Get-EvergreenAppFromApi works with <application>." -ForEach $Output {
         BeforeAll {
             $Item = $_
         }
@@ -59,10 +59,10 @@ Describe -Tag "Get" -Name "Invoke-EvergreenApp works with supported application:
     }
 }
 
-Describe -Tag "Get" -Name "Invoke-EvergreenApp fail tests" {
-    Context "Validate 'Invoke-EvergreenApp fails gracefully" {
+Describe -Tag "Get" -Name "Get-EvergreenAppFromApi fail tests" {
+    Context "Validate 'Get-EvergreenAppFromApi fails gracefully" {
         It "Should Throw with invalid app" {
-            { Invoke-EvergreenApp -Name "NonExistentApplication" } | Should -Throw
+            { Get-EvergreenAppFromApi -Name "NonExistentApplication" } | Should -Throw
         }
     }
 }

@@ -7,14 +7,14 @@ function Get-EvergreenApp {
     [Alias("gea")]
     param (
         [Parameter(
-            Mandatory = $true,
+            Mandatory = $false,
             Position = 0,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify an application name. Use Find-EvergreenApp to list supported applications.")]
         [ValidateNotNull()]
         [Alias("ApplicationName")]
-        [System.String] $Name,
+        [System.String] $Name = "Microsoft365Apps",
 
         [Parameter(
             Mandatory = $false,

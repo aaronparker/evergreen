@@ -21,5 +21,10 @@ Function Get-PDFArranger {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-    Write-Output -InputObject $object
+
+    # Filter the object to return the latest version with assets
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Returned $($object.Count) releases"
+    $Latest = $object | Select-Object -First 1
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Filter objects for latest version: $($Latest.Version)"
+    $object | Where-Object { $Latest.Version -eq $_.Version } | Write-Output
 }

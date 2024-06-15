@@ -40,7 +40,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library functions" {
         }
     }
 
-    Context "Test 'Invoke-EvergreenLibraryUpdate'" {
+    Context "Test 'Start-EvergreenLibraryUpdate'" {
         BeforeAll {
             $params = @{
                 Path        = "$env:GITHUB_WORKSPACE\tests\EvergreenLibrary.json"
@@ -52,7 +52,7 @@ Describe -Tag "Library" -Name "Test Evergreen Library functions" {
         }
 
         It "Update an Evergreen library" {
-            { Invoke-EvergreenLibraryUpdate -Path "$Path\EvergreenLibrary" } | Should -Not -Throw
+            { Start-EvergreenLibraryUpdate -Path "$Path\EvergreenLibrary" } | Should -Not -Throw
         }
     }
 

@@ -1,9 +1,9 @@
-function Invoke-EvergreenLibraryUpdate {
+function Start-EvergreenLibraryUpdate {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("Start-EvergreenLibraryUpdate")]
+    [Alias("Invoke-EvergreenLibraryUpdate")]
     param (
         [Parameter(
             Mandatory = $true,

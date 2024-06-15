@@ -27,7 +27,7 @@ function Get-GitHubRelease {
 
         [Parameter(Mandatory = $False, Position = 1)]
         [ValidateScript( {
-                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases/latest)$") {
+                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/releases)$") {
                     $True
                 }
                 else {

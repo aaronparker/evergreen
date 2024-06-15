@@ -1,10 +1,10 @@
-function Invoke-EvergreenApp {
+function Get-EvergreenAppFromApi {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $false)]
-    [Alias("iea", "Get-EvergreenAppFromApi")]
+    [Alias("iea", "Invoke-EvergreenApp")]
     param (
         [Parameter(
             Mandatory = $false,
