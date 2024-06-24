@@ -1,4 +1,4 @@
-Function Get-Slack {
+function Get-Slack {
     <#
         .SYNOPSIS
             Get the current version and download URL for Slack.
@@ -8,16 +8,16 @@ Function Get-Slack {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    ForEach ($platform in $res.Get.Download.Keys) {
-        ForEach ($architecture in $res.Get.Download[$platform].Keys) {
+    foreach ($platform in $res.Get.Download.Keys) {
+        foreach ($architecture in $res.Get.Download[$platform].Keys) {
 
             # Follow the download link which will return a 301/302
             $redirectUrl = Resolve-SystemNetWebRequest -Uri $res.Get.Download[$platform][$architecture]

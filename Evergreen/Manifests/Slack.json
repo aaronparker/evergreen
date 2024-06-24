@@ -10,7 +10,6 @@
 				"x64": "https://slack.com/ssb/download-win64-msi-legacy"
 			},
 			"PerMachine": {
-				"x86": "https://slack.com/ssb/download-win-msi",
 				"x64": "https://slack.com/ssb/download-win64-msi"
 			}
 		},
