@@ -1,7 +1,7 @@
 {
 	"Name": "Praat",
 	"Source": "https://www.fon.hum.uva.nl/praat/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/praat/praat/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

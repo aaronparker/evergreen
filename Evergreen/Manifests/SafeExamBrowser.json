@@ -1,7 +1,7 @@
 {
 	"Name": "Safe Exam Browser",
 	"Source": "https://safeexambrowser.org/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/SafeExamBrowser/seb-win-refactoring/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

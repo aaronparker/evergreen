@@ -1,7 +1,7 @@
 {
 	"Name": "WinMerge",
 	"Source": "https://winmerge.org/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/WinMerge/winmerge/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

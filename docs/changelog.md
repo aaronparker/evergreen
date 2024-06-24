@@ -86,7 +86,7 @@ BREAKING CHANGES
 
 ## 2405.943
 
-* Update default user agent #642 
+* Update default user agent #642
 * Fix an issue with `Get-Architecture` returning `AMD64` [#663](https://github.com/aaronparker/evergreen/issues/663)
 * Adds `Get-EvergreenAppFromApi`, `Start-EvergreenLibraryUpdate` aliases. Public functions will be renamed in a future release
 * Fix various issues with help URI links for public functions
@@ -134,7 +134,7 @@ BREAKING CHANGES
 * Updates `Microsoft.NET` for all available supported channels [#583](https://github.com/aaronparker/evergreen/issues/583)
 * Updates `mySQLWorkbench` download URL
 * Updates source URL used in `MicrosoftSsms` to fix version numbers
-* Updates `DruvainSyncClient` for Cloud and GovCloud releases 
+* Updates `DruvainSyncClient` for Cloud and GovCloud releases
 * Fix date property on `MicrosoftWvdMultimediaRedirection`
 
 ## 2310.868

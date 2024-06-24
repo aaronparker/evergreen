@@ -1,7 +1,7 @@
 {
 	"Name": "Flameshot",
 	"Source": "https://flameshot.org/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/flameshot-org/flameshot/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

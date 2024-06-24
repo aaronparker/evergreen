@@ -1,7 +1,7 @@
 {
 	"Name": "Remote Desktop Analyzer",
 	"Source": "https://rdanalyzer.com/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/RDAnalyzer/release/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

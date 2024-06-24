@@ -19,14 +19,14 @@
                     "Exe": "https://download.mozilla.org/?product=thunderbird-esr-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=thunderbird-esr-msi-latest-ssl&os=#platform&lang=#language"
                 },
-                "THUNDERBIRD_ESR_NEXT": {						 
+                "THUNDERBIRD_ESR_NEXT": {
                     "Exe": "https://download.mozilla.org/?product=thunderbird-esr-next-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=thunderbird-esr-next-msi-latest-ssl&os=#platform&lang=#language"
                 },
-                "LATEST_THUNDERBIRD_DEVEL_VERSION": {						 
+                "LATEST_THUNDERBIRD_DEVEL_VERSION": {
                     "Exe": "https://download.mozilla.org/?product=thunderbird-beta-latest-ssl&os=#platform&lang=#language",
                     "Msi": "https://download.mozilla.org/?product=thunderbird-beta-msi-latest-ssl&os=#platform&lang=#language"
-                    
+
                 }
 			},
             "Msix": "http://archive.mozilla.org/pub/thunderbird/releases/#version/#platform/multi/Thunderbird%20Setup%20#version.msix",
