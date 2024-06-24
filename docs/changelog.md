@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Update `Slack` to remove `x86` download (which is no longer available
+
 ## 2406.1100
 
 * Adds `QGIS`
