@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2406.1124
 
 * Update `Slack` to remove `x86` download (which is no longer available
 
