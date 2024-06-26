@@ -2,7 +2,7 @@
 
 ## 2406.1124
 
-* Update `Slack` to remove `x86` download (which is no longer available
+* Update `Slack` to remove `x86` download (which is no longer available)
 
 ## 2406.1100
 

@@ -53,8 +53,6 @@ body:
       options:
         - label: "Troubleshooting at: https://stealthpuppy.com/evergreen/troubleshoot/"
         - label: "Known issues at: https://stealthpuppy.com/evergreen/issues/"
-    validations:
-      required: true
   - type: textarea
     id: verbose
     attributes:
