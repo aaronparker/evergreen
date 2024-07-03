@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1149
 
 * Adds `OmnissaHorizonClient `, `Elgato4KCaptureUtility`, `ElgatoAudioEffects`, `ElgatoCameraHub `, `ElgatoControlCenter`, `ElgatoEpocCam`, `ElgatoGameCapture`, `ElgatoStreamDeck`, `ElgatoVideoCapture`, `ElgatoWaveLink`
 * Fixes an issue with `MicrosoftAzureDataStudio` [#708](https://github.com/aaronparker/evergreen/issues/708)
