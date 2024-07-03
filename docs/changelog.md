@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `OmnissaHorizonClient `, `Elgato4KCaptureUtility`, `ElgatoAudioEffects`, `ElgatoCameraHub `, `ElgatoControlCenter`, `ElgatoEpocCam`, `ElgatoGameCapture`, `ElgatoStreamDeck`, `ElgatoVideoCapture`, `ElgatoWaveLink`
+* Fixes an issue with `MicrosoftAzureDataStudio` [#708](https://github.com/aaronparker/evergreen/issues/708)
+
+BREAKING CHANGES
+
+* Removes `MicrosoftOutlook` - new Outlook uses a new update API and we haven't yet found a valid query to that API
+
 ## 2406.1124
 
 * Update `Slack` to remove `x86` download (which is no longer available)
