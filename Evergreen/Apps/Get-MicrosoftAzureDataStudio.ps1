@@ -18,44 +18,31 @@ function Get-MicrosoftAzureDataStudio {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get the commit details
-    $params = @{
-        Uri         = $res.Get.Update.Version.Uri
-        ErrorAction = "Stop"
-    }
-    $Commit = (Invoke-EvergreenRestMethod @params).($res.Get.Update.Version.Property)
+    foreach ($platform in $res.Get.Update.Platform) {
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $platform."
 
-    # Walk through each platform
-    if ([System.String]::IsNullOrEmpty($Commit)) {
-        throw "$($MyInvocation.MyCommand): No value found for property: $($res.Get.Update.Version.Property)."
-    }
-    else {
-        foreach ($platform in $res.Get.Update.Platform) {
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $platform."
+        # Walk through each channel in the platform
+        foreach ($channel in $res.Get.Update.Channel) {
 
-            # Walk through each channel in the platform
-            foreach ($channel in $res.Get.Update.Channel) {
+            # Resolve details for the update feed
+            $params = @{
+                Uri         = $res.Get.Update.Uri -replace "#platform", $platform.ToLower() -replace "#channel", $channel.ToLower()
+                ErrorAction = "Stop"
+            }
+            $UpdateFeed = Invoke-EvergreenRestMethod @params
 
-                # Read the version details from the API, format and return to the pipeline
-                $params = @{
-                    Uri         = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/$Commit"
-                    ErrorAction = "Stop"
+            # If we have a valid response, output the details
+            if ($null -ne $UpdateFeed) {
+                $Url = $(Resolve-SystemNetWebRequest -Uri $UpdateFeed.url).ResponseUri.AbsoluteUri
+                $PSObject = [PSCustomObject] @{
+                    Version      = $UpdateFeed.productVersion
+                    Channel      = $channel
+                    Platform     = $platform
+                    Sha256       = $UpdateFeed.sha256hash
+                    Type         = Get-FileType -File $Url
+                    URI          = $Url
                 }
-                $updateFeed = Invoke-EvergreenRestMethod @params
-
-                if ([System.String]::IsNullOrEmpty($updateFeed)) {
-                    throw "$($MyInvocation.MyCommand): No update feed found for $platform and $channel."
-                }
-                else {
-                    $PSObject = [PSCustomObject] @{
-                        Version  = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ""
-                        Platform = $platform
-                        Channel  = $channel
-                        Sha256   = $updateFeed.sha256hash
-                        URI      = $updateFeed.url
-                    }
-                    Write-Output -InputObject $PSObject
-                }
+                Write-Output -InputObject $PSObject
             }
         }
     }
