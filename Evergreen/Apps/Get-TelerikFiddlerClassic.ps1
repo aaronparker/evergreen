@@ -1,4 +1,4 @@
-Function Get-TelerikFiddlerClassic {
+function Get-TelerikFiddlerClassic {
     <#
         .SYNOPSIS
             Get the current version and download URL for Telerik Fiddler Classic.
@@ -9,9 +9,9 @@ Function Get-TelerikFiddlerClassic {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -21,7 +21,7 @@ Function Get-TelerikFiddlerClassic {
     $Response = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Construct the output; Return the custom object to the pipeline
-    If ($Null -ne $Response) {
+    if ($null -ne $Response) {
 
         # Construct the version number
         $Lines = $Response.Split("`r`n")
