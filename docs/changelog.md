@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1175
 
 * Adds `AdoptiumTemurin22`, `BellSoftLibericaJDK21`, `BellSoftLibericaJDK22`, `ManicTimeClient` [#572](https://github.com/aaronparker/evergreen/issues/572)
 * Fixes an issue with `ProtonDrive` to account for duplicate keys in the update feed preventing conversion with `ConvertTo-Json`

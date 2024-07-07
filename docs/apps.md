@@ -1,6 +1,6 @@
-﻿# 336 Supported applications
+﻿# 339 Supported applications
 
-Evergreen `2407.1149` supports the following applications:
+Evergreen `2407.1175` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,6 +23,7 @@ Evergreen `2407.1149` supports the following applications:
 | AdoptiumTemurin19                     | Adoptium Temurin 19                                               | https://adoptium.net/                                                                                                                     |
 | AdoptiumTemurin20                     | Adoptium Temurin 20                                               | https://adoptium.net/                                                                                                                     |
 | AdoptiumTemurin21                     | Adoptium Temurin 21                                               | https://adoptium.net/                                                                                                                     |
+| AdoptiumTemurin22                     | Adoptium Temurin 22                                               | https://adoptium.net/                                                                                                                     |
 | AdoptiumTemurin8                      | Adoptium Temurin 8                                                | https://adoptium.net/                                                                                                                     |
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                                                                      |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                                                         |
@@ -46,6 +47,8 @@ Evergreen `2407.1149` supports the following applications:
 | BellSoftLibericaJDK11                 | BellSoft Liberica JDK 11 LTS                                      | https://bell-sw.com/libericajdk/                                                                                                          |
 | BellSoftLibericaJDK17                 | BellSoft Liberica JDK 17 LTS                                      | https://bell-sw.com/libericajdk/                                                                                                          |
 | BellSoftLibericaJDK20                 | BellSoft Liberica JDK 20                                          | https://bell-sw.com/libericajdk/                                                                                                          |
+| BellSoftLibericaJDK21                 | BellSoft Liberica JDK 21                                          | https://bell-sw.com/libericajdk/                                                                                                          |
+| BellSoftLibericaJDK22                 | BellSoft Liberica JDK 22                                          | https://bell-sw.com/libericajdk/                                                                                                          |
 | BellSoftLibericaJDK8                  | BellSoft Liberica JDK 8 LTS                                       | https://bell-sw.com/libericajdk/                                                                                                          |
 | BISF                                  | Base Image Script Framework                                       | https://eucweb.com/                                                                                                                       |
 | BitwardenDesktop                      | Bitwarden Desktop                                                 | https://bitwarden.com/                                                                                                                    |
@@ -91,7 +94,6 @@ Evergreen `2407.1149` supports the following applications:
 | ESETPROTECTServer                     | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                                                                           |
 | ESETSecureAuthentication              | ESET Secure Authentication                                        | https://www.eset.com/au/business/download/secure-authentication/                                                                          |
 | ESETServerSecurity                    | ESET Server Security                                              | https://www.eset.com/int/business/solutions/file-server-security/                                                                         |
-| FileZilla                             | FileZilla                                                         | https://filezilla-project.org/                                                                                                            |
 | Flameshot                             | Flameshot                                                         | https://flameshot.org/                                                                                                                    |
 | Fork                                  | Dan Pristupov Fork                                                | https://www.fork.dev                                                                                                                      |
 | FoxitPDFEditor                        | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                                                                         |
@@ -163,6 +165,7 @@ Evergreen `2407.1149` supports the following applications:
 | KubernetesKubectl                     | Kubernetes Kubectl                                                | https://kubernetes.io/                                                                                                                    |
 | LehrerOffice                          | LehrerOffice                                                      | https://lehreroffice.net/                                                                                                                 |
 | LibreOffice                           | LibreOffice                                                       | https://www.libreoffice.org/                                                                                                              |
+| ManicTimeClient                       | ManicTime                                                         | https://www.manictime.com/download/windows                                                                                                |
 | MasterPackager                        | Master Packager                                                   | https://www.masterpackager.com/                                                                                                           |
 | MattermostDesktop                     | Mattermost Desktop                                                | https://github.com/mattermost/desktop                                                                                                     |
 | Maximus5ConEmu                        | Maximus5 ConEmu                                                   | https://github.com/Maximus5/ConEmu                                                                                                        |
