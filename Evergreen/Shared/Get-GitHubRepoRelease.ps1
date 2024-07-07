@@ -184,20 +184,23 @@ function Get-GitHubRepoRelease {
                             }
 
                             # Build the output object
-                            $PSObject = [PSCustomObject] @{
-                                Version       = $Version
-                                Platform      = Get-Platform -String $asset.browser_download_url
-                                Architecture  = Get-Architecture -String $(Split-Path -Path $asset.browser_download_url -Leaf)
-                                Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
-                                InstallerType = Get-InstallerType -String $asset.browser_download_url
-                                Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
-                                Size          = $asset.size
-                                URI           = $asset.browser_download_url
-                            }
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): Matching platform 'Windows' against: $($PSObject.Platform)."
-                            if ($PSObject.Platform -eq "Windows") {
+                            if ((Get-Platform -String $asset.browser_download_url) -eq "Windows") {
+                                $PSObject = [PSCustomObject] @{
+                                    Version       = $Version
+                                    Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
+                                    Size          = $asset.size
+                                    #Platform      = Get-Platform -String $asset.browser_download_url
+                                    Architecture  = Get-Architecture -String $(Split-Path -Path $asset.browser_download_url -Leaf)
+                                    InstallerType = Get-InstallerType -String $asset.browser_download_url
+                                    Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
+                                    URI           = $asset.browser_download_url
+                                }
                                 Write-Output -InputObject $PSObject
                             }
+                            # Write-Verbose -Message "$($MyInvocation.MyCommand): Matching platform 'Windows' against: $($PSObject.Platform)."
+                            # if ($PSObject.Platform -eq "Windows") {
+                            #     Write-Output -InputObject $PSObject
+                            # }
                         }
                         else {
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Skip: $($asset.browser_download_url)."

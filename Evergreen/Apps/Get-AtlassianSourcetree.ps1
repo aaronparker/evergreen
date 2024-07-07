@@ -38,10 +38,11 @@ Function Get-AtlassianSourcetree {
         ForEach ($item in $res.Get.Download.Uri.GetEnumerator()) {
 
             # Build the output object; Output object to the pipeline
+            $Url = $res.Get.Download.Uri[$item.Key] -replace $res.Get.Download.ReplaceText, $Version
             $PSObject = [PSCustomObject] @{
                 Version = $Version
-                Type    = $item.Name
-                URI     = $res.Get.Download.Uri[$item.Key] -replace $res.Get.Download.ReplaceText, $Version
+                Type    = Get-FileType -File $Url
+                URI     = $Url
             }
             Write-Output -InputObject $PSObject
         }

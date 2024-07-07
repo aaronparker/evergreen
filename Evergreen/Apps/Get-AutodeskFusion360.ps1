@@ -25,8 +25,8 @@ Function Get-AutodeskFusion360 {
             # Build object and output to the pipeline
             $PSObject = [PSCustomObject] @{
                 Version           = $Versions.'build-version'
-                BuildVersion      = $Versions.'build-version'
-                MajorBuildVersion = $Versions.'major-update-version'
+                #BuildVersion      = $Versions.'build-version'
+                #MajorBuildVersion = $Versions.'major-update-version'
                 Type              = Get-FileType -File $Url
                 Filename          = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                 URI               = $Url
