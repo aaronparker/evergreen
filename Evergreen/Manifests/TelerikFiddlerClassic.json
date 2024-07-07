@@ -3,11 +3,11 @@
 	"Source": "https://www.telerik.com/fiddler/fiddler-classic",
 	"Get": {
 		"Update": {
-			"Uri": "https://www.fiddler2.com/UpdateCheck.aspx?isBeta=False",
+			"Uri": "https://api.getfiddler.com/fc/latest?ver=5.0.20242.10753&tele=true&meta=true",
 			"SplitString": "`r`n"
 		},
 		"Download": {
-			"Uri": "https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe"
+			"Uri": "https://downloads.getfiddler.com/fiddler-classic/FiddlerSetup.#version-latest.exe"
 		}
 	},
 	"Install": {
