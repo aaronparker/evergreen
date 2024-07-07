@@ -16,9 +16,15 @@ function Get-ProtonDrive {
     }
     $Updates = Invoke-EvergreenRestMethod @params
 
-    # Update feed may include duplicate keys in the JSON
+    # Convert the update JSON string
     if ($Updates -is [System.String]) {
-        $Updates = $Updates | ConvertFrom-Json -ErrorAction "Stop"
+        try {
+            $Updates = $Updates | ConvertFrom-Json -ErrorAction "Continue"
+        }
+        catch {
+            # Update feed may include duplicate keys in the JSON
+            $Updates = $Updates -creplace $res.Get.Update.ReplaceString, "" | ConvertFrom-Json -ErrorAction "Stop"
+        }
     }
 
     # Sort for the latest version
