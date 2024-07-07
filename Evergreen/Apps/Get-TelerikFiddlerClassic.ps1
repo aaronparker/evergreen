@@ -29,7 +29,7 @@ function Get-TelerikFiddlerClassic {
 
         $PSObject = [PSCustomObject] @{
             Version = $Version
-            URI     = $res.Get.Download.Uri
+            URI     = $res.Get.Download.Uri -replace "#version", $Version
         }
         Write-Output -InputObject $PSObject
     }

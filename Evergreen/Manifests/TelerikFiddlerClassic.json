@@ -7,7 +7,7 @@
 			"SplitString": "`r`n"
 		},
 		"Download": {
-			"Uri": "https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe"
+			"Uri": "https://downloads.getfiddler.com/fiddler-classic/FiddlerSetup.#version-latest.exe"
 		}
 	},
 	"Install": {
