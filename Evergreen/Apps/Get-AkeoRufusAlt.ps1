@@ -18,7 +18,7 @@ function Get-AkeoRufusAlt {
     $UpdateFeedLines = $UpdateFeed -split "`n"
 
     # Match the version number
-    $Version = (($UpdateFeedLines | Select-String -Pattern "version").Line -split "=")[-1].Trim()
+    $Version = (($UpdateFeedLines | Select-String -Pattern "^version" -CaseSensitive).Line -split "=")[-1].Trim()
 
     # For each architecture, match the download URL and return to the pipeline
     foreach ($Architecture in $res.Get.Update.Architectures.GetEnumerator()) {
