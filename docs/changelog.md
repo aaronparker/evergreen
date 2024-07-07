@@ -1,5 +1,18 @@
 # Change log
 
+## VERSION
+
+* Adds `AmazonCorretto8`, `AmazonCorretto11`, `AmazonCorretto16`, `AmazonCorretto17`, `AmazonCorretto20`, `AmazonCorretto21`, `AmazonCorretto22` [#711](https://github.com/aaronparker/evergreen/issues/711)
+* Updates output properties in `AtlassianSourcetree`
+* Updates output properties in internal function `Get-GitHubRepoRelease`
+* Fixes an issue with the `Version` property in `AkeoRufusAlt`
+* Fixes an issue with the `Filename` property in `PiriformCCleanerFree`
+
+BREAKING CHANGES
+
+* Removes `AmazonCorretto` - replaced with individual `AmazonCorretto`
+* Removes `OpenJDK` [#712](https://github.com/aaronparker/evergreen/issues/712)
+
 ## 2407.1175
 
 * Adds `AdoptiumTemurin22`, `BellSoftLibericaJDK21`, `BellSoftLibericaJDK22`, `ManicTimeClient` [#572](https://github.com/aaronparker/evergreen/issues/572)
