@@ -22,8 +22,6 @@ body:
       description: "Please confirm that you've tested the current version before making this feature request."
       options:
         - label: "Yes, I've updated Evergreen and tested against the current version."
-    validations:
-      required: true
   - type: checkboxes
     id: documentation
     attributes:
@@ -31,5 +29,3 @@ body:
       description: "Please confirm that you've reviewed the documentation before making this feature request."
       options:
         - label: "Documentation at: https://stealthpuppy.com/evergreen/"
-    validations:
-      required: true

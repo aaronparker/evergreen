@@ -1,8 +1,25 @@
 # Change log
 
+## 2407.1175
+
+* Adds `AdoptiumTemurin22`, `BellSoftLibericaJDK21`, `BellSoftLibericaJDK22`, `ManicTimeClient` [#572](https://github.com/aaronparker/evergreen/issues/572)
+* Fixes an issue with `ProtonDrive` to account for duplicate keys in the update feed preventing conversion with `ConvertTo-Json`
+* Updates the URL used for `TelerikFiddlerClassic` to return the latest version
+* Updates `LibreOffice` to remove `Stable` release which was returning the same details from the `Latest` release only anyway
+* Removes `FileZilla` [#581](https://github.com/aaronparker/evergreen/issues/581)
+
+## 2407.1149
+
+* Adds `OmnissaHorizonClient `, `Elgato4KCaptureUtility`, `ElgatoAudioEffects`, `ElgatoCameraHub `, `ElgatoControlCenter`, `ElgatoEpocCam`, `ElgatoGameCapture`, `ElgatoStreamDeck`, `ElgatoVideoCapture`, `ElgatoWaveLink`
+* Fixes an issue with `MicrosoftAzureDataStudio` [#708](https://github.com/aaronparker/evergreen/issues/708)
+
+BREAKING CHANGES
+
+* Removes `MicrosoftOutlook` - new Outlook uses a new update API and we haven't yet found a valid query to that API
+
 ## 2406.1124
 
-* Update `Slack` to remove `x86` download (which is no longer available
+* Update `Slack` to remove `x86` download (which is no longer available)
 
 ## 2406.1100
 

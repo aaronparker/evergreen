@@ -4,7 +4,8 @@
     "Get": {
         "Update": {
             "Uri": "https://proton.me/download/drive/windows/version.json",
-            "DatePattern": "yyyy-MM-dd"
+            "DatePattern": "yyyy-MM-dd",
+            "ReplaceString": "(\\s+\\\"Sha512Checksum\\\":\\s+\\\".*\\\"\\,)"
         }
     },
     "Install": {
