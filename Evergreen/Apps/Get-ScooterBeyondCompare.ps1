@@ -16,43 +16,62 @@
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    foreach ($language in $res.Get.Uri.GetEnumerator()) {
+    # Query the Beyond Compare update API
+    $params = @{
+        Uri       = $res.Get.Update.Uri
+        UserAgent = $res.Get.Update.UserAgent
+    }
+    $Content = Invoke-EvergreenRestMethod @params
+    if ($null -ne $Content) {
 
-        # Query the Beyond Compare update API
-        $params = @{
-            Uri       = $res.Get.Uri[$language.key]
-            UserAgent = $res.Get.UserAgent
+        if ($Content -is [System.Xml.XmlDocument]) {
+            $XmlContent = $Content
         }
-        $Content = Invoke-EvergreenRestMethod @params
-        if ($null -ne $Content) {
+        else {
+            # Normalize the XML content
+            $Content = $Content -replace "<a", "" -replace "</a>", ""
+            $XmlContent = New-Object -TypeName "System.Xml.XmlDocument"
+            $XmlContent.LoadXml($Content)
+        }
 
-            if ($Content -is [System.Xml.XmlDocument]) {
-                $XmlContent = $Content
+        # Build an array of the latest release and download URLs
+        foreach ($Update in $XmlContent.Update) {
+
+            # Replace text in the version string
+            $Version = $Update.latestVersion -replace $res.Get.Update.ReplaceText, "."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version"
+            if ($Version -notmatch $res.Get.Update.MatchVersion) {
+                $Version = [RegEx]::Match($Update.latestVersion, $res.Get.Update.MatchVersion).Captures.Value
+                $Version = "$($Version).$($Update.latestBuild)"
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version"
             }
-            else {
-                # Normalize the XML content
-                $Content = $Content -replace "<a", "" -replace "</a>", ""
-                $XmlContent = New-Object -TypeName "System.Xml.XmlDocument"
-                $XmlContent.LoadXml($Content)
-            }
 
-            # Build an array of the latest release and download URLs
-            foreach ($Update in $XmlContent.Update) {
-                try {
-                    $Version = [RegEx]::Match($Update.latestVersion, $res.Get.MatchVersion).Captures.Value
-                    $Version = "$($Version).$($Update.latestBuild)"
-                }
-                catch {
-                    $Version = $Update.latestVersion
-                }
+            # Step through each language
+            foreach ($language in $res.Get.Update.Languages.GetEnumerator()) {
 
+                # Output the version and download URL
                 $PSObject = [PSCustomObject] @{
-                    Version  = $Version
-                    Language = $res.Get.Languages[$language.key]
-                    Type     = Get-FileType -File $Update.download
-                    URI      = $Update.download
+                    Version      = $Version
+                    Language     = $res.Get.Update.Languages[$language.key]
+                    Architecture = Get-Architecture -String $Update.download
+                    Type         = Get-FileType -File $Update.download
+                    URI          = if ($language.key -eq "en") { $Update.download } else { $Update.download -replace "BCompare-", "BCompare-$($language.key)-" }
                 }
                 Write-Output -InputObject $PSObject
+
+                # Output the version and download URL for the MSI
+                if ($language.key -eq "en") {
+                    foreach ($Msi in $res.Get.Download.Uri) {
+                        $PSObject = [PSCustomObject] @{
+                            Version      = $Version
+                            Language     = $res.Get.Update.Languages[$language.key]
+                            Architecture = Get-Architecture -String $Msi
+                            Type         = Get-FileType -File $Msi
+                            URI          = $Msi -replace "#version", $Version
+                        }
+                        Write-Output -InputObject $PSObject
+                    }
+                }
             }
         }
     }
