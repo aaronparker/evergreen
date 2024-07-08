@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1202
 
 * Adds `AmazonCorretto8`, `AmazonCorretto11`, `AmazonCorretto16`, `AmazonCorretto17`, `AmazonCorretto20`, `AmazonCorretto21`, `AmazonCorretto22` [#711](https://github.com/aaronparker/evergreen/issues/711)
 * Updates output properties in `AtlassianSourcetree`

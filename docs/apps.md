@@ -1,6 +1,6 @@
-﻿# 339 Supported applications
+﻿# 345 Supported applications
 
-Evergreen `2407.1175` supports the following applications:
+Evergreen `2407.1202` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +28,14 @@ Evergreen `2407.1175` supports the following applications:
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                                                                      |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                                                         |
 | AkeoRufusAlt                          | Akeo Rufus (alternate method)                                     | https://rufus.ie                                                                                                                          |
-| AmazonCorretto                        | Amazon Corretto                                                   | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto11                      | Amazon Corretto 11                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto15                      | Amazon Corretto 15                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto16                      | Amazon Corretto 16                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto17                      | Amazon Corretto 17                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto20                      | Amazon Corretto 20                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto21                      | Amazon Corretto 21                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto22                      | Amazon Corretto 22                                                | https://aws.amazon.com/corretto/                                                                                                          |
+| AmazonCorretto8                       | Amazon Corretto 8                                                 | https://aws.amazon.com/corretto/                                                                                                          |
 | Anaconda                              | Anaconda                                                          | https://www.anaconda.com/                                                                                                                 |
 | Anki                                  | Anki                                                              | https://github.com/ankitects/anki/                                                                                                        |
 | AppVentiX                             | AppVentiX                                                         | https://appventix.com/                                                                                                                    |
@@ -236,7 +243,6 @@ Evergreen `2407.1175` supports the following applications:
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                                                                      |
 | OmnissaHorizonClient                  | Omnissa Horizon Client                                            | https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8                       |
 | OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                                                                   |
-| OpenJDK                               | OpenJDK                                                           | https://openjdk.java.net/                                                                                                                 |
 | OpenLens                              | OpenLens                                                          | https://github.com/MuhammedKalkan/OpenLens/                                                                                               |
 | OpenShellMenu                         | Open-Shell-Menu                                                   | https://open-shell.github.io/Open-Shell-Menu/                                                                                             |
 | OpenWebStart                          | OpenWebStart                                                      | https://openwebstart.com/                                                                                                                 |
