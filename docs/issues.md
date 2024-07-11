@@ -41,22 +41,6 @@ Alternative application - `AdobeAcrobatDC` and `AdobeAcrobatReaderDC` use a web 
 
 Validate whether `AdobeAcrobat` returns the latest update version.
 
-#### 404 Error
-
-Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the following error:
-
-```powershell
-WARNING: Invoke-EvergreenRestMethod: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
-WARNING: Invoke-EvergreenRestMethod: Error encountered: Response status code does not indicate success: 404 (Not Found)..
-WARNING: Invoke-EvergreenRestMethod: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
-```
-
-This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
-
-#### Out of Date Update Feed
-
-Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
-
 ### CitrixWorkspaceApp
 
 Citrix occasionally makes changes to the update feed for Citrix Workspace app resulting in the version number and/or the installer URI not returning the correct data. We suspect this issue may be related to Citrix throttling updates for the Citrix Workspace app. The issue with the data source is typically fixed within 72 hours.
@@ -81,13 +65,32 @@ Stream  : Current
 URI     : https://downloadplugins.citrix.com/ReceiverUpdates/Prod/Receiver/Win/CitrixWorkspaceApp24.3.0.93.exe
 ```
 
+#### 404 Error
+
+Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may fail with the following error:
+
+```powershell
+WARNING: Invoke-EvergreenRestMethod: Error at URI: https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml.
+WARNING: Invoke-EvergreenRestMethod: Error encountered: Response status code does not indicate success: 404 (Not Found)..
+WARNING: Invoke-EvergreenRestMethod: For troubleshooting steps see: https://stealthpuppy.com/evergreen/troubleshoot/.
+```
+
+This typically occurs right after the release of a new version of the Workspace app and may return this result for some time. Right after a new release of the Workspace app, Citrix often makes the update XML file unavailable so that clients do not update immediately. You may have to wait until Citrix makes the URL available again for this function to work.
+
+#### Out of Date Update Feed
+
+Occasionally `Get-EvergreenApp -Name "CitrixWorkspaceApp"` may not return the latest version of the Citrix Workspace app. This is due to Citrix making changes to the update feed at `https://downloadplugins.citrix.com/ReceiverUpdates/Prod/catalog_win.xml` to throttle or prevent automatic rollout of the latest Workspace app. The only recourse is to wait until Citrix corrects the update feed to include the latest version of the Workspace app again.
+
 ### FileZilla
 
 `FileZilla` does not currently return data on PowerShell Core and inconsistently returns data on Windows PowerShell. FileZilla uses a self-signed certificate on their update server and the server uses HSTS, which present some challenges with getting Evergreen to work with the server.
 
+!!! info "Note"
+    `FileZilla` has been removed from Evergreen until a better solution can be identified.
+
 ### GhislerTotalCommander
 
-This application function works OK without additional requirements on Windows, but requires the `DnsClient-PS` on macOS or Linux.
+This application function works OK without additional requirements on Windows, but requires installation of the `DnsClient-PS` PowerShell module on macOS or Linux.
 
 ### LibreOffice
 
@@ -140,6 +143,10 @@ Evergreen could query versions from the GitHub repository; however, the the OBS 
 
 Also see [Get-EvergreenApp OBSStudio not working due to a 404 errors](https://github.com/aaronparker/evergreen/issues/184).
 
+### OmnissaHorizonClient
+
+`OmnissaHorizonClient` may not always return the current release - the major version property in the VMware Horizon Client software update data does not use easily sortable versioning. This may be fixed in a future release. Also see [VMware Horizon Client reporting out of date version](https://github.com/aaronparker/Evergreen/issues/161).
+
 ### PaintDotNet
 
 `Get-EvergreenApp -Name PaintDotNet` produces the following error under PowerShell on Linux. As a workaround, use `Get-EvergreenApp -Name PaintDotNetOfflineInstaller` instead.
@@ -161,9 +168,7 @@ Line |
 
 The source code for the update site can be found here: [VideoLAN organization > update.videolan.org > Repository](https://code.videolan.org/VideoLAN.org/update.videolan.org/-/tree/master/vlc).
 
-### VMwareHorizonClient
 
-`VMwareHorizonClient` may not always return the current release - the major version property in the VMware Horizon Client software update data does not use easily sortable versioning. This may be fixed in a future release. Also see [VMware Horizon Client reporting out of date version](https://github.com/aaronparker/Evergreen/issues/161).
+### VMwareHorizonClientAlt
 
-!!! info "Note"
-    `VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
+`VMwareHorizonClient` returns the Horizon Client in .tar format. This the same URL used when the Horizon Client updates itself - you will need to unpack the .tar file to retrieve the executable installer.
