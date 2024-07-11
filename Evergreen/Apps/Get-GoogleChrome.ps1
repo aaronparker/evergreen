@@ -55,9 +55,9 @@ function Get-GoogleChrome {
         # Output the version and URI object
         $PSObject = [PSCustomObject] @{
             Version      = $Version
+            Channel      = $Channel
             StartDate    = $Date
             Architecture = Get-Architecture -String $res.Get.Download.Uri.$Channel
-            Channel      = $Channel
             Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
             URI          = $res.Get.Download.Uri.$Channel
         }
@@ -67,9 +67,9 @@ function Get-GoogleChrome {
             # Output the version and URI for the bundle download
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
+                Channel      = $Channel
                 StartDate    = $Date
                 Architecture = Get-Architecture -String $res.Get.Download.Bundle
-                Channel      = $Channel
                 Type         = Get-FileType -File $res.Get.Download.Bundle
                 URI          = $res.Get.Download.Bundle
             }
@@ -80,9 +80,9 @@ function Get-GoogleChrome {
             # Output the version and URI object for the 32-bit version
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
+                Channel      = $Channel
                 StartDate    = $Date
                 Architecture = Get-Architecture -String $($res.Get.Download.Uri.$Channel -replace "64", "")
-                Channel      = $Channel
                 Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
                 URI          = $res.Get.Download.Uri.$Channel -replace "64", ""
             }
