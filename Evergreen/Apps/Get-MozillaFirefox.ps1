@@ -56,9 +56,9 @@ function Get-MozillaFirefox {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Version
-                            Architecture = Get-Architecture -String $platform
                             Channel      = $channel.Value
                             Language     = $currentLanguage
+                            Architecture = Get-Architecture -String $platform
                             Type         = Get-FileType -File $Url
                             Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                             URI          = $Url

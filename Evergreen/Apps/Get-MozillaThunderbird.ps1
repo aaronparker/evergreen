@@ -56,9 +56,9 @@ function Get-MozillaThunderbird {
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
                             Version      = $Version
-                            Architecture = Get-Architecture -String $platform
                             Channel      = $channel.Value
                             Language     = $currentLanguage
+                            Architecture = Get-Architecture -String $platform
                             Type         = Get-FileType -File $Url
                             Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                             URI          = $Url
@@ -75,9 +75,9 @@ function Get-MozillaThunderbird {
 
                 $PSObject = [PSCustomObject] @{
                     Version      = $Version
-                    Architecture = "x64"
                     Channel      = $channel.Value
                     Language     = "Multi"
+                    Architecture = "x64"
                     Type         = Get-FileType -File $Url
                     Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
                     URI          = $Url
