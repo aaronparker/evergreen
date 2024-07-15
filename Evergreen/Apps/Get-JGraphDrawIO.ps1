@@ -1,16 +1,16 @@
-Function Get-diagrams.net {
+function Get-JGraphDrawIO {
     <#
         .SYNOPSIS
-            Returns the latest diagrams.net version number and download.
+            Returns the latest JGraph DrawIO / diagrams.net version number and download.
 
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
