@@ -1,4 +1,4 @@
-﻿Function Get-VideoLanVlcPlayer {
+﻿function Get-VideoLanVlcPlayer {
     <#
         .SYNOPSIS
             Get the current version and download URL for VideoLAN VLC Media Player.
@@ -9,42 +9,51 @@
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    #region Get current version for Windows
-    ForEach ($platform in $res.Get.Update.Uri.Windows.GetEnumerator()) {
-        $params = @{
-            Uri         = $res.Get.Update.Uri.Windows[$platform.Key]
-            ContentType = "application/octet-stream"
-        }
-        $Content = Invoke-EvergreenRestMethod @params
-
-        If ($Null -ne $Content) {
-            # Follow the download link which will return a 301
-            $params = @{
-                Uri       = ($Content -split "\n")[$res.Get.Download.UrlLine]
-                UserAgent = $res.Get.Update.UserAgent
-            }
-            $redirectUrl = Resolve-InvokeWebRequest @params
-
-            # Construct the output; Return the custom object to the pipeline
-            ForEach ($extension in $res.Get.Download.Extensions.Windows) {
-                $PSObject = [PSCustomObject] @{
-                    Version      = ($Content -split "\n")[$res.Get.Download.VersionLine]
-                    Platform     = "Windows"
-                    Architecture = $platform.Name
-                    Type         = $extension
-                    URI          = $redirectUrl -replace ".exe$", (".$extension").ToLower()
-                }
-                Write-Output -InputObject $PSObject
-            }
-        }
+    begin {
+        Write-Warning -Message "$($MyInvocation.MyCommand): This function returns the version returned by 'Help > Check for Updates' in VLC Player. https://get.videolan.org/ may show a later available version for download."
     }
-    #endregion
+    process {
+        #region Get current version for Windows
+        foreach ($Url in $res.Get.Update.Uri) {
+            $params = @{
+                Uri         = $Url
+                UserAgent   = $res.Get.Update.UserAgent
+                ContentType = $res.Get.Update.ContentType
+            }
+            $Content = Invoke-EvergreenRestMethod @params
+
+            if ($Null -ne $Content) {
+                # Follow the download link which will return a 301
+                $params = @{
+                    Uri       = ($Content -split "\n")[$res.Get.Download.UrlLine]
+                    UserAgent = $res.Get.Update.UserAgent
+                }
+                $redirectUrl = Resolve-InvokeWebRequest @params
+
+                # Construct the output; Return the custom object to the pipeline
+                foreach ($extension in $res.Get.Download.Extensions.Windows) {
+
+                    $Version = ($Content -split "\n")[$res.Get.Download.VersionLine]
+                    $Uri = $redirectUrl -replace ".exe$", (".$extension").ToLower()
+
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $Version
+                        Architecture = Get-Architecture -String $Uri
+                        Type         = Get-FileType -File $Uri
+                        URI          = $Uri
+                    }
+                    Write-Output -InputObject $PSObject
+                }
+            }
+        }
+        #endregion
+    }
 }

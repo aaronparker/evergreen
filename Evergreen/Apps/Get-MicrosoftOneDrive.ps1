@@ -38,11 +38,11 @@
                 if ([System.Boolean]($node.PSobject.Properties.name -match "amd64binary")) {
                     [PSCustomObject] @{
                         Version      = $node.currentversion
-                        Throttle     = $node.throttle
-                        Architecture = Get-Architecture -String $node.amd64binary.url
                         Ring         = $ring.Name
-                        Type         = Get-FileType -File $node.amd64binary.url
+                        Throttle     = $node.throttle
                         Sha256       = ConvertFrom-Base64String -Base64String $node.amd64binary.sha256hash
+                        Architecture = Get-Architecture -String $node.amd64binary.url
+                        Type         = Get-FileType -File $node.amd64binary.url
                         URI          = $node.amd64binary.url
                     } | Write-Output
                 }
@@ -50,11 +50,11 @@
                 if ([System.Boolean]($node.PSobject.Properties.name -match "arm64binary")) {
                     [PSCustomObject] @{
                         Version      = $node.currentversion
-                        Throttle     = $node.throttle
-                        Architecture = Get-Architecture -String $node.arm64binary.url
                         Ring         = $ring.Name
-                        Type         = Get-FileType -File $node.arm64binary.url
+                        Throttle     = $node.throttle
                         Sha256       = ConvertFrom-Base64String -Base64String $node.arm64binary.sha256hash
+                        Architecture = Get-Architecture -String $node.arm64binary.url
+                        Type         = Get-FileType -File $node.arm64binary.url
                         URI          = $node.arm64binary.url
                     } | Write-Output
                 }
@@ -63,11 +63,11 @@
                     # Construct the output for MSIX; Return the custom object to the pipeline
                     [PSCustomObject] @{
                         Version      = $node.currentversion
-                        Throttle     = $node.throttle
-                        Architecture = Get-Architecture -String $node.msixbinary.url
                         Ring         = $ring.Name
-                        Type         = Get-FileType -File $node.msixbinary.url
+                        Throttle     = $node.throttle
                         Sha256       = if ($node.msixbinary.sha256hash) { ConvertFrom-Base64String -Base64String $node.msixbinary.sha256hash } else { "N/A" }
+                        Architecture = Get-Architecture -String $node.msixbinary.url
+                        Type         = Get-FileType -File $node.msixbinary.url
                         URI          = $node.msixbinary.url
                     } | Write-Output
                 }
@@ -76,11 +76,11 @@
                 if ([System.Boolean]($node.PSobject.Properties.name -match "binary")) {
                     $PSObject = [PSCustomObject] @{
                         Version      = $node.currentversion
-                        Throttle     = $node.throttle
-                        Architecture = Get-Architecture -String $node.binary.url
                         Ring         = $ring.Name
-                        Type         = Get-FileType -File $node.binary.url
+                        Throttle     = $node.throttle
                         Sha256       = ConvertFrom-Base64String -Base64String $node.binary.sha256hash
+                        Architecture = Get-Architecture -String $node.binary.url
+                        Type         = Get-FileType -File $node.binary.url
                         URI          = $node.binary.url
                     }
                     Write-Output -InputObject $PSObject

@@ -3,23 +3,21 @@
     "Source": "https://www.videolan.org/vlc/",
     "Get": {
         "Update": {
-            "Uri": {
-                "Windows": {
-                    "x64": "https://update.videolan.org/vlc/status-win-x64",
-                    "x86": "https://update.videolan.org/vlc/status-win-x86"
-                }
-            },
+            "Uri": [
+                "https://update.videolan.org/vlc/status-win-x64",
+                "https://update.videolan.org/vlc/status-win-x86"
+            ],
             "ContentType": "application/octet-stream",
             "UserAgent": "VLC/3.0.16 LibVLC/3.0.16"
         },
         "Download": {
-			"VersionLine": 0,
-			"UrlLine": 1,
+            "VersionLine": 0,
+            "UrlLine": 1,
             "Extensions": {
                 "Windows": [
-                    "EXE",
-                    "MSI",
-                    "ZIP"
+                    "exe",
+                    "msi",
+                    "zip"
                 ]
             }
         }

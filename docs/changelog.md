@@ -1,5 +1,28 @@
 # Change log
 
+## 2407.1230
+
+* Updates `ScooterBeyondCompare` with additional languages
+* Updates `VideoLanVlcPlayer` [#704](https://github.com/aaronparker/evergreen/issues/704) [#158](https://github.com/aaronparker/evergreen/issues/158), `CitrixWorkspaceApp` [#578](https://github.com/aaronparker/evergreen/issues/578) [#298](https://github.com/aaronparker/evergreen/issues/298) to output warnings for known issues
+* Updates `GoogleChrome`, `MicrosoftOneDrive`, `MozillaFirefox`, `MozillaThunderbird` to reorder output properties
+
+BREAKING CHANGES
+
+* Renames `diagrams.net` to `JGraphDrawIO` [#714](https://github.com/aaronparker/evergreen/issues/714)
+
+## 2407.1202
+
+* Adds `AmazonCorretto8`, `AmazonCorretto11`, `AmazonCorretto16`, `AmazonCorretto17`, `AmazonCorretto20`, `AmazonCorretto21`, `AmazonCorretto22` [#711](https://github.com/aaronparker/evergreen/issues/711)
+* Updates output properties in `AtlassianSourcetree`
+* Updates output properties in internal function `Get-GitHubRepoRelease`
+* Fixes an issue with the `Version` property in `AkeoRufusAlt`
+* Fixes an issue with the `Filename` property in `PiriformCCleanerFree`
+
+BREAKING CHANGES
+
+* Removes `AmazonCorretto` - replaced with individual `AmazonCorretto`
+* Removes `OpenJDK` [#712](https://github.com/aaronparker/evergreen/issues/712)
+
 ## 2407.1175
 
 * Adds `AdoptiumTemurin22`, `BellSoftLibericaJDK21`, `BellSoftLibericaJDK22`, `ManicTimeClient` [#572](https://github.com/aaronparker/evergreen/issues/572)

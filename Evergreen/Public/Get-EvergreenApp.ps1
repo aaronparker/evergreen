@@ -77,7 +77,7 @@ function Get-EvergreenApp {
                 # Run the application function and sort the output
                 Write-Verbose -Message "Calling: Get-$Name."
                 $Output = & Get-$Name @params
-                $Output | Sort-Object -Property "Ring", "Channel", "Track", @{ Expression = { [System.Version]$_.Version }; Descending = $true } -ErrorAction "SilentlyContinue"
+                $Output | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true }, "Ring", "Channel", "Track" -ErrorAction "SilentlyContinue"
                 Remove-Variable -Name Output -Force -ErrorAction "SilentlyContinue"
             }
             catch {

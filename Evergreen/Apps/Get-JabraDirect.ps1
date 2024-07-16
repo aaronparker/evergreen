@@ -23,7 +23,6 @@ Function Get-JabraDirect {
         $PSObject = [PSCustomObject] @{
             Version       = $Content.WindowsVersion
             Architecture  = "x64"
-            ReleaseNotes  = $Content.WindowsReleaseNotes
             Type          = Get-FileType -File $Content.WindowsDownload
             Sha256        = $Content.WindowsSHA256
             URI           = $Content.WindowsDownload

@@ -33,13 +33,19 @@
 
         # Walk through each node to output details
         foreach ($Installer in $Installers) {
+
+            # Write a warning if Citrix is throttling updates
+            if ($Installer.Version -eq "0.0.0.0") {
+                Write-Warning -Message "$($MyInvocation.MyCommand): Citrix may be throttling availability of updates for $($Installer.ShortDescription -replace ':', '')."
+            }
+
             $PSObject = [PSCustomObject] @{
                 Version = $Installer.Version
-                Title   = $($Installer.ShortDescription -replace ":", "")
+                Stream  = $Installer.Stream
+                Date    = ConvertTo-DateTime -DateTime $Installer.StartDate -Pattern $res.Get.Update.DatePattern
+                #Title   = $($Installer.ShortDescription -replace ":", "")
                 Size    = $(if ($Installer.Size) { $Installer.Size } else { "Unknown" })
                 Hash    = $Installer.Hash
-                Date    = ConvertTo-DateTime -DateTime $Installer.StartDate -Pattern $res.Get.Update.DatePattern
-                Stream  = $Installer.Stream
                 URI     = "$($res.Get.Download.Uri)$($Installer.DownloadURL)"
             }
             Write-Output -InputObject $PSObject
