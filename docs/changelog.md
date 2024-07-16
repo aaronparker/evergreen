@@ -2,9 +2,11 @@
 
 ## 2407.1230
 
+* Updates `Save-EvergreenApp` to use a custom user agent for an identified list of URLs [#677](https://github.com/aaronparker/evergreen/issues/677)
 * Updates `ScooterBeyondCompare` with additional languages
 * Updates `VideoLanVlcPlayer` [#704](https://github.com/aaronparker/evergreen/issues/704) [#158](https://github.com/aaronparker/evergreen/issues/158), `CitrixWorkspaceApp` [#578](https://github.com/aaronparker/evergreen/issues/578) [#298](https://github.com/aaronparker/evergreen/issues/298) to output warnings for known issues
 * Updates `GoogleChrome`, `MicrosoftOneDrive`, `MozillaFirefox`, `MozillaThunderbird` to reorder output properties
+* Updates default user agent
 
 BREAKING CHANGES
 
