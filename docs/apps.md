@@ -1,6 +1,6 @@
 ﻿# 345 Supported applications
 
-Evergreen `2407.1202` supports the following applications:
+Evergreen `2407.123` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,7 +76,6 @@ Evergreen `2407.1202` supports the following applications:
 | DebaucheeBarrier                      | Debauchee Barrier                                                 | https://github.com/debauchee/barrier                                                                                                      |
 | deviceTRUST                           | deviceTRUST                                                       | https://devicetrust.com/                                                                                                                  |
 | DevToys                               | DevToys                                                           | https://devtoys.app/                                                                                                                      |
-| diagrams.net                          | diagrams.net                                                      | https://www.diagrams.net/                                                                                                                 |
 | dnGrep                                | dnGrep                                                            | https://dngrep.github.io/                                                                                                                 |
 | DockerCompose                         | Docker Compose                                                    | https://github.com/docker/compose                                                                                                         |
 | DockerDesktop                         | Docker Desktop                                                    | https://www.docker.com/products/docker-desktop/                                                                                           |
@@ -162,6 +161,7 @@ Evergreen `2407.1202` supports the following applications:
 | JetBrainsToolbox                      | JetBrains Toolbox App                                             | https://www.jetbrains.com/toolbox-app/                                                                                                    |
 | JetBrainsWebStorm                     | JetBrains WebStorm                                                | https://www.jetbrains.com/webstorm                                                                                                        |
 | JetBrainsYouTrack                     | JetBrains YouTrack                                                | https://www.jetbrains.com/youtrack                                                                                                        |
+| JGraphDrawIO                          | JGraph draw.io (diagrams.net)                                     | https://www.drawio.com                                                                                                                    |
 | jq                                    | jq                                                                | https://jqlang.github.io/jq/                                                                                                              |
 | jrsoftwareInnoSetup                   | jrsoftware InnoSetup                                              | https://www.innosetup.com                                                                                                                 |
 | KarakunOpenWebStart                   | Karakun OpenWebStart                                              | https://openwebstart.com/ows/                                                                                                             |
@@ -329,7 +329,7 @@ Evergreen `2407.1202` supports the following applications:
 | USBPcap                               | USBPcap                                                           | https://github.com/desowin/usbpcap/                                                                                                       |
 | VastLimitsUberAgent                   | vast limits uberAgent                                             | https://uberagent.com/                                                                                                                    |
 | VeraCrypt                             | VeraCrypt                                                         | https://www.veracrypt.fr/en/Home.html                                                                                                     |
-| VercelHyper                           | Vercel Hyper                                                      | https://hyper.js/                                                                                                                         |
+| VercelHyper                           | Vercel Hyper                                                      | https://hyper.is/                                                                                                                         |
 | VideoLanVlcPlayer                     | VideoLan VLC Player                                               | https://www.videolan.org/vlc/                                                                                                             |
 | VisualCppRedistAIO                    | VisualCppRedistAIO                                                | https://github.com/abbodi1406/vcredist                                                                                                    |
 | VMPlexWorkstation                     | VMPlex Workstation                                                | https://github.com/0xf005ba11/vmplex-ws                                                                                                   |

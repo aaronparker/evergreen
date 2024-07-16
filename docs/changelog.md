@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1230
 
 * Updates `ScooterBeyondCompare` with additional languages
 * Updates `VideoLanVlcPlayer` [#704](https://github.com/aaronparker/evergreen/issues/704) [#158](https://github.com/aaronparker/evergreen/issues/158), `CitrixWorkspaceApp` [#578](https://github.com/aaronparker/evergreen/issues/578) [#298](https://github.com/aaronparker/evergreen/issues/298) to output warnings for known issues
