@@ -1,6 +1,6 @@
 {
-	"Name": "diagrams.net",
-	"Source": "https://www.diagrams.net/",
+	"Name": "JGraph draw.io (diagrams.net)",
+	"Source": "https://www.drawio.com",
 	"Get": {
 		"Uri": "https://api.github.com/repos/jgraph/drawio-desktop/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
