@@ -9,7 +9,7 @@
         {
             "Name": "MicrosoftOneDrive",
             "EvergreenApp": "MicrosoftOneDrive",
-            "Filter": "$_.Architecture -eq \"AMD64\" -and $_.Ring -eq \"Production\" -and $_.Throttle -eq \"10\""
+            "Filter": "$_.Architecture -eq \"x64\" -and $_.Ring -eq \"Production\" -and $_.Throttle -eq \"10\""
         },
         {
             "Name": "MicrosoftEdge",
