@@ -50,17 +50,17 @@ function Start-EvergreenLibraryUpdate {
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Application path: $AppPath."
                     Write-Verbose -Message "$($MyInvocation.MyCommand): Query Evergreen for: $($Application.Name)."
 
-                    try {
+                    # Gather the application version information from Get-EvergreenApp
+                    if ([System.String]::IsNullOrEmpty($Application.Filter)) {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): No filter specified for $($Application.Name)."
+                        $App = Get-EvergreenApp -Name $Application.EvergreenApp @params
+                    }
+                    else {
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Filter: $($Application.Filter)."
                         $WhereBlock = [ScriptBlock]::Create($Application.Filter)
+                        [System.Array]$App = @()
+                        $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
                     }
-                    catch {
-                        throw $_
-                    }
-
-                    # Gather the application version information from Get-EvergreenApp
-                    [System.Array]$App = @()
-                    $App = Get-EvergreenApp -Name $Application.EvergreenApp @params | Where-Object $WhereBlock
 
                     # If something returned, add to the library
                     if ($null -ne $App) {
@@ -99,7 +99,7 @@ function Start-EvergreenLibraryUpdate {
                 elseif ($null -ne $LibContentBefore) {
                         (Compare-Object $LibContentBefore $LibContentAfter -Property FullName -IncludeEqual | ForEach-Object {
                         [PSCustomObject]@{
-                            Installer = $_.Fullname
+                            Installer = $_.FullName
                             Status    = $_.SideIndicator -replace "=>", "NEW" -replace "==", "UNCHANGED" -replace "<=", "DELETED"
                         }
                     })
