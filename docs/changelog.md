@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `OBSStudioAlt` - provides an alternative method for returning OSB Studio downloads
+* Renames function `Get-EvergreenLibraryApp` to `Get-EvergreenAppFromLibrary`. `Get-EvergreenLibraryApp` remains as the alias
+* Updates `Get-EvergreenLibrary` to return details from an Evergreen Library hosted on a `https` URL (e.g. an Azure storage account)
+* Updates `Start-EvergreenLibraryUpdate` to support an application in the library without a filter
+* Updates internal function `Get-AdoptiumTemurin` to ensure `jdk-` text is not returned in the version number
+* Updates filter in the default Evergreen Library template - `EvergreenLibraryTemplate.json`
+
 ## 2407.1230
 
 * Updates `ScooterBeyondCompare` with additional languages
