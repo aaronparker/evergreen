@@ -72,7 +72,7 @@ PowerShellVersion = '3.0'
 FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest',
                'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenAppFromApi',
                'Get-EvergreenEndpointFromApi', 'Get-EvergreenLibrary',
-               'Get-EvergreenLibraryApp', 'New-EvergreenLibrary',
+               'Get-EvergreenAppFromLibrary', 'New-EvergreenLibrary',
                'Save-EvergreenApp', 'Start-EvergreenLibraryUpdate',
                'Test-EvergreenApp')
 
@@ -83,7 +83,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Invoke-EvergreenLibraryUpdate',
+AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Invoke-EvergreenLibraryUpdate', 'Get-EvergreenLibraryApp',
                'Invoke-EvergreenApp', 'Get-EvergreenEndpoint'
 
 # DSC resources to export from this module

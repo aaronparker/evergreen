@@ -10,86 +10,141 @@ function Get-EvergreenLibrary {
             ValueFromPipelineByPropertyName,
             HelpMessage = "Specify the path to the library.",
             ParameterSetName = "Path")]
-        [ValidateNotNull()]
-        [System.IO.FileInfo] $Path
+        [ValidateNotNullOrEmpty()]
+        [System.IO.FileInfo] $Path,
+
+        [Parameter(
+            Mandatory = $true,
+            Position = 0,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "Specify the URI to the library.",
+            ParameterSetName = "URI")]
+        [ValidateNotNullOrEmpty()]
+        [ValidateScript( {
+            if ($_ -match "^(https:\/\/([a-zA-Z0-9_\-\.]+)\/([a-zA-Z0-9_-]+)\/EvergreenLibrary.json)$") {
+                $true
+            }
+            else {
+                throw "'$_' must be in the format 'https://<storageaccount>/<container>/EvergreenLibrary.json'."
+            }
+        })]
+        [System.Uri] $Uri
     )
 
     begin {
+        if ($PSBoundParameters.ContainsKey("Uri")) {
+            $Library = Invoke-EvergreenRestMethod -Uri $Uri
+            $ParentUri = Split-Path -Path $Uri -Parent
+
+            # Build the output object
+            $Output = [PSCustomObject] @{
+                "Library"   = $Library
+                "Inventory" = (New-Object -TypeName "System.Collections.ArrayList")
+            }
+        }
     }
 
     process {
-        if (Test-Path -Path $Path -PathType "Container") {
-            $LibraryFile = $(Join-Path -Path $Path -ChildPath "EvergreenLibrary.json")
+        # Build the inventory from a Library on $Uri
+        if ($PSBoundParameters.ContainsKey("Uri")) {
+            foreach ($Application in $Library.Applications) {
 
-            if (Test-Path -Path $LibraryFile) {
-                Write-Verbose -Message "Library exists: $LibraryFile."
-
+                # Add details for the application to the output object
                 try {
-                    # Read the library file
-                    Write-Verbose -Message "Read: $LibraryFile."
-                    $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
+                    $AppUri = "$($ParentUri)/$($Application.Name)/$($Application.Name).json"
+                    $Versions = Invoke-EvergreenRestMethod -Uri $AppUri
                 }
                 catch {
-                    throw $_
+                    Write-Warning -Message "Encountered an error reading $AppUri with: $($_.Exception.Message)"
                 }
 
-                if ($null -ne $Library) {
+                # Add details for this application
+                $App = [PSCustomObject] @{
+                    ApplicationName = $Application.Name
+                    Versions        = $Versions
+                }
+                $Output.Inventory.Add($App) | Out-Null
+            }
 
-                    # Build the output object
-                    $Output = [PSCustomObject] @{
-                        "Library"   = $Library
-                        "Inventory" = (New-Object -TypeName "System.Collections.ArrayList")
+            # Output the object to the pipeline
+            Write-Output -InputObject $Output
+        }
+
+        # Build the inventory from a Library on $Path
+        if ($PSBoundParameters.ContainsKey("Path")) {
+            if (Test-Path -Path $Path -PathType "Container") {
+                $LibraryFile = $(Join-Path -Path $Path -ChildPath "EvergreenLibrary.json")
+
+                if (Test-Path -Path $LibraryFile) {
+                    Write-Verbose -Message "Library exists: $LibraryFile."
+
+                    try {
+                        # Read the library file
+                        Write-Verbose -Message "Read: $LibraryFile."
+                        $Library = Get-Content -Path $LibraryFile | ConvertFrom-Json
+                    }
+                    catch {
+                        throw $_
                     }
 
-                    foreach ($Application in $Library.Applications) {
+                    if ($null -ne $Library) {
 
-                        # Add details for the application to the output object
-                        $AppPath = $(Join-Path -Path $Path -ChildPath $Application.Name)
-                        if (Test-Path -Path $AppPath) {
+                        # Build the output object
+                        $Output = [PSCustomObject] @{
+                            "Library"   = $Library
+                            "Inventory" = (New-Object -TypeName "System.Collections.ArrayList")
+                        }
 
-                            $AppManifest = $(Join-Path -Path $AppPath -ChildPath "$($Application.Name).json")
-                            if (Test-Path -Path $AppManifest) {
+                        foreach ($Application in $Library.Applications) {
 
-                                try {
-                                    Write-Verbose -Message "Read: $AppManifest."
-                                    $Versions = Get-Content -Path $AppManifest | ConvertFrom-Json
-                                }
-                                catch {
-                                    Write-Warning -Message "Encountered an error reading $AppManifest with: $($_.Exception.Message)"
-                                }
+                            # Add details for the application to the output object
+                            $AppPath = $(Join-Path -Path $Path -ChildPath $Application.Name)
+                            if (Test-Path -Path $AppPath) {
 
-                                try {
-                                    # Add details for this application
-                                    $App = [PSCustomObject] @{
-                                        ApplicationName = $Application.Name
-                                        Versions        = $Versions
+                                $AppManifest = $(Join-Path -Path $AppPath -ChildPath "$($Application.Name).json")
+                                if (Test-Path -Path $AppManifest) {
+
+                                    try {
+                                        Write-Verbose -Message "Read: $AppManifest."
+                                        $Versions = Get-Content -Path $AppManifest | ConvertFrom-Json
                                     }
-                                    $Output.Inventory.Add($App) | Out-Null
-                                }
-                                catch {
-                                    Write-Warning -Message "Encountered an error adding details for $($Application.Name) with: $($_.Exception.Message)"
-                                }
+                                    catch {
+                                        Write-Warning -Message "Encountered an error reading $AppManifest with: $($_.Exception.Message)"
+                                    }
 
+                                    try {
+                                        # Add details for this application
+                                        $App = [PSCustomObject] @{
+                                            ApplicationName = $Application.Name
+                                            Versions        = $Versions
+                                        }
+                                        $Output.Inventory.Add($App) | Out-Null
+                                    }
+                                    catch {
+                                        Write-Warning -Message "Encountered an error adding details for $($Application.Name) with: $($_.Exception.Message)"
+                                    }
+
+                                }
+                                else {
+                                    Write-Warning -Message "Unable to find $AppManifest. Update the library with Invoke-EvergreenLibraryUpdate."
+                                }
                             }
                             else {
-                                Write-Warning -Message "Unable to find $AppManifest. Update the library with Invoke-EvergreenLibraryUpdate."
+                                Write-Warning -Message "Unable to find $AppPath. Update the library with Invoke-EvergreenLibraryUpdate."
                             }
                         }
-                        else {
-                            Write-Warning -Message "Unable to find $AppPath. Update the library with Invoke-EvergreenLibraryUpdate."
-                        }
-                    }
 
-                    # Output the object to the pipeline
-                    Write-Output -InputObject $Output
+                        # Output the object to the pipeline
+                        Write-Output -InputObject $Output
+                    }
+                }
+                else {
+                    throw [System.IO.FileNotFoundException] "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
                 }
             }
             else {
-                throw [System.IO.FileNotFoundException] "$Path is not an Evergreen Library. Cannot find EvergreenLibrary.json. Create a library with New-EvergreenLibrary."
+                throw [System.IO.DirectoryNotFoundException] "Cannot use path $Path because it does not exist or is not a directory."
             }
-        }
-        else {
-            throw [System.IO.DirectoryNotFoundException] "Cannot use path $Path because it does not exist or is not a directory."
         }
     }
 
