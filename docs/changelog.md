@@ -3,6 +3,7 @@
 ## VERSION
 
 * Adds `OBSStudioAlt` - provides an alternative method for returning OSB Studio downloads
+* Updates `MicrosoftTerminal` to return `.msixbundle` installers
 * Renames function `Get-EvergreenLibraryApp` to `Get-EvergreenAppFromLibrary`. `Get-EvergreenLibraryApp` remains as the alias
 * Updates `Get-EvergreenLibrary` to return details from an Evergreen Library hosted on a `https` URL (e.g. an Azure storage account)
 * Updates `Start-EvergreenLibraryUpdate` to support an application in the library without a filter
