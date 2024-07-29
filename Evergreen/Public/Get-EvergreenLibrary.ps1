@@ -21,7 +21,7 @@ function Get-EvergreenLibrary {
             ParameterSetName = "URI")]
         [ValidateNotNullOrEmpty()]
         [ValidateScript( {
-            if ($_ -match "^(https:\/\/([a-zA-Z0-9_\-\.]+)\/([a-zA-Z0-9_-]+)\/EvergreenLibrary.json)$") {
+            if ($_ -match "^(https:\/\/([a-zA-Z0-9_\-\.]+)\/([a-zA-Z0-9_-]+)\/(EvergreenLibrary.json|Library.json))$") {
                 $true
             }
             else {
