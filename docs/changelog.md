@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1259
 
 * Adds `OBSStudioAlt` - provides an alternative method for returning OSB Studio downloads
 * Updates `MicrosoftTerminal` to return `.msixbundle` installers

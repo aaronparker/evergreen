@@ -1,6 +1,6 @@
-﻿# 345 Supported applications
+﻿# 346 Supported applications
 
-Evergreen `2407.123` supports the following applications:
+Evergreen `2407.1259` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -238,6 +238,7 @@ Evergreen `2407.123` supports the following applications:
 | Npcap                                 | Npcap                                                             | https://npcap.com/                                                                                                                        |
 | Obsidian                              | Obsidian                                                          | https://obsidian.md/                                                                                                                      |
 | OBSStudio                             | OBS Studio                                                        | https://obsproject.com/                                                                                                                   |
+| OBSStudioAlt                          | OBS Studio Alt                                                    | https://obsproject.com/                                                                                                                   |
 | OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | https://ocsinventory-ng.org/                                                                                                              |
 | OctopusDeployServer                   | Octopus Deploy Server                                             | https://octopus.com/                                                                                                                      |
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                                                                      |
