@@ -1,7 +1,7 @@
 {
 	"Name": "Gephi",
 	"Source": "https://gephi.org/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/gephi/gephi/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

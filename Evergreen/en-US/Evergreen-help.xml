@@ -893,11 +893,26 @@ c.1password.com</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>Path</maml:name>
           <maml:description>
-            <maml:para>Specify the path to the library.</maml:para>
+            <maml:para>Specify the local or UNC path to the Evergreen Library.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
           <dev:type>
             <maml:name>FileInfo</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-EvergreenLibrary</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Uri</maml:name>
+          <maml:description>
+            <maml:para>Specify the URI to an Evergreen Library hosted on blob storage on an Azure storage account.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -908,11 +923,23 @@ c.1password.com</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>Path</maml:name>
         <maml:description>
-          <maml:para>Specify the path to the library.</maml:para>
+          <maml:para>Specify the local or UNC path to the Evergreen Library.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">FileInfo</command:parameterValue>
         <dev:type>
           <maml:name>FileInfo</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>Uri</maml:name>
+        <maml:description>
+          <maml:para>Specify the URI to an Evergreen Library hosted on blob storage on an Azure storage account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -951,6 +978,13 @@ c.1password.com</dev:code>
         <dev:code>PS C:\&gt; Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"</dev:code>
         <dev:remarks>
           <maml:para>Returns details about the Evergreen library at \server\EvergreenLibrary, including application version information stored for each application.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-EvergreenLibrary -Uri "https://st5srpuzr5v74.blob.core.windows.net/library/EvergreenLibrary.json"</dev:code>
+        <dev:remarks>
+          <maml:para>Returns details about the Evergreen library at on the storage account - "st5srpuzr5v74" under the container "library", including application version information stored for each application.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

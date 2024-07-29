@@ -1,7 +1,7 @@
 {
 	"Name": "Protege",
 	"Source": "https://protege.stanford.edu/",
-        
+
 	"Get": {
 		"Uri": "https://api.github.com/repos/protegeproject/protege-distribution/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",

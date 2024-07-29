@@ -1,8 +1,9 @@
-function Get-EvergreenLibraryApp {
+function Get-EvergreenAppFromLibrary {
     <#
         .EXTERNALHELP Evergreen-help.xml
     #>
     [OutputType([System.Management.Automation.PSObject])]
+    [Alias("Get-EvergreenLibraryApp")]
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(

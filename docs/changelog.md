@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `OBSStudioAlt` - provides an alternative method for returning OSB Studio downloads
+* Renames function `Get-EvergreenLibraryApp` to `Get-EvergreenAppFromLibrary`. `Get-EvergreenLibraryApp` remains as the alias
+* Updates `Get-EvergreenLibrary` to return details from an Evergreen Library hosted on a `https` URL (e.g. an Azure storage account)
+* Updates `Start-EvergreenLibraryUpdate` to support an application in the library without a filter
+* Updates internal function `Get-AdoptiumTemurin` to ensure `jdk-` text is not returned in the version number
+* Updates filter in the default Evergreen Library template - `EvergreenLibraryTemplate.json`
+
 ## 2407.1230
 
 * Updates `Save-EvergreenApp` to use a custom user agent for an identified list of URLs [#677](https://github.com/aaronparker/evergreen/issues/677)
@@ -128,7 +137,7 @@ BREAKING CHANGES
 
 ## 2405.943
 
-* Update default user agent #642 
+* Update default user agent #642
 * Fix an issue with `Get-Architecture` returning `AMD64` [#663](https://github.com/aaronparker/evergreen/issues/663)
 * Adds `Get-EvergreenAppFromApi`, `Start-EvergreenLibraryUpdate` aliases. Public functions will be renamed in a future release
 * Fix various issues with help URI links for public functions
@@ -176,7 +185,7 @@ BREAKING CHANGES
 * Updates `Microsoft.NET` for all available supported channels [#583](https://github.com/aaronparker/evergreen/issues/583)
 * Updates `mySQLWorkbench` download URL
 * Updates source URL used in `MicrosoftSsms` to fix version numbers
-* Updates `DruvainSyncClient` for Cloud and GovCloud releases 
+* Updates `DruvainSyncClient` for Cloud and GovCloud releases
 * Fix date property on `MicrosoftWvdMultimediaRedirection`
 
 ## 2310.868

@@ -13,37 +13,68 @@ Returns details about an Evergreen library including details about the applicati
 
 ## SYNTAX
 
+### Path
+
 ```
-Get-EvergreenLibrary [-Path] <FileInfo> [<CommonParameters>]
+Get-EvergreenLibrary [-Path] <FileInfo> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### URI
+
+```
+Get-EvergreenLibrary -Uri <Uri> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-Returns details about an Evergreen library at a specified path. This will include details of the library stored in `EvergreenLibrary.json` and application version information stored for each application in the library. Application downloads and application version information must first be downloaded via `Invoke-EvergreenLibraryUpdate`.
+Returns details about an Evergreen library at a specified path.
+This will include details of the library stored in `EvergreenLibrary.json` and application version information stored for each application in the library.
+Application downloads and application version information must first be downloaded via `Invoke-EvergreenLibraryUpdate`.
 
 ## EXAMPLES
 
 ### Example 1
-
-```powershell
+```
 PS C:\> Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
 ```
 
 Returns details about the Evergreen library at \\server\EvergreenLibrary, including application version information stored for each application.
 
+### Example 2
+```
+PS C:\> Get-EvergreenLibrary -Uri "https://st5srpuzr5v74.blob.core.windows.net/library/EvergreenLibrary.json"
+```
+
+Returns details about the Evergreen library at on the storage account - "st5srpuzr5v74" under the container "library", including application version information stored for each application.
+
 ## PARAMETERS
 
 ### -Path
 
-Specify the path to the library.
+Specify the local or UNC path to the Evergreen Library.
 
 ```yaml
 Type: FileInfo
-Parameter Sets: (All)
+Parameter Sets: Path
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Uri
+
+Specify the URI to an Evergreen Library hosted on blob storage on an Azure storage account.
+
+```yaml
+Type: Uri
+Parameter Sets: URI
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -66,7 +66,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
     }
 }
 "@
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Trust all certificates."        
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Trust all certificates."
         [System.Net.ServicePointManager]::CertificatePolicy = New-Object -TypeName "TrustAllCertsPolicy"
     }
 

@@ -161,7 +161,7 @@ function Save-EvergreenApp {
                 }
                 # Output the parameters when using -Verbose
                 foreach ($item in $params.GetEnumerator()) {
-                    Write-Verbose -Message "nvoke-WebRequest parameter: $($item.name): $($item.value)."
+                    Write-Verbose -Message "Invoke-WebRequest parameter: $($item.name): $($item.value)."
                 }
                 # Download the file
                 if ($PSCmdlet.ShouldProcess($Object.URI, "Download")) {

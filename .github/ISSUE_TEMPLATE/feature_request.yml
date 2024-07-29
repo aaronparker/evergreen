@@ -26,6 +26,6 @@ body:
     id: documentation
     attributes:
       label: Have you reviewed the documentation?
-      description: "Please confirm that you've reviewed the documentation before making this feature request." 
+      description: "Please confirm that you've reviewed the documentation before making this feature request."
       options:
         - label: "Documentation at: https://stealthpuppy.com/evergreen/"
