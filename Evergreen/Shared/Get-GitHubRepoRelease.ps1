@@ -83,6 +83,12 @@ function Get-GitHubRepoRelease {
                 elseif (Test-Path -Path "env:GH_TOKEN") {
                     $params.Headers = @{ Authorization = "token $env:GH_TOKEN" }
                 }
+
+                # Output the parameters when using -Verbose
+                foreach ($item in $params.GetEnumerator()) {
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($item.name): $($item.value)."
+                }
+
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
                 $release = Invoke-RestMethod @params
             }

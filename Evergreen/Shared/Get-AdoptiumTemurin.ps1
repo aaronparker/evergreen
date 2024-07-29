@@ -34,9 +34,9 @@ function Get-AdoptiumTemurin {
 
         if ([System.String]::IsNullOrWhiteSpace($Release.binary.updated_at)) {
             $PSObject = [PSCustomObject]@{
-                Version      = $Release.version.openjdk_version
-                ImageType    = $Release.binary.image_type
+                Version      = $Release.version.openjdk_version -replace "jdk-", ""
                 Date         = $Release.binary.timestamp
+                ImageType    = $Release.binary.image_type
                 Architecture = Get-Architecture -String $Release.binary.architecture
                 Type         = Get-FileType -File $Uri
                 URI          = $Uri
@@ -45,9 +45,9 @@ function Get-AdoptiumTemurin {
         }
         else {
             $PSObject = [PSCustomObject]@{
-                Version      = $Release.version.openjdk_version
-                ImageType    = $Release.binary.image_type
+                Version      = $Release.version.openjdk_version -replace "jdk-", ""
                 Date         = $Release.binary.updated_at
+                ImageType    = $Release.binary.image_type
                 Checksum     = $Release.binary.installer.checksum
                 Size         = $Release.binary.installer.size
                 Architecture = Get-Architecture -String $Release.binary.architecture
