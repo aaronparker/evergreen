@@ -64,7 +64,7 @@ function Start-EvergreenLibraryUpdate {
 
                     # If something returned, add to the library
                     if ($null -ne $App) {
-                        Write-Verbose  -Message "$($MyInvocation.MyCommand): Download count for $($Application.EvergreenApp): $($App.Count)."
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Download count for $($Application.EvergreenApp): $($App.Count)."
 
                         # Save the installers to the library
                         if ($PSCmdlet.ShouldProcess("Downloading $($App.Count) application installers.", "Save-EvergreenApp")) {
@@ -75,12 +75,12 @@ function Start-EvergreenLibraryUpdate {
                         if ($Saved.Count -gt 1) {
                             for ($i = 0; $i -lt $App.Count; $i++) {
                                 $Item = $Saved | Where-Object { $_.FullName -match $App[$i].Version -and ((Split-Path $_.FullName -Leaf) -eq (Split-Path $App[$i].URI -Leaf)) }
-                                Write-Verbose  -Message "$($MyInvocation.MyCommand): Add path to object: $($Item.FullName)"
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Add path to object: $($Item.FullName)"
                                 $App[$i] | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Item.FullName
                             }
                         }
                         else {
-                            Write-Verbose  -Message "$($MyInvocation.MyCommand): Add path to object: $($Saved.FullName)"
+                            Write-Verbose -Message "$($MyInvocation.MyCommand): Add path to object: $($Saved.FullName)"
                             $App | Add-Member -MemberType "NoteProperty" -Name "Path" -Value $Saved.FullName
                         }
 

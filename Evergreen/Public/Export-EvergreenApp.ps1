@@ -43,10 +43,12 @@ function Export-EvergreenApp {
         }
 
         # Sort the content and keep unique versions
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Input object count: $($InputObject.Count)"
         $Properties = $InputObject | Get-Member | `
             Where-Object { $_.MemberType -eq "NoteProperty" } | Select-Object -ExpandProperty "Name" -Unique | `
             Sort-Object -Descending
         $OutputObject = $InputObject | Select-Object -Unique -Property $Properties
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Output object count: $($OutputObject.Count)"
 
         # Export the data to file
         $OutputObject | Sort-Object -Property @{ Expression = { [System.Version] $_.Version }; Descending = $false } -ErrorAction "SilentlyContinue" | `
