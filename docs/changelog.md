@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Update `AdobeAcrobatReaderDC` to add `x64` architecture to all languages
+* Fix an issue in `Get-EvergreenLibrary` where `Split-Path` transposes the `/` character to `\` in URLs
+
 ## 2407.1259
 
 * Adds `OBSStudioAlt` - provides an alternative method for returning OSB Studio downloads
