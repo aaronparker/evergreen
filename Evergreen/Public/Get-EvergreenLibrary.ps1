@@ -25,7 +25,7 @@ function Get-EvergreenLibrary {
                 $true
             }
             else {
-                throw "'$_' must be in the format 'https://<storageaccount>/<container>/EvergreenLibrary.json'."
+                throw "'$_' must be in the format 'https://<storageaccount>/<container>/EvergreenLibrary.json' or 'https://<storageaccount>/<container>/Library.json'."
             }
         })]
         [System.Uri] $Uri
@@ -33,8 +33,11 @@ function Get-EvergreenLibrary {
 
     begin {
         if ($PSBoundParameters.ContainsKey("Uri")) {
+            # Get the details from the library
             $Library = Invoke-EvergreenRestMethod -Uri $Uri
-            $ParentUri = Split-Path -Path $Uri -Parent
+
+            # Get the parent URI which we will use later
+            $ParentUri = ($Uri.ToString() -replace $Uri.Segments[-1], "").Trim("/")
 
             # Build the output object
             $Output = [PSCustomObject] @{
