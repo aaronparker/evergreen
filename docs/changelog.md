@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2407.1289
 
 * Update `AdobeAcrobatReaderDC` to add `x64` architecture to all languages
 * Fix an issue in `Get-EvergreenLibrary` where `Split-Path` transposes the `/` character to `\` in URLs
