@@ -3,7 +3,8 @@
     "Source": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html",
     "Get": {
         "Update": {
-            "Uri": "https://rdc.adobe.io/reader/products?lang=#Language&site=enterprise&os=Windows%2011&api_key=dc-get-adobereader-cdn",
+            "Uri2": "https://rdc.adobe.io/reader/products?lang=#Language&site=enterprise&os=Windows%2011&api_key=dc-get-adobereader-cdn",
+            "Uri": "https://rdc.adobe.io/reader/products?lang=#Language&site=otherversions&os=Windows%2010&preInstalled=&api_key=dc-get-adobereader-cdn",
             "Languages": {
                 "mui": "MUI",
                 "en": "English",
