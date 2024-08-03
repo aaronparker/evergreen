@@ -29,6 +29,7 @@
     foreach ($File in $Downloads.downloadFiles) {
         [PSCustomObject] @{
             Version = $File.version
+            Build   = $File.build
             Date    = $File.releaseDate
             Sha256  = $File.sha256checksum
             Type    = Get-FileType -File $File.thirdPartyDownloadUrl
