@@ -1,5 +1,5 @@
 {
-    "Name": "AWSAppStream",
+    "Name": "AWS AppStream 2.0 Client",
     "Source": "https://docs.aws.amazon.com/en_us/appstream2/latest/developerguide/client-release-versions.html",
     "Get": {
         "Update": {
