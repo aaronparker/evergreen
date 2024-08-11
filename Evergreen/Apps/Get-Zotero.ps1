@@ -17,15 +17,19 @@ Function Get-Zotero {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get the latest download
-    $Response = Resolve-SystemNetWebRequest -Uri $res.Get.Download.Uri
+    foreach ($Uri in $res.Get.Download.Uri) {
+        # Get the latest download
+        $Response = Resolve-SystemNetWebRequest -Uri $Uri
 
-    # Construct the output; Return the custom object to the pipeline
-    If ($Null -ne $Response) {
-        $PSObject = [PSCustomObject] @{
-            Version = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
-            URI     = $Response.ResponseUri.AbsoluteUri
+        # Construct the output; Return the custom object to the pipeline
+        if ($null -ne $Response) {
+            $PSObject = [PSCustomObject] @{
+                Version      = [RegEx]::Match($Response.ResponseUri.LocalPath, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+                Architecture = Get-Architecture -String $Response.ResponseUri.AbsoluteUri
+                Type         = Get-FileType -File $Response.ResponseUri.AbsoluteUri
+                URI          = $Response.ResponseUri.AbsoluteUri
+            }
+            Write-Output -InputObject $PSObject
         }
-        Write-Output -InputObject $PSObject
     }
 }
