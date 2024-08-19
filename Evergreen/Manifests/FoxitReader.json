@@ -13,7 +13,6 @@
 			"DateTimePattern": "MM/dd/yy"
         },
         "Download": {
-            "Exe": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Reader&platform=Windows&version=#Version&package_type=#Package&language=#Language",
             "Uri": "https://www.foxitsoftware.com/downloads/latest.html?product=Foxit-Enterprise-Reader&platform=Windows&version=#Version&package_type=msi&language=#Language&distID="
         }
     },
