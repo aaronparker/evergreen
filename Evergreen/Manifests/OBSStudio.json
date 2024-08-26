@@ -13,7 +13,7 @@
         },
         "Download": {
             "Uri": "https://cdn-fastly.obsproject.com/downloads/#FileName",
-            "FileName": "OBS-Studio-#Version-Full-Installer-#Architecture.exe",
+            "FileName": "OBS-Studio-#Version-Windows-Installer.exe",
             "Architectures": [
                 "x64"
             ],
