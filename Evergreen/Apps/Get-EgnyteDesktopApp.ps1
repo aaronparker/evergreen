@@ -1,4 +1,4 @@
-Function Get-EgnyteDesktopApp {
+function Get-EgnyteDesktopApp {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Egnyte Desktop App.
@@ -9,9 +9,9 @@ Function Get-EgnyteDesktopApp {
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -20,12 +20,13 @@ Function Get-EgnyteDesktopApp {
 
     # Get update from the application update URI
     $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
-    If ($Null -ne $Update) {
+    if ($null -ne $Update) {
 
         # Construct the output; Return the custom object to the pipeline
         $PSObject = [PSCustomObject] @{
             Version = $Update.enclosure.version
             SHA1    = $Update.enclosure.sha1Checksum
+            Type    = Get-FileType -File $Update.enclosure.url
             URI     = $Update.enclosure.url
         }
         Write-Output -InputObject $PSObject
