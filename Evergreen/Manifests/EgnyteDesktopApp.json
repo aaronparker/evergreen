@@ -3,7 +3,7 @@
     "Source": "https://www.egnyte.com/solutions/sharing-collaboration",
     "Get": {
         "Update": {
-            "Uri": "https://egnyte-cdn.egnyte.com/egnytedrive/win/en-us/subscribe"
+            "Uri": "https://egnyte-cdn.egnyte.com/egnytedrive/win/en-us/versions/default.xml"
         }
     },
     "Install": {

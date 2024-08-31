@@ -33,25 +33,21 @@ function Get-MozillaThunderbird {
 
                 # Select the download file for the selected platform
                 foreach ($installer in $res.Get.Download.Uri[$channel.Key].GetEnumerator()) {
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Resolve URL for: $($channel.Key)"
+
+                    # Get the version for this channel
+                    $RawVersion = $Versions.($channel.Key)
+                    $Version = $Versions.($channel.Key) -replace $res.Get.Download.ReplaceText.Version, ""
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Channel: $($channel.Key) - found version: $Version."
 
                     $params = @{
                         Uri           = (($res.Get.Download.Uri[$channel.Key][$installer.Key] -replace $res.Get.Download.ReplaceText.Platform, $platform) `
-                                -replace $res.Get.Download.ReplaceText.Language, $currentLanguage)
+                                -replace $res.Get.Download.ReplaceText.Language, $currentLanguage) -replace "#version", $RawVersion
                         ErrorAction   = "SilentlyContinue"
                         WarningAction = "SilentlyContinue"
                     }
                     $Url = Resolve-InvokeWebRequest @params
                     if ($null -ne $Url) {
-
-                        # Catch if version is null
-                        if ([System.String]::IsNullOrEmpty($Versions.$($channel.Key))) {
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): No version info for channel: $($channel.Key)."
-                            $Version = "Unknown"
-                        }
-                        else {
-                            $Version = $Versions.$($channel.Key) -replace $res.Get.Download.ReplaceText.Version, ""
-                            Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
-                        }
 
                         # Build object and output to the pipeline
                         $PSObject = [PSCustomObject] @{
@@ -68,22 +64,9 @@ function Get-MozillaThunderbird {
                 }
             }
 
-            # Build an MSIX object and output to the pipeline
-            if ((Get-Architecture -String $platform) -eq "x64") {
-                $Url = $res.Get.Download.Msix -replace $res.Get.Download.ReplaceText.Platform, $platform `
-                    -replace "#version", $Version
-
-                $PSObject = [PSCustomObject] @{
-                    Version      = $Version
-                    Channel      = $channel.Value
-                    Language     = "Multi"
-                    Architecture = "x64"
-                    Type         = Get-FileType -File $Url
-                    Filename     = (Split-Path -Path $Url -Leaf).Replace('%20', ' ')
-                    URI          = $Url
-                }
-                Write-Output -InputObject $PSObject
-            }
+            # Remove variables for next iteration
+            Remove-Variable -Name "Version" -ErrorAction "SilentlyContinue"
+            Remove-Variable -Name "Url" -ErrorAction "SilentlyContinue"
         }
     }
 }
