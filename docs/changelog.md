@@ -1,5 +1,14 @@
 # Change log
 
+## VERSION
+
+* Adds `AWSAppStreamClient`, `AdvancedInstaller`
+* Fixes an issue with `EgnyteDesktopApp` [#729](https://github.com/aaronparker/evergreen/issues/729) 
+* Updates `FoxitReader` to account for a version number issue in the source feed [#732](https://github.com/aaronparker/evergreen/issues/732) 
+* Updates `MozillaThunderbird` to address version mismatch [#735](https://github.com/aaronparker/evergreen/issues/735)
+* Updates `Zotero` to return additional processor architectures [#730](https://github.com/aaronparker/evergreen/issues/730) 
+* Updates internal function `Resolve-MicrosoftFwLink` to reduce default redirects
+
 ## 2407.1289
 
 * Update `AdobeAcrobatReaderDC` to add `x64` architecture to all languages
