@@ -21,7 +21,7 @@ function Resolve-MicrosoftFwLink {
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [System.Int32] $MaximumRedirection = 2
+        [System.Int32] $MaximumRedirection = 1
     )
 
     process {
