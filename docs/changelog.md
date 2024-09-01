@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2409.1320
 
 * Adds `AWSAppStreamClient`, `AdvancedInstaller`
 * Fixes an issue with `EgnyteDesktopApp` [#729](https://github.com/aaronparker/evergreen/issues/729) 

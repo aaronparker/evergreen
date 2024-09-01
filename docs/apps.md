@@ -1,6 +1,6 @@
-﻿# 346 Supported applications
+﻿# 348 Supported applications
 
-Evergreen `2407.1289` supports the following applications:
+Evergreen `2409.132` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,6 +25,7 @@ Evergreen `2407.1289` supports the following applications:
 | AdoptiumTemurin21                     | Adoptium Temurin 21                                               | https://adoptium.net/                                                                                                                     |
 | AdoptiumTemurin22                     | Adoptium Temurin 22                                               | https://adoptium.net/                                                                                                                     |
 | AdoptiumTemurin8                      | Adoptium Temurin 8                                                | https://adoptium.net/                                                                                                                     |
+| AdvancedInstaller                     | Advanced Installer                                                | https://www.advancedinstaller.com                                                                                                         |
 | AirtameApp                            | Airtame App                                                       | https://airtame.com/                                                                                                                      |
 | AkeoRufus                             | Akeo Rufus                                                        | https://rufus.ie/                                                                                                                         |
 | AkeoRufusAlt                          | Akeo Rufus (alternate method)                                     | https://rufus.ie                                                                                                                          |
@@ -44,6 +45,7 @@ Evergreen `2407.1289` supports the following applications:
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                                                                             |
 | AutoDarkMode                          | Windows Auto Dark Mode                                            | https://github.com/AutoDarkMode/Windows-Auto-Night-Mode                                                                                   |
 | AutodeskFusion360                     | Autodesk Fusion 360                                               | https://www.autodesk.com/products/fusion-360/overview                                                                                     |
+| AWSAppStreamClient                    | AWS AppStream 2.0 Client                                          | https://docs.aws.amazon.com/en_us/appstream2/latest/developerguide/client-release-versions.html                                           |
 | AWSCLI                                | AWS CLI                                                           | https://github.com/aws/aws-cli/                                                                                                           |
 | AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                                                                       |
 | AzulZulu11                            | Azul Zulu 11                                                      | https://www.azul.com/downloads/#zulu                                                                                                      |
