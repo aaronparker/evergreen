@@ -14,8 +14,8 @@
         "Download": {
             "Uri": [
                 "https://releases.mattermost.com/desktop/#version/mattermost-desktop-setup-#version-win.exe",
-                "https://releases.mattermost.com/desktop/#version/mattermost-desktop-#version-x64.msi",
-                "https://releases.mattermost.com/desktop/#version/mattermost-desktop-#version-x86.msi"
+                "https://releases.mattermost.com/desktop/#version/mattermost-desktop-#version-win-x64.msi",
+                "https://releases.mattermost.com/desktop/#version/mattermost-desktop-#version-win-x86.msi"
             ]
         }
     },
