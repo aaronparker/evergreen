@@ -1,7 +1,7 @@
-function Get-GitHubRepoRelease {
+function Get-GitHubRepoTag {
     <#
         .SYNOPSIS
-            Calls the GitHub Releases API passed via $Uri, validates the response and returns a formatted object
+            Calls the GitHub Tags API passed via $Uri, validates the response and returns a formatted object
             Example: https://api.github.com/repos/PowerShell/PowerShell/releases/latest
 
             TODO: support Basic or OAuth authentication to GitHub
@@ -11,11 +11,11 @@ function Get-GitHubRepoRelease {
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [ValidateScript( {
-                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/tags|/releases)") {
+                if ($_ -match "^(https://api\.github\.com/repos/)([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/tags)") {
                     $true
                 }
                 else {
-                    throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/releases/latest'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
+                    throw "'$_' must be in the format 'https://api.github.com/repos/user/repository/tags'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]
         [System.String] $Uri,
@@ -85,29 +85,29 @@ function Get-GitHubRepoRelease {
                 }
 
                 # Output the parameters when using -Verbose
-                foreach ($item in $params.GetEnumerator()) {
-                    Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($item.name): $($item.value)."
+                foreach ($tag in $params.GetEnumerator()) {
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Invoke-WebRequest parameter: $($tag.name): $($tag.value)."
                 }
 
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
-                $release = Invoke-RestMethod @params
+                $tags = Invoke-RestMethod @params
             }
             catch {
                 throw $_
             }
 
             if ($null -eq $script:resourceStrings.Properties.GitHub) {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Unable to validate release against GitHub releases property object because we can't find the module resource."
+                Write-Warning -Message "$($MyInvocation.MyCommand): Unable to validate tag against GitHub releases property object because we can't find the module resource."
             }
             else {
-                # Validate that $release has the expected properties
-                Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub release object."
-                foreach ($item in $release) {
+                # Validate that $tags has the expected properties
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub tag object."
+                foreach ($tag in $tags) {
 
                     # Compare the GitHub release object with properties that we expect
                     $params = @{
-                        ReferenceObject  = $script:resourceStrings.Properties.GitHub
-                        DifferenceObject = (Get-Member -InputObject $item -MemberType NoteProperty)
+                        ReferenceObject  = $script:resourceStrings.Properties.GitHubTags
+                        DifferenceObject = (Get-Member -InputObject $tag -MemberType NoteProperty)
                         PassThru         = $true
                         ErrorAction      = "Continue"
                     }
@@ -127,28 +127,28 @@ function Get-GitHubRepoRelease {
             }
 
             # Build and array of the latest release and download URLs
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.count) release/s."
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($release.assets.count) asset/s."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($tags.count) tags."
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($tags.assets.count) asset/s."
 
             if ($PSBoundParameters.ContainsKey("ReturnVersionOnly")) {
                 if ($Uri -match "^*tags$") {
                     try {
                         # Uri matches tags fo the repo; find the latest tag
-                        $Version = [RegEx]::Match($release[0].name, $MatchVersion).Captures.Groups[1].Value
+                        $Version = [RegEx]::Match($tags[0].name, $MatchVersion).Captures.Groups[1].Value
                     }
                     catch {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
-                        $Version = $release[0].name
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($tags[0].$VersionTag)."
+                        $Version = $tags[0].name
                     }
                 }
                 else {
                     try {
                         # Uri matches releases for the repo; return just the version string
-                        $Version = [RegEx]::Match($release[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                        $Version = [RegEx]::Match($tags[0].$VersionTag, $MatchVersion).Captures.Groups[1].Value
                     }
                     catch {
-                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($release[0].$VersionTag)."
-                        $Version = $item.$VersionTag
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number as-is, returning: $($tags[0].$VersionTag)."
+                        $Version = $tag.$VersionTag
                     }
                 }
 
@@ -164,8 +164,8 @@ function Get-GitHubRepoRelease {
                 Write-Output -InputObject $PSObject
             }
             else {
-                foreach ($item in $release) {
-                    foreach ($asset in $item.assets) {
+                foreach ($tag in $tags) {
+                    foreach ($asset in $tag.assets) {
 
                         # Filter downloads by matching the RegEx in the manifest. The the RegEx may perform includes and excludes
                         Write-Verbose -Message "$($MyInvocation.MyCommand): Match $Filter to $($asset.browser_download_url)."
@@ -174,13 +174,13 @@ function Get-GitHubRepoRelease {
 
                             # Capture the version string from the specified release tag
                             try {
-                                Write-Verbose -Message "$($MyInvocation.MyCommand): Matching version number against: $($item.$VersionTag)."
-                                $Version = [RegEx]::Match($item.$VersionTag, $MatchVersion).Captures.Groups[1].Value
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Matching version number against: $($tag.$VersionTag)."
+                                $Version = [RegEx]::Match($tag.$VersionTag, $MatchVersion).Captures.Groups[1].Value
                                 Write-Verbose -Message "$($MyInvocation.MyCommand): Found version number: $Version."
                             }
                             catch {
-                                Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning: $($item.$VersionTag)."
-                                $Version = $item.$VersionTag
+                                Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning: $($tag.$VersionTag)."
+                                $Version = $tag.$VersionTag
                             }
 
                             if ($PSBoundParameters.ContainsKey("VersionReplace")) {
@@ -193,7 +193,7 @@ function Get-GitHubRepoRelease {
                             if ((Get-Platform -String $asset.browser_download_url) -eq "Windows") {
                                 $PSObject = [PSCustomObject] @{
                                     Version       = $Version
-                                    Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
+                                    Date          = ConvertTo-DateTime -DateTime $tag.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
                                     Size          = $asset.size
                                     #Platform      = Get-Platform -String $asset.browser_download_url
                                     Architecture  = Get-Architecture -String $(Split-Path -Path $asset.browser_download_url -Leaf)
