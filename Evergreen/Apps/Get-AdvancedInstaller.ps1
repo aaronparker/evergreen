@@ -1,13 +1,13 @@
-Function Get-AdvancedInstaller {
+function Get-AdvancedInstaller {
     <#
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -26,7 +26,7 @@ Function Get-AdvancedInstaller {
 
         # Get the latest version
         $LatestVersion = $Updates.Keys | `
-            Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | `
+            Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
             Select-Object -First 1
         $LatestUpdate = $Updates[$LatestVersion]
 
