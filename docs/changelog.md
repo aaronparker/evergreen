@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2409.1352
 
 * Update `7Zip` to `Get-GitHubRepoRelease` [#737](https://github.com/aaronparker/evergreen/issues/737)
 * Update `TechSmithSnagit` to remove the  `x86` architecture

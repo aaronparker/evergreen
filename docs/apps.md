@@ -1,13 +1,13 @@
 ﻿# 348 Supported applications
 
-Evergreen `2409.132` supports the following applications:
+Evergreen `2409.1352` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 1Password                             | 1Password                                                         | https://1password.com/                                                                                                                    |
 | 1Password7                            | 1Password 7                                                       | https://1password.com/                                                                                                                    |
 | 1PasswordCLI                          | 1Password CLI                                                     | https://developer.1password.com/docs/cli/                                                                                                 |
-| 7zip                                  | 7zip                                                              | https://www.7-zip.org/                                                                                                                    |
+| 7Zip                                  | 7-Zip                                                             | https://www.7-zip.org/                                                                                                                    |
 | 7ZipZS                                | 7-Zip ZS                                                          | https://mcmilk.de/projects/7-Zip-zstd/                                                                                                    |
 | AdobeAcrobat                          | Adobe Acrobat updates                                             | https://helpx.adobe.com/au/enterprise/using/deploying-acrobat.html                                                                        |
 | AdobeAcrobatDC                        | Adobe Acrobat DC updates                                          | https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html                                                              |
