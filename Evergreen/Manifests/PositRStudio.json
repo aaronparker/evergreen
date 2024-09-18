@@ -1,9 +1,9 @@
 {
-	"Name": "RStudio Desktop",
+	"Name": "Posit RStudio Desktop",
 	"Source": "https://posit.co/products/open-source/rstudio/",
 	"Get": {
 		"Download": {
-            "Uri": "https://www.rstudio.com/wp-content/downloads.json",
+            "Uri": "https://posit.co/wp-content/uploads/downloads.json",
 			"Products": [
 				"open_source",
 				"pro"
