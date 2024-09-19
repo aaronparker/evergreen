@@ -18,7 +18,7 @@ function Invoke-Download {
         [Parameter(Position = 2)]
         [System.String] $FileName,
 
-        [System.String[]] $UserAgent = @('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36', 'Googlebot/2.1 (+http://www.google.com/bot.html)'),
+        [System.String[]] $UserAgent = @('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/127.0.2651.105', 'Googlebot/2.1 (+http://www.google.com/bot.html)'),
 
         [System.String] $TempPath = [System.IO.Path]::GetTempPath(),
 
