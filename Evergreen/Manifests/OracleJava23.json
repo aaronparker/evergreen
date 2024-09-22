@@ -1,6 +1,6 @@
 {
-    "Name": "Oracle Java 20",
-    "Source": "https://www.oracle.com/java/technologies/downloads/#java20",
+    "Name": "Oracle Java 23",
+    "Source": "https://www.oracle.com/java/technologies/downloads/#java23",
     "Get": {
         "Update": {
             "Uri": "https://www.java.com/releases/releases.json",
@@ -15,14 +15,14 @@
                 "authority": "www.java.com"
             },
             "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/127.0.2651.105",
-            "Family": 20,
+            "Family": 23,
             "DateFormat": "yyyy-MM-dd"
         },
         "Download": {
             "Uri": {
-                "zip": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.zip",
-                "exe": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.exe",
-                "msi": "https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.msi"
+                "zip": "https://download.oracle.com/java/23/latest/jdk-23_windows-x64_bin.zip",
+                "exe": "https://download.oracle.com/java/23/latest/jdk-23_windows-x64_bin.exe",
+                "msi": "https://download.oracle.com/java/23/latest/jdk-23_windows-x64_bin.msi"
             }
         }
     },
