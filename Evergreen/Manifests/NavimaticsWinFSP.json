@@ -1,5 +1,5 @@
 {
-    "Name": "WinFSP",
+    "Name": "Navimatics WinFSP",
     "Source": "https://winfsp.dev/rel/",
     "Get": {
         "Uri": "https://api.github.com/repos/winfsp/winfsp/releases/latest",
