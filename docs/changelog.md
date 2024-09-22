@@ -1,5 +1,15 @@
 # Change log
 
+## VERSION
+
+* Adds `OracleJava23`, `NavimaticsWinFSP` [#741](https://github.com/aaronparker/evergreen/issues/741)
+* Fixes an issue with `PositRStudio` due to change in update URL [#742](https://github.com/aaronparker/evergreen/issues/742)
+* Updates default user agent
+
+BREAKING CHANGES
+
+* Renames `RStudio` to `PositRStudio`
+
 ## 2409.1352
 
 * Update `7Zip` to `Get-GitHubRepoRelease` [#737](https://github.com/aaronparker/evergreen/issues/737)
