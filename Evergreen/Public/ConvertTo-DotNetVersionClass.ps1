@@ -31,6 +31,7 @@ function ConvertTo-DotNetVersionClass {
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "A version string to convert to a standard .NET compliant version class.")]
         [System.String] $Version
     )
