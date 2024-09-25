@@ -2,6 +2,92 @@
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>ConvertTo-DotNetVersionClass</command:name>
+      <command:verb>ConvertTo</command:verb>
+      <command:noun>DotNetVersionClass</command:noun>
+      <maml:description>
+        <maml:para>Converts a version string to a standard .NET compliant Version class.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The ConvertTo-DotNetVersionClass function takes a version string as input and converts it into a .NET Version class.  It normalizes the segments of the version string, ensuring it has exactly four segments by either summing excess segments  or padding with zeros if there are fewer than four segments.</maml:para>
+      <maml:para>If the conversion to a .NET Version class fails, the function will return the normalized version string as a string.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-DotNetVersionClass</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Version</maml:name>
+          <maml:description>
+            <maml:para>A version string to convert to a standard .NET compliant version class.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Version</maml:name>
+        <maml:description>
+          <maml:para>A version string to convert to a standard .NET compliant version class.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
+        <maml:para>Author: Aaron Parker</maml:para>
+        <maml:para>Twitter: @stealthpuppy</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>ConvertTo-DotNetVersionClass -Version "1.2.3.4"
+1.2.3.4</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>ConvertTo-DotNetVersionClass -Version "1.2.3"
+1.2.3.0</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 3 --------------------------</maml:title>
+        <dev:code>ConvertTo-DotNetVersionClass -Version "1.2.3.4.5"
+1.2.3.9</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Export application version information</maml:linkText>
+        <maml:uri>https://stealthpuppy.com/evergreen/convertversion/</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Export-EvergreenApp</command:name>
       <command:verb>Export</command:verb>
       <command:noun>EvergreenApp</command:noun>
@@ -126,7 +212,7 @@
     <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -218,7 +304,7 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -308,7 +394,7 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -561,7 +647,7 @@ Export-EvergreenApp -InputObject $OneDrive -Path "C:\Evergreen\OneDrive\Microsof
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -710,7 +796,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -817,7 +903,7 @@ URI          : https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservi
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -967,7 +1053,7 @@ c.1password.com</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -1088,7 +1174,7 @@ c.1password.com</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -1277,7 +1363,7 @@ Architecture : x64</dev:code>
     <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen Author: Aaron Parker Twitter: @stealthpuppy</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1700,7 +1786,7 @@ Architecture : x64</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -1887,7 +1973,7 @@ Architecture : x64</dev:code>
     <command:returnValues />
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>
@@ -2153,7 +2239,7 @@ Architecture : x64</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Site: https://stealthpuppy.com</maml:para>
+        <maml:para>Site: https://stealthpuppy.com/evergreen</maml:para>
         <maml:para>Author: Aaron Parker</maml:para>
         <maml:para>Twitter: @stealthpuppy</maml:para>
       </maml:alert>

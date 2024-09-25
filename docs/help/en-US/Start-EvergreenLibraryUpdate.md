@@ -135,7 +135,7 @@ Start-EvergreenLibraryUpdate accepts a string parameter.
 
 ## NOTES
 
-Site: https://stealthpuppy.com
+Site: https://stealthpuppy.com/evergreen
 
 Author: Aaron Parker
 

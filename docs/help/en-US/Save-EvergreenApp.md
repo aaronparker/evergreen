@@ -250,7 +250,7 @@ Provides a list of paths of the downloaded target files.
 
 ## NOTES
 
-Site: https://stealthpuppy.com
+Site: https://stealthpuppy.com/evergreen
 
 Author: Aaron Parker
 
