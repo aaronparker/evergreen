@@ -15,24 +15,17 @@ function Get-AWSCLI {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get latest version and download latest release via GitHub API
-    $params = @{
-        Uri          = $res.Get.Update.Uri
-        ContentType  = $res.Get.Update.ContentType
-        ReturnObject = "Content"
-    }
+    # Get the latest version of AWS CLI via the latest tag on the repository
+    $Tags = Get-GitHubRepoTag -Uri $res.Get.Update.Uri
 
-    # Get only latest version tag from GitHub API
-    $Content = ((Invoke-EvergreenWebRequest @params | ConvertFrom-Json).name | ForEach-Object { New-Object -TypeName "System.Version" ($_) } | Sort-Object -Descending | Select-Object -First 1 | ForEach-Object {("{0}.{1}.{2}" -f $_.Major,$_.Minor,$_.Build)})
+    # Select the latest version
+    $Version = $Tags | Sort-Object -Property @{ Expression = { [System.Version]$_.Tag }; Descending = $true } | Select-Object -First 1
 
-    if ($null -ne $Content) {
-        $Content | ForEach-Object {
-            $PSObject = [PSCustomObject] @{
-                Version = $_
-                Type    = "msi"
-                URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $_
-            }
-            Write-Output -InputObject $PSObject
-        }
+    # Output the version and download URL
+    $PSObject = [PSCustomObject] @{
+        Version = $Version.Tag
+        Type    = "msi"
+        URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $Version.Tag
     }
+    Write-Output -InputObject $PSObject
 }
