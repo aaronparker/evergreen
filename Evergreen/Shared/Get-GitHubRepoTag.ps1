@@ -16,7 +16,11 @@ function Get-GitHubRepoTag {
                     throw "'$_' must be in the format 'https://api.github.com/repos/user/tags'. Replace 'user' with the user or organisation and 'repository' with the target repository name."
                 }
             })]
-        [System.String] $Uri
+        [System.String] $Uri,
+
+        [Parameter(Mandatory = $false, Position = 1)]
+        [ValidateNotNullOrEmpty()]
+        [System.String] $MatchVersion = "(\d+(\.\d+){1,4}).*"
     )
 
     begin {
@@ -70,7 +74,7 @@ function Get-GitHubRepoTag {
                 }
 
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Get GitHub release from: $Uri."
-                $tags = Invoke-RestMethod @params
+                $Tags = Invoke-RestMethod @params
             }
             catch {
                 throw $_
@@ -82,7 +86,7 @@ function Get-GitHubRepoTag {
             else {
                 # Validate that $tags has the expected properties
                 Write-Verbose -Message "$($MyInvocation.MyCommand): Validating GitHub tag object."
-                foreach ($tag in $tags) {
+                foreach ($tag in $Tags) {
 
                     # Compare the GitHub release object with properties that we expect
                     $params = @{
@@ -108,11 +112,20 @@ function Get-GitHubRepoTag {
 
             # Build and array of the latest release and download URLs
             Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($tags.count) tags."
+            foreach ($Tag in $Tags) {
 
-            # Output the tags object
-            foreach ($tag in $tags) {
+                try {
+                    # Uri matches tags for the repo; find the latest tag
+                    $Version = [RegEx]::Match($Tag.name, $MatchVersion).Captures.Groups[1].Value
+                }
+                catch {
+                    Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to match version number, returning as-is: $($Tag.name)."
+                    $Version = $Tag.name
+                }
+
+                # Output the tags object
                 [PSCustomObject]@{
-                    Tag = $tag.name
+                    Tag = $Version
                 } | Write-Output
             }
         }
