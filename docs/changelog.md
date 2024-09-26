@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `NetPad`
+* Adds new `ConvertTo-DotNetVersionClass` - converts the `Version` number exported by `Get-EvergreenApp` to a .NET compliant version class [#717](https://github.com/aaronparker/evergreen/issues/717)
+* Adds `Get-GitHubRepoTag` to return an object of tags from a GitHub repository [#544](https://github.com/aaronparker/evergreen/issues/544)
+* Updates `AWLCLI` and `Npcap` to use `Get-GitHubRepoTag` and support proxy server connections [#544](https://github.com/aaronparker/evergreen/issues/544)
+
 ## 2409.1385
 
 * Adds `OracleJava23`, `NavimaticsWinFSP` [#741](https://github.com/aaronparker/evergreen/issues/741)
