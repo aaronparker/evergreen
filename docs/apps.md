@@ -1,6 +1,6 @@
-﻿# 350 Supported applications
+﻿# 351 Supported applications
 
-Evergreen `2409.1385` supports the following applications:
+Evergreen `2409.1419` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -232,6 +232,7 @@ Evergreen `2409.1385` supports the following applications:
 | NanaZip                               | NanaZip                                                           | https://github.com/M2Team/NanaZip                                                                                                         |
 | Naps2                                 | Ben Olden-Cooligan NAPS2                                          | https://www.naps2.com/                                                                                                                    |
 | NavimaticsWinFSP                      | Navimatics WinFSP                                                 | https://winfsp.dev/rel/                                                                                                                   |
+| NetPad                                | NetPad                                                            | https://github.com/tareqimbasher/NetPad                                                                                                   |
 | NETworkManager                        | NETworkManager                                                    | https://github.com/BornToBeRoot/NETworkManager                                                                                            |
 | NevcairielLAVFilters                  | Nevcairiel LAV Filters                                            | https://github.com/Nevcairiel/LAVFilters                                                                                                  |
 | NodeJs                                | Node.js                                                           | https://nodejs.org/                                                                                                                       |

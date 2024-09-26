@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2409.1419
 
 * Adds `NetPad`
 * Adds new `ConvertTo-DotNetVersionClass` - converts the `Version` number exported by `Get-EvergreenApp` to a .NET compliant version class [#717](https://github.com/aaronparker/evergreen/issues/717)
