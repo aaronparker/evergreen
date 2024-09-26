@@ -4,7 +4,8 @@
 	"Get": {
 		"Update": {
 			"Uri": "https://api.github.com/repos/nmap/npcap/tags",
-			"ContentType": "application/json; charset=utf-8"
+			"ContentType": "application/json; charset=utf-8",
+			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 		},
 		"Download": {
 			"Uri": "https://npcap.com/dist/npcap-#version.exe",

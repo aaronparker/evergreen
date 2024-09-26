@@ -69,10 +69,10 @@ PowerShellVersion = '3.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest', 
-               'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenAppFromApi', 
-               'Get-EvergreenAppFromLibrary', 'Get-EvergreenEndpointFromApi', 
-               'Get-EvergreenLibrary', 'New-EvergreenLibrary', 'Save-EvergreenApp', 
+FunctionsToExport = @('Export-EvergreenApp', 'Export-EvergreenManifest',
+               'Find-EvergreenApp', 'Get-EvergreenApp', 'Get-EvergreenAppFromApi', 'ConvertTo-DotNetVersionClass',
+               'Get-EvergreenAppFromLibrary', 'Get-EvergreenEndpointFromApi',
+               'Get-EvergreenLibrary', 'New-EvergreenLibrary', 'Save-EvergreenApp',
                'Start-EvergreenLibraryUpdate', 'Test-EvergreenApp')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -82,8 +82,8 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Invoke-EvergreenLibraryUpdate', 
-               'Get-EvergreenLibraryApp', 'Invoke-EvergreenApp', 
+AliasesToExport = 'sea', 'gea', 'fea', 'tea', 'iea', 'Invoke-EvergreenLibraryUpdate',
+               'Get-EvergreenLibraryApp', 'Invoke-EvergreenApp',
                'Get-EvergreenEndpoint'
 
 # DSC resources to export from this module

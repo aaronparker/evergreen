@@ -203,10 +203,6 @@ function Get-GitHubRepoRelease {
                                 }
                                 Write-Output -InputObject $PSObject
                             }
-                            # Write-Verbose -Message "$($MyInvocation.MyCommand): Matching platform 'Windows' against: $($PSObject.Platform)."
-                            # if ($PSObject.Platform -eq "Windows") {
-                            #     Write-Output -InputObject $PSObject
-                            # }
                         }
                         else {
                             Write-Verbose -Message "$($MyInvocation.MyCommand): Skip: $($asset.browser_download_url)."

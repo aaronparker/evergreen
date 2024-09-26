@@ -1,4 +1,4 @@
-Function Get-Npcap {
+function Get-Npcap {
     <#
         .SYNOPSIS
             Returns the latest Npcap version number and download.
@@ -8,34 +8,26 @@ Function Get-Npcap {
             E-mail: jms@du.se
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
+    # Get the latest version via the latest tag on the repository
+    $Tags = Get-GitHubRepoTag -Uri $res.Get.Update.Uri
 
-    # Get latest version and download latest release via GitHub API
-    $params = @{
-        Uri          = $res.Get.Update.Uri
-        ContentType  = $res.Get.Update.ContentType
-        ReturnObject = "Content"
+    # Select the latest version
+    $Version = $Tags | Sort-Object -Property @{ Expression = { [System.Version]$_.Tag }; Descending = $true } | Select-Object -First 1
+
+    # Output the version and download URL
+    $PSObject = [PSCustomObject] @{
+        Version = $Version.Tag
+        Type    = Get-FileType -File $res.Get.Download.Uri
+        URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $Version.Tag
     }
+    Write-Output -InputObject $PSObject
 
-    # Get only latest version tag from GitHub API
-    $Content = ((Invoke-EvergreenWebRequest @params | ConvertFrom-Json).name -replace "v",""| ForEach-Object { New-Object -TypeName "System.Version" ($_) } | Sort-Object -Descending | Select-Object -First 1 | ForEach-Object {("{0}.{1}" -f $_.Major,$_.Minor)})
-
-    if ($null -ne $Content) {
-        $Content | ForEach-Object {
-            $PSObject = [PSCustomObject] @{
-                Version = $_
-                Type    = "exe"
-                URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $_
-            }
-            Write-Output -InputObject $PSObject
-        }
-    }
 }
-

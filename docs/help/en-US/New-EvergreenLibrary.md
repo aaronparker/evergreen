@@ -121,7 +121,7 @@ New-EvergreenLibrary accepts string parameters.
 
 ## NOTES
 
-Site: https://stealthpuppy.com
+Site: https://stealthpuppy.com/evergreen
 Author: Aaron Parker
 Twitter: @stealthpuppy
 

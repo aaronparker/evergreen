@@ -194,7 +194,7 @@ Provides a list URLs and a true/false result.
 
 ## NOTES
 
-Site: https://stealthpuppy.com
+Site: https://stealthpuppy.com/evergreen
 
 Author: Aaron Parker
 

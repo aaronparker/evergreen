@@ -114,7 +114,7 @@ Export-EvergreenApp accepts the output from Get-EvergreenApp.
 
 ## NOTES
 
-Site: https://stealthpuppy.com
+Site: https://stealthpuppy.com/evergreen
 
 Author: Aaron Parker
 

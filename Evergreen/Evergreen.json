@@ -40,6 +40,13 @@
             "upload_url",
             "url",
             "zipball_url"
+        ],
+        "GitHubTags": [
+            "name",
+            "commit",
+            "zipball_url",
+            "tarball_url",
+            "node_id"
         ]
     },
     "Uri": {
