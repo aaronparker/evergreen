@@ -41,12 +41,12 @@ PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/Unsup
 Invoke-RestMethod: {message: "Application not found. List all apps for valid application names. Application names are case sensitive.}
 ```
 
-## Invoke-EvergreenApp
+## Get-EvergreenAppFromApi
 
-Evergreen includes the `Invoke-EvergreenApp` function that is used in much the same way as `Get-EvergreenApp`. This function is simpler than using `Invoke-RestMethod`, and it automatically filters for available applications. For example, to query the API for application data for Microsoft Edge, use:
+Evergreen includes the `Get-EvergreenAppFromApi` function that is used in much the same way as `Get-EvergreenApp`. This function is simpler than using `Invoke-RestMethod`, and it automatically filters for available applications. For example, to query the API for application data for Microsoft Edge, use:
 
 ```powershell
-PS C:\> Invoke-EvergreenApp -Name "MicrosoftEdge"
+PS C:\> Get-EvergreenAppFromApi -Name "MicrosoftEdge"
 
 Version      : 89.0.774.76
 Platform     : Windows
@@ -63,5 +63,5 @@ This returns the current version and download URLs for Microsoft Edge using the 
 Just as with `Get-EvergreenApp`, the output can be filtered for the specific application installer with `Where-Object`. The example below returns the current version and download URL for the Stable channel of the 64-bit Enterprise ring of Microsoft Edge.
 
 ```powershell
-Invoke-EvergreenApp -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
+Get-EvergreenAppFromApi -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
 ```

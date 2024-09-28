@@ -126,8 +126,7 @@ extra:
 # Page tree
 nav:
   - Home:
-    - Introduction: index.md
-    - Why Evergreen: why.md
+    - About: index.md
     - How Evergreen works: how.md
     - Supported apps: apps.md
   - Getting started:
@@ -145,7 +144,7 @@ nav:
     - Retrieve details from a library: getlibrary.md
     - Install an application from a library: getlibraryapp.md
   - Evergreen API:
-    - How to use the Evergreen API: invoke.md
+    - How to use the Evergreen API: api.md
     - List endpoints used by Evergreen: endpoints.md
   - Resources:
     - Troubleshooting: troubleshoot.md
@@ -159,12 +158,13 @@ nav:
       - Save-EvergreenApp: help/en-US/Save-EvergreenApp.md
       - Test-EvergreenApp: help/en-US/Test-EvergreenApp.md
       - New-EvergreenLibrary: help/en-US/New-EvergreenLibrary.md
-      - Invoke-EvergreenApp: help/en-US/Invoke-EvergreenApp.md
-      - Invoke-EvergreenLibraryUpdate: help/en-US/Invoke-EvergreenLibraryUpdate.md
+      - Start-EvergreenLibraryUpdate: help/en-US/Start-EvergreenLibraryUpdate.md
       - Get-EvergreenLibrary: help/en-US/Get-EvergreenLibrary.md
-      - Get-EvergreenLibraryApp: help/en-US/Get-EvergreenLibraryApp.md
+      - Get-EvergreenAppFromLibrary: help/en-US/Get-EvergreenAppFromLibrary.md
       - Export-EvergreenApp: help/en-US/Export-EvergreenApp.md
       - Export-EvergreenManifest: help/en-US/Export-EvergreenManifest.md
-      - Get-EvergreenEndpoint: help/en-US/Get-EvergreenEndpoint.md
+      - Get-EvergreenAppFromApi: help/en-US/Get-EvergreenAppFromApi.md
+      - Get-EvergreenEndpointFromApi: help/en-US/Get-EvergreenEndpointFromApi.md
+      - ConvertTo-DotNetVersionClass: help/en-US/ConvertTo-DotNetVersionClass.md
   - App Tracker: https://stealthpuppy.com/apptracker/
   - PSPackageFactory: https://stealthpuppy.com/packagefactory/

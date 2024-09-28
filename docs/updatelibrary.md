@@ -1,6 +1,6 @@
 # Update an Evergreen Library
 
-To update a library, use `Invoke-EvergreenLibraryUpdate` - this function will read the `EvergreenLibrary.json` file and use `Get-EvergreenApp` and `Save-EvergreenApp` to populate the library with the application installers and maintain a manifest of the application version information for later reference.
+To update a library, use `Start-EvergreenLibraryUpdate` - this function will read the `EvergreenLibrary.json` file and use `Get-EvergreenApp` and `Save-EvergreenApp` to populate the library with the application installers and maintain a manifest of the application version information for later reference.
 
 Here's an example - `EvergreenLibrary.json` contains the following entry for Microsoft Teams:
 
@@ -33,12 +33,12 @@ Each time a new version of Team installer is downloaded, `MicrosoftTeams.json` i
 
 ## How to update a library
 
-`Invoke-EvergreenLibraryUpdate` has a single parameter - `-Path`, which should be the path to the Evergreen library:
+`Start-EvergreenLibraryUpdate` has a single parameter - `-Path`, which should be the path to the Evergreen library:
 
 ```powershell
-Invoke-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
+Start-EvergreenLibraryUpdate -Path "\\server\EvergreenLibrary"
 ```
 
 If a path is specified that does not contain `EvergreenLibrary.json` and error will be thrown.
 
-To download new application installers when a new version is detected, `Invoke-EvergreenLibraryUpdate` can be run via a scheduled task or other automation tools. This provides a simple method to update the library and make new application available for install or packaging.
+To download new application installers when a new version is detected, `Start-EvergreenLibraryUpdate` can be run via a scheduled task or other automation tools. This provides a simple method to update the library and make new application available for install or packaging.
