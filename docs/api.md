@@ -1,5 +1,11 @@
 # How to use the Evergreen API
 
+!!! warning
+
+    **The Evergreen API is provided free of charge - please don't abuse it**. The API is currently provided by the free tier of Cloudflare Workers which provides up to 100,000 total requests per day. The API is intended for development purposes only and not for use with distributed endpoints.
+    
+    If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
+
 Evergreen's difference to other methods of finding and installing applications, is that Evergreen queries only official vendor sources when you use `Get-EvergreenApp`. This ensures that the information returned can be trusted because it comes from the vendor and is not crowd sourced.
 
 Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that returns the same application version information as `Get-EvergreenApp`. The API supports the same applications as the Evergreen module because data is sourced via the module. The API runs on Cloudflare Workers with data that is updated every 8 hours.
@@ -7,9 +13,6 @@ Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that return
 Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/1.0.0); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
 
 Data that is returned by the Evergreen API can be viewed at the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/).
-
-!!! attention "Attention"
-    Support for the Evergreen API is provided as a best effort. The API is currently provided by the free tier of Cloudflare Workers which provides up to 100,000 requests per day. If you encounter issues or would prefer to ensure data is only sourced from the application vendor, use `Get-EvergreenApp`.
 
 ## Usage
 

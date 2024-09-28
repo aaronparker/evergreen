@@ -55,12 +55,12 @@ Application   Endpoints                                      Ports
 MicrosoftEdge {edgeupdates.microsoft.com, www.microsoft.com} {443}
 ```
 
-## Using Get-EvergreenEndpoint
+## Using Get-EvergreenEndpointFromApi
 
-`Get-EvergreenEndpoint` can be used to simplify usage of the API, by returning all endpoints used by Evergreen in a single object. Running `Get-EvergreenEndpoint` with no parameters, will return a complete list of endpoints and ports used for all applications.
+`Get-EvergreenEndpointFromApi` can be used to simplify usage of the API, by returning all endpoints used by Evergreen in a single object. Running `Get-EvergreenEndpointFromApi` with no parameters, will return a complete list of endpoints and ports used for all applications.
 
 ```powershell
-PS C:\> Get-EvergreenEndpoint
+PS C:\> Get-EvergreenEndpointFromApi
 
 Application          Endpoints                                                                              Ports
 -----------          ---------                                                                              -----
@@ -76,10 +76,10 @@ AdobeAcrobatReaderDC {acrobat.adobe.com, rdc.adobe.io, ardownload2.adobe.com}   
 AdobeBrackets        {brackets.io, api.github.com, github.com}                                              {80, 443}
 ```
 
-`Get-EvergreenEndpoint` can return endpoints for a single application or an array of with the `-Name` parameter. In the example below `Get-EvergreenEndpoint` is used to return the endpoints and ports for the Microsoft Teams and Microsoft Edge endpoints.
+`Get-EvergreenEndpointFromApi` can return endpoints for a single application or an array of with the `-Name` parameter. In the example below `Get-EvergreenEndpointFromApi` is used to return the endpoints and ports for the Microsoft Teams and Microsoft Edge endpoints.
 
 ```powershell
-PS C:\> Get-EvergreenEndpoint -Name "MicrosoftTeams", "MicrosoftEdge"
+PS C:\> Get-EvergreenEndpointFromApi -Name "MicrosoftTeams", "MicrosoftEdge"
 
 Application    Endpoints                                                                              Ports
 -----------    ---------                                                                              -----
@@ -89,19 +89,19 @@ MicrosoftTeams {config.teams.microsoft.com, www.microsoft.com, statics.teams.cdn
 
 ### Return a simple list of all endpoints
 
-The output of `Get-EvergreenEndpoint` can be filtered to create a simple list of all unique endpoint URLs. The command below will generate an array of URLs that can then be used for an allow list of all endpoints required by Evergreen.
+The output of `Get-EvergreenEndpointFromApi` can be filtered to create a simple list of all unique endpoint URLs. The command below will generate an array of URLs that can then be used for an allow list of all endpoints required by Evergreen.
 
 ```powershell
-PS C:\> Get-EvergreenEndpoint | Select-Object -ExpandProperty "Endpoints" -Unique
+PS C:\> Get-EvergreenEndpointFromApi | Select-Object -ExpandProperty "Endpoints" -Unique
 ```
 
 ### Convert output to CSV
 
-The code below can be used to convert the output from `Get-EvergreenEndpoint` to a file in CSV format. The file will include the application name, endpoints URLs in a comma separated list, and ports in a comma separated list.
+The code below can be used to convert the output from `Get-EvergreenEndpointFromApi` to a file in CSV format. The file will include the application name, endpoints URLs in a comma separated list, and ports in a comma separated list.
 
 ```powershell
 $Path = "./Endpoints.csv"
-Get-EvergreenEndpoint | ForEach-Object {
+Get-EvergreenEndpointFromApi | ForEach-Object {
     [PSCustomObject]@{
         Application = $_.Application
         Endpoints   = $_.Endpoints -join ","

@@ -146,10 +146,10 @@ nav:
   - Evergreen API:
     - How to use the Evergreen API: api.md
     - List endpoints used by Evergreen: endpoints.md
+  - Changelog: changelog.md
   - Resources:
     - Troubleshooting: troubleshoot.md
     - Known issues: issues.md
-    - Changelog: changelog.md
   - Module help:
     - en-US:
       - about_Evergreen: help/en-US/about_Evergreen.md
