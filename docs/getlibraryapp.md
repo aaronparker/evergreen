@@ -1,16 +1,16 @@
 # Install an application from a library
 
-Once an Evergreen library is populated with application downloads, it can be queried for a specific application for the available versions of that application with `Get-EvergreenLibraryApp`. Details of the Evergreen library must be passed to `Get-EvergreenLibraryApp` from `Get-EvergreenLibrary`.
+Once an Evergreen library is populated with application downloads, it can be queried for a specific application for the available versions of that application with `Get-EvergreenAppFromLibrary`. Details of the Evergreen library must be passed to `Get-EvergreenAppFromLibrary` from `Get-EvergreenLibrary`.
 
 The application details that are returned will include the version and path to the installer binaries for installing the target application. Application details are returned in descending order of version, thus the latest available version can be used or the details filtered for a specific version.
 
 ## Examples
 
-In this example, details of the target library at `\\server\EvergreenLibrary` are returned with `Get-EvergreenLibrary` and placed into a variable `$Library`. `Get-EvergreenLibraryApp` is then used to search for Microsoft Visual Studio Code in the library.
+In this example, details of the target library at `\\server\EvergreenLibrary` are returned with `Get-EvergreenLibrary` and placed into a variable `$Library`. `Get-EvergreenAppFromLibrary` is then used to search for Microsoft Visual Studio Code in the library.
 
 ```powershell
 PS C:\> $Library = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary"
-PS C:\> Get-EvergreenLibraryApp -Inventory $Library -Name "MicrosoftVisualStudioCode"
+PS C:\> Get-EvergreenAppFromLibrary -Inventory $Library -Name "MicrosoftVisualStudioCode"
 
 Version      : 1.74.3
 URI          : https://az764295.vo.msecnd.net/stable/97dec172d3256f8ca4bfb2143f3f76b503ca0534/VSCodeSetup-x64-1.74.3.exe
@@ -29,10 +29,10 @@ Channel      : Stable
 Architecture : x64
 ```
 
-This syntax can be simplified by passing details of the Evergreen library at `\\server\EvergreenLibrary` to `Get-EvergreenLibraryApp` via the pipeline to return details for Microsoft Visual Studio Code.
+This syntax can be simplified by passing details of the Evergreen library at `\\server\EvergreenLibrary` to `Get-EvergreenAppFromLibrary` via the pipeline to return details for Microsoft Visual Studio Code.
 
 ```powershell
-PS C:\> Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftVisualStudioCode"
+PS C:\> Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenAppFromLibrary -Name "MicrosoftVisualStudioCode"
 
 Version      : 1.74.3
 URI          : https://az764295.vo.msecnd.net/stable/97dec172d3256f8ca4bfb2143f3f76b503ca0534/VSCodeSetup-x64-1.74.3.exe
@@ -54,7 +54,7 @@ Architecture : x64
 Application information returned from an Evergreen library can be used in a script to install the latest available version (in this case) of Microsoft Visual Studio Code:
 
 ```powershell
-$App = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftVisualStudioCode" | Select-Object -First 1
+$App = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenAppFromLibrary -Name "MicrosoftVisualStudioCode" | Select-Object -First 1
 $params = @{
     FilePath     = $App.Path
     ArgumentList = "/VERYSILENT /NOCLOSEAPPLICATIONS /NORESTARTAPPLICATIONS /NORESTART /SP- /SUPPRESSMSGBOXES /MERGETASKS=!runcode"
@@ -69,7 +69,7 @@ Start-Process @params
 Where a specific version of Visual Studio Code needs to be installed instead of the latest version, the specific version can be selected before installing:
 
 ```powershell
-$App = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenLibraryApp -Name "MicrosoftVisualStudioCode" | Where-Object { $_.Version -eq "1.74.0" }
+$App = Get-EvergreenLibrary -Path "\\server\EvergreenLibrary" | Get-EvergreenAppFromLibrary -Name "MicrosoftVisualStudioCode" | Where-Object { $_.Version -eq "1.74.0" }
 $params = @{
     FilePath     = $App.Path
     ArgumentList = "/VERYSILENT /NOCLOSEAPPLICATIONS /NORESTARTAPPLICATIONS /NORESTART /SP- /SUPPRESSMSGBOXES /MERGETASKS=!runcode"

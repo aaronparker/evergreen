@@ -10,6 +10,7 @@ Evergreen includes the following directory structure:
 
 * `<ModuleBase>/Public` - public functions including `Get-EvergreenApp`, `Find-EvergreenApp` and `Save-EvergreenApp`
 * `<ModuleBase>/Apps` - internal per-application functions that contain the logic for retrieving application details. These are often unique for each application
+* `<ModuleBase>/Shared` - internal functions used by specific apps to reduce repeated code
 * `<ModuleBase>/Manifests` - each application includes a manifest in JSON format that includes application specific details used by the per-application functions. These describe details of the application including URLs used to determine the latest version of the application
 * `<ModuleBase>/Private` - internal functions containing reusable code
 
@@ -17,15 +18,18 @@ Evergreen includes the following directory structure:
 
 The `Public` folder includes all functions exported from Evergreen:
 
+* `ConvertTo-DotNetVersionClass.ps1`
 * `Export-EvergreenApp.ps1`
 * `Export-EvergreenManifest.ps1`
 * `Find-EvergreenApp.ps1`
 * `Get-EvergreenApp.ps1`
+* `Get-EvergreenAppFromApi.ps1`
+* `Get-EvergreenAppFromLibrary.ps1`
+* `Get-EvergreenEndpointFromApi.ps1`
 * `Get-EvergreenLibrary.ps1`
-* `Invoke-EvergreenApp.ps1`
-* `Invoke-EvergreenLibraryUpdate.ps1`
 * `New-EvergreenLibrary.ps1`
 * `Save-EvergreenApp.ps1`
+* `Start-EvergreenLibraryUpdate.ps1`
 * `Test-EvergreenApp.ps1`
 
 ### Apps
