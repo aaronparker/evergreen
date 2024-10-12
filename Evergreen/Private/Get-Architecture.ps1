@@ -11,7 +11,7 @@ function Get-Architecture {
         "amd64"     { $architecture = "x64"; break }
         "arm64"     { $architecture = "ARM64"; break }
         "arm32"     { $architecture = "ARM32"; break }
-        "arm"       { $architecture = "ARM32"; break }
+        "arm"       { $architecture = "ARM64"; break }
         "nt64"      { $architecture = "x64"; break }
         "nt32"      { $architecture = "x86"; break }
         "win64"     { $architecture = "x64"; break }
