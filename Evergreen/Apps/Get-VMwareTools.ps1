@@ -9,9 +9,9 @@
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -56,7 +56,7 @@
             # Build the output object
             $PSObject = [PSCustomObject] @{
                 Version      = $LatestVersion.Version
-                Architecture = $architecture.Key
+                Architecture = Get-Architecture -String $architecture.Key
                 URI          = $res.Get.Download.Uri -replace "#architecture", $architecture.Key `
                     -replace "#version", $LatestVersion.Version `
                     -replace "#build", $LatestVersion.ClientBuild `
