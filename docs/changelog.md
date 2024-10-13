@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2410.1454
 
 * Adds `MicrosoftWindowsApp`, `NextcloudDesktop` [#749](https://github.com/aaronparker/evergreen/issues/749), `Dropbox` [#292](https://github.com/aaronparker/evergreen/issues/292), `MSIXHero`
 * Updates `VMwareTools` to remove the `x86` architecture and add `ARM64` architecture [#751](https://github.com/aaronparker/evergreen/issues/751)
