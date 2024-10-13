@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes `MicrosoftWindowsApp` to resolve FwLink URLs to the `query.prod.cms.rt.microsoft.com` URL before returning details
+
 ## 2410.1454
 
 * Adds `MicrosoftWindowsApp`, `NextcloudDesktop` [#749](https://github.com/aaronparker/evergreen/issues/749), `Dropbox` [#292](https://github.com/aaronparker/evergreen/issues/292), `MSIXHero`
