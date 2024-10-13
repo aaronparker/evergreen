@@ -15,9 +15,17 @@ function Get-MicrosoftWindowsApp {
     )
 
     foreach ($Url in $res.Get.Download.Uri) {
+
+        # Resolve the Microsoft FwLink URL
+        $params = @{
+            Uri           = $Url
+            WarningAction = "Ignore"
+        }
+        $ResolvedUrl = Resolve-MicrosoftFwLink @params
+
         # Grab the download link headers to find the file name
         $params = @{
-            Uri          = $Url
+            Uri          = $ResolvedUrl.URI
             Method       = "Head"
             ReturnObject = "Headers"
         }
@@ -37,7 +45,7 @@ function Get-MicrosoftWindowsApp {
                 Date         = $Headers['Last-Modified'] | Select-Object -First 1
                 Architecture = Get-Architecture -String $Filename
                 Filename     = $Filename
-                URI          = $Url
+                URI          = $ResolvedUrl.URI
             }
             Write-Output -InputObject $PSObject
         }
