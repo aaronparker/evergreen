@@ -5,9 +5,9 @@
         "Update": {},
         "Download": {
             "Uri": [
-                "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1pC6G",
-                "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1pHol",
-                "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1pJV5"
+                "https://go.microsoft.com/fwlink/?linkid=2262633",
+                "https://go.microsoft.com/fwlink/?linkid=2262634",
+                "https://go.microsoft.com/fwlink/?linkid=2262635"
             ],
             "ApiUri": "https://query.prod.cms.rt.microsoft.com/cms/api",
             "ApiHeader1": "X-CMS-Tenant",
