@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2410.1490
 
 * Fixes `MicrosoftWindowsApp` to resolve FwLink URLs to the `query.prod.cms.rt.microsoft.com` URL before returning details
 
