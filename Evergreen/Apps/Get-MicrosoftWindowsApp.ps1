@@ -19,7 +19,7 @@ function Get-MicrosoftWindowsApp {
         # Resolve the Microsoft FwLink URL
         $params = @{
             Uri           = $Url
-            WarningAction = "Ignore"
+            WarningAction = "SilentlyContinue"
         }
         $ResolvedUrl = Resolve-MicrosoftFwLink @params
 

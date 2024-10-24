@@ -5,7 +5,7 @@
         "Update": {
             "Uri": "https://data.services.jetbrains.com/products/releases?code=#ReplaceEdition&latest",
             "Editions": {
-                "DataGrip": "CL"
+                "DataGrip": "DG"
             },
             "ReplaceEdition": "#ReplaceEdition",
             "DatePattern": "yyyy-MM-dd"
