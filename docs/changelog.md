@@ -1,5 +1,11 @@
 # Change log
 
+## 2410.1527
+
+* Fix an issue in `JetBrainsDataGrip` [#757](https://github.com/aaronparker/evergreen/issues/757)
+* Update `FoxitReader` to return the latest installer. Note that this doesn't fix the version number [#756](https://github.com/aaronparker/evergreen/issues/756)
+* Fix ErrorAction in `MicrosoftWindowsApp`
+
 ## 2410.1490
 
 * Fixes `MicrosoftWindowsApp` to resolve FwLink URLs to the `query.prod.cms.rt.microsoft.com` URL before returning details
