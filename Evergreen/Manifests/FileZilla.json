@@ -1,0 +1,28 @@
+{
+    Name FileZilla,
+    Source httpsfilezilla-project.org,
+    Get {
+        Update {
+            Uri httpsfilezilla-project.orgdownload.phpshow_all=1,
+			MatchVersion (d+(.d+){1,4}).,
+			MatchArchitechture _wind{2},
+			Headers {
+                accept-language en-GB;q=0.9,en;q=0.8,en-US;q=0.7,
+                accept texthtml,applicationxhtml+xml,applicationxml;q=0.9,imageavif,imagewebp,imageapng,;q=0.8,applicationsigned-exchange;v=b3;q=0.7,
+                User-Agent Mozilla5.0 (compatible; MSIE 9.0; Windows NT; Windows NT 10.0; fr-FR),
+				Host filezilla-project.org
+            }
+        }
+    },
+    Install {
+        Setup FileZilla.setup.exe,
+        Physical {
+            Arguments ,
+            PostInstall []
+        },
+        Virtual {
+            Arguments ,
+            PostInstall []
+        }
+    }
+}
