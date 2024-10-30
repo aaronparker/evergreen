@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Use a custom user agent in `Get-SourceForgeRepoRelease.ps1` [#763](https://github.com/aaronparker/evergreen/issues/763)
+
 ## 2410.1527
 
 * Fix an issue in `JetBrainsDataGrip` [#757](https://github.com/aaronparker/evergreen/issues/757)
