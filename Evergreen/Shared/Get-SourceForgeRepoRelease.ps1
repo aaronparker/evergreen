@@ -21,7 +21,11 @@
     )
 
     # Retrieve best release json
-    $BestRelease = Invoke-EvergreenRestMethod -Uri $Uri
+    $params = @{
+        Uri       = $Uri
+        UserAgent = "Evergreen/$((Get-Module -Name "Evergreen").Version)"
+    }
+    $BestRelease = Invoke-EvergreenRestMethod @params
 
     # Validate that $BestRelease has the expected properties
     Write-Verbose -Message "$($MyInvocation.MyCommand): Validating SourceForge release object."
