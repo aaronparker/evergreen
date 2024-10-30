@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2410.1565
 
 * Use a custom user agent in `Get-SourceForgeRepoRelease.ps1` [#763](https://github.com/aaronparker/evergreen/issues/763)
 
