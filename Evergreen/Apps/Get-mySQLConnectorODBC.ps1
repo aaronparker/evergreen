@@ -5,7 +5,7 @@ function Get-mySQLConnectorODBC {
             Twitter: @BornToBeRoot
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
         [Parameter(Mandatory = $False, Position = 0)]
@@ -14,24 +14,29 @@ function Get-mySQLConnectorODBC {
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Pass the repo releases API URL and return a formatted object
-    $params = @{
-        Uri               = $res.Get.Update.Uri
-        MatchVersion      = $res.Get.Update.MatchVersion
-        Filter            = $res.Get.Update.MatchFileTypes
-        ReturnVersionOnly = $True
-    }
-    $object = Get-GitHubRepoRelease @params
+    # Get latest repo tag
+    $Tags = Get-GitHubRepoTag -Uri $res.Get.Update.Uri
+    
+    $Version = ($Tags | Sort-Object -Property @{ Expression = { [System.Version]$_.Tag }; Descending = $true } | Select-Object -First 1).Tag
 
     # Build the output object
-    if ($Null -ne $object) {
+    if ($Null -ne $Version) {
         foreach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
-            $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersion, $object.Version
+
+            # https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-9.1.0.msi
+            # redirect to
+            # https://cdn.mysql.com//Downloads/Connector-Net/mysql-connector-net-9.1.0.msi
+            #             
+            # The version ist major.minor.patch, while the tag can have also have major.minor.patch.build
+            $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersion, (($Version -split '\.')[0..2] -join '.')
+            
+            $CdnUri = (Invoke-WebRequest $Uri -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location[0]
+
             $PSObject = [PSCustomObject] @{
-                Version      = $object.Version
+                Version      = $Version
                 Type         = Get-FileType -File $Uri
                 Architecture = $Architecture.Name
-                URI          = $Uri
+                URI          = $CdnUri
             }
             Write-Output -InputObject $PSObject
         }
