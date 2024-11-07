@@ -3,15 +3,13 @@
 	"Source": "https://dev.mysql.com/doc/workbench/en/",
 	"Get": {
 		"Update": {
-			"Uri": "https://api.github.com/repos/mysql/mysql-workbench/tags",
-			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-			"MatchFileTypes": "\\.exe$"
+			"Uri": "https://api.github.com/repos/mysql/mysql-workbench/tags"
 		},
 		"Download": {
 			"Uri": {
 				"x64": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-#version-winx64.msi"
 			},
-			"ReplaceText": "#version"
+			"ReplaceVersion": "#version"
 		}
 	},
 	"Install": {
