@@ -1,6 +1,6 @@
-﻿# 356 Supported applications
+﻿# 357 Supported applications
 
-Evergreen `2410.1565` supports the following applications:
+Evergreen `2411.1604` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -51,7 +51,6 @@ Evergreen `2410.1565` supports the following applications:
 | AzulZulu11                            | Azul Zulu 11                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
 | AzulZulu17                            | Azul Zulu 17                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
 | AzulZulu21                            | Azul Zulu 21                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
-| AzulZulu23                            | Azul Zulu 23                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
 | AzulZulu8                             | Azul Zulu 8                                                       | https://www.azul.com/downloads/#zulu                                                                                                        |
 | BeekeeperStudio                       | Beekeeper Studio                                                  | https://www.beekeeperstudio.io/                                                                                                             |
 | BellSoftLibericaJDK11                 | BellSoft Liberica JDK 11 LTS                                      | https://bell-sw.com/libericajdk/                                                                                                            |
@@ -232,6 +231,8 @@ Evergreen `2410.1565` supports the following applications:
 | mRemoteNG                             | mRemoteNG                                                         | https://mremoteng.org/                                                                                                                      |
 | MSIXHero                              | MSIX Hero                                                         | https://msixhero.net/                                                                                                                       |
 | MuseScore                             | MuseScore                                                         | https://musescore.org/                                                                                                                      |
+| mySQLConnectorNET                     | mySQL Connector NET                                               | https://dev.mysql.com/doc/connector-net/en/                                                                                                 |
+| mySQLConnectorODBC                    | mySQL Connector ODCB                                              | https://dev.mysql.com/doc/connector-odbc/en/                                                                                                |
 | mySQLWorkbench                        | mySQL Workbench                                                   | https://dev.mysql.com/doc/workbench/en/                                                                                                     |
 | NanaZip                               | NanaZip                                                           | https://github.com/M2Team/NanaZip                                                                                                           |
 | Naps2                                 | Ben Olden-Cooligan NAPS2                                          | https://www.naps2.com/                                                                                                                      |

@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2411.1604
 
 * Adds `mySQLConnectorNET`, `mySQLConnectorODBC`
 * Fixes an issue in `Gimp` to account for strings in the version number [#767](https://github.com/aaronparker/evergreen/issues/767)
