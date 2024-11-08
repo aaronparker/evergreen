@@ -16,7 +16,7 @@ function Get-mySQLWorkbench {
 
     # Get latest repo tag
     $Tags = Get-GitHubRepoTag -Uri $res.Get.Update.Uri
-    
+
     $Version = ($Tags | Sort-Object -Property @{ Expression = { [System.Version]$_.Tag }; Descending = $true } | Select-Object -First 1).Tag
 
     # Build the output object
@@ -26,10 +26,10 @@ function Get-mySQLWorkbench {
             # https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.40-winx64.msi
             # redirect to
             # https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-workbench-community-8.0.40-winx64.msi
-            #             
+            #
             # The version ist major.minor.patch, while the tag can have also have major.minor.patch.build
             $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersion, (($Version -split '\.')[0..2] -join '.')
-                        
+
             $CdnUri = (Invoke-WebRequest $Uri -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location[0]
 
             $PSObject = [PSCustomObject] @{
