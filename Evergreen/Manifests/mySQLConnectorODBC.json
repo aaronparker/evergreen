@@ -1,13 +1,13 @@
 {
-	"Name": "mySQL Workbench",
-	"Source": "https://dev.mysql.com/doc/workbench/en/",
+	"Name": "mySQL Connector ODCB",
+	"Source": "https://dev.mysql.com/doc/connector-odbc/en/",
 	"Get": {
 		"Update": {
-			"Uri": "https://api.github.com/repos/mysql/mysql-workbench/tags"
+			"Uri": "https://api.github.com/repos/mysql/mysql-connector-odbc/tags"			
 		},
 		"Download": {
 			"Uri": {
-				"x64": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-#version-winx64.msi"
+				"x64": "https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-#version.msi"
 			},
 			"ReplaceVersion": "#version"
 		}

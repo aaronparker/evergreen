@@ -24,11 +24,19 @@ function Get-Gimp {
         foreach ($Channel in $res.Get.Update.Channels) {
 
             # Grab latest version, sort by descending version number
-            Write-Verbose -Message "$($MyInvocation.MyCommand): Channel: $Channel."
-            $Latest = $updateFeed.$Channel | `
-                Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } | `
-                Select-Object -First 1
-            $MinorVersion = [System.Version] $Latest.version
+            try {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Get latest version for: $Channel."
+                $Latest = $updateFeed.$Channel | `
+                    Sort-Object -Property @{ Expression = { [System.Version]$_.version }; Descending = $true } -ErrorAction "Stop" | `
+                    Select-Object -First 1 -ErrorAction "Stop"
+                $MinorVersion = [System.Version] $Latest.version
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $($Latest.version)."
+            }
+            catch {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Fall back to first record for: $Channel."
+                $Latest = $updateFeed.$Channel | Select-Object -First 1
+                $MinorVersion = [System.Version] "$($Latest.version[0]).0"
+            }
 
             if ($null -ne $Latest) {
                 # Grab the latest Windows Channel, sort by descending date
@@ -49,9 +57,9 @@ function Get-Gimp {
                     if ($null -ne $redirectUrl) {
                         $PSObject = [PSCustomObject] @{
                             Version  = $Latest.version
-                            Revision = if ([System.String]::IsNullOrEmpty($Latest.windows.revision)) { "0" } else { $Latest.windows.revision }
-                            Channel  = (Get-Culture).TextInfo.ToTitleCase($Channel.ToLower())
+                            Revision = $(if ([System.String]::IsNullOrEmpty($Latest.windows.revision)) { "0" } else { $Latest.windows.revision[0] })
                             Date     = ConvertTo-DateTime -DateTime $LatestWin.date -Pattern $res.Get.Update.DatePattern
+                            Channel  = (Get-Culture).TextInfo.ToTitleCase($Channel.ToLower())
                             Sha256   = $LatestWin.sha256
                             URI      = $redirectUrl
                         }

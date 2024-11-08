@@ -1,8 +1,8 @@
-function Get-mySQLWorkbench {
+function Get-mySQLConnectorODBC {
     <#
         .NOTES
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
+            Author: BornToBeRoot
+            Twitter: @BornToBeRoot
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification = "Product name is a plural")]
@@ -23,9 +23,9 @@ function Get-mySQLWorkbench {
     if ($Null -ne $Version) {
         foreach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
 
-            # https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.40-winx64.msi
+            # https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-9.1.0.msi
             # redirect to
-            # https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-workbench-community-8.0.40-winx64.msi
+            # https://cdn.mysql.com//Downloads/Connector-Net/mysql-connector-net-9.1.0.msi
             #
             # The version ist major.minor.patch, while the tag can have also have major.minor.patch.build
             $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersion, (($Version -split '\.')[0..2] -join '.')
