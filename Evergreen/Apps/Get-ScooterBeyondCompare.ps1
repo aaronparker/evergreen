@@ -58,20 +58,6 @@
                     URI          = if ($language.key -eq "en") { $Update.download } else { $Update.download -replace "BCompare-", "BCompare-$($language.key)-" }
                 }
                 Write-Output -InputObject $PSObject
-
-                # Output the version and download URL for the MSI
-                if ($language.key -eq "en") {
-                    foreach ($Msi in $res.Get.Download.Uri) {
-                        $PSObject = [PSCustomObject] @{
-                            Version      = $Version
-                            Language     = $res.Get.Update.Languages[$language.key]
-                            Architecture = Get-Architecture -String $Msi
-                            Type         = Get-FileType -File $Msi
-                            URI          = $Msi -replace "#version", $Version
-                        }
-                        Write-Output -InputObject $PSObject
-                    }
-                }
             }
         }
     }

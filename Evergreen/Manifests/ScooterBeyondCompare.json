@@ -3,7 +3,7 @@
     "Source": "https://scootersoftware.com/",
     "Get": {
         "Update": {
-            "Uri": "https://www.scootersoftware.com/checkupdates.php?product=bc4&minor=3&maint=2&auth=30.15&build=24472&edition=prodebug&cpuarch=x86_64&platform=win32&lang=silent",
+            "Uri": "https://www.scootersoftware.com/checkupdates.php?product=bc5&minor=3&maint=2&auth=30.15&build=24472&edition=prodebug&cpuarch=x86_64&platform=win32&lang=silent",
             "UserAgent": "BeyondCompare/4.3 (Windows NT 10.0; Win64; x64)",
             "XmlNode": "//Update",
             "MatchVersion": "(\\d+(\\.\\d+)(\\.\\d+))",
