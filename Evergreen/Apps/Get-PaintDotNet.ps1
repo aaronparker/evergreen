@@ -1,4 +1,4 @@
-Function Get-PaintDotNet {
+function Get-PaintDotNet {
     <#
         .SYNOPSIS
             Get the current version and download URL for the Paint.NET tools.
@@ -8,9 +8,9 @@ Function Get-PaintDotNet {
             Twitter: @cit_bronson
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -18,13 +18,14 @@ Function Get-PaintDotNet {
 
     # Read the Paint.NET updates feed
     $Content = Invoke-EvergreenWebRequest -Uri $res.Get.Uri
-    If ($Null -ne $Content) {
+    if ($null -ne $Content) {
 
         # Convert the content from string data
         $Data = $Content | ConvertFrom-StringData
+        $Key = $Data.Keys | Where-Object { $_ -match $res.Get.UrlProperty }
 
         # Build the output object
-        ForEach ($url in ($Data.("$($Data.StableVersions)$($res.Get.UrlProperty)") -split $res.Get.UrlDelimiter)) {
+        foreach ($url in $Data.$Key) {
             $PSObject = [PSCustomObject] @{
                 Version = $Data.($res.Get.VersionProperty)
                 URI     = $url
