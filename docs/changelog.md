@@ -1,5 +1,12 @@
 # Change log
 
+## VERSION
+
+* Adds `AWSSMP`, `Autoit`
+* Fixes an issue with `PaintDotNet`
+* Removes MSI files from `ScooterBeyondCompare` and updates the update URL
+* Updates `mySQLConnectorNET`, `mySQLWorkbench`, `mySQLConnectorODBC` to use a custom user agent
+
 ## 2411.1604
 
 * Adds `mySQLConnectorNET`, `mySQLConnectorODBC`
