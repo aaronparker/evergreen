@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2411.1644
 
 * Adds `AWSSMP`, `Autoit`
 * Fixes an issue with `PaintDotNet`

@@ -1,6 +1,6 @@
-﻿# 357 Supported applications
+﻿# 359 Supported applications
 
-Evergreen `2411.1604` supports the following applications:
+Evergreen `2411.1644` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,9 +45,11 @@ Evergreen `2411.1604` supports the following applications:
 | Audacity                              | Audacity                                                          | https://www.audacityteam.org/                                                                                                               |
 | AutoDarkMode                          | Windows Auto Dark Mode                                            | https://github.com/AutoDarkMode/Windows-Auto-Night-Mode                                                                                     |
 | AutodeskFusion360                     | Autodesk Fusion 360                                               | https://www.autodesk.com/products/fusion-360/overview                                                                                       |
+| AutoIt                                | AutoIt Scripting Language                                         | https://www.autoitscript.com/site/autoit/                                                                                                   |
 | AWSAppStreamClient                    | AWS AppStream 2.0 Client                                          | https://docs.aws.amazon.com/en_us/appstream2/latest/developerguide/client-release-versions.html                                             |
 | AWSCLI                                | AWS CLI                                                           | https://github.com/aws/aws-cli/                                                                                                             |
 | AWSSAMCLI                             | AWS SAM CLI                                                       | https://github.com/aws/aws-sam-cli/                                                                                                         |
+| AWSSMP                                | AWS Session Manager Plugin                                        | https://github.com/aws/session-manager-plugin                                                                                               |
 | AzulZulu11                            | Azul Zulu 11                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
 | AzulZulu17                            | Azul Zulu 17                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
 | AzulZulu21                            | Azul Zulu 21                                                      | https://www.azul.com/downloads/#zulu                                                                                                        |
