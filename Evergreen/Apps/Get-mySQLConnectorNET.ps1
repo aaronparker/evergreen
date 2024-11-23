@@ -31,7 +31,8 @@ function Get-mySQLConnectorNET {
             # The version ist major.minor.patch, while the tag can have also have major.minor.patch.build
             $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersionShort, (($Version -split '\.')[0, 1] -join '.') -replace $res.Get.Download.ReplaceVersion, (($Version -split '\.')[0..2] -join '.')
 
-            $CdnUri = (Invoke-WebRequest $Uri -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location[0]
+            # The website/CDN checks the user agent, which means that the call from e.g. Azure Automation is only possible by overwriting it
+            $CdnUri = (Invoke-WebRequest $Uri -MaximumRedirection 0 -UserAgent "Curl/8" -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location[0]
 
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
