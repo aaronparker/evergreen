@@ -19,11 +19,11 @@ function Get-QGIS {
 
     # Return an object for each channel
     foreach ($Channel in $res.Get.Update.Channels) {
-        $Version = "$($UpdateFeed.$Channel.version)-$($UpdateFeed.$Channel.binary)"
+        $Version = "$($UpdateFeed.$Channel.major).$($UpdateFeed.$Channel.minor).$($UpdateFeed.$Channel.patch)-$($UpdateFeed.$Channel.binary)"
         [PSCustomObject]@{
             Version = $Version
             Channel = $Channel
-            Date    = $UpdateFeed.$Channel.date
+            Date    = $(if ($UpdateFeed.$Channel.date -eq "<no value>") { $null } else { ConvertTo-DateTime -DateTime $UpdateFeed.$Channel.date -Pattern "yyyy-MM-dd" })
             URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $Version
         } | Write-Output
     }
