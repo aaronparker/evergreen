@@ -16,39 +16,45 @@
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Read the Citrix Workspace app for updater feed for each OS in the list
-    $params = @{
-        Uri       = $res.Get.Update.Uri
-        UserAgent = $res.Get.Update.UserAgent
+    begin {
+        Write-Warning -Message "$($MyInvocation.MyCommand): This function returns the version returned by 'Check for Updates' in Citrix Workspace app. https://citrix.com/ may show a later available version for download."
     }
-    $UpdateFeed = Invoke-EvergreenRestMethod @params
 
-    # Convert content to XML document
-    if ($null -ne $UpdateFeed) {
+    process {
+        # Read the Citrix Workspace app for updater feed for each OS in the list
+        $params = @{
+            Uri       = $res.Get.Update.Uri
+            UserAgent = $res.Get.Update.UserAgent
+        }
+        $UpdateFeed = Invoke-EvergreenRestMethod @params
 
-        # Filter the update feed for just the installers we want
-        $Installers = $UpdateFeed.Catalog.Installers | `
-            Where-Object { $_.name -eq $res.Get.Update.FilterName } | `
-            Select-Object -ExpandProperty $res.Get.Update.ExpandProperty
+        # Convert content to XML document
+        if ($null -ne $UpdateFeed) {
 
-        # Walk through each node to output details
-        foreach ($Installer in $Installers) {
+            # Filter the update feed for just the installers we want
+            $Installers = $UpdateFeed.Catalog.Installers | `
+                Where-Object { $_.name -eq $res.Get.Update.FilterName } | `
+                Select-Object -ExpandProperty $res.Get.Update.ExpandProperty
 
-            # Write a warning if Citrix is throttling updates
-            if ($Installer.Version -eq "0.0.0.0") {
-                Write-Warning -Message "$($MyInvocation.MyCommand): Citrix may be throttling availability of updates for $($Installer.ShortDescription -replace ':', '')."
+            # Walk through each node to output details
+            foreach ($Installer in $Installers) {
+
+                # Write a warning if Citrix is throttling updates
+                if ($Installer.Version -eq "0.0.0.0") {
+                    Write-Warning -Message "$($MyInvocation.MyCommand): Version '0.0.0.0' detected. Citrix may be throttling availability of updates for $($Installer.ShortDescription -replace ':', '')."
+                }
+
+                $PSObject = [PSCustomObject] @{
+                    Version = $Installer.Version
+                    Stream  = $Installer.Stream
+                    Date    = ConvertTo-DateTime -DateTime $Installer.StartDate -Pattern $res.Get.Update.DatePattern
+                    #Title   = $($Installer.ShortDescription -replace ":", "")
+                    Size    = $(if ($Installer.Size) { $Installer.Size } else { "Unknown" })
+                    Hash    = $Installer.Hash
+                    URI     = "$($res.Get.Download.Uri)$($Installer.DownloadURL)"
+                }
+                Write-Output -InputObject $PSObject
             }
-
-            $PSObject = [PSCustomObject] @{
-                Version = $Installer.Version
-                Stream  = $Installer.Stream
-                Date    = ConvertTo-DateTime -DateTime $Installer.StartDate -Pattern $res.Get.Update.DatePattern
-                #Title   = $($Installer.ShortDescription -replace ":", "")
-                Size    = $(if ($Installer.Size) { $Installer.Size } else { "Unknown" })
-                Hash    = $Installer.Hash
-                URI     = "$($res.Get.Download.Uri)$($Installer.DownloadURL)"
-            }
-            Write-Output -InputObject $PSObject
         }
     }
 }
