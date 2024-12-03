@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fix an issue with the version number calculated in `QGIS` [#775](https://github.com/aaronparker/evergreen/issues/775)
+
 ## 2411.1644
 
 * Adds `AWSSMP`, `Autoit`
