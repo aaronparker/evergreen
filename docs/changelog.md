@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2412.1685
 
 * Fix an issue with the version number calculated in `QGIS` [#775](https://github.com/aaronparker/evergreen/issues/775)
 
