@@ -25,7 +25,8 @@
             },
             "Bundle": "https://dl.google.com/dl/chrome/install/GoogleChromeEnterpriseBundle64.zip",
             "BundleFilter": "stable",
-            "32bitFilter": "stable|beta|extended|dev"
+            "32bitFilter": "stable|beta|extended|dev",
+            "ArmFilter": "stable"
         }
     },
     "Install": {
