@@ -3,7 +3,7 @@
     "Source": "https://pdf-xchange.eu/pdf-xchange-editor/index.htm",
     "Get": {
         "Update": {
-            "Uri": "https://www.tracker-software.com/trackerupdate/TrackerData8.xml",
+            "Uri": "https://downloads.pdf-xchange.com/trackerupdate/TrackerData8.xml",
             "ContentType": "application/xml; charset=utf-8",
             "Bundles": [
 				"Editor.x64",
