@@ -1,5 +1,13 @@
 # Change log
 
+## VERSION
+
+* Adds `FigmaDesktop` [#784](https://github.com/aaronparker/evergreen/issues/784)
+* Adds `ARM64` architecture to `GoogleChrome`
+* Changes the GitHub repo used for `PodmanDesktop` [#780](https://github.com/aaronparker/evergreen/issues/780)
+* Changes the update feed used for `TrackerSoftwarePDFXChangeEditor` [#782](https://github.com/aaronparker/evergreen/issues/782)
+* Changes the update feed used for `PaintDotNet` [#783](https://github.com/aaronparker/evergreen/issues/783)
+
 ## 2412.1685
 
 * Fix an issue with the version number calculated in `QGIS` [#775](https://github.com/aaronparker/evergreen/issues/775)
