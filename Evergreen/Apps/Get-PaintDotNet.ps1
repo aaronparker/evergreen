@@ -17,18 +17,15 @@ function Get-PaintDotNet {
     )
 
     # Read the Paint.NET updates feed
-    $Content = Invoke-EvergreenWebRequest -Uri $res.Get.Uri
+    $Content = Invoke-EvergreenRestMethod -Uri $res.Get.Uri
     if ($null -ne $Content) {
 
-        # Convert the content from string data
-        $Data = $Content | ConvertFrom-StringData
-        $Key = $Data.Keys | Where-Object { $_ -match $res.Get.UrlProperty }
-
         # Build the output object
-        foreach ($url in $Data.$Key) {
+        foreach ($File in $Content.releases.files) {
             $PSObject = [PSCustomObject] @{
-                Version = $Data.($res.Get.VersionProperty)
-                URI     = $url
+                Version      = $Content.releases.version
+                Architecture = Get-Architecture -String $File.architecture
+                URI          = $File.'mirror-urls'[0]
             }
             Write-Output -InputObject $PSObject
         }

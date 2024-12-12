@@ -88,5 +88,18 @@ function Get-GoogleChrome {
             }
             Write-Output -InputObject $PSObject
         }
+
+        if ($Channel -match $res.Get.Download.'ArmFilter') {
+            # Output the version and URI object for the ARM version
+            $PSObject = [PSCustomObject] @{
+                Version      = $Version
+                Channel      = $Channel
+                StartDate    = $Date
+                Architecture = Get-Architecture -String $($res.Get.Download.Uri.$Channel -replace "64", "_Arm64")
+                Type         = Get-FileType -File $res.Get.Download.Uri.$Channel
+                URI          = $res.Get.Download.Uri.$Channel -replace "64", "_Arm64"
+            }
+            Write-Output -InputObject $PSObject
+        }
     }
 }
