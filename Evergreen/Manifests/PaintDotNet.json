@@ -2,7 +2,7 @@
 	"Name": "dotPDN LLC Paint.NET",
 	"Source": "https://getpaint.net",
 	"Get": {
-		"Uri": "https://www.getpaint.net/updates/versions.8.1000.0.x64.en.txt",
+		"Uri": "https://getpaint.net/updates/v9/manifest.os1000.x64.json",
 		"VersionProperty": "StableVersions",
 		"UrlProperty": "_ZipUrlList",
 		"UrlDelimiter": ","
