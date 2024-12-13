@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fix `URI` property on `FigmaDesktop`
+
 ## 2412.1727
 
 * Adds `FigmaDesktop` [#784](https://github.com/aaronparker/evergreen/issues/784)
