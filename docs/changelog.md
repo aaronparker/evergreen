@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2412.1727
 
 * Adds `FigmaDesktop` [#784](https://github.com/aaronparker/evergreen/issues/784)
 * Adds `ARM64` architecture to `GoogleChrome`

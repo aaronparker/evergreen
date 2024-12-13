@@ -1,6 +1,6 @@
-﻿# 359 Supported applications
+﻿# 360 Supported applications
 
-Evergreen `2412.1685` supports the following applications:
+Evergreen `2412.1727` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -105,6 +105,7 @@ Evergreen `2412.1685` supports the following applications:
 | ESETPROTECTServer                     | ESET Endpoint Antivirus                                           | https://www.eset.com/au/business/solutions/endpoint-protection/                                                                             |
 | ESETSecureAuthentication              | ESET Secure Authentication                                        | https://www.eset.com/au/business/download/secure-authentication/                                                                            |
 | ESETServerSecurity                    | ESET Server Security                                              | https://www.eset.com/int/business/solutions/file-server-security/                                                                           |
+| FigmaDesktop                          | Figma Desktop                                                     | https://www.figma.com/                                                                                                                      |
 | Flameshot                             | Flameshot                                                         | https://flameshot.org/                                                                                                                      |
 | Fork                                  | Dan Pristupov Fork                                                | https://www.fork.dev                                                                                                                        |
 | FoxitPDFEditor                        | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                                                                           |
@@ -281,7 +282,7 @@ Evergreen `2412.1685` supports the following applications:
 | PlexHTPC                              | Plex HTPC                                                         | https://www.plex.tv/media-server-downloads/                                                                                                 |
 | PlexMediaServer                       | Plex Media ServerDesktop                                          | https://www.plex.tv/media-server-downloads/                                                                                                 |
 | Podman                                | Podman                                                            | https://github.com/containers/podman                                                                                                        |
-| PodmanDesktop                         | Podman Desktop                                                    | https://github.com/podman-desktop/podman-desktop                                                                                                |
+| PodmanDesktop                         | Podman Desktop                                                    | https://github.com/podman-desktop/podman-desktop                                                                                            |
 | PositRStudio                          | Posit RStudio Desktop                                             | https://posit.co/products/open-source/rstudio/                                                                                              |
 | Postman                               | Postman                                                           | https://www.getpostman.com/                                                                                                                 |
 | Praat                                 | Praat                                                             | https://www.fon.hum.uva.nl/praat/                                                                                                           |
