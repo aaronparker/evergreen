@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2412.1770
 
 * Fix `URI` property on `FigmaDesktop`
 
