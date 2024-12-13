@@ -18,7 +18,7 @@ function Get-FigmaDesktop {
         $object = [PSCustomObject]@{
             Version = $Content.title -replace $res.Get.Update.ReplaceText, ""
             Date    = $Content.pubDate
-            URL     = $Content.link
+            URI     = $Content.link
         }
         Write-Output -InputObject $object
     }
