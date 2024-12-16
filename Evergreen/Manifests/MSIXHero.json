@@ -1,12 +1,19 @@
 {
     "Name": "MSIX Hero",
     "Source": "https://msixhero.net/",
-	"Get": {
-		"Uri": "https://api.github.com/repos/marcinotorowski/MSIX-Hero/releases/latest",
-        "Uri2": "https://msixhero.net/update.json",
-		"MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
-		"MatchFileTypes": "\\.exe$|\\.msi$|\\.msix$"
-	},
+    "Get": {
+        "Update": {
+            "Uri": "https://msixhero.net/update.json",
+            "Uri2": "https://api.github.com/repos/marcinotorowski/MSIX-Hero/releases/latest",
+            "MatchVersion": "(\\d+(\\.\\d+){1,4}).*",
+            "MatchFileTypes": "\\.exe$|\\.msi$|\\.msix$",
+            "DateTime": "yyyy-MM-dd HH:mm:ss"
+        },
+        "Download": {
+            "Uri": "https://msixhero.net/msix-hero-#version.msix",
+            "ReplaceText": "#version"
+        }
+    },
     "Install": {
         "Setup": "",
         "Preinstall": "",
