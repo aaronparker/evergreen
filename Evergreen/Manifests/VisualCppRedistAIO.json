@@ -4,10 +4,10 @@
 	"Get": {
 		"Uri": "https://api.github.com/repos/abbodi1406/vcredist/releases/latest",
 		"MatchVersion": "(\\d+(\\.\\d+){1,4})",
-		"MatchFileTypes": "\\.zip$"
+		"MatchFileTypes": "\\.zip$|\\.exe$"
 	},
 	"Install": {
-		"Setup": "VisualCppRedist_AIO_x86_x64_*.zip",
+		"Setup": "VisualCppRedist_AIO_*.exe",
 		"Preinstall": "",
 		"Physical": {
 			"Arguments": "/ai58X239",
