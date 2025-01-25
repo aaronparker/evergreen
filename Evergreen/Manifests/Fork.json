@@ -7,7 +7,7 @@
             "MatchVersion": "(\\d+(\\.\\d+){1,4}).*"
 		},
 		"Download": {
-			"Uri": "https://fork.dev/update/win/ForkInstaller.exe"
+			"Uri": "https://cdn.fork.dev/win/Fork-#version.exe"
 		}
 	},
 	"Install": {
