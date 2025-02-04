@@ -1,11 +1,7 @@
-Function Get-Python {
+function Get-Python {
     <#
         .SYNOPSIS
             Get the current version and download URL for Python Software Foundation version of Python.
-
-        .NOTES
-            Author: Andrew Cooper
-            Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -18,18 +14,10 @@ Function Get-Python {
 
     # Query the python API to get the list of versions
     $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
-
     if ($null -ne $updateFeed) {
 
         # Get latest versions from update feed (PSF typically maintain a version of Python2 and a version of Python 3)
-        #$LatestVersions = $updateFeed | Where-Object { $_.is_latest -eq "True" }
-        $LatestVersions = $updateFeed | Where-Object { $_.is_published -eq "True" -and $_.pre_release -ne $true -and $_.name -notlike "*rc*"}
-
-        # For each minor version of python, select only the latest version
-        # The "Name" field contains a string like "Python 3.13.1" or "Python 3.13.1rc1"
-        # 3.1.1, 3.1.2, 3.1.3, etc should all be grouped together as "3.1" and have the latest version selected
-        $LatestVersions = $LatestVersions | Group-Object { $_.name -replace '\.\d+$' } | ForEach-Object { $_.Group | Sort-Object -Property name -Descending | Select-Object -First 1 }
-
+        $LatestVersions = $updateFeed | Where-Object { $_.is_latest -eq "True" }
         if ($null -ne $LatestVersions) {
             foreach ($PythonVersion in $LatestVersions) {
 
@@ -77,11 +65,11 @@ Function Get-Python {
                             Version      = $FileVersion
                             Release      = $FileVersion.split('.')[0..1] -join '.' # Get the major.minor version
                             Python       = $PythonVersion.version
-                            md5          = $UniqueFile.md5_sum
-                            Size         = $UniqueFile.filesize
                             Date         = ConvertTo-DateTime -DateTime $PythonVersion.release_date -Pattern $res.Get.Download.DatePattern
-                            Type         = ($UniqueFile.url).Split('.')[-1]
+                            Md5          = $UniqueFile.md5_sum
+                            Size         = $UniqueFile.filesize
                             Architecture = Get-Architecture $UniqueFile.name
+                            Type         = ($UniqueFile.url).Split('.')[-1]
                             URI          = $UniqueFile.url
                         }
                         Write-Output -InputObject $PSObject
