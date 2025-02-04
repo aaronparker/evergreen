@@ -1,24 +1,22 @@
-Function Get-GitHubDesktop {
+function Get-GitHubDesktop {
     <#
         .NOTES
             Author: Aaron Parker
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $params = @{
-        "Uri" = $res.Get.Update.Uri
-    }
-    $Update = Invoke-EvergreenRestMethod @params
+    $Update = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
     if ($null -ne $Update) {
-        $Version = $Update.Version | Sort-Object -Descending | Select-Object -First 1
+
+        $Version = $Update.Version | Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } -Descending | Select-Object -First 1
         Write-Verbose -Message "$($MyInvocation.MyCommand): Found version: $Version."
 
         foreach ($Platform in $res.Get.Download.Uri.GetEnumerator()) {
