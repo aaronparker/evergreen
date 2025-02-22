@@ -20,7 +20,7 @@ function Get-mySQLWorkbench {
     $Version = ($Tags | Sort-Object -Property @{ Expression = { [System.Version]$_.Tag }; Descending = $true } | Select-Object -First 1).Tag
 
     # Build the output object
-    if ($Null -ne $Version) {
+    if ($null -ne $Version) {
         foreach ($Architecture in $res.Get.Download.Uri.GetEnumerator()) {
 
             # https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.40-winx64.msi
@@ -29,15 +29,20 @@ function Get-mySQLWorkbench {
             #
             # The version ist major.minor.patch, while the tag can have also have major.minor.patch.build
             $Uri = $res.Get.Download.Uri[$Architecture.Key] -replace $res.Get.Download.ReplaceVersion, (($Version -split '\.')[0..2] -join '.')
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Resolving: $Uri"
 
             # The website/CDN checks the user agent, which means that the call from e.g. Azure Automation is only possible by overwriting it
-            $CdnUri = (Invoke-WebRequest $Uri -MaximumRedirection 0 -UserAgent "Curl/8" -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location[0]
+            $params = @{
+                Uri                  = $Uri
+                UserAgent            = "Curl/8"
+            }
+            $CdnUri = Resolve-SystemNetWebRequest @params
 
             $PSObject = [PSCustomObject] @{
                 Version      = $Version
-                Type         = Get-FileType -File $Uri
                 Architecture = $Architecture.Name
-                URI          = $CdnUri
+                Type         = Get-FileType -File $CdnUri.ResponseUri.AbsoluteUri
+                URI          = $CdnUri.ResponseUri.AbsoluteUri -replace "com//", "com/"
             }
             Write-Output -InputObject $PSObject
         }
