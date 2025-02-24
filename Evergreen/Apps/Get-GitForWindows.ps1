@@ -26,4 +26,14 @@ function Get-GitForWindows {
     }
     $object = Get-GitHubRepoRelease @params
     Write-Output -InputObject $object
+
+    # Check the version string and remove the revision number if it is 1
+    $SystemVersion = [System.Version]$object[0].Version
+    if ($SystemVersion.Revision -eq 1) {
+        $object = $object | ForEach-Object { $_.Version = ($SystemVersion.Major, $SystemVersion.Minor, $SystemVersion.Build -join "."); $_ }
+        Write-Output -InputObject $object
+    }
+    else {
+        Write-Output -InputObject $object
+    }
 }

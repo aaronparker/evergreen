@@ -16,10 +16,17 @@ function Get-MSIXHero {
 
     # Pass the repo releases API URL and return a formatted object
     $params = @{
-        Uri          = $res.Get.Uri
-        MatchVersion = $res.Get.MatchVersion
-        Filter       = $res.Get.MatchFileTypes
+        Uri = $res.Get.Update.Uri
     }
-    $object = Get-GitHubRepoRelease @params
-    Write-Output -InputObject $object
+    $UpdateFeed = Invoke-EvergreenRestMethod @params
+
+    # Build the output object
+    if ($null -ne $UpdateFeed) {
+        $PSObject = [PSCustomObject] @{
+            Version = $UpdateFeed.lastVersion
+            Date    = ConvertTo-DateTime -DateTime $UpdateFeed.released -Pattern $res.Get.Update.DateFormat
+            URI     = $res.Get.Download.Uri -replace $res.Get.Download.ReplaceText, $UpdateFeed.lastVersion
+        }
+        Write-Output -InputObject $PSObject
+    }
 }

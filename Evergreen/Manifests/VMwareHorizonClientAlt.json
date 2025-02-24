@@ -3,7 +3,7 @@
 	"Source": "https://docs.vmware.com/en/VMware-Horizon-Client/index.html",
 	"Get": {
 		"Update": {
-			"Uri": "https://softwareupdate.vmware.com/horizon-clients/zon-clients/viewcrt-windows.xml",
+			"Uri": "https://softwareupdate.vmware.com/horizon-clients/viewcrt-mac/viewcrt-windows.xml",
 			"ContentType": "application/xml",
 			"Property": "metaList.metadata",
 			"MatchVersion": "(\\d+(\\.\\d+){1,4}).*"

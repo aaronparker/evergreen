@@ -38,7 +38,7 @@ Function Get-Fork {
         # Convert the returned release data into a useable object with Version, URI etc.
         $PSObject = [PSCustomObject] @{
             Version = $Version
-            URI     = $res.Get.Download.Uri
+            URI     = $res.Get.Download.Uri -replace "#version", $Version
         }
         Write-Output -InputObject $PSObject
     }
