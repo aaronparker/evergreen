@@ -1,5 +1,10 @@
 # Change log
 
+## 2502.1814
+
+* Adds `ALMToolkit`, `AnalogDevicesLTspice`, `DAXStudio`, `MarkMpnSQL4CDS`, `NodeVersionManager`, `Python`
+* Fixes `Fork`, `GitForWindows`, `GitHubDesktop`, `MicrosoftWindowsApp`, `MicrosoftOutlook`, `MicrosoftFSLogixApps`, `Wireshark`, `mySQLConnectorNET`, `mySQLConnectorODBC`, `mySQLWorkbench`, `VisualCppRedistAIO`, `VisualCppRedistAIO`
+
 ## 2412.1770
 
 * Fix `URI` property on `FigmaDesktop`
