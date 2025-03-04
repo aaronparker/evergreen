@@ -7,7 +7,7 @@ All applications will return at least a `Version` and `URI` property with many r
 To retrieve and download an application installer, we need to use code similar to the following that the filters for the required download and determines the file name before using `Invoke-WebRequest` to download the file.
 
 ```powershell
-$Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "General" }
+$Teams = Get-EvergreenApp -Name MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Release -eq "Enterprise" }
 $TeamsInstaller = Split-Path -Path $Teams.Uri -Leaf
 Invoke-WebRequest -Uri $Teams.Uri -OutFile ".\$TeamsInstaller" -UseBasicParsing
 ```
