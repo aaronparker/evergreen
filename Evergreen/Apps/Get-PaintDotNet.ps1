@@ -21,13 +21,16 @@ function Get-PaintDotNet {
     if ($null -ne $Content) {
 
         # Build the output object
-        foreach ($File in $Content.releases.files) {
-            $PSObject = [PSCustomObject] @{
-                Version      = $Content.releases.version
-                Architecture = Get-Architecture -String $File.architecture
-                URI          = $File.'mirror-urls'[0]
+        foreach ($Release in $Content.releases) {
+            foreach ($File in $Release.files) {
+                $PSObject = [PSCustomObject] @{
+                    Version      = $Release.version
+                    Channel      = $Release.milestone
+                    Architecture = $File.architecture
+                    URI          = $File.'mirror-urls'[0]
+                }
+                Write-Output -InputObject $PSObject
             }
-            Write-Output -InputObject $PSObject
         }
     }
 }
