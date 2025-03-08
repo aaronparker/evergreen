@@ -19,7 +19,7 @@
                 "scheme": "https",
                 "sec-ch-ua-platform": "\"macOS\"",
                 "authority": "www.tableau.com",
-                "sec-ch-ua": "\"Chromium\";v=\"124\", \"Microsoft Edge\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+                "sec-ch-ua": "\"Chromium\";v=\"132\", \"Microsoft Edge\";v=\"131\", \"Not-A.Brand\";v=\"99\"",
                 "upgrade-insecure-requests": "1",
                 "accept-encoding": "gzip, deflate, br, zstd",
                 "sec-fetch-site": "none",
