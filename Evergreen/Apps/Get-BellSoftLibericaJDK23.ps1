@@ -1,4 +1,4 @@
-function Get-RedHatOpenJDK11 {
+function Get-BellSoftLibericaJDK23 {
     <#
         .NOTES
             Author: Aaron Parker
@@ -7,12 +7,12 @@ function Get-RedHatOpenJDK11 {
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
     param (
-        [Parameter(Mandatory = $false, Position = 0)]
+        [Parameter(Mandatory = $False, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    $Output = Get-AdoptiumTemurin -res $res
+    $Output = Get-BellSoftLibericaJDK -res $res
     Write-Output -InputObject $Output
 }

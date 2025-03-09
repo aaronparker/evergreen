@@ -25,7 +25,6 @@ function Get-GitForWindows {
         Filter         = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-    Write-Output -InputObject $object
 
     # Check the version string and remove the revision number if it is 1
     $SystemVersion = [System.Version]$object[0].Version

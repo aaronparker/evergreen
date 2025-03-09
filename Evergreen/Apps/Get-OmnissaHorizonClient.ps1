@@ -1,7 +1,7 @@
 ﻿function Get-OmnissaHorizonClient {
     <#
         .NOTES
-            Author: Aaron Parker
+            Author: Aaron Parker, Dan Gough
             Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
@@ -13,27 +13,40 @@
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
-    # Get the download group and id
-    $Products = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
-    $Product = $Products.dlgEditionsLists | Where-Object { $_.name -match $res.Get.Update.Match }
+    # $Output = Get-VMwareProductList -Name $res.Get.Download.ProductName | `
+    #     Get-VMwareProductDownload | `
+    #     Where-Object { $_.URI -match $res.Get.Download.MatchFileTypes } | `
+    #     Sort-Object -Property "ReleaseDate" | `
+    #     Select-Object -Last 1 | `
+    #     ForEach-Object { $_.Version = $_.Version -replace $res.Get.Download.ReplaceText, ""; $_ }
+    # Write-Output -InputObject $Output
 
-    # Build the URL to the downloads list
-    $Url = $res.Get.Download.Uri -replace "#cart", $Product.dlgList.code `
-        -replace "#pid", $Product.dlgList.productId `
-        -replace "#rpid", $Product.dlgList.releasePackageId
+    $params = @{
+        Uri = $res.Get.Download.Uri
+    }
+    $Response = Invoke-EvergreenRestMethod @params
+    $Product = $Response.dlgEditionsLists.Where({ $_.name -eq $res.Get.Download.ProductName }).dlgList
 
-    # Get the download list
-    $Downloads = Invoke-EvergreenRestMethod -Uri $Url
+    $params = @{
+        Uri = $res.Get.Download.QueryUri -replace "#ProductCode", $Product.code `
+            -replace "#ProductId", $Product.productId `
+            -replace "#PackageId", $Product.releasePackageId
+    }
+    $details = Invoke-EvergreenRestMethod @params
 
-    # Construct the output; Return the custom object to the pipeline
-    foreach ($File in $Downloads.downloadFiles) {
-        [PSCustomObject] @{
-            Version = $File.version
-            Build   = $File.build
-            Date    = $File.releaseDate
-            Sha256  = $File.sha256checksum
-            Type    = Get-FileType -File $File.thirdPartyDownloadUrl
-            URI     = $File.thirdPartyDownloadUrl
-        } | Write-Output
+    foreach ($File in $details.downloadFiles) {
+
+        $InternalVersion = [RegEx]::Match($File.thirdPartyDownloadUrl, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
+
+        $PSObject = [PSCustomObject] @{
+            Version         = $File.version
+            InternalVersion = "$InternalVersion-$($File.build)"
+            Date            = ConvertTo-DateTime -DateTime $File.releaseDate -Pattern $res.Get.Download.DateFormat
+            Sha256          = $File.sha256checksum
+            Size            = $File.fileSize
+            Type            = Get-FileType -File $File.thirdPartyDownloadUrl
+            URI             = $File.thirdPartyDownloadUrl
+        }
+        Write-Output -InputObject $PSObject
     }
 }

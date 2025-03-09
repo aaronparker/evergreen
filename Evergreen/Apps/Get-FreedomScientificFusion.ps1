@@ -1,4 +1,4 @@
-Function Get-FreedomScientificFusion {
+function Get-FreedomScientificFusion {
     <#
         .SYNOPSIS
             Get the current version and download URL for Freedom Scientific Fusion.
@@ -8,16 +8,16 @@ Function Get-FreedomScientificFusion {
             Twitter: @adotcoop
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
     )
 
     # The URI feeds require a unix timestamp as a parameter
-    $UnixTimestamp = [int64](([DateTime]::UtcNow) - ([DateTime]'1970-01-01Z')).TotalSeconds
+    $UnixTimestamp = [System.Int64](([System.DateTime]::UtcNow) - ([System.DateTime]'1970-01-01Z')).TotalSeconds
 
     # Query the API to get the list of major versions
     $MajorVersionsURI = $res.Get.Update.Uri -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
@@ -29,30 +29,31 @@ Function Get-FreedomScientificFusion {
 
     # Query the API to get the list of releases
     $DownloadFeedURI = ($res.Get.Download.Uri -replace $res.Get.Download.ReplaceMajorVersion, $LatestVersion.MajorVersion ) -replace $res.Get.Update.ReplaceTimestamp, $UnixTimestamp
+    Write-Verbose "$($MyInvocation.MyCommand): Built $DownloadFeedURI"
     $downloadFeed = Invoke-EvergreenRestMethod $DownloadFeedURI
 
-    If ($Null -ne $downloadFeed) {
-
-        ForEach ($Release in $downloadFeed) {
+    if ($null -ne $downloadFeed) {
+        foreach ($Release in $downloadFeed) {
 
             # Extract the version information
             try {
                 $Version = [RegEx]::Match($Release.FileName, $res.Get.Download.MatchVersion).Captures.Groups[1].Value
             }
             catch {
-                Throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
+                throw "$($MyInvocation.MyCommand): Failed to extract the version information from the uri."
             }
 
             # Construct the output; Return the custom object to the pipeline
             $PSObject = [PSCustomObject] @{
-                Version = $Version
-                Date    = ConvertTo-DateTime -DateTime $Release.ReleaseDate -Pattern $res.Get.Download.DatePattern
-                URI     = $Release.InstallerLocationHTTP
+                Version      = $Version
+                Date         = ConvertTo-DateTime -DateTime $Release.ReleaseDate -Pattern $res.Get.Download.DatePattern
+                Architecture = Get-Architecture -String $Release.InstallerLocationHTTP
+                URI          = $Release.InstallerLocationHTTP
             }
             Write-Output -InputObject $PSObject
         }
     }
-    Else {
-        Throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."
+    else {
+        throw "$($MyInvocation.MyCommand): Failed to obtain latest releases for version $($LatestVersion.ProductMajor)."
     }
 }
