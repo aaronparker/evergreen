@@ -1,5 +1,19 @@
 # Change log
 
+## VERSION
+
+* Adds `BellSoftLibericaJDK23`
+* Fixes the download URL in `Fork` [#791](https://github.com/aaronparker/evergreen/issues/791)
+* Fixes an issue with `GitForWindows` where output it repeated [#802](https://github.com/aaronparker/evergreen/issues/802)
+* Fixes an issue with `MicrosoftWvdMultimediaRedirection`, `MicrosoftWvdRtcService` due to changes in the source URL
+* Removes `Filename` property from `MicrosoftWvdRemoteDesktop` because property is no longer required
+* Updates `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText` to add `Architecture` property
+* Updates `OmnissaHorizonClient` [#678](https://github.com/aaronparker/evergreen/issues/678)
+* Updates `PaintDotNet` to return `stable` and `beta` channels [#783](https://github.com/aaronparker/evergreen/issues/783) 
+* Updates default user agent in `TableauDesktop`, `TableauPrep`, `TableauReader` [#801](https://github.com/aaronparker/evergreen/issues/801)
+* Updates default user agent for the module
+* Removes `RedHatOpenJDK11` because no data is returned from the API for this version
+
 ## 2502.1814
 
 * Adds `ALMToolkit`, `AnalogDevicesLTspice`, `DAXStudio`, `MarkMpnSQL4CDS`, `NodeVersionManager`, `Python`
