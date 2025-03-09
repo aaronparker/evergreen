@@ -1,6 +1,6 @@
 ﻿# 367 Supported applications
 
-Evergreen `2502.1814` supports the following applications:
+Evergreen `2503.1859` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,6 +62,7 @@ Evergreen `2502.1814` supports the following applications:
 | BellSoftLibericaJDK20                 | BellSoft Liberica JDK 20                                          | https://bell-sw.com/libericajdk/                                                                                                            |
 | BellSoftLibericaJDK21                 | BellSoft Liberica JDK 21                                          | https://bell-sw.com/libericajdk/                                                                                                            |
 | BellSoftLibericaJDK22                 | BellSoft Liberica JDK 22                                          | https://bell-sw.com/libericajdk/                                                                                                            |
+| BellSoftLibericaJDK23                 | BellSoft Liberica JDK 23                                          | https://bell-sw.com/libericajdk/                                                                                                            |
 | BellSoftLibericaJDK8                  | BellSoft Liberica JDK 8 LTS                                       | https://bell-sw.com/libericajdk/                                                                                                            |
 | BISF                                  | Base Image Script Framework                                       | https://eucweb.com/                                                                                                                         |
 | BitwardenDesktop                      | Bitwarden Desktop                                                 | https://bitwarden.com/                                                                                                                      |
@@ -261,7 +262,7 @@ Evergreen `2502.1814` supports the following applications:
 | OCSInventoryWindowsAgent              | OCS Inventory Windows Agent                                       | https://ocsinventory-ng.org/                                                                                                                |
 | OctopusDeployServer                   | Octopus Deploy Server                                             | https://octopus.com/                                                                                                                        |
 | OctopusTentacle                       | Octopus Tentacle                                                  | https://octopus.com/                                                                                                                        |
-| OmnissaHorizonClient                  | Omnissa Horizon Client                                            | https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8                         |
+| OmnissaHorizonClient                  | Omnissa Horizon Client                                            | https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/omnissa_horizon_clients/8                                |
 | OnlyOfficeDesktopEditors              | ONLYOFFICE Desktop Editors                                        | https://www.onlyoffice.com/desktop.aspx                                                                                                     |
 | OpenLens                              | OpenLens                                                          | https://github.com/MuhammedKalkan/OpenLens/                                                                                                 |
 | OpenShellMenu                         | Open-Shell-Menu                                                   | https://open-shell.github.io/Open-Shell-Menu/                                                                                               |
@@ -307,7 +308,6 @@ Evergreen `2502.1814` supports the following applications:
 | QGIS                                  | QGIS                                                              | https://qgis.org/en/site/index.html                                                                                                         |
 | RCoreTeamRforWindows                  | R Core Team R for Windows                                         | https://cran.r-project.org/bin/windows/base/                                                                                                |
 | RDAnalyzer                            | Remote Desktop Analyzer                                           | https://rdanalyzer.com/                                                                                                                     |
-| RedHatOpenJDK11                       | Red Hat OpenJDK 11                                                | https://developers.redhat.com/products/openjdk/overview                                                                                     |
 | RedHatOpenJDK17                       | Red Hat OpenJDK 17                                                | https://developers.redhat.com/products/openjdk/overview                                                                                     |
 | RedHatOpenJDK21                       | Red Hat OpenJDK 21                                                | https://developers.redhat.com/products/openjdk/overview                                                                                     |
 | RedHatOpenJDK8                        | Red Hat OpenJDK 8                                                 | https://developers.redhat.com/products/openjdk/overview                                                                                     |

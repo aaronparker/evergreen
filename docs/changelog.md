@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2503.1859
 
 * Adds `BellSoftLibericaJDK23`
 * Fixes the download URL in `Fork` [#791](https://github.com/aaronparker/evergreen/issues/791)
