@@ -1,4 +1,4 @@
-Function Get-MicrosoftVisualStudioCode {
+function Get-MicrosoftVisualStudioCode {
     <#
         .SYNOPSIS
             Reads the Microsoft Visual Studio code update API to retrieve available Stable and Insider builds version numbers and download URLs for Windows.
@@ -14,24 +14,24 @@ Function Get-MicrosoftVisualStudioCode {
             "https://vscode-update.azurewebsites.net/latest/win32-x64-user/stable"
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split('-'))[1])
     )
 
     # Walk through each platform
-    ForEach ($platform in $res.Get.Update.Platform) {
+    foreach ($platform in $res.Get.Update.Platform) {
         Write-Verbose -Message "$($MyInvocation.MyCommand): Getting release info for $platform."
 
         # Walk through each channel in the platform
-        ForEach ($channel in $res.Get.Update.Channel) {
+        foreach ($channel in $res.Get.Update.Channel) {
             # Read the version details from the API, format and return to the pipeline
             $Uri = "$($res.Get.Update.Uri)/$($platform.ToLower())/$($channel.ToLower())/latest"
             $updateFeed = Invoke-EvergreenRestMethod -Uri $Uri
-            If ($updateFeed) {
+            if ($updateFeed) {
                 $PSObject = [PSCustomObject] @{
                     Version      = $updateFeed.productVersion -replace $res.Get.Update.ReplaceText, ''
                     Platform     = $platform
@@ -42,7 +42,6 @@ Function Get-MicrosoftVisualStudioCode {
                 }
                 Write-Output -InputObject $PSObject
             }
-
         }
     }
 }
