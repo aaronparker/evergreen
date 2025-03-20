@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2503.1906
 
 * Remove `x86` platforms from `MicrosoftVisualStudioCode`
 * Update `MicrosoftWvdInfraAgent` to support new source URL
