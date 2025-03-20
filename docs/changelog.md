@@ -1,5 +1,10 @@
 # Change log
 
+## VERSION
+
+* Remove `x86` platforms from `MicrosoftVisualStudioCode`
+* Update `MicrosoftWvdInfraAgent` to support new source URL
+
 ## 2503.1859
 
 * Adds `BellSoftLibericaJDK23`
