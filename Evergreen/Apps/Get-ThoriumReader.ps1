@@ -1,4 +1,4 @@
-Function Get-ThoriumReader {
+function Get-ThoriumReader {
     <#
         .SYNOPSIS
             Returns the latest Thorium Reader version number and download.
@@ -8,9 +8,9 @@ Function Get-ThoriumReader {
             E-mail: jms@du.se
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -23,6 +23,5 @@ Function Get-ThoriumReader {
         Filter       = $res.Get.MatchFileTypes
     }
     $object = Get-GitHubRepoRelease @params
-
     Write-Output -InputObject $object
 }

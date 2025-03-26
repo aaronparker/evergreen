@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `ThoriumReader`, `NSClient++`, `NagiosCrossPlatformAgent`, `OmnissaDynamicEnvironmentManager`, `OmnissaOSOptimizationTool`
+* Updates `MicrosoftWvdBootLoader` to support new source URL
+* Removes `VMwareHorizonClientAlt` due to source no longer exists. Use `OmnissaHorizonClient` instead
+
 ## 2503.1906
 
 * Remove `x86` platforms from `MicrosoftVisualStudioCode`
