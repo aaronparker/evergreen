@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2503.1954
 
 * Adds `ThoriumReader`, `NSClient++`, `NagiosCrossPlatformAgent`, `OmnissaDynamicEnvironmentManager`, `OmnissaOSOptimizationTool`
 * Updates `MicrosoftWvdBootLoader` to support new source URL
