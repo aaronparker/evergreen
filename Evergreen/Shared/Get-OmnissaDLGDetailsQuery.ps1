@@ -1,4 +1,4 @@
-function Get-VMwareDLGDetailsQuery {
+function Get-OmnissaDLGDetailsQuery {
     [OutputType("System.String")]
     param (
         [Parameter(Mandatory = $true)]
@@ -14,7 +14,7 @@ function Get-VMwareDLGDetailsQuery {
         downloadGroup = $DownloadGroup
     }
     $queryString = ($queryParameters.GetEnumerator() | ForEach-Object { "&$($_.Key)=$($_.Value)" }) -join ''
-    $DlgQuery = "$(Get-VMwareAPIPath -Endpoint 'dlg')/$($APIResource)?$($queryString.TrimStart('&'))"
+    $DlgQuery = "$(Get-OmnissaAPIPath -Endpoint 'dlg')/$($APIResource)?$($queryString.TrimStart('&'))"
     Write-Verbose -Message "$($MyInvocation.MyCommand): $DlgQuery"
     return $DlgQuery
 }

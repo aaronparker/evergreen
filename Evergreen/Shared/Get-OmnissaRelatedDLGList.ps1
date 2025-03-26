@@ -1,4 +1,4 @@
-function Get-VMwareRelatedDLGList {
+function Get-OmnissaRelatedDLGList {
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(Mandatory = $true,
@@ -34,7 +34,7 @@ function Get-VMwareRelatedDLGList {
         }
         $queryString = ( $queryParameters.GetEnumerator() | ForEach-Object { "&$($_.Key)=$($_.Value)" }) -join ''
         $params = @{
-            Uri             = "$(Get-VMwareAPIPath)/$($APIResource)?$($queryString.TrimStart('&'))"
+            Uri = "$(Get-OmnissaAPIPath)/$($APIResource)?$($queryString.TrimStart('&'))"
         }
         $WebResult = Invoke-EvergreenRestMethod @params
         Write-Output -InputObject $WebResult.dlgEditionsLists.dlgList

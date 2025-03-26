@@ -2,7 +2,6 @@
     <#
         .NOTES
             Author: Aaron Parker, Dan Gough
-            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]

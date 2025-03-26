@@ -1,6 +1,6 @@
-function Get-VMwareProductDownload {
+function Get-OmnissaProductDownload {
     <#
-        .EXTERNALHELP Evergreen.VMware-help.xml
+        .EXTERNALHELP Evergreen.Omnissa-help.xml
     #>
     param (
         [Parameter(Mandatory = $true,
@@ -12,17 +12,19 @@ function Get-VMwareProductDownload {
 
     process {
         foreach ($Product in $Name) {
-            $VMwareProduct = Get-VMwareProductList -Name $Product
-            $VMwareDLG = $VMwareProduct | Get-VMwareRelatedDLGList
+            $OmnissaProduct = Get-OmnissaProductList -Name $Product
+            $OmnissaDLG = $OmnissaProduct | Get-OmnissaRelatedDLGList
 
-            foreach ($Dlg in $VMwareDLG) {
+            foreach ($Dlg in $OmnissaDLG) {
                 $params = @{
-                    Uri = $(Get-VMwareDLGDetailsQuery -DownloadGroup $Dlg.code)
+                    Uri = $(Get-OmnissaDLGDetailsQuery -DownloadGroup $Dlg.code)
                 }
                 $DownloadFiles = $(Invoke-EvergreenRestMethod @params).downloadFiles
+                Write-Verbose -Message "$($MyInvocation.MyCommand): $($DownloadFiles.Count) files found for $($Dlg.code)"
 
                 foreach ($File in $DownloadFiles) {
                     if ([System.String]::IsNullOrEmpty($File.title)) {
+                        Write-Verbose -Message "$($MyInvocation.MyCommand): Skipping file with no title"
                     }
                     else {
                         $Result = [PSCustomObject]@{
@@ -32,7 +34,7 @@ function Get-VMwareProductDownload {
                             Sha256      = $File.sha256checksum
                             Size        = $File.fileSize
                             Type        = Get-FileType -File $File.fileName
-                            URI         = "https://download3.vmware.com/software/$($Dlg.code)/$($File.fileName)"
+                            URI         = "https://download2.omnissa.com/software/$($Dlg.code)/$($File.fileName)"
                         }
                         Write-Output -InputObject $Result
                     }

@@ -1,6 +1,6 @@
-function Get-VMwareProductList {
+function Get-OmnissaProductList {
     <#
-        .EXTERNALHELP Evergreen.VMware-help.xml
+        .EXTERNALHELP Evergreen.Omnissa-help.xml
     #>
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
@@ -10,17 +10,19 @@ function Get-VMwareProductList {
 
     $APIResource = 'getProductsAtoZ'
     $params = @{
-        Uri = "$(Get-VMwareAPIPath)/${APIResource}"
+        Uri       = "$(Get-OmnissaAPIPath)/${APIResource}"
+        UserAgent = "Evergreen/2504.111"
     }
     $WebResult = Invoke-EvergreenRestMethod @params
 
     $FilteredProductList = $WebResult.productCategoryList.ProductList
     if ($PSBoundParameters.ContainsKey('Name')) {
-        $FilteredProductList = $FilteredProductList | Where-Object -FilterScript { $_.Name -eq $Name }
+        Write-Verbose -Message "$($MyInvocation.MyCommand): Filtering on Name: $Name"
+        $FilteredProductList = $FilteredProductList | Where-Object -FilterScript { $_.name -eq $Name }
     }
 
     $Result = $FilteredProductList | ForEach-Object -Process {
-        $Action = $_.actions | Where-Object -FilterScript { $_.linkname -eq "Download Product" }
+        $Action = $_.actions | Where-Object -FilterScript { $_.linkname -eq "View Download Components" }
         [PSCustomObject]@{
             Name        = $_.Name
             CategoryMap = $($Action.target -split '/')[-3]
