@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Adds `ControlUpMonitor`
+* Updates `AkeoRufusAlt` to remove ARM32 architecture
+* Updates the module default user agent
+
 ## 2503.1954
 
 * Adds `ThoriumReader`, `NSClient++`, `NagiosCrossPlatformAgent`, `OmnissaDynamicEnvironmentManager`, `OmnissaOSOptimizationTool`
