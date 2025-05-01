@@ -1,6 +1,6 @@
-﻿# 371 Supported applications
+﻿# 372 Supported applications
 
-Evergreen `2503.1954` supports the following applications:
+Evergreen `2505.2003` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,6 +76,7 @@ Evergreen `2503.1954` supports the following applications:
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                                                               |
 | ControlUpAgent                        | ControlUp Agent                                                   | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | ControlUpConsole                      | ControlUp Console                                                 | https://www.controlup.com/products/controlup/management/                                                                                    |
+| ControlUpMonitor                      | ControlUp Monitor Server                                          | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | ControlUpRemoteDX                     | ControlUp Remote DX Plugins                                       | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | Cyberduck                             | iterate GmbH Cyberduck                                            | https://cyberduck.io/                                                                                                                       |
 | DAXStudio                             | DAX Studio                                                        | https://github.com/DaxStudio/DaxStudio                                                                                                      |

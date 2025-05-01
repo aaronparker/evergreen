@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2505.2003
 
 * Adds `ControlUpMonitor`
 * Updates `AkeoRufusAlt` to remove ARM32 architecture
