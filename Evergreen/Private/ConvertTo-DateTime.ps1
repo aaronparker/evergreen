@@ -23,8 +23,14 @@ Function ConvertTo-DateTime {
         $Output = $ConvertedDateTime.ToShortDateString()
     }
     catch {
-        Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to convert to short date."
-        $Output = $DateTime
+        try {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Failed to convert to short date. Falling back to simple conversion."
+            $Output = [System.DateTime]$DateTime
+        }
+        catch {
+            Write-Error -Message "$($MyInvocation.MyCommand): Failed to convert date, returning original string."
+            $Output = $DateTime
+        }
     }
 
     # Write the output to the pipeline
