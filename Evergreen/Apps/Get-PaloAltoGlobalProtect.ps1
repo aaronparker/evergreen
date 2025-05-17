@@ -28,10 +28,12 @@ function Get-PaloAltoGlobalProtect {
     $LatestDate = $DownloadFeed.ListBucketResult.Contents | `
         Sort-Object -Property @{ Expression = { [System.DateTime]$_.LastModified }; Descending = $true } | `
         Select-Object -ExpandProperty LastModified -First 1
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Found date: $LatestDate"
 
     # Get the latest version from the list of versions based on the most recent date
-    $LatestVersions = $Feed.ListBucketResult.Contents | `
+    $LatestVersions = $DownloadFeed.ListBucketResult.Contents | `
         Where-Object { $_.LastModified -match $LatestDate -and $_.Key -match $res.Get.Download.MatchFileType }
+    Write-Verbose -Message "$($MyInvocation.MyCommand): Found $($LatestVersions.Count) versions with date: $LatestDate"
 
     # Return the list of downloads for the latest version
     foreach ($Item in $LatestVersions) {
