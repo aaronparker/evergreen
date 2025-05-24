@@ -1,11 +1,10 @@
-Function Get-stealthpuppyWindowsCustomisedDefaults {
+Function Get-WindowsEnterpriseDefaults {
     <#
         .SYNOPSIS
-            Returns the latest stealthpuppy Windows Customised Defaults version number and download.
+            Returns the latest stealthpuppy Windows Enterprise Defaults version number and download.
 
         .NOTES
             Author: Aaron Parker
-            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Justification="Product name is a plural")]

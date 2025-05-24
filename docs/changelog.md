@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+BREAKING CHANGES
+
+* Renames `stealthpuppyWindowsCustomisedDefaults` to `WindowsEnterpriseDefaults`
+
 ## 2503.1954
 
 * Adds `ThoriumReader`, `NSClient++`, `NagiosCrossPlatformAgent`, `OmnissaDynamicEnvironmentManager`, `OmnissaOSOptimizationTool`

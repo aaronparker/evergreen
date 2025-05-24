@@ -1,8 +1,8 @@
 {
-	"Name": "stealthpuppy Windows Customised Defaults",
-	"Source": "https://stealthpuppy.com/image-customise/",
+	"Name": "Windows Enterprise Defaults",
+	"Source": "https://stealthpuppy.com/defaults/",
 	"Get": {
-		"Uri": "https://api.github.com/repos/aaronparker/image-customise/releases/latest",
+		"Uri": "https://api.github.com/repos/aaronparker/defaults/releases/latest",
 		"MatchVersion": "(?!\\v)(\\d+(\\.\\d+){1,4}.*)",
 		"MatchFileTypes": "\\.intunewin$|\\.zip$"
 	},
