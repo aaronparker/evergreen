@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2505.2104
 
 * Renames `stealthpuppyWindowsCustomisedDefaults` to `WindowsEnterpriseDefaults`
 
