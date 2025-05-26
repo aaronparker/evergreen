@@ -2,9 +2,19 @@
 
 ## VERSION
 
-BREAKING CHANGES
-
 * Renames `stealthpuppyWindowsCustomisedDefaults` to `WindowsEnterpriseDefaults`
+
+## 2505.2053
+
+* Adds `PaloAltoGlobalProtect`, `MicrosoftWindowsAdminCenter`
+* Fixes `LehrerOffice` for a change in the source URL
+* Updates internal function `ConvertTo-DateTime` to return a simple date/time conversion where a short date conversion fails
+
+## 2505.2003
+
+* Adds `ControlUpMonitor`
+* Updates `AkeoRufusAlt` to remove ARM32 architecture
+* Updates the module default user agent
 
 ## 2503.1954
 

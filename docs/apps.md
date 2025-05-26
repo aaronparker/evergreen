@@ -1,6 +1,6 @@
-﻿# 371 Supported applications
+﻿# 374 Supported applications
 
-Evergreen `2503.1954` supports the following applications:
+Evergreen `2505.2053` supports the following applications:
 
 | Name                                  | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,6 +76,7 @@ Evergreen `2503.1954` supports the following applications:
 | ConnectionExperienceIndicator         | Connection Experience Indicator                                   | https://bramwolfs.com/2020/03/11/connection-experience-indicator-for-rds-wvd/                                                               |
 | ControlUpAgent                        | ControlUp Agent                                                   | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | ControlUpConsole                      | ControlUp Console                                                 | https://www.controlup.com/products/controlup/management/                                                                                    |
+| ControlUpMonitor                      | ControlUp Monitor Server                                          | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | ControlUpRemoteDX                     | ControlUp Remote DX Plugins                                       | https://www.controlup.com/products/controlup/agent/                                                                                         |
 | Cyberduck                             | iterate GmbH Cyberduck                                            | https://cyberduck.io/                                                                                                                       |
 | DAXStudio                             | DAX Studio                                                        | https://github.com/DaxStudio/DaxStudio                                                                                                      |
@@ -222,6 +223,7 @@ Evergreen `2503.1954` supports the following applications:
 | MicrosoftVdot                         | Microsoft Virtual Desktop Optimization Tool                       | https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool                                                               |
 | MicrosoftVisualStudio                 | Microsoft Visual Studio                                           | https://visualstudio.microsoft.com/                                                                                                         |
 | MicrosoftVisualStudioCode             | Microsoft Visual Studio Code                                      | https://code.visualstudio.com                                                                                                               |
+| MicrosoftWindowsAdminCenter           | Microsoft Windows Admin Center                                    | https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/overview                                                       |
 | MicrosoftWindowsApp                   | Microsoft Windows App                                             | https://learn.microsoft.com/en-us/windows-app/whats-new                                                                                     |
 | MicrosoftWindowsPackageManagerClient  | Microsoft Windows Package Manager Client                          | https://docs.microsoft.com/en-us/windows/package-manager/                                                                                   |
 | MicrosoftWSL                          | Microsoft WSL                                                     | https://github.com/microsoft/wsl/                                                                                                           |
@@ -283,6 +285,7 @@ Evergreen `2503.1954` supports the following applications:
 | OracleVirtualBox                      | Oracle VirtualBox                                                 | https://www.virtualbox.org/                                                                                                                 |
 | PaintDotNet                           | dotPDN LLC Paint.NET                                              | https://getpaint.net                                                                                                                        |
 | PaintDotNetOfflineInstaller           | dotPDN LLC Paint.NET Offline Installer                            | https://getpaint.net/                                                                                                                       |
+| PaloAltoGlobalProtect                 | Palo Alto GlobalProtect                                           | https://docs.paloaltonetworks.com/globalprotect                                                                                             |
 | Pandoc                                | Pandoc                                                            | https://pandoc.org/                                                                                                                         |
 | ParallelsClient                       | Parallels Client                                                  | https://www.parallels.com/products/ras/download/links/                                                                                      |
 | PDFArranger                           | PDF Arranger                                                      | https://github.com/pdfarranger/pdfarranger/                                                                                                 |

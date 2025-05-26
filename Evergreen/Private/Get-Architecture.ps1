@@ -33,6 +33,7 @@ function Get-Architecture {
         "-x86"      { $architecture = "x86"; break }
         "x86"       { $architecture = "x86"; break }
         "e64\."       { $architecture = "x64"; break }
+        "64\."       { $architecture = "x64"; break }
         default {
             Write-Verbose -Message "$($MyInvocation.MyCommand): Architecture not found in $String, defaulting to x86."
             $architecture = "x86"
