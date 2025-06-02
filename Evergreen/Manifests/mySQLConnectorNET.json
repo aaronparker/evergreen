@@ -7,11 +7,11 @@
       },
       "Download": {
         "Uri": {
-          "x64": "https://dev.mysql.com/get/Downloads/Connector-ODBC/#versionshort/mysql-connector-odbc-#version-winx64.msi"
+          "x64": "https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-#version.msi"
         },
-        "ReplaceVersion": "#version",
-        "ReplaceVersionShort": "#versionshort"
+        "ReplaceVersion": "#version"
       }
+
     },
     "Install": {
       "Setup": "",
