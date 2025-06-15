@@ -23,7 +23,7 @@
         },
         "Download": {
             "Uri": {
-                "ARM64": "https://go.microsoft.com/fwlink/?linkid=2099616",
+                "arm64": "https://go.microsoft.com/fwlink/?linkid=2099616",
                 "x64": "https://go.microsoft.com/fwlink/?linkid=2124701",
                 "x86": "https://go.microsoft.com/fwlink/?linkid=2099617"
             }

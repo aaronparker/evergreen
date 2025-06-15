@@ -1,4 +1,4 @@
-Function Get-MicrosoftEdge {
+Function Get-MicrosoftEdgeForBusiness {
     <#
         .SYNOPSIS
             Returns the available Microsoft Edge versions and channels by querying the official Microsoft version JSON.
@@ -30,7 +30,6 @@ Function Get-MicrosoftEdge {
                             Version                 = $Release.ProductVersion
                             Date                    = $Release.PublishedTime
                             Channel                 = $Item.Product
-                            Release                 = "Enterprise"
                             Expiry                  = $Release.ExpectedExpiryDate
                             $Artifact.HashAlgorithm = $Artifact.Hash
                             Size                    = $([Math]::Round($Artifact.SizeInBytes / 1MB, 2))

@@ -1,9 +1,9 @@
 {
-    "Name": "Microsoft Edge",
-    "Source": "https://www.microsoft.com/edge",
+    "Name": "Microsoft Edge for Business",
+    "Source": "https://www.microsoft.com/edge/business/download",
     "Get": {
         "Update": {
-            "Uri": "https://edgeupdates.microsoft.com/api/products",
+            "Uri": "https://edgeupdates.microsoft.com/api/products?view=enterprise",
             "Platforms": [
                 "Windows",
                 "Any"
