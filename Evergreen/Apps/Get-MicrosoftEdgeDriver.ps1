@@ -5,12 +5,11 @@ Function Get-MicrosoftEdgeDriver {
 
         .NOTES
             Author: Aaron Parker
-            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
-        [Parameter(Mandatory = $False, Position = 0)]
+        [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
         [System.Management.Automation.PSObject]
         $res = (Get-FunctionResource -AppName ("$($MyInvocation.MyCommand)".Split("-"))[1])
@@ -20,7 +19,7 @@ Function Get-MicrosoftEdgeDriver {
     $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, architecture, version
-    if ($Null -ne $updateFeed) {
+    if ($null -ne $updateFeed) {
         foreach ($platform in $res.Get.Update.Platforms) {
 
             # For each product (Stable, Beta etc.)
