@@ -1,6 +1,6 @@
-﻿# 374 Supported applications
+﻿# 375 Supported applications
 
-Evergreen `2505.2104` supports the following applications:
+Evergreen `2506.2156` supports the following applications:
 
 | Name                                 | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -203,6 +203,7 @@ Evergreen `2505.2104` supports the following applications:
 | MicrosoftBotFrameworkEmulator        | Microsoft Bot Framework Emulator                                  | https://github.com/microsoft/BotFramework-Emulator/                                                                                         |
 | MicrosoftEdge                        | Microsoft Edge                                                    | https://www.microsoft.com/edge                                                                                                              |
 | MicrosoftEdgeDriver                  | Microsoft Edge WebDriver                                          | https://www.microsoft.com/edge                                                                                                              |
+| MicrosoftEdgeForBusiness             | Microsoft Edge for Business                                       | https://www.microsoft.com/edge/business/download                                                                                            |
 | MicrosoftEdgeWebView2Runtime         | Microsoft Edge WebView2 Runtime                                   | https://developer.microsoft.com/en-us/microsoft-edge/webview2/                                                                              |
 | MicrosoftFSLogixApps                 | Microsoft FSLogix Apps                                            | https://docs.microsoft.com/fslogix/                                                                                                         |
 | MicrosoftODBCDriverForSQLServer      | Microsoft ODBC Driver for SQL Server (latest)                     | https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server                                                      |

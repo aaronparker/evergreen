@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2506.2156
 
 * Fixes `MicrosoftEdge`, `MicrosoftEdgeWebView2Runtime` for missing `Stable` channel #826
 * Adds `MicrosoftEdgeForBusiness`
