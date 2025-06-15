@@ -1,5 +1,17 @@
 # Change log
 
+## VERSION
+
+* Fixes `MicrosoftEdge`, `MicrosoftEdgeWebView2Runtime` for missing `Stable` channel #826
+* Adds `MicrosoftEdgeForBusiness`
+
+BREAKING CHANGES
+
+* `MicrosoftEdge` is split into `MicrosoftEdge` and `MicrosoftEdgeForBusiness`
+* `MicrosoftEdge` shows current versions only for each architecture - previous `Consumer` and `Enterprise` releases were showing the same version anyway
+* `Release` property only includes `Enterprise` to avoid breaking existing scripts
+* `MicrosoftEdgeForBusiness` shows all data available for Edge, including Administrative Templates
+
 ## 2505.2104
 
 * Renames `stealthpuppyWindowsCustomisedDefaults` to `WindowsEnterpriseDefaults`
