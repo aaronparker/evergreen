@@ -34,6 +34,9 @@ Describe -Name "Get-SourceForgeRepoRelease" {
                 $object.Version.Length | Should -BeGreaterThan 0
                 $object.Architecture.Length | Should -BeGreaterThan 0
                 $object.Type.Length | Should -BeGreaterThan 0
+                $object.Size.Length | Should -BeGreaterThan 0
+                $object.Md5.Length | Should -BeGreaterThan 0
+                $object.FileName.Length | Should -BeGreaterThan 0
                 $object.URI.Length | Should -BeGreaterThan 0
             }
         }
