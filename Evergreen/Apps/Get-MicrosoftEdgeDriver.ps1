@@ -1,4 +1,4 @@
-Function Get-MicrosoftEdgeDriver {
+function Get-MicrosoftEdgeDriver {
     <#
         .SYNOPSIS
             Returns the available Microsoft Edge Driver versions and downloads.
@@ -16,43 +16,36 @@ Function Get-MicrosoftEdgeDriver {
     )
 
     # Read the JSON and convert to a PowerShell object. Return the current release version of Edge
-    $updateFeed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
+    $Feed = Invoke-EvergreenRestMethod -Uri $res.Get.Update.Uri
 
     # Read the JSON and build an array of platform, channel, architecture, version
-    if ($null -ne $updateFeed) {
-        foreach ($platform in $res.Get.Update.Platforms) {
+    if ($null -ne $Feed) {
+        foreach ($Channel in $res.Get.Update.Channels) {
+            Write-Verbose -Message "$($MyInvocation.MyCommand): Processing channel '$Channel'."
+            $Filtered = $Feed | Where-Object { $_.Product -eq $Channel }
+            foreach ($Platform in $res.Get.Update.Platforms) {
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Processing platform '$Platform'."
+                $PlatformReleases = $Filtered.Releases | Where-Object { $_.Platform -eq "Windows" }
 
-            # For each product (Stable, Beta etc.)
-            foreach ($channel in $res.Get.Update.Channels) {
-                foreach ($architecture in $res.Get.Update.Architectures) {
+                # Sort for the latest release
+                $LatestVersion = $PlatformReleases | Select-Object -ExpandProperty "ProductVersion" | `
+                    Sort-Object -Property @{ Expression = { [System.Version]$_ }; Descending = $true } | `
+                    Select-Object -First 1
+                Write-Verbose -Message "$($MyInvocation.MyCommand): Latest version for $Channel on $Platform is $LatestVersion."
 
-                    # Sort for the latest release
-                    $latestRelease = $updateFeed | Where-Object { $_.Product -eq $channel } | `
-                        Select-Object -ExpandProperty "Releases" | `
-                        Where-Object { $_.Platform -eq $platform -and $_.Architecture -eq $architecture } | `
-                        Sort-Object -Property @{ Expression = { [System.Version]$_.ProductVersion }; Descending = $true } | `
-                        Select-Object -First 1
-                    Write-Verbose -Message "Found $($latestRelease.Count) releases."
+                # Create the output object/s
+                foreach ($Release in ($PlatformReleases | Where-Object { $_.ProductVersion -eq $LatestVersion })) {
 
-                    # Create the output object/s
-                    foreach ($release in $latestRelease) {
-                        if ($release.Artifacts.Count -gt 0) {
-
-                            # Output object to the pipeline
-                            $PSObject = [PSCustomObject] @{
-                                Version      = $release.ProductVersion
-                                Channel      = $channel
-                                Architecture = $architecture
-                                URI          = $($res.Get.Download.Uri[$architecture] -replace "#version", $release.ProductVersion)
-                            }
-                            Write-Output -InputObject $PSObject
-                        }
+                    # Output object to the pipeline
+                    $PSObject = [PSCustomObject] @{
+                        Version      = $Release.ProductVersion
+                        Channel      = $Channel
+                        Architecture = $Release.Architecture
+                        URI          = $res.Get.Download.Uri[$Release.Architecture] -replace "#version", $Release.ProductVersion
                     }
+                    Write-Output -InputObject $PSObject
                 }
             }
         }
-    }
-    else {
-        Write-Error -Message "$($MyInvocation.MyCommand): Failed to return content from: $($res.Get.Update.Uri)."
     }
 }

@@ -102,7 +102,8 @@
             Type         = [System.IO.Path]::GetExtension($Url).Split(".")[-1]
             Size         = $item.content.filesize
             Md5          = $item.content.hash.'#text'
-            URI          = $Url
+            FileName     = Split-Path -Path $Url -Leaf
+            URI          = "$($Url)?viasf=1"
         }
         Write-Output -InputObject $PSObject
     }

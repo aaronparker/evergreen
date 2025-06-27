@@ -15,7 +15,7 @@
             "Architectures": [
                 "x64",
                 "x86",
-                "ARM64"
+                "arm64"
             ],
             "ReleaseProperty": "Releases",
             "SortProperty": "ProductVersion",
@@ -25,7 +25,7 @@
         },
         "Download": {
             "Uri": {
-                "ARM64": "https://msedgedriver.azureedge.net/#version/edgedriver_arm64.zip",
+                "arm64": "https://msedgedriver.azureedge.net/#version/edgedriver_arm64.zip",
                 "x64": "https://msedgedriver.azureedge.net/#version/edgedriver_win64.zip",
                 "x86": "https://msedgedriver.azureedge.net/#version/edgedriver_win32.zip"
             }
