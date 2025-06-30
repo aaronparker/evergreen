@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2506.2263
 
 * Fixes change to download URL in `MicrosoftAzurePipelinesAgent`
 
