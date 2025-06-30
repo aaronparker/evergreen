@@ -9,8 +9,8 @@
 		},
 		"Download": {
 			"Uri": {
-				"x64": "https://vstsagentpackage.azureedge.net/agent/#version/vsts-agent-win-x64-#version.zip",
-				"x86": "https://vstsagentpackage.azureedge.net/agent/#version/vsts-agent-win-x86-#version.zip"
+				"x64": "https://download.agent.dev.azure.com/agent/#version/vsts-agent-win-x64-#version.zip",
+				"x86": "https://download.agent.dev.azure.com/agent/#version/vsts-agent-win-x86-#version.zip"
 			},
 			"ReplaceText": "#version"
 		}

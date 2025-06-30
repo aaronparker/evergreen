@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Fixes change to download URL in `MicrosoftAzurePipelinesAgent`
+
 ## 2506.2209
 
 * Modifies the URI to include '?viasf=1' in `Get-SourceForgeRepoRelease` for all SourceForge hosted apps to ensure downloads with `Save-EvergreenApp` works
