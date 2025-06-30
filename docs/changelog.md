@@ -1,5 +1,9 @@
 # Change log
 
+## 2506.2209
+
+* Modifies the URI to include '?viasf=1' in `Get-SourceForgeRepoRelease` for all SourceForge hosted apps to ensure downloads with `Save-EvergreenApp` works
+
 ## 2506.2156
 
 * Fixes `MicrosoftEdge`, `MicrosoftEdgeWebView2Runtime` for missing `Stable` channel #826
