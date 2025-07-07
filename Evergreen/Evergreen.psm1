@@ -48,14 +48,14 @@ $script:Branch = "main"
 
 if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Apps')) -or -not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Manifests'))) {
     # Warn if Apps/Manifests have not been downloaded from GitHub
-    Write-Warning -Message "Evergreen app functions have not been downloaded. Please run 'Update-Evergreen'."
+    Write-Message -Message "Evergreen app functions have not been downloaded. Please run 'Update-Evergreen'."
 }
 elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
     # Check if the locally stored version matches the remote version
     try {
         $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
         $RemoteVersion = (Get-GitHubRepoRelease -Uri $Url).Version
-        Write-Verbose -Message "Remote Evergreen apps version: $RemoteVersion"
+        Write-Message -Message "Remote Evergreen apps version: $RemoteVersion"
     }
     catch {
         $RemoteVersion = $null
@@ -63,7 +63,7 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
 
     try {
         $LocalVersion = (Get-Content -Path $script:VersionFile -ErrorAction "Stop").Trim()
-        Write-Verbose -Message "Local Evergreen apps version: $LocalVersion"
+        Write-Message -Message "Local Evergreen apps version: $LocalVersion"
     }
     catch {
         $LocalVersion = $null
@@ -73,9 +73,13 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
         Write-Warning -Message "Could not retrieve remote version information. Please check your internet connection or the repository URL."
     }
     elseif ($null -eq $LocalVersion) {
-        Write-Warning -Message "Could not retrieve local version information. Please run 'Update-Evergreen -Force'."
+        Write-Message -Message "Could not retrieve local version information. Please run 'Update-Evergreen -Force'."
     }
     elseif ([System.Version]$RemoteVersion -gt [System.Version]$LocalVersion) {
-        Write-Warning -Message "Evergreen app functions are out of date. Please run 'Update-Evergreen'."
+        Write-Message -Message "Evergreen app functions are out of date. Please run 'Update-Evergreen'."
     }
+}
+else {
+    # If the version file does not exist, prompt to run Update-Evergreen
+    Write-Message -Message "Cannot determine local Evergreen app functions version. Please run 'Update-Evergreen'."
 }
