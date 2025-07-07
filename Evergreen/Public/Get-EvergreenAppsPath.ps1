@@ -9,7 +9,7 @@ function Get-EvergreenAppsPath {
         }
     }
     else {
-        $AppsPath = if ($IsWindows) { Join-Path -Path ${Env:LOCALAPPDATA} -ChildPath 'Evergreen' } else { Join-Path -Path $HOME -ChildPath '.evergreen' }
+        $AppsPath = if (Test-IsWindows) { Join-Path -Path ${Env:LOCALAPPDATA} -ChildPath 'Evergreen' } else { Join-Path -Path $HOME -ChildPath '.evergreen' }
         return $AppsPath
     }
 }
