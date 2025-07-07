@@ -37,9 +37,6 @@ function Update-Evergreen {
                     Write-Warning -Message "❌ SHA256 hash mismatch for file '$($FilePath)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
                 }
             }
-            else {
-                Write-Warning -Message "❌ Expected file '$($FilePath)' not found in cached Evergreen apps directory."
-            }
         }
     }
 
