@@ -37,45 +37,45 @@ Register-ArgumentCompleter -CommandName $Commands -ParameterName "Name" -ScriptB
 # Export the public modules and aliases
 Export-ModuleMember -Function $public.Basename -Alias *
 
-# Sets up paths for the Evergreen apps repository, checks if the required 'Apps' and 'Manifests' directories exist locally,
-# and verifies if the local commit hash matches the latest commit hash from the remote GitHub repository.
-# If the directories are missing or the commit hashes do not match, it warns the user to update the Evergreen app functions.
-$script:Repository = "EUCPilots/evergreen-apps"
+# Verifies whether the required 'Apps' and 'Manifests' directories exist in the specified path.
+# If either directory is missing, it warns the user to download the Evergreen app functions.
+# If both directories exist, it checks if the local version file exists and compares its version to the latest release version from GitHub.
+# Appropriate warnings are displayed if the remote or local version cannot be retrieved, or if the local version is outdated.
+$script:AppsPath = Get-EvergreenAppsPath
+$script:VersionFile = Join-Path -Path $script:AppsPath -ChildPath ".evergreen_version"
+$script:Repository = "eucpilots/evergreen-apps"
 $script:Branch = "main"
-$script:AppsPath = if ($IsWindows) { Join-Path -Path ${Env:LOCALAPPDATA} -ChildPath 'Evergreen' } else { Join-Path -Path $HOME -ChildPath '.evergreen' }
-$script:CommitFile = Join-Path -Path $script:AppsPath -ChildPath ".evergreenapps_commit"
-if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Apps')) -or -not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath  'Manifests'))) {
+
+if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Apps')) -or -not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Manifests'))) {
     # Warn if Apps/Manifests have not been downloaded from GitHub
     Write-Warning -Message "Evergreen app functions have not been downloaded. Please run 'Update-Evergreen'."
 }
-elseif (Test-Path -Path $script:CommitFile -PathType "Leaf") {
-    # Check if the locally stored commit hash matches the remote
+elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
+    # Check if the locally stored version matches the remote version
     try {
-        $RemoteCommit = $null
-        $CommitApi = "https://api.github.com/repos/$script:Repository/commits/$script:Branch"
-        $params = @{
-            Uri                = $CommitApi
-            ErrorAction        = "Stop"
-            MaximumRedirection = 0
-            DisableKeepAlive   = $true
-            UseBasicParsing    = $true
-            UserAgent          = "github-aaronparker-evergreen"
-        }
-        if (Test-Path -Path "env:GITHUB_TOKEN") {
-            $params.Headers = @{ Authorization = "token $env:GITHUB_TOKEN" }
-        }
-        elseif (Test-Path -Path "env:GH_TOKEN") {
-            $params.Headers = @{ Authorization = "token $env:GH_TOKEN" }
-        }
-        $RemoteCommit = Invoke-RestMethod @params
-        $RemoteHash = $RemoteCommit.sha
+        $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
+        $RemoteVersion = (Get-GitHubRepoRelease -Uri $Url).Version
+        Write-Verbose -Message "Remote Evergreen apps version: $RemoteVersion"
     }
     catch {
-        Write-Warning -Message "Failed to retrieve remote commit hash: $_"
-        $RemoteHash = $null
+        $RemoteVersion = $null
     }
-    $LocalCommit = Get-Content -Path $script:CommitFile -ErrorAction "SilentlyContinue"
-    if ($null -eq $RemoteHash -or $LocalCommit -ne $RemoteHash) {
+
+    try {
+        $LocalVersion = (Get-Content -Path $script:VersionFile -ErrorAction "Stop").Trim()
+        Write-Verbose -Message "Local Evergreen apps version: $LocalVersion"
+    }
+    catch {
+        $LocalVersion = $null
+    }
+
+    if ($null -eq $RemoteVersion) {
+        Write-Warning -Message "Could not retrieve remote version information. Please check your internet connection or the repository URL."
+    }
+    elseif ($null -eq $LocalVersion) {
+        Write-Warning -Message "Could not retrieve local version information. Please run 'Update-Evergreen -Force'."
+    }
+    elseif ([System.Version]$RemoteVersion -gt [System.Version]$LocalVersion) {
         Write-Warning -Message "Evergreen app functions are out of date. Please run 'Update-Evergreen'."
     }
 }

@@ -6,9 +6,6 @@ function Update-Evergreen {
         .DESCRIPTION
             Enables separation of the core Evergreen module from app-specific code and manifests.
             Downloads the latest versions of /Apps and /Manifests from a specified GitHub repository to a user-writable location (no admin required).
-
-        .PARAMETER $script:AppsPath
-            The local path to store the downloaded Apps and Manifests. Defaults to $env:LOCALAPPDATA/Evergreen (Windows) or ~/.evergreen (macOS/Linux).
     #>
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
@@ -21,128 +18,144 @@ function Update-Evergreen {
             New-Item -Path $script:AppsPath -ItemType "Directory" -Force | Out-Null
         }
 
-        $commitApi = "https://api.github.com/repos/$script:Repository/commits/$script:Branch"
-        $treeApi = "https://api.github.com/repos/$script:Repository/git/trees/$($script:Branch)?recursive=1"
-        $sha256CsvUrl = "https://raw.githubusercontent.com/$script:Repository/refs/heads/$script:Branch/sha256_hashes.csv"
-        $headers = @{ 'Accept' = 'application/vnd.github.v3+json' }
-        $syncFolders = @('Apps', 'Manifests')
-    }
-    process {
-        # Get latest commit hash from remote
-        $remoteCommit = $null
+        $SyncFolders = @('Apps', 'Manifests')
+        $Sha256CsvUrl = "https://raw.githubusercontent.com/$script:Repository/refs/heads/$script:Branch/sha256_hashes.csv"
         try {
-            $remoteCommit = Invoke-RestMethod -Uri $commitApi -Headers $headers -ErrorAction "Stop"
-            $remoteHash = $remoteCommit.sha
+            # Get remote SHA256 hashes from CSV
+            $RemoteFileShas = Invoke-EvergreenRestMethod -Uri $Sha256CsvUrl | ConvertFrom-Csv
         }
         catch {
-            Write-Warning "Failed to retrieve remote commit hash: $_"
-            $remoteHash = $null
+            Write-Warning -Message "Failed to retrieve or parse remote sha256_hashes.csv: $_"
         }
 
-        # Get remote SHA256 hashes from CSV
-        $remoteFileShas = @{}
-        try {
-            $csvContent = Invoke-WebRequest -Uri $sha256CsvUrl -UseBasicParsing -ErrorAction Stop | Select-Object -ExpandProperty Content
-            $csvRows = $csvContent -split "`n" | Where-Object { $_ -and $_ -notmatch '^#' }
-            foreach ($row in $csvRows) {
-                $parts = $row -split ','
-                if ($parts.Length -eq 2) {
-                    $remoteFileShas[$parts[0].Trim()] = $parts[1].Trim().ToLower()
+        # Check if the local files match the expected SHA256 hashes
+        foreach ($File in $RemoteFileShas) {
+            $FilePath = Join-Path -Path $script:AppsPath -ChildPath $File.file_path
+            if (Test-Path -Path $FilePath) {
+                $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
+                if ($LocalHash -ne $File.sha256.ToLower()) {
+                    Write-Warning -Message "❌ SHA256 hash mismatch for file '$($FilePath)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
                 }
             }
-        }
-        catch {
-            Write-Warning "Failed to retrieve or parse remote sha256_hashes.csv: $_"
-        }
-
-        # Check if local copy exists
-        $localExists = $true
-        foreach ($folder in $syncFolders) {
-            if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath $folder))) {
-                $localExists = $false
+            else {
+                Write-Warning -Message "❌ Expected file '$($FilePath)' not found in cached Evergreen apps directory."
             }
         }
-        $localCommit = $null
-        if (Test-Path -Path $script:CommitFile -PathType "Leaf") {
-            $localCommit = Get-Content -Path $script:CommitFile -ErrorAction "SilentlyContinue"
+    }
+
+    process {
+        try {
+            # Get the latest version from the remote repository
+            $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
+            $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url
+            Write-Verbose -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
+        }
+        catch {
+            $EvergreenAppsRelease = $null
+        }
+
+        try {
+            # Read the local version file
+            $LocalVersion = (Get-Content -Path $script:VersionFile -Raw -ErrorAction "Stop").Trim()
+            Write-Verbose -Message "Local Evergreen apps version: $LocalVersion"
+        }
+        catch {
+            $LocalVersion = $null
+        }
+
+        $DoUpdate = $false
+        if ($null -eq $EvergreenAppsRelease) {
+            throw "Could not retrieve remote version information. Please check your internet connection or the repository URL."
+        }
+        elseif ($null -eq $LocalVersion) {
+            Write-Verbose -Message "Unable to find local Evergreen apps cached version. Downloading latest release."
+            $DoUpdate = $true
+        }
+        elseif ([System.Version]$EvergreenAppsRelease.Version -gt [System.Version]$LocalVersion) {
+            Write-Verbose -Message "Evergreen apps are out of date. Downloading latest release."
+            $DoUpdate = $true
+        }
+        elseif ([System.Version]$EvergreenAppsRelease.Version -le [System.Version]$LocalVersion) {
+            Write-Verbose -Message "Evergreen apps are up to date. Local version matches remote version."
+            $DoUpdate = $false
+        }
+        else {
+            Write-Verbose -Message "Unable to validate local Evergreen apps cached version. Downloading latest release."
+            $DoUpdate = $true
+        }
+
+        # Check local expected directories exist
+        foreach ($folder in $SyncFolders) {
+            if (-not (Test-Path -Path (Join-Path -Path $script:AppsPath -ChildPath $folder))) {
+                Write-Verbose -Message "Local folder '$folder' does not exist in $script:AppsPath. Will perform full sync."
+                $DoUpdate = $true
+            }
         }
 
         # If -Force or no local copy or commit mismatch, do a full download
-        if ($Force -or -not $localExists -or ($remoteHash -and ($localCommit -ne $remoteHash))) {
-            Write-Verbose "Performing full sync from remote repository."
-            $zipUrl = "https://github.com/$script:Repository/archive/refs/heads/$script:Branch.zip"
-            $zipFile = Join-Path $$script:AppsPath "evergreen-apps-temp.zip"
-            if ($PSCmdlet.ShouldProcess($zipFile, "Download Apps and Manifests as zip from $zipUrl")) {
-                Invoke-WebRequest -Uri $zipUrl -OutFile $zipFile -UseBasicParsing -ErrorAction Stop
-            }
-            $extractPath = Join-Path -Path $script:AppsPath -ChildPath "_extracted"
-            if (Test-Path -Path $extractPath) { Remove-Item -Path $extractPath -Recurse -Force }
-            Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force
-            Remove-Item -Path $zipFile -Force
-            $repoFolder = Get-ChildItem -Path $extractPath | Where-Object { $_.PSIsContainer } | Select-Object -First 1 -ExpandProperty "FullName"
-            foreach ($folderName in $syncFolders) {
-                $src = Join-Path -Path $repoFolder -ChildPath $folderName
-                $dst = Join-Path -Path $script:AppsPath -ChildPath $folderName
-                if (-not (Test-Path -Path $dst)) { New-Item -Path $dst -ItemType "Directory" -Force | Out-Null }
-                # Copy new/updated files and build list of remote files
-                $remoteFiles = @()
-                if (Test-Path $src) {
-                    Get-ChildItem -Path $src -File | ForEach-Object {
-                        $destFile = Join-Path -Path $dst -ChildPath $_.Name
-                        Copy-Item -Path $_.FullName -Destination $destFile -Force
-                        $remoteFiles += $_.Name
-                    }
-                }
-                # Remove only local files not present in remote
-                $localFiles = Get-ChildItem -Path $dst -File | Select-Object -ExpandProperty "Name"
-                $filesToRemove = $localFiles | Where-Object { $_ -notin $remoteFiles }
-                foreach ($file in $filesToRemove) {
-                    $removePath = Join-Path -Path $dst -ChildPath $file
-                    if ($PSCmdlet.ShouldProcess($removePath, "Remove local file not present in remote repository")) {
-                        Remove-Item -Path $removePath -Force -ErrorAction "SilentlyContinue"
-                    }
-                }
-            }
-            Remove-Item -Path $extractPath -Recurse -Force
-            if ($remoteHash) { Set-Content -Path $commitFile -Value $remoteHash -Encoding UTF8 -Force }
-            Write-Verbose "Full sync complete."
-            return
-        }
+        if ($Force -or $DoUpdate) {
+            Write-Verbose -Message "Performing full sync from remote repository."
 
-        # Otherwise, do a smart sync: compare file hashes and update only changed/new files, remove deleted
-        foreach ($folderName in $syncFolders) {
-            $dst = Join-Path -Path $script:AppsPath -ChildPath $folderName
-            if (-not (Test-Path $dst)) { New-Item -Path $dst -ItemType Directory -Force | Out-Null }
-            # Get all remote files for this folder
-            $remoteFiles = $remoteFileShas.GetEnumerator() | Where-Object { $_.Key -like "$folderName/*" }
-            $remoteFileNames = $remoteFiles | ForEach-Object { Split-Path $_.Key -Leaf }
-            # Download new/changed files
-            foreach ($remoteFile in $remoteFiles) {
-                $file = Split-Path $remoteFile.Key -Leaf
-                $localFile = Join-Path -Path $dst -ChildPath $file
-                $needsUpdate = $true
-                if (Test-Path $localFile) {
-                    $localHash = (Get-FileHash -Path $localFile -Algorithm "SHA256").Hash.ToLower()
-                    if ($localHash -eq $remoteFile.Value) { $needsUpdate = $false }
+            $ZipFile = Save-EvergreenApp -InputObject $EvergreenAppsRelease -LiteralPath $script:AppsPath -Force
+            if (Test-Path -Path $ZipFile -PathType "Leaf") {
+                Write-Verbose -Message "Downloaded Evergreen apps release to $ZipFile."
+
+                $ZipFileHash = (Get-FileHash -Path $ZipFile -Algorithm "SHA256").Hash.ToLower()
+                if ($EvergreenAppsRelease.Sha256.ToLower() -ne $ZipFileHash) {
+                    throw "SHA256 hash mismatch for downloaded release. Expected: $($EvergreenAppsRelease.Sha256.ToLower()), Actual: $ZipFileHash"
                 }
-                if ($needsUpdate) {
-                    $downloadUrl = "https://raw.githubusercontent.com/$script:Repository/$script:Branch/$($remoteFile.Key)"
-                    if ($PSCmdlet.ShouldProcess($localFile, "Download updated file $file")) {
-                        Invoke-WebRequest -Uri $downloadUrl -OutFile $localFile -UseBasicParsing -ErrorAction "Stop"
+
+                Write-Verbose -Message "Extracting Evergreen apps release from $ZipFile."
+                $ExtractPath = Join-Path -Path $script:AppsPath -ChildPath "_extracted"
+                if (Test-Path -Path $ExtractPath) { Remove-Item -Path $ExtractPath -Recurse -Force -ErrorAction "SilentlyContinue" }
+                Expand-Archive -Path $ZipFile -DestinationPath $ExtractPath -Force
+                Remove-Item -Path $ZipFile -Force -ErrorAction "SilentlyContinue"
+
+                Write-Verbose -Message "Validating extracted files against remote SHA256 hashes."
+                $DoReplace = $true
+                foreach ($File in $RemoteFileShas) {
+                    $FilePath = Join-Path -Path $ExtractPath -ChildPath $File.file_path
+                    if (Test-Path -Path $FilePath) {
+                        $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
+                        if ($LocalHash -ne $File.sha256.ToLower()) {
+                            Write-Warning -Message "❌ SHA256 hash mismatch for file '$($File.file_path)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
+                            $DoReplace = $false
+                        }
+                        else {
+                            Write-Verbose -Message "✅ File '$($File.file_path)' hash matches expected value."
+                        }
+                    }
+                    else {
+                        Write-Warning -Message "❌ Expected file '$($File.file_path)' not found in extracted release."
+                        $DoReplace = $false
                     }
                 }
-            }
-            # Remove local files not present in remote
-            $localFiles = Get-ChildItem -Path $dst -File | Select-Object -ExpandProperty "Name"
-            $filesToRemove = $localFiles | Where-Object { $_ -notin $remoteFileNames }
-            foreach ($file in $filesToRemove) {
-                $removePath = Join-Path -Path $dst --ChildPath $file
-                if ($PSCmdlet.ShouldProcess($removePath, "Remove local file not present in remote repository")) {
-                    Remove-Item -Path $removePath -Force -ErrorAction "SilentlyContinue"
+
+                if ($DoReplace) {
+                    Write-Verbose -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
+                    # Remove existing Apps and Manifests directories
+                    $LocalAppsPath = Join-Path -Path $script:AppsPath -ChildPath "Apps"
+                    $LocalManifestsPath = Join-Path -Path $script:AppsPath -ChildPath "Manifests"
+                    if (Test-Path -Path $LocalAppsPath) { Remove-Item -Path $LocalAppsPath -Recurse -Force -ErrorAction "SilentlyContinue" }
+                    if (Test-Path -Path $LocalManifestsPath) { Remove-Item -Path $LocalManifestsPath -Recurse -Force -ErrorAction "SilentlyContinue" }
+
+                    # Move extracted contents to the correct locations
+                    Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Apps") -Destination $script:AppsPath
+                    Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Manifests") -Destination $script:AppsPath
+
+                    if ($EvergreenAppsRelease) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsRelease.Version -Encoding "UTF8" -Force }
+                    Write-Verbose -Message "Apps and Manifests have been synchronized to $script:AppsPath."
                 }
+                else {
+                    Write-Warning -Message "Some files did not match expected SHA256 hashes. Evergreen apps and manifests were not updated."
+                }
+
+                # Clean up the extracted files
+                Remove-Item -Path $ExtractPath -Recurse -Force -ErrorAction "SilentlyContinue"
+            }
+            else {
+                throw "Failed to download Evergreen apps release. The file does not exist at $ZipFile."
             }
         }
-        if ($remoteHash) { Set-Content -Path $commitFile -Value $remoteHash -Encoding "UTF8" -Force }
-        Write-Verbose "Apps and Manifests have been synchronized to $$script:AppsPath."
     }
 }
