@@ -14,7 +14,7 @@ function Update-Evergreen {
     )
 
     begin {
-        if (-not (Test-Path $script:AppsPath)) {
+        if (-not (Test-Path -Path $script:AppsPath -PathType "Container")) {
             New-Item -Path $script:AppsPath -ItemType "Directory" -Force | Out-Null
         }
 
@@ -45,7 +45,7 @@ function Update-Evergreen {
             # Get the latest version from the remote repository
             $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
             $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url
-            Write-Verbose -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
+            Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
         }
         catch {
             $EvergreenAppsRelease = $null
@@ -54,7 +54,7 @@ function Update-Evergreen {
         try {
             # Read the local version file
             $LocalVersion = (Get-Content -Path $script:VersionFile -Raw -ErrorAction "Stop").Trim()
-            Write-Verbose -Message "Local Evergreen apps version: $LocalVersion"
+            Write-Message -Message "Local Evergreen apps version: $LocalVersion"
         }
         catch {
             $LocalVersion = $null
@@ -65,34 +65,41 @@ function Update-Evergreen {
             throw "Could not retrieve remote version information. Please check your internet connection or the repository URL."
         }
         elseif ($null -eq $LocalVersion) {
-            Write-Verbose -Message "Unable to find local Evergreen apps cached version. Downloading latest release."
+            Write-Message -Message "Unable to find local Evergreen apps cached version. Downloading latest release."
             $DoUpdate = $true
         }
         elseif ([System.Version]$EvergreenAppsRelease.Version -gt [System.Version]$LocalVersion) {
-            Write-Verbose -Message "Evergreen apps are out of date. Downloading latest release."
+            Write-Message -Message "Evergreen apps are out of date. Downloading latest release."
             $DoUpdate = $true
         }
         elseif ([System.Version]$EvergreenAppsRelease.Version -le [System.Version]$LocalVersion) {
-            Write-Verbose -Message "Evergreen apps are up to date. Local version matches remote version."
+            Write-Message -Message "Local version matches remote version. Evergreen apps are up to date."
             $DoUpdate = $false
+            if ($Force) {
+                Write-Message -Message "Forcing update due to -Force parameter."
+            }
+            else {
+                Write-Message -Message "Use 'Update-Evergreen -Force' to force a full sync."
+            }
         }
         else {
-            Write-Verbose -Message "Unable to validate local Evergreen apps cached version. Downloading latest release."
+            Write-Message -Message "Unable to validate local Evergreen apps cached version. Downloading latest release."
             $DoUpdate = $true
         }
 
         # Check local expected directories exist
         foreach ($folder in $SyncFolders) {
             if (-not (Test-Path -Path (Join-Path -Path $script:AppsPath -ChildPath $folder))) {
-                Write-Verbose -Message "Local folder '$folder' does not exist in $script:AppsPath. Will perform full sync."
+                Write-Message -Message "Local folder '$folder' does not exist in $script:AppsPath. Will perform full sync."
                 $DoUpdate = $true
             }
         }
 
         # If -Force or no local copy or commit mismatch, do a full download
         if ($Force -or $DoUpdate) {
-            Write-Verbose -Message "Performing full sync from remote repository."
+            Write-Message -Message "Performing full sync from remote repository."
 
+            Write-Message -Message "Downloading Evergreen apps release: $($EvergreenAppsRelease.Uri)."
             $ZipFile = Save-EvergreenApp -InputObject $EvergreenAppsRelease -LiteralPath $script:AppsPath -Force
             if (Test-Path -Path $ZipFile -PathType "Leaf") {
                 Write-Verbose -Message "Downloaded Evergreen apps release to $ZipFile."
@@ -108,7 +115,7 @@ function Update-Evergreen {
                 Expand-Archive -Path $ZipFile -DestinationPath $ExtractPath -Force
                 Remove-Item -Path $ZipFile -Force -ErrorAction "SilentlyContinue"
 
-                Write-Verbose -Message "Validating extracted files against remote SHA256 hashes."
+                Write-Message -Message "Validating extracted files against remote SHA256 hashes."
                 $DoReplace = $true
                 foreach ($File in $RemoteFileShas) {
                     $FilePath = Join-Path -Path $ExtractPath -ChildPath $File.file_path
@@ -129,7 +136,7 @@ function Update-Evergreen {
                 }
 
                 if ($DoReplace) {
-                    Write-Verbose -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
+                    Write-Message -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
                     # Remove existing Apps and Manifests directories
                     $LocalAppsPath = Join-Path -Path $script:AppsPath -ChildPath "Apps"
                     $LocalManifestsPath = Join-Path -Path $script:AppsPath -ChildPath "Manifests"
@@ -141,7 +148,7 @@ function Update-Evergreen {
                     Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Manifests") -Destination $script:AppsPath
 
                     if ($EvergreenAppsRelease) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsRelease.Version -Encoding "UTF8" -Force }
-                    Write-Verbose -Message "Apps and Manifests have been synchronized to $script:AppsPath."
+                    Write-Message -Message "Apps and Manifests have been synchronized to $script:AppsPath."
                 }
                 else {
                     Write-Warning -Message "Some files did not match expected SHA256 hashes. Evergreen apps and manifests were not updated."
