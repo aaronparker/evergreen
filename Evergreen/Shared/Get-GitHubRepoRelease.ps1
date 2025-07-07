@@ -191,11 +191,15 @@ function Get-GitHubRepoRelease {
 
                             # Build the output object
                             if ((Get-Platform -String $asset.browser_download_url) -eq "Windows") {
+
+                                $HashType = "$(($asset.digest -split ":")[0])"
+                                $HashType = $HashType.Substring(0,1).ToUpper() + $HashType.Substring(1)
+
                                 $PSObject = [PSCustomObject] @{
                                     Version       = $Version
                                     Date          = ConvertTo-DateTime -DateTime $item.created_at -Pattern "MM/dd/yyyy HH:mm:ss"
                                     Size          = $asset.size
-                                    #Platform      = Get-Platform -String $asset.browser_download_url
+                                    $HashType     = ($asset.digest -split ":")[-1]
                                     Architecture  = Get-Architecture -String $(Split-Path -Path $asset.browser_download_url -Leaf)
                                     InstallerType = Get-InstallerType -String $asset.browser_download_url
                                     Type          = [System.IO.Path]::GetExtension($asset.browser_download_url).Split(".")[-1]
