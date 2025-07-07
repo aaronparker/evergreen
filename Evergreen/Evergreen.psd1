@@ -73,7 +73,7 @@ FunctionsToExport = @('ConvertTo-DotNetVersionClass', 'Export-EvergreenApp',
                'Export-EvergreenManifest', 'Find-EvergreenApp', 'Get-EvergreenApp',
                'Get-EvergreenAppFromApi', 'Get-EvergreenAppFromLibrary',
                'Get-EvergreenEndpointFromApi', 'Get-EvergreenLibrary',
-               'New-EvergreenLibrary', 'Save-EvergreenApp',
+               'New-EvergreenLibrary', 'Save-EvergreenApp', 'Get-EvergreenAppsPath',
                'Start-EvergreenLibraryUpdate', 'Test-EvergreenApp', 'Update-Evergreen')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
