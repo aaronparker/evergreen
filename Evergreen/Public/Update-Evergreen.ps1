@@ -126,7 +126,7 @@ function Update-Evergreen {
                             $DoReplace = $false
                         }
                         else {
-                            Write-Verbose -Message "✅ File '$($File.file_path)' hash matches expected value."
+                            Write-Verbose -Message "✔️ File '$($File.file_path)' hash matches expected value."
                         }
                     }
                     else {
@@ -136,6 +136,7 @@ function Update-Evergreen {
                 }
 
                 if ($DoReplace) {
+                    Write-Message -Message "✔️ Downloaded release passed hash validation."
                     Write-Message -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
                     # Remove existing Apps and Manifests directories
                     $LocalAppsPath = Join-Path -Path $script:AppsPath -ChildPath "Apps"
@@ -149,6 +150,7 @@ function Update-Evergreen {
 
                     if ($EvergreenAppsRelease) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsRelease.Version -Encoding "UTF8" -Force }
                     Write-Message -Message "Apps and Manifests have been synchronized to $script:AppsPath."
+                    Write-Message -Message "Update complete."
                 }
                 else {
                     Write-Warning -Message "Some files did not match expected SHA256 hashes. Evergreen apps and manifests were not updated."

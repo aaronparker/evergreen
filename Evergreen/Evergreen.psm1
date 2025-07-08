@@ -53,7 +53,7 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
     try {
         $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
         $RemoteVersion = (Get-GitHubRepoRelease -Uri $Url).Version
-        Write-Message -Message "Remote Evergreen apps version: $RemoteVersion"
+        Write-Message -Message "Evergreen apps release version: $RemoteVersion"
     }
     catch {
         $RemoteVersion = $null
@@ -61,14 +61,14 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
 
     try {
         $LocalVersion = (Get-Content -Path $script:VersionFile -ErrorAction "Stop").Trim()
-        Write-Message -Message "Local Evergreen apps version: $LocalVersion"
+        Write-Message -Message "Evergreen apps local cache version: $LocalVersion"
     }
     catch {
         $LocalVersion = $null
     }
 
     if ($null -eq $RemoteVersion) {
-        Write-Warning -Message "Could not retrieve remote version information. Please check your internet connection or the repository URL."
+        Write-Warning -Message "Could not retrieve release version information. Please check your internet connection or the repository URL."
     }
     elseif ($null -eq $LocalVersion) {
         Write-Message -Message "Could not retrieve local version information. Please run 'Update-Evergreen -Force'."
@@ -79,5 +79,5 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
 }
 else {
     # If the version file does not exist, prompt to run Update-Evergreen
-    Write-Message -Message "Cannot determine local Evergreen app functions version. Please run 'Update-Evergreen'."
+    Write-Message -Message "Cannot determine Evergreen apps local cache version. Please run 'Update-Evergreen'."
 }
