@@ -43,8 +43,6 @@ Export-ModuleMember -Function $public.Basename -Alias *
 # Appropriate warnings are displayed if the remote or local version cannot be retrieved, or if the local version is outdated.
 $script:AppsPath = Get-EvergreenAppsPath
 $script:VersionFile = Join-Path -Path $script:AppsPath -ChildPath ".evergreen_version"
-$script:Repository = "eucpilots/evergreen-apps"
-$script:Branch = "main"
 
 if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Apps')) -or -not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Manifests'))) {
     # Warn if Apps/Manifests have not been downloaded from GitHub
@@ -53,7 +51,7 @@ if (-not (Test-Path (Join-Path -Path $script:AppsPath -ChildPath 'Apps')) -or -n
 elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
     # Check if the locally stored version matches the remote version
     try {
-        $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
+        $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
         $RemoteVersion = (Get-GitHubRepoRelease -Uri $Url).Version
         Write-Message -Message "Remote Evergreen apps version: $RemoteVersion"
     }

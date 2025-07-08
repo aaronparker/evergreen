@@ -19,13 +19,13 @@ function Update-Evergreen {
         }
 
         $SyncFolders = @('Apps', 'Manifests')
-        $Sha256CsvUrl = "https://raw.githubusercontent.com/$script:Repository/refs/heads/$script:Branch/sha256_hashes.csv"
+        $Sha256CsvUrl = "https://raw.githubusercontent.com/$($script:resourceStrings.Repositories.Apps.Repo)/refs/heads/$($script:resourceStrings.Repositories.Apps.Branch)/$($script:resourceStrings.Repositories.Apps.Sha256)"
         try {
             # Get remote SHA256 hashes from CSV
             $RemoteFileShas = Invoke-EvergreenRestMethod -Uri $Sha256CsvUrl | ConvertFrom-Csv
         }
         catch {
-            Write-Warning -Message "Failed to retrieve or parse remote sha256_hashes.csv: $_"
+            Write-Warning -Message "Failed to retrieve or parse remote SHA256 hash file: $_"
         }
 
         # Check if the local files match the expected SHA256 hashes
@@ -43,7 +43,7 @@ function Update-Evergreen {
     process {
         try {
             # Get the latest version from the remote repository
-            $Url = "https://api.github.com/repos/$script:Repository/releases/latest"
+            $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
             $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url
             Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
         }
