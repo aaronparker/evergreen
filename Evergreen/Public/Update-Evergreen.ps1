@@ -14,6 +14,12 @@ function Update-Evergreen {
     )
 
     begin {
+        # Create emoji characters for visual feedback for Windows PowerShell compatibility
+        $CharBytes = 20, 39, 0, 0, 15, 254, 0, 0
+        $Tick = [System.Text.Encoding]::UTF32.GetString($CharBytes)
+        $CharBytes = 76, 39, 0, 0
+        $Cross = [System.Text.Encoding]::UTF32.GetString($CharBytes)
+
         if (-not (Test-Path -Path $script:AppsPath -PathType "Container")) {
             New-Item -Path $script:AppsPath -ItemType "Directory" -Force | Out-Null
         }
@@ -29,15 +35,18 @@ function Update-Evergreen {
         }
 
         # Check if the local files match the expected SHA256 hashes
+        $HashMismatch = $false
         foreach ($File in $RemoteFileShas) {
             $FilePath = Join-Path -Path $script:AppsPath -ChildPath $File.file_path
             if (Test-Path -Path $FilePath) {
                 $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                 if ($LocalHash -ne $File.sha256.ToLower()) {
-                    Write-Warning -Message "❌ SHA256 hash mismatch for file '$($FilePath)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
+                    Write-Message -Message "$Cross SHA256 hash mismatch for file '$($FilePath)'."
+                    $HashMismatch = $true
                 }
             }
         }
+        if ($HashMismatch) { Write-Message -Message "SHA256 hash mismatch found. It is recommended to run 'Update-Evergreen -Force'." }
     }
 
     process {
@@ -122,21 +131,21 @@ function Update-Evergreen {
                     if (Test-Path -Path $FilePath) {
                         $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                         if ($LocalHash -ne $File.sha256.ToLower()) {
-                            Write-Warning -Message "❌ SHA256 hash mismatch for file '$($File.file_path)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
+                            Write-Warning -Message "$Cross SHA256 hash mismatch for file '$($File.file_path)'. Expected: $($File.sha256.ToLower()), Actual: $LocalHash"
                             $DoReplace = $false
                         }
                         else {
-                            Write-Verbose -Message "✔️ File '$($File.file_path)' hash matches expected value."
+                            Write-Verbose -Message "$Tick File '$($File.file_path)' hash matches expected value."
                         }
                     }
                     else {
-                        Write-Warning -Message "❌ Expected file '$($File.file_path)' not found in extracted release."
+                        Write-Warning -Message "$Cross Expected file '$($File.file_path)' not found in extracted release."
                         $DoReplace = $false
                     }
                 }
 
                 if ($DoReplace) {
-                    Write-Message -Message "✔️ Downloaded release passed hash validation."
+                    Write-Message -Message "$Tick Downloaded release passed hash validation."
                     Write-Message -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
                     # Remove existing Apps and Manifests directories
                     $LocalAppsPath = Join-Path -Path $script:AppsPath -ChildPath "Apps"
