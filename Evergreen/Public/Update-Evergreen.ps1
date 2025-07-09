@@ -20,38 +20,61 @@ function Update-Evergreen {
         $CharBytes = 76, 39, 0, 0
         $Cross = [System.Text.Encoding]::UTF32.GetString($CharBytes)
 
-        if (-not (Test-Path -Path $script:AppsPath -PathType "Container")) {
-            New-Item -Path $script:AppsPath -ItemType "Directory" -Force | Out-Null
-        }
+        # Sync folders to check for expected structure
+        $SyncFolders = @((Join-Path -Path $Script:AppsPath -ChildPath 'Apps'), (Join-Path -Path $Script:AppsPath -ChildPath 'Manifests'))
 
-        $SyncFolders = @('Apps', 'Manifests')
-        $Sha256CsvUrl = "https://raw.githubusercontent.com/$($script:resourceStrings.Repositories.Apps.Repo)/refs/heads/$($script:resourceStrings.Repositories.Apps.Branch)/$($script:resourceStrings.Repositories.Apps.Sha256)"
-        try {
-            # Get remote SHA256 hashes from CSV
-            $RemoteFileShas = Invoke-EvergreenRestMethod -Uri $Sha256CsvUrl | ConvertFrom-Csv
-        }
-        catch {
-            Write-Warning -Message "Failed to retrieve or parse remote SHA256 hash file: $_"
-        }
+        # Check whether the AppsPath exists and create it if not
+        if (Test-Path -Path $script:AppsPath -PathType "Container") {
 
-        # Check if the local files match the expected SHA256 hashes
-        $HashMismatch = $false
-        foreach ($File in $RemoteFileShas) {
-            $FilePath = Join-Path -Path $script:AppsPath -ChildPath $File.file_path
-            if (Test-Path -Path $FilePath) {
-                $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
-                if ($LocalHash -ne $File.sha256.ToLower()) {
-                    Write-Message -Message "$Cross SHA256 hash mismatch for file '$($FilePath)'."
-                    $HashMismatch = $true
+            $DoHashCheck = $false
+            foreach ($folder in $SyncFolders) {
+                if (Test-Path -Path $folder -PathType "Container") {
+                    $DoHashCheck = $true
+                }
+            }
+
+            if ($DoHashCheck) {
+                try {
+                    # Get remote SHA256 hashes from CSV
+                    Write-Message -Message "Retrieving remote SHA256 hash file."
+                    $Sha256CsvUrl = "https://raw.githubusercontent.com/$($script:resourceStrings.Repositories.Apps.Repo)/refs/heads/$($script:resourceStrings.Repositories.Apps.Branch)/$($script:resourceStrings.Repositories.Apps.Sha256)"
+                    $RemoteFileShas = Invoke-EvergreenRestMethod -Uri $Sha256CsvUrl | ConvertFrom-Csv
+                }
+                catch {
+                    Write-Warning -Message "Failed to retrieve or parse remote SHA256 hash file: $_"
+                }
+
+                # Check if the local files match the expected SHA256 hashes
+                Write-Message -Message "Validating local files against SHA256 hashes."
+                $HashMismatch = $false
+                foreach ($File in $RemoteFileShas) {
+                    $FilePath = Join-Path -Path $script:AppsPath -ChildPath $File.file_path
+                    if (Test-Path -Path $FilePath) {
+                        $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
+                        if ($LocalHash -ne $File.sha256.ToLower()) {
+                            Write-Message -Message "$Cross SHA256 hash mismatch for file '$($FilePath)'."
+                            $HashMismatch = $true
+                        }
+                    }
+                }
+                if ($HashMismatch) {
+                    Write-Message -Message "SHA256 hash mismatch found. It is recommended to run 'Update-Evergreen -Force'."
+                }
+                else {
+                    Write-Message -Message "$Tick Local files passed hash validation."
                 }
             }
         }
-        if ($HashMismatch) { Write-Message -Message "SHA256 hash mismatch found. It is recommended to run 'Update-Evergreen -Force'." }
+        else {
+            # Create the AppsPath directory
+            New-Item -Path $script:AppsPath -ItemType "Directory" -Force | Out-Null
+        }
     }
 
     process {
         try {
             # Get the latest version from the remote repository
+            Write-Message -Message "Checking for latest Evergreen apps release."
             $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
             $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url
             Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
@@ -98,8 +121,8 @@ function Update-Evergreen {
 
         # Check local expected directories exist
         foreach ($folder in $SyncFolders) {
-            if (-not (Test-Path -Path (Join-Path -Path $script:AppsPath -ChildPath $folder))) {
-                Write-Message -Message "Local folder '$folder' does not exist in $script:AppsPath. Will perform full sync."
+            if (-not (Test-Path -Path $folder -PathType "Container")) {
+                Write-Message -Message "'$folder' does not exist. Will perform full sync."
                 $DoUpdate = $true
             }
         }
