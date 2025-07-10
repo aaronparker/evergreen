@@ -23,6 +23,19 @@ function Update-Evergreen {
         # Sync folders to check for expected structure
         $SyncFolders = @((Join-Path -Path $Script:AppsPath -ChildPath 'Apps'), (Join-Path -Path $Script:AppsPath -ChildPath 'Manifests'))
 
+        try {
+            # Get the latest version from the remote repository
+            Write-Message -Message "Checking for latest Evergreen apps release."
+            $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
+            $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url -Filter "\.zip$|\.csv"
+            $EvergreenAppsZip = $EvergreenAppsRelease | Where-Object { $_.Type -eq "zip" }
+            $EvergreenAppsCsv = $EvergreenAppsRelease | Where-Object { $_.Type -eq "csv" }
+            Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsZip.Version)"
+        }
+        catch {
+            $EvergreenAppsRelease = $null
+        }
+
         # Check whether the AppsPath exists and create it if not
         if (Test-Path -Path $script:AppsPath -PathType "Container") {
 
@@ -35,25 +48,12 @@ function Update-Evergreen {
 
             if ($DoHashCheck) {
                 try {
-                    # Get the latest version from the remote repository
-                    Write-Message -Message "Checking for latest Evergreen apps release."
-                    $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
-                    $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url -Filter "\.zip$|\.csv"
-                    $EvergreenAppsZip = $EvergreenAppsRelease | Where-Object { $_.Type -like "*.zip" }
-                    $EvergreenAppsCsv = $EvergreenAppsRelease | Where-Object { $_.Type -like "*.csv" }
-                    Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsZip.Version)"
-                }
-                catch {
-                    $EvergreenAppsRelease = $null
-                }
-
-                try {
                     # Get remote SHA256 hashes from CSV which will be attached to the latest release
-                    Write-Message -Message "Retrieving remote SHA256 hash file."
+                    Write-Message -Message "Downloading remote SHA256 file hashes: $($EvergreenAppsCsv.Uri)."
                     $Sha256Csv = $EvergreenAppsCsv | Save-EvergreenApp -LiteralPath $script:AppsPath -Force
                     if ($Sha256Csv) {
                         $FileHash = (Get-FileHash -Path $Sha256Csv -Algorithm "SHA256").Hash.ToLower()
-                        if ($FileHash -ne $EvergreenAppsRelease.Sha256.ToLower()) {
+                        if ($FileHash -ne $EvergreenAppsCsv.Sha256.ToLower()) {
                             throw "SHA256 hash mismatch for remote SHA256 hash file."
                         }
                     }
