@@ -35,10 +35,29 @@ function Update-Evergreen {
 
             if ($DoHashCheck) {
                 try {
-                    # Get remote SHA256 hashes from CSV
+                    # Get the latest version from the remote repository
+                    Write-Message -Message "Checking for latest Evergreen apps release."
+                    $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
+                    $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url -Filter "\.zip$|\.csv"
+                    $EvergreenAppsZip = $EvergreenAppsRelease | Where-Object { $_.Type -like "*.zip" }
+                    $EvergreenAppsCsv = $EvergreenAppsRelease | Where-Object { $_.Type -like "*.csv" }
+                    Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsZip.Version)"
+                }
+                catch {
+                    $EvergreenAppsRelease = $null
+                }
+
+                try {
+                    # Get remote SHA256 hashes from CSV which will be attached to the latest release
                     Write-Message -Message "Retrieving remote SHA256 hash file."
-                    $Sha256CsvUrl = "https://raw.githubusercontent.com/$($script:resourceStrings.Repositories.Apps.Repo)/refs/heads/$($script:resourceStrings.Repositories.Apps.Branch)/$($script:resourceStrings.Repositories.Apps.Sha256)"
-                    $RemoteFileShas = Invoke-EvergreenRestMethod -Uri $Sha256CsvUrl | ConvertFrom-Csv
+                    $Sha256Csv = $EvergreenAppsCsv | Save-EvergreenApp -LiteralPath $script:AppsPath -Force
+                    if ($Sha256Csv) {
+                        $FileHash = (Get-FileHash -Path $Sha256Csv -Algorithm "SHA256").Hash.ToLower()
+                        if ($FileHash -ne $EvergreenAppsRelease.Sha256.ToLower()) {
+                            throw "SHA256 hash mismatch for remote SHA256 hash file."
+                        }
+                    }
+                    $RemoteFileShas = $Sha256Csv | Get-Content | ConvertFrom-Csv
                 }
                 catch {
                     Write-Warning -Message "Failed to retrieve or parse remote SHA256 hash file: $_"
@@ -73,17 +92,6 @@ function Update-Evergreen {
 
     process {
         try {
-            # Get the latest version from the remote repository
-            Write-Message -Message "Checking for latest Evergreen apps release."
-            $Url = "https://api.github.com/repos/$($script:resourceStrings.Repositories.Apps.Repo)/releases/latest"
-            $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url
-            Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsRelease.Version)"
-        }
-        catch {
-            $EvergreenAppsRelease = $null
-        }
-
-        try {
             # Read the local version file
             $LocalVersion = (Get-Content -Path $script:VersionFile -Raw -ErrorAction "Stop").Trim()
             Write-Message -Message "Local Evergreen apps version: $LocalVersion"
@@ -100,11 +108,11 @@ function Update-Evergreen {
             Write-Message -Message "Unable to find local Evergreen apps cached version. Downloading latest release."
             $DoUpdate = $true
         }
-        elseif ([System.Version]$EvergreenAppsRelease.Version -gt [System.Version]$LocalVersion) {
+        elseif ([System.Version]$EvergreenAppsZip.Version -gt [System.Version]$LocalVersion) {
             Write-Message -Message "Evergreen apps are out of date. Downloading latest release."
             $DoUpdate = $true
         }
-        elseif ([System.Version]$EvergreenAppsRelease.Version -le [System.Version]$LocalVersion) {
+        elseif ([System.Version]$EvergreenAppsZip.Version -le [System.Version]$LocalVersion) {
             Write-Message -Message "Local version matches remote version. Evergreen apps are up to date."
             $DoUpdate = $false
             if ($Force) {
@@ -131,14 +139,14 @@ function Update-Evergreen {
         if ($Force -or $DoUpdate) {
             Write-Message -Message "Performing full sync from remote repository."
 
-            Write-Message -Message "Downloading Evergreen apps release: $($EvergreenAppsRelease.Uri)."
-            $ZipFile = Save-EvergreenApp -InputObject $EvergreenAppsRelease -LiteralPath $script:AppsPath -Force
+            Write-Message -Message "Downloading Evergreen apps release: $($EvergreenAppsZip.Uri)."
+            $ZipFile = Save-EvergreenApp -InputObject $EvergreenAppsZip -LiteralPath $script:AppsPath -Force
             if (Test-Path -Path $ZipFile -PathType "Leaf") {
                 Write-Verbose -Message "Downloaded Evergreen apps release to $ZipFile."
 
                 $ZipFileHash = (Get-FileHash -Path $ZipFile -Algorithm "SHA256").Hash.ToLower()
-                if ($EvergreenAppsRelease.Sha256.ToLower() -ne $ZipFileHash) {
-                    throw "SHA256 hash mismatch for downloaded release. Expected: $($EvergreenAppsRelease.Sha256.ToLower()), Actual: $ZipFileHash"
+                if ($EvergreenAppsZip.Sha256.ToLower() -ne $ZipFileHash) {
+                    throw "SHA256 hash mismatch for downloaded release. Expected: $($EvergreenAppsZip.Sha256.ToLower()), Actual: $ZipFileHash"
                 }
 
                 Write-Verbose -Message "Extracting Evergreen apps release from $ZipFile."
@@ -180,7 +188,7 @@ function Update-Evergreen {
                     Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Apps") -Destination $script:AppsPath
                     Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Manifests") -Destination $script:AppsPath
 
-                    if ($EvergreenAppsRelease) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsRelease.Version -Encoding "UTF8" -Force }
+                    if ($EvergreenAppsZip) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsZip.Version -Encoding "UTF8" -Force }
                     Write-Message -Message "Apps and Manifests have been synchronized to $script:AppsPath."
                     Write-Message -Message "Update complete."
                 }
