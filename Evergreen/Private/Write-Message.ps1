@@ -6,7 +6,7 @@ function Write-Message {
         [System.String] $Message
     )
     $Msg = [HostInformationMessage]@{
-        Message         = $Message
+        Message         = "$($Message.PadRight([System.Console]::WindowWidth))"
         ForegroundColor = "Black"
         BackgroundColor = "DarkGreen"
         NoNewline       = $false
