@@ -30,7 +30,7 @@ function Update-Evergreen {
             $EvergreenAppsRelease = Get-GitHubRepoRelease -Uri $Url -Filter "\.zip$|\.csv"
             $EvergreenAppsZip = $EvergreenAppsRelease | Where-Object { $_.Type -eq "zip" }
             $EvergreenAppsCsv = $EvergreenAppsRelease | Where-Object { $_.Type -eq "csv" }
-            Write-Message -Message "Remote Evergreen apps version: $($EvergreenAppsZip.Version)"
+            Write-Message -Message "Latest Evergreen apps release: $($EvergreenAppsZip.Version)"
         }
         catch {
             $EvergreenAppsRelease = $null
@@ -49,41 +49,41 @@ function Update-Evergreen {
             if ($DoHashCheck) {
                 try {
                     # Get remote SHA256 hashes from CSV which will be attached to the latest release
-                    Write-Message -Message "Downloading remote SHA256 file hashes: $($EvergreenAppsCsv.Uri)."
+                    Write-Message -Message "Downloading hash file: $($EvergreenAppsCsv.Uri)."
                     $Sha256Csv = $EvergreenAppsCsv | Save-EvergreenApp -LiteralPath $script:AppsPath -Force
                     if ($Sha256Csv) {
                         $FileHash = (Get-FileHash -Path $Sha256Csv -Algorithm "SHA256").Hash.ToLower()
                         if ($FileHash -ne $EvergreenAppsCsv.Sha256.ToLower()) {
-                            throw "SHA256 hash mismatch for remote SHA256 hash file."
+                            throw "SHA256 mismatch for downloaded hash file."
                         }
                         else {
-                            Write-Message -Message "$Tick Remote SHA256 hash file passed hash validation."
+                            Write-Message -Message "$Tick Downloaded hash file passed hash validation."
                         }
                     }
                     $RemoteFileShas = $Sha256Csv | Get-Content | ConvertFrom-Csv
                 }
                 catch {
-                    Write-Warning -Message "Failed to retrieve or parse remote SHA256 hash file: $_"
+                    Write-Warning -Message "Failed to retrieve or parse SHA256 hash file: $_"
                 }
 
                 # Check if the local files match the expected SHA256 hashes
-                Write-Message -Message "Validating local files against SHA256 hashes."
+                Write-Message -Message "Validating local cache against SHA256 hashes."
                 $HashMismatch = $false
                 foreach ($File in $RemoteFileShas) {
                     $FilePath = Join-Path -Path $script:AppsPath -ChildPath $File.file_path
                     if (Test-Path -Path $FilePath) {
                         $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                         if ($LocalHash -ne $File.sha256.ToLower()) {
-                            Write-Message -Message "$Cross SHA256 hash mismatch for file: '$($FilePath)'."
+                            Write-Message -Message "$Cross SHA256 mismatch for file: '$($FilePath)'."
                             $HashMismatch = $true
                         }
                     }
                 }
                 if ($HashMismatch) {
-                    Write-Message -Message "SHA256 hash mismatch found. Recommend running: 'Update-Evergreen -Force'."
+                    Write-Message -Message "SHA256 mismatch found. Recommend running: 'Update-Evergreen -Force'."
                 }
                 else {
-                    Write-Message -Message "$Tick Local files passed hash validation."
+                    Write-Message -Message "$Tick Local cache passed hash validation."
                 }
             }
         }
@@ -97,7 +97,7 @@ function Update-Evergreen {
         try {
             # Read the local version file
             $LocalVersion = (Get-Content -Path $script:VersionFile -Raw -ErrorAction "Stop").Trim()
-            Write-Message -Message "Local Evergreen apps version: $LocalVersion"
+            Write-Message -Message "Local cache version: $LocalVersion"
         }
         catch {
             $LocalVersion = $null
@@ -108,15 +108,15 @@ function Update-Evergreen {
             throw "Could not retrieve remote version information. Please check your internet connection or the repository URL."
         }
         elseif ($null -eq $LocalVersion) {
-            Write-Message -Message "Unable to find local Evergreen apps cached version. Downloading latest release."
+            Write-Message -Message "Unable to find Evergreen apps cached version. Downloading latest release."
             $DoUpdate = $true
         }
         elseif ([System.Version]$EvergreenAppsZip.Version -gt [System.Version]$LocalVersion) {
-            Write-Message -Message "Evergreen apps are out of date. Downloading latest release."
+            Write-Message -Message "Evergreen apps cache is out of date. Downloading latest release."
             $DoUpdate = $true
         }
         elseif ([System.Version]$EvergreenAppsZip.Version -le [System.Version]$LocalVersion) {
-            Write-Message -Message "Local version matches remote version. Evergreen apps are up to date."
+            Write-Message -Message "Local cache matches release version. Evergreen apps are up to date."
             $DoUpdate = $false
             if ($Force) {
                 Write-Message -Message "Forcing update due to -Force parameter."
@@ -149,7 +149,7 @@ function Update-Evergreen {
 
                 $ZipFileHash = (Get-FileHash -Path $ZipFile -Algorithm "SHA256").Hash.ToLower()
                 if ($EvergreenAppsZip.Sha256.ToLower() -ne $ZipFileHash) {
-                    throw "SHA256 hash mismatch for downloaded release zip file."
+                    throw "SHA256 mismatch for downloaded release zip file."
                 }
                 else {
                     Write-Message -Message "$Tick Downloaded release zip file passed hash validation."
@@ -162,14 +162,14 @@ function Update-Evergreen {
                 Expand-Archive -Path $ZipFile -DestinationPath $ExtractPath -Force
                 Remove-Item -Path $ZipFile -Force -ErrorAction "SilentlyContinue"
 
-                Write-Message -Message "Validating extracted files against remote SHA256 hashes."
+                Write-Message -Message "Validating extracted files against SHA256 hashes."
                 $DoReplace = $true
                 foreach ($File in $RemoteFileShas) {
                     $FilePath = Join-Path -Path $ExtractPath -ChildPath $File.file_path
                     if (Test-Path -Path $FilePath) {
                         $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                         if ($LocalHash -ne $File.sha256.ToLower()) {
-                            Write-Warning -Message "$Cross SHA256 hash mismatch for file '$($File.file_path)'."
+                            Write-Warning -Message "$Cross SHA256 mismatch for file '$($File.file_path)'."
                             $DoReplace = $false
                         }
                         else {
@@ -196,7 +196,6 @@ function Update-Evergreen {
                     Move-Item -Path (Join-Path -Path $ExtractPath -ChildPath "Manifests") -Destination $script:AppsPath
 
                     if ($EvergreenAppsZip) { Set-Content -Path $script:VersionFile -Value $EvergreenAppsZip.Version -Encoding "UTF8" -Force }
-                    Write-Message -Message "Apps and Manifests have been synchronized to $script:AppsPath."
                     Write-Message -Message "Update complete."
                 }
                 else {
