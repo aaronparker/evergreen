@@ -14,12 +14,6 @@ function Update-Evergreen {
     )
 
     begin {
-        # Create emoji characters for visual feedback for Windows PowerShell compatibility
-        $CharBytes = 20, 39, 0, 0, 15, 254, 0, 0
-        $Tick = [System.Text.Encoding]::UTF32.GetString($CharBytes)
-        $CharBytes = 76, 39, 0, 0
-        $Cross = [System.Text.Encoding]::UTF32.GetString($CharBytes)
-
         # Sync folders to check for expected structure
         $SyncFolders = @((Join-Path -Path $Script:AppsPath -ChildPath 'Apps'), (Join-Path -Path $Script:AppsPath -ChildPath 'Manifests'))
 
@@ -57,7 +51,7 @@ function Update-Evergreen {
                             throw "SHA256 mismatch for downloaded hash file."
                         }
                         else {
-                            Write-Message -Message "$Tick Downloaded hash file passed hash validation."
+                            Write-Message -Message "Downloaded hash file passed hash validation." -MessageType "Pass"
                         }
                     }
                     $RemoteFileShas = $Sha256Csv | Get-Content | ConvertFrom-Csv
@@ -74,16 +68,16 @@ function Update-Evergreen {
                     if (Test-Path -Path $FilePath) {
                         $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                         if ($LocalHash -ne $File.sha256.ToLower()) {
-                            Write-Message -Message "$Cross SHA256 mismatch for file: '$($FilePath)'."
+                            Write-Message -Message "SHA256 mismatch for file: '$($FilePath)'." -MessageType "Fail"
                             $HashMismatch = $true
                         }
                     }
                 }
                 if ($HashMismatch) {
-                    Write-Message -Message "SHA256 mismatch found. Recommend running: 'Update-Evergreen -Force'."
+                    Write-Message -Message "SHA256 mismatch found. Recommend running 'Update-Evergreen -Force'."
                 }
                 else {
-                    Write-Message -Message "$Tick Local cache passed hash validation."
+                    Write-Message -Message "Local cache passed hash validation." -MessageType "Pass"
                 }
             }
         }
@@ -152,7 +146,7 @@ function Update-Evergreen {
                     throw "SHA256 mismatch for downloaded release zip file."
                 }
                 else {
-                    Write-Message -Message "$Tick Downloaded release zip file passed hash validation."
+                    Write-Message -Message "Downloaded release zip file passed hash validation." -MessageType "Pass"
                 }
 
 
@@ -169,21 +163,21 @@ function Update-Evergreen {
                     if (Test-Path -Path $FilePath) {
                         $LocalHash = (Get-FileHash -Path $FilePath -Algorithm "SHA256").Hash.ToLower()
                         if ($LocalHash -ne $File.sha256.ToLower()) {
-                            Write-Warning -Message "$Cross SHA256 mismatch for file '$($File.file_path)'."
+                            Write-Warning -Message "SHA256 mismatch for file '$($File.file_path)'." -MessageType "Fail"
                             $DoReplace = $false
                         }
                         else {
-                            Write-Verbose -Message "$Tick File '$($File.file_path)' hash matches expected value."
+                            Write-Verbose -Message "[$(Get-Symbol -Symbol "Tick")] File '$($File.file_path)' hash matches expected value."
                         }
                     }
                     else {
-                        Write-Warning -Message "$Cross Expected file '$($File.file_path)' not found in extracted release."
+                        Write-Warning -Message "Expected file '$($File.file_path)' not found in extracted release." -MessageType "Fail"
                         $DoReplace = $false
                     }
                 }
 
                 if ($DoReplace) {
-                    Write-Message -Message "$Tick Downloaded release files passed hash validation."
+                    Write-Message -Message "Extracted files passed hash validation." -MessageType "Pass"
                     Write-Message -Message "Synchronizing Evergreen apps and manifests to $script:AppsPath."
                     # Remove existing Apps and Manifests directories
                     $LocalAppsPath = Join-Path -Path $script:AppsPath -ChildPath "Apps"

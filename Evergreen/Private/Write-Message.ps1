@@ -3,12 +3,35 @@ function Write-Message {
     [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(Mandatory = $true)]
-        [System.String] $Message
+        [System.String] $Message,
+
+        [Parameter(Mandatory = $false)]
+        [ValidateSet("Information", "Fail", "Pass")]
+        [System.String] $MessageType = "Information"
     )
+
+    # [System.Text.Encoding]::UTF32.GetBytes("✓")
+    switch ($MessageType) {
+        "Information" {
+            $ForegroundColor = "Black"
+            $BackgroundColor = "DarkGreen"
+        }
+        "Pass" {
+            $ForegroundColor = "Black"
+            $BackgroundColor = "DarkGreen"
+            $Message = "[$(Get-Symbol -Symbol "Tick")] $Message"
+        }
+        "Fail" {
+            $ForegroundColor = "White"
+            $BackgroundColor = "DarkRed"
+            $Message = "[$(Get-Symbol -Symbol "Cross")] $Message"
+        }
+    }
+
     $Msg = [HostInformationMessage]@{
         Message         = "$($Message.PadRight([System.Console]::WindowWidth))"
-        ForegroundColor = "Black"
-        BackgroundColor = "DarkGreen"
+        ForegroundColor = $ForegroundColor
+        BackgroundColor = $BackgroundColor
         NoNewline       = $false
     }
     $params = @{
