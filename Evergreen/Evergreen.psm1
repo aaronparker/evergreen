@@ -74,7 +74,7 @@ elseif (Test-Path -Path $script:VersionFile -PathType "Leaf") {
         Write-Message -Message "Could not retrieve local version information. Please run 'Update-Evergreen -Force'."
     }
     elseif ([System.Version]$RemoteVersion -gt [System.Version]$LocalVersion) {
-        Write-Message -Message "Evergreen app functions are out of date. Please run 'Update-Evergreen'."
+        Write-Message -Message "Evergreen app functions are out of date. Please run 'Update-Evergreen'." -MessageType "Warning"
     }
 }
 else {

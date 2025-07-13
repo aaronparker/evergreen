@@ -74,7 +74,7 @@ function Update-Evergreen {
                     }
                 }
                 if ($HashMismatch) {
-                    Write-Message -Message "SHA256 mismatch found. Recommend running 'Update-Evergreen -Force'."
+                    Write-Message -Message "SHA256 mismatch found. Recommend running 'Update-Evergreen -Force'." -MessageType "Warning"
                 }
                 else {
                     Write-Message -Message "Local cache passed hash validation." -MessageType "Pass"

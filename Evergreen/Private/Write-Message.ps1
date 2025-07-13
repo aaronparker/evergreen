@@ -6,7 +6,7 @@ function Write-Message {
         [System.String] $Message,
 
         [Parameter(Mandatory = $false)]
-        [ValidateSet("Information", "Fail", "Pass")]
+        [ValidateSet("Information", "Warning","Fail", "Pass")]
         [System.String] $MessageType = "Information"
     )
 
@@ -15,6 +15,12 @@ function Write-Message {
         "Information" {
             $ForegroundColor = "Black"
             $BackgroundColor = "DarkGreen"
+            $Message = "[i] $Message"
+        }
+        "Warning" {
+            $ForegroundColor = "Black"
+            $BackgroundColor = "DarkYellow"
+            $Message = "[!] $Message"
         }
         "Pass" {
             $ForegroundColor = "Black"
