@@ -6,7 +6,7 @@ function Write-Message {
         [System.String] $Message,
 
         [Parameter(Mandatory = $false)]
-        [ValidateSet("Information", "Warning","Fail", "Pass")]
+        [ValidateSet("Information", "Warning", "Fail", "Pass")]
         [System.String] $MessageType = "Information"
     )
 
@@ -34,8 +34,18 @@ function Write-Message {
         }
     }
 
+    try {
+        # Ensure the message is padded to the console width
+        $Width = [System.Console]::WindowWidth
+    }
+    catch {
+        # Catch issues in headless environments (e.g. CI pipelines)
+        # "The handle is invalid"
+        $Width = 0
+    }
+
     $Msg = [HostInformationMessage]@{
-        Message         = "$($Message.PadRight([System.Console]::WindowWidth))"
+        Message         = "$($Message.PadRight($Width))"
         ForegroundColor = $ForegroundColor
         BackgroundColor = $BackgroundColor
         NoNewline       = $false
