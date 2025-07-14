@@ -5,7 +5,6 @@ function Get-GhislerTotalCommander {
 
         .NOTES
             Author: Aaron Parker
-            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
     [CmdletBinding(SupportsShouldProcess = $False)]
@@ -23,7 +22,6 @@ function Get-GhislerTotalCommander {
     }
     $Response = Resolve-DnsNameWrapper @params
     if ($null -ne $Response) {
-
         try {
             $Value = ([Regex]$res.Get.Update.MatchVersion).Match($Response).Groups.Value
             $Major = $Value.Split(".")[1]

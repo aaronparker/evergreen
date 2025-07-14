@@ -9,8 +9,8 @@
         },
         "Download": {
             "Uri": {
-                "x86": "https://totalcommander.ch/win/tcmd#versionx32.exe",
-                "x64": "https://totalcommander.ch/win/tcmd#versionx64.exe"
+                "x86": "https://totalcommander.ch/#version/tcmd#versionx32.exe",
+                "x64": "https://totalcommander.ch/#version/tcmd#versionx64.exe"
             },
             "ReplaceText": "#version"
         }

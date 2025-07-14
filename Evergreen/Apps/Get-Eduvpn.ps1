@@ -22,7 +22,6 @@ Function Get-eduVPN {
         MatchVersion = $res.Get.MatchVersion
         Filter       = $res.Get.MatchFileTypes
     }
-    $object = Get-GitHubRepoRelease @params
-
+    $object = Get-CodebergRepoRelease @params
     Write-Output -InputObject $object
 }
