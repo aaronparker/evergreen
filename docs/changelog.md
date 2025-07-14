@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2507.2318
 
 * Updates `eduVPN` to support changes in move from GitHub to Codeberg [#832](https://github.com/aaronparker/evergreen/issues/832)
 * Updates `GhislerTotalCommander` to fix download URLs [#833](https://github.com/aaronparker/evergreen/issues/833)

@@ -1,6 +1,6 @@
-﻿# 375 Supported applications
+﻿# 374 Supported applications
 
-Evergreen `2506.2263` supports the following applications:
+Evergreen `2507.2318` supports the following applications:
 
 | Name                                 | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -194,7 +194,6 @@ Evergreen `2506.2263` supports the following applications:
 | Microsoft.NET                        | Microsoft .NET                                                    | https://dotnet.microsoft.com/download/                                                                                                      |
 | Microsoft365Apps                     | Microsoft 365 Apps                                                | https://www.microsoft.com/office                                                                                                            |
 | MicrosoftAzureCLI                    | Microsoft Azure CLI                                               | https://learn.microsoft.com/en-au/cli/azure/                                                                                                |
-| MicrosoftAzureDataStudio             | Microsoft Azure Data Studio                                       | https://docs.microsoft.com/en-us/sql/azure-data-studio/                                                                                     |
 | MicrosoftAzureFunctionsCoreTools     | Microsoft Azure Functions Core Tools                              | https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local                                                                  |
 | MicrosoftAzurePipelinesAgent         | Microsoft Azure Pipelines Agent                                   | https://learn.microsoft.com/en-au/azure/devops/pipelines/agents/agents                                                                      |
 | MicrosoftAzureStorageExplorer        | Microsoft Azure Storage Explorer                                  | https://azure.microsoft.com/en-au/features/storage-explorer/                                                                                |
