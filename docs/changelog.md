@@ -1,5 +1,11 @@
 # Change log
 
+## VERSION
+
+* Updates `eduVPN` to support changes in move from GitHub to Codeberg [#832](https://github.com/aaronparker/evergreen/issues/832)
+* Updates `GhislerTotalCommander` to fix download URLs [#833](https://github.com/aaronparker/evergreen/issues/833)
+* Removes `AzureDataStudio` [#834](https://github.com/aaronparker/evergreen/issues/834) (See [What's happening to Azure Data Studio?](https://learn.microsoft.com/en-us/azure-data-studio/whats-happening-azure-data-studio))
+
 ## 2506.2263
 
 * Fixes change to download URL in `MicrosoftAzurePipelinesAgent`
