@@ -149,10 +149,10 @@ function Update-Evergreen {
                     Write-Message -Message "Downloaded release zip file passed hash validation." -MessageType "Pass"
                 }
 
-
                 Write-Verbose -Message "Extracting Evergreen apps release from $ZipFile."
                 $ExtractPath = Join-Path -Path $script:AppsPath -ChildPath "_extracted"
                 if (Test-Path -Path $ExtractPath) { Remove-Item -Path $ExtractPath -Recurse -Force -ErrorAction "SilentlyContinue" }
+                $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue
                 Expand-Archive -Path $ZipFile -DestinationPath $ExtractPath -Force
                 Remove-Item -Path $ZipFile -Force -ErrorAction "SilentlyContinue"
 
