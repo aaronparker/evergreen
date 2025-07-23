@@ -6,10 +6,10 @@ function Get-ModuleVersion {
             return $module.Version
         }
         else {
-            return $(Get-Date -Format "yyMM.2525")
+            return $(Get-Date -Format "yyMM.9999")
         }
     }
     catch {
-        return $(Get-Date -Format "yyMM.2525")
+        return $(Get-Date -Format "yyMM.9999")
     }
 }
