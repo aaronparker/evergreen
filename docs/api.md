@@ -12,37 +12,7 @@ Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that return
 
 Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/1.0.0); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
 
-Data that is returned by the Evergreen API can be viewed at the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/).
-
-## Usage
-
-In its current version, the API has only two endpoints that return data in JSON format - `/apps`, `/app/{appName}`. In PowerShell, the API can be queried with `Invoke-RestMethod`.
-
-Return the list of supported applications from `/apps` - this is the equivalent of running `Find-EvergreenApp`:
-
-```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/apps"
-```
-
-Details for a specific application are returned from the `/app/{appName}` endpoint along with the name of the supported application.
-
-```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
-```
-
-Data returned from the API can be  filtered and sent to `Save-EvergreenApp` to download binaries:
-
-```powershell
-$Edge = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
-$Edge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" } | Save-EvergreenApp -Path "C:\Apps"
-```
-
-If an unknown application is passed to the `/app` endpoint, an error is returned:
-
-```powershell
-PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/UnsupportedApp"
-Invoke-RestMethod: {message: "Application not found. List all apps for valid application names. Application names are case sensitive.}
-```
+The data that is returned by the Evergreen API is maintained and updated via the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/). Use the App Tracker to review the API data.
 
 ## Get-EvergreenAppFromApi
 
@@ -67,4 +37,63 @@ Just as with `Get-EvergreenApp`, the output can be filtered for the specific app
 
 ```powershell
 Get-EvergreenAppFromApi -Name "MicrosoftEdge" | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" }
+```
+
+## Get-EvergreenEndpointFromApi
+
+Evergreen includes the `Get-EvergreenEndpointFromApi` function that returns the full list of vendor endpoints used by Evergreen, enabling the output to be used for auditing or firewall rules etc.
+
+```powershell
+Get-EvergreenEndpointFromApi
+
+Application                          Endpoints                                                                                                      Ports
+-----------                          ---------                                                                                                      -----
+1Password                            {1password.com, app-updates.agilebits.com, downloads.1password.com, cdn.agilebits.com}                         {443}
+1Password7                           {1password.com, c.1password.com}                                                                               {443}
+1PasswordCLI                         {app-updates.agilebits.com, cache.agilebits.com, developer.1password.com}                                      {443}
+7Zip                                 {api.github.com, www.7-zip.org, github.com}                                                                    {443}
+7ZipZS                               {api.github.com, mcmilk.de, github.com}                                                                        {443}
+AdobeAcrobat                         {ardownload2.adobe.com, armmf.adobe.com, helpx.adobe.com}                                                      {443}
+AdobeAcrobatDC                       {ardownload2.adobe.com, rdc.adobe.io, www.adobe.com}                                                           {443}
+AdobeAcrobatProStdDC                 {helpx.adobe.com, rdc.adobe.io, trials.adobe.com}                                                              {443}
+AdobeAcrobatReaderDC                 {acrobat.adobe.com, rdc.adobe.io, ardownload2.adobe.com}                                                       {443}
+```
+
+## Custom Usage
+
+The API has only two endpoints that return data in JSON format:
+
+* `/apps` - returns the list of supported applications
+* `/app/{appName}` - returns data for a specified application
+* `/endpoints/versions` - returns the list of vendor endpoints used by Evergreen to query details for an application (i.e. used by `Get-EvergrenApp`)
+* `/endpoints/downloads` - returns the list of vendor endpoints used for downloads  (i.e. used by `Save-EvergrenApp`)
+
+!!! note
+
+    The API requires a custom user agent. Default user agents for PowerShell, curl, wget, browers etc. are blocked to prevent random requests and abuse of the API. Please specify a user agent that identifies your usage or organisation to assist with troubleshooting.
+
+Return the list of supported applications from `/apps` - this is the equivalent of running `Find-EvergreenApp`:
+
+```powershell
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/apps" -UserAgent "My custom UA"
+```
+
+Details for a specific application are returned from the `/app/{appName}` endpoint along with the name of the supported application.
+
+```powershell
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge" -UserAgent "My custom UA"
+```
+
+Data returned from the API can be  filtered and sent to `Save-EvergreenApp` to download binaries:
+
+```powershell
+$Edge = Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/MicrosoftEdge"
+$Edge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Release -eq "Enterprise" } | Save-EvergreenApp -Path "C:\Apps"
+```
+
+If an unknown application is passed to the `/app` endpoint, an error is returned:
+
+```powershell
+PS C:\> Invoke-RestMethod -Uri "https://evergreen-api.stealthpuppy.com/app/UnsupportedApp" -UserAgent "My custom UA"
+Invoke-RestMethod: {message: "Application not found. List all apps for valid application names. Application names are case sensitive.}
 ```
