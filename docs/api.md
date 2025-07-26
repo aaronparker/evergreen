@@ -10,7 +10,7 @@ Evergreen's difference to other methods of finding and installing applications, 
 
 Evergreen supports [an API](https://evergreen-api.stealthpuppy.com/) that returns the same application version information as `Get-EvergreenApp`. The API supports the same applications as the Evergreen module because data is sourced via the module. The API runs on Cloudflare Workers with data that is updated every 8 hours.
 
-Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/1.0.0); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
+Full documentation for the API is available here: [evergreen-api](https://app.swaggerhub.com/apis/stealthpuppy/evergreen-api/); however, if you're familiar with `Get-EvergreenApp` in the Evergreen module, the API should be easy to use.
 
 The data that is returned by the Evergreen API is maintained and updated via the [Evergreen App Tracker](https://stealthpuppy.com/apptracker/). Use the App Tracker to review the API data.
 
