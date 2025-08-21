@@ -26,6 +26,7 @@ foreach ($Import in @($Public + $Private + $Shared)) {
 
 # Get module strings
 $script:resourceStrings = Get-ModuleResource
+$script:UserAgent = Get-EvergreenUserAgent
 
 # Register the argument completer for the Get-EvergreenApp and Find-EvergreenApp cmdlets
 $Commands = "Get-EvergreenApp", "Find-EvergreenApp", "Get-EvergreenAppFromApi", "Export-EvergreenManifest", "Get-EvergreenLibraryApp", "Get-EvergreenEndpointFromApi"

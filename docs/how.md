@@ -14,7 +14,7 @@ Evergreen uses several strategies to return the latest version of software:
 
 ## What Evergreen Does Not Do
 
-**Evergreen does not scape HTML** - scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. While the use of RegEx to determine application properties (particularly version numbers) is used for some applications, this approach is not preferred, if possible.
+**Evergreen does not scrape HTML** - scraping web pages to parse text and determine version strings and download URLs can be problematic when text in the page changes or the page is out of date. While the use of RegEx to determine application properties (particularly version numbers) is used for some applications, this approach is not preferred, if possible.
 
 Pull requests to the Evergreen project that use web page scraping will be closed. For additional applications where the only recourse it to use web page scraping, see the [Nevergreen](https://github.com/DanGough/Nevergreen) project.
 
