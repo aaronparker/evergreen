@@ -5,10 +5,9 @@ function Get-Microsoft.NET {
 
         .NOTES
             Author: Aaron Parker
-            Twitter: @stealthpuppy
     #>
     [OutputType([System.Management.Automation.PSObject])]
-    [CmdletBinding(SupportsShouldProcess = $False)]
+    [CmdletBinding(SupportsShouldProcess = $false)]
     param (
         [Parameter(Mandatory = $false, Position = 0)]
         [ValidateNotNull()]
@@ -56,10 +55,10 @@ function Get-Microsoft.NET {
                             # Build the output object; Output object to the pipeline
                             $PSObject = [PSCustomObject] @{
                                 Version      = $Releases.releases[0].$Installer.version
-                                Support      = $Releases.'support-phase'
-                                Architecture = if ($_.rid.length -gt 0) { Get-Architecture -String $_.rid } else { Get-Architecture -String $_.url }
-                                Installer    = $Installer
                                 Channel      = $Channel
+                                Support      = $Releases.'support-phase'
+                                Installer    = $Installer
+                                Architecture = if ($_.rid.length -gt 0) { Get-Architecture -String $_.rid } else { Get-Architecture -String $_.url }
                                 Sha512       = $_.hash
                                 Type         = [System.IO.Path]::GetExtension($_.url).Split(".")[-1]
                                 URI          = $_.url
