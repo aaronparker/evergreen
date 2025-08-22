@@ -25,7 +25,7 @@
   * Test-EvergreenApp
   * Get-SourceForgeRepoRelease
 
-* Fix download URL change in `OBSStudio`
+* Fix download URL change in `OBSStudio` and `MicrosoftEdgeDriver`
 * Updates user agent for `OracleJava` apps
 * Reorder properties in `Microsoft.NET` for better standardisation
 
