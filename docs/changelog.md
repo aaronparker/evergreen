@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2508.2374
 
 * Creates a custom Evergreen user agent in this format: `Evergreen/<version> (https://github.com/aaronparker/evergreen; PowerShell <PowerShell version>; <OS platform)`
 

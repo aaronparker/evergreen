@@ -1,6 +1,6 @@
 ﻿# 374 Supported applications
 
-Evergreen `2507.2318` supports the following applications:
+Evergreen `2508.2374` supports the following applications:
 
 | Name                                 | Application                                                       | Link                                                                                                                                        |
 | ------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -92,7 +92,7 @@ Evergreen `2507.2318` supports the following applications:
 | DrataAgent                           | Drata Agent                                                       | https://help.drata.com/en/articles/5002305-installing-the-drata-agent-via-windows-os                                                        |
 | DropboxDesktopApp                    | Dropbox desktop app                                               | https://www.dropbox.com/desktop                                                                                                             |
 | DruvainSyncClient                    | Druva inSync Client                                               | https://docs.druva.com/005_inSync_Client                                                                                                    |
-| Eduvpn                               | eduVPN                                                            | https://app.eduvpn.org/                                                                                                                     |
+| eduVPN                               | eduVPN                                                            | https://app.eduvpn.org/                                                                                                                     |
 | EgnyteDesktopApp                     | Egnyte Desktop App                                                | https://www.egnyte.com/solutions/sharing-collaboration                                                                                      |
 | Elgato4KCaptureUtility               | Elgato 4K Capture Utility                                         | https://help.elgato.com/hc/en-us/articles/360027963752-Elgato-4K-Capture-Utility-Software-Interface                                         |
 | ElgatoAudioEffects                   | Elgato Audio Effects                                              | https://www.elgato.com/                                                                                                                     |
@@ -114,7 +114,7 @@ Evergreen `2507.2318` supports the following applications:
 | Flameshot                            | Flameshot                                                         | https://flameshot.org/                                                                                                                      |
 | Fork                                 | Dan Pristupov Fork                                                | https://www.fork.dev                                                                                                                        |
 | FoxitPDFEditor                       | Foxit PDF Editor                                                  | https://www.foxit.com/pdf-editor/                                                                                                           |
-| FoxitReader                          | Foxit Reader                                                      | https://www.foxitsoftware.com/pdf-reader/                                                                                                   |
+| FoxitReader                          | Foxit PDF Reader                                                  | https://www.foxitsoftware.com/pdf-reader/                                                                                                   |
 | FreedomScientificFusion              | Freedom Scientific Fusion                                         | https://www.freedomscientific.com/products/software/fusion/                                                                                 |
 | FreedomScientificJAWS                | Freedom Scientific JAWS                                           | https://www.freedomscientific.com/products/software/jaws/                                                                                   |
 | FreedomScientificZoomText            | Freedom Scientific ZoomText                                       | https://www.freedomscientific.com/products/software/zoomtext/                                                                               |
