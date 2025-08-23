@@ -2,32 +2,33 @@
 
 ## 2508.2374
 
-* Creates a custom Evergreen user agent in this format: `Evergreen/<version> (https://github.com/aaronparker/evergreen; PowerShell <PowerShell version>; <OS platform)`
-
-  Example: `Evergreen/2508.9999 (https://github.com/aaronparker/evergreen; PowerShell 7.5.2; macOS)`
-
-  This approach should achieve the following:
-  * Ensures Evergreen can be identified on calls to target endpoints
-  * Avoids the need to update the previous user agent (The default Microsoft Edge on Windows user agent was being used) - some vendor endpoints will block out of date user agents
-
-  This change introduces the following private functions:
-  * Get-EvergreenUserAgent
-  * Get-ModuleVersion
-  * Get-OSName
-
-  The following functions are updated to use the Evergreen user agent
-  * Invoke-EvergreenRestMethod
-  * Invoke-EvergreenWebRequest
-  * Invoke-SystemNetRequest
-  * Save-File
-  * Get-EvergreenAppFromApi
-  * Save-EvergreenApp
-  * Test-EvergreenApp
-  * Get-SourceForgeRepoRelease
-
 * Fix download URL change in `OBSStudio` and `MicrosoftEdgeDriver`
 * Updates user agent for `OracleJava` apps
 * Reorder properties in `Microsoft.NET` for better standardisation
+* Creates a custom Evergreen user agent in this format: `Evergreen/<version> (https://github.com/aaronparker/evergreen; PowerShell <PowerShell version>; <OS platform)`
+
+Example: `Evergreen/2508.9999 (https://github.com/aaronparker/evergreen; PowerShell 7.5.2; macOS)`
+
+This approach should achieve the following:
+
+* Ensures Evergreen can be identified on calls to target endpoints
+* Avoids the need to update the previous user agent (The default Microsoft Edge on Windows user agent was being used) - some vendor endpoints will block out of date user agents
+
+  This change introduces the following private functions:
+* Get-EvergreenUserAgent
+* Get-ModuleVersion
+* Get-OSName
+
+The following functions are updated to use the Evergreen user agent:
+
+* Get-EvergreenAppFromApi
+* Save-EvergreenApp
+* Test-EvergreenApp
+* Invoke-EvergreenRestMethod
+* Invoke-EvergreenWebRequest
+* Invoke-SystemNetRequest
+* Save-File
+* Get-SourceForgeRepoRelease
 
 ## 2507.2318
 
