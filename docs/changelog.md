@@ -1,6 +1,6 @@
 # Change log
 
-## VERSION
+## 2508.2431
 
 * Update `OmnissaHorizonClient`, `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText` to use the Microsoft Edge user agent instead of the default Evergreen user agent
 
