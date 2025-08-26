@@ -1,5 +1,9 @@
 # Change log
 
+## VERSION
+
+* Update `OmnissaHorizonClient`, `FreedomScientificFusion`, `FreedomScientificJAWS`, `FreedomScientificZoomText` to use the Microsoft Edge user agent instead of the default Evergreen user agent
+
 ## 2508.2374
 
 * Fix download URL change in `OBSStudio` and `MicrosoftEdgeDriver`
