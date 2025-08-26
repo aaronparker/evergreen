@@ -21,15 +21,17 @@
     # Write-Output -InputObject $Output
 
     $params = @{
-        Uri = $res.Get.Download.Uri
+        Uri       = $res.Get.Download.Uri
+        UserAgent = $script:resourceStrings.UserAgent.Base
     }
     $Response = Invoke-EvergreenRestMethod @params
     $Product = $Response.dlgEditionsLists.Where({ $_.name -eq $res.Get.Download.ProductName }).dlgList
 
     $params = @{
-        Uri = $res.Get.Download.QueryUri -replace "#ProductCode", $Product.code `
+        Uri       = $res.Get.Download.QueryUri -replace "#ProductCode", $Product.code `
             -replace "#ProductId", $Product.productId `
             -replace "#PackageId", $Product.releasePackageId
+        UserAgent = $script:resourceStrings.UserAgent.Base
     }
     $details = Invoke-EvergreenRestMethod @params
 
